@@ -50,6 +50,7 @@ CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 # ======================================================================
 
 GUARD_FACE_BALL = True
+GUARD_OPPONENT_BALL_DIST_M = 5.0  # 对手距球严格小于此值才判定射门威胁
 GUARD_THREAT_ENTER_X = -1.0
 GUARD_THREAT_EXIT_X = -0.7
 

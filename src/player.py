@@ -25,6 +25,7 @@ from .param import *
 from .utils.geom import (
     angle_to,
     clamp,
+    closest_point_on_ray_in_rect,
     dist,
     normalize_angle,
     opponent_goal,
@@ -374,6 +375,7 @@ class Player:
         avoid_ball: bool = False,
         avoid_robots: bool = False,
         arrive_dist: float = ARRIVE_DIST,
+        keep_facing: bool = False,
     ) -> bool:
         """走向目标点。返回是否已到达。
 
@@ -383,6 +385,7 @@ class Player:
         结构和对称冲突,比单障碍绕行 / 势场排斥稳。
 
         行走两种模式:近距离全向,远距离转身-走。``face`` 指定到达/近距离时的朝向。
+        ``keep_facing`` 启用全程全向移动,持续朝向 ``face``。
         """
         self.release_kick() # 踢球状态下，走位会被覆盖，先取消踢球状态
         pose = self.pose
@@ -458,8 +461,8 @@ class Player:
             rgb=(0.0, 0.8, 0.8), ns="lookahead",
         )
 
-        if distance <= OMNI_DIST:
-            # 近距离:全向行走,沿 heading 平移,同时转向 face
+        if keep_facing or distance <= OMNI_DIST:
+            # 近距离或保持朝向:全向行走,沿 heading 平移,同时转向 face
             wdx, wdy = math.cos(heading) * distance, math.sin(heading) * distance
             cos_t, sin_t = math.cos(pose.theta), math.sin(pose.theta)
             vx = LINEAR_GAIN * (wdx * cos_t + wdy * sin_t)
@@ -592,10 +595,41 @@ class Player:
                 _behind_ball(ball.x, ball.y, kick_target, CHASE_BEHIND_M)
             )
 
-    def guard(self) -> None:
-        """守门:站小禁区中央待命
+    def _guard_intercept_target(self) -> tuple[float, float] | None:
+        """选最近球的威胁对手,求其射门射线在己方禁区内的最短拦截点。"""
+        ctx, pose = self.context, self.pose
+        if ctx is None or pose is None or ctx.ball is None:
+            return None
+        ball = ctx.ball
+        goal_x = -ctx.field.length / 2.0
+        half_width = ctx.field.penalty_area_width / 2.0
+        bounds = (
+            goal_x, goal_x + ctx.field.penalty_area_length,
+            -half_width, half_width,
+        )
+        candidates = []
+        for opponent in ctx.opponents.values():
+            opp = opponent.pose
+            if opp is None:
+                continue
+            dx, dy = ball.x - opp.x, ball.y - opp.y
+            ball_dist = math.hypot(dx, dy)
+            if not 1e-6 < ball_dist < GUARD_OPPONENT_BALL_DIST_M:
+                continue
+            # 球在对手前方半平面(左右各 90°),包含正侧方边界。
+            if dx * math.cos(opp.theta) + dy * math.sin(opp.theta) < -1e-12:
+                continue
+            target = closest_point_on_ray_in_rect(
+                (ball.x, ball.y), (dx, dy), (pose.x, pose.y), bounds,
+            )
+            if target is not None:
+                candidates.append((ball_dist, opponent.player_id, target))
+        return min(candidates)[2] if candidates else None
 
-        无 pose(未就位)时退回站小禁区中央。
+    def guard(self) -> None:
+        """有射门威胁时就近拦截并面朝球,否则站小禁区中央待命。
+
+        对手距球 <5m、球在其前方 180° 且对手经球的射线穿过我方禁区时触发。
         """
         home = own_goal_area_center(self.context) if self.context is not None else None
         if home is None or self.pose is None:
@@ -604,6 +638,16 @@ class Player:
             return
 
         ball = self.context.ball if self.context is not None else None
+
+        intercept = self._guard_intercept_target()
+        if intercept is not None:
+            self.action = "guard:intercept"
+            self.walk_to(
+                intercept,
+                face=angle_to(self.pose.x, self.pose.y, ball.x, ball.y),
+                avoid_ball=True, avoid_robots=True, keep_facing=True,
+            )
+            return
 
         # 待命朝向:朝球(便于快速反应);球不可见则朝对方门方向(默认 0)。
         face = 0.0

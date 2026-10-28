@@ -41,6 +41,44 @@ def angle_to(fx: float, fy: float, tx: float, ty: float) -> float:
     return math.atan2(ty - fy, tx - fx)
 
 
+def closest_point_on_ray_in_rect(
+    origin: tuple[float, float],
+    direction: tuple[float, float],
+    point: tuple[float, float],
+    bounds: tuple[float, float, float, float],
+) -> tuple[float, float] | None:
+    """射线穿过矩形的部分上离 point 最近的点;只擦边/无交集返回 None。
+
+    bounds 为 (xmin, xmax, ymin, ymax),direction 无需归一化。
+    """
+    dx, dy = direction
+    length_sq = dx * dx + dy * dy
+    if length_sq < 1e-12:
+        return None
+
+    xmin, xmax, ymin, ymax = bounds
+    enter, leave = 0.0, math.inf
+    for start, delta, low, high in (
+        (origin[0], dx, xmin, xmax),
+        (origin[1], dy, ymin, ymax),
+    ):
+        if abs(delta) < 1e-12:
+            if not low < start < high:
+                return None
+            continue
+        t0, t1 = (low - start) / delta, (high - start) / delta
+        enter = max(enter, min(t0, t1))
+        leave = min(leave, max(t0, t1))
+        if leave <= enter:
+            return None
+
+    projection = (
+        (point[0] - origin[0]) * dx + (point[1] - origin[1]) * dy
+    ) / length_sq
+    t = clamp(projection, enter, leave)
+    return (origin[0] + t * dx, origin[1] + t * dy)
+
+
 def opponent_goal(ctx: Context) -> tuple[float, float]:
     """对方球门中心(进攻目标),取门线后方一点避免球压线时反向瞄准。"""
     return (ctx.field.length / 2.0 + GOAL_TARGET_DEPTH_M, 0.0)
