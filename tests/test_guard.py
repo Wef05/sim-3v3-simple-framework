@@ -9,7 +9,7 @@ from src.framework.types import (
 )
 from src.param import MAX_LINEAR
 from src.player import Player
-from src.utils.geom import closest_point_on_ray_in_rect
+from src.utils.geom import closest_point_on_ray, closest_point_on_ray_in_rect
 
 
 class GuardTests(unittest.TestCase):
@@ -56,7 +56,7 @@ class GuardTests(unittest.TestCase):
         self.set_opponent(Pose2D(0, 4, math.pi))
         self.assertIsNone(self.player._guard_intercept_target())
 
-    def test_diagonal_projection_and_penalty_boundary(self):
+    def test_diagonal_projection_is_not_clipped_to_penalty_boundary(self):
         self.player.context = replace(
             self.player.context, ball=BallState(-2, 0),
             teammates={1: RobotState(1, Pose2D(-6, 0))},
@@ -67,7 +67,37 @@ class GuardTests(unittest.TestCase):
             self.player.context,
             teammates={1: RobotState(1, Pose2D(-7, 4))},
         )
-        self.assertEqual(self.player._guard_intercept_target(), (-5.0, 3.0))
+        self.assertEqual(self.player._guard_intercept_target(), (-6.5, 4.5))
+
+    def test_projection_before_penalty_area_remains_on_full_ray(self):
+        self.player.context = replace(
+            self.player.context,
+            teammates={1: RobotState(1, Pose2D(-3, 0))},
+        )
+        self.assertEqual(self.player._guard_intercept_target(), (-3.0, 1.0))
+
+    def test_projection_towards_enemy_uses_ball_as_ray_endpoint(self):
+        self.player.context = replace(
+            self.player.context,
+            teammates={1: RobotState(1, Pose2D(-1, 0))},
+        )
+        self.assertEqual(self.player._guard_intercept_target(), (-2.0, 1.0))
+
+    def test_ray_projection_is_collinear_and_points_away_from_enemy(self):
+        ball, enemy = (-2.0, 1.0), (0.0, -1.0)
+        direction = (ball[0] - enemy[0], ball[1] - enemy[1])
+        for point in ((-6, 0), (-7, 4), (-1, 0), (-2, 1)):
+            with self.subTest(point=point):
+                target = closest_point_on_ray(ball, direction, point)
+                rx, ry = target[0] - ball[0], target[1] - ball[1]
+                self.assertAlmostEqual(rx * direction[1] - ry * direction[0], 0)
+                self.assertGreaterEqual(rx * direction[0] + ry * direction[1], 0)
+                if target != ball:
+                    self.assertAlmostEqual(
+                        (point[0] - target[0]) * direction[0]
+                        + (point[1] - target[1]) * direction[1], 0,
+                    )
+        self.assertIsNone(closest_point_on_ray(ball, (0, 0), (-6, 0)))
 
     def test_ball_in_penalty_area_only_blocks_beyond_ball(self):
         self.player.context = replace(
