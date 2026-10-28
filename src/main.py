@@ -254,15 +254,24 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
     if follow_pass(context, outfield, store, normal=True):
         return
 
+    # 小禁区近身出球先于普通进攻/支援，避免后续动作覆盖解围或传球。
+    remaining = []
+    for p in outfield:
+        if not p.distribute_goal_area_ball(players):
+            remaining.append(p)
+    if not remaining:
+        store.normal_attacker = None
+        return
+
     attacker = _select_closest_attacker(
-        context, outfield, getattr(store, "normal_attacker", None),
+        context, remaining, getattr(store, "normal_attacker", None),
     )
     store.normal_attacker = attacker.id
     attacker.action = "attack"
     attacker.attack()
 
-    # support:其余全部
-    for p in outfield:
+    # support:其余未在小禁区出球的队员
+    for p in remaining:
         if p is attacker:
             continue
         p.action = "support"
