@@ -23,6 +23,7 @@ from .framework.agent import SoccerAgentMixin
 from .framework.types import KICKING_TEAM_NONE, Context, GameState, SetPlay
 from .param import *
 from .player import Player
+from .restart import act_restart
 from .utils import dist, own_goal_area_center
 
 
@@ -118,12 +119,28 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
         store.cur_phase = None
         store.kickoff_taker = None    # 锁定的开球主罚球员 id(每次进入开球时重选)
         store.normal_attacker = None
+        store.restart_plan = None
 
     @staticmethod
     def play(context: Context, players: list[Player], store) -> None:
         phase = get_phase(context)
         store.prev_phase = store.cur_phase
         store.cur_phase = phase
+
+        if phase in (Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY) and store.prev_phase != phase:
+            store.restart_plan = None
+
+        if phase not in (Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY):
+            plan = getattr(store, "restart_plan", None)
+            if phase == Phase.NORMAL and plan is not None and plan.receiver is not None:
+                # 裁判已放行，但球未到接应者脚下时给原接应者短暂优先权。
+                if plan.sent_at is None:
+                    plan.sent_at = context.now
+                receiver = next((p for p in players if p.id == plan.receiver), None)
+                if (receiver is None or context.now - plan.sent_at > RESTART_RECEIVE_S):
+                    store.restart_plan = None
+            else:
+                store.restart_plan = None
 
         # 画可视化(每帧)
         _analyze_and_draw(context, players, store)
@@ -152,7 +169,8 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
                 p.stop()
             elif not ready:
                 p.action = "fallen" if p.is_fallen else "switching_mode"
-                if phase in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY):
+                if phase in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY,
+                             Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY):
                     p.stop()  # 取消上一帧可能仍在执行的追球/踢球命令。
             elif p.pose is None:
                 p.action = "no_pose"       # 自己位置未知:不参与分派(下游按 pose 已知处理)
@@ -239,6 +257,18 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
         store.normal_attacker = None
         return
 
+    plan = getattr(store, "restart_plan", None)
+    receiver = next((p for p in outfield if plan and p.id == plan.receiver), None)
+    if receiver is not None and context.ball is not None:
+        receiver.action = "restart:receive"
+        receiver.attack()
+        for p in outfield:
+            if p is not receiver:
+                p.action = "restart:protect"
+                p.support()
+        store.normal_attacker = receiver.id
+        return
+
     attacker = _select_closest_attacker(
         context, outfield, getattr(store, "normal_attacker", None),
     )
@@ -267,26 +297,10 @@ def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
         guard.guard()
     if not outfield:
         store.kickoff_taker = None
+        store.restart_plan = None
         return
 
-    active_ids = {p.id for p in outfield}
-    if store.prev_phase != Phase.OUR_KICKOFF or store.kickoff_taker not in active_ids:
-        # 进入开球阶段，重新选择开球球员
-        store.kickoff_taker = _select_closest_attacker(context, outfield).id
-
-    attacker_id = store.kickoff_taker
-    attacker = next((p for p in outfield if p.id == attacker_id), None)
-    if attacker is None:
-        return
-
-    attacker.action = "kickoff"
-    attacker.kick(0.1, KICK_POWER_OUR_KICKOFF)
-
-    for p in outfield:
-        if p is attacker:
-            continue
-        p.action = "stay"
-        p.stop()
+    act_restart(context, outfield, store, "kickoff")
 
 
 def _act_opp_kickoff(context: Context, players: list[Player]) -> None:
@@ -299,18 +313,11 @@ def _act_opp_kickoff(context: Context, players: list[Player]) -> None:
 
 
 def _act_our_set_play(context: Context, players: list[Player], store) -> None:
-    """OUR_SET_PLAY:按定位球类型分派, TODO：加入自己的逻辑。默认为 _act_normal"""
-    set_play = get_set_play_type(context)
-    if set_play == SetPlay.THROW_IN:
-        _act_normal(context, players, store)
-        return
-    if set_play == SetPlay.CORNER_KICK:
-        _act_normal(context, players, store)
-        return
-    if set_play == SetPlay.GOAL_KICK:
-        _act_normal(context, players, store)
-        return
-    _act_normal(context, players, store)
+    """我方定位球：固定守门员保护，场上队员协作传接。"""
+    guard, outfield = _split_goalkeeper(players)
+    if guard is not None:
+        guard.guard()
+    act_restart(context, outfield, store, get_set_play_type(context).value)
 
 
 def _act_opp_set_play(context: Context, players: list[Player], store) -> None:
