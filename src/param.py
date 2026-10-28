@@ -83,7 +83,7 @@ OPP_SET_WALL_DIST_M = 2.0 # 对方开球时，在多少距离之后阻挡
 # 站位 / 避让
 # ======================================================================
 
-OPPONENT_RESTART_AVOID_M = 1.65
+OPPONENT_RESTART_AVOID_M = 1.65  # 对方定位球开出前的最小让球距离 (m)
 CIRCLE_MARGIN_M = 0.3
 
 
