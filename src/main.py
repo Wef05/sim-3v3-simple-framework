@@ -24,6 +24,7 @@ from .framework.types import KICKING_TEAM_NONE, Context, GameState, SetPlay
 from .param import *
 from .player import Player
 from .restart import act_restart, follow_pass
+from .opponent_restart import defend_restart
 from .utils import dist, own_goal_area_center
 from .utils.geom import ball_in_own_penalty_area
 
@@ -121,6 +122,7 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
         store.kickoff_taker = None    # 锁定的开球主罚球员 id(每次进入开球时重选)
         store.normal_attacker = None
         store.restart_plan = None
+        store.opponent_defense = None
 
     @staticmethod
     def play(context: Context, players: list[Player], store) -> None:
@@ -133,6 +135,9 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
 
         if phase not in (Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY, Phase.NORMAL):
             store.restart_plan = None
+
+        if phase not in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY):
+            store.opponent_defense = None
 
         # 画可视化(每帧)
         _analyze_and_draw(context, players, store)
@@ -178,7 +183,7 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
             _act_our_kickoff(context, active, store)
         elif phase == Phase.OPP_KICKOFF:
             _clear_normal_sticky(store)
-            _act_opp_kickoff(context, active)
+            _act_opp_kickoff(context, active, store)
         elif phase == Phase.OUR_SET_PLAY:
             _clear_normal_sticky(store)
             _act_our_set_play(context, active, store)
@@ -301,13 +306,9 @@ def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
     act_restart(context, outfield, store, "kickoff")
 
 
-def _act_opp_kickoff(context: Context, players: list[Player]) -> None:
-    """对方中圈开球:全员退出球周围及中圈,取消踢球并等待裁判放行。"""
-    clearance = max(
-        OPPONENT_RESTART_AVOID_M, context.field.circle_radius + CIRCLE_MARGIN_M,
-    )
-    for p in players:
-        p.wait_for_opponent_restart(clearance)
+def _act_opp_kickoff(context: Context, players: list[Player], store=None) -> None:
+    """对方开球：守门与分层封堵，等待裁判解除限制。"""
+    defend_restart(context, players, store, "kickoff")
 
 
 def _act_our_set_play(context: Context, players: list[Player], store) -> None:
@@ -319,9 +320,8 @@ def _act_our_set_play(context: Context, players: list[Player], store) -> None:
 
 
 def _act_opp_set_play(context: Context, players: list[Player], store) -> None:
-    """对方所有定位球:退开并等待,不分派 attack/guard/support 去接近球。"""
-    for p in players:
-        p.wait_for_opponent_restart(OPPONENT_RESTART_AVOID_M)
+    """按定位球类型安排封堵，全员只移动不触球。"""
+    defend_restart(context, players, store, get_set_play_type(context).value)
 
 
 def _act_ready(context: Context, players: list[Player]) -> None:
