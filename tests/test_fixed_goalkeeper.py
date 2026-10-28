@@ -30,6 +30,8 @@ class FixedGoalkeeperTests(unittest.TestCase):
             Mock(spec=Player, id=2, pose=Pose2D(-6, 0)),
             Mock(spec=Player, id=3, pose=Pose2D(2, 0)),
         ]
+        for player in self.players:
+            player.distribute_goal_area_ball.return_value = False
         self.store = types.SimpleNamespace()
         strategy.SoccerSimAgent.init_store(None, self.store)
 
@@ -55,8 +57,9 @@ class FixedGoalkeeperTests(unittest.TestCase):
         strategy._act_our_kickoff(self.context, self.players, self.store)
         self.assert_goalkeeper_only_guards()
         self.assertEqual(self.store.kickoff_taker, 3)
-        self.players[2].kick.assert_called_once()
-        self.players[1].stop.assert_called_once()
+        self.players[2].kick.assert_not_called()
+        self.players[1].walk_to.assert_called_once()
+        self.assertEqual(self.store.restart_plan.receiver, 2)
 
     def test_our_set_plays_exclude_keeper(self):
         for set_play in SetPlay:
@@ -70,7 +73,12 @@ class FixedGoalkeeperTests(unittest.TestCase):
                 ))
                 strategy._act_our_set_play(context, self.players, self.store)
                 self.assert_goalkeeper_only_guards()
-                self.players[2].attack.assert_called_once()
+                if set_play == SetPlay.PENALTY_KICK:
+                    self.players[2].attack.assert_called_once()
+                else:
+                    self.players[2].attack.assert_not_called()
+                    self.players[1].walk_to.assert_called_once()
+                self.assertEqual(self.store.restart_plan.taker, 3)
 
     def test_only_goalkeeper_available_does_not_attack_or_take_kickoff(self):
         strategy._act_normal(self.context, self.players[:1], self.store)
