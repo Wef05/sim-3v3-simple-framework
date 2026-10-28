@@ -25,6 +25,7 @@ from .param import *
 from .utils.geom import (
     angle_to,
     clamp,
+    closest_point_on_ray,
     closest_point_on_ray_in_rect,
     dist,
     normalize_angle,
@@ -596,7 +597,7 @@ class Player:
             )
 
     def _guard_intercept_target(self) -> tuple[float, float] | None:
-        """选最近球的威胁对手,求其射门射线在己方禁区内的最短拦截点。"""
+        """选最近球的威胁对手,取球沿远离该对手的整条射线上最近点。"""
         ctx, pose = self.context, self.pose
         if ctx is None or pose is None or ctx.ball is None:
             return None
@@ -619,8 +620,13 @@ class Player:
             # 球在对手前方半平面(左右各 90°),包含正侧方边界。
             if dx * math.cos(opp.theta) + dy * math.sin(opp.theta) < -1e-12:
                 continue
-            target = closest_point_on_ray_in_rect(
+            # 禁区相交只决定是否存在威胁,不能把封堵垂足裁到禁区边界。
+            if closest_point_on_ray_in_rect(
                 (ball.x, ball.y), (dx, dy), (pose.x, pose.y), bounds,
+            ) is None:
+                continue
+            target = closest_point_on_ray(
+                (ball.x, ball.y), (dx, dy), (pose.x, pose.y),
             )
             if target is not None:
                 candidates.append((ball_dist, opponent.player_id, target))

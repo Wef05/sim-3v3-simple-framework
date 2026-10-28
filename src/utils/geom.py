@@ -41,6 +41,22 @@ def angle_to(fx: float, fy: float, tx: float, ty: float) -> float:
     return math.atan2(ty - fy, tx - fx)
 
 
+def closest_point_on_ray(
+    origin: tuple[float, float],
+    direction: tuple[float, float],
+    point: tuple[float, float],
+) -> tuple[float, float] | None:
+    """point 到射线的最近点;垂足在起点后方时取起点,零方向返回 None。"""
+    dx, dy = direction
+    length_sq = dx * dx + dy * dy
+    if length_sq < 1e-12:
+        return None
+    t = max(0.0, (
+        (point[0] - origin[0]) * dx + (point[1] - origin[1]) * dy
+    ) / length_sq)
+    return (origin[0] + t * dx, origin[1] + t * dy)
+
+
 def closest_point_on_ray_in_rect(
     origin: tuple[float, float],
     direction: tuple[float, float],
