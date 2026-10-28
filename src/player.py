@@ -595,6 +595,21 @@ class Player:
                 _behind_ball(ball.x, ball.y, kick_target, CHASE_BEHIND_M)
             )
 
+    def pass_to(self, target: tuple[float, float], power: float) -> bool:
+        """追到球后向指定场地坐标出球；返回是否已提交踢球指令。"""
+        ball = self.context.ball if self.context is not None else None
+        if ball is None or self.pose is None:
+            self.stop()
+            return False
+        direction = angle_to(ball.x, ball.y, *target)
+        self._draw_kick_target(target)
+        if dist(self.pose.x, self.pose.y, ball.x, ball.y) <= KICK_ENTER_M:
+            self.kick(direction, power)
+            return True
+        self.walk_to(_behind_ball(ball.x, ball.y, target, CHASE_BEHIND_M),
+                     face=direction, avoid_ball=True, avoid_robots=True)
+        return False
+
     def _guard_intercept_target(self) -> tuple[float, float] | None:
         """选最近球的威胁对手,求其射门射线在己方禁区内的最短拦截点。"""
         ctx, pose = self.context, self.pose
