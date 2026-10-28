@@ -13,9 +13,10 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 
-from ..framework.types import Context
+from ..framework.types import Context, GameState, SetPlay
 from ..param import (
     BALL_OBSTACLE_RADIUS,
+    OPPONENT_RESTART_AVOID_M, CIRCLE_MARGIN_M,
     GOAL_DEPTH,
     GOAL_STRUCTURE_MARGIN_M,
     NET_RADIUS,
@@ -50,9 +51,17 @@ def collect_obstacles(
 ) -> list[Obstacle]:
     """按开关收集圆形障碍。ball=球,robots=对手+队友(排除自己),goals=两侧球门结构。"""
     obstacles: list[Obstacle] = []
-    if ball and context.ball is not None:
+    game = context.game
+    opponent_restart = (game is not None and game.state == GameState.PLAYING
+                        and not game.stopped and game.kicking_team != context.team_id
+                        and (game.set_play != SetPlay.NONE or game.secondary_time > 0))
+    if opponent_restart and game.set_play == SetPlay.NONE:
+        obstacles.append(Obstacle(0, 0, context.field.circle_radius + CIRCLE_MARGIN_M))
+    if (ball or opponent_restart) and context.ball is not None:
         obstacles.append(
-            Obstacle(context.ball.x, context.ball.y, BALL_OBSTACLE_RADIUS)
+            Obstacle(context.ball.x, context.ball.y,
+                     max(BALL_OBSTACLE_RADIUS, OPPONENT_RESTART_AVOID_M)
+                     if opponent_restart else BALL_OBSTACLE_RADIUS)
         )
     if robots:
         for r in context.opponents.values():

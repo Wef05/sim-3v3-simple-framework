@@ -968,7 +968,8 @@ class Player:
         target = min(candidates, key=lambda p: dist(pose.x, pose.y, *p))
         self.action = "opp_restart:retreat"
         # 直接向外全向退让,避免路径规划在球附近绕行时反而靠近球。
-        self.walk_to(target, face=face, keep_facing=True)
+        self.walk_to(target, face=face, keep_facing=True,
+                     avoid_ball=True, avoid_robots=True)
 
     def take_kickoff(self, kick_target: tuple[float, float] | None = None) -> None:
         """我方开球/重开:未就位则绕到球后待命(避球不碰),就位后接近并踢。"""
