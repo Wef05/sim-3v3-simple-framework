@@ -799,6 +799,37 @@ class Player:
             options.append((min(space, 3.0)-0.5*turn, -abs(degrees), target))
         return max(options)[2], GUARD_CLEAR_POWER, "guard:clear"
 
+    def distribute_goal_area_ball(self, receivers: list[Player]) -> bool:
+        """己方球门区内任何球员，近身球都采用保守出球，返回是否接管动作。"""
+        ctx, pose = self.context, self.pose
+        if ctx is None or pose is None:
+            return False
+        goal_x = -ctx.field.length / 2
+        if not (goal_x <= pose.x <= goal_x + ctx.field.goal_area_length
+                and abs(pose.y) <= ctx.field.goal_area_width / 2):
+            return False
+        return self._distribute_near_ball(receivers, "goal_area")
+
+    def _distribute_near_ball(self, receivers: list[Player], label: str) -> bool:
+        ctx, pose = self.context, self.pose
+        if ctx is None or pose is None or ctx.ball is None:
+            return False
+        game = ctx.game
+        if game is not None and (
+                game.state != GameState.PLAYING or game.stopped
+                or game.set_play != SetPlay.NONE or game.secondary_time > 0):
+            self.release_kick()
+            return False
+        ball = ctx.ball
+        radius = GUARD_BALL_EXIT_M if self._kicking else GUARD_BALL_ENTER_M
+        if dist(pose.x, pose.y, ball.x, ball.y) > radius:
+            return False
+        target, power, action = self._guard_distribution(receivers)
+        self.action = label + ":" + action.split(":")[-1]
+        self._draw_kick_target(target)
+        self.kick(angle_to(ball.x, ball.y, *target), power)
+        return True
+
     def guard(self, *, allow_distribution: bool = True,
               receivers: list[Player] | None = None) -> None:
         """近身球优先解围，严格安全才传球；其余时间拦截或回位。"""
@@ -819,12 +850,7 @@ class Player:
         if not allow_distribution:
             self.release_kick()
 
-        radius = GUARD_BALL_EXIT_M if self._kicking else GUARD_BALL_ENTER_M
-        if (allow_distribution and ball is not None
-                and dist(self.pose.x, self.pose.y, ball.x, ball.y) <= radius):
-            target, power, self.action = self._guard_distribution(receivers or [])
-            self._draw_kick_target(target)
-            self.kick(angle_to(ball.x, ball.y, *target), power)
+        if allow_distribution and self._distribute_near_ball(receivers or [], "guard"):
             return
 
         intercept = self._guard_intercept_target()
