@@ -116,6 +116,12 @@ def follow_pass(ctx, players, store, normal=False):
         store.restart_plan = None
         return False
 
+    if normal and distance(xy(receiver), ball) <= RESTART_CONTROL_M:
+        store.normal_attacker = receiver.id
+        store.attacker_since = ctx.now
+        store.restart_plan = None
+        return False
+
     for p in players:
         if p.id == receiver.id:
             continue
