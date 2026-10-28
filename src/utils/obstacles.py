@@ -46,6 +46,7 @@ def collect_obstacles(
     ball: bool,
     robots: bool,
     goals: bool = False,
+    teammates: bool = True,
 ) -> list[Obstacle]:
     """按开关收集圆形障碍。ball=球,robots=对手+队友(排除自己),goals=两侧球门结构。"""
     obstacles: list[Obstacle] = []
@@ -58,7 +59,7 @@ def collect_obstacles(
             if r.pose is not None:
                 obstacles.append(Obstacle(r.pose.x, r.pose.y, OPPONENT_RADIUS))
         for tid, r in context.teammates.items():
-            if tid != exclude_id and r.pose is not None:
+            if teammates and tid != exclude_id and r.pose is not None:
                 obstacles.append(Obstacle(r.pose.x, r.pose.y, TEAMMATE_RADIUS))
     if goals:
         obstacles.extend(goal_obstacles(context))
