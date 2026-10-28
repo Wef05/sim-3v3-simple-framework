@@ -51,6 +51,20 @@ CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 
 GOALKEEPER_ID = 1             # 固定守门员编号;不参与进攻和我方开球主罚
 GUARD_FACE_BALL = True
+# 近身出球独立于进攻队员的 2m 追球范围，避免守门员追出球门。
+GUARD_BALL_ENTER_M = 0.7
+GUARD_BALL_EXIT_M = 0.95
+GUARD_CLEAR_POWER = 5.0      # 沿用已使用的后场力度，不直接拉满
+GUARD_PASS_POWER = 1.0
+GUARD_PASS_MIN_M = 2.0
+GUARD_PASS_MAX_M = 5.0
+GUARD_PASS_FORWARD_M = 1.5
+GUARD_PASS_MAX_TURN = math.radians(30)
+GUARD_PASS_PREPARE_S = 2.0   # 为慢动作预留的出脚时间
+GUARD_PASS_BALL_SPEED = 3.0  # 保守估算，仅用于风险判断，需实战标定
+GUARD_OPPONENT_SPEED = 1.5   # 对手在出脚和球运行期间可覆盖的距离
+GUARD_PASS_LANE_M = 0.8
+GUARD_OBSERVATION_MAX_AGE_S = 1.0
 GUARD_OPPONENT_BALL_DIST_M = 5.0  # 对手距球严格小于此值才判定射门威胁
 GUARD_THREAT_ENTER_X = -1.0
 GUARD_THREAT_EXIT_X = -0.7
@@ -138,9 +152,10 @@ KICK_TARGET_MARK_SIZE_M = 0.18
 
 # 我方定位球协作。
 RESTART_WAIT_S = 6.0          # 接应未到位时，超时向仍畅通的空当出球
-RESTART_RECEIVE_S = 3.0       # 裁判转 NORMAL 后的接应交接窗口
+RESTART_RECEIVE_S = 8.0       # 从观测到球移动开始的接应协作窗口
+RESTART_CONTROL_M = 0.65     # 接应者接近球后才进入进攻
 RESTART_MOVED_M = 0.25        # 球离开起点后，停止主罚者继续触球
-RESTART_READY_M = 0.6        # 接应者接近目标才正常出球
+RESTART_READY_M = 0.1        # 接应者接近目标才正常出球
 RESTART_LANE_M = 0.8         # 传球线段/落点与机器人的最小间距
 RESTART_MARGIN_M = 0.65      # 接应点距边界的留白
 RESTART_POWER = 1.0          # 固定出球参数，不随传球距离变化

@@ -23,7 +23,7 @@ from .framework.agent import SoccerAgentMixin
 from .framework.types import KICKING_TEAM_NONE, Context, GameState, SetPlay
 from .param import *
 from .player import Player
-from .restart import act_restart
+from .restart import act_restart, follow_pass
 from .utils import dist, own_goal_area_center
 
 
@@ -130,17 +130,8 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
         if phase in (Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY) and store.prev_phase != phase:
             store.restart_plan = None
 
-        if phase not in (Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY):
-            plan = getattr(store, "restart_plan", None)
-            if phase == Phase.NORMAL and plan is not None and plan.receiver is not None:
-                # 裁判已放行，但球未到接应者脚下时给原接应者短暂优先权。
-                if plan.sent_at is None:
-                    plan.sent_at = context.now
-                receiver = next((p for p in players if p.id == plan.receiver), None)
-                if (receiver is None or context.now - plan.sent_at > RESTART_RECEIVE_S):
-                    store.restart_plan = None
-            else:
-                store.restart_plan = None
+        if phase not in (Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY, Phase.NORMAL):
+            store.restart_plan = None
 
         # 画可视化(每帧)
         _analyze_and_draw(context, players, store)
@@ -170,7 +161,7 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
             elif not ready:
                 p.action = "fallen" if p.is_fallen else "switching_mode"
                 if phase in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY,
-                             Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY):
+                             Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY) or getattr(store, "restart_plan", None) is not None:
                     p.stop()  # 取消上一帧可能仍在执行的追球/踢球命令。
             elif p.pose is None:
                 p.action = "no_pose"       # 自己位置未知:不参与分派(下游按 pose 已知处理)
@@ -252,21 +243,12 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
     """
     guard, outfield = _split_goalkeeper(players)
     if guard is not None:
-        guard.guard()
+        guard.guard(receivers=outfield)
     if not outfield:
         store.normal_attacker = None
         return
 
-    plan = getattr(store, "restart_plan", None)
-    receiver = next((p for p in outfield if plan and p.id == plan.receiver), None)
-    if receiver is not None and context.ball is not None:
-        receiver.action = "restart:receive"
-        receiver.attack()
-        for p in outfield:
-            if p is not receiver:
-                p.action = "restart:protect"
-                p.support()
-        store.normal_attacker = receiver.id
+    if follow_pass(context, outfield, store, normal=True):
         return
 
     attacker = _select_closest_attacker(
@@ -294,7 +276,7 @@ def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
     """OUR_KICKOFF:固定守门员守门,只从场上队员中锁定开球主罚者。"""
     guard, outfield = _split_goalkeeper(players)
     if guard is not None:
-        guard.guard()
+        guard.guard(allow_distribution=False)
     if not outfield:
         store.kickoff_taker = None
         store.restart_plan = None
@@ -316,7 +298,7 @@ def _act_our_set_play(context: Context, players: list[Player], store) -> None:
     """我方定位球：固定守门员保护，场上队员协作传接。"""
     guard, outfield = _split_goalkeeper(players)
     if guard is not None:
-        guard.guard()
+        guard.guard(allow_distribution=False)
     act_restart(context, outfield, store, get_set_play_type(context).value)
 
 
