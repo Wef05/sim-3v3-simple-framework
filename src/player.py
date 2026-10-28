@@ -24,6 +24,7 @@ from .framework import debugdraw
 from .param import *
 from .utils.geom import (
     angle_to,
+    ball_in_own_penalty_area,
     clamp,
     closest_point_on_ray,
     closest_point_on_ray_in_rect,
@@ -832,7 +833,7 @@ class Player:
 
     def guard(self, *, allow_distribution: bool = True,
               receivers: list[Player] | None = None) -> None:
-        """近身球优先解围，严格安全才传球；其余时间拦截或回位。"""
+        """禁区内主动接近球,近身后安全传球或解围；其余时间拦截或回位。"""
         home = own_goal_area_center(self.context) if self.context is not None else None
         if home is None or self.pose is None:
             self.action = "guard:stop"
@@ -851,6 +852,21 @@ class Player:
             self.release_kick()
 
         if allow_distribution and self._distribute_near_ball(receivers or [], "guard"):
+            return
+
+        if allow_distribution and ball_in_own_penalty_area(self.context):
+            target, _, _ = self._guard_distribution(receivers or [])
+            # 站在球后、球障碍安全圈外,同时保证到达误差不会使球停在出脚距离外。
+            stand_off = (GUARD_BALL_ENTER_M + BALL_OBSTACLE_RADIUS
+                         + GLOBAL_OBSTACLE_MARGIN_M) / 2.0
+            arrive = min(ARRIVE_DIST, max(0.01, (GUARD_BALL_ENTER_M - stand_off) / 2.0))
+            self.action = "guard:collect"
+            self.walk_to(
+                _behind_ball(ball.x, ball.y, target, stand_off),
+                face=angle_to(ball.x, ball.y, *target),
+                avoid_ball=True, avoid_robots=True,
+                keep_facing=True, arrive_dist=arrive,
+            )
             return
 
         intercept = self._guard_intercept_target()

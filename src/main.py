@@ -25,6 +25,7 @@ from .param import *
 from .player import Player
 from .restart import act_restart, follow_pass
 from .utils import dist, own_goal_area_center
+from .utils.geom import ball_in_own_penalty_area
 
 
 _log = logging.getLogger(__name__)
@@ -242,6 +243,9 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
     ``players`` 是本帧可行动球员(已就绪、pose 已知),这里直接挑角色并执行。
     """
     guard, outfield = _split_goalkeeper(players)
+    if guard is not None and ball_in_own_penalty_area(context):
+        # 球回到己方禁区后优先排险,不让旧定位球传接方案阻止守门员处理球。
+        store.restart_plan = None
     if guard is not None:
         guard.guard(
             allow_distribution=getattr(store, "restart_plan", None) is None,
