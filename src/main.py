@@ -243,7 +243,10 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
     """
     guard, outfield = _split_goalkeeper(players)
     if guard is not None:
-        guard.guard(receivers=outfield)
+        guard.guard(
+            allow_distribution=getattr(store, "restart_plan", None) is None,
+            receivers=outfield,
+        )
     if not outfield:
         store.normal_attacker = None
         return
