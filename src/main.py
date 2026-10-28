@@ -23,7 +23,7 @@ from .framework.agent import SoccerAgentMixin
 from .framework.types import KICKING_TEAM_NONE, Context, GameState, SetPlay
 from .param import *
 from .player import Player
-from .utils import dist, opponent_goal, own_goal
+from .utils import dist, own_goal_area_center
 
 
 _log = logging.getLogger(__name__)
@@ -228,60 +228,63 @@ def _select_closest_attacker(
 
 
 def _act_normal(context: Context, players: list[Player], store) -> None:
-    """NORMAL:距球最近者 attack,剩下人里离己方门最近者 guard,其余 support。
+    """NORMAL:固定守门员 guard,场上队员中距球最近者 attack,其余 support。
 
     ``players`` 是本帧可行动球员(已就绪、pose 已知),这里直接挑角色并执行。
     """
-    if not players:
+    guard, outfield = _split_goalkeeper(players)
+    if guard is not None:
+        guard.guard()
+    if not outfield:
+        store.normal_attacker = None
         return
 
     attacker = _select_closest_attacker(
-        context, players, getattr(store, "normal_attacker", None),
+        context, outfield, getattr(store, "normal_attacker", None),
     )
     store.normal_attacker = attacker.id
     attacker.action = "attack"
     attacker.attack()
 
-    # guard:剩下人里离己方门最近者(如还有人)
-    rest = [p for p in players if p is not attacker]
-    if rest:
-        gx, gy = own_goal(context)
-        guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-        guard.guard()  
-        rest = [p for p in rest if p is not guard]
-
     # support:其余全部
-    for p in rest:
+    for p in outfield:
+        if p is attacker:
+            continue
         p.action = "support"
         p.support()
 
 
+def _split_goalkeeper(players: list[Player]) -> tuple[Player | None, list[Player]]:
+    """按固定编号分组;守门员不可行动时不将其他队员临时改为守门员。"""
+    guard = next((p for p in players if p.id == GOALKEEPER_ID), None)
+    return guard, [p for p in players if p.id != GOALKEEPER_ID]
+
+
 def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
-    """OUR_KICKOFF:锁定距离最小者开球,剩下人里离己方门最近者 guard,其余 support。"""
-    if not players:
+    """OUR_KICKOFF:固定守门员守门,只从场上队员中锁定开球主罚者。"""
+    guard, outfield = _split_goalkeeper(players)
+    if guard is not None:
+        guard.guard()
+    if not outfield:
+        store.kickoff_taker = None
         return
 
-    active_ids = {p.id for p in players}
+    active_ids = {p.id for p in outfield}
     if store.prev_phase != Phase.OUR_KICKOFF or store.kickoff_taker not in active_ids:
         # 进入开球阶段，重新选择开球球员
-        store.kickoff_taker = _select_closest_attacker(context, players).id
+        store.kickoff_taker = _select_closest_attacker(context, outfield).id
 
     attacker_id = store.kickoff_taker
-    attacker = next((p for p in players if p.id == attacker_id), None)
+    attacker = next((p for p in outfield if p.id == attacker_id), None)
     if attacker is None:
         return
 
     attacker.action = "kickoff"
     attacker.kick(0.1, KICK_POWER_OUR_KICKOFF)
 
-    rest = [p for p in players if p is not attacker]
-    if rest:
-        gx, gy = own_goal(context)
-        guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-        guard.guard()
-        rest = [p for p in rest if p is not guard]
-
-    for p in rest:
+    for p in outfield:
+        if p is attacker:
+            continue
         p.action = "stay"
         p.stop()
 
@@ -317,68 +320,27 @@ def _act_opp_set_play(context: Context, players: list[Player], store) -> None:
 
 
 def _act_ready(context: Context, players: list[Player]) -> None:
-    """READY:各自走 ready 位。"""
+    """READY:固定守门员走小禁区中央,其他队员走开球站位。"""
     game = context.game
     our_kickoff = game is not None and game.kicking_team == context.team_id
     field = context.field
-    # 我方开球：优先级站位：(-中圈半径, 0), (我方 goal area 中心点，0)， （0， 中圈半径）
+    guard, outfield = _split_goalkeeper(players)
+    if guard is not None:
+        guard.action = "ready:guard"
+        guard.walk_to(
+            own_goal_area_center(context), face=0.0,
+            avoid_ball=True, avoid_robots=True,
+        )
     if our_kickoff:
-        if len(players) >= 1:
-            p1 = players[0]
-            p1.action = "ready"
-            p1.walk_to(
-                (-field.circle_radius, 0.0),
-                face=0.0,
-                avoid_ball=True,
-                avoid_robots=True,
-            )
-        if len(players) >= 2:
-            p2 = players[1]
-            p2.action = "ready"
-            p2.walk_to(
-                (-field.length / 2.0 + field.goal_area_length, 0.0),
-                face=0.0,
-                avoid_ball=True,
-                avoid_robots=True,
-            )
-        if len(players) >= 3:
-            p3 = players[2]
-            p3.action = "ready"
-            p3.walk_to(
-                (-0.5, field.circle_radius + 2),
-                face=0.0,
-                avoid_ball=True,
-                avoid_robots=True,
-            )
-    # 对方开球：优先级站位：(-中圈半径 - 0.5, 0), (我方 goal area 中心点，0)， （我方禁区线中心点， 0)
+        slots = [(-field.circle_radius, 0.0), (-0.5, field.circle_radius + 2)]
     else:
-        if len(players) >= 1:
-            p1 = players[0]
-            p1.action = "ready"
-            p1.walk_to(
-                (-field.circle_radius - 0.5, 0.0),
-                face=0.0,
-                avoid_ball=True,
-                avoid_robots=True,
-            )
-        if len(players) >= 2:
-            p2 = players[1]
-            p2.action = "ready"
-            p2.walk_to(
-                (-field.length / 2.0 + field.goal_area_length, 0.0),
-                face=0.0,
-                avoid_ball=True,
-                avoid_robots=True,
-            )
-        if len(players) >= 3:
-            p3 = players[2]
-            p3.action = "ready"
-            p3.walk_to(
-                (-field.length / 2.0 + field.penalty_area_length, 0.0),
-                face=0.0,
-                avoid_ball=True,
-                avoid_robots=True,
-            )
+        slots = [
+            (-field.circle_radius - 0.5, 0.0),
+            (-field.length / 2.0 + field.penalty_area_length, 0.0),
+        ]
+    for p, target in zip(sorted(outfield, key=lambda p: p.id), slots):
+        p.action = "ready"
+        p.walk_to(target, face=0.0, avoid_ball=True, avoid_robots=True)
 
 
 
