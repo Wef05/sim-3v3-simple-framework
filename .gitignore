@@ -1,7 +1,7 @@
 # Booster Studio / colcon build & runtime outputs
 log/
 install/
-
+tests/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
