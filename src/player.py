@@ -454,7 +454,9 @@ class Player:
         if self.context is not None:
             obstacles = collect_obstacles(
                 self.context, self.id, ball=avoid_ball, robots=avoid_robots, goals=True,
+                teammates=not getattr(self, "_team_motion_active", False),
             )
+            self._motion_obstacles = obstacles
             escaping_goal = any(
                 dist(pose.x, pose.y, obs.x, obs.y) <= obs.radius + GLOBAL_OBSTACLE_MARGIN_M
                 for obs in goal_obstacles(self.context)

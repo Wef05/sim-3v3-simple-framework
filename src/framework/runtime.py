@@ -155,7 +155,9 @@ class SoccerRuntime:
         self._draw_world(ctx)
 
         # 调用用户 play();框架不强制其行为
-        self._agent.play(ctx, self._players, self._store)
+        from ..utils.team_motion import coordinated_motion
+        with coordinated_motion(ctx, self._players):
+            self._agent.play(ctx, self._players, self._store)
 
         debugdraw.flush()
 

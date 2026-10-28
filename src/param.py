@@ -172,3 +172,8 @@ SHOT_SAMPLE_COUNT = 21
 SHOT_CLEARANCE_CAP_M = 1.2
 SHOT_CENTER_WEIGHT = 0.08
 SHOT_KEEP_MARGIN_M = 0.08
+
+# 全队时域避让：身体半径使用 TEAMMATE_RADIUS，两具身体半径相加。
+TEAM_MOTION_HORIZON_S = 1.0  # 每帧重算未来一秒；需结合仿真响应标定
+TEAM_MOTION_MARGIN_M = 0.15 # 定位、指令延迟及运动误差余量
+TEAM_YIELD_SPEED_M_S = 0.6 # 侧移让行速度上限
