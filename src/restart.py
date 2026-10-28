@@ -6,7 +6,7 @@ from .framework.types import SetPlay
 from .param import (
     RESTART_WAIT_S, RESTART_MOVED_M,
     RESTART_READY_M, RESTART_LANE_M, RESTART_MARGIN_M,
-    RESTART_POWER,
+    RESTART_POWER, RESTART_RECEIVE_S, RESTART_CONTROL_M,
 )
 
 
@@ -20,6 +20,7 @@ class RestartPlan:
     started: float
     stage: str = "prepare"
     sent_at: float | None = None
+    moved_at: float | None = None
 
 
 def distance(a, b):
@@ -84,6 +85,64 @@ def choose_target(ctx, key, taker, receiver):
     return min(choices, key=score)
 
 
+def follow_pass(ctx, players, store, normal=False):
+    """跨裁判阶段完成传后跑位与接应。返回是否接管本帧场上队员。"""
+    plan = getattr(store, "restart_plan", None)
+    if plan is None:
+        return False
+    receiver = next((p for p in players if p.id == plan.receiver), None)
+    if receiver is None:
+        if normal:
+            store.restart_plan = None
+            return False
+        for p in players:
+            p.stop()
+        return True
+    if ctx.ball is None:
+        for p in players:
+            p.action = "restart:no_ball"
+            p.stop()
+        return True
+    ball = (ctx.ball.x, ctx.ball.y)
+    if plan.moved_at is None and distance(ball, plan.origin) >= RESTART_MOVED_M:
+        plan.moved_at = ctx.now
+        plan.stage = "receive"
+    if plan.moved_at is None:
+        # 裁判窗口结束不代表已经出球，不能直接指派接应者射门。
+        if normal:
+            store.restart_plan = None
+        return False
+    if normal and ctx.now - plan.moved_at > RESTART_RECEIVE_S:
+        store.restart_plan = None
+        return False
+
+    for p in players:
+        if p.id == receiver.id:
+            continue
+        # 传后跑向接应者侧前方，留出传球线和球周围空间。
+        side = -1 if plan.target[1] >= 0 else 1
+        xmax = ctx.field.length/2 - RESTART_MARGIN_M
+        ymax = ctx.field.width/2 - RESTART_MARGIN_M
+        target = (max(-xmax, min(xmax, plan.target[0]+1.5)),
+                  max(-ymax, min(ymax, plan.target[1]+side*2)))
+        p.action = "restart:follow"
+        p.walk_to(target, face=math.atan2(ball[1]-p.pose.y, ball[0]-p.pose.x),
+                  avoid_ball=True, avoid_robots=True)
+
+    if distance(xy(receiver), ball) <= RESTART_CONTROL_M or plan.stage == "attack":
+        # 近球仅是可进攻条件，不宣称已确认控球/触球。
+        plan.stage = "attack"
+        receiver.action = "restart:attack"
+        receiver.attack()
+        store.normal_attacker = receiver.id
+    else:
+        receiver.action = "restart:receive"
+        # 主动靠近来球，力度 1 的短球也可接应，不死等原落点。
+        receiver.walk_to((ball[0]-0.35, ball[1]), face=0.0,
+                         avoid_ball=False, avoid_robots=True)
+    return True
+
+
 def act_restart(ctx, players, store, key):
     """players 只含已就绪场上球员；角色在同一次定位球内保持稳定。"""
     if not players:
@@ -97,6 +156,10 @@ def act_restart(ctx, players, store, key):
         return
     ball = (ctx.ball.x, ctx.ball.y)
     plan = getattr(store, "restart_plan", None)
+    if plan is not None and plan.key == key and (
+            plan.moved_at is not None or distance(ball, plan.origin) >= RESTART_MOVED_M):
+        if follow_pass(ctx, players, store):
+            return
     ids = {p.id for p in players}
     if (plan is None or plan.key != key or plan.taker not in ids
             or (plan.receiver is not None and plan.receiver not in ids)):
@@ -115,19 +178,6 @@ def act_restart(ctx, players, store, key):
     for p in players:
         if p.id not in (plan.taker, plan.receiver):
             p.stop()
-
-    if distance(ball, plan.origin) >= RESTART_MOVED_M:
-        plan.stage = "receive"
-        if plan.sent_at is None:
-            plan.sent_at = ctx.now
-    if plan.stage == "receive":
-        taker.action = "restart:release"
-        taker.stop()
-        if receiver:
-            receiver.action = "restart:receive"
-            receiver.attack()
-        # 不重复让原主罚者触球；裁判窗口结束后恢复普通进攻。
-        return
 
     if key == SetPlay.PENALTY_KICK.value:
         if receiver:

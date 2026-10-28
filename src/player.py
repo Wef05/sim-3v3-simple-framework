@@ -641,11 +641,70 @@ class Player:
                 candidates.append((ball_dist, opponent.player_id, target))
         return min(candidates)[2] if candidates else None
 
-    def guard(self) -> None:
-        """有射门威胁时就近拦截并面朝球,否则站小禁区中央待命。
+    def _guard_distribution(self, receivers: list[Player]) -> tuple[tuple[float, float], float, str]:
+        """只向已就绪队友传球；按慢动作期间对手可达范围扩大整条路线。"""
+        ctx, pose, ball = self.context, self.pose, self.context.ball
 
-        对手距球 <5m、球在其前方 180° 且对手经球的射线穿过我方禁区时触发。
-        """
+        def fresh(robot):
+            return (robot.pose is not None
+                    and 0 <= ctx.now - robot.last_seen_at <= GUARD_OBSERVATION_MAX_AGE_S)
+
+        def lane_distance(robot, target):
+            dx, dy = target[0] - ball.x, target[1] - ball.y
+            t = clamp(((robot.pose.x-ball.x)*dx + (robot.pose.y-ball.y)*dy)
+                      / (dx*dx + dy*dy), 0.0, 1.0)
+            return dist(robot.pose.x, robot.pose.y, ball.x+t*dx, ball.y+t*dy)
+
+        # 缺失/陈旧观测不能作为“无人逼抢”的证据。
+        observations_ok = (bool(ctx.opponents)
+                           and all(fresh(r) for r in ctx.opponents.values())
+                           and 0 <= ctx.now-ball.last_seen_at <= GUARD_OBSERVATION_MAX_AGE_S
+                           and ball.confidence >= 0.9)
+        choices = []
+        if observations_ok:
+            for receiver in receivers:
+                robot = ctx.teammates.get(receiver.id)
+                if (receiver.id == self.id or receiver.is_fallen or receiver.is_penalized
+                        or receiver.mode != "walk" or robot is None or not fresh(robot)):
+                    continue
+                target = (robot.pose.x, robot.pose.y)
+                length = dist(ball.x, ball.y, *target)
+                direction = angle_to(ball.x, ball.y, *target)
+                if (not GUARD_PASS_MIN_M <= length <= GUARD_PASS_MAX_M
+                        or target[0]-ball.x < GUARD_PASS_FORWARD_M
+                        or abs(target[0]) > ctx.field.length/2-0.65
+                        or abs(target[1]) > ctx.field.width/2-0.65
+                        or abs(normalize_angle(direction-pose.theta)) > GUARD_PASS_MAX_TURN):
+                    continue
+                danger = GUARD_PASS_LANE_M + GUARD_OPPONENT_SPEED * (
+                    GUARD_PASS_PREPARE_S + length/GUARD_PASS_BALL_SPEED)
+                if any(lane_distance(r, target) <= danger for r in ctx.opponents.values()):
+                    continue
+                blockers = [r for pid, r in ctx.teammates.items()
+                            if pid not in (self.id, receiver.id)]
+                if any(not fresh(r) or lane_distance(r, target) <= GUARD_PASS_LANE_M
+                       for r in blockers):
+                    continue
+                choices.append((length, receiver.id, target))
+        if choices:
+            return min(choices)[2], GUARD_PASS_POWER, "guard:pass"
+
+        # 只选向前的解围方向；兼顾前方空间和转身耗时，绝不向己方门踢。
+        obstacles = [r for r in ctx.opponents.values() if r.pose is not None]
+        obstacles += [r for pid, r in ctx.teammates.items()
+                      if pid != self.id and r.pose is not None]
+        options = []
+        for degrees in (0, -30, 30, -60, 60):
+            heading = math.radians(degrees)
+            target = (ball.x+5*math.cos(heading), ball.y+5*math.sin(heading))
+            space = min((lane_distance(r, target) for r in obstacles), default=5.0)
+            turn = abs(normalize_angle(heading-pose.theta))
+            options.append((min(space, 3.0)-0.5*turn, -abs(degrees), target))
+        return max(options)[2], GUARD_CLEAR_POWER, "guard:clear"
+
+    def guard(self, *, allow_distribution: bool = True,
+              receivers: list[Player] | None = None) -> None:
+        """近身球优先解围，严格安全才传球；其余时间拦截或回位。"""
         home = own_goal_area_center(self.context) if self.context is not None else None
         if home is None or self.pose is None:
             self.action = "guard:stop"
@@ -653,6 +712,14 @@ class Player:
             return
 
         ball = self.context.ball if self.context is not None else None
+
+        radius = GUARD_BALL_EXIT_M if self._kicking else GUARD_BALL_ENTER_M
+        if (allow_distribution and ball is not None
+                and dist(self.pose.x, self.pose.y, ball.x, ball.y) <= radius):
+            target, power, self.action = self._guard_distribution(receivers or [])
+            self._draw_kick_target(target)
+            self.kick(angle_to(ball.x, ball.y, *target), power)
+            return
 
         intercept = self._guard_intercept_target()
         if intercept is not None:
