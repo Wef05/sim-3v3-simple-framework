@@ -159,3 +159,10 @@ RESTART_READY_M = 0.1        # 接应者接近目标才正常出球
 RESTART_LANE_M = 0.8         # 传球线段/落点与机器人的最小间距
 RESTART_MARGIN_M = 0.65      # 接应点距边界的留白
 RESTART_POWER = 1.0          # 固定出球参数，不随传球距离变化
+
+# 射门选角：在门线内侧寻找障碍净空较大的球路。
+SHOT_POST_MARGIN_M = 0.25
+SHOT_SAMPLE_COUNT = 21
+SHOT_CLEARANCE_CAP_M = 1.2
+SHOT_CENTER_WEIGHT = 0.08
+SHOT_KEEP_MARGIN_M = 0.08
