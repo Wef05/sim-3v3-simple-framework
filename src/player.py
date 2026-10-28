@@ -32,8 +32,8 @@ from .utils.geom import (
     own_goal,
     own_goal_area_center,
 )
-from .utils.obstacles import collect_obstacles
-from .utils.path_planner import plan_global_path
+from .utils.obstacles import collect_obstacles, goal_obstacles
+from .utils.path_planner import navigation_target, plan_global_path, segment_is_clear
 
 if TYPE_CHECKING:
     from .framework.config import SoccerConfig
@@ -118,6 +118,7 @@ class Player:
         self._guard_threatened: bool = False
         # 门线撞球进门迟滞状态
         self._goal_line_push: bool = False
+        self._goal_escape_target: tuple[float, float] | None = None
         # support 卡住后临时转 attack 的跨帧状态
         self._support_last_pos: tuple[float, float] | None = None
         self._support_stationary_since: float | None = None
@@ -199,6 +200,29 @@ class Player:
             _log.warning("player %d kick skipped: pose unknown", self.id)
             return
 
+        # SDK 踢球含自动接近动作；贴柱时先取消它并完整退离，再恢复踢球。
+        if self.context is not None:
+            structures = goal_obstacles(self.context)
+            touching_goal = any(
+                dist(pose.x, pose.y, obs.x, obs.y) <= obs.radius + GLOBAL_OBSTACLE_MARGIN_M
+                for obs in structures
+            )
+            # 若期间被其他策略带离球门，丢弃旧退让目标，避免再跑回门柱附近。
+            if self._goal_escape_target is not None and all(
+                dist(pose.x, pose.y, obs.x, obs.y) > obs.radius + GLOBAL_OBSTACLE_MARGIN_M + 0.5
+                for obs in structures
+            ):
+                self._goal_escape_target = None
+            if touching_goal and self._goal_escape_target is None:
+                inward = -1.0 if pose.x >= 0 else 1.0
+                self._goal_escape_target = (pose.x + inward, pose.y)
+            if self._goal_escape_target is not None:
+                self.action = "goal:escape"
+                if not self.walk_to(self._goal_escape_target, face=pose.theta,
+                                    keep_facing=True, avoid_robots=True):
+                    return
+                self._goal_escape_target = None
+
         ball = self.context.ball if self.context is not None else None
         if ball is None:
             _log.warning("player %d kick skipped: ball unknown", self.id)
@@ -225,7 +249,10 @@ class Player:
         ball_x_body = dx * cos_t + dy * sin_t
         ball_y_body = -dx * sin_t + dy * cos_t
         kick_direction = normalize_angle(kick_direction)
-        direction_body = normalize_angle(kick_direction - pose.theta)
+        # 只在最终控制接口补偿一次；战术目标、球坐标和力度保持不变。
+        direction_body = normalize_angle(
+            kick_direction - pose.theta - math.radians(KICK_LEFT_BIAS_DEG)
+        )
         power_clamped = max(KICK_POWER_MIN, min(KICK_POWER_MAX, power))
         self._kicking = True
         self._backend.kick(direction_body, power_clamped, ball_x_body, ball_y_body)
@@ -408,10 +435,9 @@ class Player:
     ) -> bool:
         """走向目标点。返回是否已到达。
 
-        避障(局部规划器,简化版 VFH):``avoid_ball`` / ``avoid_robots`` 开启时,把
-        球 / 机器人 / 球门结构收集成圆形障碍,在机器人周围扫一圈候选方向,选"最朝
-        目标 + 前方 ``PLAN_LOOKAHEAD`` 内不撞障碍"的方向前进。能处理多障碍、凹形
-        结构和对称冲突,比单障碍绕行 / 势场排斥稳。
+        球门结构始终避让；``avoid_ball`` / ``avoid_robots`` 控制其他障碍。
+        优先全局 A*，无路时仅采用经过碰撞检查的局部方向，否则停车。
+        已处于障碍安全圈内时，只允许向外脱离。
 
         行走两种模式:近距离全向,远距离转身-走。``face`` 指定到达/近距离时的朝向。
         ``keep_facing`` 启用全程全向移动,持续朝向 ``face``。
@@ -422,6 +448,21 @@ class Player:
             self.stop()
             return False
 
+        obstacles = []
+        escaping_goal = False
+        if self.context is not None:
+            obstacles = collect_obstacles(
+                self.context, self.id, ball=avoid_ball, robots=avoid_robots, goals=True,
+            )
+            escaping_goal = any(
+                dist(pose.x, pose.y, obs.x, obs.y) <= obs.radius + GLOBAL_OBSTACLE_MARGIN_M
+                for obs in goal_obstacles(self.context)
+            )
+            safe_target = navigation_target(self.context, target, obstacles)
+            if safe_target is None:
+                self.stop()
+                return False
+            target = safe_target
         tx, ty = target
         dx = tx - pose.x
         dy = ty - pose.y
@@ -443,12 +484,7 @@ class Player:
         goal_dir = math.atan2(dy, dx)
         planned_path: list[tuple[float, float]] | None = None
         waypoint: tuple[float, float] | None = None
-        if (avoid_ball or avoid_robots) and self.context is not None:
-            obstacles = collect_obstacles(
-                self.context, self.id,
-                ball=avoid_ball, robots=avoid_robots,
-                goals=(avoid_ball or avoid_robots),
-            )
+        if self.context is not None:
             if USE_GLOBAL_PATH_PLANNER:
                 planned_path = plan_global_path(
                     self.context,
@@ -465,6 +501,13 @@ class Player:
                 heading = self._plan_heading(pose, goal_dir, obstacles)
         else:
             heading = goal_dir
+
+        if heading is None:
+            self.stop()
+            return False
+        move_distance = distance if waypoint is None else dist(pose.x, pose.y, *waypoint)
+        recovering_goal = escaping_goal or self._goal_escape_target is not None
+        speed_limit = GOAL_ESCAPE_SPEED_M_S if recovering_goal else MAX_LINEAR
 
         # 可视化:目标点(绿)、到目标连线(灰)、规划朝向(黄箭头)、
         # 前方探测射线(青,长度=lookahead;规划器"看"的范围,无 path/途径点概念)
@@ -490,16 +533,16 @@ class Player:
             rgb=(0.0, 0.8, 0.8), ns="lookahead",
         )
 
-        if keep_facing or distance <= OMNI_DIST:
+        if keep_facing or distance <= OMNI_DIST or recovering_goal:
             # 近距离或保持朝向:全向行走,沿 heading 平移,同时转向 face
-            wdx, wdy = math.cos(heading) * distance, math.sin(heading) * distance
+            wdx, wdy = math.cos(heading) * move_distance, math.sin(heading) * move_distance
             cos_t, sin_t = math.cos(pose.theta), math.sin(pose.theta)
             vx = LINEAR_GAIN * (wdx * cos_t + wdy * sin_t)
             vy = LINEAR_GAIN * (-wdx * sin_t + wdy * cos_t)
             speed = math.hypot(vx, vy)
-            if speed > MAX_LINEAR:
-                vx *= MAX_LINEAR / speed
-                vy *= MAX_LINEAR / speed
+            if speed > speed_limit:
+                vx *= speed_limit / speed
+                vy *= speed_limit / speed
             vyaw = (
                 self._angular(normalize_angle(face - pose.theta))
                 if face is not None else 0.0
@@ -508,11 +551,12 @@ class Player:
         else:
             # 远距离:转身-走-转身,朝 heading
             angle_err = normalize_angle(heading - pose.theta)
-            if abs(angle_err) > TURN_THRESHOLD:
+            # Heading must align before forward-only movement near a planned corner.
+            if abs(angle_err) > min(TURN_THRESHOLD, 0.1):
                 self.set_velocity(0.0, 0.0, self._angular(angle_err))
             else:
                 vx = clamp(
-                    LINEAR_GAIN * distance * math.cos(angle_err), 0.0, MAX_LINEAR,
+                    LINEAR_GAIN * move_distance * math.cos(angle_err), 0.0, speed_limit,
                 )
                 self.set_velocity(vx, 0.0, self._angular(angle_err))
         return False
@@ -520,15 +564,15 @@ class Player:
     def _path_waypoint(
         self, pose: Pose2D, path: list[tuple[float, float]],
     ) -> tuple[float, float]:
-        """Pick a short lookahead waypoint from a planned global path."""
+        """Follow the first segment; never skip an unvalidated corner."""
         if not path:
             return (pose.x, pose.y)
         prev = (pose.x, pose.y)
         points = path[1:] if len(path) > 1 else path
         for point in points:
             seg_len = dist(prev[0], prev[1], point[0], point[1])
-            if seg_len >= GLOBAL_PATH_LOOKAHEAD_M:
-                ratio = GLOBAL_PATH_LOOKAHEAD_M / max(seg_len, 1e-6)
+            if seg_len > 1e-9:
+                ratio = min(1.0, GLOBAL_PATH_LOOKAHEAD_M / seg_len)
                 return (
                     prev[0] + (point[0] - prev[0]) * ratio,
                     prev[1] + (point[1] - prev[1]) * ratio,
@@ -538,31 +582,44 @@ class Player:
 
     def _plan_heading(
         self, pose: Pose2D, goal_dir: float, obstacles: list,
-    ) -> float:
-        """扫候选方向,选最朝目标且前方够空的方向;都不够空时返回最空的那个。
+    ) -> float | None:
+        """扫安全方向；无法安全移动时返回 None。
 
         候选按偏离目标方向 ``|offset|`` 从小到大试;先试哪一侧由 player_id 奇偶决定,
         用来打破两人同侧避让的对称。
         """
         sign_first = 1.0 if self.id % 2 == 0 else -1.0
-        best_h = goal_dir
-        best_clear = -math.inf
+        escaping = any(dist(pose.x, pose.y, o.x, o.y) <= o.radius + GLOBAL_OBSTACLE_MARGIN_M
+                       for o in obstacles)
 
         offsets = [0.0]
         k = 1
-        while k * PLAN_STEP <= PLAN_MAX_OFFSET + 1e-9:
+        max_offset = math.pi if escaping else PLAN_MAX_OFFSET
+        while k * PLAN_STEP <= max_offset + 1e-9:
             offsets.append(sign_first * k * PLAN_STEP)
             offsets.append(-sign_first * k * PLAN_STEP)
             k += 1
 
         for off in offsets:
             h = goal_dir + off
+            end = (pose.x + math.cos(h) * PLAN_LOOKAHEAD,
+                   pose.y + math.sin(h) * PLAN_LOOKAHEAD)
+            if self.context is not None:
+                half_l = self.context.field.length / 2 - GLOBAL_FIELD_MARGIN_M
+                half_w = self.context.field.width / 2 - GLOBAL_FIELD_MARGIN_M
+                outside_start = (max(0.0, abs(pose.x) - half_l) ** 2
+                                 + max(0.0, abs(pose.y) - half_w) ** 2)
+                outside_end = (max(0.0, abs(end[0]) - half_l) ** 2
+                               + max(0.0, abs(end[1]) - half_w) ** 2)
+                # 已在门线外时允许沿网侧退离，不能进一步远离场内。
+                if outside_end > outside_start + 1e-12:
+                    continue
+            if not segment_is_clear((pose.x, pose.y), end, obstacles, allow_escape=True):
+                continue
             clear = _heading_clearance(pose.x, pose.y, h, obstacles)
-            if clear >= PLAN_CLEARANCE:
+            if escaping or clear >= PLAN_CLEARANCE:
                 return h
-            if clear > best_clear:
-                best_clear, best_h = clear, h
-        return best_h
+        return None
 
     # ------------------------------------------------------------------
     # 高层动作(策略在 main.py 里直接调这些)
@@ -637,7 +694,7 @@ class Player:
         self._draw_kick_target(target)
         if dist(self.pose.x, self.pose.y, ball.x, ball.y) <= KICK_ENTER_M:
             self.kick(direction, power)
-            return True
+            return self.is_kicking
         self.walk_to(_behind_ball(ball.x, ball.y, target, CHASE_BEHIND_M),
                      face=direction, avoid_ball=True, avoid_robots=True)
         return False

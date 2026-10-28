@@ -17,6 +17,7 @@ from ..framework.types import Context
 from ..param import (
     BALL_OBSTACLE_RADIUS,
     GOAL_DEPTH,
+    GOAL_STRUCTURE_MARGIN_M,
     NET_RADIUS,
     NET_STEP,
     OPPONENT_RADIUS,
@@ -74,17 +75,17 @@ def goal_obstacles(context: Context) -> list[Obstacle]:
         front_x = sign_x * half_l
         back_x = sign_x * (half_l + GOAL_DEPTH)
         for sign_y in (-1.0, 1.0):                       # 四根柱(前后各两根)
-            obstacles.append(Obstacle(front_x, sign_y * half_gw, POST_RADIUS))
-            obstacles.append(Obstacle(back_x, sign_y * half_gw, POST_RADIUS))
+            obstacles.append(Obstacle(front_x, sign_y * half_gw, POST_RADIUS + GOAL_STRUCTURE_MARGIN_M))
+            obstacles.append(Obstacle(back_x, sign_y * half_gw, POST_RADIUS + GOAL_STRUCTURE_MARGIN_M))
         # 后网
         obstacles += _sample_segment(
-            back_x, -half_gw, back_x, half_gw, NET_STEP, NET_RADIUS,
+            back_x, -half_gw, back_x, half_gw, NET_STEP, NET_RADIUS + GOAL_STRUCTURE_MARGIN_M,
         )
         # 两侧网
         for sign_y in (-1.0, 1.0):
             obstacles += _sample_segment(
                 front_x, sign_y * half_gw, back_x, sign_y * half_gw,
-                NET_STEP, NET_RADIUS,
+                NET_STEP, NET_RADIUS + GOAL_STRUCTURE_MARGIN_M,
             )
     return obstacles
 
