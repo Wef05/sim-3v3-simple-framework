@@ -231,25 +231,54 @@ class Player:
         self._kicking = True
         self._backend.kick(direction_body, power_clamped, ball_x_body, ball_y_body)
 
-    def plan_kick(self) -> tuple[float, float] | None:
-        """计算踢球方向和力度。
+    def shot_target(self) -> tuple[float, float] | None:
+        """在门柱内侧采样，用球路净空选择射门角度，保留近似等价旧目标。"""
+        ctx = self.context
+        ball = ctx.ball if ctx is not None else None
+        if ball is None or ctx is None:
+            return None
+        goal_x = ctx.field.length / 2
+        if ball.x >= goal_x:
+            return None
+        half = max(0.0, ctx.field.goal_width / 2 - SHOT_POST_MARGIN_M)
+        obstacles = [(r.pose, OPPONENT_RADIUS) for r in ctx.opponents.values()
+                     if r.pose is not None]
+        obstacles += [(r.pose, TEAMMATE_RADIUS) for pid, r in ctx.teammates.items()
+                      if pid != self.id and r.pose is not None]
 
-        从当前球位踢向对方球门中心,力度 2.0。
-        返回 ``(kick_direction, kick_power)``;球或上下文不可用时返回 None。
-        """
+        def score(y):
+            dx, dy = goal_x-ball.x, y-ball.y
+            length2 = dx*dx + dy*dy
+            clearance = SHOT_CLEARANCE_CAP_M
+            for pose, radius in obstacles:
+                # 仅考虑从球到门线前方的障碍，不受身后或门后球员干扰。
+                if not ball.x < pose.x <= goal_x:
+                    continue
+                t = max(0.0, min(1.0, ((pose.x-ball.x)*dx + (pose.y-ball.y)*dy)/length2))
+                gap = math.hypot(pose.x-ball.x-t*dx, pose.y-ball.y-t*dy) - radius
+                clearance = min(clearance, gap)
+            return clearance - SHOT_CENTER_WEIGHT * abs(y)
+
+        targets = [-half + 2*half*i/(SHOT_SAMPLE_COUNT-1) for i in range(SHOT_SAMPLE_COUNT)]
+        best = max(targets, key=lambda y: (score(y), -abs(y)))
+        previous = getattr(self, "_shot_target_y", None)
+        if previous is not None and abs(previous) <= half:
+            if score(previous) >= score(best) - SHOT_KEEP_MARGIN_M:
+                best = previous
+        self._shot_target_y = best
+        return goal_x, best
+
+    def plan_kick(self, target: tuple[float, float] | None = None) -> tuple[float, float] | None:
+        """默认按球门球路净空选角度；显式传入目标时严格朝该点踢。"""
         ctx = self.context
         ball = ctx.ball if ctx is not None else None
         if ctx is None or ball is None:
             return None
-
-        kick_target = opponent_goal(ctx)
+        kick_target = target if target is not None else self.shot_target()
+        if kick_target is None:
+            return None
         kick_direction = angle_to(ball.x, ball.y, *kick_target)
-        kick_target = self._goal_target_for_direction(kick_direction)
-        kick_power = (
-            KICK_POWER_BACKFIELD if self._in_backfield()
-            else KICK_POWER_DEFAULT
-        )
-
+        kick_power = KICK_POWER_BACKFIELD if self._in_backfield() else KICK_POWER_DEFAULT
         self._draw_kick_target(kick_target)
         return kick_direction, kick_power
 
@@ -568,7 +597,7 @@ class Player:
         return tx, ty, dist(pose.x, pose.y, tx, ty), raw_t
 
     def attack(self, kick_target: tuple[float, float] | None = None) -> None:
-        """追球射门。踢向 ``kick_target``(默认对方球门中心)。
+        """追球射门。踢向 ``kick_target``，默认按对手站位选择球门内的空当。
 
         踢球迟滞:距球 ≤ ENTER 进入踢球;进入后距球 > EXIT 才退出(EXIT > ENTER),
         防边界抖动。不避障——正常拼抢要直取球。追球目标设在【球后方】(球→球门连线
@@ -579,12 +608,15 @@ class Player:
             self.stop()
             return
         if kick_target is None:
-            kick_target = opponent_goal(self.context)
+            kick_target = self.shot_target()
+        if kick_target is None:
+            self.stop()
+            return
 
         d = dist(self.pose.x, self.pose.y, ball.x, ball.y)
         self._kicking = d <= (KICK_EXIT_M if self._kicking else KICK_ENTER_M)
         if self._kicking:
-            kick_plan = self.plan_kick()
+            kick_plan = self.plan_kick(kick_target)
             if kick_plan is None:
                 self.stop()
                 return
