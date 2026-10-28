@@ -60,7 +60,7 @@ def get_phase(context: Context) -> Phase:
     # PLAYING:正常拼抢 or 开球/定位球执行中
     if state == GameState.PLAYING and not g.stopped:
         # 定位球:set_play != NONE,kicking_team 指示哪方
-        if g.set_play != SetPlay.NONE and g.kicking_team != KICKING_TEAM_NONE:
+        if g.set_play != SetPlay.NONE:
             our_team = context.team_id
             if g.kicking_team == our_team:
                 return Phase.OUR_SET_PLAY
@@ -68,7 +68,7 @@ def get_phase(context: Context) -> Phase:
                 return Phase.OPP_SET_PLAY
 
         # 开球:secondary_time > 0(倒计时窗口),kicking_team 指示哪方
-        if g.secondary_time > 0 and g.kicking_team != KICKING_TEAM_NONE:
+        if g.secondary_time > 0:
             our_team = context.team_id
             if g.kicking_team == our_team:
                 return Phase.OUR_KICKOFF
@@ -152,6 +152,8 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
                 p.stop()
             elif not ready:
                 p.action = "fallen" if p.is_fallen else "switching_mode"
+                if phase in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY):
+                    p.stop()  # 取消上一帧可能仍在执行的追球/踢球命令。
             elif p.pose is None:
                 p.action = "no_pose"       # 自己位置未知:不参与分派(下游按 pose 已知处理)
                 p.stop()
@@ -285,19 +287,12 @@ def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
 
 
 def _act_opp_kickoff(context: Context, players: list[Player]) -> None:
-    """对方开球:一人守门,其余人站到中圈外固定点等待。"""
-    if not players:
-        return
-    gx, gy = own_goal(context)
-    guard = min(players, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-    guard.guard()
-
-    rest = [p for p in players if p is not guard]
-    r = context.field.circle_radius
-    slots = [(-r - 0.5, 0.0), (-r - 2.0, 0.5)]
-    for p, target in zip(rest, slots):
-        p.action = "opp_kickoff:ready"
-        p.walk_to(target, avoid_ball=True, avoid_robots=True)
+    """对方中圈开球:全员退出球周围及中圈,取消踢球并等待裁判放行。"""
+    clearance = max(
+        OPPONENT_RESTART_AVOID_M, context.field.circle_radius + CIRCLE_MARGIN_M,
+    )
+    for p in players:
+        p.wait_for_opponent_restart(clearance)
 
 
 def _act_our_set_play(context: Context, players: list[Player], store) -> None:
@@ -316,8 +311,9 @@ def _act_our_set_play(context: Context, players: list[Player], store) -> None:
 
 
 def _act_opp_set_play(context: Context, players: list[Player], store) -> None:
-    """对方开球： TODO: 实现自己的逻辑。默认与 Normal 相同"""
-    _act_normal(context, players, store)
+    """对方所有定位球:退开并等待,不分派 attack/guard/support 去接近球。"""
+    for p in players:
+        p.wait_for_opponent_restart(OPPONENT_RESTART_AVOID_M)
 
 
 def _act_ready(context: Context, players: list[Player]) -> None:

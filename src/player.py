@@ -698,6 +698,54 @@ class Player:
         ty = clamp(ty, -half_w, half_w)
         self.move_to_position((tx, ty))
 
+    def wait_for_opponent_restart(self, clearance: float) -> None:
+        """对手开球前取消踢球,在球周围让出 clearance 米并面朝球等待。"""
+        self.release_kick()
+        ctx, pose = self.context, self.pose
+        if ctx is None or pose is None or ctx.ball is None:
+            self.action = "opp_restart:stop"
+            self.stop()
+            return
+        ball = ctx.ball
+        dx, dy = pose.x - ball.x, pose.y - ball.y
+        distance = math.hypot(dx, dy)
+        face = angle_to(pose.x, pose.y, ball.x, ball.y)
+        if distance >= clearance:
+            self.action = "opp_restart:wait"
+            self.face_to(face)
+            return
+
+        # 留出到达误差,避免 walk_to 在安全距离以内提前停下。
+        radius = clearance + ARRIVE_DIST + 0.05
+        candidates = []
+        if distance > 1e-6:
+            candidates.append((
+                ball.x + dx / distance * radius,
+                ball.y + dy / distance * radius,
+            ))
+        # 贴边/角球时径向退点可能在场外,补充水平/垂直退点。
+        # 只选择整段直行不会更靠近球、且终点仍在场内的方向。
+        if abs(dy) <= radius:
+            offset = math.sqrt(max(0.0, radius * radius - dy * dy))
+            candidates.extend((ball.x + sign * offset, pose.y) for sign in (-1, 1))
+        if abs(dx) <= radius:
+            offset = math.sqrt(max(0.0, radius * radius - dx * dx))
+            candidates.extend((pose.x, ball.y + sign * offset) for sign in (-1, 1))
+        half_l, half_w = ctx.field.length / 2, ctx.field.width / 2
+        candidates = [
+            (x, y) for x, y in candidates
+            if -half_l <= x <= half_l and -half_w <= y <= half_w
+            and (x - pose.x) * dx + (y - pose.y) * dy >= -1e-12
+        ]
+        if not candidates:
+            self.action = "opp_restart:wait"
+            self.face_to(face)
+            return
+        target = min(candidates, key=lambda p: dist(pose.x, pose.y, *p))
+        self.action = "opp_restart:retreat"
+        # 直接向外全向退让,避免路径规划在球附近绕行时反而靠近球。
+        self.walk_to(target, face=face, keep_facing=True)
+
     def take_kickoff(self, kick_target: tuple[float, float] | None = None) -> None:
         """我方开球/重开:未就位则绕到球后待命(避球不碰),就位后接近并踢。"""
         ball = self.context.ball if self.context is not None else None
