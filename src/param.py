@@ -22,6 +22,10 @@ KICK_POWER_DEFAULT = 5.0
 KICK_POWER_BACKFIELD = 5.0
 KICK_POWER_OUR_KICKOFF = 5.0
 
+# 仿真右脚出球向左偏 5°：在身体坐标指令上向右补偿。
+# 正值表示实际球路向左偏；设为 0 可禁用补偿。
+KICK_LEFT_BIAS_DEG = 5.0
+
 
 # ======================================================================
 # Player 走位控制
@@ -121,6 +125,8 @@ GOAL_DEPTH = 0.6                        # 球门深度 (m)；用于球门障碍�
 POST_RADIUS = 0.18                      # 门柱半径 (m)
 NET_RADIUS = 0.20                       # 球网半径 (m)
 NET_STEP = 0.35                         # 球网离散化步长 (m)
+GOAL_STRUCTURE_MARGIN_M = 0.30         # 球门结构额外预留机器人身体间距 (m)
+GOAL_ESCAPE_SPEED_M_S = 0.40           # 已贴住球门结构时的脱离速度上限 (m/s)
 
 START_IGNORE = 0.0                      # 起点忽略半径 (m)；起点附近障碍不参与规划
 TARGET_IGNORE = 0.0                     # 终点忽略半径 (m)；终点附近障碍不参与规划
@@ -131,7 +137,7 @@ TARGET_IGNORE = 0.0                     # 终点忽略半径 (m)；终点附近�
 
 USE_GLOBAL_PATH_PLANNER = True          # 是否启用全局规划器；False 时回退到局部 VFH
 GLOBAL_GRID_RESOLUTION_M = 0.35         # 栅格分辨率 (m/格)；越小路径越精细，但计算量越大
-GLOBAL_FIELD_MARGIN_M = 0.25            # 场地边界外扩余量 (m)；确保边界附近路径可行
+GLOBAL_FIELD_MARGIN_M = 0.25            # 路径目标距场地边界的内缩余量 (m)
 GLOBAL_OBSTACLE_MARGIN_M = 0.10         # 障碍物膨胀余量 (m)；在障碍半径上额外扩大多少
 GLOBAL_PATH_LOOKAHEAD_M = 0.9           # 从规划路径中提取前方多远的路径点 (m)
 
