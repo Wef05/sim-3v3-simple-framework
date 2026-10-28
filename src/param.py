@@ -136,12 +136,11 @@ PLAN_MAX_OFFSET = math.radians(100)     # 最大偏离目标方向的角度 (rad
 
 KICK_TARGET_MARK_SIZE_M = 0.18
 
-# 我方定位球协作（传球力度是初始经验值，需在仿真中校准）。
+# 我方定位球协作。
 RESTART_WAIT_S = 6.0          # 接应未到位时，超时向仍畅通的空当出球
 RESTART_RECEIVE_S = 3.0       # 裁判转 NORMAL 后的接应交接窗口
 RESTART_MOVED_M = 0.25        # 球离开起点后，停止主罚者继续触球
 RESTART_READY_M = 0.6        # 接应者接近目标才正常出球
 RESTART_LANE_M = 0.8         # 传球线段/落点与机器人的最小间距
 RESTART_MARGIN_M = 0.65      # 接应点距边界的留白
-RESTART_POWER_PER_M = 1.2
-RESTART_POWER_MAX = 5.0
+RESTART_POWER = 1.0          # 固定出球参数，不随传球距离变化
