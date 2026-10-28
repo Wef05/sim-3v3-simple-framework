@@ -18,7 +18,7 @@ import logging
 import math
 from typing import TYPE_CHECKING
 
-from .framework.types import Context, Penalty, Pose2D
+from .framework.types import Context, GameState, Penalty, Pose2D, SetPlay
 from .framework import debugdraw
 
 from .param import *
@@ -712,6 +712,15 @@ class Player:
             return
 
         ball = self.context.ball if self.context is not None else None
+
+        # 防止调用者忘记禁用出球：任何裁判定位球/开球窗口都不能解围。
+        game = self.context.game
+        if game is not None and (
+                game.state != GameState.PLAYING or game.stopped
+                or game.set_play != SetPlay.NONE or game.secondary_time > 0):
+            allow_distribution = False
+        if not allow_distribution:
+            self.release_kick()
 
         radius = GUARD_BALL_EXIT_M if self._kicking else GUARD_BALL_ENTER_M
         if (allow_distribution and ball is not None
