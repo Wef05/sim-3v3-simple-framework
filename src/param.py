@@ -55,7 +55,8 @@ CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 
 GOALKEEPER_ID = 1             # 固定守门员编号;不参与进攻和我方开球主罚
 GUARD_FACE_BALL = True
-# 近身出球独立于进攻队员的 2m 追球范围，避免守门员追出球门。
+# 禁区内主动接近球,进入近身范围后才交给 SDK 自动出球。
+# 近身范围独立于进攻队员的 2m 出脚范围。
 GUARD_BALL_ENTER_M = 0.7
 GUARD_BALL_EXIT_M = 0.95
 GUARD_CLEAR_POWER = 5.0      # 沿用已使用的后场力度，不直接拉满

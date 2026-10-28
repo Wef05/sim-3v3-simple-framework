@@ -97,6 +97,17 @@ def own_goal_area_center(ctx: Context) -> tuple[float, float]:
     return (-ctx.field.length / 2.0 + ctx.field.goal_area_length / 2.0, 0.0)
 
 
+def ball_in_own_penalty_area(ctx: Context) -> bool:
+    """球是否位于己方大禁区内(包含边线),按队伍视角坐标判断。"""
+    ball = ctx.ball
+    goal_x = -ctx.field.length / 2.0
+    return (
+        ball is not None
+        and goal_x <= ball.x <= goal_x + ctx.field.penalty_area_length
+        and abs(ball.y) <= ctx.field.penalty_area_width / 2.0
+    )
+
+
 def clamp_inside_field(
     ctx: Context, x: float, y: float, margin: float = 2.0,
 ) -> tuple[float, float]:
