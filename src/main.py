@@ -25,6 +25,7 @@ from .param import *
 from .player import Player
 from .restart import act_restart, follow_pass
 from .opponent_restart import defend_restart
+from .cooperative_attack import act_cooperative
 from .utils import dist, own_goal_area_center
 from .utils.geom import ball_in_own_penalty_area
 
@@ -121,6 +122,9 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
         store.cur_phase = None
         store.kickoff_taker = None    # 锁定的开球主罚球员 id(每次进入开球时重选)
         store.normal_attacker = None
+        store.attack_pass = None
+        store.attacker_since = -math.inf
+        store.pass_cooldown_until = -math.inf
         store.restart_plan = None
         store.opponent_defense = None
 
@@ -166,7 +170,7 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
                 p.stop()
             elif not ready:
                 p.action = "fallen" if p.is_fallen else "switching_mode"
-                if phase in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY,
+                if phase == Phase.NORMAL or phase in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY,
                              Phase.OUR_KICKOFF, Phase.OUR_SET_PLAY) or getattr(store, "restart_plan", None) is not None:
                     p.stop()  # 取消上一帧可能仍在执行的追球/踢球命令。
             elif p.pose is None:
@@ -207,6 +211,8 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
 
 def _clear_normal_sticky(store) -> None:
     store.normal_attacker = None
+    store.attack_pass = None
+    store.pass_cooldown_until = -math.inf
 
 
 def _player_dist_to_ball(context: Context, p: Player) -> float:
@@ -243,7 +249,7 @@ def _select_closest_attacker(
 
 
 def _act_normal(context: Context, players: list[Player], store) -> None:
-    """NORMAL:固定守门员 guard,场上队员中距球最近者 attack,其余 support。
+    """NORMAL:固定守门员 guard，场上队员追球/落位并择机传射。
 
     ``players`` 是本帧可行动球员(已就绪、pose 已知),这里直接挑角色并执行。
     """
@@ -251,12 +257,14 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
     if guard is not None and ball_in_own_penalty_area(context):
         # 球回到己方禁区后优先排险,不让旧定位球传接方案阻止守门员处理球。
         store.restart_plan = None
+        store.attack_pass = None
     if guard is not None:
         guard.guard(
             allow_distribution=getattr(store, "restart_plan", None) is None,
             receivers=outfield,
         )
     if not outfield:
+        store.attack_pass = None
         store.normal_attacker = None
         return
 
@@ -269,22 +277,13 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
         if not p.distribute_goal_area_ball(players):
             remaining.append(p)
     if not remaining:
+        store.attack_pass = None
         store.normal_attacker = None
         return
 
-    attacker = _select_closest_attacker(
-        context, remaining, getattr(store, "normal_attacker", None),
-    )
-    store.normal_attacker = attacker.id
-    attacker.action = "attack"
-    attacker.attack()
-
-    # support:其余未在小禁区出球的队员
-    for p in remaining:
-        if p is attacker:
-            continue
-        p.action = "support"
-        p.support()
+    if len(remaining) != len(outfield):
+        store.attack_pass = None
+    act_cooperative(context, remaining, store)
 
 
 def _split_goalkeeper(players: list[Player]) -> tuple[Player | None, list[Player]]:
