@@ -6,7 +6,7 @@ from .framework.types import SetPlay
 from .param import (
     RESTART_WAIT_S, RESTART_MOVED_M,
     RESTART_READY_M, RESTART_LANE_M, RESTART_MARGIN_M,
-    RESTART_POWER_PER_M, RESTART_POWER_MAX,
+    RESTART_POWER,
 )
 
 
@@ -152,8 +152,7 @@ def act_restart(ctx, players, store, key):
     clear = lane_clear(ctx, plan.target, plan.taker, plan.receiver)
     if clear and (ready or timed_out):
         taker.action = "restart:pass" if ready else "restart:fallback"
-        power = min(RESTART_POWER_MAX, distance(ball, plan.target)*RESTART_POWER_PER_M)
-        if taker.pass_to(plan.target, power):
+        if taker.pass_to(plan.target, RESTART_POWER):
             plan.stage = "kick"
             if plan.sent_at is None:
                 plan.sent_at = ctx.now
