@@ -224,7 +224,10 @@ class Player:
         ball_x_body = dx * cos_t + dy * sin_t
         ball_y_body = -dx * sin_t + dy * cos_t
         kick_direction = normalize_angle(kick_direction)
-        direction_body = normalize_angle(kick_direction - pose.theta)
+        # 右脚出球向左偏，统一在下发前向右补偿；战术目标方向保持不变。
+        direction_body = normalize_angle(
+            kick_direction - pose.theta + math.radians(RIGHT_FOOT_KICK_CORRECTION_DEG)
+        )
         power_clamped = max(KICK_POWER_MIN, min(KICK_POWER_MAX, power))
         self._kicking = True
         self._backend.kick(direction_body, power_clamped, ball_x_body, ball_y_body)
