@@ -159,24 +159,32 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
                 active.append(p)
 
         # 按 phase 对整队分派一次(角色分配等全队计算只在 _act_* 里算一次)。
+        # 根据当前比赛阶段调用对应的处理逻辑
         if phase == Phase.NORMAL:
+            # 正常拼抢阶段
             _act_normal(context, active, store)
         elif phase == Phase.OUR_KICKOFF:
+            # 我方开球阶段
             _clear_normal_sticky(store)
             _act_our_kickoff(context, active, store)
         elif phase == Phase.OPP_KICKOFF:
+            # 对方开球阶段
             _clear_normal_sticky(store)
             _act_opp_kickoff(context, active)
         elif phase == Phase.OUR_SET_PLAY:
+            # 我方定位球阶段
             _clear_normal_sticky(store)
             _act_our_set_play(context, active, store)
         elif phase == Phase.OPP_SET_PLAY:
+            # 对方定位球阶段
             _clear_normal_sticky(store)
             _act_opp_set_play(context, active, store)
         elif phase == Phase.READY:
+            # 准备阶段
             _clear_normal_sticky(store)
             _act_ready(context, active)
         elif phase == Phase.STOPPED:
+            # 停止阶段
             _clear_normal_sticky(store)
             for p in active:
                 p.action = "stopped"
