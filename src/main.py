@@ -249,7 +249,7 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
             p.attack(2)
         elif p.id == 2:
             p.action = "guard"
-            p.guard()
+            p.guard(3)
         else:
             p.action = "support"
             p.support()
@@ -297,7 +297,7 @@ def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
             p.kick(kick_direction, KICK_POWER_OUR_KICKOFF)
         elif p.id == 2:
             p.action = "guard"
-            p.guard()
+            p.guard(3)
         else:
             p.action = "stay"
             p.stop()
@@ -334,7 +334,7 @@ def _act_opp_kickoff(context: Context, players: list[Player]) -> None:
         return
     gx, gy = own_goal(context)
     guard = min(players, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-    guard.guard()
+    guard.guard(3)
 
     rest = [p for p in players if p is not guard]
     r = context.field.circle_radius
