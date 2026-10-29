@@ -246,7 +246,7 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
     for p in players:
         if p.id == 1:
             p.action = "attack"
-            p.attack()
+            p.attack(2)
         elif p.id == 2:
             p.action = "guard"
             p.guard()
@@ -277,33 +277,55 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
 
 
 def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
-    """OUR_KICKOFF:锁定距离最小者开球,剩下人里离己方门最近者 guard,其余 support。"""
+    """OUR_KICKOFF:固定 1 号朝 2 号开球、2 号守门、3 号原地等待。"""
     if not players:
         return
 
-    active_ids = {p.id for p in players}
-    if store.prev_phase != Phase.OUR_KICKOFF or store.kickoff_taker not in active_ids:
-        # 进入开球阶段，重新选择开球球员
-        store.kickoff_taker = _select_closest_attacker(context, players).id
+    store.kickoff_taker = 1
+    receiver = context.teammates.get(2)
+    ball = context.ball
+    for p in players:
+        if p.id == 1:
+            p.action = "kickoff"
+            if ball is None or receiver is None or receiver.pose is None:
+                p.action = "kickoff:wait_receiver"
+                p.stop()
+                continue
+            kick_direction = math.atan2(
+                receiver.pose.y - ball.y, receiver.pose.x - ball.x,
+            )
+            p.kick(kick_direction, KICK_POWER_OUR_KICKOFF)
+        elif p.id == 2:
+            p.action = "guard"
+            p.guard()
+        else:
+            p.action = "stay"
+            p.stop()
 
-    attacker_id = store.kickoff_taker
-    attacker = next((p for p in players if p.id == attacker_id), None)
-    if attacker is None:
-        return
-
-    attacker.action = "kickoff"
-    attacker.kick(0.1, KICK_POWER_OUR_KICKOFF)
-
-    rest = [p for p in players if p is not attacker]
-    if rest:
-        gx, gy = own_goal(context)
-        guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-        guard.guard()
-        rest = [p for p in rest if p is not guard]
-
-    for p in rest:
-        p.action = "stay"
-        p.stop()
+    # 原动态开球角色分配逻辑（保留供参考）：
+    # active_ids = {p.id for p in players}
+    # if store.prev_phase != Phase.OUR_KICKOFF or store.kickoff_taker not in active_ids:
+    #     # 进入开球阶段，重新选择开球球员
+    #     store.kickoff_taker = _select_closest_attacker(context, players).id
+    #
+    # attacker_id = store.kickoff_taker
+    # attacker = next((p for p in players if p.id == attacker_id), None)
+    # if attacker is None:
+    #     return
+    #
+    # attacker.action = "kickoff"
+    # attacker.kick(0.1, KICK_POWER_OUR_KICKOFF)
+    #
+    # rest = [p for p in players if p is not attacker]
+    # if rest:
+    #     gx, gy = own_goal(context)
+    #     guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
+    #     guard.guard()
+    #     rest = [p for p in rest if p is not guard]
+    #
+    # for p in rest:
+    #     p.action = "stay"
+    #     p.stop()
 
 
 def _act_opp_kickoff(context: Context, players: list[Player]) -> None:
