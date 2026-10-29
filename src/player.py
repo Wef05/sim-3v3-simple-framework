@@ -229,10 +229,12 @@ class Player:
         self._kicking = True
         self._backend.kick(direction_body, power_clamped, ball_x_body, ball_y_body)
 
-    def plan_kick(self) -> tuple[float, float] | None:
+    def plan_kick(
+        self, kick_target: tuple[float, float] | None = None,
+    ) -> tuple[float, float] | None:
         """计算踢球方向和力度。
 
-        从当前球位踢向对方球门中心,力度 2.0。
+        从当前球位踢向指定目标，默认对方球门中心；力度沿用前后场配置。
         返回 ``(kick_direction, kick_power)``;球或上下文不可用时返回 None。
         """
         ctx = self.context
@@ -240,9 +242,12 @@ class Player:
         if ctx is None or ball is None:
             return None
 
-        kick_target = opponent_goal(ctx)
+        default_target = kick_target is None
+        if default_target:
+            kick_target = opponent_goal(ctx)
         kick_direction = angle_to(ball.x, ball.y, *kick_target)
-        kick_target = self._goal_target_for_direction(kick_direction)
+        if default_target:
+            kick_target = self._goal_target_for_direction(kick_direction)
         kick_power = (
             KICK_POWER_BACKFIELD if self._in_backfield()
             else KICK_POWER_DEFAULT
@@ -563,34 +568,50 @@ class Player:
         ty = ay + vy * t
         return tx, ty, dist(pose.x, pose.y, tx, ty), raw_t
 
-    def attack(self, kick_target: tuple[float, float] | None = None) -> None:
-        """追球射门。踢向 ``kick_target``(默认对方球门中心)。
+    def attack(self, kick_target: int | tuple[float, float] = 0) -> None:
+        """追球并踢球：0 为敌方球门，1–3 为对应编号队友的当前位置。
 
+        保留坐标目标兼容原有开球调用。队友位置未知时停止。
         踢球迟滞:距球 ≤ ENTER 进入踢球;进入后距球 > EXIT 才退出(EXIT > ENTER),
-        防边界抖动。不避障——正常拼抢要直取球。追球目标设在【球后方】(球→球门连线
-        上、背离球门退 ``CHASE_BEHIND_M``),到位时天然对准射门方向。
+        防边界抖动。不避障——正常拼抢要直取球。追球目标设在【球后方】(球→目标连线
+        上、背离目标退 ``CHASE_BEHIND_M``),到位时天然对准踢球方向。
         """
+        # 获取当前球的位置，如果球或机器人位置未知，则停止动作并返回
         ball = self.context.ball if self.context is not None else None
         if ball is None or self.pose is None:
             self.stop()
             return
-        if kick_target is None:
-            kick_target = opponent_goal(self.context)
 
+        if kick_target == 0:
+            target = opponent_goal(self.context)
+        else:
+            teammate = self.context.teammates.get(kick_target)
+            if teammate is None or teammate.pose is None:
+                self.stop()
+                return
+            target = (teammate.pose.x, teammate.pose.y)
+
+        # 计算机器人与球的距离，并判断是否进入踢球状态
         d = dist(self.pose.x, self.pose.y, ball.x, ball.y)
         self._kicking = d <= (KICK_EXIT_M if self._kicking else KICK_ENTER_M)
+
         if self._kicking:
-            kick_plan = self.plan_kick()
+            # 如果处于踢球状态，规划踢球方向和力度
+            kick_plan = self.plan_kick(target)
             if kick_plan is None:
+                # 如果规划失败，停止动作并返回
                 self.stop()
                 return
             kick_direction, kick_power = kick_plan
+            # 执行踢球动作
             self.kick(kick_direction, kick_power)
         else:
+            # 如果未进入踢球状态，释放踢球状态并走向球的后方
             self.release_kick()
             self.walk_to(
-                _behind_ball(ball.x, ball.y, kick_target, CHASE_BEHIND_M)
+                _behind_ball(ball.x, ball.y, target, CHASE_BEHIND_M)
             )
+
 
     def guard(self) -> None:
         """守门:站小禁区中央待命
