@@ -234,32 +234,46 @@ def _select_closest_attacker(
 
 
 def _act_normal(context: Context, players: list[Player], store) -> None:
-    """NORMAL:距球最近者 attack,剩下人里离己方门最近者 guard,其余 support。
+    """NORMAL:固定 1 号 attack、2 号 guard、3 号 support。
 
-    ``players`` 是本帧可行动球员(已就绪、pose 已知),这里直接挑角色并执行。
+    ``players`` 是本帧可行动球员(已就绪、pose 已知),按编号执行固定角色。
     """
     if not players:
         return
 
-    attacker = _select_closest_attacker(
-        context, players, getattr(store, "normal_attacker", None),
-    )
-    store.normal_attacker = attacker.id
-    attacker.action = "attack"
-    attacker.attack()
+    # 固定角色按球员编号绑定，不随距离或本帧可行动球员的顺序变化。
+    store.normal_attacker = next((p.id for p in players if p.id == 1), None)
+    for p in players:
+        if p.id == 1:
+            p.action = "attack"
+            p.attack()
+        elif p.id == 2:
+            p.action = "guard"
+            p.guard()
+        else:
+            p.action = "support"
+            p.support()
 
-    # guard:剩下人里离己方门最近者(如还有人)
-    rest = [p for p in players if p is not attacker]
-    if rest:
-        gx, gy = own_goal(context)
-        guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-        guard.guard()  
-        rest = [p for p in rest if p is not guard]
-
-    # support:其余全部
-    for p in rest:
-        p.action = "support"
-        p.support()
+    # 原动态角色分配逻辑（保留供参考）：
+    # attacker = _select_closest_attacker(
+    #     context, players, getattr(store, "normal_attacker", None),
+    # )
+    # store.normal_attacker = attacker.id
+    # attacker.action = "attack"
+    # attacker.attack()
+    #
+    # # guard:剩下人里离己方门最近者(如还有人)
+    # rest = [p for p in players if p is not attacker]
+    # if rest:
+    #     gx, gy = own_goal(context)
+    #     guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
+    #     guard.guard()
+    #     rest = [p for p in rest if p is not guard]
+    #
+    # # support:其余全部
+    # for p in rest:
+    #     p.action = "support"
+    #     p.support()
 
 
 def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
