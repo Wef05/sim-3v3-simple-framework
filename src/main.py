@@ -311,16 +311,16 @@ def _act_opp_kickoff(context: Context, players: list[Player]) -> None:
 def _act_our_set_play(context: Context, players: list[Player], store) -> None:
     """OUR_SET_PLAY:按定位球类型分派, TODO：加入自己的逻辑。默认为 _act_normal"""
     set_play = get_set_play_type(context)
-    if set_play == SetPlay.THROW_IN:
+    if set_play == SetPlay.THROW_IN:  # 界外球
         _act_normal(context, players, store)
         return
-    if set_play == SetPlay.CORNER_KICK:
+    if set_play == SetPlay.CORNER_KICK:  # 角球
         _act_normal(context, players, store)
         return
-    if set_play == SetPlay.GOAL_KICK:
+    if set_play == SetPlay.GOAL_KICK:  # 球门球
         _act_normal(context, players, store)
         return
-    _act_normal(context, players, store)
+    _act_normal(context, players, store)  # 默认行为
 
 
 def _act_opp_set_play(context: Context, players: list[Player], store) -> None:
