@@ -1,4 +1,9 @@
-"""Robot state and final SDK command boundary."""
+"""机器人状态与最终 SDK 指令边界。
+
+本层不选择角色或踢球对象，只接收已经规划好的方向/力度或速度。
+场地坐标转身体坐标、右脚方向补偿和力度限幅集中在这里，避免各角色重复实现。
+_kicking 记录是否已发出踢球请求，不是 SDK 确认完成或球已踢出的证明。
+"""
 from __future__ import annotations
 import logging
 import math

@@ -1,4 +1,9 @@
-"""Shared observation history and constant-velocity trajectory estimates."""
+"""整队共享的有状态观测工具：保留球历史并进行二维匀速外推。
+
+状态仅用于观测估计，不持有角色或机器人控制权。update 推进观测，predict 只读，
+保证一帧中角色分配、追球和看板多次查询时，不会重复更新速度或消耗观测。
+未估计出速度时按静止外推，并通过 velocity_estimated 区分「未知」和「测得静止」。
+"""
 import math
 from ..param import *
 

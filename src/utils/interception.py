@@ -1,4 +1,9 @@
-"""Pure robot arrival/interception estimate; no robot commands."""
+"""截球工具：比较机器人到达时间与球的未来轨迹，不修改观测或执行动作。
+
+输出的 score_s 既用于全队进攻者排序，也与 target 一起用于个人追球决策。
+intercept 表示在简化模型中窗口内可达；fallback 只是窗口外追赶的排序后备值，
+不能把它当成已找到可实现的拦截。该模型不包含对手争抢、避障耗时或加速度。
+"""
 import math
 from ..param import *
 from .geom import normalize_angle

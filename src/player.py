@@ -1,4 +1,9 @@
-"""Role behavior and one team-wide decision entry point; no SDK commands."""
+"""角色行为层：决定去哪、朝向哪、是否踢球和踢向什么对象。
+
+模块级 decide 是 main 唯一调用的整队入口；Player.decide 是内部单人分派。
+决策函数可以更新行为记忆和调试标签，但只能返回意图，不能执行底盘命令。
+共享观测与截球结果由 prepare_frame 准备；先完成所有个人决策，再统一协调。
+"""
 from __future__ import annotations
 import math
 from types import MappingProxyType
@@ -14,8 +19,15 @@ from .utils.free_position import nearest_free_position
 from .utils.ball_motion import BallMotion
 
 class Player:
+    """跨帧存活的角色行为对象，通过组合持有执行控制器。
+
+    _guard_threatened 属于战术迟滞：决定门将继续封堵还是回中。
+    is_kicking 属于执行状态：由控制器维护，行为层只读取它来选择距离阈值。
+    不把两种状态合并，避免「想踢球」被误认为「已经下发踢球」。
+    """
     def __init__(self, player_id, config, _backend):
         self.controller = ActionController(player_id, config, _backend)
+        # 构造时提供空估计器；正式逐帧运行时会替换成全队共享实例。
         self.motion = BallMotion()
         self.ball_intercept = None
         self.action = 'init'
@@ -23,6 +35,8 @@ class Player:
         self.freeman_region = None
         self._guard_threatened = False
 
+    # 以下属性只转发观测和运行时接线，不提供 walk_to/kick 等执行接口。
+    # backend 的读写兼容框架注入与关闭流程，角色行为不应直接使用它下命令。
     @property
     def id(self):
         return self.controller.id
@@ -92,6 +106,12 @@ class Player:
         self.controller._fall_down_state = value
 
     def decide(self, task):
+        """根据任务产生一个初步意图；本方法不读取队友尚未完成的决策。
+
+        需要根据队友意图改变动作时，在模块级 coordinate 中统一处理，
+        不要在这里读取正在逐个填充的意图表，否则会依赖球员遍历顺序。
+        每次清空本帧显示目标，避免上一个角色的目标残留在新角色上。
+        """
         self.action = task.role.value
         self.tactical_target = None
         self.freeman_region = None
@@ -108,6 +128,7 @@ class Player:
                 return StopIntent()
             return KickIntent(target, style='kickoff')
         if task.role == Role.READY:
+            # 分配层只给 slot；把任务解释成「去哪里、面向哪里」是角色层职责。
             field = self.context.field
             slots = [
                 (-field.circle_radius if task.our_kickoff else -field.circle_radius - .5, 0.0),
@@ -145,11 +166,14 @@ class Player:
         aim = (KickTarget.goal() if kick_target == 0 else
                KickTarget.position(kick_target) if isinstance(kick_target, tuple) else
                KickTarget.teammate(kick_target))
+        # 追球需要知道出球方向，因而也使用相同的目标解析工具来选球后点。
+        # 这里只使用几何目标；真正的踢球力度、坐标变换仍留给执行阶段。
         target = resolve_target(self.context, aim)
         if target is None:
             return StopIntent()
 
-        # 计算机器人与球的距离，并判断是否进入踢球状态
+        # 同时检查观测球位和延迟补偿球位，取更远距离，避免球已离开却仍踢空。
+        # 此处只是决定是否请求踢球，不修改控制器的 is_kicking。
         d = max(
             dist(self.pose.x, self.pose.y, ball.x, ball.y),
             dist(self.pose.x, self.pose.y, *current_ball),
@@ -447,22 +471,37 @@ class Player:
 
 
 def coordinate(context, assignments, preliminary):
-    """Team coordination hook. Read one immutable snapshot, return final intents.
+    """整队协调扩展点：输入完整初步意图快照，返回最终意图表。
 
-    First migration preserves tactics. Future pass/receive cooperation belongs
-    here: return replacements without mutating the preliminary mapping.
+    当前直接透传以保留既有战术，并未实现传球接应或冲突消解。
+    后续例如看到 1 号传给 3 号，可同时替换 1 号的出球目标和 3 号的接应点。
+    需要两人锁定同一落点时，可用 KickTarget.position 与 MoveIntent 共享坐标。
+
+    使用 dict(preliminary) 创建结果，再替换条目，不要修改输入对象。
+    所有调整都基于同一批初步意图，不边改结果边让后面的队友读取；若有多个
+    候选配合，需制定统一优先级并一次解决冲突，避免按遍历顺序抢占任务。
+    这里不能下发命令，也不能遗漏或增加球员编号；最终统一交给 actions。
     """
     return dict(preliminary)
 
 def decide(context, players, assignments, store):
+    """main 调用的整队唯一入口：收集初稿 → 协调 → 保存并返回最终意图。
+
+    prepare_frame 已为所有球员绑定同一帧观测；本阶段不推进球运动估计。
+    store 中分别保留初步和最终意图，便于检查协作阶段究竟改变了什么。
+    不可变性覆盖当前这些标量/元组字段；未来增加可变嵌套字段时也需冻结它们。
+    """
     preliminary = {}
     for p in players:
         p.context = context
         preliminary[p.id] = p.decide(assignments[p.id])
+    # 收齐所有人之后才开放给协调层；只读映射防止协调函数意外污染初稿。
     snapshot = MappingProxyType(preliminary)
     final = coordinate(context, MappingProxyType(dict(assignments)), snapshot)
+    # 漏掉球员可能让旧动作残留；多出编号则说明协作层引用了错误对象。
     if set(final) != set(preliminary):
         raise ValueError('Coordination must return exactly one intent per player')
+    # 可视化目标以最终意图为准；协调函数如果替换行为，也应注意调试标签的含义。
     for p in players:
         intent = final[p.id]
         if isinstance(intent, MoveIntent):

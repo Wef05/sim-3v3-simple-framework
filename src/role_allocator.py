@@ -1,5 +1,10 @@
 from __future__ import annotations
-"""Game phase and team role allocation. Never executes player behavior."""
+"""全队分工层：根据比赛阶段和可行动状态，为每名球员产生 RoleTask。
+
+本层维护阶段与角色的跨帧记忆，只决定谁负责什么，不调用 attack/guard，
+也不计算具体站位。截球评分由运行时提前计算，本层只比较同一帧的结果。
+所有球员都必须出现在返回值中，包括罚下、倒地和没有定位的球员。
+"""
 import math
 from enum import Enum
 from .framework.types import KICKING_TEAM_NONE, Context, GameState, SetPlay
@@ -14,7 +19,7 @@ if TYPE_CHECKING:
 class Phase(Enum):
     """比赛阶段。顶层状态机,决定当前是正常拼抢/开球/定位球/准备/停止。"""
     NORMAL = "normal"              # PLAYING 正常拼抢
-    OUR_KICKOFF = "our_kickoff"    # 我方开球(SET+PLAYING 初期,take_kickoff)
+    OUR_KICKOFF = "our_kickoff"    # 我方开球（PLAYING 开球窗口；SET 仍停止）
     OPP_KICKOFF = "opp_kickoff"    # 对方开球(避让)
     OUR_SET_PLAY = "our_set_play"  # 我方定位球(任意球/角球/球门球)
     OPP_SET_PLAY = "opp_set_play"  # 对方定位球(避让)
@@ -78,6 +83,7 @@ def get_set_play_type(context: Context) -> SetPlay:
     return g.set_play
 
 def _clear_normal_sticky(store) -> None:
+    # 离开正常阶段清除进攻者保持记录；守门员记录保留，防止重开后频繁换门将。
     store.normal_attacker = None
     store.normal_attack_decision = None
 
@@ -91,11 +97,14 @@ def _select_future_attacker(
 
     ``players`` 非空、已就绪、pose 已知。无球时优先保持角色。
     """
+    # 评分是排序依据，不是截球成功保证；无有效预测用 inf，避免把未知当成最快。
+    # 全员未知时优先保持旧角色；没有旧角色时按编号打破同分，结果可复现。
     ranked = [(p, p.ball_intercept['score_s']
                if p.ball_intercept and p.ball_intercept['score_s'] is not None
                else math.inf) for p in players]
     best, best_time = min(ranked, key=lambda item: (item[1], item[0].id))
     preferred = next((item for item in ranked if item[0].id == preferred_id), None)
+    # 小幅领先不足以触发交接，避免球位噪声导致两人轮流抢球、反复转身。
     keep = (
         preferred is not None
         and (preferred[1] == best_time
@@ -134,6 +143,7 @@ def _select_normal_guard(
     )
 
 def init_store(store):
+    """初始化全队跨帧记忆；个体行为记忆留在 Player，执行状态留在控制器。"""
     store.prev_phase = None
     store.cur_phase = None
     store.kickoff_taker = None
@@ -142,6 +152,12 @@ def init_store(store):
     store.normal_guard = None
 
 def _assign_normal(context, players, store, result):
+    """为可行动球员分配正常比赛职责，原地填充本帧任务表。
+
+    已有门将时先保留/交接门将，再从场上其余人中选进攻者。
+    首次分配沿用原策略：先选进攻者，再从剩余人中选离己方门最近者。
+    门将暂时不可行动且无人满足交接条件时保留记录，不强行拉远端队友回门。
+    """
     store.normal_attack_decision = None
     if not players:
         return
@@ -156,6 +172,7 @@ def _assign_normal(context, players, store, result):
     if attacker is not None:
         result[attacker.id] = RoleTask(Role.ATTACKER)
     rest = [p for p in outfield if p is not attacker]
+    # 首次分配和后续交接有意分开：首次无需候选人已在小禁区内。
     if guard_id is None and rest:
         gx, gy = own_goal(context)
         guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
@@ -167,11 +184,18 @@ def _assign_normal(context, players, store, result):
         result[p.id] = RoleTask(Role.FREEMAN)
 
 def assign(context, players, store):
+    """统一角色分配入口；调用前须已完成 prepare_frame 的观测更新。
+
+    返回 id → RoleTask，覆盖全部输入球员；此处读取就绪状态但不负责起身。
+    起身、切模式和停车属于执行阶段，保证分配阶段没有机器人控制副作用。
+    """
     phase = get_phase(context)
     store.prev_phase = getattr(store, 'cur_phase', None)
     store.cur_phase = phase
     result = {}
     active = []
+    # 先为每人设保底任务，再覆盖可行动球员，避免无人分配时沿用旧动作。
+    # 状态判断有优先级：罚下 > 倒地 > 模式未就绪 > 无定位。
     for p in players:
         reason = ('penalized' if p.is_penalized else 'fallen' if p.is_fallen else
                   'switching_mode' if p.mode != 'walk' else 'no_pose' if p.pose is None else '')
@@ -180,9 +204,12 @@ def assign(context, players, store):
             active.append(p)
     if phase != Phase.NORMAL:
         _clear_normal_sticky(store)
+    # 定位球暂时沿用现有正常分工，尚未实现各类定位球的专用全队战术。
+    # 这不代表完整规则约束已经实现；例如守门行为还会单独检查主动触球权限。
     if phase in (Phase.NORMAL, Phase.OUR_SET_PLAY, Phase.OPP_SET_PLAY):
         _assign_normal(context, active, store, result)
     elif phase == Phase.OUR_KICKOFF:
+        # 保留现有固定开球配合：1 号传给 3 号，2 号守门；不可行动时不自动换人。
         store.kickoff_taker = 1
         for p in active:
             result[p.id] = (RoleTask(Role.KICKOFF, pass_to=3) if p.id == 1 else
@@ -196,6 +223,7 @@ def assign(context, players, store):
                 result[p.id] = RoleTask(Role.OPP_KICKOFF, slot=slot)
     elif phase == Phase.READY:
         ours = context.game is not None and context.game.kicking_team == context.team_id
+        # 只分配站位序号。站位坐标、面向和避障要求都由 player 决定。
         for slot, p in enumerate(active[:3]):
             result[p.id] = RoleTask(Role.READY, slot=slot, our_kickoff=ours)
     elif phase == Phase.STOPPED:
