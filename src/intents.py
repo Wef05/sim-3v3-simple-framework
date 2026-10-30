@@ -13,7 +13,6 @@ class Role(str, Enum):
     ATTACKER = 'attack'
     GUARD = 'guard'
     FREEMAN = 'freeman'
-    KICKOFF = 'kickoff'
     READY = 'ready'
     OPP_KICKOFF = 'opp_kickoff'
     STAY = 'stay'
@@ -82,7 +81,7 @@ class KickIntent:
     """请求按目标出球；style 选择力度策略，不直接携带 SDK 力度。
 
     现有类型为 shot（前后场默认力度）、pass（按距离估算）、
-    clear（解围力度）和 kickoff（开球力度）；角色层负责选择用途。
+    clear（解围力度）；角色层负责选择用途。
     """
     target: KickTarget
     style: str = 'shot'

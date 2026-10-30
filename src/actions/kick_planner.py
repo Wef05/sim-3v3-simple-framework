@@ -47,9 +47,7 @@ def plan_kick(context, intent):
     ball = context.ball if context is not None else None
     if target is None or ball is None:
         return None
-    if intent.style == 'kickoff':
-        power = KICK_POWER_OUR_KICKOFF
-    elif intent.style == 'pass':
+    if intent.style == 'pass':
         power = clamp(dist(ball.x, ball.y, *target) * GUARD_PASS_POWER_PER_M,
                       KICK_POWER_MIN, KICK_POWER_BACKFIELD)
     elif intent.style == 'clear':

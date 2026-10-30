@@ -209,10 +209,10 @@ def assign(context, players, store):
     if phase in (Phase.NORMAL, Phase.OUR_SET_PLAY, Phase.OPP_SET_PLAY):
         _assign_normal(context, active, store, result)
     elif phase == Phase.OUR_KICKOFF:
-        # 保留现有固定开球配合：1 号传给 3 号，2 号守门；不可行动时不自动换人。
+        # 1 号担任 attacker，2 号守门；踢球目标由 Player 选择，不可行动时不自动换人。
         store.kickoff_taker = 1
         for p in active:
-            result[p.id] = (RoleTask(Role.KICKOFF, pass_to=3) if p.id == 1 else
+            result[p.id] = (RoleTask(Role.ATTACKER) if p.id == 1 else
                             RoleTask(Role.GUARD, pass_to=3) if p.id == 2 else RoleTask(Role.STAY))
     elif phase == Phase.OPP_KICKOFF and active:
         gx, gy = own_goal(context)

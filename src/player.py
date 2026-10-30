@@ -9,6 +9,7 @@ import math
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
 from .param import *
+from .role_allocator import Phase, get_phase
 from .intents import (Role, RoleTask, KickTarget, MoveIntent, FaceIntent,
                       KickIntent, StopIntent, RecoverIntent)
 from .actions.controller import ActionController
@@ -116,17 +117,13 @@ class Player:
         self.tactical_target = None
         self.freeman_region = None
         if task.role == Role.ATTACKER:
-            return self.attack()
+            # 调试阶段：我方开球固定传给 3 号，其余阶段默认射门。
+            target = 3 if get_phase(self.context) == Phase.OUR_KICKOFF else 0
+            return self.attack(target)
         if task.role == Role.GUARD:
             return self.guard(task.pass_to)
         if task.role == Role.FREEMAN:
             return self.freeman()
-        if task.role == Role.KICKOFF:
-            target = KickTarget.teammate(task.pass_to)
-            if self.context.ball is None or resolve_target(self.context, target) is None:
-                self.action = 'kickoff:wait_receiver'
-                return StopIntent()
-            return KickIntent(target, style='kickoff')
         if task.role == Role.READY:
             # 分配层只给 slot；把任务解释成「去哪里、面向哪里」是角色层职责。
             field = self.context.field
@@ -151,7 +148,7 @@ class Player:
     def attack(self, kick_target: int | tuple[float, float] = 0):
         """追球并踢球：0 为敌方球门，1–3 为对应编号队友的当前位置。
 
-        保留坐标目标兼容原有开球调用。队友位置未知时停止。
+        支持指定坐标目标；队友位置未知时停止。
         踢球迟滞:距球 ≤ ENTER 进入踢球;进入后距球 > EXIT 才退出(EXIT > ENTER),
         防边界抖动。追球使用预计最早可达的未来球位；窗口内不可达时使用窗口末尾
         球位。到该预测位置后方 ``CHASE_BEHIND_M`` 处准备踢球，走位目标限制在场内。
@@ -437,27 +434,6 @@ class Player:
         tx = clamp(tx, -half_l + 0.3, half_l)
         ty = clamp(ty, -half_w, half_w)
         return self.move_to_position((tx, ty))
-
-    def take_kickoff(self, kick_target: tuple[float, float] | None = None):
-        """我方开球/重开:未就位则绕到球后待命(避球不碰),就位后接近并踢。"""
-        ball = self.context.ball if self.context is not None else None
-        if ball is None or self.pose is None:
-            return StopIntent()
-        if kick_target is None:
-            kick_target = opponent_goal(self.context)
-        kick_dir = angle_to(ball.x, ball.y, *kick_target)
-        cos_k, sin_k = math.cos(kick_dir), math.sin(kick_dir)
-        rel_x, rel_y = self.pose.x - ball.x, self.pose.y - ball.y
-        behind = rel_x * cos_k + rel_y * sin_k          # <0 在球后方(己方侧)
-        lateral = abs(-rel_x * sin_k + rel_y * cos_k)
-        if behind > KICKOFF_FRONT_MARGIN or lateral > KICKOFF_LATERAL_TOL:
-            stage = (
-                ball.x - cos_k * KICKOFF_STAGE_M,
-                ball.y - sin_k * KICKOFF_STAGE_M,
-            )
-            return MoveIntent(stage, face=kick_dir, avoid_ball=True)
-        else:
-            return self.attack(kick_target)
 
     def move_to_position(self, target: tuple[float, float] | None):
         """走到站位点(支援/防守/避让),面向球,避球+避机器人。"""
