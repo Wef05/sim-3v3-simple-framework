@@ -124,6 +124,7 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
     @staticmethod
     def play(context: Context, players: list[Player], store) -> None:
         for p in players:
+            p.freeman_region = None
             p.tactical_target = None  # 本帧目标，防止残留上一角色的目的地
         phase = get_phase(context)
         store.prev_phase = store.cur_phase
@@ -289,7 +290,7 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
         guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
     if guard is not None:
         store.normal_guard = guard.id
-        guard.guard()
+        guard.guard(3)
         rest = [p for p in rest if p is not guard]
 
     # support:其余全部
