@@ -36,6 +36,7 @@ class Player:
         # 构造时提供空估计器；正式逐帧运行时会替换成全队共享实例。
         self.motion = BallMotion()
         self.ball_intercept = None
+        self.threat = None
         self.action = 'init'
         self.tactical_target = None
         self.freeman_region = None

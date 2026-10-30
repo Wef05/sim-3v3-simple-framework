@@ -6,6 +6,7 @@
 from ..utils.ball_motion import BallMotion
 from ..utils.attack_targets import TeammateMotion
 from ..utils.interception import estimate_ball_intercept
+from ..utils.threat import calculate_threat
 
 def prepare_frame(context, players, store):
     """运行时每帧调用一次；离线直接运行三步流程时，也应先调用本函数。
@@ -34,3 +35,6 @@ def prepare_frame(context, players, store):
         p.freeman_region = None
         p.tactical_target = None
         p.controller.tactical_target = None
+    store.threat = calculate_threat(context, players, store.ball_motion)
+    for p in players:
+        p.threat = store.threat

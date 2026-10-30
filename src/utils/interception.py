@@ -8,6 +8,11 @@ import math
 from ..param import *
 from .geom import normalize_angle
 
+def intercept_score(estimate) -> float:
+    """角色分配与威胁排序共用的时间评分；未知值不参与最快竞争。"""
+    score = (estimate or {}).get('score_s')
+    return score if score is not None and math.isfinite(score) else math.inf
+
 def estimate_ball_intercept(pose, motion, *, fallen=False, penalized=False,
                             linear_speed=MAX_LINEAR, angular_speed=MAX_ANGULAR) -> dict:
     """接球机会评分（秒，越小越好），用于 attacker / freeman 分配。

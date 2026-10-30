@@ -6,6 +6,7 @@ from __future__ import annotations
 所有球员都必须出现在返回值中，包括罚下、倒地和没有定位的球员。
 """
 import math
+from .utils.interception import intercept_score
 from enum import Enum
 from .framework.types import KICKING_TEAM_NONE, Context, GameState, SetPlay
 from .intents import Role, RoleTask
@@ -98,9 +99,7 @@ def _select_future_attacker(
     """
     # 评分是排序依据，不是截球成功保证；无有效预测用 inf，避免把未知当成最快。
     # 全员未知时优先保持旧角色；没有旧角色时按编号打破同分，结果可复现。
-    ranked = [(p, p.ball_intercept['score_s']
-               if p.ball_intercept and p.ball_intercept['score_s'] is not None
-               else math.inf) for p in players]
+    ranked = [(p, intercept_score(p.ball_intercept)) for p in players]
     best, best_time = min(ranked, key=lambda item: (item[1], item[0].id))
     preferred = next((item for item in ranked if item[0].id == preferred_id), None)
     # 小幅领先不足以触发交接，避免球位噪声导致两人轮流抢球、反复转身。
