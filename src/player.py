@@ -706,12 +706,14 @@ class Player:
 
         保留坐标目标兼容原有开球调用。队友位置未知时停止。
         踢球迟滞:距球 ≤ ENTER 进入踢球;进入后距球 > EXIT 才退出(EXIT > ENTER),
-        防边界抖动。不避障——正常拼抢要直取球。追球目标设在【球后方】(球→目标连线
-        上、背离目标退 ``CHASE_BEHIND_M``),到位时天然对准踢球方向。
+        防边界抖动。追球使用预计最早可达的未来球位；窗口内不可达时使用窗口末尾
+        球位。到该预测位置后方 ``CHASE_BEHIND_M`` 处准备踢球，走位目标限制在场内。
+        踢球仍须观测球位和补偿延迟后的当前球位均在近距阈值内，不能对未来球位踢空。
         """
-        # 获取当前球的位置，如果球或机器人位置未知，则停止动作并返回
+        self.tactical_target = None
         ball = self.context.ball if self.context is not None else None
-        if ball is None or self.pose is None:
+        current_ball = self.predict_ball_position(0.0)
+        if ball is None or self.pose is None or current_ball is None:
             self.stop()
             return
 
@@ -725,7 +727,10 @@ class Player:
             target = (teammate.pose.x, teammate.pose.y)
 
         # 计算机器人与球的距离，并判断是否进入踢球状态
-        d = dist(self.pose.x, self.pose.y, ball.x, ball.y)
+        d = max(
+            dist(self.pose.x, self.pose.y, ball.x, ball.y),
+            dist(self.pose.x, self.pose.y, *current_ball),
+        )
         self._kicking = d <= (KICK_EXIT_M if self._kicking else KICK_ENTER_M)
 
         if self._kicking:
@@ -739,11 +744,21 @@ class Player:
             # 执行踢球动作
             self.kick(kick_direction, kick_power)
         else:
-            # 如果未进入踢球状态，释放踢球状态并走向球的后方
-            self.release_kick()
-            self.walk_to(
-                _behind_ball(ball.x, ball.y, target, CHASE_BEHIND_M)
+            # 与角色分配共用截球计算；独立调用 attack() 时也能得到本帧预测。
+            self.estimate_ball_intercept_time()
+            if self.ball_intercept['status'] == 'unavailable':
+                self.stop()
+                return
+            predicted_ball = self.ball_intercept['target']
+            chase = _behind_ball(*predicted_ball, target, CHASE_BEHIND_M)
+            field = self.context.field
+            # 球轨迹允许出界，但不能让预测点直接把机器人带出场地。
+            chase = (
+                clamp(chase[0], -field.length / 2 + ARRIVE_DIST, field.length / 2 - ARRIVE_DIST),
+                clamp(chase[1], -field.width / 2 + ARRIVE_DIST, field.width / 2 - ARRIVE_DIST),
             )
+            self.release_kick()
+            self.walk_to(chase)
 
 
     def _guard_pass_target(self, teammate_id: int | None) -> tuple[float, float] | None:
