@@ -9,6 +9,7 @@ import secrets
 import time
 
 from . import telemetry_config
+from .utils.block_point import calculate_block_point
 
 _log = logging.getLogger(__name__)
 
@@ -75,8 +76,20 @@ class Publisher:
 
 
 def make_snapshot(context, players, store):
+    own = {p.id: p for p in players}
+    blocks = []
+    if players:
+        for side, robots in (('teammates', context.teammates), ('opponents', context.opponents)):
+            for ident, robot in robots.items():
+                player = own.get(ident) if side == 'teammates' else None
+                blocks.append(dict(id=ident, side=side,
+                    state_known=player is not None,
+                    **calculate_block_point(robot.pose, players[0].motion,
+                        fallen=player.is_fallen if player else False,
+                        penalized=player.is_penalized if player else False)))
     return {
         'version': 1,
+        'block_points': blocks,
         'context': asdict(context),
         'phase': getattr(getattr(store, 'cur_phase', None), 'value', None),
         'normal_attacker': getattr(store, 'normal_attacker', None),

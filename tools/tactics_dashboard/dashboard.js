@@ -17,6 +17,8 @@ rect(-f.length/2,-f.width/2,f.length,f.width);path([[0,-f.width/2],[0,f.width/2]
 drawFreemanOverlay(d,xy,s);
 drawInterceptionRisk(d,xy,s);
 drawBallPrediction(d,xy);
+drawBlockPoints(d,xy,s);
+renderBlockPoints(d);
 drawCandidateTarget(d,xy);
 g.font='16px system-ui';g.fillStyle='#9ab7b2';g.fillText('−X',30,720);g.fillText('+X →',1000,720);
 // Draw distances under robot markers; skip missing observations.
@@ -766,3 +768,53 @@ function validAttackChoice(a){
     a.options.length<=320&&a.options.every(option)&&(a.selected===null||option(a.selected))&&
     (a.runner_up==null||option(a.runner_up))&&(a.margin==null||prob(a.margin));
 }
+
+
+function validBlockPoint(p){
+  return p&&['reachable','stationary'].includes(p.status)&&
+    ['teammates','opponents'].includes(p.side)&&predictionPoint(p.target)&&
+    predictionPoint(p.ball_position)&&['effective_radius_m','ball_time_s','arrival_time_s',
+      'move_distance_m','turn_time_s','move_time_s','slack_s'].every(k=>predictionNumber(p[k]));
+}
+function blockPointLabel(p){
+  const reasons={no_pose:'位置未知',fallen:'倒地',penalized:'被罚下',no_ball:'球观测无效',
+    unknown_velocity:'球速尚未估计',ball_outside_field:'球已出界',outside_field:'站位在场外',
+    no_feasible_point:'预测窗口内无可行拦球点'};
+  if(!validBlockPoint(p))return reasons[p?.reason]||'无有效拦球数据';
+  return `${p.status==='stationary'?'静止球接近点':'最近拦球站位'} ${pointText(p.target)} · 移动 ${predictionFixed(p.move_distance_m)} m`;
+}
+function renderBlockPoints(d){
+  const box=$('block-details');box.replaceChildren();
+  if(!Array.isArray(d.block_points)){line(box,'本帧未记录最近拦球点（旧数据）。');return}
+  for(const p of d.block_points){
+    const card=document.createElement('article');card.className='card';
+    const h=document.createElement('h3');h.textContent=`${p.side==='teammates'?'我方':'对方'} ${p.id} 号`;card.append(h);
+    line(card,blockPointLabel(p));
+    if(validBlockPoint(p)){
+      line(card,`到位 ${predictionFixed(p.arrival_time_s)} s = 转向 ${predictionFixed(p.turn_time_s)} + 移动 ${predictionFixed(p.move_time_s)} s`);
+      if(p.status==='reachable')line(card,`球到达 ${predictionFixed(p.ball_time_s)} s · 提前 ${predictionFixed(p.slack_s)} s · 球位 ${pointText(p.ball_position)}`);
+      else line(card,'球已静止，此点仅表示接近位置。');
+    }
+    if(p.state_known===false)line(card,'未获得倒地/受罚状态，按正常移动估计。');
+    box.append(card);
+  }
+}
+function drawBlockPoints(d,xy,scale){
+  if(!$('block-points').checked)return;
+  g.save();g.font='14px system-ui';g.textBaseline='bottom';
+  let index=0;
+  for(const p of d.block_points||[]){
+    const pose=d.context[p.side]?.[p.id]?.pose;
+    if(!validBlockPoint(p)||!pose)continue;
+    const [x,y]=xy(...p.target),[bx,by]=xy(...p.ball_position);
+    g.strokeStyle=p.side==='teammates'?'#69ffb4':'#ffad79';g.fillStyle=g.strokeStyle;g.lineWidth=2;
+    g.setLineDash([5,5]);g.beginPath();g.moveTo(...xy(pose.x,pose.y));g.lineTo(x,y);g.stroke();g.setLineDash([]);
+    g.strokeRect(x-5,y-5,10,10);g.beginPath();g.arc(x,y,p.effective_radius_m*scale,0,Math.PI*2);g.stroke();
+    g.beginPath();g.arc(bx,by,3,0,Math.PI*2);g.fill();
+    const label=`${p.side==='teammates'?'我':'敌'}${p.id} ${p.status==='stationary'?'静止':'拦球'} ${predictionFixed(p.move_distance_m)}m`;
+    const lx=Math.max(8,Math.min(x+12,c.width-190)),ly=Math.max(22,Math.min(y-16+(index++%3)*20,c.height-8));
+    g.fillStyle='#0b121b';g.fillRect(lx-3,ly-17,g.measureText(label).width+6,20);g.fillStyle=g.strokeStyle;g.fillText(label,lx,ly);
+  }
+  g.restore();
+}
+$('block-points').onchange=()=>{if(displayedPacket)draw(displayedPacket)};

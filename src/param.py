@@ -174,3 +174,9 @@ ATTACK_TARGET_REFRESH_S = 0.5
 
 # 球路与行走避球共用比赛场景的真实球半径。
 KICK_LANE_BALL_RADIUS_M = BALL_OBSTACLE_RADIUS
+
+# 仅供最近拦球点计算/看板，不改变策略接球评分。
+BLOCK_HORIZON_S = 8.0
+BLOCK_STEP_S = 0.025
+BLOCK_POSITION_TOLERANCE_M = 0.10  # 从有效接触半径中扣除的误差预算
+BLOCK_TIME_MARGIN_S = 0.10       # 提前到位余量
