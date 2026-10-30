@@ -56,7 +56,7 @@ class KickErrorTracker:
             self.commands = []
             return
         t = ball.last_seen_at
-        if t <= 0 or context.now-t > self.MAX_GAP or t > context.now:
+        if t < 0 or context.now-t > self.MAX_GAP or t > context.now:
             self.finish('observation_gap')
             self.previous = self.velocity = None
             self.commands = []

@@ -142,7 +142,8 @@ class Executor:
         if self._backend is None:
             _log.debug("player %d get_up (no backend)", self.id)
             return
-        self._backend.get_up()
+        if self.context is not None:
+            self._backend.get_up(self.context.now)
 
     def ensure_ready(self) -> bool:
         """活性自理:摔倒→起身,非 walk→切模式(都异步、不产生移动)。

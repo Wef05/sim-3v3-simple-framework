@@ -87,3 +87,17 @@ python3 -m unittest discover -s checks -p 'test_*.py'
 没有有效样本显示「暂无有效对照」，不会显示虚假的 0% 或 100%。
 
 离线验证：`node checks/test_dashboard_accuracy.cjs`。
+
+### 仿真时间
+
+策略的 `Context.now/dt`、观测的 `last_seen_at`、球和队友运动预测、候选目标刷新、
+踢球观测统计和起身节流均使用 `/clock` 仿真秒。ROS 桥接节点启用 `use_sim_time`。
+首次收到 `/clock` 前不运行策略，也不回退到系统时间；零秒是合法仿真时刻。
+时钟回退会清空旧观测、预测历史和候选缓存，重新积累数据。
+
+真值消息目前是无时间戳的 `Pose2D`，因此观测标记为回调执行时最新收到的 `/clock`
+时间；这消除了本地时间倍率的影响，但仍受跨话题消息到达顺序和时钟发布频率影响。
+`received_at` 单独保存本地单调接收时间，仅供通信过期检查。
+控制循环调度、线程等待和遥测发送频率继续按本地时间运行。
+
+本地专项检查：`python3 -m unittest checks.test_simulation_clock -v`。

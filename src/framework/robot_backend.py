@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import logging
 import threading
-import time
 from typing import Callable, cast
 
 from boosteros.robots.booster import BoosterRobot, SoccerKickManager
@@ -56,7 +55,7 @@ class RobotBackend:
         self._slot_lock = threading.Lock()
         self._wake = threading.Event()
         self._worker_stop = threading.Event()
-        self._last_get_up_at = 0.0
+        self._last_get_up_at: float | None = None
         self._worker = threading.Thread(
             target=self._worker_loop,
             name=f"backend_worker_{player_id}",
@@ -173,10 +172,10 @@ class RobotBackend:
             return
         self._enqueue(("mode", mode))
 
-    def get_up(self) -> None:
-        """异步触发起身。~1s 节流,每帧无脑调安全。"""
-        now = time.monotonic()
-        if now - self._last_get_up_at < _GET_UP_THROTTLE_SEC:
+    def get_up(self, now: float) -> None:
+        """异步触发起身，按调用方提供的仿真时间节流。"""
+        if (self._last_get_up_at is not None
+                and 0 <= now - self._last_get_up_at < _GET_UP_THROTTLE_SEC):
             return
         self._last_get_up_at = now
         self._enqueue(("get_up", None))

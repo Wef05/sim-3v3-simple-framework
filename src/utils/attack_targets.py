@@ -18,7 +18,7 @@ class TeammateMotion:
         for pid, robot in context.teammates.items():
             if robot.pose is None:
                 continue
-            t = robot.last_seen_at if robot.last_seen_at > 0 else context.now
+            t = robot.last_seen_at
             sample = (t, robot.pose.x, robot.pose.y)
             old = self.previous.get(pid)
             velocity = None

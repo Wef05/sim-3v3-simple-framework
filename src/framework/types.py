@@ -145,15 +145,17 @@ ADULT_FIELD_DIMENSIONS = FieldDimensions(
 class BallState:
     x: float = 0.0
     y: float = 0.0
-    last_seen_at: float = 0.0
+    last_seen_at: float = 0.0  # 仿真时间（秒）
     confidence: float = 1.0
+    received_at: float | None = None  # 本地单调接收时间，仅用于通信健康检查
 
 
 @dataclass(frozen=True)
 class RobotState:
     player_id: int
     pose: Pose2D | None = None
-    last_seen_at: float = 0.0
+    last_seen_at: float = 0.0  # 仿真时间（秒）
+    received_at: float | None = None
 
 
 @dataclass(frozen=True)
@@ -195,7 +197,8 @@ class GameControlState:
     teams: tuple[TeamState, ...] = field(
         default_factory=lambda: (TeamState(team_number=1), TeamState(team_number=2))
     )
-    last_seen_at: float = 0.0
+    last_seen_at: float = 0.0  # 仿真时间（秒）
+    received_at: float | None = None
 
     def get_team_state(self, team_id: int) -> TeamState | None:
         for team in self.teams:
@@ -222,8 +225,8 @@ class Context:
     详细字段语义见 docs/new_design.md 第 9 节。
     """
 
-    now: float
-    dt: float
+    now: float  # 仿真时间；不得用本地时钟代替
+    dt: float  # 仿真帧间隔，暂停时为零
     team_id: int
     field: FieldDimensions
     game: GameControlState | None = None
@@ -244,3 +247,5 @@ class WorldSnapshot:
     ball: BallState | None = None
     teammates: dict[int, RobotState] = field(default_factory=dict)
     opponents: dict[int, RobotState] = field(default_factory=dict)
+    sim_time: float | None = None  # 未收到 /clock 时不执行策略
+    clock_epoch: int = 0  # /clock 回退时递增

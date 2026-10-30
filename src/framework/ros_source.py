@@ -30,6 +30,8 @@ from rclpy.qos import (
     QoSReliabilityPolicy,
 )
 from std_msgs.msg import String as RosString
+from rosgraph_msgs.msg import Clock
+from rclpy.parameter import Parameter
 
 from .config import SoccerConfig
 from .game_codec import game_control_state_from_json
@@ -64,6 +66,8 @@ class RosContextSource:
         }
         self._ball: BallState | None = None
         self._game: GameControlState | None = None
+        self._sim_time: float | None = None
+        self._clock_epoch = 0
 
         # ROS 节点/执行器生命周期
         self._owns_context = False
@@ -104,6 +108,8 @@ class RosContextSource:
     def get_snapshot(self) -> WorldSnapshot:
         with self._lock:
             return WorldSnapshot(
+                sim_time=self._sim_time,
+                clock_epoch=self._clock_epoch,
                 game=self._game,
                 ball=self._ball,
                 teammates=dict(self._teammates),
@@ -115,6 +121,11 @@ class RosContextSource:
     # ------------------------------------------------------------------
 
     def _create_subscriptions(self) -> None:
+        # BEST_EFFORT 兼容仿真器的两种发布可靠性配置。
+        self._subscriptions.append(self._node.create_subscription(
+            Clock, "/clock", self._clock_cb,
+            QoSProfile(depth=1, reliability=QoSReliabilityPolicy.BEST_EFFORT),
+        ))
         truth_qos = self._qos(depth=1)
         for pid, name in enumerate(self._config.robot_names, start=1):
             self._subscriptions.append(
@@ -151,26 +162,38 @@ class RosContextSource:
             )
         )
 
+    def _clock_cb(self, msg: Any) -> None:
+        now = float(msg.clock.sec) + float(msg.clock.nanosec) * 1e-9
+        with self._lock:
+            if self._sim_time is not None and now < self._sim_time:
+                self._clock_epoch += 1
+                self._ball = self._game = None
+                # 保留字典实例：订阅回调闭包持有它们。
+                for store in (self._teammates, self._opponents):
+                    for pid in store:
+                        store[pid] = RobotState(player_id=pid)
+            self._sim_time = now
+
     def _make_pose_cb(self, store: dict[int, RobotState], player_id: int):
         def callback(msg: Any) -> None:
-            pose = Pose2D(x=float(msg.x), y=float(msg.y), theta=float(msg.theta))
             with self._lock:
+                if self._sim_time is None:
+                    return
                 store[player_id] = RobotState(
                     player_id=player_id,
-                    pose=pose,
-                    last_seen_at=time.monotonic(),
+                    pose=Pose2D(x=float(msg.x), y=float(msg.y), theta=float(msg.theta)),
+                    last_seen_at=self._sim_time, received_at=time.monotonic(),
                 )
         return callback
 
     def _ball_cb(self, msg: Any) -> None:
-        ball = BallState(
-            x=float(msg.x),
-            y=float(msg.y),
-            last_seen_at=time.monotonic(),
-            confidence=1.0,
-        )
         with self._lock:
-            self._ball = ball
+            if self._sim_time is None:
+                return
+            self._ball = BallState(
+                x=float(msg.x), y=float(msg.y), last_seen_at=self._sim_time,
+                confidence=1.0, received_at=time.monotonic(),
+            )
 
     def _game_cb(self, msg: Any) -> None:
         try:
@@ -178,11 +201,12 @@ class RosContextSource:
         except ValueError as exc:
             _log.warning("ignore invalid GameController payload: %s", exc)
             return
-        # frozen dataclass:通过 replace 打上 last_seen_at
         import dataclasses
-        game = dataclasses.replace(game, last_seen_at=time.monotonic())
         with self._lock:
-            self._game = game
+            if self._sim_time is None:
+                return
+            self._game = dataclasses.replace(
+                game, last_seen_at=self._sim_time, received_at=time.monotonic())
 
     # ------------------------------------------------------------------
     # topic 名
@@ -219,7 +243,10 @@ class RosContextSource:
         if not rclpy.ok(context=context):
             context.init(args=None, initialize_logging=False)
             self._owns_context = True
-        return rclpy.create_node("soccer_sim_bridge", context=context)
+        return rclpy.create_node(
+            "soccer_sim_bridge", context=context,
+            parameter_overrides=[Parameter("use_sim_time", value=True)],
+        )
 
     def _start_spin(self) -> None:
         self._executor = SingleThreadedExecutor(context=self._ros_context)

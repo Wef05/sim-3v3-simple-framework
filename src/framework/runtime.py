@@ -72,6 +72,7 @@ class SoccerRuntime:
         self._init_store_called = False
         self._last_now: float | None = None
         self._tick_id = 0
+        self._clock_epoch: int | None = None
 
     # ------------------------------------------------------------------
     # 生命周期
@@ -140,12 +141,33 @@ class SoccerRuntime:
             elapsed = time.monotonic() - started_at
             self._stop.wait(max(0.0, period - elapsed))
 
-    def _tick(self, now: float) -> None:
+    def _tick(self, wall_now: float) -> None:
+        snap = self._source.get_snapshot() if self._source is not None else WorldSnapshot()
+        if snap.sim_time is None:
+            # 不允许无 /clock 时悄悄退回本地时间。
+            for p in self._players:
+                p.controller.stop()
+            return
+        now = snap.sim_time
+        if (self._clock_epoch != snap.clock_epoch
+                or (self._last_now is not None and now < self._last_now)):
+            self._last_now = None
+            self._clock_epoch = snap.clock_epoch
+            for name in ('ball_motion', 'teammate_motion', 'kick_error_tracker'):
+                if hasattr(self._store, name):
+                    delattr(self._store, name)
+            self._agent.init_store(self._store)
+            for p in self._players:
+                p.controller.stop()
+                p.controller.kick_observation = None
+                for name in ('_candidate_cache', '_candidate_signature', '_scoring_cache'):
+                    if hasattr(p, name):
+                        delattr(p, name)
         self._tick_id += 1
         dt = 0.0 if self._last_now is None else (now - self._last_now)
         self._last_now = now
 
-        ctx = self._build_context(now, dt)
+        ctx = self._build_context(now, dt, snap, wall_now)
         for p in self._players:
             p.context = ctx
 
@@ -254,44 +276,43 @@ class SoccerRuntime:
     # Context 构造 + 新鲜度过滤
     # ------------------------------------------------------------------
 
-    def _build_context(self, now: float, dt: float) -> Context:
-        snap = self._source.get_snapshot() if self._source is not None else WorldSnapshot()
+    def _build_context(self, now: float, dt: float, snap: WorldSnapshot, wall_now: float) -> Context:
         return Context(
             now=now,
             dt=dt,
             team_id=self._config.team_id,
             field=ADULT_FIELD_DIMENSIONS,
-            game=self._fresh_game(snap.game, now),
-            ball=self._fresh_ball(snap.ball, now),
+            game=self._fresh_game(snap.game, now, wall_now),
+            ball=self._fresh_ball(snap.ball, now, wall_now),
             teammates={
-                pid: self._fresh_robot(r, now) for pid, r in snap.teammates.items()
+                pid: self._fresh_robot(r, now, wall_now) for pid, r in snap.teammates.items()
             },
             opponents={
-                pid: self._fresh_robot(r, now) for pid, r in snap.opponents.items()
+                pid: self._fresh_robot(r, now, wall_now) for pid, r in snap.opponents.items()
             },
         )
 
     def _fresh_game(
-        self, game: GameControlState | None, now: float,
+        self, game: GameControlState | None, now: float, wall_now: float,
     ) -> GameControlState | None:
         if game is None:
             return None
-        if now - game.last_seen_at > self._config.game_state_max_age_sec:
+        if (wall_now - game.received_at if game.received_at is not None else now - game.last_seen_at) > self._config.game_state_max_age_sec:
             return None
         return game
 
-    def _fresh_ball(self, ball: BallState | None, now: float) -> BallState | None:
+    def _fresh_ball(self, ball: BallState | None, now: float, wall_now: float) -> BallState | None:
         if ball is None:
             return None
-        if now - ball.last_seen_at > self._config.ball_max_age_sec:
+        if (wall_now - ball.received_at if ball.received_at is not None else now - ball.last_seen_at) > self._config.ball_max_age_sec:
             return None
         return ball
 
-    def _fresh_robot(self, robot: RobotState, now: float) -> RobotState:
+    def _fresh_robot(self, robot: RobotState, now: float, wall_now: float) -> RobotState:
         """位姿陈旧则清成 None(robot 对象保留),见 doc §9.3。"""
         if (
             robot.pose is not None
-            and now - robot.last_seen_at > self._config.robot_pose_max_age_sec
+            and (wall_now - robot.received_at if robot.received_at is not None else now - robot.last_seen_at) > self._config.robot_pose_max_age_sec
         ):
             return dataclasses.replace(robot, pose=None)
         return robot

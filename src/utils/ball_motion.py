@@ -119,7 +119,7 @@ class BallMotion:
             self._ball_velocity_estimated = False
             self._reset_fit()
             return
-        observed_at = ball.last_seen_at if ball.last_seen_at > 0.0 else ctx.now
+        observed_at = ball.last_seen_at
         if ctx.now - observed_at > BALL_MOTION_MAX_GAP_S:
             self._ball_sample = None
             self._ball_velocity = (0.0, 0.0)
