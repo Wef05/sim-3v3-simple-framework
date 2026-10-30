@@ -16,6 +16,7 @@ class Publisher:
         self.sock = None
         self.next_send = 0.0
         self.sequence = 0
+        self.fall_observer = None
         try:
             host = os.getenv('SOCCER_DASHBOARD_HOST', telemetry_config.HOST)
             if not host:
@@ -47,8 +48,13 @@ class Publisher:
             return
         self.next_send = now + self.interval
         try:
+            if self.fall_observer is None and players and players[0]._backend is not None:
+                from .telemetry_status import FallObserver
+                self.fall_observer = FallObserver(players[0].config)
             self.sequence += 1
             payload = make_snapshot(context, players, store)
+            if self.fall_observer is not None:
+                payload['robot_statuses'] = self.fall_observer.snapshot(players[0].config)
             payload.update(sequence=self.sequence, sent_at=time.time())
             packet = json.dumps(payload, separators=(',', ':'), allow_nan=False).encode()
             if len(packet) <= 60000:
