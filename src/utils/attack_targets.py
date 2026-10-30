@@ -2,7 +2,7 @@
 import math
 from ..param import (MAX_LINEAR, KICK_RISK_BALL_SPEED_MPS,
                      ATTACK_TARGET_LEAD_M, ATTACK_GOAL_SAMPLES, ATTACK_TARGET_SAMPLES,
-                     POST_RADIUS, NET_RADIUS, KICK_LANE_BALL_RADIUS_M)
+                     POST_RADIUS, NET_RADIUS, NET_POST_INSET_M, KICK_LANE_BALL_RADIUS_M)
 from .interception_risk import estimate_interception_risk, predict_opponent_placeholder
 
 
@@ -61,7 +61,7 @@ def evaluate_attack_targets(context, player_id, pose, motion, intercept, teammat
     result.update(origin=origin if reachable else None, kick_delay_s=wait if reachable else None)
     goal = (context.field.length/2, 0)
     # 多个球门内落点，按门柱/球网厚度和球半径留余量；不包含球门外区域。
-    half = max(0, context.field.goal_width/2-max(POST_RADIUS,NET_RADIUS)-KICK_LANE_BALL_RADIUS_M-.02)
+    half = max(0, context.field.goal_width/2-max(POST_RADIUS,NET_POST_INSET_M+NET_RADIUS)-KICK_LANE_BALL_RADIUS_M-.02)
     specs = [dict(id=f'goal_{i}', kind='goal', label=f'球门 {i+1}',
                   target=(goal[0], -half+2*half*i/(ATTACK_GOAL_SAMPLES-1)))
              for i in range(ATTACK_GOAL_SAMPLES)]

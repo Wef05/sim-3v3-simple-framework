@@ -19,6 +19,8 @@ from ..param import (
     GOAL_DEPTH,
     NET_RADIUS,
     NET_STEP,
+    NET_POST_INSET_M,
+    NET_SIDE_END_EXTENSION_M,
     OPPONENT_RADIUS,
     POST_RADIUS,
     SAFETY_MARGIN,
@@ -65,7 +67,7 @@ def collect_obstacles(
 
 
 def goal_obstacles(context: Context) -> list[Obstacle]:
-    """两侧球门做成不可穿越的 U 形结构:4 根柱 + 3 面网采样成圆。"""
+    """门柱用真实半径；盒形球网用无空隙的保守圆覆盖供行走规划。"""
     f = context.field
     half_l = f.length / 2.0
     half_gw = f.goal_width / 2.0
@@ -76,17 +78,34 @@ def goal_obstacles(context: Context) -> list[Obstacle]:
         for sign_y in (-1.0, 1.0):                       # 四根柱(前后各两根)
             obstacles.append(Obstacle(front_x, sign_y * half_gw, POST_RADIUS))
             obstacles.append(Obstacle(back_x, sign_y * half_gw, POST_RADIUS))
-        # 后网
-        obstacles += _sample_segment(
-            back_x, -half_gw, back_x, half_gw, NET_STEP, NET_RADIUS,
-        )
-        # 两侧网
-        for sign_y in (-1.0, 1.0):
-            obstacles += _sample_segment(
-                front_x, sign_y * half_gw, back_x, sign_y * half_gw,
-                NET_STEP, NET_RADIUS,
-            )
+    for xmin, ymin, xmax, ymax in goal_net_rectangles(f):
+        horizontal = xmax-xmin >= ymax-ymin
+        length = xmax-xmin if horizontal else ymax-ymin
+        half_thickness = (ymax-ymin if horizontal else xmax-xmin)/2
+        count = max(1, math.ceil(length/NET_STEP))
+        step = length/count
+        # 每个圆覆盖一整块矩形单元，避免薄网在离散采样点之间留下洞。
+        radius = math.hypot(step/2, half_thickness)
+        for i in range(count):
+            x = xmin+(i+.5)*step if horizontal else (xmin+xmax)/2
+            y = (ymin+ymax)/2 if horizontal else ymin+(i+.5)*step
+            obstacles.append(Obstacle(x, y, radius))
     return obstacles
+
+
+def goal_net_rectangles(field):
+    """比赛侧网/后网的水平投影，返回 (xmin, ymin, xmax, ymax)。"""
+    half_l = field.length/2
+    net_y = field.goal_width/2-NET_POST_INSET_M
+    boxes = []
+    for side in (-1, 1):
+        front, back = side*half_l, side*(half_l+GOAL_DEPTH)
+        boxes.append((back-NET_RADIUS, -net_y, back+NET_RADIUS, net_y))
+        xmin, xmax = sorted((front, back))
+        for y in (-net_y, net_y):
+            boxes.append((xmin-NET_SIDE_END_EXTENSION_M, y-NET_RADIUS,
+                          xmax+NET_SIDE_END_EXTENSION_M, y+NET_RADIUS))
+    return boxes
 
 
 def _sample_segment(

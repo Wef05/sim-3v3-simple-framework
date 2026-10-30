@@ -1,6 +1,7 @@
 """二维球路与球门结构检查；连续线段，无球网采样空隙。"""
 import math
-from ..param import GOAL_DEPTH, POST_RADIUS, NET_RADIUS, KICK_LANE_BALL_RADIUS_M
+from ..param import GOAL_DEPTH, POST_RADIUS, KICK_LANE_BALL_RADIUS_M
+from .obstacles import goal_net_rectangles
 
 
 def point_segment(p, a, b):
@@ -27,10 +28,6 @@ def check_kick_lane(field, origin, target):
             for x in (front,back):
                 if point_segment((x,y),origin,target)<=POST_RADIUS+KICK_LANE_BALL_RADIUS_M:
                     return dict(blocked=True,reason='goal_post')
-        nets=[((back,-hw),(back,hw)),((front,-hw),(back,-hw)),((front,hw),(back,hw))]
-        for a,b in nets:
-            if segment_distance(origin,target,a,b)<=NET_RADIUS+KICK_LANE_BALL_RADIUS_M:
-                return dict(blocked=True,reason='goal_net')
         if side*target[0]>=hl-1e-9 and abs(target[1])<=hw:
             if side*origin[0]>=hl-1e-9:
                 return dict(blocked=True,reason='goal_side_entry')
@@ -38,4 +35,10 @@ def check_kick_lane(field, origin, target):
             crossing_y=origin[1]+fraction*(target[1]-origin[1])
             if not 0<=fraction<=1 or abs(crossing_y)>=hw-POST_RADIUS-KICK_LANE_BALL_RADIUS_M:
                 return dict(blocked=True,reason='goal_side_entry')
+    for xmin,ymin,xmax,ymax in goal_net_rectangles(field):
+        corners=[(xmin,ymin),(xmax,ymin),(xmax,ymax),(xmin,ymax)]
+        inside=any(xmin<=p[0]<=xmax and ymin<=p[1]<=ymax for p in (origin,target))
+        if inside or any(segment_distance(origin,target,corners[i],corners[(i+1)%4])
+                         <=KICK_LANE_BALL_RADIUS_M for i in range(4)):
+            return dict(blocked=True,reason='goal_net')
     return dict(blocked=False,reason=None)

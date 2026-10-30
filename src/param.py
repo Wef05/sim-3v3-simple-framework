@@ -41,7 +41,7 @@ ANGULAR_GAIN = 2.0             # 转向 P 增益
 
 KICK_ENTER_M = 2.0             # 距球小于该值进入踢球状态
 KICK_EXIT_M = 2.5              # 踢球中距球大于该值才退出踢球状态
-RIGHT_FOOT_KICK_CORRECTION_DEG = -5.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
+RIGHT_FOOT_KICK_CORRECTION_DEG = 0.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
 CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 
 
@@ -107,14 +107,17 @@ GOAL_TARGET_DEPTH_M = 0.25              # 踢球目标点在球门内的深度 (
 # 障碍物几何参数
 # ======================================================================
 
-BALL_OBSTACLE_RADIUS = 0.5              # 球的障碍半径 (m)；用于避障计算
-OPPONENT_RADIUS = 0.55                  # 对手机器人半径 (m)
-TEAMMATE_RADIUS = 0.48                  # 队友机器人半径 (m)
+BALL_OBSTACLE_RADIUS = 0.11             # 比赛场景球碰撞体真实半径 (m)
+OPPONENT_RADIUS = 0.25                  # 对手机器人按占地直径 0.5m 近似 (m)
+TEAMMATE_RADIUS = 0.25                  # 队友机器人按占地直径 0.5m 近似 (m)
 SAFETY_MARGIN = 0.22                    # 通用安全余量 (m)
 
-GOAL_DEPTH = 0.6                        # 球门深度 (m)；用于球门障碍建模
-POST_RADIUS = 0.18                      # 门柱半径 (m)
-NET_RADIUS = 0.20                       # 球网半径 (m)
+GOAL_DEPTH = 0.6                        # 前后门柱中心距 (m)
+POST_RADIUS = 0.055                     # 门柱 capsule 碰撞体真实半径 (m)
+NET_RADIUS = 0.025                      # 球网 box 碰撞体真实半厚度 (m)
+NET_POST_INSET_M = 0.05                 # 侧网中心相对门柱向内偏移 (m)
+NET_SIDE_END_EXTENSION_M = 0.01         # 侧网在前后门柱中心之外的延伸 (m)
+# 来源：football_match_pitch_6_K1.bscene，builtin_revision=2026.08.2。
 NET_STEP = 0.35                         # 球网离散化步长 (m)
 
 START_IGNORE = 0.0                      # 起点忽略半径 (m)；起点附近障碍不参与规划
@@ -154,5 +157,5 @@ ATTACK_GOAL_SAMPLES = 7
 ATTACK_TARGET_SAMPLES = 16
 ATTACK_TARGET_REFRESH_S = 0.5
 
-# 球路几何使用的保守球半径（米），待仿真尺寸标定。
-KICK_LANE_BALL_RADIUS_M = 0.11
+# 球路与行走避球共用比赛场景的真实球半径。
+KICK_LANE_BALL_RADIUS_M = BALL_OBSTACLE_RADIUS
