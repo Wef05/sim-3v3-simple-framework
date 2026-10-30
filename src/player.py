@@ -6,6 +6,7 @@
 """
 from __future__ import annotations
 import math
+from .utils.interception_risk import estimate_interception_risk
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
 from .param import *
@@ -168,6 +169,10 @@ class Player:
         target = resolve_target(self.context, aim)
         if target is None:
             return StopIntent()
+
+        self.interception_risk = estimate_interception_risk(
+            self.pose, self.motion, self.context.opponents, target, self.ball_intercept,
+            ball_speed=KICK_RISK_BALL_SPEED_MPS)
 
         # 同时检查观测球位和延迟补偿球位，取更远距离，避免球已离开却仍踢空。
         # 此处只是决定是否请求踢球，不修改控制器的 is_kicking。

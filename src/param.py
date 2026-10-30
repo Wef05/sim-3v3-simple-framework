@@ -144,3 +144,6 @@ PLAN_MAX_OFFSET = math.radians(100)     # 最大偏离目标方向的角度 (rad
 # ======================================================================
 
 KICK_TARGET_MARK_SIZE_M = 0.18
+
+# 出球风险占位匀速球模型，单位 m/s；不是 SDK 力度，需仿真标定。
+KICK_RISK_BALL_SPEED_MPS = 4.0
