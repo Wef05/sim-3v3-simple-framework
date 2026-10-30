@@ -8,6 +8,7 @@ from __future__ import annotations
 import math
 from .utils.interception_risk import estimate_interception_risk
 from .utils.kick_lane import check_kick_lane
+from .utils.blocked_attack import blocked_attack_target
 from .utils.scoring_probability import evaluate_scoring
 from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
@@ -192,6 +193,22 @@ class Player:
         if target is None:
             return StopIntent()
 
+        # 在追球前选择替代方向，保证球后站位与最终出球方向一致。
+        # 执行器以观测球位规划，因此观测与延迟补偿球位都必须通过检查。
+        origins = ((ball.x, ball.y), current_ball)
+        lane = next((result for origin in origins
+                     if (result := check_kick_lane(self.context.field, origin, target))['blocked']), None)
+        style = 'shot'
+        if lane is not None:
+            fallback = blocked_attack_target(self.context, self.id, origins)
+            if fallback is None:
+                self.action = 'attack:blocked:no_safe_alternative:' + lane['reason']
+                return StopIntent()
+            target, label = fallback
+            aim, style = KickTarget.position(target), 'pass'
+            self.action = 'attack:fallback:' + label
+            self.tactical_target = target
+
         self.interception_risk = estimate_interception_risk(
             self.pose, self.motion, self.context.opponents, target, self.ball_intercept,
             ball_speed=KICK_RISK_BALL_SPEED_MPS)
@@ -205,12 +222,7 @@ class Player:
         should_kick = d <= (KICK_EXIT_M if self.is_kicking else KICK_ENTER_M)
 
         if should_kick:
-            # 实际出脚按当前球位检查，不能用未来截球点掩盖眼前球网/门柱。
-            lane = check_kick_lane(self.context.field, current_ball, target)
-            if lane['blocked']:
-                self.action = 'attack:blocked:' + lane['reason']
-                return StopIntent()
-            return KickIntent(aim)
+            return KickIntent(aim, style=style)
         else:
             # 使用本帧与角色分配共享的截球结果。
             if self.ball_intercept is None or self.ball_intercept['status'] == 'unavailable':

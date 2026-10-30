@@ -168,3 +168,4 @@ checks/*
 !checks/test_dashboard_scoring.cjs
 
 !checks/test_simulation_clock.py
+!checks/test_blocked_attack.py
