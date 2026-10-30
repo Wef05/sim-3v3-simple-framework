@@ -102,6 +102,7 @@ class Player:
         # 当前高层动作名(仅供可视化/调试)。策略分派层每帧写入;有子状态的动作
         # (如 guard)在方法内部细化。可视化 pass 读它标注文字,见 main.py。
         self.action: str = "init"
+        self.tactical_target: tuple[float, float] | None = None
 
         # SDK 缓存字段,框架后台会自动更新
         self._mode: str | None = None
@@ -395,6 +396,7 @@ class Player:
         行走两种模式:近距离全向,远距离转身-走。``face`` 指定到达/近距离时的朝向。
         ``maintain_face`` 使远距离也采用全向移动，用于守门时持续面向球。
         """
+        self.tactical_target = target
         self.release_kick() # 踢球状态下，走位会被覆盖，先取消踢球状态
         pose = self.pose
         if pose is None:
@@ -826,6 +828,7 @@ class Player:
         target = None if ctx is None or pose is None else nearest_free_position(
             ctx, pose, ball_radius, opponent_radius, FREEMAN_GOAL_LINE_MARGIN_M,
         )
+        self.tactical_target = target
         if target is None:
             self.action = "freeman:stop"
             self.stop()

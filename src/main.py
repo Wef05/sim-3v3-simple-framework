@@ -23,6 +23,7 @@ from .framework.agent import SoccerAgentMixin
 from .framework.types import KICKING_TEAM_NONE, Context, GameState, SetPlay
 from .param import *
 from .player import Player
+from .telemetry import publish as publish_tactics
 from .utils import dist, opponent_goal, own_goal
 
 
@@ -121,6 +122,8 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
 
     @staticmethod
     def play(context: Context, players: list[Player], store) -> None:
+        for p in players:
+            p.tactical_target = None  # 本帧目标，防止残留上一角色的目的地
         phase = get_phase(context)
         store.prev_phase = store.cur_phase
         store.cur_phase = phase
@@ -194,6 +197,8 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
         # 修复 SET 等状态下红球/标签消失的问题。
         for p in players:
             _draw_teammate_marker(p)
+
+        publish_tactics(context, players, store)
 
 
 def _clear_normal_sticky(store) -> None:
