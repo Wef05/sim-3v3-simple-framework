@@ -460,9 +460,7 @@ function renderInterceptions(d){
     line(historyBox,`#${e.id??'?'} · ${Number.isFinite(e.time)?e.time.toFixed(2)+' s':''} · ${kickErrorLabel({latest:e})}${detail}`);
   }
   const b=d.ball_prediction,box=$('intercept-details');box.replaceChildren();
-  $('prediction-note').textContent=validBallPrediction(b)?
-    `匀速直线预测 ${predictionFixed(b.horizon_s)} s · 球速 (${predictionFixed(b.velocity[0])}, ${predictionFixed(b.velocity[1])}) m/s，合速 ${predictionFixed(Math.hypot(...b.velocity))} m/s · 观测延迟 ${predictionFixed(b.observation_age_s)} s · 搜索步长 ${predictionFixed(b.step_s)} s。${b.velocity_estimated?'':'观测不足或发生跳变，暂按静止处理。'}不计摩擦、碰撞和下一次踢球；不裁剪出界轨迹。`:
-    '本帧没有有效球预测；旧回放若未记录预测数据，不补算历史轨迹。';
+  $('prediction-note').textContent=ballPredictionDescription(b, d.context.field);
   const a=d.attack_decision;
   let decision='本帧未记录 attacker / freeman 选择依据。';
   if(a){
@@ -495,6 +493,23 @@ function renderInterceptions(d){
     box.append(card);
   }
 }
+function validBallStop(b){
+  const s=b?.stop;
+  return b?.velocity_estimated===true&&predictionPoint(s?.position)&&
+    predictionNumber(s.time_s)&&s.time_s>=0&&predictionNumber(s.distance_m)&&s.distance_m>=0;
+}
+function ballPredictionDescription(b,field){
+  if(!validBallPrediction(b))return '本帧没有有效球预测；旧回放若未记录预测数据，不补算历史轨迹。';
+  const model=({sliding_then_rolling:'滑动／滚动减速预测',pure_rolling:'滚动减速预测'})[b.model]||'匀速直线预测（旧数据）';
+  const phase=({sliding:'滑动',rolling:'滚动',stopped:'静止',unknown:'估计中'})[b.phase]||'未记录';
+  const speed=predictionNumber(b.current_speed_mps)?b.current_speed_mps:Math.hypot(...b.velocity);
+  let text=`${model} ${predictionFixed(b.horizon_s)} s · 当前估计球速 ${predictionFixed(speed)} m/s · 阶段：${phase} · 观测延迟 ${predictionFixed(b.observation_age_s)} s。`;
+  if(validBallStop(b)){
+    const s=b.stop,outside=field&&(Math.abs(s.position[0])>field.length/2||Math.abs(s.position[1])>field.width/2);
+    text+=`无干扰停止点 ${pointText(s.position)} m · 剩余 ${predictionFixed(s.distance_m)} m · 预计 ${predictionFixed(s.time_s)} s 后停止${outside?'（球场外）':''}。`;
+  }else text+='无干扰停止点：本帧观测不足或未记录。';
+  return text+'不考虑后续触球、碰撞和反弹；停止点不受预测时域或球场边界限制。';
+}
 function drawBallPrediction(d,xy){
   if(!$('prediction-path').checked||!validBallPrediction(d.ball_prediction))return;
   const b=d.ball_prediction;
@@ -507,6 +522,16 @@ function drawBallPrediction(d,xy){
     if(p.t===0||!moving&&p!==b.points.at(-1))continue;
     const [x,y]=xy(...p.position);g.fillStyle='#ffc16b';g.beginPath();g.arc(x,y,4,0,Math.PI*2);g.fill();
     if(x>0&&x<1040&&y>20&&y<720){g.fillStyle='#ffe1b0';g.fillText(moving?`+${p.t.toFixed(1)}s`:`静止 +${p.t.toFixed(1)}s`,x+7,y-7)}
+  }
+  if(validBallStop(b)){
+    const [x,y]=xy(...b.stop.position);
+    if(x>=0&&x<=c.width&&y>=0&&y<=c.height){
+      g.strokeStyle='#ff86ce';g.fillStyle='#ff86ce';g.lineWidth=2;
+      g.beginPath();g.arc(x,y,9,0,Math.PI*2);g.moveTo(x-13,y);g.lineTo(x+13,y);g.moveTo(x,y-13);g.lineTo(x,y+13);g.stroke();
+      g.fillText(`无干扰停止点 +${predictionFixed(b.stop.time_s)}s`,Math.max(8,Math.min(x+16,c.width-270)),Math.max(24,y-15));
+    }else{
+      g.fillStyle='#ff86ce';g.fillText('无干扰停止点在画面外，坐标见下方说明',20,30);
+    }
   }
   let labelIndex=0;
   for(const p of d.players){
