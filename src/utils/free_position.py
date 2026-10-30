@@ -1,4 +1,4 @@
-"""自由人站位：在矩形、球圆及对手圆组成的区域中求最近可行点。"""
+"""自由人站位：在矩形、球圆及对手圆组成的区域中求离球最近的可行点。"""
 
 import math
 
@@ -12,7 +12,7 @@ def nearest_free_position(
     """坐标轴平行于场地；球水平线穿过敌方大禁区（含边界）时取朝球门半圆。
 
     距离边界包含在可行域内。枚举直线/圆边界的垂足和两两交点，
-    包括圆心重合时的退化情况，求连续区域上的最近点，不做栅格采样。
+    包括圆心重合时的退化情况，求连续区域上离球最近的点，不做栅格采样。
     未观测到位置的对手不参与约束。
     """
     ball = ctx.ball
@@ -44,21 +44,21 @@ def nearest_free_position(
     enemies = [(r.pose.x, r.pose.y, opponent_radius)
                for r in ctx.opponents.values() if r.pose is not None]
     circles = [(ball.x, ball.y, ball_radius), *enemies]
-    candidates = [(pose.x, pose.y)]
+    candidates = [(ball.x, ball.y)]
     # 矩形边界上的最近点，以及所有角点。
     for x in (xmin, xmax):
-        candidates.append((x, min(ymax, max(ymin, pose.y))))
+        candidates.append((x, min(ymax, max(ymin, ball.y))))
         for y in (ymin, ymax):
             candidates.append((x, y))
     for y in (ymin, ymax):
-        candidates.append((min(xmax, max(xmin, pose.x)), y))
+        candidates.append((min(xmax, max(xmin, ball.x)), y))
 
     for cx, cy, radius in circles:
-        dx, dy = pose.x - cx, pose.y - cy
+        dx, dy = ball.x - cx, ball.y - cy
         d = math.hypot(dx, dy)
         if d > 0:
             candidates.append((cx + radius * dx / d, cy + radius * dy / d))
-        # 圆心等于当前位置时，所有圆周点距离相等，选基准点或交点即可。
+        # 圆心等于球位置时，所有圆周点距离相等，选基准点或交点即可。
         candidates.extend([(cx + radius, cy), (cx - radius, cy),
                            (cx, cy + radius), (cx, cy - radius)])
         for x in (xmin, xmax):
@@ -94,5 +94,5 @@ def nearest_free_position(
                         for ex, ey, er in enemies))
 
     return min((p for p in candidates if feasible(p)),
-               key=lambda p: math.hypot(p[0] - pose.x, p[1] - pose.y),
+               key=lambda p: math.hypot(p[0] - ball.x, p[1] - ball.y),
                default=None)
