@@ -80,8 +80,8 @@ class FaceIntent:
 class KickIntent:
     """请求按目标出球；style 选择力度策略，不直接携带 SDK 力度。
 
-    现有类型为 shot（前后场默认力度）、pass（按距离估算）、
-    clear（解围力度）；角色层负责选择用途。
+    现有类型为 shot（5 档）、pass（按距离选择 1/3/5 档）、
+    clear（5 档）；角色层负责选择用途。
     """
     target: KickTarget
     style: str = 'shot'

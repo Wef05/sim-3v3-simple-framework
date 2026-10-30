@@ -120,7 +120,7 @@ class Executor:
         self._backend.kick(direction_body, power_clamped, ball_x_body, ball_y_body)
         self.kick_observation = dict(
             player_id=self.id, time=self.context.now, robot=[pose.x, pose.y],
-            planned_direction=kick_direction,
+            planned_direction=kick_direction, power=power_clamped,
             command_direction=normalize_angle(direction_body + pose.theta),
         )
 

@@ -6,7 +6,7 @@
 from dataclasses import dataclass
 from ..intents import KickTarget
 from ..param import *
-from ..utils.geom import angle_to, clamp, dist, opponent_goal
+from ..utils.geom import angle_to, dist, opponent_goal
 
 @dataclass(frozen=True)
 class KickPlan:
@@ -40,18 +40,18 @@ def resolve_target(context, target: KickTarget):
 def plan_kick(context, intent):
     """按出球用途选择力度策略，方向始终由「球 → 目标点」计算。
 
-    传球系数沿用现有配置，需要仿真校准；并非精确的球运动反解模型。
-    现有 else 分支对 shot 及其他 style 使用前后场默认力度，新增用途时应显式扩展。
+    传球按球到目标的距离分三档：<4m 为 1，4–8m 为 3，>8m 为 5。
+    射门、解围和其他用途固定为 5；每帧随目标位置重新调度。
     """
     target = resolve_target(context, intent.target)
     ball = context.ball if context is not None else None
     if target is None or ball is None:
         return None
+    power = KICK_POWER_DEFAULT
     if intent.style == 'pass':
-        power = clamp(dist(ball.x, ball.y, *target) * GUARD_PASS_POWER_PER_M,
-                      KICK_POWER_MIN, KICK_POWER_BACKFIELD)
-    elif intent.style == 'clear':
-        power = KICK_POWER_BACKFIELD
-    else:
-        power = KICK_POWER_BACKFIELD if ball.x < 0 else KICK_POWER_DEFAULT
+        distance = dist(ball.x, ball.y, *target)
+        if distance < PASS_SHORT_DISTANCE_M:
+            power = KICK_POWER_SHORT_PASS
+        elif distance <= PASS_MEDIUM_DISTANCE_M:
+            power = KICK_POWER_MEDIUM_PASS
     return KickPlan(target, angle_to(ball.x, ball.y, *target), power)
