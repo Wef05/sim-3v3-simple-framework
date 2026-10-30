@@ -2,7 +2,7 @@
 
 结构(由浅入深):
 - main.py(本文件):比赛策略。play() 按 Phase 状态机分派到 _act_*;各 _act_* 选出
-  attacker(离球最近)并直接调 player 动作。
+  attacker(预计最早拿到球)并直接调 player 动作。
 - player.py:Player 控制 handle + 高层动作(attack / take_kickoff /
   move_to_position / walk_to);想加拐棍/技术动作直接改它。
 - utils/:走位/几何/避障工具(opponent_goal / dist / angle_to ...)。
@@ -119,11 +119,14 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
         store.cur_phase = None
         store.kickoff_taker = None    # 锁定的开球主罚球员 id(每次进入开球时重选)
         store.normal_attacker = None
+        store.normal_attack_decision = None
         store.normal_guard = None     # 守门员跨帧保留，只交接给己方小禁区内的队友
 
     @staticmethod
     def play(context: Context, players: list[Player], store) -> None:
         for p in players:
+            p.update_ball_motion()
+            p.ball_intercept = None
             p.freeman_region = None
             p.tactical_target = None  # 本帧目标，防止残留上一角色的目的地
         phase = get_phase(context)
@@ -205,39 +208,37 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
 
 def _clear_normal_sticky(store) -> None:
     store.normal_attacker = None
+    store.normal_attack_decision = None
 
 
-def _player_dist_to_ball(context: Context, p: Player) -> float:
-    """球员到球当前位置的距离。"""
-    ball = context.ball
-    return (
-        dist(p.pose.x, p.pose.y, ball.x, ball.y) + _fallen_time_cost(p)
-        if ball is not None else math.inf
-    )
-
-
-def _fallen_time_cost(p: Player) -> float:
-    return FALLEN_COST if p.is_fallen else 0.0
-
-
-def _select_closest_attacker(
+def _select_future_attacker(
     context: Context,
     players: list[Player],
     preferred_id: int | None = None,
+    decision: dict | None = None,
 ) -> Player:
-    """选到球距离最小的球员，距离优势不足阈值时保留当前 attacker。
+    """选择预计最早拿到球的球员，时间优势不足阈值时保留当前 attacker。
 
-    ``players`` 非空、已就绪、pose 已知。normal 与开球共用。
+    ``players`` 非空、已就绪、pose 已知。无球时优先保持角色。
     """
-    ranked = [(p, _player_dist_to_ball(context, p)) for p in players]
-    best, best_dist = min(ranked, key=lambda item: item[1])
+    ranked = [(p, p.estimate_ball_intercept_time()) for p in players]
+    best, best_time = min(ranked, key=lambda item: (item[1], item[0].id))
     preferred = next((item for item in ranked if item[0].id == preferred_id), None)
-    if (
+    keep = (
         preferred is not None
-        and preferred[1] < best_dist + ATTACKER_KEEP_DIST_MARGIN_M
-    ):
-        return preferred[0]
-    return best
+        and (preferred[1] == best_time
+             or preferred[1] < best_time + ATTACKER_KEEP_TIME_MARGIN_S)
+    )
+    selected = preferred[0] if keep else best
+    if decision is not None:
+        decision.update(
+            selected_id=selected.id, best_id=best.id, previous_id=preferred_id,
+            margin_s=ATTACKER_KEEP_TIME_MARGIN_S,
+            reason=('no_estimate' if not math.isfinite(best_time) else
+                    'hysteresis' if keep and selected.id != best.id else 'fastest'),
+            candidates=[dict(id=p.id, score_s=t if math.isfinite(t) else None) for p, t in ranked],
+        )
+    return selected
 
 
 def _select_normal_guard(
@@ -265,8 +266,9 @@ def _select_normal_guard(
 def _act_normal(context: Context, players: list[Player], store) -> None:
     """NORMAL:动态分配 attack、guard 和自由人。
 
-    ``players`` 是本帧可行动球员(已就绪、pose 已知)，attack 按距离阈值保持。
+    ``players`` 是本帧可行动球员(已就绪、pose 已知)，attack 按接球时间阈值保持。
     """
+    store.normal_attack_decision = None
     if not players:
         return
 
@@ -274,10 +276,12 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
     guard = _select_normal_guard(context, players, guard_id) if guard_id is not None else None
     # 已选定的守门员先锁定，再从其余球员中选 attack。
     outfield = [p for p in players if p is not guard]
+    decision = {}
     attacker = (
-        _select_closest_attacker(context, outfield, getattr(store, "normal_attacker", None))
+        _select_future_attacker(context, outfield, getattr(store, "normal_attacker", None), decision)
         if outfield else None
     )
+    store.normal_attack_decision = decision or None
     store.normal_attacker = attacker.id if attacker is not None else None
     if attacker is not None:
         attacker.action = "attack"
@@ -330,7 +334,7 @@ def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
     # active_ids = {p.id for p in players}
     # if store.prev_phase != Phase.OUR_KICKOFF or store.kickoff_taker not in active_ids:
     #     # 进入开球阶段，重新选择开球球员
-    #     store.kickoff_taker = _select_closest_attacker(context, players).id
+    #     store.kickoff_taker = _select_future_attacker(context, players).id
     #
     # attacker_id = store.kickoff_taker
     # attacker = next((p for p in players if p.id == attacker_id), None)

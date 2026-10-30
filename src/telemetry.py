@@ -70,12 +70,15 @@ def make_snapshot(context, players, store):
         'context': asdict(context),
         'phase': getattr(getattr(store, 'cur_phase', None), 'value', None),
         'normal_attacker': getattr(store, 'normal_attacker', None),
+        'attack_decision': getattr(store, 'normal_attack_decision', None),
+        'ball_prediction': players[0].ball_prediction_details() if players else None,
         'kickoff_taker': (getattr(store, 'kickoff_taker', None)
                           if getattr(getattr(store, 'cur_phase', None), 'value', None) == 'our_kickoff' else None),
         'players': [dict(
             id=p.id, role=p.action.split(':')[0], action=p.action,
             target=getattr(p, 'tactical_target', None),
             freeman_region=getattr(p, 'freeman_region', None),
+            intercept=getattr(p, 'ball_intercept', None),
             mode=p.mode, fallen=p.is_fallen, penalized=p.is_penalized,
             penalty=p.penalty, kicking=p.is_kicking,
         ) for p in players],

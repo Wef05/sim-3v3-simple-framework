@@ -75,10 +75,12 @@ FREEMAN_GOAL_LINE_MARGIN_M = 1.0
 # Normal 阶段策略
 # ======================================================================
 
-ATTACKER_KEEP_DIST_MARGIN_M = 1.0  # 距球距离优势不足该值时不交换 attack / 自由人（米）
-
-FALLEN_COST = 10.0  # 摔倒球员的距离惩罚值(米)
-
+ATTACKER_KEEP_TIME_MARGIN_S = 0.3  # 预计接球时间优势不足该值时保留当前 attacker
+BALL_INTERCEPT_HORIZON_S = 3.0     # 角色分配只在短期轨迹内寻找接球机会
+BALL_INTERCEPT_STEP_S = 0.05       # 接球时间搜索间隔（秒）
+BALL_CONTROL_RADIUS_M = 0.35      # 进入此范围视为有机会拿到球，并非踢球触发距离
+BALL_MOTION_MAX_GAP_S = 0.5       # 观测中断后不沿用旧速度
+BALL_MOTION_MAX_SPEED_MPS = 20.0  # 超过此值视为重置/跳变；需按仿真球速校准
 
 # ======================================================================
 # 开球 / 定位球策略

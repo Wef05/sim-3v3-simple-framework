@@ -98,6 +98,10 @@ class Player:
         self.config: "SoccerConfig" = config
         self._backend = _backend           # 机器人控制接口的包装，通常不用改
         self.context: Context | None = None
+        self._ball_sample: tuple[float, float, float] | None = None  # 时间、x、y
+        self._ball_velocity: tuple[float, float] = (0.0, 0.0)
+        self._ball_velocity_estimated = False
+        self.ball_intercept: dict | None = None
 
         # 当前高层动作名(仅供可视化/调试)。策略分派层每帧写入;有子状态的动作
         # (如 guard)在方法内部细化。可视化 pass 读它标注文字,见 main.py。
@@ -127,6 +131,127 @@ class Player:
     # ------------------------------------------------------------------
     # 状态读取
     # ------------------------------------------------------------------
+
+    def update_ball_motion(self) -> None:
+        """记录球观测；每帧对所有球员调用，角色改变时也保有连续轨迹。
+
+        用观测时间而非策略帧间隔求速度，重复读取同一观测不改变速度。
+        丢球、过期、时间回退或不合理跳变后重新积累观测。
+        """
+        ctx = self.context
+        ball = ctx.ball if ctx is not None else None
+        if ball is None or not all(math.isfinite(v) for v in (
+            ball.x, ball.y, ball.last_seen_at, ctx.now,
+        )):
+            self._ball_sample = None
+            self._ball_velocity = (0.0, 0.0)
+            self._ball_velocity_estimated = False
+            return
+        observed_at = ball.last_seen_at if ball.last_seen_at > 0.0 else ctx.now
+        if ctx.now - observed_at > BALL_MOTION_MAX_GAP_S:
+            self._ball_sample = None
+            self._ball_velocity = (0.0, 0.0)
+            self._ball_velocity_estimated = False
+            return
+        sample = (observed_at, ball.x, ball.y)
+        previous = self._ball_sample
+        if sample == previous:
+            return
+        self._ball_sample = sample
+        self._ball_velocity = (0.0, 0.0)
+        self._ball_velocity_estimated = False
+        if previous is None:
+            return
+        dt = observed_at - previous[0]
+        if 0.0 < dt <= BALL_MOTION_MAX_GAP_S:
+            vx = (ball.x - previous[1]) / dt
+            vy = (ball.y - previous[2]) / dt
+            if math.hypot(vx, vy) <= BALL_MOTION_MAX_SPEED_MPS:
+                self._ball_velocity = (vx, vy)
+                self._ball_velocity_estimated = True
+
+    def predict_ball_position(self, seconds: float) -> tuple[float, float] | None:
+        """返回从当前帧起 ``seconds`` 秒后的球坐标（米）。
+
+        只按球的连续观测做二维匀速外推，不考虑机器人、碰撞、摩擦或反弹；
+        不将结果裁剪到球场。只有一个观测时按静止处理，无有效球观测返回 None。
+        预测时间必须有限且非负。可直接调用；同帧多次预测不会重复更新速度。
+        """
+        if not math.isfinite(seconds) or seconds < 0.0:
+            raise ValueError("prediction time must be finite and non-negative")
+        self.update_ball_motion()
+        if self._ball_sample is None:
+            return None
+        observed_at, x, y = self._ball_sample
+        elapsed = max(0.0, self.context.now - observed_at) + seconds
+        vx, vy = self._ball_velocity
+        return (x + vx * elapsed, y + vy * elapsed)
+
+    def ball_prediction_details(self) -> dict | None:
+        """看板轨迹，直接复用策略的预测函数；不从看板观测重新拟合。"""
+        position = self.predict_ball_position(0.0)
+        if position is None:
+            return None
+        count = math.ceil(BALL_INTERCEPT_HORIZON_S / 0.5)
+        return dict(
+            model='constant_velocity', position=position, velocity=self._ball_velocity,
+            velocity_estimated=self._ball_velocity_estimated,
+            observation_age_s=max(0.0, self.context.now - self._ball_sample[0]),
+            horizon_s=BALL_INTERCEPT_HORIZON_S, step_s=BALL_INTERCEPT_STEP_S,
+            points=[dict(t=min(i * 0.5, BALL_INTERCEPT_HORIZON_S),
+                         position=self.predict_ball_position(min(i * 0.5, BALL_INTERCEPT_HORIZON_S)))
+                    for i in range(count + 1)],
+        )
+
+    def estimate_ball_intercept_time(self) -> float:
+        """接球机会评分（秒，越小越好），用于 attacker / freeman 分配。
+
+        在短期球轨迹上寻找最早可达点。机器人按最大步速估算，远距离加入
+        转向时间；不模拟对手、避障和机器人加速度。窗口内无可达点时，以
+        窗口末尾的球位估算剩余追赶时间作为排序后备值，不代表实际截球成功。
+        """
+        pose = self.pose
+        position = self.predict_ball_position(0.0)
+        self.ball_intercept = dict(status='unavailable', score_s=None, intercept_time_s=None)
+        if pose is None or position is None or self.is_fallen or self.is_penalized:
+            self.ball_intercept['reason'] = (
+                'no_pose' if pose is None else 'no_ball' if position is None
+                else 'fallen' if self.is_fallen else 'penalized'
+            )
+            return math.inf
+
+        def travel_details(target: tuple[float, float]) -> dict:
+            dx, dy = target[0] - pose.x, target[1] - pose.y
+            distance = math.hypot(dx, dy)
+            angle = abs(normalize_angle(math.atan2(dy, dx) - pose.theta))
+            turn_time = 0.0
+            if distance > OMNI_DIST:
+                turn_time = max(0.0, angle - TURN_THRESHOLD) / MAX_ANGULAR
+            move_distance = max(0.0, distance - BALL_CONTROL_RADIUS_M)
+            move_time = move_distance / MAX_LINEAR
+            return dict(target=target, distance_m=distance, turn_angle_rad=angle,
+                        turn_time_s=turn_time, move_distance_m=move_distance,
+                        move_time_s=move_time, arrival_time_s=turn_time + move_time)
+
+        steps = math.ceil(BALL_INTERCEPT_HORIZON_S / BALL_INTERCEPT_STEP_S)
+        for step in range(steps + 1):
+            seconds = min(step * BALL_INTERCEPT_STEP_S, BALL_INTERCEPT_HORIZON_S)
+            position = self.predict_ball_position(seconds)
+            detail = travel_details(position)
+            if detail['arrival_time_s'] <= seconds:
+                break
+        reachable = detail['arrival_time_s'] <= seconds
+        score = seconds if reachable else max(BALL_INTERCEPT_HORIZON_S, detail['arrival_time_s'])
+        self.ball_intercept = dict(
+            **detail, status='intercept' if reachable else 'fallback', score_s=score,
+            intercept_time_s=seconds if reachable else None, target_time_s=seconds,
+            slack_s=seconds - detail['arrival_time_s'],
+            horizon_s=BALL_INTERCEPT_HORIZON_S, step_s=BALL_INTERCEPT_STEP_S,
+            control_radius_m=BALL_CONTROL_RADIUS_M, linear_speed_mps=MAX_LINEAR,
+            angular_speed_rps=MAX_ANGULAR, turn_threshold_rad=TURN_THRESHOLD,
+            omni_distance_m=OMNI_DIST,
+        )
+        return score
 
     @property
     def is_kicking(self) -> bool:
