@@ -46,7 +46,10 @@ class Publisher:
         now = time.monotonic()
         if now < self.next_send:
             return
-        self.next_send = now + self.interval
+        # Keep a fixed cadence instead of adding loop jitter to each interval.
+        self.next_send += self.interval
+        if self.next_send <= now:
+            self.next_send = now + self.interval
         try:
             if self.fall_observer is None and players and players[0]._backend is not None:
                 from .telemetry_status import FallObserver

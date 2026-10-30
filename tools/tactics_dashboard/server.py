@@ -18,11 +18,10 @@ class State:
         self.teams = {}
         self.history = {}
         self.last_recorded = {}
-        self.cleared = {}
         self.next_id = 0
         self.session = uuid.uuid4().hex
         self.history_seconds = 1800
-        self.max_frames = 18000
+        self.max_frames = 54000
 
     def receive(self, raw):
         try:
@@ -42,9 +41,10 @@ class State:
                 return False
             now = time.monotonic()
             self.teams[team] = {'packet': packet, 'received': now}
-            # Record at up to 10 Hz; the live endpoint still gets every packet.
-            if now - self.last_recorded.get(team, -float('inf')) >= 0.1:
-                self.last_recorded[team] = now
+            # Record on a fixed 30 Hz cadence; do not accumulate arrival jitter.
+            if now >= self.last_recorded.get(team, 0):
+                deadline = self.last_recorded.get(team, now) + 1 / 30
+                self.last_recorded[team] = deadline if deadline > now else now + 1 / 30
                 self.next_id += 1
                 frames = self.history.setdefault(team, deque(maxlen=self.max_frames))
                 frames.append({'id': self.next_id, 'time': now,
@@ -69,20 +69,13 @@ class State:
             return {'session': self.session, 'frames': selected,
                     'first_id': frames[0]['id'] if frames else None,
                     'last_id': frames[-1]['id'] if frames else None,
-                    'recording_hz': 10, 'retention_seconds': self.history_seconds}
+                    'recording_hz': 30, 'retention_seconds': self.history_seconds}
 
-    def clear(self, team, undo=False):
+    def clear(self, team):
         with self.lock:
-            if undo:
-                saved = self.cleared.pop(team, None)
-                if saved is None:
-                    return False
-                combined = list(saved) + list(self.history.get(team, []))
-                self.history[team] = deque(combined[-self.max_frames:], maxlen=self.max_frames)
-                self._prune(self.history[team], time.monotonic())
-            else:
-                self.cleared[team] = self.history.pop(team, deque())
-                self.last_recorded.pop(team, None)
+            self.history.pop(team, None)
+            self.last_recorded.pop(team, None)
+            self.teams.pop(team, None)
             self.session = uuid.uuid4().hex
             return True
 
@@ -96,6 +89,8 @@ class State:
                 self.next_id = max(self.next_id, frame['id'])
             for frames in self.history.values():
                 self._prune(frames, time.monotonic())
+        # Handoff files are single-use, so cleared history cannot reappear.
+        Path(path).unlink()
 
     def snapshot(self):
         with self.lock:
@@ -112,7 +107,7 @@ def handler_for(state):
             if origin and urlsplit(origin).netloc != self.headers.get('Host'):
                 self.send_error(403)
                 return
-            if self.path not in ('/api/history/clear', '/api/history/undo'):
+            if self.path != '/api/history/clear':
                 self.send_error(404)
                 return
             try:
@@ -123,7 +118,7 @@ def handler_for(state):
             except (ValueError, KeyError, TypeError):
                 self.send_error(400)
                 return
-            if not state.clear(team, undo=self.path.endswith('/undo')):
+            if not state.clear(team):
                 self.send_error(404)
                 return
             body = b'{"ok":true}'
