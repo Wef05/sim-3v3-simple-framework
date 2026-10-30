@@ -40,7 +40,7 @@ def resolve_target(context, target: KickTarget):
 def plan_kick(context, intent):
     """按出球用途选择力度策略，方向始终由「球 → 目标点」计算。
 
-    传球按球到目标的距离分三档：<4m 为 1，4–8m 为 3，>8m 为 5。
+    传球按球到目标的距离分三档：<3m 为 1，3–6m 为 3，>6m 为 5。
     射门、解围和其他用途固定为 5；每帧随目标位置重新调度。
     """
     target = resolve_target(context, intent.target)
