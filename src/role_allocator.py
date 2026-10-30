@@ -204,10 +204,17 @@ def assign(context, players, store):
             active.append(p)
     if phase != Phase.NORMAL:
         _clear_normal_sticky(store)
-    # 定位球暂时沿用现有正常分工，尚未实现各类定位球的专用全队战术。
+    # 我方定位球暂时沿用正常分工；敌方定位球除门将外均为自由人。
     # 这不代表完整规则约束已经实现；例如守门行为还会单独检查主动触球权限。
-    if phase in (Phase.NORMAL, Phase.OUR_SET_PLAY, Phase.OPP_SET_PLAY):
+    if phase in (Phase.NORMAL, Phase.OUR_SET_PLAY):
         _assign_normal(context, active, store, result)
+    elif phase == Phase.OPP_SET_PLAY:
+        # 复用现有门将保持/交接规则，再将全部可行动的非门将改为自由人。
+        _assign_normal(context, active, store, result)
+        for p in active:
+            if result[p.id].role != Role.GUARD:
+                result[p.id] = RoleTask(Role.FREEMAN)
+        _clear_normal_sticky(store)
     elif phase == Phase.OUR_KICKOFF:
         # 1 号担任 attacker，2 号守门；踢球目标由 Player 选择，不可行动时不自动换人。
         store.kickoff_taker = 1
