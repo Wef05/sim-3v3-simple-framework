@@ -33,6 +33,7 @@ from .utils.geom import (
 )
 from .utils.obstacles import collect_obstacles
 from .utils.path_planner import plan_global_path
+from .utils.free_position import nearest_free_position
 
 if TYPE_CHECKING:
     from .framework.config import SoccerConfig
@@ -808,6 +809,38 @@ class Player:
         self.walk_to(target, face=face,
                      avoid_ball=ball is None or not self._guard_threatened or not can_clear,
                      avoid_robots=True, maintain_face=True)
+
+    def freeman(
+        self, ball_radius: float = FREEMAN_BALL_RADIUS_M,
+        opponent_radius: float = FREEMAN_OPPONENT_RADIUS_M,
+    ) -> None:
+        """自由人：到最近接球位置等待，就位后面朝敌方门线中心。
+
+        站位须在场内、距球不超过 ball_radius、距每个已知对手至少
+        opponent_radius，且在敌方门线前至少 1 米；只取以球为原点、
+        坐标轴平行场地坐标轴、包含敌方门中心的四分之一圆。
+        门中心落在轴上时取自身所在侧，自身也在轴上则取正侧。
+        每帧重算；无可行点或观测不足时停止，不主动踢球。
+        """
+        ctx, pose = self.context, self.pose
+        target = None if ctx is None or pose is None else nearest_free_position(
+            ctx, pose, ball_radius, opponent_radius, FREEMAN_GOAL_LINE_MARGIN_M,
+        )
+        if target is None:
+            self.action = "freeman:stop"
+            self.stop()
+            return
+        face = angle_to(pose.x, pose.y, ctx.field.length / 2.0, 0.0)
+        distance = dist(pose.x, pose.y, *target)
+        if distance <= 1e-9:
+            self.action = "freeman:wait"
+            self.release_kick()
+            self.face_to(face)
+            return
+        self.action = "freeman:move"
+        # 不使用普通站位的到达容差提前停在可行域外。
+        self.walk_to(target, face=face, avoid_ball=True, avoid_robots=True,
+                     arrive_dist=min(0.02, distance / 2.0))
 
     def support(self) -> None:
         """支援:站在 球→己方门中心 连线上距球 ``SUPPORT_DIST_M`` 处补防。
