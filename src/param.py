@@ -78,6 +78,8 @@ FREEMAN_GOAL_LINE_MARGIN_M = 1.0
 # Normal 阶段策略
 # ======================================================================
 
+GUARD_PLAYER_ID = 2  # READY 初始站位离己方球门最近的球员；各阶段固定防守
+
 ATTACKER_KEEP_TIME_MARGIN_S = 0.3  # 预计接球时间优势不足该值时保留当前 attacker
 BALL_INTERCEPT_HORIZON_S = 3.0     # 角色分配只在短期轨迹内寻找接球机会
 BALL_INTERCEPT_STEP_S = 0.05       # 接球时间搜索间隔（秒）

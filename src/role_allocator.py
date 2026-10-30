@@ -9,8 +9,7 @@ import math
 from enum import Enum
 from .framework.types import KICKING_TEAM_NONE, Context, GameState, SetPlay
 from .intents import Role, RoleTask
-from .param import ATTACKER_KEEP_TIME_MARGIN_S
-from .utils import dist, own_goal
+from .param import ATTACKER_KEEP_TIME_MARGIN_S, GUARD_PLAYER_ID
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -83,7 +82,7 @@ def get_set_play_type(context: Context) -> SetPlay:
     return g.set_play
 
 def _clear_normal_sticky(store) -> None:
-    # 离开正常阶段清除进攻者保持记录；守门员记录保留，防止重开后频繁换门将。
+    # 离开正常阶段清除进攻者保持记录。
     store.normal_attacker = None
     store.normal_attack_decision = None
 
@@ -121,27 +120,6 @@ def _select_future_attacker(
         )
     return selected
 
-def _select_normal_guard(
-    context: Context, players: list[Player], preferred_id: int,
-) -> Player | None:
-    """保留原守门员；仅小禁区内更靠近己方门的队友可接替。
-
-    原守门员不可行动时，也只从小禁区内选接替者；无人可接替则保留角色记录。
-    """
-    gx, gy = own_goal(context)
-    candidates = [
-        p for p in players
-        if p.id == preferred_id or (
-            gx <= p.pose.x <= gx + context.field.goal_area_length
-            and abs(p.pose.y - gy) <= context.field.goal_area_width / 2.0
-        )
-    ]
-    return min(
-        candidates,
-        key=lambda p: (dist(p.pose.x, p.pose.y, gx, gy), p.id != preferred_id, p.id),
-        default=None,
-    )
-
 def init_store(store):
     """初始化全队跨帧记忆；个体行为记忆留在 Player，执行状态留在控制器。"""
     store.prev_phase = None
@@ -149,39 +127,24 @@ def init_store(store):
     store.kickoff_taker = None
     store.normal_attacker = None
     store.normal_attack_decision = None
-    store.normal_guard = None
 
 def _assign_normal(context, players, store, result):
-    """为可行动球员分配正常比赛职责，原地填充本帧任务表。
+    """2 号固定防守；其余可行动球员按截球时间分配进攻者和自由人。
 
-    已有门将时先保留/交接门将，再从场上其余人中选进攻者。
-    首次分配沿用原策略：先选进攻者，再从剩余人中选离己方门最近者。
-    门将暂时不可行动且无人满足交接条件时保留记录，不强行拉远端队友回门。
+    防守球员不可行动时不由队友接替，保留入口分配的不可用任务。
     """
     store.normal_attack_decision = None
-    if not players:
-        return
-    guard_id = getattr(store, 'normal_guard', None)
-    guard = _select_normal_guard(context, players, guard_id) if guard_id is not None else None
-    outfield = [p for p in players if p is not guard]
+    guard = next((p for p in players if p.id == GUARD_PLAYER_ID), None)
+    if guard is not None:
+        result[guard.id] = RoleTask(Role.GUARD, pass_to=3)
+    outfield = [p for p in players if p.id != GUARD_PLAYER_ID]
     decision = {}
     attacker = (_select_future_attacker(context, outfield,
                 getattr(store, 'normal_attacker', None), decision) if outfield else None)
     store.normal_attack_decision = decision or None
     store.normal_attacker = attacker.id if attacker is not None else None
-    if attacker is not None:
-        result[attacker.id] = RoleTask(Role.ATTACKER)
-    rest = [p for p in outfield if p is not attacker]
-    # 首次分配和后续交接有意分开：首次无需候选人已在小禁区内。
-    if guard_id is None and rest:
-        gx, gy = own_goal(context)
-        guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-    if guard is not None:
-        store.normal_guard = guard.id
-        result[guard.id] = RoleTask(Role.GUARD, pass_to=3)
-        rest = [p for p in rest if p is not guard]
-    for p in rest:
-        result[p.id] = RoleTask(Role.FREEMAN)
+    for p in outfield:
+        result[p.id] = RoleTask(Role.ATTACKER if p is attacker else Role.FREEMAN)
 
 def assign(context, players, store):
     """统一角色分配入口；调用前须已完成 prepare_frame 的观测更新。
@@ -209,7 +172,7 @@ def assign(context, players, store):
     if phase in (Phase.NORMAL, Phase.OUR_SET_PLAY):
         _assign_normal(context, active, store, result)
     elif phase == Phase.OPP_SET_PLAY:
-        # 复用现有门将保持/交接规则，再将全部可行动的非门将改为自由人。
+        # 固定 2 号防守，其余可行动球员为自由人。
         _assign_normal(context, active, store, result)
         for p in active:
             if result[p.id].role != Role.GUARD:
@@ -220,19 +183,21 @@ def assign(context, players, store):
         store.kickoff_taker = 1
         for p in active:
             result[p.id] = (RoleTask(Role.ATTACKER) if p.id == 1 else
-                            RoleTask(Role.GUARD, pass_to=3) if p.id == 2 else RoleTask(Role.STAY))
+                            RoleTask(Role.GUARD, pass_to=3) if p.id == GUARD_PLAYER_ID else RoleTask(Role.STAY))
     elif phase == Phase.OPP_KICKOFF and active:
-        gx, gy = own_goal(context)
-        guard = min(active, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-        result[guard.id] = RoleTask(Role.GUARD, pass_to=3)
-        for slot, p in enumerate(p for p in active if p is not guard):
+        for p in active:
+            if p.id == GUARD_PLAYER_ID:
+                result[p.id] = RoleTask(Role.GUARD, pass_to=3)
+        for slot, p in enumerate(p for p in active if p.id != GUARD_PLAYER_ID):
             if slot < 2:
                 result[p.id] = RoleTask(Role.OPP_KICKOFF, slot=slot)
     elif phase == Phase.READY:
         ours = context.game is not None and context.game.kicking_team == context.team_id
         # 只分配站位序号。站位坐标、面向和避障要求都由 player 决定。
-        for slot, p in enumerate(active[:3]):
-            result[p.id] = RoleTask(Role.READY, slot=slot, our_kickoff=ours)
+        # 按编号固定站位；不可行动球员不能使后续队友的 slot 前移。
+        for p in active:
+            if 1 <= p.id <= 3:
+                result[p.id] = RoleTask(Role.READY, slot=p.id - 1, our_kickoff=ours)
     elif phase == Phase.STOPPED:
         for p in active:
             result[p.id] = RoleTask(Role.STAY, reason='stopped')

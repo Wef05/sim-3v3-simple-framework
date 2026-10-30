@@ -22,7 +22,7 @@ intents = player.decide(context, players, assignments, store)
 actions.execute(context, players, intents)
 ```
 
-- `src/role_allocator.py`：比赛阶段、角色分配、进攻者保持、守门员交接。返回每个球员的 `RoleTask`，不调用角色行为。
+- `src/role_allocator.py`：比赛阶段、角色分配、进攻者保持、固定防守球员。返回每个球员的 `RoleTask`，不调用角色行为。
 - `src/player.py`：整队统一入口 `decide()`，内部调用各球员的角色决策，再调用 `coordinate()` 协调全队意图。角色行为只返回意图，不下发机器人指令。
 - `src/intents.py`：不可变的角色任务和动作意图。移动意图包含目标、朝向和避障选项；踢球意图包含球门、队友或坐标目标及出球类型。
 - `src/actions/kick_planner.py`：将踢球目标解析成目标点，再计算场地方向和力度。
@@ -58,7 +58,7 @@ actions.execute(context, players, intents)
 
 在 `player.coordinate(context, assignments, preliminary)` 内读取全队初步意图并返回最终意图字典。初步字典及意图不可原地修改；需要调整时复制字典并替换对应球员的意图，必须保留所有球员编号。这样传球者和接应者可以在同一阶段协商目标点，执行层只接收最终结果。
 
-当前协调默认透传，不额外改变战术。正常比赛仍动态分配进攻、守门和自由人；我方开球仍由 1 号传给 3 号、2 号守门。准备站位和守门出球选择属于角色行为。
+当前协调默认透传，不额外改变战术。各比赛阶段固定由 READY 初始站位离己方球门最近的 2 号防守，不可行动时不自动换人；正常比赛从其余球员中动态分配进攻和自由人；我方开球仍由 1 号传给 3 号、2 号守门。准备站位和守门出球选择属于角色行为。
 
 ### 离线调用与检查
 
