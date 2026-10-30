@@ -7,6 +7,7 @@
 from __future__ import annotations
 import math
 from .utils.interception_risk import estimate_interception_risk
+from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
 from .param import *
@@ -160,6 +161,22 @@ class Player:
         current_ball = self.motion.predict_ball_position(0.0)
         if ball is None or self.pose is None or current_ball is None:
             return StopIntent()
+
+        # 观测评估先于既有目标解析，结果不传入任何动作选择分支。
+        cached = getattr(self, '_candidate_cache', None)
+        signature = (tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
+                     tuple((pid, r.pose is not None) for pid,r in sorted(self.context.opponents.items())),
+                     (self.ball_intercept or {}).get('status'))
+        if (cached is None or signature != getattr(self, '_candidate_signature', None)
+                or not 0 <= self.context.now-cached['evaluated_at'] < ATTACK_TARGET_REFRESH_S):
+            tracker = getattr(self, 'teammate_motion', None)
+            if tracker is None:
+                tracker = TeammateMotion()
+                tracker.update(self.context)
+            cached = evaluate_attack_targets(self.context,self.id,self.pose,self.motion,
+                                              self.ball_intercept or {},tracker)
+            self._candidate_cache, self._candidate_signature = cached, signature
+        self.attack_candidates = cached
 
         aim = (KickTarget.goal() if kick_target == 0 else
                KickTarget.position(kick_target) if isinstance(kick_target, tuple) else

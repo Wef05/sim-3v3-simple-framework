@@ -4,6 +4,7 @@
 预测器内部处理丢球、过期和异常跳变；这里不因角色变化重建预测器。
 """
 from ..utils.ball_motion import BallMotion
+from ..utils.attack_targets import TeammateMotion
 from ..utils.interception import estimate_ball_intercept
 
 def prepare_frame(context, players, store):
@@ -15,6 +16,9 @@ def prepare_frame(context, players, store):
     if not hasattr(store, 'ball_motion'):
         store.ball_motion = BallMotion()
     store.ball_motion.update(context)
+    if not hasattr(store, 'teammate_motion'):
+        store.teammate_motion = TeammateMotion()
+    store.teammate_motion.update(context)
     for p in players:
         p.context = context
         p.motion = store.ball_motion
@@ -22,6 +26,8 @@ def prepare_frame(context, players, store):
         p.ball_intercept = estimate_ball_intercept(
             p.pose, store.ball_motion, fallen=p.is_fallen, penalized=p.is_penalized)
         p.interception_risk = None
+        p.attack_candidates = None
+        p.teammate_motion = store.teammate_motion
         # 清除的是本帧输出，不是跨帧行为记忆或踢球状态。
         # 否则换角色后会显示旧目标，或破坏原有迟滞与动作切换。
         p.freeman_region = None
