@@ -8,6 +8,7 @@ from __future__ import annotations
 import math
 from .utils.interception_risk import estimate_interception_risk
 from .utils.kick_lane import check_kick_lane
+from .utils.scoring_probability import evaluate_scoring
 from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
@@ -165,7 +166,7 @@ class Player:
 
         # 观测评估先于既有目标解析，结果不传入任何动作选择分支。
         cached = getattr(self, '_candidate_cache', None)
-        signature = (tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
+        signature = (tuple(getattr(self, 'evaluation_freeman_ids', ())), tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
                      tuple((pid, r.pose is not None) for pid,r in sorted(self.context.opponents.items())),
                      (self.ball_intercept or {}).get('status'))
         if (cached is None or signature != getattr(self, '_candidate_signature', None)
@@ -176,8 +177,11 @@ class Player:
                 tracker.update(self.context)
             cached = evaluate_attack_targets(self.context,self.id,self.pose,self.motion,
                                               self.ball_intercept or {},tracker)
+            self._scoring_cache = evaluate_scoring(self.context,self.pose,self.motion,cached,
+                                                   getattr(self,'evaluation_freeman_ids',()))
             self._candidate_cache, self._candidate_signature = cached, signature
         self.attack_candidates = cached
+        self.scoring_probability = self._scoring_cache
 
         aim = (KickTarget.goal() if kick_target == 0 else
                KickTarget.position(kick_target) if isinstance(kick_target, tuple) else
@@ -496,7 +500,9 @@ def decide(context, players, assignments, store):
     不可变性覆盖当前这些标量/元组字段；未来增加可变嵌套字段时也需冻结它们。
     """
     preliminary = {}
+    freeman_ids = tuple(pid for pid, task in assignments.items() if task.role == Role.FREEMAN)
     for p in players:
+        p.evaluation_freeman_ids = freeman_ids
         p.context = context
         preliminary[p.id] = p.decide(assignments[p.id])
     # 收齐所有人之后才开放给协调层；只读映射防止协调函数意外污染初稿。

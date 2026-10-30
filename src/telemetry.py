@@ -92,6 +92,7 @@ def make_snapshot(context, players, store):
             intercept=getattr(p, 'ball_intercept', None),
             interception_risk=getattr(p, 'interception_risk', None),
             attack_candidates=getattr(p, 'attack_candidates', None),
+            scoring_probability=getattr(p, 'scoring_probability', None),
             mode=p.mode, fallen=p.is_fallen, penalized=p.is_penalized,
             penalty=p.penalty, kicking=p.is_kicking,
         ) for p in players],

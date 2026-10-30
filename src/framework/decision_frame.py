@@ -27,6 +27,7 @@ def prepare_frame(context, players, store):
             p.pose, store.ball_motion, fallen=p.is_fallen, penalized=p.is_penalized)
         p.interception_risk = None
         p.attack_candidates = None
+        p.scoring_probability = None
         p.teammate_motion = store.teammate_motion
         # 清除的是本帧输出，不是跨帧行为记忆或踢球状态。
         # 否则换角色后会显示旧目标，或破坏原有迟滞与动作切换。

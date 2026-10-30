@@ -158,3 +158,10 @@ docs/
 checks/*
 !checks/test_agent_pipeline.py
 !checks/test_goalkeeper.py
+
+!checks/test_dashboard_accuracy.cjs
+!checks/test_attack_targets.py
+!checks/test_dashboard_candidates.cjs
+!checks/test_kick_lane.py
+!checks/test_scoring_probability.py
+!checks/test_dashboard_scoring.cjs
