@@ -825,6 +825,8 @@ class Player:
         每帧重算；无可行点或观测不足时停止，不主动踢球。
         """
         ctx, pose = self.context, self.pose
+        self.freeman_region = dict(ball_radius=ball_radius, opponent_radius=opponent_radius,
+                                   goal_line_margin=FREEMAN_GOAL_LINE_MARGIN_M)
         target = None if ctx is None or pose is None else nearest_free_position(
             ctx, pose, ball_radius, opponent_radius, FREEMAN_GOAL_LINE_MARGIN_M,
         )
