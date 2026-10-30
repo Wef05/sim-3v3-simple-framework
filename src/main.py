@@ -218,7 +218,7 @@ def _select_closest_attacker(
     players: list[Player],
     preferred_id: int | None = None,
 ) -> Player:
-    """选到球距离最小的球员。
+    """选到球距离最小的球员，距离优势不足阈值时保留当前 attacker。
 
     ``players`` 非空、已就绪、pose 已知。normal 与开球共用。
     """
@@ -227,53 +227,55 @@ def _select_closest_attacker(
     preferred = next((item for item in ranked if item[0].id == preferred_id), None)
     if (
         preferred is not None
-        and preferred[1] <= best_dist + ATTACKER_KEEP_DIST_MARGIN_M
+        and preferred[1] < best_dist + ATTACKER_KEEP_DIST_MARGIN_M
     ):
         return preferred[0]
     return best
 
 
 def _act_normal(context: Context, players: list[Player], store) -> None:
-    """NORMAL:固定 1 号 attack、2 号 guard、3 号 support。
+    """NORMAL:动态分配 attack、guard 和自由人。
 
-    ``players`` 是本帧可行动球员(已就绪、pose 已知),按编号执行固定角色。
+    ``players`` 是本帧可行动球员(已就绪、pose 已知)，attack 按距离阈值保持。
     """
     if not players:
         return
 
     # 固定角色按球员编号绑定，不随距离或本帧可行动球员的顺序变化。
-    store.normal_attacker = next((p.id for p in players if p.id == 1), None)
-    for p in players:
-        if p.id == 1:
-            p.action = "attack"
-            p.attack(2)
-        elif p.id == 2:
-            p.action = "guard"
-            p.guard(3)
-        else:
-            p.action = "support"
-            p.support()
+    # store.normal_attacker = next((p.id for p in players if p.id == 1), None)
+    # for p in players:
+    #     if p.id == 1:
+    #         p.action = "attack"
+    #         p.attack(0)
+    #     elif p.id == 2:
+    #         p.action = "guard"
+    #         p.guard(3)
+    #     else:
+    #         p.action = "support"
+    #         p.freeman()
+    #         #p.support()
 
     # 原动态角色分配逻辑（保留供参考）：
-    # attacker = _select_closest_attacker(
-    #     context, players, getattr(store, "normal_attacker", None),
-    # )
-    # store.normal_attacker = attacker.id
-    # attacker.action = "attack"
-    # attacker.attack()
-    #
-    # # guard:剩下人里离己方门最近者(如还有人)
-    # rest = [p for p in players if p is not attacker]
-    # if rest:
-    #     gx, gy = own_goal(context)
-    #     guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
-    #     guard.guard()
-    #     rest = [p for p in rest if p is not guard]
-    #
-    # # support:其余全部
-    # for p in rest:
-    #     p.action = "support"
-    #     p.support()
+    attacker = _select_closest_attacker(
+        context, players, getattr(store, "normal_attacker", None),
+    )
+    store.normal_attacker = attacker.id
+    attacker.action = "attack"
+    attacker.attack()
+
+    # guard:剩下人里离己方门最近者(如还有人)
+    rest = [p for p in players if p is not attacker]
+    if rest:
+        gx, gy = own_goal(context)
+        guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
+        guard.guard()
+        rest = [p for p in rest if p is not guard]
+
+    # support:其余全部
+    for p in rest:
+        p.action = "freeman"
+        p.freeman()
+        #p.support()
 
 
 def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
@@ -282,7 +284,7 @@ def _act_our_kickoff(context: Context, players: list[Player], store) -> None:
         return
 
     store.kickoff_taker = 1
-    receiver = context.teammates.get(2)
+    receiver = context.teammates.get(3)
     ball = context.ball
     for p in players:
         if p.id == 1:

@@ -20,7 +20,7 @@ KICK_POWER_MAX = 10.0
 # 普通比赛踢球力度。
 KICK_POWER_DEFAULT = 5.0
 KICK_POWER_BACKFIELD = 5.0
-KICK_POWER_OUR_KICKOFF = 5.0
+KICK_POWER_OUR_KICKOFF = 1.0
 
 
 # ======================================================================
@@ -42,7 +42,7 @@ ANGULAR_GAIN = 2.0             # 转向 P 增益
 
 KICK_ENTER_M = 2.0             # 距球小于该值进入踢球状态
 KICK_EXIT_M = 2.5              # 踢球中距球大于该值才退出踢球状态
-RIGHT_FOOT_KICK_CORRECTION_DEG = -5.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
+RIGHT_FOOT_KICK_CORRECTION_DEG = -2.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
 CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 
 
@@ -53,14 +53,29 @@ CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 GUARD_FACE_BALL = True
 GUARD_THREAT_ENTER_X = -1.0
 GUARD_THREAT_EXIT_X = -0.7
+GUARD_POST_MARGIN_M = 0.25     # 横向封堵目标与门柱的距离
+GUARD_CLEAR_EXTRA_M = 0.6     # 解围范围在小禁区前沿外扩的距离
+GUARD_CLEAR_REACH_M = 1.8     # 仅处理守门员附近的门前球
+GUARD_KICK_ENTER_M = 0.65     # 解围独立使用近距离踢球阈值
+GUARD_KICK_EXIT_M = 0.85
+GUARD_GOAL_LINE_MARGIN_M = 0.25
+GUARD_PASS_MIN_FORWARD_M = 0.75  # 接球队友至少在球前方这么远
+GUARD_PASS_MAX_DIST_M = 6.0
+GUARD_PASS_LANE_MARGIN_M = 0.35  # 传球通道在机器人半径外的余量
+GUARD_PASS_POWER_PER_M = 0.7     # 初始距离力度系数，需仿真校准
 
 SUPPORT_DIST_M = 3.0
+
+# 自由人接球站位（米），也可由 freeman(ball_radius=..., opponent_radius=...) 覆盖。
+FREEMAN_BALL_RADIUS_M = 7.0
+FREEMAN_OPPONENT_RADIUS_M = 3.0
+FREEMAN_GOAL_LINE_MARGIN_M = 1.0
 
 # ======================================================================
 # Normal 阶段策略
 # ======================================================================
 
-ATTACKER_KEEP_DIST_MARGIN_M = 0.3  # 防止 Attacker 选择产生震荡
+ATTACKER_KEEP_DIST_MARGIN_M = 3.0  # 距球距离优势不足该值时不交换 attack / 自由人（米）
 
 FALLEN_COST = 10.0  # 摔倒球员的距离惩罚值(米)
 
