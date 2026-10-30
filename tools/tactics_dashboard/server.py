@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Standalone UDP receiver + local HTTP dashboard, Python standard library only."""
+from collections import deque
+import uuid
+from urllib.parse import urlsplit, parse_qs
 import argparse
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -13,6 +16,12 @@ class State:
     def __init__(self):
         self.lock = threading.Lock()
         self.teams = {}
+        self.history = {}
+        self.last_recorded = {}
+        self.next_id = 0
+        self.session = uuid.uuid4().hex
+        self.history_seconds = 1800
+        self.max_frames = 18000
 
     def receive(self, raw):
         try:
@@ -30,8 +39,36 @@ class State:
         with self.lock:
             if team not in self.teams and len(self.teams) >= 16:
                 return False
-            self.teams[team] = {'packet': packet, 'received': time.monotonic()}
+            now = time.monotonic()
+            self.teams[team] = {'packet': packet, 'received': now}
+            # Record at up to 10 Hz; the live endpoint still gets every packet.
+            if now - self.last_recorded.get(team, -float('inf')) >= 0.1:
+                self.last_recorded[team] = now
+                self.next_id += 1
+                frames = self.history.setdefault(team, deque(maxlen=self.max_frames))
+                frames.append({'id': self.next_id, 'time': now,
+                               'recorded_at': time.time(), 'packet': packet})
+                self._prune(frames, now)
         return True
+
+    def _prune(self, frames, now):
+        while frames and now - frames[0]['time'] > self.history_seconds:
+            frames.popleft()
+
+    def replay(self, team, after=0, limit=500):
+        with self.lock:
+            frames = self.history.get(team, deque())
+            self._prune(frames, time.monotonic())
+            selected = []
+            for frame in frames:
+                if frame['id'] > after:
+                    selected.append(frame)
+                    if len(selected) >= limit:
+                        break
+            return {'session': self.session, 'frames': selected,
+                    'first_id': frames[0]['id'] if frames else None,
+                    'last_id': frames[-1]['id'] if frames else None,
+                    'recording_hz': 10, 'retention_seconds': self.history_seconds}
 
     def snapshot(self):
         with self.lock:
@@ -43,10 +80,25 @@ class State:
 def handler_for(state):
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
-            if self.path == '/api/state':
+            url = urlsplit(self.path)
+            if url.path == '/api/state':
                 body = json.dumps(state.snapshot(), allow_nan=False).encode()
                 mime = 'application/json'
-            elif self.path in ('/', '/index.html'):
+            elif url.path == '/api/history':
+                try:
+                    query = parse_qs(url.query)
+                    team = str(int(query.get('team', ['1'])[0]))
+                    after = max(0, int(query.get('after', ['0'])[0]))
+                    limit = min(500, max(1, int(query.get('limit', ['500'])[0])))
+                except ValueError:
+                    self.send_error(400)
+                    return
+                body = json.dumps(state.replay(team, after, limit), allow_nan=False).encode()
+                mime = 'application/json'
+            elif url.path == '/dashboard.js':
+                body = Path(__file__).with_name('dashboard.js').read_bytes()
+                mime = 'text/javascript; charset=utf-8'
+            elif url.path in ('/', '/index.html'):
                 body = Path(__file__).with_name('index.html').read_bytes()
                 mime = 'text/html; charset=utf-8'
             else:
