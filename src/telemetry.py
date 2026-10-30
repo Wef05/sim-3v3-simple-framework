@@ -3,9 +3,10 @@ from dataclasses import asdict
 import json
 import logging
 import os
-from pathlib import Path
 import socket
 import time
+
+from . import telemetry_config
 
 _log = logging.getLogger(__name__)
 
@@ -16,15 +17,13 @@ class Publisher:
         self.next_send = 0.0
         self.sequence = 0
         try:
-            path = Path(__file__).with_name('telemetry.json')
-            config = json.loads(path.read_text()) if path.exists() else {}
-            host = os.getenv('SOCCER_DASHBOARD_HOST', config.get('host', ''))
+            host = os.getenv('SOCCER_DASHBOARD_HOST', telemetry_config.HOST)
             if not host:
                 return
             # Numeric IPv4 only: never perform DNS in the control loop.
             socket.inet_pton(socket.AF_INET, host)
-            port = int(os.getenv('SOCCER_DASHBOARD_PORT', config.get('port', 9871)))
-            hz = float(os.getenv('SOCCER_DASHBOARD_HZ', config.get('hz', 5)))
+            port = int(os.getenv('SOCCER_DASHBOARD_PORT', telemetry_config.PORT))
+            hz = float(os.getenv('SOCCER_DASHBOARD_HZ', telemetry_config.HZ))
             if not 1 <= port <= 65535 or not 0 < hz <= 30:
                 raise ValueError('port must be 1..65535 and hz must be (0, 30]')
             self.address = (host, port)
