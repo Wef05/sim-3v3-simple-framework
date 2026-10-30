@@ -199,7 +199,8 @@ class Player:
         origins = ((ball.x, ball.y), current_ball)
         lane = next((result for origin in origins
                      if (result := check_kick_lane(self.context.field, origin, target))['blocked']), None)
-        style = 'shot'
+        # 队友目标必须保留传球语义，开球传给 3 号也按距离调度力度。
+        style = 'pass' if aim.kind == 'teammate' else 'shot'
         if lane is not None:
             fallback = blocked_attack_target(self.context, self.id, origins)
             if fallback is None:
