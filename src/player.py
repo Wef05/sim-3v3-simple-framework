@@ -7,6 +7,7 @@
 from __future__ import annotations
 import math
 from .utils.interception_risk import estimate_interception_risk
+from .utils.kick_lane import check_kick_lane
 from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
@@ -200,6 +201,11 @@ class Player:
         should_kick = d <= (KICK_EXIT_M if self.is_kicking else KICK_ENTER_M)
 
         if should_kick:
+            # 实际出脚按当前球位检查，不能用未来截球点掩盖眼前球网/门柱。
+            lane = check_kick_lane(self.context.field, current_ball, target)
+            if lane['blocked']:
+                self.action = 'attack:blocked:' + lane['reason']
+                return StopIntent()
             return KickIntent(aim)
         else:
             # 使用本帧与角色分配共享的截球结果。

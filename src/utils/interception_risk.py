@@ -8,6 +8,7 @@
 import math
 from ..param import MAX_LINEAR, MAX_ANGULAR, BALL_CONTROL_RADIUS_M
 from .geom import normalize_angle
+from .kick_lane import check_kick_lane
 from .interception import estimate_ball_intercept
 
 
@@ -127,6 +128,14 @@ def estimate_interception_risk(pose, motion, opponents, target, intercept=None, 
     distance = math.dist(origin, target)
     base.update(time_s=seconds, ball_position=origin, flight_time_s=flight,
                 robot_position=tuple(origin[j]-(target[j]-origin[j])/distance*BALL_CONTROL_RADIUS_M for j in (0,1)))
+    field = getattr(getattr(motion, 'context', None), 'field', None)
+    if field is not None:
+        lane = check_kick_lane(field, origin, target)
+        base['lane'] = lane
+        if lane['blocked']:
+            return dict(base, status='blocked', reason=lane['reason'], probability=1.0,
+                        path=[dict(t=0,position=origin,probability=1.0),
+                              dict(t=flight,position=target,probability=1.0)])
     steps = max(1, math.ceil(flight/.05))
     survival = [1.0]*(steps+1)
     missing = []
