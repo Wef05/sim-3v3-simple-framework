@@ -133,7 +133,7 @@ class SoccerRuntime:
                 # 异常时全员停车(直接调,不走 play 路径)
                 for p in self._players:
                     try:
-                        p.stop()
+                        p.controller.stop()
                     except Exception:
                         pass
 
@@ -154,9 +154,14 @@ class SoccerRuntime:
         debugdraw.begin_frame()
         self._draw_world(ctx)
 
-        # 调用用户 play();框架不强制其行为
+        from .decision_frame import prepare_frame
+        from ..visualization import finish_frame
+        prepare_frame(ctx, self._players, self._store)
+
+        # Three-stage team strategy.
         self._agent.play(ctx, self._players, self._store)
 
+        finish_frame(ctx, self._players, self._store)
         debugdraw.flush()
 
         # 每 ~2s 打一行 heartbeat,肉眼验证主循环 + 数据通路
@@ -174,8 +179,8 @@ class SoccerRuntime:
             debugdraw.point(
                 ctx.ball.x, ctx.ball.y, rgb=(1.0, 0.5, 0.0), scale=0.2, ns="ball",
             )
-        # 我方队员标记(颜色/形状随 kick 状态、标签带 chaser)由策略层 main.py 画,
-        # 因为 kick 状态在 player、chaser 在 play()。这里只画朝向 + 对手。
+        # 我方队员标记(颜色/形状随 kick 状态变化)由 visualization.py 画,
+        # 它在执行后读取角色与控制器状态。这里只画朝向 + 对手。
         for r in ctx.teammates.values():
             if r.pose is not None:
                 self._draw_facing(r.pose)

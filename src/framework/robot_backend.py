@@ -1,8 +1,8 @@
 """BoosterRobot SDK 包装:每个 player 一个 backend handle。
 
 【平台层,Docker-only】依赖 boosteros.robots.booster,只在装有 SDK 的运行环境
-导入。Player 通过 ``_backend`` 调底盘/踢球/慢操作,但 Player 本身(player.py)不
-import 本模块——runtime 构造时由 agent 注入,保持 player.py 平台无关。
+导入。Executor 通过 ``_backend`` 调底盘/踢球/慢操作,但执行层不
+import 本模块——runtime 构造时由 agent 注入,保持策略和执行层平台无关。
 
 SDK 方法名对齐旧代码经过验证的调用。
 

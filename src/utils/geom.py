@@ -66,3 +66,18 @@ def clamp_inside_field(
     half_l = ctx.field.length / 2.0 - margin
     half_w = ctx.field.width / 2.0 - margin
     return (clamp(x, -half_l, half_l), clamp(y, -half_w, half_w))
+
+def behind_ball(
+    ball_x: float, ball_y: float, aim: tuple[float, float], offset: float,
+) -> tuple[float, float]:
+    """用于计算站位。球在 球→``aim`` 连线上的"后方"点:从球沿【背离 aim】方向退 ``offset`` 米。
+
+    追球走位目标用它:球落在机器人与 ``aim`` 之间,到位时天然对准 aim 方向。
+    aim 与球重合(退化)时,方向不定,直接返回球位。
+    """
+    dx, dy = aim[0] - ball_x, aim[1] - ball_y
+    d = math.hypot(dx, dy)
+    if d < 1e-6:
+        return (ball_x, ball_y)
+    ux, uy = dx / d, dy / d              # 球指向 aim 的单位向量
+    return (ball_x - ux * offset, ball_y - uy * offset)   # 背离 aim 退 offset

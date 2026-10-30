@@ -155,4 +155,6 @@ Thumbs.db
 old_src/*
 ref/*
 docs/
-checks/
+checks/*
+!checks/test_agent_pipeline.py
+!checks/test_goalkeeper.py
