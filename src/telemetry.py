@@ -75,6 +75,7 @@ def make_snapshot(context, players, store):
         'players': [dict(
             id=p.id, role=p.action.split(':')[0], action=p.action,
             target=getattr(p, 'tactical_target', None),
+            freeman_region=getattr(p, 'freeman_region', None),
             mode=p.mode, fallen=p.is_fallen, penalized=p.is_penalized,
             penalty=p.penalty, kicking=p.is_kicking,
         ) for p in players],
