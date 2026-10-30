@@ -119,6 +119,7 @@ class SoccerSimAgent(SoccerAgentMixin, AgentBase):
         store.cur_phase = None
         store.kickoff_taker = None    # 锁定的开球主罚球员 id(每次进入开球时重选)
         store.normal_attacker = None
+        store.normal_guard = None     # 守门员跨帧保留，只交接给己方小禁区内的队友
 
     @staticmethod
     def play(context: Context, players: list[Player], store) -> None:
@@ -238,6 +239,28 @@ def _select_closest_attacker(
     return best
 
 
+def _select_normal_guard(
+    context: Context, players: list[Player], preferred_id: int,
+) -> Player | None:
+    """保留原守门员；仅小禁区内更靠近己方门的队友可接替。
+
+    原守门员不可行动时，也只从小禁区内选接替者；无人可接替则保留角色记录。
+    """
+    gx, gy = own_goal(context)
+    candidates = [
+        p for p in players
+        if p.id == preferred_id or (
+            gx <= p.pose.x <= gx + context.field.goal_area_length
+            and abs(p.pose.y - gy) <= context.field.goal_area_width / 2.0
+        )
+    ]
+    return min(
+        candidates,
+        key=lambda p: (dist(p.pose.x, p.pose.y, gx, gy), p.id != preferred_id, p.id),
+        default=None,
+    )
+
+
 def _act_normal(context: Context, players: list[Player], store) -> None:
     """NORMAL:动态分配 attack、guard 和自由人。
 
@@ -246,33 +269,26 @@ def _act_normal(context: Context, players: list[Player], store) -> None:
     if not players:
         return
 
-    # 固定角色按球员编号绑定，不随距离或本帧可行动球员的顺序变化。
-    # store.normal_attacker = next((p.id for p in players if p.id == 1), None)
-    # for p in players:
-    #     if p.id == 1:
-    #         p.action = "attack"
-    #         p.attack(0)
-    #     elif p.id == 2:
-    #         p.action = "guard"
-    #         p.guard(3)
-    #     else:
-    #         p.action = "support"
-    #         p.freeman()
-    #         #p.support()
-
-    # 原动态角色分配逻辑（保留供参考）：
-    attacker = _select_closest_attacker(
-        context, players, getattr(store, "normal_attacker", None),
+    guard_id = getattr(store, "normal_guard", None)
+    guard = _select_normal_guard(context, players, guard_id) if guard_id is not None else None
+    # 已选定的守门员先锁定，再从其余球员中选 attack。
+    outfield = [p for p in players if p is not guard]
+    attacker = (
+        _select_closest_attacker(context, outfield, getattr(store, "normal_attacker", None))
+        if outfield else None
     )
-    store.normal_attacker = attacker.id
-    attacker.action = "attack"
-    attacker.attack()
+    store.normal_attacker = attacker.id if attacker is not None else None
+    if attacker is not None:
+        attacker.action = "attack"
+        attacker.attack()
 
-    # guard:剩下人里离己方门最近者(如还有人)
-    rest = [p for p in players if p is not attacker]
-    if rest:
+    rest = [p for p in outfield if p is not attacker]
+    # 首次选定沿用原逻辑：除 attack 外，离己方门最近者守门。
+    if guard_id is None and rest:
         gx, gy = own_goal(context)
         guard = min(rest, key=lambda p: dist(p.pose.x, p.pose.y, gx, gy))
+    if guard is not None:
+        store.normal_guard = guard.id
         guard.guard()
         rest = [p for p in rest if p is not guard]
 
