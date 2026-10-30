@@ -74,6 +74,7 @@ def make_snapshot(context, players, store):
         'phase': getattr(getattr(store, 'cur_phase', None), 'value', None),
         'normal_attacker': getattr(store, 'normal_attacker', None),
         'attack_decision': getattr(store, 'normal_attack_decision', None),
+        'kick_error': store.kick_error_tracker.snapshot() if hasattr(store, 'kick_error_tracker') else None,
         'ball_prediction': players[0].motion.ball_prediction_details() if players else None,
         'kickoff_taker': (getattr(store, 'kickoff_taker', None)
                           if getattr(getattr(store, 'cur_phase', None), 'value', None) == 'our_kickoff' else None),

@@ -23,6 +23,7 @@ class Executor:
         self._kicking = False
         self._avoid_side = None
         self.tactical_target = None
+        self.kick_observation = None
 
     @property
     def is_kicking(self) -> bool:
@@ -117,8 +118,14 @@ class Executor:
         power_clamped = max(KICK_POWER_MIN, min(KICK_POWER_MAX, power))
         self._kicking = True
         self._backend.kick(direction_body, power_clamped, ball_x_body, ball_y_body)
+        self.kick_observation = dict(
+            player_id=self.id, time=self.context.now, robot=[pose.x, pose.y],
+            planned_direction=kick_direction,
+            command_direction=normalize_angle(direction_body + pose.theta),
+        )
 
     def release_kick(self) -> None:
+        self.kick_observation = None
         self._kicking = False  # 清除踢球迟滞标志(取消方块显示)
         if self._backend is None:
             _log.debug("player %d release_kick (no backend)", self.id)

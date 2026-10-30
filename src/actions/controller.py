@@ -13,6 +13,7 @@ from ..param import KICK_TARGET_MARK_SIZE_M
 class ActionController(MotionController):
     def execute(self, intent):
         """执行一名球员本帧最终意图；未知类型先停车，再报错。"""
+        self.kick_observation = None
         # 分配之后 SDK 状态仍可能变化，协调层也可能替换意图，因此下发前再次检查。
         # 即便被罚下，也允许起身/切模式；所有战术移动和踢球请求则被停止覆盖。
         if self.is_penalized or self.pose is None:

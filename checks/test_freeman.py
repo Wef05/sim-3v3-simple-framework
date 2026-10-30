@@ -26,10 +26,10 @@ class FreemanTests(unittest.TestCase):
     def target(self, ctx, radius=7, clearance=3):
         return nearest_free_position(ctx, ctx.teammates[1].pose, radius, clearance, 1)
 
-    def test_nearest_quadrant_projection_on_both_sides(self):
+    def test_nearest_half_circle_projection_on_both_sides(self):
         for side in (-1, 1):
             ctx = self.context(position=(-2, 2 * side), ball=(0, side))
-            self.assertEqual(self.target(ctx), (0, side))
+            self.assertEqual(self.target(ctx), (0, 2 * side))
 
     def test_ball_radius_projection(self):
         ctx = self.context(position=(5, -4), ball=(-6, 1))
@@ -51,7 +51,7 @@ class FreemanTests(unittest.TestCase):
                            enemies=((2, -1), (4, -1)))
         x, y = self.target(ctx, clearance=2)
         self.assertAlmostEqual(x, 3)
-        self.assertAlmostEqual(y, -1 - math.sqrt(3))
+        self.assertAlmostEqual(abs(y + 1), math.sqrt(3))
 
     def test_empty_region_and_concentric_circles(self):
         ctx = self.context(enemies=((0, 1),))
@@ -66,27 +66,27 @@ class FreemanTests(unittest.TestCase):
 
     def test_wait_faces_actual_goal_center_without_kicking(self):
         ctx = self.context(position=(2, -1))
-        player = Player(1, SoccerConfig(), Mock())
+        player = Player(1, SoccerConfig(), Mock(mode='walk', fall_down_state='normal'))
         player.context = ctx
-        with patch.object(player, 'walk_to') as walk, patch.object(player, 'face_to') as face:
-            player.freeman()
+        with patch.object(player.controller, 'walk_to') as walk, patch.object(player.controller, 'face_to') as face:
+            player.controller.execute(player.freeman())
         walk.assert_not_called()
         face.assert_called_once_with(math.atan2(1, 5))
         self.assertEqual(player.action, 'freeman:wait')
         self.assertFalse(player.is_kicking)
 
     def test_move_and_stop_on_unavailable_target_or_observations(self):
-        player = Player(1, SoccerConfig(), Mock())
+        player = Player(1, SoccerConfig(), Mock(mode='walk', fall_down_state='normal'))
         player.context = self.context()
-        with patch.object(player, 'walk_to') as walk:
-            player.freeman(ball_radius=2, opponent_radius=1)
-        self.assertEqual(walk.call_args.args[0], (0, 1))
+        with patch.object(player.controller, 'walk_to') as walk:
+            player.controller.execute(player.freeman(ball_radius=2, opponent_radius=1))
+        self.assertEqual(walk.call_args.kwargs['target'], (0, 2))
         self.assertTrue(walk.call_args.kwargs['avoid_robots'])
         for ctx in (self.context(ball=(6.1, 0)), None,
                     replace(self.context(), ball=None),
                     replace(self.context(), teammates={})):
             player.context = ctx
-            player.freeman()
+            player.controller.execute(player.freeman())
             player._backend.set_velocity.assert_called_with(0, 0, 0)
 
     def test_matches_independent_grid_upper_bound(self):
@@ -104,7 +104,7 @@ class FreemanTests(unittest.TestCase):
             for ix in range(53):
                 for iy in range(37):
                     x, y = -7 + ix * .25, -4.5 + iy * .25
-                    if (x >= ball[0] and (y - ball[1]) * -ball[1] >= 0
+                    if (x >= ball[0] and (abs(ball[1]) <= 3 or (y - ball[1]) * -ball[1] >= 0)
                             and math.dist((x, y), ball) <= 7
                             and all(math.hypot(x-r.pose.x, y-r.pose.y) >= 3
                                     for r in ctx.opponents.values())):
@@ -117,7 +117,8 @@ class FreemanTests(unittest.TestCase):
                 x, y = target
                 self.assertTrue(-7-1e-8 <= x <= 6+1e-8 and abs(y) <= 4.5+1e-8)
                 self.assertGreaterEqual(x, ball[0]-1e-8)
-                self.assertGreaterEqual((y-ball[1]) * -ball[1], -1e-8)
+                if abs(ball[1]) > 3:
+                    self.assertGreaterEqual((y-ball[1]) * -ball[1], -1e-8)
                 self.assertLessEqual(math.dist(target, ball), 7+1e-8)
                 for r in ctx.opponents.values():
                     self.assertGreaterEqual(math.hypot(x-r.pose.x, y-r.pose.y), 3-1e-8)

@@ -68,4 +68,8 @@ def finish_frame(context, players, store):
     _analyze_and_draw(context, players, store)
     for p in players:
         _draw_teammate_marker(p)
+    from .utils.kick_error import KickErrorTracker
+    if not hasattr(store, "kick_error_tracker"):
+        store.kick_error_tracker = KickErrorTracker()
+    store.kick_error_tracker.update(context, players)
     publish(context, players, store)
