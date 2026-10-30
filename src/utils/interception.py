@@ -8,7 +8,8 @@ import math
 from ..param import *
 from .geom import normalize_angle
 
-def estimate_ball_intercept(pose, motion, *, fallen=False, penalized=False) -> dict:
+def estimate_ball_intercept(pose, motion, *, fallen=False, penalized=False,
+                            linear_speed=MAX_LINEAR, angular_speed=MAX_ANGULAR) -> dict:
     """接球机会评分（秒，越小越好），用于 attacker / freeman 分配。
 
     在短期球轨迹上寻找最早可达点。机器人按最大步速估算，远距离加入
@@ -30,9 +31,9 @@ def estimate_ball_intercept(pose, motion, *, fallen=False, penalized=False) -> d
         angle = abs(normalize_angle(math.atan2(dy, dx) - pose.theta))
         turn_time = 0.0
         if distance > OMNI_DIST:
-            turn_time = max(0.0, angle - TURN_THRESHOLD) / MAX_ANGULAR
+            turn_time = max(0.0, angle - TURN_THRESHOLD) / angular_speed
         move_distance = max(0.0, distance - BALL_CONTROL_RADIUS_M)
-        move_time = move_distance / MAX_LINEAR
+        move_time = move_distance / linear_speed
         return dict(target=target, distance_m=distance, turn_angle_rad=angle,
                     turn_time_s=turn_time, move_distance_m=move_distance,
                     move_time_s=move_time, arrival_time_s=turn_time + move_time)
@@ -51,8 +52,8 @@ def estimate_ball_intercept(pose, motion, *, fallen=False, penalized=False) -> d
         intercept_time_s=seconds if reachable else None, target_time_s=seconds,
         slack_s=seconds - detail['arrival_time_s'],
         horizon_s=BALL_INTERCEPT_HORIZON_S, step_s=BALL_INTERCEPT_STEP_S,
-        control_radius_m=BALL_CONTROL_RADIUS_M, linear_speed_mps=MAX_LINEAR,
-        angular_speed_rps=MAX_ANGULAR, turn_threshold_rad=TURN_THRESHOLD,
+        control_radius_m=BALL_CONTROL_RADIUS_M, linear_speed_mps=linear_speed,
+        angular_speed_rps=angular_speed, turn_threshold_rad=TURN_THRESHOLD,
         omni_distance_m=OMNI_DIST,
     )
     return result

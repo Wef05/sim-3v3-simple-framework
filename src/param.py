@@ -41,7 +41,7 @@ ANGULAR_GAIN = 2.0             # 转向 P 增益
 
 KICK_ENTER_M = 2.0             # 距球小于该值进入踢球状态
 KICK_EXIT_M = 2.5              # 踢球中距球大于该值才退出踢球状态
-RIGHT_FOOT_KICK_CORRECTION_DEG = 0.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
+RIGHT_FOOT_KICK_CORRECTION_DEG = -5.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
 CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 
 
