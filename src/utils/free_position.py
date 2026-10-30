@@ -9,7 +9,7 @@ def nearest_free_position(
     ctx: Context, pose: Pose2D, ball_radius: float,
     opponent_radius: float, goal_line_margin: float,
 ) -> tuple[float, float] | None:
-    """坐标轴平行于场地；球水平线穿过门口（含门柱）时取朝球门半圆。
+    """坐标轴平行于场地；球水平线穿过敌方大禁区（含边界）时取朝球门半圆。
 
     距离边界包含在可行域内。枚举直线/圆边界的垂足和两两交点，
     包括圆心重合时的退化情况，求连续区域上的最近点，不做栅格采样。
@@ -32,8 +32,8 @@ def nearest_free_position(
         xmin = max(xmin, ball.x)
     else:
         xmax = min(xmax, ball.x)
-    # 球的水平延长线穿过门口时不限制球两侧的 y；否则保留门中心所在象限。
-    if abs(ball.y) > ctx.field.goal_width / 2.0:
+    # 球的水平延长线穿过敌方大禁区时不限制球两侧的 y；否则保留门中心所在象限。
+    if abs(ball.y) > ctx.field.penalty_area_width / 2.0:
         if ball.y < 0:
             ymin = max(ymin, ball.y)
         else:

@@ -75,7 +75,7 @@ FREEMAN_GOAL_LINE_MARGIN_M = 1.0
 # Normal 阶段策略
 # ======================================================================
 
-ATTACKER_KEEP_DIST_MARGIN_M = 3.0  # 距球距离优势不足该值时不交换 attack / 自由人（米）
+ATTACKER_KEEP_DIST_MARGIN_M = 1.0  # 距球距离优势不足该值时不交换 attack / 自由人（米）
 
 FALLEN_COST = 10.0  # 摔倒球员的距离惩罚值(米)
 
