@@ -8,8 +8,41 @@ import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import socket
+import struct
 import threading
 import time
+
+
+class DatagramAssembler:
+    """有界重组：乱序/重复分片可接受，缺片超时丢弃，不拼接不同发送者。"""
+    def __init__(self):
+        self.pending = {}
+
+    def receive(self, raw, sender, now=None):
+        now = time.monotonic() if now is None else now
+        self.pending = {key: value for key, value in self.pending.items() if now-value[0] <= 2}
+        if not raw.startswith(b'STD1'):
+            return raw  # 兼容旧版小 JSON 数据报。
+        if len(raw) <= 16 or len(raw) > 1200:
+            return None
+        _, message, index, total = struct.unpack('!4sQHH', raw[:16])
+        if not 1 <= total <= 51 or index >= total:
+            return None
+        key = (sender, message)
+        if key not in self.pending:
+            if len(self.pending) >= 128:
+                self.pending.pop(next(iter(self.pending)))
+            self.pending[key] = (now, total, {})
+        _, expected, chunks = self.pending[key]
+        if expected != total:
+            del self.pending[key]
+            return None
+        chunks[index] = raw[16:]
+        if len(chunks) != total:
+            return None
+        del self.pending[key]
+        packet = b''.join(chunks[i] for i in range(total))
+        return packet if len(packet) <= 60000 else None
 
 
 class State:
@@ -178,13 +211,16 @@ def main():
         state.restore(args.restore)
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as udp:
         udp.bind((args.udp_host, args.udp_port))
+        assembler = DatagramAssembler()
         def receive():
             while True:
                 try:
-                    raw, _ = udp.recvfrom(65535)
+                    raw, sender = udp.recvfrom(65535)
                 except OSError:
                     return
-                state.receive(raw)
+                packet = assembler.receive(raw, sender)
+                if packet is not None:
+                    state.receive(packet)
         threading.Thread(target=receive, daemon=True).start()
         with ThreadingHTTPServer((args.http_host, args.http_port), handler_for(state)) as http:
             print(f'Tactics dashboard: http://{args.http_host}:{args.http_port} | UDP {args.udp_host}:{args.udp_port}', flush=True)

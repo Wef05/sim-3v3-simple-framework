@@ -4,6 +4,8 @@ import json
 import logging
 import os
 import socket
+import struct
+import secrets
 import time
 
 from . import telemetry_config
@@ -61,7 +63,12 @@ class Publisher:
             payload.update(sequence=self.sequence, sent_at=time.time())
             packet = json.dumps(payload, separators=(',', ':'), allow_nan=False).encode()
             if len(packet) <= 60000:
-                self.sock.sendto(packet, self.address)
+                # Docker Desktop 会丢弃较大的 UDP 数据报；每包不超过 1200 字节。
+                message_id = secrets.randbits(64)
+                chunks = [packet[i:i+1184] for i in range(0, len(packet), 1184)]
+                for index, chunk in enumerate(chunks):
+                    header = struct.pack("!4sQHH", b"STD1", message_id, index, len(chunks))
+                    self.sock.sendto(header + chunk, self.address)
         except Exception:
             # Telemetry must never trigger the runtime's emergency stop path.
             pass
