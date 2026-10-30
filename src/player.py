@@ -397,7 +397,7 @@ class Player:
         self, ball_radius: float = FREEMAN_BALL_RADIUS_M,
         opponent_radius: float = FREEMAN_OPPONENT_RADIUS_M,
     ):
-        """自由人：到可行区域内离球最近的位置等待，就位后面朝敌方门线中心。
+        """自由人：到最近接球位置等待，就位后面朝敌方门线中心。
 
         站位须在场内、距球不超过 ball_radius、距每个已知对手至少
         opponent_radius，且在敌方门线前至少 1 米；只取以球为原点、
