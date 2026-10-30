@@ -164,4 +164,5 @@ checks/*
 !checks/test_dashboard_candidates.cjs
 !checks/test_kick_lane.py
 !checks/test_scoring_probability.py
+!checks/test_ball_motion.py
 !checks/test_dashboard_scoring.cjs

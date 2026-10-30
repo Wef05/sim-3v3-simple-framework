@@ -80,6 +80,15 @@ BALL_INTERCEPT_STEP_S = 0.05       # 接球时间搜索间隔（秒）
 BALL_CONTROL_RADIUS_M = 0.35      # 进入此范围视为有机会拿到球，并非踢球触发距离
 BALL_MOTION_MAX_GAP_S = 0.5       # 观测中断后不沿用旧速度
 BALL_MOTION_MAX_SPEED_MPS = 20.0  # 超过此值视为重置/跳变；需按仿真球速校准
+BALL_MOTION_MODE = 'sliding_then_rolling'  # 或 pure_rolling；阶段按实时观测估计
+BALL_SLIDE_TRANSITION_S_PER_MPS = 0.06430
+BALL_SLIDE_DECEL_MPS2 = 3.86194
+BALL_ROLL_SPEED_FACTOR = 0.78855
+BALL_ROLL_DECEL_MPS2 = 0.57366
+BALL_PURE_ROLL_DECEL_MPS2 = 0.57323
+BALL_PURE_ROLL_PLATEAU_S_PER_MPS = 0.07886  # 离散实验接触瞬态拟合，不是真实固定延迟
+BALL_MOTION_FIT_SAMPLES = 4      # 最近速度区间，用于在线估计减速度
+BALL_MOTION_SPEED_RESET_MPS = 0.75  # 明显加速视作新触球，清除旧阶段
 
 
 # ======================================================================
