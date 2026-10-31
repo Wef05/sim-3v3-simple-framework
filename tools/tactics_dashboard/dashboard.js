@@ -47,6 +47,12 @@ if($('distances').checked){
   g.restore();
 }
 for(const p of d.players){const pose=w.teammates[p.id]?.pose;if(!pose||!p.target)continue;g.strokeStyle='#65ddbd';g.setLineDash([7,7]);path([[pose.x,pose.y],p.target]);g.setLineDash([]);let [x,y]=xy(...p.target);g.beginPath();g.moveTo(x,y-8);g.lineTo(x+8,y);g.lineTo(x,y+8);g.lineTo(x-8,y);g.closePath();g.stroke();g.fillStyle='#c3f6e6';g.fillText(`${p.id} 目标`,x+12,y-10)}
+// Actual planned walking routes; target-only dashed lines above remain tactical intent.
+for(const p of d.players){
+  const route=p.navigation?.path;
+  if(!Array.isArray(route)||route.length<2||route.length>200||route.some(q=>!Array.isArray(q)||q.length!==2||!q.every(Number.isFinite)))continue;
+  g.save();g.strokeStyle='#71c9ff';g.lineWidth=3;g.setLineDash([]);path(route);g.restore();
+}
 function robot(r,color,tag,letter){if(!r.pose)return;let p=r.pose,[x,y]=xy(p.x,p.y);g.fillStyle=color;g.beginPath();g.arc(x,y,13,0,Math.PI*2);g.fill();g.strokeStyle=color;g.lineWidth=3;path([[p.x,p.y],[p.x+.45*Math.cos(p.theta),p.y+.45*Math.sin(p.theta)]]);g.lineWidth=2;g.fillStyle='#fff';g.font='bold 16px system-ui';g.fillText(tag,x-5,y-22);if(letter){g.save();g.fillStyle='#0b2422';g.font='bold 17px system-ui';g.textAlign='center';g.textBaseline='middle';g.fillText(letter,x,y+1);g.restore()}}
 Object.values(w.opponents).forEach(r=>robot(r,'#699fff',String(r.player_id)));Object.values(w.teammates).forEach(r=>robot(r,'#62dfba',String(r.player_id),roleLetters[d.players.find(p=>String(p.id)===String(r.player_id))?.role]||'?'));
 drawThreat(d,xy);
@@ -68,7 +74,7 @@ if($('kick-error-visible').checked){
 
 function renderPacket(d){displayedPacket=d;const w=d.context;$('empty').hidden=true;c.hidden=false;
 const score=w.game?.teams?.map(t=>`${t.team_number} 队 ${t.score}`).join(' : ')||'比分未知';$('summary').textContent=`${phases[d.phase]||d.phase||'阶段未知'}　 |　${score}　 |　剩余 ${w.game?.secs_remaining??'—'} s　 |　球${w.ball?'可见':'未知'}　 |　帧 ${d.sequence}`;
-$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
+$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));if(p.navigation)line(card,navigationLabel(p.navigation));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
 
 // Playback uses receiver monotonic timestamps, never the Agent's clock.
 let liveFrames=[], archive=null, viewing='live', playing=false, cursor=0;
@@ -855,4 +861,10 @@ function drawThreat(d,xy){
   const lx=Math.max(6,Math.min(c.width-width-6,x+28)),ly=Math.max(16,Math.min(c.height-16,y+16));
   g.fillStyle='#311a28';g.fillRect(lx,ly-13,width,26);g.fillStyle='#ff99a7';g.fillText(label,lx+7,ly);
   g.restore();
+}
+
+function navigationLabel(n){
+  const states={moving:'行走',yield:'让行等待',arrived:'已到位',emergency_stop:'安全停车',team_safety_stop:'队内冲突停车',direct_blocked:'直线受阻',no_route:'暂无可行路线'};
+  const speed=Array.isArray(n.velocity)&&n.velocity.length===2&&n.velocity.every(Number.isFinite)?Math.hypot(...n.velocity).toFixed(2)+' m/s':'未知';
+  return `导航：${states[n.reason]||'未知'} · 优先级 ${Number.isFinite(n.priority)?n.priority:'—'} · 指令 ${speed}`;
 }
