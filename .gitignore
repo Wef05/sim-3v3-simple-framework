@@ -170,3 +170,8 @@ checks/*
 !checks/test_simulation_clock.py
 !checks/test_blocked_attack.py
 !checks/test_fixed_guard.py
+!checks/test_kickoff_power.py
+
+!checks/test_goalkeeper_replay.py
+
+!checks/goalkeeper_replay_cases.py

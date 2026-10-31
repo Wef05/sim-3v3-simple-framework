@@ -102,6 +102,7 @@ def make_snapshot(context, players, store):
         'players': [dict(
             id=p.id, role=p.action.split(':')[0], action=p.action,
             target=getattr(p, 'tactical_target', None),
+            guard_decision=getattr(p, 'guard_decision', None),
             freeman_region=getattr(p, 'freeman_region', None),
             intercept=getattr(p, 'ball_intercept', None),
             interception_risk=getattr(p, 'interception_risk', None),

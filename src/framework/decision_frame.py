@@ -35,6 +35,10 @@ def prepare_frame(context, players, store):
         p.freeman_region = None
         p.tactical_target = None
         p.controller.tactical_target = None
+    available_receivers = frozenset(p.id for p in players if p.pose is not None
+                                    and not p.is_fallen and not p.is_penalized and p.mode == 'walk')
+    for p in players:
+        p.guard_receivers = available_receivers
     store.threat = calculate_threat(context, players, store.ball_motion)
     for p in players:
         p.threat = store.threat

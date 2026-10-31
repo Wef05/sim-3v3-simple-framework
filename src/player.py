@@ -27,7 +27,7 @@ from .utils.ball_motion import BallMotion
 class Player:
     """跨帧存活的角色行为对象，通过组合持有执行控制器。
 
-    _guard_threatened 属于战术迟滞：决定门将继续封堵还是回中。
+    _guard_memory 保存守门站位迟滞及有限时出球承诺。
     is_kicking 属于执行状态：由控制器维护，行为层只读取它来选择距离阈值。
     不把两种状态合并，避免「想踢球」被误认为「已经下发踢球」。
     """
@@ -40,7 +40,7 @@ class Player:
         self.action = 'init'
         self.tactical_target = None
         self.freeman_region = None
-        self._guard_threatened = False
+        self._guard_memory = None
 
     # 以下属性只转发观测和运行时接线，不提供 walk_to/kick 等执行接口。
     # backend 的读写兼容框架注入与关闭流程，角色行为不应直接使用它下命令。
@@ -119,6 +119,9 @@ class Player:
         不要在这里读取正在逐个填充的意图表，否则会依赖球员遍历顺序。
         每次清空本帧显示目标，避免上一个角色的目标残留在新角色上。
         """
+        if task.role != Role.GUARD:
+            self._guard_memory = None
+        self.guard_decision = None
         self.action = task.role.value
         self.tactical_target = None
         self.freeman_region = None
@@ -239,183 +242,10 @@ class Player:
             )
             return MoveIntent(chase)
 
-    def _guard_pass_target(self, teammate_id: int | None):
-        """选择可向前短传的指定队友；通道或接球点被占据时放弃。"""
-        ctx = self.context
-        if ctx is None or ctx.ball is None or teammate_id is None or teammate_id == self.id:
-            return None
-        receiver = ctx.teammates.get(teammate_id)
-        if receiver is None or receiver.pose is None:
-            return None
-        if ctx.game is not None:
-            state = ctx.game.get_player_state(ctx.team_id, teammate_id)
-            if state is not None and state.penalty != Penalty.NONE:
-                return None
-        ball, pose = ctx.ball, receiver.pose
-        dx, dy = pose.x - ball.x, pose.y - ball.y
-        length2 = dx * dx + dy * dy
-        if (
-            dx < GUARD_PASS_MIN_FORWARD_M
-            or length2 > GUARD_PASS_MAX_DIST_M ** 2
-            or abs(pose.x) >= ctx.field.length / 2.0
-            or abs(pose.y) >= ctx.field.width / 2.0
-        ):
-            return None
-
-        # 点到球→队友线段的距离，同时覆盖传球线路和接球点附近的防守者。
-        blockers = [(r, OPPONENT_RADIUS) for r in ctx.opponents.values()]
-        blockers.extend(
-            (r, TEAMMATE_RADIUS) for pid, r in ctx.teammates.items()
-            if pid not in (self.id, teammate_id)
-        )
-        for robot, radius in blockers:
-            if robot.pose is None:
-                continue
-            rx, ry = robot.pose.x - ball.x, robot.pose.y - ball.y
-            t = clamp((rx * dx + ry * dy) / length2, 0.0, 1.0)
-            if math.hypot(rx - t * dx, ry - t * dy) <= radius + GUARD_PASS_LANE_MARGIN_M:
-                return None
-        return pose.x, pose.y
-
     def guard(self, pass_to: int | None = None):
-        """每帧执行一次守门决策：门前出球优先，其次封堵，最后回中待命。
-
-        参数：
-            pass_to: 希望优先传给的队友编号，例如 guard(3) 表示寻找传给
-                3 号的机会；None 表示不考虑传球，门前球直接向前场解围。
-                传入编号并不强制传球，仍须通过 _guard_pass_target 的检查。
-
-        坐标约定：
-            原点为球场中心，+x 朝对方球门，-x 朝己方球门，y 为横向坐标。
-            默认 14 米场地中，己方门线 x=-7，小禁区中央 home=(-6.5, 0)。
-            球 x<=-1 表示进入己方半场至少 1 米，并非距己方门线 1 米。
-
-        执行顺序：
-            1. 缺少自身定位时停止；没有球观测时回小禁区中央。
-            2. 根据球的位置及跨帧迟滞状态，计算横向封堵目标。
-            3. 比赛允许主动触球且球在门前近处时，优先接近并传球/解围；
-               此分支返回出球意图，避免被后面的回位决策覆盖。
-            4. 不需要出球时，执行先前算好的封堵或回中移动。
-
-        本方法只根据当前球位计算几何封堵线，不预测球速或射门落点。
-        action 用于显示当前动作；威胁记忆保留在角色层，踢球状态由执行层管理。
-        """
-        # 1. 安全入口：没有上下文或自身位置就无法计算移动和出球方向。
-        # 停止意图由执行层取消踢球并下发零速度。
-        ctx, pose = self.context, self.pose
-        if ctx is None or pose is None:
-            self._guard_threatened = False
-            self.action = "guard:stop"
-            return StopIntent()
-
-        # 默认先选择小禁区中央；下面只在需要封堵或出球时覆盖 target。
-        home = own_goal_area_center(ctx)
-        ball = ctx.ball
-        goal_x, _ = own_goal(ctx)
-        target = home
-        can_clear = False
-        self.action = "guard:home"
-        if ball is None:
-            # 丢球后清除威胁记忆；本帧仍会走到末尾执行回中、面向前场。
-            self._guard_threatened = False
-        else:
-            # 2. 威胁状态采用两个阈值，避免球在边界附近时反复回中/封堵：
-            # 未进入封堵：球 x<=-1.0 才进入；已在封堵：直到 x>-0.7 才退出。
-            # 这只是球所处区域的判断，不表示已检测到对方射门。
-            threshold = (
-                GUARD_THREAT_EXIT_X if self._guard_threatened
-                else GUARD_THREAT_ENTER_X
-            )
-            self._guard_threatened = ball.x <= threshold
-            if self._guard_threatened:
-                # 固定纵向站位 x=home.x，只调整横向 y。
-                # 球在站位线前方时，利用相似三角形求“球→己方门中心”
-                # 与 x=home.x 的交点：
-                # target_y = ball.y * (home.x-goal_x) / (ball.x-goal_x)。
-                # 球已到站位线或其后方时直接取 ball.y，避免反向投影或除零。
-                y = ball.y
-                if ball.x > home[0]:
-                    y *= (home[0] - goal_x) / (ball.x - goal_x)
-                # 将横向目标限制在门柱内侧；默认门宽 2.6 米，留 0.25 米
-                # 余量后 y 限于 [-1.05, 1.05]。这是目标点约束，不是路径约束。
-                limit = max(0.0, ctx.field.goal_width / 2.0 - GUARD_POST_MARGIN_M)
-                target = (home[0], clamp(y, -limit, limit))
-                self.action = "guard:block"
-
-            # 3. 判断本帧是否允许主动处理球：必须有裁判数据、处于 PLAYING
-            # 且比赛未暂停；对方定位球/开球倒计时期间不主动接近出球。
-            # can_clear 也供末尾移动使用，决定是否把球当作需要避让的障碍。
-            game = ctx.game
-            can_clear = (
-                game is not None and game.state == GameState.PLAYING
-                and not game.stopped
-                and not (
-                    game.kicking_team != ctx.team_id
-                    and (game.set_play != SetPlay.NONE or game.secondary_time > 0)
-                )
-            )
-            # 出球范围同时要求球在门前矩形内、守门员也离球足够近。
-            # 默认场地：x∈[-7, -5.4]、|y|<=2，并且人球距离<=1.8 米。
-            # 球越过门线后不在此范围，守门员不会为了追球继续进入球门深处。
-            near_goal = (
-                goal_x <= ball.x <= goal_x + ctx.field.goal_area_length + GUARD_CLEAR_EXTRA_M
-                and abs(ball.y) <= ctx.field.goal_area_width / 2.0
-                and dist(pose.x, pose.y, ball.x, ball.y) <= GUARD_CLEAR_REACH_M
-            )
-            if can_clear and near_goal:
-                # 先准备默认解围方案：踢向前场中心，默认目标为 (3.5, 0)。
-                # 仅在此门前处理分支考虑传球，不会为接应队友离开守门区域。
-                clear_target = (ctx.field.length / 4.0, 0.0)
-                # helper 检查队友位置/罚下状态、是否在球前方至少 0.75 米、
-                # 距球是否在 6 米以内，以及传球线段和接球点附近有无机器人。
-                # None、自己编号或任一检查不通过，都保留上面的解围方案。
-                pass_target = self._guard_pass_target(pass_to)
-                aim = KickTarget.position(clear_target)
-                style = 'clear'
-                if pass_target is not None:
-                    clear_target = pass_target
-                    aim = KickTarget.teammate(pass_to)
-                    style = 'pass'
-                kick_dir = angle_to(ball.x, ball.y, *clear_target)
-                # 守门独立使用近距离踢球阈值，不复用 attack 的 2 米阈值。
-                # 初次<=0.65 米进入；已在踢球时允许保持到 0.85 米，减少抖动。
-                kick_dist = GUARD_KICK_EXIT_M if self.is_kicking else GUARD_KICK_ENTER_M
-                if dist(pose.x, pose.y, ball.x, ball.y) <= kick_dist:
-                    self.action = f"guard:pass:{pass_to}" if pass_target is not None else "guard:clear_kick"
-                    # 首次启动前停止普通行走，随后由踢球控制器接管底盘；
-                    # 已在踢球时 backend 会忽略普通速度命令，保持踢球独占。
-                    return KickIntent(aim, style=style)
-                # 尚未到踢球距离：先走向“球→出球目标”反方向 0.35 米处，
-                # 让球尽量位于自己与目标之间，面向预定出球方向接近。
-                stage = behind_ball(ball.x, ball.y, clear_target, CHASE_BEHIND_M)
-                # 球后点可能落入球门或偏出小禁区侧面，因此限制接近目标：
-                # x 至少在门线前 0.25 米，y 不超过小禁区左右边界。
-                target = (
-                    max(goal_x + GUARD_GOAL_LINE_MARGIN_M, stage[0]),
-                    clamp(stage[1], -ctx.field.goal_area_width / 2.0,
-                          ctx.field.goal_area_width / 2.0),
-                )
-                self.action = f"guard:pass_approach:{pass_to}" if pass_target is not None else "guard:clear_approach"
-                # 触球是本分支的目的，所以不避球；仍避开机器人及球门结构。
-                # maintain_face=True 使远距离也全向移动并保持出球朝向。
-                # walk_to() 会先取消上一帧踢球；本帧发出接近指令后直接返回。
-                return MoveIntent(target, face=kick_dir, avoid_ball=False,
-                             avoid_robots=True, maintain_face=True)
-
-        # 4. 未进入门前出球分支：执行封堵或回中，默认面向球；
-        # 球不可见或关闭 GUARD_FACE_BALL 时面向 +x（角度 0，即前场）。
-        face = 0.0
-        if GUARD_FACE_BALL and ball is not None:
-            face = angle_to(
-                pose.x, pose.y, ball.x, ball.y,
-            )
-
-        # 只有“存在威胁且允许主动触球”时才关闭避球；其余情况保持避球。
-        # 始终避机器人并保持指定朝向。walk_to() 会取消残留踢球状态，
-        # 因此球离开处理范围后会自然结束传球/解围并恢复站位。
-        return MoveIntent(target, face=face,
-                     avoid_ball=ball is None or not self._guard_threatened or not can_clear,
-                     avoid_robots=True, maintain_face=True)
+        """守门策略独立维护预站位、限时封堵和出球记忆。"""
+        from .utils.goalkeeper import decide_guard
+        return decide_guard(self, pass_to)
 
     def freeman(
         self, ball_radius: float = FREEMAN_BALL_RADIUS_M,

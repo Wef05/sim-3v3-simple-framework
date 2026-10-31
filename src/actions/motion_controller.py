@@ -52,6 +52,7 @@ class MotionController(Executor):
         avoid_robots: bool = False,
         arrive_dist: float = ARRIVE_DIST,
         maintain_face: bool = False,
+        direct_path: bool = False,
     ) -> bool:
         """走向目标点。返回是否已到达。
 
@@ -97,7 +98,16 @@ class MotionController(Executor):
                 ball=avoid_ball, robots=avoid_robots,
                 goals=(avoid_ball or avoid_robots),
             )
-            if USE_GLOBAL_PATH_PLANNER:
+            if direct_path:
+                # 守门限时封堵/绕球分段已验算直线路径；不允许全局规划改变耗时。
+                from ..utils.kick_lane import point_segment
+                from ..param import GLOBAL_OBSTACLE_MARGIN_M
+                if any(point_segment((o.x, o.y), (pose.x, pose.y), target)
+                       <= o.radius + GLOBAL_OBSTACLE_MARGIN_M for o in obstacles):
+                    self.stop()
+                    return False
+                heading = goal_dir
+            elif USE_GLOBAL_PATH_PLANNER:
                 planned_path = plan_global_path(
                     self.context,
                     (pose.x, pose.y),

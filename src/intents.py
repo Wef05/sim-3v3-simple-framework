@@ -70,6 +70,7 @@ class MoveIntent:
     avoid_robots: bool = False
     arrive_dist: float = ARRIVE_DIST
     maintain_face: bool = False
+    direct_path: bool = False  # 限时动作：仅走已验算直线，新增障碍时停止而非绕行
 
 @dataclass(frozen=True)
 class FaceIntent:
