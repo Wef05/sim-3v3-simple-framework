@@ -10,7 +10,7 @@ function kickPowerLabel(p){
   return Number.isFinite(p.kick_power)?`踢球力度：${p.kick_power} 档（指令）`:'踢球力度：—（本帧未下发）';
 }
 function line(parent,txt){let p=document.createElement('p');p.textContent=txt;parent.append(p)}
-function draw(d){renderBallSpeed(d);renderKickVisibility();const w=d.context,f=w.field,s=Math.min(980/(f.length+2),640/(f.width+2));const xy=(x,y)=>[550+x*s,370-y*s];g.clearRect(0,0,1100,740);g.fillStyle='#112c2b';g.fillRect(0,0,1100,740);g.strokeStyle='#4f7972';g.lineWidth=2;
+function draw(d){renderThreat(d);renderBallSpeed(d);renderKickVisibility();const w=d.context,f=w.field,s=Math.min(980/(f.length+2),640/(f.width+2));const xy=(x,y)=>[550+x*s,370-y*s];g.clearRect(0,0,1100,740);g.fillStyle='#112c2b';g.fillRect(0,0,1100,740);g.strokeStyle='#4f7972';g.lineWidth=2;
 function path(points){g.beginPath();points.forEach((p,i)=>g[i?'lineTo':'moveTo'](...xy(...p)));g.stroke()}
 function rect(x,y,a,b){g.strokeRect(...xy(x,y),a*s,-b*s)}
 rect(-f.length/2,-f.width/2,f.length,f.width);path([[0,-f.width/2],[0,f.width/2]]);g.beginPath();g.arc(550,370,f.circle_radius*s,0,Math.PI*2);g.stroke();for(let sign of [-1,1]){let x=sign*f.length/2;rect(x,-f.goal_width/2,sign*.5,f.goal_width);rect(x,-f.penalty_area_width/2,-sign*f.penalty_area_length,f.penalty_area_width);rect(x,-f.goal_area_width/2,-sign*f.goal_area_length,f.goal_area_width)}
@@ -49,6 +49,7 @@ if($('distances').checked){
 for(const p of d.players){const pose=w.teammates[p.id]?.pose;if(!pose||!p.target)continue;g.strokeStyle='#65ddbd';g.setLineDash([7,7]);path([[pose.x,pose.y],p.target]);g.setLineDash([]);let [x,y]=xy(...p.target);g.beginPath();g.moveTo(x,y-8);g.lineTo(x+8,y);g.lineTo(x,y+8);g.lineTo(x-8,y);g.closePath();g.stroke();g.fillStyle='#c3f6e6';g.fillText(`${p.id} 目标`,x+12,y-10)}
 function robot(r,color,tag,letter){if(!r.pose)return;let p=r.pose,[x,y]=xy(p.x,p.y);g.fillStyle=color;g.beginPath();g.arc(x,y,13,0,Math.PI*2);g.fill();g.strokeStyle=color;g.lineWidth=3;path([[p.x,p.y],[p.x+.45*Math.cos(p.theta),p.y+.45*Math.sin(p.theta)]]);g.lineWidth=2;g.fillStyle='#fff';g.font='bold 16px system-ui';g.fillText(tag,x-5,y-22);if(letter){g.save();g.fillStyle='#0b2422';g.font='bold 17px system-ui';g.textAlign='center';g.textBaseline='middle';g.fillText(letter,x,y+1);g.restore()}}
 Object.values(w.opponents).forEach(r=>robot(r,'#699fff',String(r.player_id)));Object.values(w.teammates).forEach(r=>robot(r,'#62dfba',String(r.player_id),roleLetters[d.players.find(p=>String(p.id)===String(r.player_id))?.role]||'?'));
+drawThreat(d,xy);
 if(w.ball){g.fillStyle='#ffcf66';g.beginPath();g.arc(...xy(w.ball.x,w.ball.y),9,0,Math.PI*2);g.fill()}
 if($('kick-error-visible').checked){
   const boxes=[];
@@ -818,3 +819,39 @@ function drawBlockPoints(d,xy,scale){
   g.restore();
 }
 $('block-points').onchange=()=>{if(displayedPacket)draw(displayedPacket)};
+
+
+// Threat data belongs to the displayed frame, including historical replay.
+function threatRaceLabel(p){
+  if(typeof p?.can_beat!=='boolean'||!Number.isFinite(p.margin_s))return '抢先判断不确定';
+  if(p.margin_s===0)return '预计同时到球，不能抢先';
+  return `${p.can_beat?'预计可抢先':'预计无法抢先'} · ${p.margin_s>0?'领先':'落后'} ${Math.abs(p.margin_s).toFixed(2)} s`;
+}
+function threatLabel(t){
+  if(!t)return '威胁者：本帧未记录（旧数据或 Agent 尚未更新）';
+  if(t.threat_id==null)return '威胁者：无法确定 · 缺少有效敌方截球预测';
+  const estimate=t.threat_intercept;
+  const time=Number.isFinite(estimate?.score_s)?` · ${estimate.score_s.toFixed(2)} s${estimate.status==='fallback'?'（窗口外排序估计）':''}`:'';
+  const race=t.can_beat===true?`我方 ${t.first_player_id} 号预计可抢先`:t.can_beat===false?'我方预计无法抢先':'我方能否抢先：不确定';
+  return `敌方威胁者：${t.threat_id} 号${time} · ${race}${t.status==='partial'?' · 敌方观测不完整':''}`;
+}
+function renderThreat(d){
+  $('threat-note').textContent=threatLabel(d.threat);
+  const box=$('threat-details');box.replaceChildren();
+  for(const p of d.threat?.teammates||[])line(box,`我方 ${p.id} 号：${threatRaceLabel(p)}`);
+}
+function drawThreat(d,xy){
+  const t=d.threat;
+  if(t?.threat_id==null)return;
+  const pose=d.context.opponents?.[t.threat_id]?.pose;
+  if(!pose||!Number.isFinite(pose.x)||!Number.isFinite(pose.y))return;
+  const [x,y]=xy(pose.x,pose.y);
+  g.save();g.strokeStyle='#ff7185';g.lineWidth=3;g.setLineDash([]);
+  g.beginPath();g.arc(x,y,22,0,Math.PI*2);g.stroke();
+  const label=`威胁者 · 敌 ${t.threat_id}${t.status==='partial'?'（暂定）':''}`;
+  g.font='bold 15px system-ui';g.textAlign='left';g.textBaseline='middle';
+  const width=g.measureText(label).width+14;
+  const lx=Math.max(6,Math.min(c.width-width-6,x+28)),ly=Math.max(16,Math.min(c.height-16,y+16));
+  g.fillStyle='#311a28';g.fillRect(lx,ly-13,width,26);g.fillStyle='#ff99a7';g.fillText(label,lx+7,ly);
+  g.restore();
+}
