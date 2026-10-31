@@ -836,7 +836,8 @@ function threatLabel(t){
   return `敌方威胁者：${t.threat_id} 号${time} · ${race}${t.status==='partial'?' · 敌方观测不完整':''}`;
 }
 function renderThreat(d){
-  $('threat-note').textContent=threatLabel(d.threat);
+  const basis=d.threat?.approach_basis;
+  $('threat-note').textContent=threatLabel(d.threat)+(basis==='trajectory_line'?' · 按球运动直线分侧':basis==='goal_direction_fallback'?' · 按球门方向分侧（运动直线退化）':'');
   const box=$('threat-details');box.replaceChildren();
   for(const p of d.threat?.teammates||[])line(box,`我方 ${p.id} 号：${threatRaceLabel(p)}`);
 }

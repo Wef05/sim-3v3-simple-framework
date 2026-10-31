@@ -14,13 +14,21 @@ def intercept_score(estimate) -> float:
     return score if score is not None and math.isfinite(score) else math.inf
 
 def estimate_ball_intercept(pose, motion, *, fallen=False, penalized=False,
-                            linear_speed=MAX_LINEAR, angular_speed=MAX_ANGULAR) -> dict:
+                            linear_speed=MAX_LINEAR, angular_speed=MAX_ANGULAR,
+                            approach_normal=None) -> dict:
     """接球机会评分（秒，越小越好），用于 attacker / freeman 分配。
 
     在短期球轨迹上寻找最早可达点。机器人按最大步速估算，远距离加入
     转向时间；不模拟对手、避障和机器人加速度。窗口内无可达点时，以
     窗口末尾的球位估算剩余追赶时间作为排序后备值，不代表实际截球成功。
     """
+    # 可选单位法向量：只允许进入 dot(robot-ball, normal) >= 0 的控球半圆。
+    # 不传时维持角色分配原有的完整控球圆；边界属于双方。
+    if approach_normal is not None:
+        length = math.hypot(*approach_normal)
+        if not math.isfinite(length) or length <= 0:
+            raise ValueError('approach_normal must be finite and nonzero')
+        approach_normal = tuple(v / length for v in approach_normal)
     position = motion.predict_ball_position(0.0)
     result = dict(status='unavailable', score_s=None, intercept_time_s=None)
     if pose is None or position is None or fallen or penalized:
@@ -31,15 +39,28 @@ def estimate_ball_intercept(pose, motion, *, fallen=False, penalized=False,
         return result
 
     def travel_details(target: tuple[float, float]) -> dict:
+        ball_position = target
+        if approach_normal is not None:
+            # 到闭半圆盘的最近点：先投影到半平面，再限制到控球半径。
+            nx, ny = approach_normal
+            rx, ry = pose.x - target[0], pose.y - target[1]
+            side = rx * nx + ry * ny
+            if side < 0:
+                rx, ry = rx - side * nx, ry - side * ny
+            radius = math.hypot(rx, ry)
+            if radius > BALL_CONTROL_RADIUS_M:
+                rx, ry = rx * BALL_CONTROL_RADIUS_M / radius, ry * BALL_CONTROL_RADIUS_M / radius
+            target = (target[0] + rx, target[1] + ry)
         dx, dy = target[0] - pose.x, target[1] - pose.y
         distance = math.hypot(dx, dy)
         angle = abs(normalize_angle(math.atan2(dy, dx) - pose.theta))
         turn_time = 0.0
         if distance > OMNI_DIST:
             turn_time = max(0.0, angle - TURN_THRESHOLD) / angular_speed
-        move_distance = max(0.0, distance - BALL_CONTROL_RADIUS_M)
+        move_distance = distance if approach_normal is not None else max(0.0, distance - BALL_CONTROL_RADIUS_M)
         move_time = move_distance / linear_speed
-        return dict(target=target, distance_m=distance, turn_angle_rad=angle,
+        return dict(target=target, ball_position=ball_position,
+                    approach_normal=approach_normal, distance_m=distance, turn_angle_rad=angle,
                     turn_time_s=turn_time, move_distance_m=move_distance,
                     move_time_s=move_time, arrival_time_s=turn_time + move_time)
 
