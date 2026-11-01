@@ -226,3 +226,24 @@ def choose_route(scoring: dict, receiver_ids: tuple) -> dict | None:
                           plan=best.get('pass_plan'), receive_time_s=best.get('receive_time_s'),
                           advantage=advantage)
     return choice if choice['probability'] > 0 else None
+
+
+def fallback_shot(scoring: dict, field, origins: tuple) -> dict | None:
+    """无正分路线时仍射门；保留未知概率，并按当前球位检查球门结构。"""
+    from .kick_lane import check_kick_lane
+
+    shots = list(scoring['direct'].get('shots', ()))
+    center = (field.length/2, 0.0)
+    if not any(tuple(shot['target']) == center for shot in shots):
+        shots.append(dict(target=center, probability=None))
+    safe = [shot for shot in shots if not any(
+        check_kick_lane(field, origin, shot['target'])['blocked'] for origin in origins)]
+    if not safe:
+        return None
+    # 已知的调整后分数（即使为零）优先；全部未知时按距中心远近排序。
+    best = max(safe, key=lambda shot: (shot.get('probability') is not None,
+        shot.get('probability') if shot.get('probability') is not None else -1.0,
+        -abs(shot['target'][1])))
+    return dict(kind='shot', target=best['target'], probability=best.get('probability'),
+                plan=best.get('plan'), advantage=0.0, shot_fallback=True,
+                reason='no_suitable_route')

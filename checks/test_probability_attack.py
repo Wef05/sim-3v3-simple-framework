@@ -13,7 +13,7 @@ from src.intents import KickIntent, KickTarget, MoveIntent, Role, RoleTask, Stop
 from src.player import Player, decide
 from src.utils.ball_motion import BallMotion
 from src.utils.scoring_probability import (best_shot, choose_route, kick_preparation,
-                                           evaluate_scoring)
+                                           evaluate_scoring, fallback_shot)
 from src.utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from src.utils.interception_risk import estimate_interception_risk
 from src.utils.pass_reception import coordinate_reception
@@ -115,13 +115,64 @@ class ProbabilityAttackTests(unittest.TestCase):
             self.assertEqual(intent.target.point, target)
             self.assertTrue(p.attack_choice['enabled'])
 
-    def test_unknown_stops_and_explicit_kickoff_keeps_semantics(self):
+    def test_unknown_shoots_and_explicit_kickoff_keeps_semantics(self):
         p = self.player()
         with patch('src.player.evaluate_scoring', return_value=scoring(direct=None)):
-            self.assertIsInstance(p.attack(), StopIntent)
+            fallback = p.attack()
+            self.assertIsInstance(fallback, KickIntent)
+            self.assertEqual(fallback.target.point, (7, 0))
+            self.assertEqual(fallback.style, 'shot')
+            self.assertIsNone(p.attack_choice['selected']['probability'])
             intent = p.attack(3)
         self.assertEqual(intent.target, KickTarget.teammate(3))
         self.assertEqual(intent.style, 'pass')
+
+    def test_zero_score_still_shoots_best_known_point(self):
+        p = self.player()
+        scores = scoring(direct=0, passing=0)
+        scores['direct']['shots'] = [dict(target=(7, y), probability=value)
+            for y, value in ((-1, None), (0, None), (.4, 0))]
+        with patch('src.player.evaluate_scoring', return_value=scores):
+            intent = p.attack()
+        self.assertEqual(intent.target.point, (7, .4))
+        self.assertEqual(intent.style, 'shot')
+        self.assertEqual(p.action, 'attack:shot_fallback')
+
+    def test_unknown_fallback_prefers_center_and_checks_both_origins(self):
+        scores = scoring(direct=None)
+        scores['direct']['shots'] = [dict(target=(7, y), probability=None) for y in (-.7, 0, .7)]
+        self.assertEqual(fallback_shot(scores, context().field, ((1, 0),))['target'], (7, 0))
+        with patch('src.utils.kick_lane.check_kick_lane',
+                   side_effect=lambda field, origin, target: dict(blocked=origin == (1, 1) and target[1] == 0)):
+            choice = fallback_shot(scores, context().field, ((1, 0), (1, 1)))
+        self.assertEqual(choice['target'], (7, -.7))
+
+    def test_fully_blocked_shot_still_stops(self):
+        p = self.player()
+        with patch('src.player.evaluate_scoring', return_value=scoring(direct=None)), \
+             patch('src.utils.kick_lane.check_kick_lane', return_value=dict(blocked=True)):
+            self.assertIsInstance(p.attack(), StopIntent)
+        self.assertEqual(p.action, 'attack:no_safe_shot')
+
+    def test_far_unknown_route_keeps_chasing_for_shot(self):
+        p = self.player()
+        p.context = replace(p.context, ball=BallState(4, 0, 10))
+        p.motion.update(p.context)
+        p.ball_intercept = dict(status='intercept', target=(4, 0), intercept_time_s=1)
+        with patch('src.player.evaluate_scoring', return_value=scoring(direct=None)):
+            intent = p.attack()
+        self.assertIsInstance(intent, MoveIntent)
+        self.assertEqual(p.action, 'attack:shot_fallback')
+        self.assertEqual(p.attack_choice['selected']['kind'], 'shot')
+
+    def test_current_blocked_pass_uses_shot_fallback(self):
+        p = self.player()
+        with patch('src.player.evaluate_scoring', return_value=scoring()), \
+             patch('src.player.check_kick_lane',
+                   side_effect=lambda field, origin, target: dict(blocked=target == (3, 2))):
+            intent = p.attack()
+        self.assertEqual(intent.style, 'shot')
+        self.assertEqual(intent.target.point, (7, 0))
 
     def test_changed_receiver_set_invalidates_cache(self):
         p = self.player()

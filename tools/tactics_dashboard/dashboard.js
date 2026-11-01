@@ -813,11 +813,12 @@ function renderAttackChoice(d){
   if(!a){line(box,'本帧未记录选择依据。');return}
   if(!a.enabled){line(box,'使用指定目标或特殊阶段策略，本帧未自动比较选点。');return}
   const name=o=>o.fallback?`保球传给 ${o.player_id} 号 ${pointText(o.target)}`:o.kind==='pass'?`传队友 ${o.player_id} 号，再射 ${pointText(o.shot_target)}`:`直接射门 ${pointText(o.target)}`;
-  const pct=p=>(100*p).toFixed(1)+'%';
+  const pct=p=>p==null?'未知':(100*p).toFixed(1)+'%';
   if(a.restart_policy)line(box,`重启类型：${a.restart_policy.restart} · ${a.restart_policy.allow_shot?'允许比较射门':'需先传球'} · ${a.restart_policy.allow_pass?'允许传球':'仅考虑射门'}`);
-  if(!a.selected){line(box,'暂无已知且进球概率大于 0 的可用方案：近球时停止出脚，远球时继续追球。');}
+  if(!a.selected){line(box,'没有通过门柱/球网检查的射门点：近球停止，远球继续追球。');}
   if(a.selected){
   line(box,`选择：${name(a.selected)} · ${a.selected.fallback?'估计传球成功':'估计进球'} ${pct(a.selected.probability)} · 实际出球目标 ${pointText(a.selected.target)}`);
+  if(a.selected.shot_fallback)line(box,'射门保底：无合适出球路线，优先已知最高评分；全部未知时优先中心。未知仍显示未知，不代表零风险。');
   if(a.selected.fallback)line(box,'依据：没有可用进球路线，选择模型估计传球成功率至少 80% 的横传/回传；优先成功率，相同时选较短球路。此数值不是进球概率。');
   if(a.selected.kind==='pass'&&!a.selected.fallback)line(box,`依据：传球未被截 ${pct(a.selected.pass_probability)} × 第二脚射门未被截 ${pct(a.selected.shot_probability)}`);
   if(a.runner_up)line(box,`次选：${name(a.runner_up)} · ${pct(a.runner_up.probability)}；优势 ${(100*a.margin).toFixed(1)} 个百分点。`);

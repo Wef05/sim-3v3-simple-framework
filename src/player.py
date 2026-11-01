@@ -10,7 +10,7 @@ from dataclasses import replace
 from .utils.interception_risk import estimate_interception_risk
 from .utils.kick_lane import check_kick_lane
 from .utils.blocked_attack import blocked_attack_target
-from .utils.scoring_probability import evaluate_scoring, choose_route
+from .utils.scoring_probability import evaluate_scoring, choose_route, fallback_shot
 from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
@@ -223,6 +223,13 @@ class Player:
         automatic = kick_target == 0 and get_phase(self.context) == Phase.NORMAL
         self.scoring_probability = dict(self._scoring_cache, decision_enabled=automatic)
         choice = choose_route(self.scoring_probability, receiver_ids) if automatic else None
+        origins = ((ball.x, ball.y), current_ball)
+        if automatic:
+            if choice is not None and any(check_kick_lane(self.context.field, origin, choice['target'])['blocked']
+                                          for origin in origins):
+                choice = None
+            if choice is None:
+                choice = fallback_shot(self.scoring_probability, self.context.field, origins)
         if choice is not None:
             aim = KickTarget.position(choice['target'])
             choice = dict(choice, id='selected_route')
@@ -230,12 +237,12 @@ class Player:
                 row = next(r for r in self.scoring_probability['via_freeman']
                            if r['player_id'] == choice['player_id'])
                 choice.update(pass_probability=row['pass_probability'], shot_probability=row['shot_probability'])
-            self.action = 'attack:' + choice['kind']
+            self.action = 'attack:shot_fallback' if choice.get('shot_fallback') else 'attack:' + choice['kind']
         self.attack_choice = dict(enabled=automatic, evaluated_at=cached['evaluated_at'],
                                   selected=choice, options=[choice] if choice else [],
                                   runner_up=None, margin=choice['advantage'] if choice else None)
         if automatic and choice is None:
-            self.action = 'attack:no_known_route'
+            self.action = 'attack:no_safe_shot'
             if math.dist((self.pose.x, self.pose.y), current_ball) <= KICK_ENTER_M:
                 return StopIntent()
             return MoveIntent(behind_ball(*current_ball, opponent_goal(self.context), CHASE_BEHIND_M))
