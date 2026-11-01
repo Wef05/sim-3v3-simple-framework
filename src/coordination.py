@@ -79,6 +79,9 @@ class TeamPassing:
     selection: receive_pose.Selection | None = None
     kickoff_anchor: Point | None = None
     anchor_phase: tuple | None = None
+    preparation: receive_pose.ReceivePose | None = None
+    preparation_since: float | None = None
+    preparation_expired: bool = False
 
 
 def _state(store):
@@ -168,6 +171,8 @@ def validate_plan(ctx: Any, players: list, store: Any) -> None:
     phase = _phase_key(ctx)
     if state.anchor_phase != phase:
         state.kickoff_anchor = None
+        state.preparation, state.preparation_since = None, None
+        state.preparation_expired = False
         state.anchor_phase = phase
     for pid, protection in list(state.exit_protections.items()):
         if protection.phase_key[0] in ('our_kickoff', 'our_set_play') and phase[0] == 'normal' and phase[2] == protection.phase_key[2]:
@@ -257,13 +262,6 @@ def _lane_safe(ctx, passer, receiver, target):
         point = (robot.pose.x, robot.pose.y)
         if point_segment(point, origin, target) <= P.OPPONENT_RADIUS+P.PASS_LANE_MARGIN_M:
             return False
-        # 最慢假设球速做保守争抢筛选；不把力度映射成已知初速。
-        for i in range(1, 9):
-            part = i/8
-            contact = tuple(origin[j]+part*(target[j]-origin[j]) for j in (0, 1))
-            enemy = max(0, math.dist(point, contact)-P.BALL_CONTROL_RADIUS_M)/P.MAX_LINEAR
-            if enemy <= part*distance/P.PASS_ASSUMED_SPEED_MIN_MPS+P.PASS_RACE_MARGIN_S:
-                return False
     return True
 
 
@@ -303,10 +301,40 @@ def _choose_pose(ctx, passer, receiver, preferred, state):
     if kickoff and state.kickoff_anchor is None:
         state.kickoff_anchor = _xy(receiver)
     anchor = state.kickoff_anchor if kickoff else _xy(receiver)
+    if kickoff and state.preparation_expired:
+        return None
+    if kickoff and state.preparation is not None:
+        old = state.preparation
+        if ctx.now-state.preparation_since > P.PASS_PREPARE_TIMEOUT_S:
+            state.preparation, state.preparation_expired = None, True
+            if state.selection:state.selection.reason='preparation_timeout'
+            return None
+        if _lane_safe(ctx,passer.id,receiver.id,old.contact):
+            args=(ctx,passer,receiver,old.contact,old.attack_target,anchor,True,_prepare_route,ctx.now)
+            current,reason=receive_pose.evaluate(*args,waiting_override=old.waiting,heading_override=old.receive_heading)
+            if current is not None:
+                state.preparation=None
+                if state.selection:
+                    state.selection.selected=current
+                    state.selection.preparation=None
+                    state.selection.reason='preposition_ready'
+                return current
+            preview,_=receive_pose.evaluate(*args,waiting_override=old.waiting,
+                heading_override=old.receive_heading,preview=True)
+            if preview is not None:
+                state.preparation=preview
+                if state.selection:
+                    state.selection.preparation=preview
+                    state.selection.reason='preposition_wait:'+reason
+                return None
+        state.preparation=None
     free = nearest_free_position(ctx, receiver.pose, P.FREEMAN_BALL_RADIUS_M,
                                  P.FREEMAN_OPPONENT_RADIUS_M, P.FREEMAN_GOAL_LINE_MARGIN_M)
     state.selection = receive_pose.choose(ctx, passer, receiver, preferred, anchor,
                                          kickoff, _lane_safe, _prepare_route, free)
+    if state.selection.selected is None and kickoff and state.selection.preparation is not None:
+        state.preparation=state.selection.preparation
+        if state.preparation_since is None:state.preparation_since=ctx.now
     return state.selection.selected
 
 
@@ -421,6 +449,24 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
             break
     plan = state.active
     if plan is None:
+        if not emergency and _phase_key(ctx)[0]=='our_kickoff' and _fresh(ctx):
+            # 准备接应不是传球承诺：双方先到位，每次都需重新通过完整安全预算才允许踢球。
+            preview=state.preparation
+            if preview is not None and all(_available(own.get(pid)) for pid in (1,3)):
+                route=_prepare_route(ctx,own[1],preview.contact)
+                if route and _lane_safe(ctx,1,3,preview.contact):
+                    final[1]=MoveIntent(route[1],face=route[2],avoid_ball=True,avoid_robots=True,
+                        maintain_face=True,arrive_dist=.06,motion_priority=80)
+                    final[3]=MoveIntent(preview.waiting,face=preview.receive_heading,
+                        avoid_ball=True,avoid_robots=True,maintain_face=True,arrive_dist=.08,motion_priority=85)
+                    own[1].action='attack:pass_preposition'
+                    own[3].action='freeman:receive_preposition'
+                    return final
+            # 无候选时保留开局接应锚点，不让自由人策略悄悄把 3 号拉向中线。
+            if state.kickoff_anchor is not None and _available(own.get(3)):
+                final[3]=MoveIntent(state.kickoff_anchor,face=angle_to(*_xy(own[3]),*_ball(ctx)),
+                    avoid_ball=True,avoid_robots=True,maintain_face=True,motion_priority=85)
+                own[3].action='freeman:receive_no_safe_candidate'
         support = state.support
         if support and not emergency:
             passer, receiver = own[support.passer], own[support.receiver]
@@ -489,8 +535,10 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
             # 只复核冻结姿态的剩余耗时；不能借复核悄悄换接应侧。
             current, reason = receive_pose.evaluate(ctx, passer, receiver, plan.target,
                 old.attack_target, state.selection.anchor if state.selection else old.contact,
-                False, _prepare_route, ctx.now, waiting_override=old.waiting)
+                _phase_key(ctx)[0]=='our_kickoff', _prepare_route, ctx.now,
+                waiting_override=old.waiting,heading_override=old.receive_heading)
             safe = current is not None and math.dist(current.waiting, old.waiting) < .05
+            if safe:plan.pose_plan=current
             plan.pose_checked_at = ctx.now
             if not safe and state.selection:
                 state.selection.reason = 'active_pose_invalid:' + reason
@@ -515,7 +563,7 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
             return final
         stage, waypoint, direction = route
         waiting = plan.pose_plan.waiting if plan.pose_plan else plan.target
-        receiver_angle = angle_to(*waiting, *ball)
+        receiver_angle = plan.pose_plan.receive_heading if plan.pose_plan else angle_to(*waiting, *ball)
         plan.receiver_ready = (math.dist(_xy(receiver), waiting) <= P.PASS_READY_DISTANCE_M
             and abs(normalize_angle(receiver_angle-receiver.pose.theta)) <= P.PASS_READY_ANGLE_RAD)
         plan.passer_ready = (math.dist(_xy(passer), stage) <= P.GUARD_STAGE_TOLERANCE_M

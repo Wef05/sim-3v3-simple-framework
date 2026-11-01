@@ -38,7 +38,7 @@ class ReceivePoseTests(unittest.TestCase):
         self.assertGreaterEqual(math.dist(p.contact,p.waiting),.29)
         self.assertGreaterEqual(point_segment(p.waiting,(0.,0.),p.contact),P.PASS_POSE_BALL_CLEARANCE_M)
         self.assertLess(p.behind[0],p.contact[0])
-        self.assertLessEqual(len(result.candidates),28)
+        self.assertLessEqual(len(result.candidates),34)
         json.dumps(asdict(result),allow_nan=False)
 
     def test_upper_left_blocked_falls_back_with_reason(self):

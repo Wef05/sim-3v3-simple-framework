@@ -9,7 +9,8 @@ import math
 from ..param import (NAV_BODY_RADIUS_M, NAV_SAFETY_MARGIN_M, NAV_OPPONENT_EXTRA_M,
     NAV_HORIZON_S, NAV_REACTION_S, NAV_BRAKE_S, NAV_PREDICTION_STEP_S,
     NAV_TRACK_MAX_AGE_S, NAV_TRACK_MAX_SPEED_MPS, NAV_YIELD_MARGIN_M,
-    TEAMMATE_RADIUS, OPPONENT_RADIUS, BALL_OBSTACLE_RADIUS)
+    TEAMMATE_RADIUS, OPPONENT_RADIUS, BALL_OBSTACLE_RADIUS,
+    NAV_REENTRY_NOISE_M, NAV_REENTRY_DRIFT_CAP_M)
 from .obstacles import Obstacle, goal_obstacles
 from .ball_motion import BallMotion
 from .path_planner import _bounds
@@ -135,13 +136,29 @@ class NavigationFrame:
         start = pose.x, pose.y
         trajectory = self.trajectory(start, self.tracker.velocity('team', pid), command)
         xmin, xmax, ymin, ymax = _bounds(self.context)
-        previous = start
-        for _, point in trajectory[1:]:
-            # Outside robots may return, but not move farther out.
-            for value, old, lo, hi in zip(point, previous, (xmin, ymin), (xmax, ymax)):
-                if value < min(lo, old)-1e-8 or value > max(hi, old)+1e-8:
+        for axis, (value, lo, hi) in enumerate(zip(start, (xmin, ymin), (xmax, ymax))):
+            outside = value < lo or value > hi
+            if not outside:
+                if any(not lo-1e-8 <= point[axis] <= hi+1e-8 for _, point in trajectory[1:]):
                     return 'field_boundary'
-            previous = point
+                continue
+            sign = -1. if value < lo else 1.
+            # 场外初始反应段与新命令无关，不能用它拒绝所有向内指令。
+            # 预算相对本次起点计算，不能逐个采样累计放宽。
+            outward = max(0., sign*self.tracker.velocity('team', pid)[axis])
+            allowance = min(NAV_REENTRY_DRIFT_CAP_M,
+                            NAV_REENTRY_NOISE_M+outward*(NAV_REACTION_S+NAV_BRAKE_S/2))
+            if sign*command[axis] > 1e-8:
+                return 'field_boundary'
+            previous = value
+            for t, point in trajectory[1:]:
+                if sign*(point[axis]-value) > allowance:
+                    return 'field_boundary'
+                if t > NAV_REACTION_S+NAV_BRAKE_S and sign*(point[axis]-previous) > NAV_REENTRY_NOISE_M:
+                    return 'field_boundary'
+                previous = point[axis]
+            if math.hypot(*command[:2]) > 1e-6 and sign*(trajectory[-1][1][axis]-value) >= -1e-4:
+                return 'field_boundary'
         xs, ys = zip(*(point for _, point in trajectory))
         left, right, bottom, top = min(xs), max(xs), min(ys), max(ys)
         for o in self.static:

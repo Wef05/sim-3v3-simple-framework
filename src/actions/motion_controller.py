@@ -5,15 +5,18 @@ from .executor import Executor
 from ..intents import MoveIntent
 from ..param import (ARRIVE_DIST, OMNI_DIST, TURN_THRESHOLD, MAX_LINEAR, MAX_ANGULAR,
     LINEAR_GAIN, ANGULAR_GAIN, USE_GLOBAL_PATH_PLANNER, GLOBAL_PATH_LOOKAHEAD_M,
-    NAV_SIDE_HOLD_S, NAV_ROUTE_SWITCH_S, NAV_TARGET_RESET_M, NAV_SAFETY_MARGIN_M)
+    NAV_SIDE_HOLD_S, NAV_ROUTE_SWITCH_S, NAV_TARGET_RESET_M, NAV_SAFETY_MARGIN_M,
+    NAV_REENTRY_INSET_M, NAV_REENTRY_SPEED_MPS)
 from ..utils.geom import clamp, normalize_angle
 from ..utils.navigation import MotionTracker, NavigationFrame
-from ..utils.path_planner import plan_global_path, segment_clear, clamp_target, path_time, segment_time
+from ..utils.path_planner import plan_global_path, segment_clear, clamp_target, path_time, segment_time, _bounds
+from ..framework.types import GameState
 
 
 class MotionController(Executor):
     def reset_navigation(self) -> None:
         """Discard route/direction memory when the movement task is interrupted."""
+        self._nav_reentry = False
         self._nav_path = None
         self._nav_key = None
         self._nav_heading = None
@@ -114,19 +117,34 @@ class MotionController(Executor):
             self.reset_navigation()
             info.update(state='blocked_direct', blocker='field_boundary')
             return (0., 0., 0.), False
+        game = self.context.game
+        if game is not None and (game.stopped or game.state != GameState.READY and game.state != GameState.PLAYING):
+            self.reset_navigation()
+            info['state'] = 'phase_stopped'
+            return (0., 0., 0.), False
+        xmin, xmax, ymin, ymax = _bounds(self.context)
+        inner = (xmin+NAV_REENTRY_INSET_M, xmax-NAV_REENTRY_INSET_M,
+                 ymin+NAV_REENTRY_INSET_M, ymax-NAV_REENTRY_INSET_M)
+        outside = not (xmin <= pose.x <= xmax and ymin <= pose.y <= ymax)
+        reentry = outside or (getattr(self, '_nav_reentry', False) and not
+            (inner[0] <= pose.x <= inner[1] and inner[2] <= pose.y <= inner[3]))
+        if reentry:
+            target = (clamp(pose.x, inner[0], inner[1]), clamp(pose.y, inner[2], inner[3]))
+            info.update(returning=True, entry_target=list(target),
+                        outside_distance=math.dist((pose.x, pose.y), clamp_target(self.context, (pose.x, pose.y))))
         distance = math.hypot(target[0]-pose.x, target[1]-pose.y)
-        if distance < intent.arrive_dist:
+        if distance < (.03 if reentry else intent.arrive_dist):
             self.reset_navigation()
             yaw = self._angular(normalize_angle(intent.face-pose.theta)) if intent.face is not None else 0.
-            yaw = clamp(yaw, -yaw_limit, yaw_limit)
+            yaw = 0. if reentry else clamp(yaw, -yaw_limit, yaw_limit)
             info['state'] = 'arrived'
             return (0., 0., yaw if abs(yaw) > .2 else 0.), True
 
         now = self.context.now
-        omni = distance <= OMNI_DIST or intent.maintain_face
+        omni = reentry or distance <= OMNI_DIST or intent.maintain_face
         game = self.context.game
         phase = None if game is None else (game.state, game.set_play, game.game_phase, game.first_half, game.kicking_team, game.stopped)
-        key = (phase, omni, intent.direct_path, intent.avoid_ball, intent.opponent_mode, intent.ball_keepout, intent.motion_priority)
+        key = (phase, omni, reentry, intent.direct_path, intent.avoid_ball, intent.opponent_mode, intent.ball_keepout, intent.motion_priority)
         last = getattr(self, '_nav_last_time', now)
         anchor = getattr(self, '_nav_target', target)
         face_anchor = getattr(self, '_nav_face', intent.face)
@@ -138,6 +156,7 @@ class MotionController(Executor):
             self.reset_navigation()
             self._nav_target, self._nav_face = target, intent.face
         self._nav_key, self._nav_last_time = key, now
+        self._nav_reentry = reentry
         start = pose.x, pose.y
         obstacles = frame.route_obstacles(self.id, intent)
         goal_heading = math.atan2(target[1]-pose.y, target[0]-pose.x)
@@ -168,6 +187,8 @@ class MotionController(Executor):
         # If A* fails, locally try only checked commands. No "least bad" unsafe fallback.
         max_speed = min(MAX_LINEAR, LINEAR_GAIN*distance,
                         MAX_LINEAR if intent.max_speed is None else intent.max_speed)
+        if reentry:
+            max_speed = min(max_speed, NAV_REENTRY_SPEED_MPS)
         side = getattr(self, '_nav_side', 1. if self.id % 2 == 0 else -1.)
         held = now < getattr(self, '_nav_side_until', 0.) and self._nav_heading is not None
         offsets = [0.] if intent.direct_path else [0.] + [sign*math.radians(deg)
@@ -182,7 +203,7 @@ class MotionController(Executor):
             error = normalize_angle(desired-pose.theta)
             yaw = (self._angular(normalize_angle(intent.face-pose.theta))
                    if omni and intent.face is not None else 0. if omni else self._angular(error))
-            yaw = clamp(yaw, -yaw_limit, yaw_limit)
+            yaw = 0. if reentry else clamp(yaw, -yaw_limit, yaw_limit)
             # Rotation itself has no translational command, but momentum is still checked.
             speeds = (0.,) if not omni and abs(error) > TURN_THRESHOLD else (1., .65, .35, .15)
             for scale in speeds:

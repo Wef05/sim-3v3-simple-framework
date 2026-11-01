@@ -55,10 +55,10 @@ def motion_metrics(ctx: Any, player: Any) -> tuple[float, float, float, float] |
     return distance, closing, own_approach, relative
 
 
-def hold(ctx: Any, player: Any) -> MoveIntent:
+def hold(ctx: Any, player: Any, face: float | None = None) -> MoveIntent:
     """保持当前位置并缓慢转向；不追加向球心的平移。"""
     return MoveIntent((player.pose.x, player.pose.y),
-        face=angle_to(player.pose.x, player.pose.y, ctx.ball.x, ctx.ball.y),
+        face=angle_to(player.pose.x, player.pose.y, ctx.ball.x, ctx.ball.y) if face is None else face,
         maintain_face=True, arrive_dist=.02, avoid_ball=False,
         motion_priority=90, opponent_mode='contest', max_speed=0.,
         max_yaw_rate=P.RECEIVE_MAX_YAW_RADPS)
@@ -67,6 +67,9 @@ def hold(ctx: Any, player: Any) -> MoveIntent:
 def receive(ctx: Any, player: Any, state: Reception, pose_plan: Any = None) -> tuple[MoveIntent, str | None]:
     """返回 (意图, outcome)：近身观测优先于远处预测，缓冲期限不因抖动重置。"""
     ball, pose = ctx.ball, player.pose
+    face = angle_to(pose.x,pose.y,ball.x,ball.y)
+    if pose_plan is not None and abs(normalize_angle(pose_plan.receive_heading-face)) <= math.pi/3:
+        face = pose_plan.receive_heading
     distance = math.hypot(ball.x-pose.x, ball.y-pose.y)
     metrics = motion_metrics(ctx, player)
     state.distance = distance
@@ -81,7 +84,7 @@ def receive(ctx: Any, player: Any, state: Reception, pose_plan: Any = None) -> t
         state.phase = 'buffer'
         state.speed_limit = 0.
         if distance > P.RECEIVE_BUFFER_EXIT_M:
-            return hold(ctx, player), 'ball_escaped'
+            return hold(ctx, player, face), 'ball_escaped'
         stable = (metrics is not None and distance <= P.BALL_CONTROL_RADIUS_M
                   and metrics[3] <= P.PASS_RECEIVE_RELATIVE_SPEED_MPS)
         if not stable:
@@ -92,9 +95,9 @@ def receive(ctx: Any, player: Any, state: Reception, pose_plan: Any = None) -> t
             state.phase = 'settling'
         if fresh and state.stable_since is not None and sample-state.stable_since >= P.PASS_RECEIVE_HOLD_S:
             state.reason = 'stable_observations'
-            return hold(ctx, player), 'received'
+            return hold(ctx, player, face), 'received'
         if ctx.now-state.buffer_since >= P.RECEIVE_BUFFER_TIMEOUT_S:
-            return hold(ctx, player), 'buffer_timeout'
+            return hold(ctx, player, face), 'buffer_timeout'
         state.reason = 'waiting_for_stability'
         # 缓冲边缘的球可能已停住：只有机器人与球都相对平稳才允许微量补位。
         # 否则 0.45 m 的缓冲入口会把机器人锁在 0.35 m 确认范围之外。
@@ -104,21 +107,21 @@ def receive(ctx: Any, player: Any, state: Reception, pose_plan: Any = None) -> t
             target = (pose.x+(ball.x-pose.x)*ratio, pose.y+(ball.y-pose.y)*ratio)
             state.speed_limit = P.RECEIVE_BUFFER_SPEED_MPS
             state.reason = 'slow_buffer_adjustment'
-            return MoveIntent(target, face=angle_to(pose.x, pose.y, ball.x, ball.y),
+            return MoveIntent(target, face=face,
                 maintain_face=True, arrive_dist=.03, avoid_ball=False, motion_priority=90,
                 opponent_mode='contest', max_speed=state.speed_limit,
                 max_yaw_rate=P.RECEIVE_MAX_YAW_RADPS), None
-        return hold(ctx, player), None
+        return hold(ctx, player, face), None
     intercept = player.ball_intercept or {}
     contact = intercept.get('target')
     if (contact is None or not all(math.isfinite(v) for v in contact)
             or abs(contact[0]) > ctx.field.length/2-P.NAV_BODY_RADIUS_M
             or abs(contact[1]) > ctx.field.width/2-P.NAV_BODY_RADIUS_M):
-        return hold(ctx, player), 'no_receivable_contact'
+        return hold(ctx, player, face), 'no_receivable_contact'
     if metrics is None:
         state.speed_limit = 0.
         state.reason = 'velocity_unknown'
-        return hold(ctx, player), None
+        return hold(ctx, player, face), None
     # 用实际接近速度决定制动区；逆向来球会进一步降低允许的主动迎球速度。
     remaining = max(0., distance-P.RECEIVE_BUFFER_M)
     approach = max(metrics[1], metrics[2])
@@ -146,9 +149,9 @@ def receive(ctx: Any, player: Any, state: Reception, pose_plan: Any = None) -> t
                                   (ball.x, ball.y), pose.theta)
         if path is None:
             state.reason = 'planned_receive_route_blocked'
-            return hold(ctx, player), None
+            return hold(ctx, player, face), None
         target = path[1]
-    return MoveIntent(target, face=angle_to(pose.x, pose.y, ball.x, ball.y),
+    return MoveIntent(target, face=face,
         direct_path=pose_plan is not None,
         maintain_face=True, arrive_dist=.03, avoid_ball=False, avoid_robots=True,
         motion_priority=90, opponent_mode='contest', max_speed=state.speed_limit,

@@ -144,7 +144,13 @@ class Player:
                 (-.5, field.circle_radius + 2) if task.our_kickoff else
                 (-field.length / 2 + field.penalty_area_length, 0.0),
             ]
-            return MoveIntent(slots[task.slot], face=0.0, avoid_ball=True, avoid_robots=True)
+            face = 0.0
+            if task.our_kickoff:
+                if self.id == 1:
+                    face = math.atan2(slots[2][1], slots[2][0])
+                elif self.id == 3:
+                    face = math.atan2(-slots[2][1], -slots[2][0])
+            return MoveIntent(slots[task.slot], face=face, avoid_ball=True, avoid_robots=True)
         if task.role == Role.OPP_KICKOFF:
             r = self.context.field.circle_radius
             self.action = 'opp_kickoff:ready'
