@@ -108,7 +108,8 @@ def block_target(ctx, pid, pose, motion, shot):
         if covered and (arrival < 1e-8 or arrival+GUARD_REACTION_S <= t):
             if path_clear(ctx, pid, start, ideal):
                 reachable.append((math.dist(start, ideal), t, ideal))
-        # 可达范围内尽量靠近来球，不命令瞬间移动到不可达理想位置。
+        # 用预计可达位置评估漏球距离，但导航仍朝接触点尽力移动。
+        # 若把短时可达位置作为终点，反应预算耗尽时会退回原地并误停。
         budget = max(0.0, t-GUARD_REACTION_S)
         low, high = 0.0, 1.0
         for _ in range(16):
@@ -122,9 +123,9 @@ def block_target(ctx, pid, pose, motion, shot):
         fraction = low if budget > 0 else 0.0
         possible = (start[0]+(ideal[0]-start[0])*fraction,
                     start[1]+(ideal[1]-start[1])*fraction)
-        if bounded(possible, region) == possible and path_clear(ctx, pid, start, possible):
+        if bounded(possible, region) == possible and path_clear(ctx, pid, start, ideal):
             fallback.append((max(0, math.dist(possible, ball)-GUARD_BODY_RADIUS_M),
-                             math.dist(start, possible), possible))
+                             math.dist(start, ideal), ideal))
     if reachable:
         return min(reachable)[2], True
     return (min(fallback)[2] if fallback else start), False
@@ -192,58 +193,72 @@ def continuing_shot(ctx, motion, details, memory):
     return dict(time=seconds, crossing=(gx, y)), ContinuingShot(start, (vx, vy))
 
 
-def close_clearance(ctx, pid, pose, memory):
+def close_clearance(ctx, pid, pose, memory, diagnostics=None):
     """已在脚前的低速球直接出球：保留身体覆盖，不为标准脚位后退。
 
     此处是受压应急尝试，不要求稳赢争抢；以球在脚前、己方明显更近、
     出球走廊可用为门槛，仍不允许向己方门线、穿柱或穿机器人出球。
     """
+    diagnostics = diagnostics if diagnostics is not None else {}
+    def reject(reason):
+        diagnostics['close_clear_rejection'] = reason
+        return None
     ball = (ctx.ball.x, ctx.ball.y)
     gx = -ctx.field.length/2
     distance = math.dist((pose.x, pose.y), ball)
     if not (gx <= ball[0] <= bounds(ctx)[1] and abs(ball[1]) <= ctx.field.goal_area_width/2
             and .06 <= distance <= GUARD_CLOSE_CLEAR_RADIUS_M):
-        return None
+        return reject("range")
     bearing = angle_to(pose.x, pose.y, *ball)
     if abs(normalize_angle(bearing-pose.theta)) > GUARD_CLOSE_CLEAR_BEARING_RAD:
-        return None
+        return reject("bearing")
     enemy_distances = []
     for robot in ctx.opponents.values():
         if robot.pose is None:
-            return None
+            return reject("unknown_opponent")
         enemy_distance = math.dist((robot.pose.x, robot.pose.y), ball)
         if enemy_distance <= distance+GUARD_CLOSE_CLEAR_LEAD_M:
-            return None
+            return reject("contested")
         enemy_distances.append(enemy_distance)
     # 无压力且脚位正常时仍走组织出球，避免抢占安全传球分支。
     if (not memory.close_clear and distance >= CHASE_BEHIND_M-GUARD_STAGE_TOLERANCE_M
             and min(enemy_distances, default=math.inf) > GUARD_CLOSE_PRESSURE_M):
-        return None
+        return reject("normal_outlet")
     choices = []
-    if memory.close_clear and memory.plan is not None:
-        aims = [memory.plan[0]]
-    else:
-        aims = [(ball[0]+GUARD_CLOSE_CLEAR_LENGTH_M*math.cos(a),
-                 ball[1]+GUARD_CLOSE_CLEAR_LENGTH_M*math.sin(a)) for a in (0, -.55, .55, -1.1, 1.1)]
+    retained = memory.plan[0] if memory.close_clear and memory.plan is not None else None
+    aims = [(ball[0]+GUARD_CLOSE_CLEAR_LENGTH_M*math.cos(a),
+             ball[1]+GUARD_CLOSE_CLEAR_LENGTH_M*math.sin(a)) for a in (0, -.55, .55, -1.1, 1.1)]
+    # 优先沿用安全旧目标；旧通道失效时同帧重选，不释放踢球再等下一帧。
+    if retained is not None:
+        aims.insert(0, retained)
     for aim in aims:
         direction = angle_to(*ball, *aim)
         if (abs(normalize_angle(direction-pose.theta)) > GUARD_CLOSE_CLEAR_ANGLE_RAD
                 or abs(normalize_angle(direction-bearing)) > GUARD_CLOSE_CLEAR_BEARING_RAD
                 or aim[0] <= ball[0]+GUARD_PASS_MIN_FORWARD_M
                 or abs(aim[1]) >= ctx.field.width/2-BALL_OBSTACLE_RADIUS):
+            if aim == retained:
+                diagnostics["close_clear_old_target_reason"] = "direction"
             continue
         if check_kick_lane(ctx.field, ball, aim)['blocked']:
+            if aim == retained:
+                diagnostics["close_clear_old_target_reason"] = "goal_structure"
             continue
         robots = list(ctx.opponents.values())+[r for i,r in ctx.teammates.items() if i != pid]
         # 应急分支按实体半径加余量验球路，不沿用组织传球的宽通道门槛。
         if any(r.pose is None or point_segment((r.pose.x, r.pose.y), ball, aim)
                <= OPPONENT_RADIUS+BALL_OBSTACLE_RADIUS+.03 for r in robots):
+            if aim == retained:
+                diagnostics["close_clear_old_target_reason"] = "robot_lane"
             continue
         choices.append((abs(normalize_angle(direction-pose.theta))
                         + GUARD_OUTLET_RISK_WEIGHT_S*outlet_risk(ctx, ball, aim, GUARD_KICK_PREPARE_S), aim))
+        if aim == retained:
+            break
     if not choices:
-        return None
+        return reject("no_safe_direction")
     aim = min(choices)[1]
+    diagnostics["close_clear_target_status"] = "retained" if aim == retained else "reselected" if retained is not None else "selected"
     memory.plan, memory.close_clear = (aim, 'clear', None), True
     if memory.kick_since is None:
         memory.kick_since = ctx.now
@@ -501,7 +516,7 @@ def decide_guard(player, preferred=None):
     speed = math.hypot(*details.get('velocity', (0, 0))) if known else math.inf
     player.guard_decision['ball_speed_mps'] = speed if known else None
     if not restricted and known and speed <= GUARD_CLEAR_MAX_BALL_SPEED and ctx.now >= memory.retry_at:
-        close = close_clearance(ctx, player.id, pose, memory)
+        close = close_clearance(ctx, player.id, pose, memory, player.guard_decision)
         if close is not None:
             memory.target = None
             player.guard_decision['outlet_mode'] = 'close_emergency'

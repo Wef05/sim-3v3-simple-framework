@@ -30,3 +30,5 @@ assert.doesNotMatch(legacy,/敌方 2 号|0.45 s/);
 const malformed=renderGuard('guard:block:hold',{goal_time_s:NaN,goal_crossing:[null,Infinity],ray_goal_y:'bad'});
 assert.doesNotMatch(malformed,/NaN|Infinity|bad/);
 console.log('Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.');
+assert.match(renderGuard('guard:close_clear',{close_clear_target_status:'reselected',close_clear_old_target_reason:'robot_lane'}),/不重置超时/);
+assert.match(renderGuard('guard:set',{close_clear_rejection:'contested'}),/争抢|更近|距离/);

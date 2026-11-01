@@ -1,0 +1,35 @@
+{
+  "base": "403d39883512012cc356f4b733e0ebaf7bc407bc",
+  "branch": "codex/keeper-block-continuity",
+  "duration_seconds": 60.11399999857849,
+  "initial_score": [
+    0,
+    0
+  ],
+  "final_score": [
+    0,
+    0
+  ],
+  "finish_reason": "operator_finish",
+  "frames": 2785,
+  "bytes": 61628797,
+  "sha256": "ebb060ecab5f885dea8d2e9050cd2613725efca6ae67dcee8d604dbe1fe000a6",
+  "gzip_bytes": 4762209,
+  "first_id": 342172,
+  "last_id": 344956,
+  "sim_range": [
+    840.059999993,
+    926.129999991
+  ],
+  "max_sim_frame_gap_s": 0.3380000000000791,
+  "samples": 197,
+  "wall_sample_range": [
+    1793518662.7650251,
+    1793518842.994308
+  ],
+  "block_frames": 0,
+  "history_preserved": true,
+  "pre_start_frames_excluded": 6,
+  "random_seed": "uncontrolled",
+  "window_already_open_before_task": true
+}

@@ -44,6 +44,12 @@ function guardDecisionLines(p){
   else if(finite(d.ball_speed_mps))lines.push(`球速：${d.ball_speed_mps.toFixed(2)} m/s`);
   const waits={restricted:'对方重启限制主动触球',unknown_velocity:'球速未知',fast_ball:'球速超过主动处理阈值',retry_cooldown:'上次踢球请求超时，等待重试',no_safe_outlet:'未选出满足条件的出球方案'};
   if(waits[d.outlet_wait_reason])lines.push(`未出球：${waits[d.outlet_wait_reason]}`);
+  const rejects={range:'球不在近身处理范围',bearing:'球不在可踢朝向',unknown_opponent:'对手位置未知',contested:'对手更近或领先余量不足',normal_outlet:'交由常规出球评估',no_safe_direction:'没有安全解围方向'};
+  if(rejects[d.close_clear_rejection])lines.push(`近身解围未采用：${rejects[d.close_clear_rejection]}`);
+  const targetStates={selected:'已选择安全方向',retained:'沿用安全目标',reselected:'旧目标失效，本帧改用安全目标（不重置超时）'};
+  if(targetStates[d.close_clear_target_status])lines.push(`解围目标：${targetStates[d.close_clear_target_status]}`);
+  const targetReasons={direction:'朝向或场地条件不满足',goal_structure:'球门结构阻挡',robot_lane:'机器人挡住球路'};
+  if(targetReasons[d.close_clear_old_target_reason])lines.push(`旧目标失效：${targetReasons[d.close_clear_old_target_reason]}`);
   if(d.outlet_style)lines.push(`出球计划：${d.outlet_style==='pass'?'传球':'解围'}${finite(d.receiver_id)?` · 我方 ${d.receiver_id} 号`:''}`);
   if(['guard:close_clear','guard:pass','guard:clear_kick','guard:kick_hold'].includes(p.action))lines.push('这是出球请求；是否触球成功需观察后续球轨迹。');
   return lines;
@@ -903,9 +909,9 @@ function drawThreat(d,xy){
 }
 
 function navigationLabel(n){
-  const states={moving:'行走',turning:'转向',avoiding:'绕行',yielding:'让行',blocked:'受阻停车',blocked_direct:'直线受阻',team_conflict_stop:'队内冲突停车',kick_approach_blocked:'踢球接近受阻',arrived:'已到位',no_pose:'位置未知',invalid_geometry:'位置无效',stopped:'停止',yield:'让行等待',emergency_stop:'安全停车',team_safety_stop:'队内冲突停车',direct_blocked:'直线受阻',no_route:'暂无可行路线'};
+  const states={kick_yield:'取消踢球，为紧急封堵让行',moving:'行走',turning:'转向',avoiding:'绕行',yielding:'让行',blocked:'受阻停车',blocked_direct:'直线受阻',team_conflict_stop:'队内冲突停车',kick_approach_blocked:'踢球接近受阻',arrived:'已到位',no_pose:'位置未知',invalid_geometry:'位置无效',stopped:'停止',yield:'让行等待',emergency_stop:'安全停车',team_safety_stop:'队内冲突停车',direct_blocked:'直线受阻',no_route:'暂无可行路线'};
   const speed=Number.isFinite(n.speed)?n.speed.toFixed(2)+' m/s':Array.isArray(n.velocity)&&n.velocity.length===2&&n.velocity.every(Number.isFinite)?Math.hypot(...n.velocity).toFixed(2)+' m/s':'未知';
   const routes={new:'新路线',retained:'保留路线',faster:'耗时优势换路',unsafe:'旧路线受阻重规划',no_route:'暂无全局路线'};
   const eta=Number.isFinite(n.estimated_time_s)?` · 预计 ${n.estimated_time_s.toFixed(2)} s（模型估计）`:'';
-  return `导航：${states[n.state||n.reason]||'未知'} · 优先级 ${Number.isFinite(n.priority)?n.priority:'—'} · 指令 ${speed}${n.route_reason?' · '+(routes[n.route_reason]||'路线状态未知'):''}${eta}${n.direction_held?' · 保持绕行方向':''}`;
+  return `导航：${states[n.state||n.reason]||'未知'} · 优先级 ${Number.isFinite(n.priority)?n.priority:'—'} · 指令 ${speed}${n.route_reason?' · '+(routes[n.route_reason]||'路线状态未知'):''}${eta}${typeof n.blocker==='string'?' · 阻挡/让行对象 '+n.blocker:''}${Number.isFinite(n.blocker_priority)?'（优先级 '+n.blocker_priority+'）':''}${n.direction_held?' · 保持绕行方向':''}`;
 }

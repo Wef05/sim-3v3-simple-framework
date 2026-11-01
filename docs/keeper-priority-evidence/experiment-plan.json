@@ -1,0 +1,20 @@
+{
+  "task": "keeper priority and close clearance continuity",
+  "duration_referee_s": 60,
+  "end_mode": "operator_finish",
+  "attempt": 1,
+  "source_worktree": "/Users/limingzhe/.codex/worktrees/keeper-block-continuity/sim-3v3-simple-framework",
+  "branch": "codex/keeper-block-continuity",
+  "baseline": "cdf1f3f",
+  "history": "preserve",
+  "seed": null,
+  "validity": "Verify PLAYING entry, final state, same match identity, monotonically decreasing referee clock; do not count as full game.",
+  "metrics": [
+    "keeper blocking navigation states and blockers",
+    "kick_yield cancellation requests",
+    "close clearance target reselection and rejection reasons",
+    "goals and missed opportunities"
+  ],
+  "preflight": "Prior match finished 2:2; no other test scheduler found; Studio worktree verified; simulator window remained open from previous run >60s; both runners Active after deployment.",
+  "dashboard_documentation": "docs/tactics-dashboard.md absent; current server and skill local-runtime.md inspected."
+}

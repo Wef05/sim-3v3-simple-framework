@@ -1,0 +1,72 @@
+{
+  "baseline": [
+    {
+      "ball": [
+        -5,
+        0.8
+      ],
+      "action": "guard:block:best_effort",
+      "intent": "MoveIntent",
+      "target": [
+        -6.5021035830401095,
+        0.023560129083775177
+      ]
+    },
+    {
+      "ball": [
+        -6,
+        0.8
+      ],
+      "action": "guard:block:unreachable_hold",
+      "intent": "FaceIntent",
+      "target": null
+    },
+    {
+      "ball": [
+        -6.5,
+        0.8
+      ],
+      "action": "guard:block:unreachable_hold",
+      "intent": "FaceIntent",
+      "target": null
+    }
+  ],
+  "fixed": [
+    {
+      "ball": [
+        -5,
+        0.8
+      ],
+      "action": "guard:block:best_effort",
+      "intent": "MoveIntent",
+      "target": [
+        -6.553642186037594,
+        0.6007924590016692
+      ]
+    },
+    {
+      "ball": [
+        -6,
+        0.8
+      ],
+      "action": "guard:block:best_effort",
+      "intent": "MoveIntent",
+      "target": [
+        -6.446357816767399,
+        0.6007924589195
+      ]
+    },
+    {
+      "ball": [
+        -6.5,
+        0.8
+      ],
+      "action": "guard:block:best_effort",
+      "intent": "MoveIntent",
+      "target": [
+        -6.5,
+        0.6000000000000001
+      ]
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+[
+  {
+    "id": 342166,
+    "now": 839.941999993,
+    "remaining": 540,
+    "action": "stopped",
+    "target": null,
+    "decision": null,
+    "ball": {
+      "x": 7.045503138520675,
+      "y": 0.11115493362196134,
+      "last_seen_at": 839.935999993,
+      "confidence": 1.0,
+      "received_at": 4906.978669897
+    },
+    "pose": {
+      "x": -5.979757854185304,
+      "y": -0.08088016288366819,
+      "theta": 0.17745979360619848
+    }
+  },
+  {
+    "id": 342172,
+    "now": 840.059999993,
+    "remaining": 600,
+    "action": "ready",
+    "target": [
+      -6.0,
+      0.0
+    ],
+    "decision": null,
+    "ball": {
+      "x": 1.6883960329079174e-19,
+      "y": -2.05097734947829e-19,
+      "last_seen_at": 840.053999993,
+      "confidence": 1.0,
+      "received_at": 4907.215569355
+    },
+    "pose": {
+      "x": -5.979757854538508,
+      "y": -0.08088016286099915,
+      "theta": 0.17745979406565482
+    }
+  },
+  {
+    "id": 342518,
+    "now": 847.727999993,
+    "remaining": 600,
+    "action": "no_pose",
+    "target": null,
+    "decision": null,
+    "ball": null,
+    "pose": null
+  },
+  {
+    "id": 342519,
+    "now": 847.729999993,
+    "remaining": 600,
+    "action": "ready",
+    "target": [
+      -6.0,
+      0.0
+    ],
+    "decision": null,
+    "ball": {
+      "x": -5.949157390822821e-17,
+      "y": 6.877811275270385e-17,
+      "last_seen_at": 847.727999993,
+      "confidence": 1.0,
+      "received_at": 4932.074762575
+    },
+    "pose": {
+      "x": -5.977482493899678,
+      "y": -0.12575658668474618,
+      "theta": 0.09506931847314233
+    }
+  },
+  {
+    "id": 342970,
+    "now": 857.953999993,
+    "remaining": 600,
+    "action": "stopped",
+    "target": null,
+    "decision": null,
+    "ball": {
+      "x": -1.652015660357117e-16,
+      "y": 1.7701351934908385e-16,
+      "last_seen_at": 857.945999993,
+      "confidence": 1.0,
+      "received_at": 4954.247193626
+    },
+    "pose": {
+      "x": -5.967428122763077,
+      "y": -0.12122699464781579,
+      "theta": 0.09374485440717865
+    }
+  },
+  {
+    "id": 343169,
+    "now": 862.791999993,
+    "remaining": 600,
+    "action": "guard:set",
+    "target": [
+      -6.5,
+      0.0
+    ],
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 4.782014668496568e-18,
+      "outlet_wait_reason": "no_safe_outlet"
+    },
+    "ball": {
+      "x": -7.736039819715743e-17,
+      "y": 1.5838661238932162e-16,
+      "last_seen_at": 862.783999993,
+      "confidence": 1.0,
+      "received_at": 4962.806940297
+    },
+    "pose": {
+      "x": -5.973953329887756,
+      "y": -0.12059502087279363,
+      "theta": 0.15111643245419032
+    }
+  },
+  {
+    "id": 343354,
+    "now": 869.879999993,
+    "remaining": 593,
+    "action": "stopped",
+    "target": null,
+    "decision": null,
+    "ball": {
+      "x": -3.187840551948565,
+      "y": 4.634945568529192,
+      "last_seen_at": 869.875999993,
+      "confidence": 1.0,
+      "received_at": 4976.102094928
+    },
+    "pose": {
+      "x": -6.3436754589308775,
+      "y": 0.28766745378574565,
+      "theta": 0.8173416762951609
+    }
+  },
+  {
+    "id": 343472,
+    "now": 872.867999993,
+    "remaining": 593,
+    "action": "guard:set:restricted",
+    "target": [
+      -6.5,
+      0.7699707954251696
+    ],
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.0,
+      "outlet_wait_reason": "restricted"
+    },
+    "ball": {
+      "x": -3.187840551948565,
+      "y": 4.45,
+      "last_seen_at": 872.865999993,
+      "confidence": 1.0,
+      "received_at": 4981.469235472
+    },
+    "pose": {
+      "x": -6.202188997886806,
+      "y": 0.47345189127680043,
+      "theta": 0.9855666695214773
+    }
+  },
+  {
+    "id": 343890,
+    "now": 882.371999992,
+    "remaining": 584,
+    "action": "guard:anticipate:ray",
+    "target": [
+      -6.569479586123769,
+      0.9977235274821386
+    ],
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.12530397353227335,
+      "outlet_wait_reason": "no_safe_outlet",
+      "shooter_id": 1,
+      "ray_goal_y": 1.2313513907557265
+    },
+    "ball": {
+      "x": -3.1995811899789057,
+      "y": 4.454166457593334,
+      "last_seen_at": 882.371999992,
+      "confidence": 1.0,
+      "received_at": 5001.954973815
+    },
+    "pose": {
+      "x": -6.589851024316463,
+      "y": 0.5697508951111809,
+      "theta": 0.8390648518437223
+    }
+  },
+  {
+    "id": 343891,
+    "now": 882.547999992,
+    "remaining": 584,
+    "action": "guard:set",
+    "target": [
+      -6.5,
+      0.7764072655796843
+    ],
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.1004321479790672,
+      "outlet_wait_reason": "no_safe_outlet"
+    },
+    "ball": {
+      "x": -3.2161663560931184,
+      "y": 4.458220526834485,
+      "last_seen_at": 882.541999992,
+      "confidence": 1.0,
+      "received_at": 5002.220167773
+    },
+    "pose": {
+      "x": -6.644974251465112,
+      "y": 0.488935125611399,
+      "theta": 0.880779889172291
+    }
+  },
+  {
+    "id": 344376,
+    "now": 912.735999992,
+    "remaining": 554,
+    "action": "ready",
+    "target": [
+      -6.0,
+      0.0
+    ],
+    "decision": null,
+    "ball": {
+      "x": -6.833977069492104,
+      "y": -0.7144661365050293,
+      "last_seen_at": 912.727999992,
+      "confidence": 1.0,
+      "received_at": 5060.9607483
+    },
+    "pose": {
+      "x": -6.520282683416869,
+      "y": -0.5857397798572171,
+      "theta": -2.4793663963606063
+    }
+  },
+  {
+    "id": 344948,
+    "now": 925.949999991,
+    "remaining": 540,
+    "action": "stopped",
+    "target": null,
+    "decision": null,
+    "ball": {
+      "x": -6.833977069492104,
+      "y": -0.7144661365050293,
+      "last_seen_at": 925.945999991,
+      "confidence": 1.0,
+      "received_at": 5087.728487728
+    },
+    "pose": {
+      "x": -5.978388834530827,
+      "y": 0.026807636087192464,
+      "theta": -0.004318720381801466
+    }
+  }
+]

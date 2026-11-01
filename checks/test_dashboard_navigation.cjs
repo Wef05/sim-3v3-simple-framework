@@ -9,3 +9,5 @@ assert.doesNotMatch(ctx.navigationLabel({speed:NaN,estimated_time_s:Infinity}),/
 assert.doesNotMatch(ctx.navigationLabel({state:'arrived'}),/2.35|保留路线/);
 assert.match(ctx.navigationLabel({state:'blocked_direct'}),/直线受阻/);
 console.log('Navigation cards: current/legacy fields, time estimate, route retention, invalid and missing values passed.');
+assert.match(ctx.navigationLabel({state:'kick_yield',blocker:'team:2',blocker_priority:100}),/取消踢球/);
+assert.match(ctx.navigationLabel({state:'blocked',blocker:'team:1',blocker_priority:0}),/team:1.*0/);
