@@ -1,0 +1,48 @@
+{
+  "summary": {
+    "frames": 1072,
+    "bytes": 1436078,
+    "elapsed": 0.040000000000190994,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "end_state": "finished",
+    "finish_reason": "operator_finish",
+    "valid_opening": false,
+    "reason": "own_robots_not_ready_at_playing",
+    "first_sim": 27.621999999,
+    "last_sim": 47.98,
+    "history_preserved": true
+  },
+  "capture": {
+    "frames": 1072,
+    "first_id": 533404,
+    "last_id": 534475,
+    "first_sim": 27.621999999,
+    "last_sim": 47.98,
+    "max_sim_gap": 0.23799999999999955,
+    "max_receive_gap": 0.8172274171374738,
+    "raw_bytes": 20514806,
+    "sha256": "c2507e01f81316714756e4b855e62d4cc364f360fde5a58add44e02a20de7f29",
+    "max_packet_bytes": 19617
+  },
+  "events": [],
+  "phases": {},
+  "actions": {
+    "1:stopped": 326,
+    "2:stopped": 326,
+    "3:penalized": 8,
+    "1:ready": 746,
+    "2:ready": 746,
+    "3:ready": 746,
+    "3:stopped": 318
+  },
+  "kick_frames": [],
+  "timeline": [],
+  "selection_count": 0,
+  "selected_count": 0,
+  "selection_reasons": {},
+  "first_selection": null,
+  "selected": []
+}

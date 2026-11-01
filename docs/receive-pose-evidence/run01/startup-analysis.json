@@ -1,0 +1,10 @@
+{
+  "ready_navigation_blockers": {
+    "1:field_boundary": 746,
+    "2:field_boundary": 746,
+    "3:field_boundary": 746
+  },
+  "source_unchanged_since": "50bdc92",
+  "passing_events": 0,
+  "note": "READY field_boundary evidence; no selection executed; SDK timeout logs preserved, not proven root cause."
+}

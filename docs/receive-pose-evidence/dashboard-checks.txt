@@ -1,0 +1,4 @@
+Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.
+Passing cards: shared target, evidence, support, cancellation and legacy replay passed.
+Receiving pose cards: separate targets, timing estimates, rejected selection and legacy frames passed.
+Navigation cards: current/legacy fields, time estimate, route retention, invalid and missing values passed.

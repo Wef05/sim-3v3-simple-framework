@@ -1,0 +1,338 @@
+{
+  "summary": {
+    "frames": 1023,
+    "bytes": 1391618,
+    "elapsed": 0.09600000000011732,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "end_state": "finished",
+    "finish_reason": "operator_finish",
+    "valid_opening": false,
+    "reason": "own_robots_not_ready_at_playing",
+    "first_sim": 28.655999999,
+    "last_sim": 48.622,
+    "history_preserved": true
+  },
+  "capture": {
+    "frames": 1023,
+    "first_id": 537772,
+    "last_id": 538794,
+    "first_sim": 28.655999999,
+    "last_sim": 48.622,
+    "max_sim_gap": 0.36599999999999966,
+    "max_receive_gap": 0.9780532079748809,
+    "raw_bytes": 19682406,
+    "sha256": "6f84964c2578435efe279b0eccc1c323fec97cc0e7949e00e3d8a9520291e713",
+    "max_packet_bytes": 26612
+  },
+  "events": [],
+  "phases": {},
+  "actions": {
+    "1:stopped": 300,
+    "2:stopped": 300,
+    "3:stopped": 300,
+    "1:ready": 710,
+    "2:ready": 710,
+    "3:ready": 710,
+    "1:attack": 13,
+    "2:guard:set": 13,
+    "3:stay": 13
+  },
+  "kick_frames": [],
+  "timeline": [],
+  "selection_count": 1,
+  "selected_count": 0,
+  "selection_reasons": {
+    "no_safe_pose": 1
+  },
+  "first_selection": {
+    "evaluated_at": 48.44,
+    "anchor": [
+      -5.99380222703964,
+      4.989662646289504
+    ],
+    "kickoff": true,
+    "candidates": [
+      {
+        "contact": [
+          -7.49380222703964,
+          4.989662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 11.39791206889128,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -7.054462398819462,
+          3.9290024745096828
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.565617229119159,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -7.054462398819461,
+          6.050322818069326
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 11.524938790994645,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -6.99380222703964,
+          4.989662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.950674858726654,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -6.700909008226188,
+          4.282555865102957
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.379331632123659,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -6.700909008226187,
+          5.696769427476052
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 11.038953283662288,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -6.49380222703964,
+          4.989662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.508194906496481,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -6.347355617632914,
+          4.63610925569623
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.214146211355404,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -6.347355617632914,
+          5.343216036882778
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 10.554277098010255,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.99380222703964,
+          3.4896626462895037
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.417646802859405,
+        "reason": "passer_route_unavailable",
+        "direction_rejections": {
+          "passer_route_unavailable": 4
+        },
+        "attack_target": [
+          -4.00404751239877,
+          4.985902459059734
+        ]
+      },
+      {
+        "contact": [
+          -5.99380222703964,
+          3.9896626462895037
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.614419433522842,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.99380222703964,
+          4.489662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.83270312701423,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.99380222703964,
+          4.989662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.071099270898342,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.99380222703964,
+          5.489662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.32821525068987,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.99380222703964,
+          5.989662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.602689281728319,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.99380222703964,
+          6.489662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 10.893209340922917,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.640248836446366,
+          4.63610925569623
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.5896462910263,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.640248836446366,
+          5.343216036882778
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.95114557333136,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.49380222703964,
+          4.989662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.640120375579325,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.286695445853093,
+          4.282555865102956
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.110191625300745,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -5.286695445853092,
+          5.696769427476051
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.855128407026235,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -4.99380222703964,
+          4.989662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.21611638311009,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -4.933142055259819,
+          3.9290024745096823
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 8.633068221229644,
+        "reason": "passer_route_unavailable",
+        "direction_rejections": {
+          "attack_corridor_or_behind_blocked": 3,
+          "passer_route_unavailable": 1
+        },
+        "attack_target": [
+          -4.00404751239877,
+          4.985902459059734
+        ]
+      },
+      {
+        "contact": [
+          -4.933142055259818,
+          6.050322818069325
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 9.783752532454951,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -4.49380222703964,
+          4.989662646289504
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 8.800095540299592,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -7.72600059227646e-17,
+          4.5
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.278988528910129,
+        "reason": "unsafe_lane"
+      }
+    ],
+    "selected": null,
+    "reason": "no_safe_pose"
+  },
+  "selected": []
+}

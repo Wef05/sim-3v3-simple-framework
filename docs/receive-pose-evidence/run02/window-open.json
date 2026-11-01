@@ -1,0 +1,5 @@
+{
+  "observed_at": "2026-11-01T11:45:03.891760+00:00",
+  "event": "official_ui_reset_after_invalid_spawn",
+  "minimum_wait_s": 60
+}

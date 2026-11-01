@@ -1,0 +1,514 @@
+{
+  "source_frame": 494401,
+  "baseline": "6b41db7",
+  "runtime_s": 0.032295624958351254,
+  "selection": {
+    "evaluated_at": 55.374,
+    "anchor": [
+      -0.5822992041681252,
+      3.404669783411446
+    ],
+    "kickoff": true,
+    "candidates": [
+      {
+        "contact": [
+          -2.082299204168125,
+          3.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.917387171441311,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 7.2347645302315415,
+        "after_receive_s": 2.2893362710255394,
+        "prepare_margin_s": -6.034227239447219,
+        "lane_margin_s": -6.446549979088433,
+        "receive_margin_s": -8.735886250113971
+      },
+      {
+        "contact": [
+          -1.6429593759479466,
+          2.344009611631625
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.984448484239252,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 7.339058371770656,
+        "after_receive_s": 2.5342347982413584,
+        "prepare_margin_s": -6.138521080986333,
+        "lane_margin_s": -6.45306581690826,
+        "receive_margin_s": -8.987300615149618
+      },
+      {
+        "contact": [
+          -1.6429593759479464,
+          4.465329955191267
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 6.271228461291712,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -1.5822992041681252,
+          3.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.516530824991889,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 6.064394925542754,
+        "after_receive_s": 2.3286691373763575,
+        "prepare_margin_s": -4.863857634758431,
+        "lane_margin_s": -5.358324701724989,
+        "receive_margin_s": -7.686993839101346
+      },
+      {
+        "contact": [
+          -1.2894059853546729,
+          2.6975630022248986
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.8632927302343445,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 6.086704651974054,
+        "after_receive_s": 2.482741808917015,
+        "prepare_margin_s": -4.886167361189732,
+        "lane_margin_s": -5.325000923385209,
+        "receive_margin_s": -7.807742732302224
+      },
+      {
+        "contact": [
+          -1.2894059853546727,
+          4.111776564597994
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.771250817145596,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -1.0822992041681252,
+          3.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.133103715047378,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.80289816095921,
+        "after_receive_s": 2.344053895536357,
+        "prepare_margin_s": -4.602360870174888,
+        "lane_margin_s": -5.1976237106023015,
+        "receive_margin_s": -7.541677606138658
+      },
+      {
+        "contact": [
+          -0.935852594761399,
+          3.051116392818172
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.791503487201638,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.782101223215732,
+        "after_receive_s": 2.4083420505868083,
+        "prepare_margin_s": -4.5815639324314095,
+        "lane_margin_s": -5.157057106472463,
+        "receive_margin_s": -7.565399157059272
+      },
+      {
+        "contact": [
+          -0.9358525947613989,
+          3.75822317400472
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.271277413975876,
+        "reason": "attack_corridor_or_behind_blocked",
+        "direction_rejections": {
+          "receive_race": 3,
+          "attack_corridor_or_behind_blocked": 1
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.673004963412883,
+        "after_receive_s": 4.439868277422303,
+        "prepare_margin_s": -4.472467672628561,
+        "lane_margin_s": -5.14886189963898,
+        "receive_margin_s": -9.588730177061283
+      },
+      {
+        "contact": [
+          -0.5822992041681254,
+          1.904669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 3.843690637749691,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "receive_race": 3,
+          "kickoff_waiting_outside_own_half": 1
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.780227572351475,
+        "after_receive_s": 3.4479561495759667,
+        "prepare_margin_s": -4.579690281567152,
+        "lane_margin_s": -5.029228545207366,
+        "receive_margin_s": -8.477184694783332
+      },
+      {
+        "contact": [
+          -0.5822992041681254,
+          2.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.115552234845685,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.659883031166858,
+        "after_receive_s": 2.544084596406355,
+        "prepare_margin_s": -4.459345740382536,
+        "lane_margin_s": -5.014191099483499,
+        "receive_margin_s": -7.558275695889854
+      },
+      {
+        "contact": [
+          -0.5822992041681253,
+          2.904669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.42736746574779,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.5796354013373435,
+        "after_receive_s": 2.421470443144227,
+        "prepare_margin_s": -4.379098110553021,
+        "lane_margin_s": -5.022182483852996,
+        "receive_margin_s": -7.443652926997222
+      },
+      {
+        "contact": [
+          -0.5822992041681252,
+          3.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.771309584986149,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.5225448530418575,
+        "after_receive_s": 2.3306689340811895,
+        "prepare_margin_s": -4.322007562257535,
+        "lane_margin_s": -5.038943092251181,
+        "receive_margin_s": -7.36961202633237
+      },
+      {
+        "contact": [
+          -0.5822992041681252,
+          3.904669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.1409345098726345,
+        "reason": "attack_corridor_or_behind_blocked",
+        "direction_rejections": {
+          "attack_corridor_or_behind_blocked": 3,
+          "receive_race": 1
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.479942773824251,
+        "after_receive_s": 4.597548631934088,
+        "prepare_margin_s": -4.279405483039929,
+        "lane_margin_s": -5.058400446580298,
+        "receive_margin_s": -9.655949078514386
+      },
+      {
+        "contact": [
+          -0.5822992041681251,
+          4.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.531095742600924,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -0.5822992041681251,
+          4.904669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.937746423756808,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          -0.22874581357485152,
+          3.051116392818172
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.271349287575202,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "receive_race": 3,
+          "kickoff_waiting_outside_own_half": 1
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.335643540319171,
+        "after_receive_s": 2.9056867302496237,
+        "prepare_margin_s": -4.135106249534848,
+        "lane_margin_s": -4.90480842159227,
+        "receive_margin_s": -7.810495151841893
+      },
+      {
+        "contact": [
+          -0.2287458135748514,
+          3.75822317400472
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.803361806453469,
+        "reason": "attack_corridor_or_behind_blocked",
+        "direction_rejections": {
+          "receive_race": 2,
+          "kickoff_waiting_outside_own_half": 1,
+          "attack_corridor_or_behind_blocked": 1
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.308312512946907,
+        "after_receive_s": 4.790420269247518,
+        "prepare_margin_s": -4.1077752221625845,
+        "lane_margin_s": -4.964220656276412,
+        "receive_margin_s": -9.75464092552393
+      },
+      {
+        "contact": [
+          -0.0822992041681252,
+          3.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.436444134904462,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "receive_race": 2,
+          "kickoff_waiting_outside_own_half": 2
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.2376025071835,
+        "after_receive_s": 2.7943983933721532,
+        "prepare_margin_s": -4.037065216399178,
+        "lane_margin_s": -4.897212602121448,
+        "receive_margin_s": -7.691610995493601
+      },
+      {
+        "contact": [
+          -7.740326996325042e-17,
+          3.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.384340703728881,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "receive_race": 2,
+          "kickoff_waiting_outside_own_half": 2
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.1914225226597255,
+        "after_receive_s": 2.7863013929484444,
+        "prepare_margin_s": -3.990885231875403,
+        "lane_margin_s": -4.876587062501008,
+        "receive_margin_s": -7.662888455449452
+      },
+      {
+        "contact": [
+          0.12480757701842216,
+          2.697563002224898
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 3.7713995170437293,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "kickoff_waiting_outside_own_half": 3,
+          "receive_race": 1
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 5.104221764498993,
+        "after_receive_s": 2.9646014233543654,
+        "prepare_margin_s": -3.9036844737146703,
+        "lane_margin_s": -4.743746346804775,
+        "receive_margin_s": -7.70834777015914
+      },
+      {
+        "contact": [
+          0.12480757701842238,
+          4.111776564597994
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.886632187060038,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          0.4177007958318748,
+          3.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.135054772125238,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "kickoff_waiting_outside_own_half": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 4.96469397187863,
+        "after_receive_s": 3.0743831485785993,
+        "prepare_margin_s": -3.764156681094307,
+        "lane_margin_s": -4.787265000551557,
+        "receive_margin_s": -7.861648149130156
+      },
+      {
+        "contact": [
+          0.4783609676116958,
+          2.3440096116316247
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 3.2714650995916448,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "kickoff_waiting_outside_own_half": 4
+        },
+        "attack_target": [
+          -1.4905654925250618,
+          -0.11468733730831732
+        ],
+        "prepare_s": 4.821434924641603,
+        "after_receive_s": 3.3964323268710284,
+        "prepare_margin_s": -3.6208976338572807,
+        "lane_margin_s": -4.556863972912263,
+        "receive_margin_s": -7.9532962997832914
+      },
+      {
+        "contact": [
+          0.4783609676116962,
+          4.465329955191267
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.018571870515197,
+        "reason": "unsafe_lane"
+      },
+      {
+        "contact": [
+          0.9177007958318748,
+          3.404669783411446
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 3.8749605642926483,
+        "reason": "unsafe_lane"
+      }
+    ],
+    "selected": null,
+    "reason": "no_safe_pose"
+  }
+}
