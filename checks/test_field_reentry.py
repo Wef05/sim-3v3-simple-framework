@@ -12,25 +12,21 @@ from src.intents import MoveIntent, RecoverIntent, Role, RoleTask, StopIntent
 from src.player import Player, coordinate
 from src.role_allocator import assign, init_store
 from src.utils.obstacles import Obstacle
-from src.utils.path_planner import clamp_target, plan_global_path, segment_clear
+from src.utils.path_planner import plan_global_path, segment_clear
 
 
 class ReentryTests(unittest.TestCase):
-    def test_outside_drift_allows_inward_braking_but_not_outward_command(self):
-        for start, observed, inward, outward in (
-                ((0., 5.), (0., .0001), (0., -1., 0.), (0., .1, 0.)),
-                ((0., -5.), (0., -.1), (0., 1., 0.), (0., -.1, 0.)),
-                ((8., 3.), (.1, 0.), (-1., 0., 0.), (.1, 0., 0.)),
-                ((-8., 3.), (-.1, 0.), (1., 0., 0.), (-.1, 0., 0.))):
+    def test_boundary_does_not_reject_inward_outward_or_braking_motion(self):
+        for start, observed, command in (
+                ((0., 5.), (0., .1), (0., -1., 0.)),
+                ((0., 5.), (0., .1), (0., 1., 0.)),
+                ((0., -5.), (0., -.1), (0., -1., 0.)),
+                ((8., 3.), (.1, 0.), (1., 0., 0.)),
+                ((-8., 3.), (-.1, 0.), (-1., 0., 0.)),
+                ((0., 4.24), (0., 1.), (0., -1., 0.))):
             f = frame(context((start,)))
             f.tracker.velocities['team', 1] = observed
-            intent = MoveIntent((0., 0.))
-            self.assertIsNone(f.check(1, intent, inward))
-            self.assertEqual(f.check(1, intent, outward), 'field_boundary')
-        # 场内即使有制动残余也不能获准穿出边界。
-        f = frame(context(((0., 4.24),)))
-        f.tracker.velocities['team', 1] = (0., 1.)
-        self.assertEqual(f.check(1, MoveIntent((0., 0.)), (0., -1., 0.)), 'field_boundary')
+            self.assertIsNone(f.check(1, MoveIntent((0., 0.)), command))
 
     def player(self, ctx, pid=1):
         p = Player(pid, SoccerConfig(), None)
@@ -95,7 +91,7 @@ class ReentryTests(unittest.TestCase):
         self.assertEqual(intent.ball_keepout, ctx.field.circle_radius)
         self.assertEqual(intent.opponent_mode, 'avoid')
 
-    def test_outside_routes_round_obstacle_without_further_exit(self):
+    def test_outside_routes_round_obstacle_with_safe_edges(self):
         for start, obstacle in (((0., 5.5), (0., 4.7)), ((0., -5.5), (0., -4.7)),
                                 ((8., 3.), (7.2, 3.)), ((-8., 3.), (-7.2, 3.))):
             ctx = context((start,))
@@ -105,9 +101,6 @@ class ReentryTests(unittest.TestCase):
             self.assertEqual(path[0], start)
             for i, (a, b) in enumerate(zip(path, path[1:])):
                 self.assertTrue(segment_clear(a, b, obstacles, allow_escape=i == 0))
-                ca, cb = clamp_target(ctx, a), clamp_target(ctx, b)
-                for axis in (0, 1):
-                    self.assertLessEqual(abs(b[axis]-cb[axis]), abs(a[axis]-ca[axis])+1e-8)
 
     def test_blocked_ready_entry_makes_progress_for_all_headings(self):
         for heading in (0., math.pi/2, math.pi, -math.pi/2):

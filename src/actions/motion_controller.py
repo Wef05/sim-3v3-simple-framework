@@ -101,12 +101,8 @@ class MotionController(Executor):
             self.reset_navigation()
             info['state'] = 'invalid_geometry'
             return (0., 0., 0.), False
-        target = clamp_target(self.context, intent.target)
+        target = intent.target
         info['effective_target'] = list(target)
-        if intent.direct_path and target != intent.target:
-            self.reset_navigation()
-            info.update(state='blocked_direct', blocker='field_boundary')
-            return (0., 0., 0.), False
         distance = math.hypot(target[0]-pose.x, target[1]-pose.y)
         if distance < intent.arrive_dist:
             self.reset_navigation()
