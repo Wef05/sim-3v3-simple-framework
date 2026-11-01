@@ -1,0 +1,11 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('tools/tactics_dashboard/dashboard.js','utf8');
+const ctx={};vm.createContext(ctx);
+vm.runInContext(source.slice(source.indexOf('function navigationLabel(')),ctx);
+const current=ctx.navigationLabel({state:'avoiding',speed:.8,priority:20,route_reason:'retained',estimated_time_s:2.35,direction_held:true});
+assert.match(current,/绕行/);assert.match(current,/0.80 m\/s/);assert.match(current,/保留路线/);assert.match(current,/2.35 s（模型估计）/);assert.match(current,/保持绕行方向/);
+assert.match(ctx.navigationLabel({reason:'moving',velocity:[.3,.4]}),/0.50 m\/s/);
+assert.doesNotMatch(ctx.navigationLabel({speed:NaN,estimated_time_s:Infinity}),/NaN|Infinity/);
+assert.doesNotMatch(ctx.navigationLabel({state:'arrived'}),/2.35|保留路线/);
+assert.match(ctx.navigationLabel({state:'blocked_direct'}),/直线受阻/);
+console.log('Navigation cards: current/legacy fields, time estimate, route retention, invalid and missing values passed.');

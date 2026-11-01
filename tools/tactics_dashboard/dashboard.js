@@ -903,7 +903,9 @@ function drawThreat(d,xy){
 }
 
 function navigationLabel(n){
-  const states={moving:'行走',yield:'让行等待',arrived:'已到位',emergency_stop:'安全停车',team_safety_stop:'队内冲突停车',direct_blocked:'直线受阻',no_route:'暂无可行路线'};
-  const speed=Array.isArray(n.velocity)&&n.velocity.length===2&&n.velocity.every(Number.isFinite)?Math.hypot(...n.velocity).toFixed(2)+' m/s':'未知';
-  return `导航：${states[n.reason]||'未知'} · 优先级 ${Number.isFinite(n.priority)?n.priority:'—'} · 指令 ${speed}`;
+  const states={moving:'行走',turning:'转向',avoiding:'绕行',yielding:'让行',blocked:'受阻停车',blocked_direct:'直线受阻',team_conflict_stop:'队内冲突停车',kick_approach_blocked:'踢球接近受阻',arrived:'已到位',no_pose:'位置未知',invalid_geometry:'位置无效',stopped:'停止',yield:'让行等待',emergency_stop:'安全停车',team_safety_stop:'队内冲突停车',direct_blocked:'直线受阻',no_route:'暂无可行路线'};
+  const speed=Number.isFinite(n.speed)?n.speed.toFixed(2)+' m/s':Array.isArray(n.velocity)&&n.velocity.length===2&&n.velocity.every(Number.isFinite)?Math.hypot(...n.velocity).toFixed(2)+' m/s':'未知';
+  const routes={new:'新路线',retained:'保留路线',faster:'耗时优势换路',unsafe:'旧路线受阻重规划',no_route:'暂无全局路线'};
+  const eta=Number.isFinite(n.estimated_time_s)?` · 预计 ${n.estimated_time_s.toFixed(2)} s（模型估计）`:'';
+  return `导航：${states[n.state||n.reason]||'未知'} · 优先级 ${Number.isFinite(n.priority)?n.priority:'—'} · 指令 ${speed}${n.route_reason?' · '+(routes[n.route_reason]||'路线状态未知'):''}${eta}${n.direction_held?' · 保持绕行方向':''}`;
 }

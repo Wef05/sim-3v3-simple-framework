@@ -200,7 +200,14 @@ NAV_PREDICTION_STEP_S = 0.10
 NAV_TRACK_MAX_AGE_S = 0.5
 NAV_TRACK_MAX_SPEED_MPS = 3.5
 NAV_YIELD_MARGIN_M = 0.10              # 低优先级为已规划队友额外留空
-NAV_SIDE_HOLD_S = 0.6                  # 方向偏好短暂保持，减少左右摇摆
+NAV_SIDE_HOLD_S = 0.6                  # 局部方向记忆最大年龄 (仿真秒)
+NAV_ROUTE_SWITCH_S = 0.35              # 新路线至少节省的预计时间，覆盖改道开销 (s)
+NAV_TARGET_RESET_M = 0.5               # 相对本次导航起始目标的累计变化触发重置 (m)
+# 沿用守门能力估计作为全队初值；不是 SDK 指令上限，尚需实测标定。
+NAV_FORWARD_SPEED_MPS = GUARD_FORWARD_SPEED
+NAV_LATERAL_SPEED_MPS = GUARD_LATERAL_SPEED
+NAV_BACKWARD_SPEED_MPS = GUARD_BACKWARD_SPEED
+NAV_TURN_SPEED_RPS = GUARD_TURN_SPEED
 
 # ======================================================================
 # 旧局部 VFH 参数（保留兼容；当前行走使用 NAV_* 预测速度避障）

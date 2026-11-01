@@ -1,0 +1,50 @@
+{
+  "status": "blocked_before_build_and_start",
+  "attempt": "preflight-01",
+  "branch": "codex/navigation-time-stability",
+  "baseline": "d2c84dd",
+  "studio_errors": [
+    "getApp(Booster Studio): Computer Use server error -10005: timeoutReached",
+    "getApp(com.boosterrobotics.boosterstudio): Computer Use server error -10005: timeoutReached"
+  ],
+  "agent_manifest": "id = \"com.example.lqinternalmatch\"\nversion = \"2.0.3\"\nname = { en = \"lqInternalMatch\", zh = \"lqInternalMatch\" }\nlogo = \"/res/logo.png\"\ndescription = \"3v3 SoccerSim Agent written in Python\"\nentry = \"src/main.py:SoccerSimAgent\"\ndebuggable = true\n\n[requirements]\nmin_api_level = 10700\nmodels = [ \"Booster T1\", \"Booster K1\" ]\n",
+  "project_config": {
+    "version": 2,
+    "scene": {
+      "mode": "pinned",
+      "id": "football3v3"
+    },
+    "projectMode": "soccer-match",
+    "agentDevTarget": {
+      "serialNumber": "4x2a0",
+      "name": "Virtual robot",
+      "model": "Booster K1",
+      "deviceType": "virtual",
+      "updatedAt": 1793434951580
+    },
+    "updatedAt": 1793434951659
+  },
+  "missing_skill_reference": "docs/tactics-dashboard.md absent in this baseline",
+  "match_started": false,
+  "simulation_seconds": 0,
+  "score": null,
+  "dashboard_export": null,
+  "terminal_state_verified": false,
+  "docker_ps_all": {
+    "returncode": 0,
+    "output": "agent-dev-044cb0f51255897abaa8f76f1fa95502-humble Exited (143) 3 days ago\nagent-dev-23f8b4188440c2a47e2d429e930910eb-humble Up 47 minutes (healthy)\nagent-dev-43fe59157640e10dba5594959b170f53-humble Exited (143) 3 days ago\nagent-dev-6edb008a292a6d664f35a5705414865e-humble Exited (143) 3 days ago\nagent-dev-53a56ab85aed272d77706ccd9cdbd749-humble Exited (143) 3 days ago\nagent-dev-f79cf9f1823629e3b3fd5cdbd80942be-humble Exited (143) 3 days ago\n4x2a0-k1 Exited (143) 20 minutes ago\nagent-dev-00a751662ef4ec656cc9ea6954b9dc22-humble Exited (143) 3 days ago\nagent-dev-00a751662ef4ec656cc9ea6954b9dc22 Created\n",
+    "error": ""
+  },
+  "dashboard": {
+    "1": {
+      "age": 1211.6092210412025,
+      "packet_time": null
+    }
+  },
+  "source_sha256": {
+    "src/actions/controller.py": "90cb1fcd3c2d0b93844203eafc8bb376a2bf45f19549379b4717e784711f7cc2",
+    "src/actions/motion_controller.py": "53a302ed3008081cb6845317850dfef6c7aae866233656a3765470ca89ef744c",
+    "src/utils/path_planner.py": "66d395bf62690aab76f2dc0b0605db8e26b39ee5f68b689347fcfc38bbee789e",
+    "src/param.py": "0a2544f6a8bf94e351b64533e24ee0e27ec238a6db5c49d690fa39ed757ac58c"
+  }
+}

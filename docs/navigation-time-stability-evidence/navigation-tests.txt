@@ -1,0 +1,6 @@
+Command: python3 -m unittest checks.test_navigation checks.test_navigation_stability -q
+Exit: 0
+----------------------------------------------------------------------
+Ran 38 tests in 1.191s
+
+OK
