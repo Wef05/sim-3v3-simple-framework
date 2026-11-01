@@ -135,11 +135,25 @@ class NavigationFrame:
         start = pose.x, pose.y
         trajectory = self.trajectory(start, self.tracker.velocity('team', pid), command)
         xmin, xmax, ymin, ymax = _bounds(self.context)
+        outside = not (xmin <= start[0] <= xmax and ymin <= start[1] <= ymax)
+        braking = (self.trajectory(start, self.tracker.velocity('team', pid), (0., 0., 0.))
+                   if outside else trajectory)
         previous = start
-        for _, point in trajectory[1:]:
-            # Outside robots may return, but not move farther out.
-            for value, old, lo, hi in zip(point, previous, (xmin, ymin), (xmax, ymax)):
-                if value < min(lo, old)-1e-8 or value > max(hi, old)+1e-8:
+        for (_, point), (_, stopped) in zip(trajectory[1:], braking[1:]):
+            for axis, (value, old, lo, hi) in enumerate(zip(point, previous, (xmin, ymin), (xmax, ymax))):
+                lower, upper = min(lo, old), max(hi, old)
+                # 已在场外时，反应/制动阶段的观测漂移连停车也无法瞬间消除。
+                # 仅允许不向外的指令，且外移量不得超过同一时刻停车的预测。
+                # 不放宽实体碰撞检查，也不允许场内机器人借此主动出界。
+                if start[axis] < lo:
+                    if command[axis] < -1e-8:
+                        return 'field_boundary'
+                    lower = min(lo, stopped[axis])
+                elif start[axis] > hi:
+                    if command[axis] > 1e-8:
+                        return 'field_boundary'
+                    upper = max(hi, stopped[axis])
+                if value < lower-1e-8 or value > upper+1e-8:
                     return 'field_boundary'
             previous = point
         xs, ys = zip(*(point for _, point in trajectory))
