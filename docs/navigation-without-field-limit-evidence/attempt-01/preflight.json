@@ -1,0 +1,10 @@
+{
+  "worktree": "/Users/limingzhe/.codex/worktrees/navigation-without-field-limit/sim-3v3-simple-framework",
+  "commit": "0d55d7aaf9fe00aaf66fcd8e77aeec06c3e2be95",
+  "branch": "codex/navigation-without-field-limit",
+  "time": 1793546390.7335281,
+  "shared_resource": "4x2a0-k1; preceding test finished and replay/result saved; no export or match controller process active",
+  "history_mode": "preserve; do not clear",
+  "window_observed_at": 1793546390.73353,
+  "requested_simulation_s": 60
+}
