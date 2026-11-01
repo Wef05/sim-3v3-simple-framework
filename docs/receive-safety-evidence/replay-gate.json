@@ -1,0 +1,454 @@
+{
+  "source": "run03 fixed historical trajectory",
+  "limitation": "Cannot establish collision avoidance or success of changed dynamics; robot velocity estimated from exported pose differences.",
+  "rows": [
+    {
+      "frame": 474272,
+      "sim": 119.647999999,
+      "phase": "approach",
+      "limit": 1.0,
+      "outcome": null
+    },
+    {
+      "frame": 474273,
+      "sim": 119.727999999,
+      "phase": "approach",
+      "limit": 0.7962025438274907,
+      "outcome": null
+    },
+    {
+      "frame": 474274,
+      "sim": 119.757999999,
+      "phase": "approach",
+      "limit": 0.7400184255529683,
+      "outcome": null
+    },
+    {
+      "frame": 474275,
+      "sim": 119.797999999,
+      "phase": "approach",
+      "limit": 0.9303353728368282,
+      "outcome": null
+    },
+    {
+      "frame": 474276,
+      "sim": 119.833999999,
+      "phase": "approach",
+      "limit": 0.8105532641972002,
+      "outcome": null
+    },
+    {
+      "frame": 474277,
+      "sim": 119.867999999,
+      "phase": "approach",
+      "limit": 1.0,
+      "outcome": null
+    },
+    {
+      "frame": 474278,
+      "sim": 119.899999999,
+      "phase": "approach",
+      "limit": 0.770755157408197,
+      "outcome": null
+    },
+    {
+      "frame": 474279,
+      "sim": 119.937999999,
+      "phase": "approach",
+      "limit": 0.7647813399030136,
+      "outcome": null
+    },
+    {
+      "frame": 474280,
+      "sim": 119.969999999,
+      "phase": "approach",
+      "limit": 0.959326270612616,
+      "outcome": null
+    },
+    {
+      "frame": 474281,
+      "sim": 120.005999999,
+      "phase": "approach",
+      "limit": 0.8754470413681666,
+      "outcome": null
+    },
+    {
+      "frame": 474282,
+      "sim": 120.031999999,
+      "phase": "approach",
+      "limit": 0.8296639843547989,
+      "outcome": null
+    },
+    {
+      "frame": 474283,
+      "sim": 120.059999999,
+      "phase": "approach",
+      "limit": 0.7625569830664427,
+      "outcome": null
+    },
+    {
+      "frame": 474284,
+      "sim": 120.099999999,
+      "phase": "approach",
+      "limit": 0.8804424881779176,
+      "outcome": null
+    },
+    {
+      "frame": 474285,
+      "sim": 120.139999999,
+      "phase": "approach",
+      "limit": 0.9164083903965099,
+      "outcome": null
+    },
+    {
+      "frame": 474286,
+      "sim": 120.167999999,
+      "phase": "approach",
+      "limit": 1.0,
+      "outcome": null
+    },
+    {
+      "frame": 474287,
+      "sim": 120.267999999,
+      "phase": "approach",
+      "limit": 0.8374123473666297,
+      "outcome": null
+    },
+    {
+      "frame": 474288,
+      "sim": 120.295999999,
+      "phase": "approach",
+      "limit": 0.895213812957043,
+      "outcome": null
+    },
+    {
+      "frame": 474289,
+      "sim": 120.335999999,
+      "phase": "approach",
+      "limit": 0.9285755675807139,
+      "outcome": null
+    },
+    {
+      "frame": 474290,
+      "sim": 120.371999999,
+      "phase": "approach",
+      "limit": 0.915156246966224,
+      "outcome": null
+    },
+    {
+      "frame": 474291,
+      "sim": 120.405999999,
+      "phase": "approach",
+      "limit": 0.7757724730927634,
+      "outcome": null
+    },
+    {
+      "frame": 474292,
+      "sim": 120.439999999,
+      "phase": "approach",
+      "limit": 0.9437398794404841,
+      "outcome": null
+    },
+    {
+      "frame": 474293,
+      "sim": 120.463999999,
+      "phase": "approach",
+      "limit": 0.8912936062220647,
+      "outcome": null
+    },
+    {
+      "frame": 474294,
+      "sim": 120.491999999,
+      "phase": "approach",
+      "limit": 0.8832518687352702,
+      "outcome": null
+    },
+    {
+      "frame": 474295,
+      "sim": 120.529999999,
+      "phase": "approach",
+      "limit": 0.8491001439846277,
+      "outcome": null
+    },
+    {
+      "frame": 474296,
+      "sim": 120.571999999,
+      "phase": "approach",
+      "limit": 0.8886201830336894,
+      "outcome": null
+    },
+    {
+      "frame": 474297,
+      "sim": 120.599999999,
+      "phase": "approach",
+      "limit": 0.8222069385788913,
+      "outcome": null
+    },
+    {
+      "frame": 474298,
+      "sim": 120.641999999,
+      "phase": "approach",
+      "limit": 0.8715530612713849,
+      "outcome": null
+    },
+    {
+      "frame": 474299,
+      "sim": 120.681999999,
+      "phase": "braking",
+      "limit": 0.8025024853094427,
+      "outcome": null
+    },
+    {
+      "frame": 474300,
+      "sim": 120.813999999,
+      "phase": "braking",
+      "limit": 0.7390560984029001,
+      "outcome": null
+    },
+    {
+      "frame": 474301,
+      "sim": 120.841999999,
+      "phase": "braking",
+      "limit": 0.7742443948793027,
+      "outcome": null
+    },
+    {
+      "frame": 474302,
+      "sim": 120.875999999,
+      "phase": "approach",
+      "limit": 0.7452113555266786,
+      "outcome": null
+    },
+    {
+      "frame": 474303,
+      "sim": 120.907999999,
+      "phase": "braking",
+      "limit": 0.760050065535008,
+      "outcome": null
+    },
+    {
+      "frame": 474304,
+      "sim": 120.939999999,
+      "phase": "braking",
+      "limit": 0.6527316002840832,
+      "outcome": null
+    },
+    {
+      "frame": 474305,
+      "sim": 120.963999999,
+      "phase": "braking",
+      "limit": 0.7035626965068805,
+      "outcome": null
+    },
+    {
+      "frame": 474306,
+      "sim": 120.993999999,
+      "phase": "braking",
+      "limit": 0.7383620635452597,
+      "outcome": null
+    },
+    {
+      "frame": 474307,
+      "sim": 121.017999999,
+      "phase": "approach",
+      "limit": 0.6695398070568241,
+      "outcome": null
+    },
+    {
+      "frame": 474308,
+      "sim": 121.043999999,
+      "phase": "braking",
+      "limit": 0.5769985256180089,
+      "outcome": null
+    },
+    {
+      "frame": 474309,
+      "sim": 121.073999999,
+      "phase": "braking",
+      "limit": 0.6264978961546283,
+      "outcome": null
+    },
+    {
+      "frame": 474310,
+      "sim": 121.111999999,
+      "phase": "braking",
+      "limit": 0.6172601823771757,
+      "outcome": null
+    },
+    {
+      "frame": 474311,
+      "sim": 121.143999999,
+      "phase": "approach",
+      "limit": 0.6202622815488812,
+      "outcome": null
+    },
+    {
+      "frame": 474312,
+      "sim": 121.177999999,
+      "phase": "braking",
+      "limit": 0.5424437756692828,
+      "outcome": null
+    },
+    {
+      "frame": 474313,
+      "sim": 121.187999999,
+      "phase": "braking",
+      "limit": 0.5777519434338152,
+      "outcome": null
+    },
+    {
+      "frame": 474314,
+      "sim": 121.319999999,
+      "phase": "braking",
+      "limit": 0.37721196931473266,
+      "outcome": null
+    },
+    {
+      "frame": 474315,
+      "sim": 121.355999999,
+      "phase": "braking",
+      "limit": 0.342921664985145,
+      "outcome": null
+    },
+    {
+      "frame": 474316,
+      "sim": 121.391999999,
+      "phase": "braking",
+      "limit": 0.3157494670363433,
+      "outcome": null
+    },
+    {
+      "frame": 474317,
+      "sim": 121.429999999,
+      "phase": "braking",
+      "limit": 0.21866095008390574,
+      "outcome": null
+    },
+    {
+      "frame": 474318,
+      "sim": 121.469999999,
+      "phase": "braking",
+      "limit": 0.14810317842609802,
+      "outcome": null
+    },
+    {
+      "frame": 474319,
+      "sim": 121.505999999,
+      "phase": "braking",
+      "limit": 0.0035254903775841506,
+      "outcome": null
+    },
+    {
+      "frame": 474320,
+      "sim": 121.543999999,
+      "phase": "buffer",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474321,
+      "sim": 121.579999999,
+      "phase": "buffer",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474322,
+      "sim": 121.613999999,
+      "phase": "buffer",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474323,
+      "sim": 121.629999999,
+      "phase": "buffer",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474324,
+      "sim": 121.65999999900001,
+      "phase": "buffer",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474325,
+      "sim": 121.691999999,
+      "phase": "settling",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474326,
+      "sim": 121.797999999,
+      "phase": "buffer",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474327,
+      "sim": 121.829999999,
+      "phase": "settling",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474328,
+      "sim": 121.859999999,
+      "phase": "settling",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474329,
+      "sim": 121.891999999,
+      "phase": "buffer",
+      "limit": 0.0,
+      "outcome": null
+    },
+    {
+      "frame": 474330,
+      "sim": 121.943999999,
+      "original_kicking": true,
+      "new_intent": "MoveIntent",
+      "reason": "receive_recovery"
+    },
+    {
+      "frame": 474331,
+      "sim": 121.961999999,
+      "original_kicking": true,
+      "new_intent": "MoveIntent",
+      "reason": "receive_recovery"
+    },
+    {
+      "frame": 474332,
+      "sim": 122.089999999,
+      "original_kicking": true,
+      "new_intent": "StopIntent",
+      "reason": "receive_recovery"
+    },
+    {
+      "frame": 474333,
+      "sim": 122.133999999,
+      "original_kicking": true,
+      "new_intent": "StopIntent",
+      "reason": "receive_recovery"
+    },
+    {
+      "frame": 474334,
+      "sim": 122.265999999,
+      "original_kicking": true,
+      "new_intent": "StopIntent",
+      "reason": "receive_recovery"
+    },
+    {
+      "frame": 474335,
+      "sim": 122.279999999,
+      "original_kicking": true,
+      "new_intent": "StopIntent",
+      "reason": "receive_recovery"
+    }
+  ]
+}

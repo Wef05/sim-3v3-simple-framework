@@ -14,6 +14,7 @@ from .utils.geom import angle_to, normalize_angle, behind_ball
 from .utils.kick_lane import check_kick_lane, point_segment
 from .utils.free_position import nearest_free_position
 from .utils import goalkeeper
+from . import receiving
 
 Point = tuple[float, float]
 
@@ -46,6 +47,7 @@ class PassPlan:
     support_side: int = 0
     support_updated: float = 0.0
     evidence: str = 'not_requested'
+    reception: receiving.Reception = field(default_factory=receiving.Reception)
 
 
 @dataclass
@@ -69,6 +71,7 @@ class TeamPassing:
     cooldown_until: float = 0.0
     last_time: float | None = None
     events: list[dict] = field(default_factory=list)
+    exit_protections: dict[int, receiving.ExitProtection] = field(default_factory=dict)
 
 
 def _state(store):
@@ -125,6 +128,11 @@ def _finish(ctx, players, store, reason, success=False):
         return
     _event(state, plan, ctx.now, 'received' if success else 'cancelled', reason)
     state.active = None
+    protection = state.exit_protections.get(plan.receiver)
+    if protection is not None:
+        protection.recovery_until = ctx.now + (0. if success else P.RECEIVE_RECOVERY_S)
+        protection.reason = reason
+        protection.stable_since = None
     state.cooldown_until = ctx.now+P.PASS_COOLDOWN_S
     state.support = None
     for p in players:
@@ -149,6 +157,14 @@ def validate_plan(ctx: Any, players: list, store: Any) -> None:
     own = {p.id: p for p in players}
     if _phase_key(ctx)[0] != 'our_kickoff' or not _available(own.get(state.kickoff_receiver)):
         state.kickoff_receiver = None
+    # 出球保护按球员持有，不随普通角色切换清除；新的比赛阶段与无效观测显式清理。
+    phase = _phase_key(ctx)
+    for pid, protection in list(state.exit_protections.items()):
+        if protection.phase_key[0] in ('our_kickoff', 'our_set_play') and phase[0] == 'normal' and phase[2] == protection.phase_key[2]:
+            protection.phase_key = phase
+        if (phase != protection.phase_key or not _allowed(ctx)
+                or not _available(own.get(pid)) or not _fresh(ctx)):
+            del state.exit_protections[pid]
     plan = state.active
     if plan:
         reason = None
@@ -353,7 +369,7 @@ def _support_intent(ctx, passer, receiver, plan):
                       direct_path=True, motion_priority=20, arrive_dist=.15)
 
 
-def coordinate_pass(ctx: Any, players: list, assignments: dict,
+def _coordinate_pass(ctx: Any, players: list, assignments: dict,
                     preliminary: Any, store: Any) -> dict:
     """收齐提议后统一生成双方意图，保持输入不变、编号完整。"""
     state = _state(store)
@@ -441,6 +457,8 @@ def coordinate_pass(ctx: Any, players: list, assignments: dict,
                     plan.stage, plan.stage_since, plan.released_at = 'receive', ctx.now, ctx.now
                     plan.evidence = 'observed_motion_after_request_not_touch_confirmation'
                     _event(state, plan, ctx.now, 'receive', plan.evidence)
+                    state.exit_protections[receiver.id] = receiving.ExitProtection(
+                        receiver.id, plan.id, plan.phase_key, ctx.now, 'active_receive')
             # 证据积累时也立即退出踢球，禁止连续追踢刚离脚的球。
             if plan.stage == 'release':
                 plan.last_sample = sample
@@ -511,26 +529,19 @@ def coordinate_pass(ctx: Any, players: list, assignments: dict,
            and math.dist((r.pose.x, r.pose.y), ball)+.15 < math.dist(_xy(receiver), ball)
            for r in ctx.opponents.values()):
         return cancel('opponent_near_ball')
+    reception_intent, outcome = receiving.receive(ctx, receiver, plan.reception)
+    if outcome not in (None, 'received'):
+        return cancel(outcome)
     intercept = receiver.ball_intercept or {}
     contact = intercept.get('target')
-    if contact is None or not _inside(ctx, contact):
-        return cancel('no_receivable_contact')
-    if (intercept.get('score_s') is None or intercept['score_s'] > P.PASS_RECEIVE_TIMEOUT_S-(ctx.now-plan.stage_since)):
+    if plan.reception.buffer_since is None and (
+            intercept.get('score_s') is None or intercept['score_s'] >
+            P.PASS_RECEIVE_TIMEOUT_S-(ctx.now-plan.stage_since)):
         return cancel('receiver_cannot_arrive')
-    plan.contact = tuple(contact)
-    # 使用共享队友速度估计相对球速；未知时不能宣布接球到位。
-    tracker = getattr(receiver, 'teammate_motion', None)
-    robot_velocity = tracker.velocities.get(receiver.id) if tracker is not None else None
-    relative = math.hypot(velocity[0]-robot_velocity[0], velocity[1]-robot_velocity[1]) if speed is not None and robot_velocity is not None else math.inf
-    near = math.dist(_xy(receiver), ball) <= P.BALL_CONTROL_RADIUS_M
-    if fresh_sample:
-        if near and relative <= P.PASS_RECEIVE_RELATIVE_SPEED_MPS:
-            plan.received_since = sample if plan.received_since is None else plan.received_since
-        else:
-            plan.received_since = None
-    final[receiver.id] = (_hold(receiver, ball) if near else MoveIntent(plan.contact,
-        face=angle_to(*_xy(receiver), *ball), avoid_ball=False, avoid_robots=True,
-        maintain_face=True, arrive_dist=.06, motion_priority=90, opponent_mode='contest'))
+    if contact is not None and _inside(ctx, contact):
+        plan.contact = tuple(contact)
+    plan.received_since = plan.reception.stable_since
+    final[receiver.id] = reception_intent
     receiver.action = 'attack:receiving'
     if passer.id == P.GUARD_PLAYER_ID:
         # 恢复现有守门策略，但本帧不允许对已传出的球再次组织出球。
@@ -545,6 +556,26 @@ def coordinate_pass(ctx: Any, players: list, assignments: dict,
     else:
         final[passer.id] = _support_intent(ctx, passer, receiver, plan)
         passer.action = 'freeman:post_pass_support'
-    if plan.received_since is not None and sample-plan.received_since >= P.PASS_RECEIVE_HOLD_S:
+    if outcome == 'received':
         _finish(ctx, players, store, 'observed_receive_proximity_and_relative_speed', success=True)
+    return final
+
+
+def coordinate_pass(ctx: Any, players: list, assignments: dict,
+                    preliminary: Any, store: Any) -> dict:
+    """在所有传球返回路径后统一施加首次出球保护，避免下一帧普通射门绕过。"""
+    final = _coordinate_pass(ctx, players, assignments, preliminary, store)
+    state = _state(store)
+    for player in players:
+        protection = state.exit_protections.get(player.id)
+        if protection is None or (state.active and state.active.receiver == player.id):
+            continue
+        if not _available(player) or not _fresh(ctx):
+            final[player.id] = StopIntent()
+            continue
+        final[player.id], released = receiving.protect_exit(ctx, player, protection, final[player.id])
+        if released:
+            del state.exit_protections[player.id]
+        else:
+            player.action = 'attack:receive_' + protection.phase + ':' + protection.reason
     return final

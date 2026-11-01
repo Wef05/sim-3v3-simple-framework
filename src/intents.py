@@ -75,6 +75,8 @@ class MoveIntent:
     motion_priority: int = 10  # 越大越先规划；同级按编号。不是免碰撞权限。
     opponent_mode: str = 'avoid'  # avoid 保留战术余量；contest 只去掉额外余量
     ball_keepout: float = 0.0  # 球的排斥区域半径；0 使用球体半径
+    max_speed: float | None = None  # m/s；None 保持默认能力
+    max_yaw_rate: float | None = None  # rad/s；None 保持默认能力
 
 @dataclass(frozen=True)
 class FaceIntent:

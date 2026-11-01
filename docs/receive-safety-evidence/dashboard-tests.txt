@@ -1,0 +1,2 @@
+Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.
+Passing cards: shared target, evidence, support, cancellation and legacy replay passed.

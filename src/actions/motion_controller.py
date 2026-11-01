@@ -76,10 +76,10 @@ class MotionController(Executor):
 
     def walk_to(self, target, *, face=None, avoid_ball=False, avoid_robots=False,
                 arrive_dist=ARRIVE_DIST, maintain_face=False, direct_path=False,
-                motion_priority=10, opponent_mode='avoid', ball_keepout=0.):
+                motion_priority=10, opponent_mode='avoid', ball_keepout=0., max_speed=None, max_yaw_rate=None):
         """Standalone compatibility entry; team execution uses a shared planning frame."""
         intent = MoveIntent(target, face, avoid_ball, avoid_robots, arrive_dist,
-                            maintain_face, direct_path, motion_priority, opponent_mode, ball_keepout)
+                            maintain_face, direct_path, motion_priority, opponent_mode, ball_keepout, max_speed, max_yaw_rate)
         self.release_kick()
         command, arrived = self.plan_walk(intent, self.navigation_frame() if self.context else None)
         self.set_velocity(*command)
@@ -101,6 +101,13 @@ class MotionController(Executor):
             self.reset_navigation()
             info['state'] = 'invalid_geometry'
             return (0., 0., 0.), False
+        limits = (intent.max_speed, intent.max_yaw_rate)
+        if any(v is not None and (not math.isfinite(v) or v < 0) for v in limits):
+            self.reset_navigation()
+            info['state'] = 'invalid_speed_limit'
+            return (0., 0., 0.), False
+        yaw_limit = MAX_ANGULAR if intent.max_yaw_rate is None else min(MAX_ANGULAR, intent.max_yaw_rate)
+        info.update(max_speed=intent.max_speed, max_yaw_rate=intent.max_yaw_rate)
         target = clamp_target(self.context, intent.target)
         info['effective_target'] = list(target)
         if intent.direct_path and target != intent.target:
@@ -111,6 +118,7 @@ class MotionController(Executor):
         if distance < intent.arrive_dist:
             self.reset_navigation()
             yaw = self._angular(normalize_angle(intent.face-pose.theta)) if intent.face is not None else 0.
+            yaw = clamp(yaw, -yaw_limit, yaw_limit)
             info['state'] = 'arrived'
             return (0., 0., yaw if abs(yaw) > .2 else 0.), True
 
@@ -158,7 +166,8 @@ class MotionController(Executor):
                 waypoint = self._path_waypoint(pose, path, obstacles)
         heading = math.atan2(waypoint[1]-pose.y, waypoint[0]-pose.x)
         # If A* fails, locally try only checked commands. No "least bad" unsafe fallback.
-        max_speed = min(MAX_LINEAR, LINEAR_GAIN*distance)
+        max_speed = min(MAX_LINEAR, LINEAR_GAIN*distance,
+                        MAX_LINEAR if intent.max_speed is None else intent.max_speed)
         side = getattr(self, '_nav_side', 1. if self.id % 2 == 0 else -1.)
         held = now < getattr(self, '_nav_side_until', 0.) and self._nav_heading is not None
         offsets = [0.] if intent.direct_path else [0.] + [sign*math.radians(deg)
@@ -173,6 +182,7 @@ class MotionController(Executor):
             error = normalize_angle(desired-pose.theta)
             yaw = (self._angular(normalize_angle(intent.face-pose.theta))
                    if omni and intent.face is not None else 0. if omni else self._angular(error))
+            yaw = clamp(yaw, -yaw_limit, yaw_limit)
             # Rotation itself has no translational command, but momentum is still checked.
             speeds = (0.,) if not omni and abs(error) > TURN_THRESHOLD else (1., .65, .35, .15)
             for scale in speeds:

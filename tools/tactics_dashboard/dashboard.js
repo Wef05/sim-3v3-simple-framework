@@ -921,16 +921,21 @@ function navigationLabel(n){
 function passingLines(d,pid){
   const team=d.passing;if(!team)return [];
   const a=team.active,s=team.support;
+  const protection=team.exit_protections?.[pid];
+  const safety=protection?[`接球后保护：${protection.phase} / ${protection.reason}`]:[];
   const names={prepare:'准备接应',release:'请求出球',receive:'接球中'};
   if(a&&(a.passer===pid||a.receiver===pid))return [
     `传接计划 #${a.id} · ${a.passer} → ${a.receiver} · ${names[a.stage]||a.stage}`,
     `共同目标：${pointText(a.target)}；实际接触点：${pointText(a.contact)}`,
     `就绪：传球者 ${a.passer_ready?'是':'否'} / 接球者 ${a.receiver_ready?'是':'否'}`,
-    `传后支援：${pointText(a.support_target)}；证据：${a.evidence}`
+    `传后支援：${pointText(a.support_target)}；证据：${a.evidence}`,
+    ...(a.receiver===pid&&a.reception?[`接球动作：${a.reception.phase} / ${a.reception.reason}；限速 ${Number(a.reception.speed_limit).toFixed(2)} m/s`,
+      `相对速度：${a.reception.relative_speed==null?'未知':Number(a.reception.relative_speed).toFixed(2)+' m/s'}；稳定起点：${a.reception.stable_since??'未满足'}`]:[]),
+    ...safety
   ];
   if(s&&s.passer===pid)return [`计划 #${s.plan_id} 传后支援：${pointText(s.target)}`];
   const last=(team.events||[]).filter(e=>e.passer===pid||e.receiver===pid).at(-1);
-  return last?[`最近传接 #${last.id}：${last.event} / ${last.reason}`]:[];
+  return [...safety,...(last?[`最近传接 #${last.id}：${last.event} / ${last.reason}`]:[])];
 }
 function drawPassing(d,xy){
   const a=d.passing?.active,s=d.passing?.support;if(!a&&!s)return;

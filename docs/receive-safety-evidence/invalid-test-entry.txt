@@ -1,0 +1,95 @@
+test_ball_escaping_near_buffer_cancels (checks.test_receive_safety.ReceiveSafetyTests.test_ball_escaping_near_buffer_cancels) ... ok
+test_braking_grows_with_observed_speed (checks.test_receive_safety.ReceiveSafetyTests.test_braking_grows_with_observed_speed) ... ok
+test_cancel_protection_survives_next_frame_role_change (checks.test_receive_safety.ReceiveSafetyTests.test_cancel_protection_survives_next_frame_role_change) ... ok
+test_execution_caps_translation_and_arrival_rotation (checks.test_receive_safety.ReceiveSafetyTests.test_execution_caps_translation_and_arrival_rotation) ... ok
+test_expired_recovery_does_not_release_misaligned_shot (checks.test_receive_safety.ReceiveSafetyTests.test_expired_recovery_does_not_release_misaligned_shot) ... ok
+test_good_pose_requires_fresh_continuous_hold (checks.test_receive_safety.ReceiveSafetyTests.test_good_pose_requires_fresh_continuous_hold) ... ok
+test_invalid_speed_limit_stops (checks.test_receive_safety.ReceiveSafetyTests.test_invalid_speed_limit_stops) ... ok
+test_near_invalid_prediction_buffers_then_times_out (checks.test_receive_safety.ReceiveSafetyTests.test_near_invalid_prediction_buffers_then_times_out) ... ok
+test_new_restart_clears_protection (checks.test_receive_safety.ReceiveSafetyTests.test_new_restart_clears_protection) ... ok
+test_recovery_blocks_pass_as_well_as_shot (checks.test_receive_safety.ReceiveSafetyTests.test_recovery_blocks_pass_as_well_as_shot) ... ok
+test_repeated_observation_cannot_confirm (checks.test_receive_safety.ReceiveSafetyTests.test_repeated_observation_cannot_confirm) ... ok
+test_rewind_clears_protection (checks.test_receive_safety.ReceiveSafetyTests.test_rewind_clears_protection) ... ok
+test_stable_receive_with_invalid_far_prediction (checks.test_receive_safety.ReceiveSafetyTests.test_stable_receive_with_invalid_far_prediction) ... ok
+test_ball_movement_before_request_cancels (checks.test_passing.PassingTests.test_ball_movement_before_request_cancels) ... ok
+test_blocked_lane_has_finite_reselection (checks.test_passing.PassingTests.test_blocked_lane_has_finite_reselection) ... ok
+test_completed_kickoff_does_not_return_to_original_passer (checks.test_passing.PassingTests.test_completed_kickoff_does_not_return_to_original_passer) ... ok
+test_emergency_cancels_without_leaking_receiver_shot (checks.test_passing.PassingTests.test_emergency_cancels_without_leaking_receiver_shot) ... ok
+test_expired_restart_during_prepare_still_cancels (checks.test_passing.PassingTests.test_expired_restart_during_prepare_still_cancels) ... ok
+test_goal_threat_interrupts_before_role_assignment (checks.test_passing.PassingTests.test_goal_threat_interrupts_before_role_assignment) ... ok
+test_guard_never_receiver (checks.test_passing.PassingTests.test_guard_never_receiver) ... ok
+test_guard_pass_restores_guard_without_front_support (checks.test_passing.PassingTests.test_guard_pass_restores_guard_without_front_support) ... ok
+test_input_order_independence (checks.test_passing.PassingTests.test_input_order_independence) ... ok
+test_json_has_no_nonfinite_values (checks.test_passing.PassingTests.test_json_has_no_nonfinite_values) ... ok
+test_new_restart_still_cancels_release (checks.test_passing.PassingTests.test_new_restart_still_cancels_release) ... ok
+test_own_restart_release_to_normal_keeps_receiver_commitment (checks.test_passing.PassingTests.test_own_restart_release_to_normal_keeps_receiver_commitment) ... ok
+test_phase_and_rewind_clear (checks.test_passing.PassingTests.test_phase_and_rewind_clear) ... ok
+test_receive_timeout_and_unreachable_contact_release_lock (checks.test_passing.PassingTests.test_receive_timeout_and_unreachable_contact_release_lock) ... ok
+test_receiver_moves_during_release_no_retarget (checks.test_passing.PassingTests.test_receiver_moves_during_release_no_retarget) ... ok
+test_receiver_unavailable_releases_roles (checks.test_passing.PassingTests.test_receiver_unavailable_releases_roles) ... ok
+test_release_requires_multiple_observations_and_cancels_rekick (checks.test_passing.PassingTests.test_release_requires_multiple_observations_and_cancels_rekick) ... ok
+test_repeated_observation_does_not_prove_readiness (checks.test_passing.PassingTests.test_repeated_observation_does_not_prove_readiness) ... ok
+test_repeated_sample_does_not_complete_receive (checks.test_passing.PassingTests.test_repeated_sample_does_not_complete_receive) ... ok
+test_request_without_motion_times_out (checks.test_passing.PassingTests.test_request_without_motion_times_out) ... ok
+test_roles_locked_then_receiver_handoff (checks.test_passing.PassingTests.test_roles_locked_then_receiver_handoff) ... ok
+test_support_expires_and_ball_shift_clears (checks.test_passing.PassingTests.test_support_expires_and_ball_shift_clears) ... ok
+test_support_is_behind_lateral_and_lower_priority (checks.test_passing.PassingTests.test_support_is_behind_lateral_and_lower_priority) ... ok
+test_unknown_opponent_prevents_plan (checks.test_passing.PassingTests.test_unknown_opponent_prevents_plan) ... ok
+test_unknown_relative_speed_not_success (checks.test_passing.PassingTests.test_unknown_relative_speed_not_success) ... ok
+test_unsafe_support_route_holds (checks.test_passing.PassingTests.test_unsafe_support_route_holds) ... ok
+test_wait_and_shared_frozen_target (checks.test_passing.PassingTests.test_wait_and_shared_frozen_target) ... ok
+test_wrong_direction_cancels (checks.test_passing.PassingTests.test_wrong_direction_cancels) ... ok
+test_real_kickoff_pipeline_never_sends_before_receiver_ready (checks.test_passing.PipelineTests.test_real_kickoff_pipeline_never_sends_before_receiver_ready) ... ok
+test_astar_detour_has_safe_edges_and_exact_start (checks.test_navigation.GeometryTests.test_astar_detour_has_safe_edges_and_exact_start) ... ok
+test_blocked_endpoint_not_exempt (checks.test_navigation.GeometryTests.test_blocked_endpoint_not_exempt) ... ok
+test_goal_posts_sides_and_back_net (checks.test_navigation.GeometryTests.test_goal_posts_sides_and_back_net) ... ok
+test_overlapping_start_may_escape_but_not_cross_obstacle (checks.test_navigation.GeometryTests.test_overlapping_start_may_escape_but_not_cross_obstacle) ... ok
+test_robot_diameter_is_added (checks.test_navigation.GeometryTests.test_robot_diameter_is_added) ... ok
+test_same_grid_cell_still_checks_segment (checks.test_navigation.GeometryTests.test_same_grid_cell_still_checks_segment) ... ok
+test_swept_body_rejects_clear_endpoints_with_blocked_middle (checks.test_navigation.GeometryTests.test_swept_body_rejects_clear_endpoints_with_blocked_middle) ... ok
+test_waypoint_accumulates_distance (checks.test_navigation.GeometryTests.test_waypoint_accumulates_distance) ... ok
+test_waypoint_does_not_skip_corner (checks.test_navigation.GeometryTests.test_waypoint_does_not_skip_corner) ... ok
+test_all_directions_blocked_stops (checks.test_navigation.PolicyAndExecutionTests.test_all_directions_blocked_stops) ... ok
+test_crossing_kinematic_rollout_keeps_separation_and_arrives (checks.test_navigation.PolicyAndExecutionTests.test_crossing_kinematic_rollout_keeps_separation_and_arrives) ... ok
+test_deadline_target_is_not_silently_clamped (checks.test_navigation.PolicyAndExecutionTests.test_deadline_target_is_not_silently_clamped) ... ok
+test_default_move_cannot_disable_goal_or_team_safety (checks.test_navigation.PolicyAndExecutionTests.test_default_move_cannot_disable_goal_or_team_safety) ... ok
+test_head_on_and_three_way_kinematic_rollouts (checks.test_navigation.PolicyAndExecutionTests.test_head_on_and_three_way_kinematic_rollouts) ... ok
+test_joint_command_check_catches_inconsistent_plans (checks.test_navigation.PolicyAndExecutionTests.test_joint_command_check_catches_inconsistent_plans) ... ok
+test_kick_handoff_does_not_approach_through_post (checks.test_navigation.PolicyAndExecutionTests.test_kick_handoff_does_not_approach_through_post) ... ok
+test_no_safe_direct_path_stops (checks.test_navigation.PolicyAndExecutionTests.test_no_safe_direct_path_stops) ... ok
+test_open_field_makes_progress (checks.test_navigation.PolicyAndExecutionTests.test_open_field_makes_progress) ... ok
+test_order_independence_and_plan_before_backend_calls (checks.test_navigation.PolicyAndExecutionTests.test_order_independence_and_plan_before_backend_calls) ... ok
+test_priorities_and_restart_policy (checks.test_navigation.PolicyAndExecutionTests.test_priorities_and_restart_policy) ... ok
+test_ball_avoidance_is_scenario_specific (checks.test_navigation.PredictionTests.test_ball_avoidance_is_scenario_specific) ... ok
+test_braking_drift_cannot_be_hidden_by_zero_command (checks.test_navigation.PredictionTests.test_braking_drift_cannot_be_hidden_by_zero_command) ... ok
+test_contest_removes_extra_margin_not_robot_body (checks.test_navigation.PredictionTests.test_contest_removes_extra_margin_not_robot_body) ... ok
+test_crossing_opponent_predicted_before_contact (checks.test_navigation.PredictionTests.test_crossing_opponent_predicted_before_contact) ... ok
+test_existing_overlap_can_separate (checks.test_navigation.PredictionTests.test_existing_overlap_can_separate) ... ok
+test_moving_ball_is_avoided_before_reaching_robot (checks.test_navigation.PredictionTests.test_moving_ball_is_avoided_before_reaching_robot) ... ok
+test_reservation_forces_lower_priority_to_yield (checks.test_navigation.PredictionTests.test_reservation_forces_lower_priority_to_yield) ... ok
+test_swept_relative_segments_do_not_tunnel (checks.test_navigation.PredictionTests.test_swept_relative_segments_do_not_tunnel) ... ok
+test_tracker_distinct_samples_pause_rewind_teleport_and_expiry (checks.test_navigation.PredictionTests.test_tracker_distinct_samples_pause_rewind_teleport_and_expiry) ... ok
+test_both_ball_origins_must_be_safe (checks.test_blocked_attack.BlockedAttackTests.test_both_ball_origins_must_be_safe) ... ok
+test_chase_uses_fallback_direction (checks.test_blocked_attack.BlockedAttackTests.test_chase_uses_fallback_direction) ... ok
+test_clear_shot_is_unchanged (checks.test_blocked_attack.BlockedAttackTests.test_clear_shot_is_unchanged) ... ok
+test_fully_blocked_lanes_still_stop_safely (checks.test_blocked_attack.BlockedAttackTests.test_fully_blocked_lanes_still_stop_safely) ... ok
+test_marked_receiver_is_rejected (checks.test_blocked_attack.BlockedAttackTests.test_marked_receiver_is_rejected) ... ok
+test_open_teammate_is_preferred (checks.test_blocked_attack.BlockedAttackTests.test_open_teammate_is_preferred) ... ok
+test_replay_positions_and_mirrors_keep_producing_safe_short_kicks (checks.test_blocked_attack.BlockedAttackTests.test_replay_positions_and_mirrors_keep_producing_safe_short_kicks) ... ok
+test_unavailable_receiver_is_ignored (checks.test_blocked_attack.BlockedAttackTests.test_unavailable_receiver_is_ignored) ... ok
+test_fixed_guard (unittest.loader._FailedTest.test_fixed_guard) ... ERROR
+
+======================================================================
+ERROR: test_fixed_guard (unittest.loader._FailedTest.test_fixed_guard)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_fixed_guard
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named 'checks.test_fixed_guard'
+
+
+----------------------------------------------------------------------
+Ran 80 tests in 1.042s
+
+FAILED (errors=1)
