@@ -37,4 +37,4 @@
 
 ## 2026-11-02 射门保底更新
 
-自动选中的传球/射门若未通过当前球位结构检查，也尝试上述射门保底。`attack:shot_fallback` 与 `attack_choice.selected.shot_fallback` 标明兜底，无法安全射门时记录 `attack:no_safe_shot`。专项检查增至17项，并新增看板未知概率/兜底说明检查。完整112项中109项通过，仍有与原基线一致的3项错误。实验详见射门保底报告。
+自动选中的传球/射门若未通过当前球位结构检查，也尝试上述射门保底。`attack:shot_fallback` 与 `attack_choice.selected.shot_fallback` 标明兜底，无法安全射门时记录 `attack:no_safe_shot`。专项检查增至17项，并新增看板未知概率/兜底说明检查。完整112项中109项通过，仍有与原基线一致的3项错误。实验详见 [射门保底报告](shot-fallback-report.md)。

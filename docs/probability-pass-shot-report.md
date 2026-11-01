@@ -1,5 +1,7 @@
 # 概率传射实现与一次短时仿真报告
 
+> 后续更新：2026-11-02 已按用户批准加入射门保底；本报告保留首次版本实验事实，最新结果见 [射门保底报告](shot-fallback-report.md)。
+
 ## 版本、范围与身份
 
 - 基线 `origin/main`：`ddf350a`；实现提交 `c1ba176`，分支 `codex/probability-pass-shot`。

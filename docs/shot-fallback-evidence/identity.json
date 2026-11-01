@@ -1,0 +1,331 @@
+{
+  "commit": "3a8470f03c60d656cabab24fc5347875b1ded231",
+  "package": "/Users/limingzhe/.codex/worktrees/probability-pass-shot/sim-3v3-simple-framework/build/com.example.lqinternalmatch-2.0.3.agent",
+  "package_sha256": "37cd25f18131c371f919da65fd303d54e3cd7a250240109f3f76b4c1d2f0969a",
+  "files": [
+    {
+      "path": "__init__.py",
+      "source_sha256": "2f837a2561fbf836b5e4190774180f053c8c4fe982b57566149491222edd3533",
+      "package_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal": false,
+      "docstring_only_init_exception": true
+    },
+    {
+      "path": "actions/__init__.py",
+      "source_sha256": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "package_sha256": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "runtime_sha256": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "equal": true
+    },
+    {
+      "path": "actions/controller.py",
+      "source_sha256": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "package_sha256": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "runtime_sha256": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "equal": true
+    },
+    {
+      "path": "actions/executor.py",
+      "source_sha256": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "package_sha256": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "runtime_sha256": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "equal": true
+    },
+    {
+      "path": "actions/kick_planner.py",
+      "source_sha256": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "package_sha256": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "runtime_sha256": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "equal": true
+    },
+    {
+      "path": "actions/motion_controller.py",
+      "source_sha256": "38ea28e745331f123e428a8d3542e404e8f9471e80ce50eccbff12a0db9c4fd4",
+      "package_sha256": "38ea28e745331f123e428a8d3542e404e8f9471e80ce50eccbff12a0db9c4fd4",
+      "runtime_sha256": "38ea28e745331f123e428a8d3542e404e8f9471e80ce50eccbff12a0db9c4fd4",
+      "equal": true
+    },
+    {
+      "path": "framework/__init__.py",
+      "source_sha256": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "package_sha256": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "runtime_sha256": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "equal": true
+    },
+    {
+      "path": "framework/agent.py",
+      "source_sha256": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "package_sha256": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "runtime_sha256": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "equal": true
+    },
+    {
+      "path": "framework/config.py",
+      "source_sha256": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "package_sha256": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "runtime_sha256": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "equal": true
+    },
+    {
+      "path": "framework/debugdraw.py",
+      "source_sha256": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "package_sha256": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "runtime_sha256": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "equal": true
+    },
+    {
+      "path": "framework/decision_frame.py",
+      "source_sha256": "3316971cbdb8a016cc9ca1ae4fa092f56f6b8a11ec615b053e9cffbbf32f0ccb",
+      "package_sha256": "3316971cbdb8a016cc9ca1ae4fa092f56f6b8a11ec615b053e9cffbbf32f0ccb",
+      "runtime_sha256": "3316971cbdb8a016cc9ca1ae4fa092f56f6b8a11ec615b053e9cffbbf32f0ccb",
+      "equal": true
+    },
+    {
+      "path": "framework/game_codec.py",
+      "source_sha256": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "package_sha256": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "runtime_sha256": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "equal": true
+    },
+    {
+      "path": "framework/log_publisher.py",
+      "source_sha256": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "package_sha256": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "runtime_sha256": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "equal": true
+    },
+    {
+      "path": "framework/robot_backend.py",
+      "source_sha256": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "package_sha256": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "runtime_sha256": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "equal": true
+    },
+    {
+      "path": "framework/ros_source.py",
+      "source_sha256": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "package_sha256": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "runtime_sha256": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "equal": true
+    },
+    {
+      "path": "framework/runtime.py",
+      "source_sha256": "ff53a62a9447ceee7995bb2d83c5381e8c3c062752858567378334941b62b901",
+      "package_sha256": "ff53a62a9447ceee7995bb2d83c5381e8c3c062752858567378334941b62b901",
+      "runtime_sha256": "ff53a62a9447ceee7995bb2d83c5381e8c3c062752858567378334941b62b901",
+      "equal": true
+    },
+    {
+      "path": "framework/types.py",
+      "source_sha256": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "package_sha256": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "runtime_sha256": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "equal": true
+    },
+    {
+      "path": "intents.py",
+      "source_sha256": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "package_sha256": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "runtime_sha256": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "equal": true
+    },
+    {
+      "path": "main.py",
+      "source_sha256": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "package_sha256": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "runtime_sha256": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "equal": true
+    },
+    {
+      "path": "param.py",
+      "source_sha256": "f769ca7bad56cc023cdfd629c009b5bce7a9cbce899b83c540f1031efb415e38",
+      "package_sha256": "f769ca7bad56cc023cdfd629c009b5bce7a9cbce899b83c540f1031efb415e38",
+      "runtime_sha256": "f769ca7bad56cc023cdfd629c009b5bce7a9cbce899b83c540f1031efb415e38",
+      "equal": true
+    },
+    {
+      "path": "player.py",
+      "source_sha256": "9ebccb57bd64e2f7842d10b1467012a4f910f4a36544f344e8e788028edeb57c",
+      "package_sha256": "9ebccb57bd64e2f7842d10b1467012a4f910f4a36544f344e8e788028edeb57c",
+      "runtime_sha256": "9ebccb57bd64e2f7842d10b1467012a4f910f4a36544f344e8e788028edeb57c",
+      "equal": true
+    },
+    {
+      "path": "role_allocator.py",
+      "source_sha256": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "package_sha256": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "runtime_sha256": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "equal": true
+    },
+    {
+      "path": "telemetry.py",
+      "source_sha256": "be38b3b1967d3cee3fc93b28abc028683ed5dfba3dd3804f79d42fe643676ab3",
+      "package_sha256": "be38b3b1967d3cee3fc93b28abc028683ed5dfba3dd3804f79d42fe643676ab3",
+      "runtime_sha256": "be38b3b1967d3cee3fc93b28abc028683ed5dfba3dd3804f79d42fe643676ab3",
+      "equal": true
+    },
+    {
+      "path": "telemetry_config.py",
+      "source_sha256": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "package_sha256": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "runtime_sha256": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "equal": true
+    },
+    {
+      "path": "telemetry_status.py",
+      "source_sha256": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "package_sha256": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "runtime_sha256": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "equal": true
+    },
+    {
+      "path": "utils/__init__.py",
+      "source_sha256": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "package_sha256": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "runtime_sha256": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "equal": true
+    },
+    {
+      "path": "utils/attack_targets.py",
+      "source_sha256": "942cb6957f26575f1b6964aab73fb5e4c607e833e5aef53596a1c9c4aab6dcb0",
+      "package_sha256": "942cb6957f26575f1b6964aab73fb5e4c607e833e5aef53596a1c9c4aab6dcb0",
+      "runtime_sha256": "942cb6957f26575f1b6964aab73fb5e4c607e833e5aef53596a1c9c4aab6dcb0",
+      "equal": true
+    },
+    {
+      "path": "utils/ball_motion.py",
+      "source_sha256": "1f71a99d7b3e4490698a8dea01f575b3a5916b6fe262e0dfabff2cc14eb0dc55",
+      "package_sha256": "1f71a99d7b3e4490698a8dea01f575b3a5916b6fe262e0dfabff2cc14eb0dc55",
+      "runtime_sha256": "1f71a99d7b3e4490698a8dea01f575b3a5916b6fe262e0dfabff2cc14eb0dc55",
+      "equal": true
+    },
+    {
+      "path": "utils/block_point.py",
+      "source_sha256": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "package_sha256": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "runtime_sha256": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "equal": true
+    },
+    {
+      "path": "utils/blocked_attack.py",
+      "source_sha256": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "package_sha256": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "runtime_sha256": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "equal": true
+    },
+    {
+      "path": "utils/free_position.py",
+      "source_sha256": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "package_sha256": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "runtime_sha256": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "equal": true
+    },
+    {
+      "path": "utils/geom.py",
+      "source_sha256": "adc4f2c4df6d0fb2c9885e993a47589ad398eddaca3f246258d9245548f0e00f",
+      "package_sha256": "adc4f2c4df6d0fb2c9885e993a47589ad398eddaca3f246258d9245548f0e00f",
+      "runtime_sha256": "adc4f2c4df6d0fb2c9885e993a47589ad398eddaca3f246258d9245548f0e00f",
+      "equal": true
+    },
+    {
+      "path": "utils/goalkeeper.py",
+      "source_sha256": "75663621787da3481c889f17d42cb0f702fd141ddd14e4d12085e3f18015f3d0",
+      "package_sha256": "75663621787da3481c889f17d42cb0f702fd141ddd14e4d12085e3f18015f3d0",
+      "runtime_sha256": "75663621787da3481c889f17d42cb0f702fd141ddd14e4d12085e3f18015f3d0",
+      "equal": true
+    },
+    {
+      "path": "utils/interception.py",
+      "source_sha256": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "package_sha256": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "runtime_sha256": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "equal": true
+    },
+    {
+      "path": "utils/interception_risk.py",
+      "source_sha256": "4e8c916ba84b9a02f9fc2c040283d49925f9ae711779d6e1afdb802a03f6b5c7",
+      "package_sha256": "4e8c916ba84b9a02f9fc2c040283d49925f9ae711779d6e1afdb802a03f6b5c7",
+      "runtime_sha256": "4e8c916ba84b9a02f9fc2c040283d49925f9ae711779d6e1afdb802a03f6b5c7",
+      "equal": true
+    },
+    {
+      "path": "utils/kick_error.py",
+      "source_sha256": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "package_sha256": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "runtime_sha256": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "equal": true
+    },
+    {
+      "path": "utils/kick_lane.py",
+      "source_sha256": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "package_sha256": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "runtime_sha256": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "equal": true
+    },
+    {
+      "path": "utils/navigation.py",
+      "source_sha256": "bae4cf2b0182e305e384c436a185e84cc463b205592f10c609ea51304e18e579",
+      "package_sha256": "bae4cf2b0182e305e384c436a185e84cc463b205592f10c609ea51304e18e579",
+      "runtime_sha256": "bae4cf2b0182e305e384c436a185e84cc463b205592f10c609ea51304e18e579",
+      "equal": true
+    },
+    {
+      "path": "utils/obstacles.py",
+      "source_sha256": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "package_sha256": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "runtime_sha256": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "equal": true
+    },
+    {
+      "path": "utils/pass_reception.py",
+      "source_sha256": "4dbdb390124a6472a479e0db904995941868e280e24ee59d57b9001efe5c8d0f",
+      "package_sha256": "4dbdb390124a6472a479e0db904995941868e280e24ee59d57b9001efe5c8d0f",
+      "runtime_sha256": "4dbdb390124a6472a479e0db904995941868e280e24ee59d57b9001efe5c8d0f",
+      "equal": true
+    },
+    {
+      "path": "utils/path_planner.py",
+      "source_sha256": "6405f3da89ab523af9b45ed388072ce690e8305034ced2db129eeba4e2c93c11",
+      "package_sha256": "6405f3da89ab523af9b45ed388072ce690e8305034ced2db129eeba4e2c93c11",
+      "runtime_sha256": "6405f3da89ab523af9b45ed388072ce690e8305034ced2db129eeba4e2c93c11",
+      "equal": true
+    },
+    {
+      "path": "utils/restart_defense.py",
+      "source_sha256": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "package_sha256": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "runtime_sha256": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "equal": true
+    },
+    {
+      "path": "utils/scoring_probability.py",
+      "source_sha256": "11364f2244db5d66ce15fd07736e9bae4b42084ea5a4246b3c2697b580150fe2",
+      "package_sha256": "11364f2244db5d66ce15fd07736e9bae4b42084ea5a4246b3c2697b580150fe2",
+      "runtime_sha256": "11364f2244db5d66ce15fd07736e9bae4b42084ea5a4246b3c2697b580150fe2",
+      "equal": true
+    },
+    {
+      "path": "utils/tactical_geometry.py",
+      "source_sha256": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "package_sha256": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "runtime_sha256": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "equal": true
+    },
+    {
+      "path": "utils/threat.py",
+      "source_sha256": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "package_sha256": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "runtime_sha256": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "equal": true
+    },
+    {
+      "path": "visualization.py",
+      "source_sha256": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "package_sha256": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "runtime_sha256": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "equal": true
+    }
+  ],
+  "mismatches": []
+}

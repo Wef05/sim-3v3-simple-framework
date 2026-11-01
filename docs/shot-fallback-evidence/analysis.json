@@ -1,0 +1,840 @@
+{
+  "frames": 3830,
+  "bytes": 92324697,
+  "context_range": [
+    22.753999999,
+    110.611999999
+  ],
+  "receiver_duration_s": 278.7939794580452,
+  "actions": {
+    "stopped": 4224,
+    "ready": 2586,
+    "attack": 98,
+    "guard:set": 1128,
+    "stay": 98,
+    "attack:shot_fallback": 478,
+    "freeman:move": 1066,
+    "attack:shot": 36,
+    "opp_set_play:position": 534,
+    "guard:set:restricted": 326,
+    "return_to_field": 740,
+    "guard:anticipate:ray": 35,
+    "freeman:wait": 70,
+    "guard:block:hold": 18,
+    "guard:block:reachable": 30,
+    "guard:block:best_effort": 23
+  },
+  "kick_request_frames": {
+    "attack": 98,
+    "attack:shot_fallback": 350,
+    "attack:shot": 24
+  },
+  "routes": {
+    "fallback_shot": 478,
+    "shot": 36
+  },
+  "unknown_fallback_frames": 393,
+  "max_sim_gap_s": 0.3839999999999968,
+  "terminal_state": "FINISHED",
+  "timeline": [
+    {
+      "id": 752898,
+      "now": 47.016,
+      "game_state": "PLAYING",
+      "set_play": "NONE",
+      "ball": {
+        "x": -1.0884810859588705e-16,
+        "y": 1.916977973074814e-16,
+        "last_seen_at": 47.016,
+        "confidence": 1.0,
+        "received_at": 15147.730647778
+      },
+      "teammates": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": 0.028136653843956666,
+            "y": -0.3792285387142872,
+            "theta": 1.6598225614287
+          },
+          "last_seen_at": 47.016,
+          "received_at": 15147.730505695
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": -6.459000838432359,
+            "y": 0.05439587898639866,
+            "theta": -0.0003610348916184909
+          },
+          "last_seen_at": 47.016,
+          "received_at": 15147.730535362
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": -1.237008806062128,
+            "y": 4.074399130321111,
+            "theta": 0.03417872437752161
+          },
+          "last_seen_at": 47.016,
+          "received_at": 15147.73055957
+        }
+      },
+      "opponents": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": 2.7597227649027096,
+            "y": -0.00109385647352553,
+            "theta": -3.0498654054449816
+          },
+          "last_seen_at": 47.016,
+          "received_at": 15147.730582612
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": 2.769051540919564,
+            "y": -2.599970418338641,
+            "theta": -2.944403129785379
+          },
+          "last_seen_at": 47.016,
+          "received_at": 15147.73060482
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": 5.7390960718647595,
+            "y": -0.010013745585886946,
+            "theta": 3.0883074607523078
+          },
+          "last_seen_at": 47.016,
+          "received_at": 15147.730625862
+        }
+      },
+      "players": [
+        {
+          "id": 1,
+          "action": "attack",
+          "target": [
+            -1.237008806062128,
+            4.074399130321111
+          ],
+          "kick_power": 3.0,
+          "guard_decision": null,
+          "choice": null,
+          "direct": 0.0,
+          "passing": []
+        },
+        {
+          "id": 2,
+          "action": "guard:set",
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "kick_power": null,
+          "guard_decision": {
+            "ball_fresh": true,
+            "velocity_known": true,
+            "ball_speed_mps": 1.802702500329618e-17,
+            "close_clear_rejection": "range",
+            "outlet_wait_reason": "no_safe_outlet"
+          },
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 3,
+          "action": "stay",
+          "target": null,
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        }
+      ]
+    },
+    {
+      "id": 752900,
+      "now": 47.074,
+      "game_state": "PLAYING",
+      "set_play": "NONE",
+      "ball": {
+        "x": 0.015052311546693611,
+        "y": 0.004314387485716714,
+        "last_seen_at": 47.068,
+        "confidence": 1.0,
+        "received_at": 15147.844154528
+      },
+      "teammates": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": 0.011636691199122133,
+            "y": -0.348191076284902,
+            "theta": 1.5913829221759987
+          },
+          "last_seen_at": 47.07,
+          "received_at": 15147.847642903
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": -6.458792790484007,
+            "y": 0.054427564157799015,
+            "theta": 3.8307422704560615e-05
+          },
+          "last_seen_at": 47.07,
+          "received_at": 15147.847669528
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": -1.2370244491340832,
+            "y": 4.074393970574833,
+            "theta": 0.03442504940465266
+          },
+          "last_seen_at": 47.07,
+          "received_at": 15147.84788157
+        }
+      },
+      "opponents": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": 2.7597359049845847,
+            "y": -0.001087692480493864,
+            "theta": -3.0497217693706924
+          },
+          "last_seen_at": 47.07,
+          "received_at": 15147.84792232
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": 2.7689548503075367,
+            "y": -2.602558917230224,
+            "theta": -2.943918605287436
+          },
+          "last_seen_at": 47.07,
+          "received_at": 15147.847948903
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": 5.739108031383899,
+            "y": -0.010009765944672542,
+            "theta": 3.0884203884656474
+          },
+          "last_seen_at": 47.07,
+          "received_at": 15147.847971237
+        }
+      },
+      "players": [
+        {
+          "id": 1,
+          "action": "attack:shot_fallback",
+          "target": [
+            7.0,
+            0.0
+          ],
+          "kick_power": 5.0,
+          "guard_decision": null,
+          "choice": {
+            "kind": "shot",
+            "target": [
+              7.0,
+              0.0
+            ],
+            "probability": 0.0,
+            "plan": {
+              "path": [
+                [
+                  0.011636691199122133,
+                  -0.348191076284902
+                ],
+                [
+                  -0.17014273984924358,
+                  0.05572865299390844
+                ]
+              ],
+              "stance": [
+                -0.17014273984924358,
+                0.05572865299390844
+              ],
+              "arrival_s": 0.6662191616358162,
+              "travel_s": 0.6662191616358162,
+              "turn_s": 1.5991550869551656,
+              "preparation_s": 2.1991550869551655,
+              "kick_time_s": 2.8653742485909817,
+              "origin": [
+                0.1798466890585331,
+                0.0530084227080121
+              ]
+            },
+            "advantage": 0.0,
+            "shot_fallback": true,
+            "reason": "no_suitable_route",
+            "id": "selected_route"
+          },
+          "direct": 0.0,
+          "passing": [
+            [
+              3,
+              0.0625
+            ]
+          ]
+        },
+        {
+          "id": 2,
+          "action": "guard:set",
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "kick_power": null,
+          "guard_decision": {
+            "ball_fresh": true,
+            "velocity_known": true,
+            "ball_speed_mps": 0.45622482005934717,
+            "close_clear_rejection": "range",
+            "outlet_wait_reason": "no_safe_outlet"
+          },
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 3,
+          "action": "freeman:move",
+          "target": [
+            0.01505231154669362,
+            4.074393970574833
+          ],
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        }
+      ]
+    },
+    {
+      "id": 752988,
+      "now": 51.134,
+      "game_state": "PLAYING",
+      "set_play": "NONE",
+      "ball": {
+        "x": 0.09892687326238128,
+        "y": 4.640760916018669,
+        "last_seen_at": 51.13,
+        "confidence": 1.0,
+        "received_at": 15159.351377242
+      },
+      "teammates": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": 0.3825190877687147,
+            "y": 2.508832203953731,
+            "theta": 1.3140565605242398
+          },
+          "last_seen_at": 51.13,
+          "received_at": 15159.351241075
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": -6.438223280106851,
+            "y": -0.006292893807429437,
+            "theta": 0.5511360700366706
+          },
+          "last_seen_at": 51.13,
+          "received_at": 15159.351267908
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": -0.2251142626892259,
+            "y": 4.241797042795795,
+            "theta": -0.3709854396732809
+          },
+          "last_seen_at": 51.13,
+          "received_at": 15159.351290408
+        }
+      },
+      "opponents": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": 1.2806776013811538,
+            "y": 1.8499005048573647,
+            "theta": 1.7725718446032697
+          },
+          "last_seen_at": 51.13,
+          "received_at": 15159.351313158
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": 1.9672302492544194,
+            "y": -1.0423406047097359,
+            "theta": 2.010611985368234
+          },
+          "last_seen_at": 51.13,
+          "received_at": 15159.3513347
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": 5.542581279988864,
+            "y": 1.2006366265654715,
+            "theta": 1.718847646883657
+          },
+          "last_seen_at": 51.13,
+          "received_at": 15159.351356533
+        }
+      },
+      "players": [
+        {
+          "id": 1,
+          "action": "freeman:move",
+          "target": [
+            2.6867262014817155,
+            4.5
+          ],
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 2,
+          "action": "guard:set",
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "kick_power": null,
+          "guard_decision": {
+            "ball_fresh": true,
+            "velocity_known": true,
+            "ball_speed_mps": 0.9812781787880551,
+            "outlet_wait_reason": "fast_ball"
+          },
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 3,
+          "action": "attack:shot_fallback",
+          "target": [
+            7.0,
+            0.0
+          ],
+          "kick_power": 5.0,
+          "guard_decision": null,
+          "choice": {
+            "kind": "shot",
+            "target": [
+              7.0,
+              0.0
+            ],
+            "probability": null,
+            "plan": null,
+            "advantage": 0.0,
+            "shot_fallback": true,
+            "reason": "no_suitable_route",
+            "id": "selected_route"
+          },
+          "direct": null,
+          "passing": [
+            [
+              1,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 753479,
+      "now": 60.048,
+      "game_state": "PLAYING",
+      "set_play": "THROW_IN",
+      "ball": {
+        "x": 0.09892687326238128,
+        "y": 4.45,
+        "last_seen_at": 60.044,
+        "confidence": 1.0,
+        "received_at": 15186.221451671
+      },
+      "teammates": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": 0.5850807727091272,
+            "y": 3.0153143418701176,
+            "theta": 2.103238268973723
+          },
+          "last_seen_at": 60.044,
+          "received_at": 15186.221989462
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": -6.468189489797337,
+            "y": 0.08546877876586095,
+            "theta": 0.5964786690051336
+          },
+          "last_seen_at": 60.044,
+          "received_at": 15186.222235254
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": -2.687634699851928,
+            "y": 4.388479625733467,
+            "theta": -0.11500266161651321
+          },
+          "last_seen_at": 60.044,
+          "received_at": 15186.222328837
+        }
+      },
+      "opponents": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": 0.26886004977237643,
+            "y": 4.489754587735454,
+            "theta": -2.4122200063927366
+          },
+          "last_seen_at": 60.044,
+          "received_at": 15186.222387546
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": 1.1886923707968093,
+            "y": 2.956759884259852,
+            "theta": 1.601758234675773
+          },
+          "last_seen_at": 60.044,
+          "received_at": 15186.222559962
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": 5.385816242004218,
+            "y": 1.4329652500449268,
+            "theta": 2.8075306529556636
+          },
+          "last_seen_at": 60.044,
+          "received_at": 15186.222604504
+        }
+      },
+      "players": [
+        {
+          "id": 1,
+          "action": "opp_set_play:position",
+          "target": [
+            -0.5,
+            2.2500000000000004
+          ],
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 2,
+          "action": "guard:set:restricted",
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "kick_power": null,
+          "guard_decision": {
+            "ball_fresh": true,
+            "velocity_known": true,
+            "ball_speed_mps": 0.0,
+            "outlet_wait_reason": "restricted"
+          },
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 3,
+          "action": "opp_set_play:position",
+          "target": [
+            -4.5,
+            -0.8
+          ],
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        }
+      ]
+    },
+    {
+      "id": 753709,
+      "now": 69.948,
+      "game_state": "PLAYING",
+      "set_play": "NONE",
+      "ball": {
+        "x": -6.397063641375043,
+        "y": -0.49762501510689794,
+        "last_seen_at": 69.944,
+        "confidence": 1.0,
+        "received_at": 15213.92615835
+      },
+      "teammates": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": -0.3223461364444968,
+            "y": 3.473227634733813,
+            "theta": -0.36131950898023635
+          },
+          "last_seen_at": 69.944,
+          "received_at": 15213.925692184
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": -6.5682226052538395,
+            "y": -0.3207076600538524,
+            "theta": -0.339276311209516
+          },
+          "last_seen_at": 69.944,
+          "received_at": 15213.925835142
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": -4.666212048818347,
+            "y": 0.2502923170834135,
+            "theta": 3.0524665650232627
+          },
+          "last_seen_at": 69.944,
+          "received_at": 15213.925898934
+        }
+      },
+      "opponents": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": -3.834423553820421,
+            "y": -0.4511444827729164,
+            "theta": 3.125127628926776
+          },
+          "last_seen_at": 69.944,
+          "received_at": 15213.92595285
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": 0.2919315835473631,
+            "y": -1.404674438109313,
+            "theta": -1.538837244919129
+          },
+          "last_seen_at": 69.944,
+          "received_at": 15213.926039309
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": 5.380685301274692,
+            "y": -0.13700113421621835,
+            "theta": -2.9481749006507334
+          },
+          "last_seen_at": 69.944,
+          "received_at": 15213.926100892
+        }
+      },
+      "players": [
+        {
+          "id": 1,
+          "action": "freeman:move",
+          "target": [
+            -0.5378001318957182,
+            3.332392103194798
+          ],
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 2,
+          "action": "guard:block:hold",
+          "target": null,
+          "kick_power": null,
+          "guard_decision": {
+            "ball_fresh": true,
+            "velocity_known": true,
+            "shot_source": "short_hold_envelope",
+            "goal_time_s": 0.5125546912164567,
+            "goal_crossing": [
+              -7.0,
+              -0.4871107405164881
+            ]
+          },
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 3,
+          "action": "attack:shot_fallback",
+          "target": [
+            7.0,
+            0.0
+          ],
+          "kick_power": 5.0,
+          "guard_decision": null,
+          "choice": {
+            "kind": "shot",
+            "target": [
+              7.0,
+              0.0
+            ],
+            "probability": null,
+            "plan": null,
+            "advantage": 0.0,
+            "shot_fallback": true,
+            "reason": "no_suitable_route",
+            "id": "selected_route"
+          },
+          "direct": null,
+          "passing": [
+            [
+              1,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": 755255,
+      "now": 108.609999999,
+      "game_state": "FINISHED",
+      "set_play": "NONE",
+      "ball": {
+        "x": -6.782531123130562,
+        "y": -0.7486429635559582,
+        "last_seen_at": 108.603999999,
+        "confidence": 1.0,
+        "received_at": 15344.515832784
+      },
+      "teammates": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": -1.0470424501123596,
+            "y": 3.316391654136466,
+            "theta": -0.2746388015075887
+          },
+          "last_seen_at": 108.603999999,
+          "received_at": 15344.515071909
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": -6.381359993741746,
+            "y": -0.5700208004754809,
+            "theta": -2.1220761411263065
+          },
+          "last_seen_at": 108.603999999,
+          "received_at": 15344.515690659
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": -7.018840222615601,
+            "y": 0.34736848349370897,
+            "theta": -2.066984997837502
+          },
+          "last_seen_at": 108.603999999,
+          "received_at": 15344.515730659
+        }
+      },
+      "opponents": {
+        "1": {
+          "player_id": 1,
+          "pose": {
+            "x": -6.783880711120053,
+            "y": -1.3937813406179924,
+            "theta": 1.8351269123015173
+          },
+          "last_seen_at": 108.603999999,
+          "received_at": 15344.515757868
+        },
+        "2": {
+          "player_id": 2,
+          "pose": {
+            "x": 0.24774881323109943,
+            "y": -1.913050543330254,
+            "theta": -3.0700487377953753
+          },
+          "last_seen_at": 108.603999999,
+          "received_at": 15344.515781284
+        },
+        "3": {
+          "player_id": 3,
+          "pose": {
+            "x": 5.363322924076703,
+            "y": -0.20756441507089202,
+            "theta": 2.593862511697719
+          },
+          "last_seen_at": 108.603999999,
+          "received_at": 15344.515803534
+        }
+      },
+      "players": [
+        {
+          "id": 1,
+          "action": "stopped",
+          "target": null,
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 2,
+          "action": "stopped",
+          "target": null,
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        },
+        {
+          "id": 3,
+          "action": "stopped",
+          "target": null,
+          "kick_power": null,
+          "guard_decision": null,
+          "choice": null,
+          "direct": null,
+          "passing": []
+        }
+      ]
+    }
+  ]
+}
