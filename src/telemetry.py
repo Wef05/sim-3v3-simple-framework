@@ -109,6 +109,7 @@ def make_snapshot(context, players, store):
             interception_risk=getattr(p, 'interception_risk', None),
             attack_candidates=getattr(p, 'attack_candidates', None),
             scoring_probability=getattr(p, 'scoring_probability', None),
+            attack_choice=getattr(p, 'attack_choice', None),
             mode=p.mode, fallen=p.is_fallen, penalized=p.is_penalized,
             penalty=p.penalty, kicking=p.is_kicking,
             kick_power=(getattr(getattr(p, "controller", None), "kick_observation", None) or {}).get("power"),

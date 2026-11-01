@@ -10,7 +10,7 @@ from dataclasses import replace
 from .utils.interception_risk import estimate_interception_risk
 from .utils.kick_lane import check_kick_lane
 from .utils.blocked_attack import blocked_attack_target
-from .utils.scoring_probability import evaluate_scoring
+from .utils.scoring_probability import evaluate_scoring, choose_route
 from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
@@ -195,9 +195,11 @@ class Player:
         if ball is None or self.pose is None or current_ball is None:
             return StopIntent()
 
-        # 观测评估先于既有目标解析，结果不传入任何动作选择分支。
+        self.attack_choice = None
+        receiver_ids = tuple(getattr(self, 'evaluation_receiver_ids', ()))
+        # 候选与两脚路线使用同一个仿真时刻，角色/可行动状态变化立即失效。
         cached = getattr(self, '_candidate_cache', None)
-        signature = (tuple(getattr(self, 'evaluation_freeman_ids', ())), tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
+        signature = (receiver_ids, get_phase(self.context), tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
                      tuple((pid, r.pose is not None) for pid,r in sorted(self.context.opponents.items())),
                      (self.ball_intercept or {}).get('status'))
         if (cached is None or signature != getattr(self, '_candidate_signature', None)
@@ -209,7 +211,8 @@ class Player:
             cached = evaluate_attack_targets(self.context,self.id,self.pose,self.motion,
                                               self.ball_intercept or {},tracker)
             self._scoring_cache = evaluate_scoring(self.context,self.pose,self.motion,cached,
-                                                   getattr(self,'evaluation_freeman_ids',()))
+                                                   receiver_ids, player_id=self.id, intercept=self.ball_intercept or {},
+                                                   teammate_motion=tracker)
             self._candidate_cache, self._candidate_signature = cached, signature
         self.attack_candidates = cached
         self.scoring_probability = self._scoring_cache
@@ -217,6 +220,25 @@ class Player:
         aim = (KickTarget.goal() if kick_target == 0 else
                KickTarget.position(kick_target) if isinstance(kick_target, tuple) else
                KickTarget.teammate(kick_target))
+        automatic = kick_target == 0 and get_phase(self.context) == Phase.NORMAL
+        self.scoring_probability = dict(self._scoring_cache, decision_enabled=automatic)
+        choice = choose_route(self.scoring_probability, receiver_ids) if automatic else None
+        if choice is not None:
+            aim = KickTarget.position(choice['target'])
+            choice = dict(choice, id='selected_route')
+            if choice['kind'] == 'pass':
+                row = next(r for r in self.scoring_probability['via_freeman']
+                           if r['player_id'] == choice['player_id'])
+                choice.update(pass_probability=row['pass_probability'], shot_probability=row['shot_probability'])
+            self.action = 'attack:' + choice['kind']
+        self.attack_choice = dict(enabled=automatic, evaluated_at=cached['evaluated_at'],
+                                  selected=choice, options=[choice] if choice else [],
+                                  runner_up=None, margin=choice['advantage'] if choice else None)
+        if automatic and choice is None:
+            self.action = 'attack:no_known_route'
+            if math.dist((self.pose.x, self.pose.y), current_ball) <= KICK_ENTER_M:
+                return StopIntent()
+            return MoveIntent(behind_ball(*current_ball, opponent_goal(self.context), CHASE_BEHIND_M))
         # 追球需要知道出球方向，因而也使用相同的目标解析工具来选球后点。
         # 这里只使用几何目标；真正的踢球力度、坐标变换仍留给执行阶段。
         target = resolve_target(self.context, aim)
@@ -229,7 +251,11 @@ class Player:
         lane = next((result for origin in origins
                      if (result := check_kick_lane(self.context.field, origin, target))['blocked']), None)
         # 队友目标必须保留传球语义，开球传给 3 号也按距离调度力度。
-        style = 'pass' if aim.kind == 'teammate' else 'shot'
+        style = 'pass' if aim.kind == 'teammate' or choice and choice['kind'] == 'pass' else 'shot'
+        if lane is not None and automatic:
+            self.attack_choice['selected'] = None
+            self.action = 'attack:current_lane_blocked'
+            return StopIntent()
         if lane is not None:
             fallback = blocked_attack_target(self.context, self.id, origins)
             if fallback is None:
@@ -386,8 +412,13 @@ def decide(context, players, assignments, store):
     for p in players:
         p.freeman_shot_triangle = exclusion
         p.evaluation_freeman_ids = freeman_ids
+        p.evaluation_receiver_ids = tuple(pid for pid, task in assignments.items()
+            if pid != p.id and task.role in (Role.FREEMAN, Role.ATTACKER)
+            and pid in getattr(p, 'guard_receivers', ()))
         p.context = context
         preliminary[p.id] = p.decide(assignments[p.id])
+    from .utils.pass_reception import coordinate_reception
+    preliminary = coordinate_reception(context, players, assignments, preliminary, store)
     # 收齐所有人之后才开放给协调层；只读映射防止协调函数意外污染初稿。
     snapshot = MappingProxyType(preliminary)
     final = coordinate(context, MappingProxyType(dict(assignments)), snapshot)

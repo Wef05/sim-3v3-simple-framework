@@ -153,7 +153,7 @@ class SoccerRuntime:
                 or (self._last_now is not None and now < self._last_now)):
             self._last_now = None
             self._clock_epoch = snap.clock_epoch
-            for name in ('ball_motion', 'teammate_motion', 'kick_error_tracker'):
+            for name in ('ball_motion', 'teammate_motion', 'kick_error_tracker', 'pending_pass'):
                 if hasattr(self._store, name):
                     delattr(self._store, name)
             self._agent.init_store(self._store)

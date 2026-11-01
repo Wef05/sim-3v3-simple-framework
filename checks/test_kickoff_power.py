@@ -10,6 +10,7 @@ from src.framework.types import (ADULT_FIELD_DIMENSIONS, BallState, Context,
                                  GameControlState, GameState, Pose2D, RobotState)
 from src.intents import KickIntent, KickTarget, Role, RoleTask
 from src.player import Player
+from src.framework.decision_frame import prepare_frame
 from src.telemetry import make_snapshot
 
 
@@ -29,12 +30,15 @@ class KickoffPowerTests(unittest.TestCase):
                                                     kicking_team=1, secondary_time=10))
                 for kickoff in (True, False):
                     current = ctx if kickoff else replace(ctx, game=replace(ctx.game, secondary_time=0))
-                    player.context = current
-                    player.motion.update(current)
+                    prepare_frame(current, [player], SimpleNamespace())
                     intent = player.decide(RoleTask(Role.ATTACKER))
                     self.assertIsInstance(intent, KickIntent)
                     self.assertEqual(intent.style, 'pass' if kickoff else 'shot')
-                    self.assertEqual(intent.target, KickTarget.teammate(3) if kickoff else KickTarget.goal())
+                    if kickoff:
+                        self.assertEqual(intent.target, KickTarget.teammate(3))
+                    else:
+                        self.assertEqual(intent.target.kind, 'point')
+                        self.assertEqual(intent.target.point, (7.0, 0.0))
                     execute(current, [player], {1: intent})
                     power = expected if kickoff else 5
                     self.assertEqual(backend.kick.call_args.args[1], power)
