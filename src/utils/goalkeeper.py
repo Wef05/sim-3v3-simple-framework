@@ -108,7 +108,8 @@ def block_target(ctx, pid, pose, motion, shot):
         if covered and (arrival < 1e-8 or arrival+GUARD_REACTION_S <= t):
             if path_clear(ctx, pid, start, ideal):
                 reachable.append((math.dist(start, ideal), t, ideal))
-        # 可达范围内尽量靠近来球，不命令瞬间移动到不可达理想位置。
+        # 用预计可达位置评估漏球距离，但导航仍朝接触点尽力移动。
+        # 若把短时可达位置作为终点，反应预算耗尽时会退回原地并误停。
         budget = max(0.0, t-GUARD_REACTION_S)
         low, high = 0.0, 1.0
         for _ in range(16):
@@ -122,9 +123,9 @@ def block_target(ctx, pid, pose, motion, shot):
         fraction = low if budget > 0 else 0.0
         possible = (start[0]+(ideal[0]-start[0])*fraction,
                     start[1]+(ideal[1]-start[1])*fraction)
-        if bounded(possible, region) == possible and path_clear(ctx, pid, start, possible):
+        if bounded(possible, region) == possible and path_clear(ctx, pid, start, ideal):
             fallback.append((max(0, math.dist(possible, ball)-GUARD_BODY_RADIUS_M),
-                             math.dist(start, possible), possible))
+                             math.dist(start, ideal), ideal))
     if reachable:
         return min(reachable)[2], True
     return (min(fallback)[2] if fallback else start), False

@@ -1,0 +1,32 @@
+..FFF
+======================================================================
+FAIL: test_unreachable_shot_keeps_moving_as_ball_approaches (checks.test_guard_continuity.GuardContinuityTests.test_unreachable_shot_keeps_moving_as_ball_approaches) (ball_x=-5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/limingzhe/.codex/worktrees/keeper-block-continuity/sim-3v3-simple-framework/checks/test_guard_continuity.py", line 46, in test_unreachable_shot_keeps_moving_as_ball_approaches
+    self.assertGreater(intent.target[1], .3)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.023560129083775177 not greater than 0.3
+
+======================================================================
+FAIL: test_unreachable_shot_keeps_moving_as_ball_approaches (checks.test_guard_continuity.GuardContinuityTests.test_unreachable_shot_keeps_moving_as_ball_approaches) (ball_x=-6)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/limingzhe/.codex/worktrees/keeper-block-continuity/sim-3v3-simple-framework/checks/test_guard_continuity.py", line 44, in test_unreachable_shot_keeps_moving_as_ball_approaches
+    self.assertIsInstance(intent, MoveIntent)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: FaceIntent(theta=1.0121970114513341) is not an instance of <class 'src.intents.MoveIntent'>
+
+======================================================================
+FAIL: test_unreachable_shot_keeps_moving_as_ball_approaches (checks.test_guard_continuity.GuardContinuityTests.test_unreachable_shot_keeps_moving_as_ball_approaches) (ball_x=-6.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/limingzhe/.codex/worktrees/keeper-block-continuity/sim-3v3-simple-framework/checks/test_guard_continuity.py", line 44, in test_unreachable_shot_keeps_moving_as_ball_approaches
+    self.assertIsInstance(intent, MoveIntent)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: FaceIntent(theta=1.5707963267948966) is not an instance of <class 'src.intents.MoveIntent'>
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.007s
+
+FAILED (failures=3)

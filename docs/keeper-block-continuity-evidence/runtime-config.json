@@ -1,0 +1,21 @@
+{
+  "agent_toml": "id = \"com.example.lqinternalmatch\"\nversion = \"2.0.3\"\nname = { en = \"lqInternalMatch\", zh = \"lqInternalMatch\" }\nlogo = \"/res/logo.png\"\ndescription = \"3v3 SoccerSim Agent written in Python\"\nentry = \"src/main.py:SoccerSimAgent\"\ndebuggable = true\n\n[requirements]\nmin_api_level = 10700\nmodels = [ \"Booster T1\", \"Booster K1\" ]\n",
+  "project_json": {
+    "version": 2,
+    "scene": {
+      "mode": "pinned",
+      "id": "football3v3"
+    },
+    "projectMode": "soccer-match",
+    "agentDevTarget": {
+      "serialNumber": "4x2a0",
+      "name": "Virtual robot",
+      "model": "Booster K1",
+      "deviceType": "virtual",
+      "updatedAt": 1793518574013
+    },
+    "updatedAt": 1793518574073
+  },
+  "python_version": "Python 3.13.3",
+  "docker_containers": "agent-dev-2211c17940291bd82f18ed6c630ca4b4-humble booster-robotics-registry.cn-beijing.cr.aliyuncs.com/agent-dev/agent-dev:0.9.17-alpha-humble Up 6 minutes (healthy)\n4x2a0-k1 booster-robotics-registry.cn-beijing.cr.aliyuncs.com/virtual-robot/virtual-robot:0.9.4-alpha-humble Up 28 minutes\n"
+}

@@ -1,0 +1,6 @@
+Supplemental local fixtures from main workspace; absent from remote baseline.
+.......................................
+----------------------------------------------------------------------
+Ran 39 tests in 0.102s
+
+OK
