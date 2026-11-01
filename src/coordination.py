@@ -152,7 +152,17 @@ def validate_plan(ctx: Any, players: list, store: Any) -> None:
     plan = state.active
     if plan:
         reason = None
-        if not _allowed(ctx) or _phase_key(ctx) != plan.phase_key:
+        current_phase = _phase_key(ctx)
+        # 本方重开正常释放球权不是新一轮重开；出球/接球承诺必须延续。
+        # 准备中重开超时、重新摆球、对方重开及上下半场切换仍取消。
+        continuation = (plan.stage in ('release', 'receive')
+                        and plan.phase_key[0] in ('our_kickoff', 'our_set_play')
+                        and current_phase[0] == 'normal'
+                        and current_phase[2] == plan.phase_key[2])
+        if continuation:
+            plan.phase_key = current_phase
+            _event(state, plan, ctx.now, 'phase_continued', 'restart_released_to_normal')
+        if not _allowed(ctx) or current_phase != plan.phase_key:
             reason = 'phase_changed'
         elif not all(_available(own.get(pid)) for pid in (plan.passer, plan.receiver)):
             reason = 'participant_unavailable'
@@ -168,6 +178,9 @@ def validate_plan(ctx: Any, players: list, store: Any) -> None:
         if reason:
             _finish(ctx, players, store, reason)
     support = state.support
+    if (support and support.phase_key[0] in ('our_kickoff', 'our_set_play')
+            and _phase_key(ctx)[0] == 'normal' and _phase_key(ctx)[2] == support.phase_key[2]):
+        support.phase_key = _phase_key(ctx)
     if support and (not _allowed(ctx) or _phase_key(ctx) != support.phase_key
                     or ctx.now >= support.until or not _fresh(ctx)
                     or not all(_available(own.get(pid)) for pid in (support.passer, support.receiver))

@@ -274,6 +274,35 @@ class PassingTests(unittest.TestCase):
         self.assertEqual(passer.action, 'guard:post_pass_home')
         self.assertIsNone(passer._guard_memory)
 
+    def test_own_restart_release_to_normal_keeps_receiver_commitment(self):
+        for restart in (SetPlay.NONE, SetPlay.CORNER_KICK):
+            with self.subTest(restart=restart):
+                self.setUp()
+                self.ctx = replace(self.ctx, game=replace(self.ctx.game, kicking_team=1,
+                    secondary_time=10 if restart == SetPlay.NONE else 0, set_play=restart))
+                self.store.passing.active.phase_key = C._phase_key(self.ctx)
+                plan = self.release()
+                self.ctx = replace(self.ctx, game=GameControlState(state=GameState.PLAYING))
+                result = self.step(1.5, (.5, 0.), (2., 0.))
+                self.assertIs(self.store.passing.active, plan)
+                self.assertEqual(plan.phase_key[0], 'normal')
+                self.step(1.6, (.7, 0.), (2., 0.))
+                self.assertEqual(plan.stage, 'receive')
+                self.assertEqual(self.store.passing.events[-2]['event'], 'phase_continued')
+
+    def test_new_restart_still_cancels_release(self):
+        self.release()
+        self.ctx = replace(self.ctx, game=replace(self.ctx.game, kicking_team=2,
+                                               set_play=SetPlay.THROW_IN))
+        self.step(1.5)
+        self.assertIsNone(self.store.passing.active)
+        self.assertEqual(self.store.passing.events[-1]['reason'], 'phase_changed')
+
+    def test_expired_restart_during_prepare_still_cancels(self):
+        self.store.passing.active.phase_key = ('our_kickoff', 'NONE', True)
+        self.step(1.1)
+        self.assertIsNone(self.store.passing.active)
+
     def test_json_has_no_nonfinite_values(self):
         json.dumps(asdict(self.store.passing), allow_nan=False)
 

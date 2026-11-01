@@ -1,0 +1,34 @@
+test_ball_movement_before_request_cancels (checks.test_passing.PassingTests.test_ball_movement_before_request_cancels) ... ok
+test_blocked_lane_has_finite_reselection (checks.test_passing.PassingTests.test_blocked_lane_has_finite_reselection) ... ok
+test_completed_kickoff_does_not_return_to_original_passer (checks.test_passing.PassingTests.test_completed_kickoff_does_not_return_to_original_passer) ... ok
+test_emergency_cancels_without_leaking_receiver_shot (checks.test_passing.PassingTests.test_emergency_cancels_without_leaking_receiver_shot) ... ok
+test_expired_restart_during_prepare_still_cancels (checks.test_passing.PassingTests.test_expired_restart_during_prepare_still_cancels) ... ok
+test_goal_threat_interrupts_before_role_assignment (checks.test_passing.PassingTests.test_goal_threat_interrupts_before_role_assignment) ... ok
+test_guard_never_receiver (checks.test_passing.PassingTests.test_guard_never_receiver) ... ok
+test_guard_pass_restores_guard_without_front_support (checks.test_passing.PassingTests.test_guard_pass_restores_guard_without_front_support) ... ok
+test_input_order_independence (checks.test_passing.PassingTests.test_input_order_independence) ... ok
+test_json_has_no_nonfinite_values (checks.test_passing.PassingTests.test_json_has_no_nonfinite_values) ... ok
+test_new_restart_still_cancels_release (checks.test_passing.PassingTests.test_new_restart_still_cancels_release) ... ok
+test_own_restart_release_to_normal_keeps_receiver_commitment (checks.test_passing.PassingTests.test_own_restart_release_to_normal_keeps_receiver_commitment) ... ok
+test_phase_and_rewind_clear (checks.test_passing.PassingTests.test_phase_and_rewind_clear) ... ok
+test_receive_timeout_and_unreachable_contact_release_lock (checks.test_passing.PassingTests.test_receive_timeout_and_unreachable_contact_release_lock) ... ok
+test_receiver_moves_during_release_no_retarget (checks.test_passing.PassingTests.test_receiver_moves_during_release_no_retarget) ... ok
+test_receiver_unavailable_releases_roles (checks.test_passing.PassingTests.test_receiver_unavailable_releases_roles) ... ok
+test_release_requires_multiple_observations_and_cancels_rekick (checks.test_passing.PassingTests.test_release_requires_multiple_observations_and_cancels_rekick) ... ok
+test_repeated_observation_does_not_prove_readiness (checks.test_passing.PassingTests.test_repeated_observation_does_not_prove_readiness) ... ok
+test_repeated_sample_does_not_complete_receive (checks.test_passing.PassingTests.test_repeated_sample_does_not_complete_receive) ... ok
+test_request_without_motion_times_out (checks.test_passing.PassingTests.test_request_without_motion_times_out) ... ok
+test_roles_locked_then_receiver_handoff (checks.test_passing.PassingTests.test_roles_locked_then_receiver_handoff) ... ok
+test_support_expires_and_ball_shift_clears (checks.test_passing.PassingTests.test_support_expires_and_ball_shift_clears) ... ok
+test_support_is_behind_lateral_and_lower_priority (checks.test_passing.PassingTests.test_support_is_behind_lateral_and_lower_priority) ... ok
+test_unknown_opponent_prevents_plan (checks.test_passing.PassingTests.test_unknown_opponent_prevents_plan) ... ok
+test_unknown_relative_speed_not_success (checks.test_passing.PassingTests.test_unknown_relative_speed_not_success) ... ok
+test_unsafe_support_route_holds (checks.test_passing.PassingTests.test_unsafe_support_route_holds) ... ok
+test_wait_and_shared_frozen_target (checks.test_passing.PassingTests.test_wait_and_shared_frozen_target) ... ok
+test_wrong_direction_cancels (checks.test_passing.PassingTests.test_wrong_direction_cancels) ... ok
+test_real_kickoff_pipeline_never_sends_before_receiver_ready (checks.test_passing.PipelineTests.test_real_kickoff_pipeline_never_sends_before_receiver_ready) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.040s
+
+OK
