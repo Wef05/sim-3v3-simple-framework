@@ -24,7 +24,7 @@
 
 目标为一次裁判计时 60 秒测试，核验自由人目的地避让；本次因持续场外静止提前终止，不算有效的一分钟实验或完整比赛。未追加比赛，未据此调整战术。
 
-通过 Booster Studio 正式入口构建部署本任务工作区；窗口打开后超过 30 秒再开赛，双方 runner 已 Active，裁判 initial/ready，看板新鲜。实际双方为 team 1 `com.example.lqinternalmatch` 与 team 2 `com.booster.default3v3ai`。源码、构建包、实际部署逐 Python 文件摘要核验保存在 `identity.json`；仅顶层 `__init__.py` 的纯说明字符串被打包器清空，经 AST 检查无执行逻辑，其余文件完全一致。构建版本 2.0.3，基于上述 commit 加 `source.patch`；无法控制随机种子。
+通过 Booster Studio 正式入口构建部署本任务工作区；窗口打开后超过 30 秒再开赛，双方 runner 已 Active，裁判 initial/ready，看板新鲜。实际双方为 team 1 `com.example.lqinternalmatch` 与 team 2 `com.booster.default3v3ai`。源码、构建包、实际部署逐 Python 文件摘要核验保存在 `identity.json`；仅顶层 `__init__.py` 的纯说明字符串被打包器清空，经 AST 检查无执行逻辑，其余文件完全一致。构建版本 2.0.3，基于上述 commit 加 `source.patch.gz`（解压后的差异）；无法控制随机种子。
 
 ### 比分
 
