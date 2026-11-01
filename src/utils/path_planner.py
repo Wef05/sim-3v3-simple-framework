@@ -39,7 +39,7 @@ def _bounds(context):
 
 
 def clamp_target(context, point):
-    """Choose an in-field tactical recovery target; navigation does not clamp."""
+    """Return the inset field projection for movement-mode classification only."""
     xmin, xmax, ymin, ymax = _bounds(context)
     return max(xmin, min(xmax, point[0])), max(ymin, min(ymax, point[1]))
 

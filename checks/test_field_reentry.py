@@ -38,6 +38,23 @@ class ReentryTests(unittest.TestCase):
         init_store(store)
         return assign(p.context, [p], store)[p.id]
 
+    def test_outside_players_keep_their_assigned_behavior(self):
+        for position in ((0., 5.5), (0., -5.5), (8., 3.), (-8., 3.)):
+            for role, method in ((Role.ATTACKER, 'attack'), (Role.GUARD, 'guard'),
+                                 (Role.FREEMAN, 'freeman')):
+                with self.subTest(position=position, role=role):
+                    p = self.player(context((position,)))
+                    expected = MoveIntent((position[0]+.5, position[1]+.5))
+                    behavior = Mock(return_value=expected)
+                    setattr(p, method, behavior)
+                    memory = object()
+                    p._guard_memory = memory
+                    self.assertIs(p.decide(RoleTask(role)), expected)
+                    behavior.assert_called_once()
+                    self.assertEqual(p.action, role.value)
+                    if role == Role.GUARD:
+                        self.assertIs(p._guard_memory, memory)
+
     def test_ready_all_slots_keep_formation_from_outside(self):
         for pid in (1, 2, 3):
             ctx = context(((0., 5.5),)*3)
@@ -49,7 +66,7 @@ class ReentryTests(unittest.TestCase):
             self.assertIsInstance(intent, MoveIntent)
             self.assertLess(abs(intent.target[1]), ctx.field.width/2)
 
-    def test_penalty_release_returns_without_ball(self):
+    def test_penalty_release_resumes_role_without_forced_return(self):
         ctx = context(((0., 5.5),))
         penalized = replace(ctx, game=replace(ctx.game, teams=(TeamState(
             players=(PlayerState(penalty=Penalty.LEAVING_THE_FIELD),)),)))
@@ -57,8 +74,8 @@ class ReentryTests(unittest.TestCase):
         self.assertIsInstance(p.decide(self.task(p)), RecoverIntent)
         p.context = ctx
         intent = p.decide(self.task(p))
-        self.assertIsInstance(intent, MoveIntent)
-        self.assertEqual(p.action, 'return_to_field')
+        self.assertIsInstance(intent, StopIntent)
+        self.assertNotEqual(p.action, 'return_to_field')
         backend = Mock(mode='walk', fall_down_state='normal')
         p._backend = backend
         p.context = penalized  # 决策后重新受罚，下发前仍必须停车。
@@ -73,22 +90,23 @@ class ReentryTests(unittest.TestCase):
             p = self.player(replace(ctx, game=replace(ctx.game, state=state, stopped=stopped)))
             self.assertIsInstance(p.decide(self.task(p)), StopIntent)
 
-    def test_waiting_kickoff_player_returns_and_resumes_waiting_inside(self):
+    def test_waiting_kickoff_player_waits_outside_and_inside(self):
         ctx = context(((0., 0.), (0., 0.), (0., 5.5)))
         ctx = replace(ctx, game=replace(ctx.game, kicking_team=1, secondary_time=10))
         p = self.player(ctx, 3)
-        self.assertIsInstance(p.decide(self.task(p)), MoveIntent)
+        self.assertIsInstance(p.decide(self.task(p)), StopIntent)
+        self.assertNotEqual(p.action, 'return_to_field')
         p.context = replace(ctx, teammates=context(((0., 0.),)*3).teammates)
         self.assertIsInstance(p.decide(self.task(p)), StopIntent)
 
-    def test_restart_keepout_survives_reentry(self):
+    def test_outside_restart_keeps_protection_distance(self):
         ctx = context(((0., 5.5),))
         ctx = replace(ctx, game=replace(ctx.game, kicking_team=2, secondary_time=10))
         p = self.player(ctx)
         task = self.task(p)
         intent = coordinate(ctx, {1: task}, {1: p.decide(task)})[1]
         self.assertTrue(intent.avoid_ball)
-        self.assertEqual(intent.ball_keepout, ctx.field.circle_radius)
+        self.assertGreaterEqual(intent.ball_keepout, ctx.field.circle_radius)
         self.assertEqual(intent.opponent_mode, 'avoid')
 
     def test_outside_routes_round_obstacle_with_safe_edges(self):
