@@ -1,0 +1,3 @@
+Command: node checks/test_dashboard_guard.cjs
+Exit: 0
+Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.

@@ -1,0 +1,8 @@
+{
+  "session": "f8aab8076f36466c81b54f29a2b2cd2a",
+  "first_id": 310929,
+  "last_id": 313432,
+  "recording_hz": 30,
+  "retention_seconds": 1800,
+  "boundary_source": "simulation clock reset at frame 313433 in retained dashboard history"
+}

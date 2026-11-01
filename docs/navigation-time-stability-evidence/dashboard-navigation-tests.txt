@@ -1,0 +1,3 @@
+Command: node checks/test_dashboard_navigation.cjs
+Exit: 0
+Navigation cards: current/legacy fields, time estimate, route retention, invalid and missing values passed.

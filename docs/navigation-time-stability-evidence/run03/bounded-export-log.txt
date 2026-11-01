@@ -1,0 +1,1 @@
+{"path": "/Users/limingzhe/.codex/worktrees/navigation-time-stability/sim-3v3-simple-framework/results/navigation-time-stability/run03/dashboard-team1.json", "frames": 3517, "bytes": 74745547}

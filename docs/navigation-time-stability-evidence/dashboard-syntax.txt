@@ -1,0 +1,2 @@
+Command: node --check tools/tactics_dashboard/dashboard.js
+Exit: 0

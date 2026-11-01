@@ -3,8 +3,12 @@ from __future__ import annotations
 import heapq
 import math
 from functools import lru_cache
+from collections.abc import Sequence
 from ..param import (GLOBAL_FIELD_MARGIN_M, GLOBAL_GRID_RESOLUTION_M,
-                     GLOBAL_OBSTACLE_MARGIN_M, NAV_BODY_RADIUS_M)
+                     GLOBAL_OBSTACLE_MARGIN_M, NAV_BODY_RADIUS_M, NAV_FORWARD_SPEED_MPS,
+                     NAV_LATERAL_SPEED_MPS, NAV_BACKWARD_SPEED_MPS,
+                     NAV_TURN_SPEED_RPS, TURN_THRESHOLD)
+from .geom import normalize_angle
 from .kick_lane import point_segment
 
 
@@ -38,11 +42,37 @@ def clamp_target(context, point):
     return max(xmin, min(xmax, point[0])), max(ymin, min(ymax, point[1]))
 
 
-def plan_global_path(context, start, target, obstacles):
-    """Return exact-start, exact-target collision-checked path, or None.
+def segment_time(start: tuple[float, float], end: tuple[float, float],
+                 heading: float, *, omni: bool = False) -> float:
+    """Estimated seconds: fixed-body omni travel, or turn then forward travel."""
+    dx, dy = end[0]-start[0], end[1]-start[1]
+    length = math.hypot(dx, dy)
+    if length < 1e-9:
+        return 0.
+    error = normalize_angle(math.atan2(dy, dx)-heading)
+    if omni:
+        forward, lateral = length*math.cos(error), length*math.sin(error)
+        speed = NAV_FORWARD_SPEED_MPS if forward >= 0 else NAV_BACKWARD_SPEED_MPS
+        return math.hypot(forward/speed, lateral/NAV_LATERAL_SPEED_MPS)
+    # 与远距控制的先转后走阈值一致；小角度边走边转不另收停车时间。
+    return length/NAV_FORWARD_SPEED_MPS + max(0., abs(error)-TURN_THRESHOLD)/NAV_TURN_SPEED_RPS
 
-    Outside starts are not silently teleported into the field. A robot already
-    touching an inflated obstacle can escape, but cannot move deeper into it.
+
+def path_time(path: Sequence[tuple[float, float]], heading: float, *, omni: bool = False) -> float:
+    """Estimate remaining travel time; this is not a measured arrival time."""
+    total = 0.
+    for start, end in zip(path, path[1:]):
+        total += segment_time(start, end, heading, omni=omni)
+        if not omni and math.dist(start, end) > 1e-9:
+            heading = math.atan2(end[1]-start[1], end[0]-start[0])
+    return total
+
+
+def plan_global_path(context, start, target, obstacles, *, heading=0., omni=False):
+    """Eight-direction A* by estimated seconds, with incoming heading in state.
+
+    Keep exact endpoints and swept-body checks. Unknown obstacle velocity is
+    handled by the downstream predictive safety layer, not invented here.
     """
     target = clamp_target(context, target)
     if not segment_clear(target, target, obstacles):
@@ -60,56 +90,85 @@ def plan_global_path(context, start, target, obstacles):
     def free(node):
         return segment_clear(xy(node), xy(node), obstacles)
 
+    @lru_cache(None)
+    def edge_clear(a, b):
+        return segment_clear(xy(a), xy(b), obstacles)
+
     def nearby(point):
         ix, iy = round((point[0]-xmin)/res), round((point[1]-ymin)/res)
         return [(i, j) for i in range(ix-2, ix+3)
                 if 0 <= i <= nx for j in range(iy-2, iy+3)
                 if 0 <= j <= ny]
 
-    # Connect actual endpoints to nearby grid nodes with full segment checks.
-    starts = {node: math.dist(start, xy(node)) for node in set(nearby(start))
-              if free(node) and segment_clear(start, xy(node), obstacles, allow_escape=True)}
-    goals = {node for node in set(nearby(target))
+    def arrival_heading(a, b):
+        return heading if omni or math.dist(a, b) < 1e-9 else math.atan2(b[1]-a[1], b[0]-a[0])
+
+    # 入射方向必须是状态的一部分，否则同一格内更少转弯的路线会被提前剪掉。
+    starts = {(node, arrival_heading(start, xy(node))):
+              segment_time(start, xy(node), heading, omni=omni)
+              for node in nearby(start) if free(node) and
+              segment_clear(start, xy(node), obstacles, allow_escape=True)}
+    goals = {node for node in nearby(target)
              if free(node) and segment_clear(xy(node), target, obstacles)}
     if not starts or not goals:
         return None
-    queue = [(cost+math.dist(xy(node), target), node) for node, cost in starts.items()]
+    # 不计转弯、以最快平移速度估算的下界，保证启发函数不高估。
+    fastest = max(NAV_FORWARD_SPEED_MPS, NAV_LATERAL_SPEED_MPS, NAV_BACKWARD_SPEED_MPS)
+    queue = [(cost+math.dist(xy(state[0]), target)/fastest, state)
+             for state, cost in starts.items()]
     heapq.heapify(queue)
     costs, previous, closed = dict(starts), {}, set()
+    best_goal, best_total = None, math.inf
     while queue:
-        _, node = heapq.heappop(queue)
-        if node in closed:
+        bound, state = heapq.heappop(queue)
+        if bound >= best_total:
+            break
+        if state in closed:
             continue
-        closed.add(node)
+        closed.add(state)
+        node, angle = state
         if node in goals:
-            path = [target, xy(node)]
-            while node in previous:
-                node = previous[node]
-                path.append(xy(node))
-            path.append(start)
-            path.reverse()
-            return _smooth_path(path, obstacles)
+            total = costs[state]+segment_time(xy(node), target, angle, omni=omni)
+            if total < best_total:
+                best_goal, best_total = state, total
         for dx in (-1, 0, 1):
             for dy in (-1, 0, 1):
                 if not (dx or dy):
                     continue
                 nxt = node[0]+dx, node[1]+dy
-                if not (0 <= nxt[0] <= nx and 0 <= nxt[1] <= ny) or nxt in closed:
+                if not (0 <= nxt[0] <= nx and 0 <= nxt[1] <= ny):
                     continue
-                if not free(nxt) or not segment_clear(xy(node), xy(nxt), obstacles):
+                nxt_state = (nxt, heading if omni else math.atan2(dy, dx))
+                if nxt_state in closed or not free(nxt) or not edge_clear(node, nxt):
                     continue
-                cost = costs[node]+res*math.hypot(dx, dy)
-                if cost < costs.get(nxt, math.inf):
-                    costs[nxt], previous[nxt] = cost, node
-                    heapq.heappush(queue, (cost+math.dist(xy(nxt), target), nxt))
-    return None
+                cost = costs[state]+segment_time(xy(node), xy(nxt), angle, omni=omni)
+                if cost < costs.get(nxt_state, math.inf):
+                    costs[nxt_state], previous[nxt_state] = cost, state
+                    heapq.heappush(queue, (cost+math.dist(xy(nxt), target)/fastest, nxt_state))
+    if best_goal is None:
+        return None
+    state, path = best_goal, [target]
+    while True:
+        path.append(xy(state[0]))
+        if state not in previous:
+            break
+        state = previous[state]
+    path.append(start)
+    path.reverse()
+    return _smooth_path(path, obstacles, heading=heading, omni=omni)
 
 
-def _smooth_path(path, obstacles):
+def _smooth_path(path, obstacles, *, heading=0., omni=False):
+    # 快捷连线除了安全，还不能把转弯/侧移耗时重新加回来。
     result, i = [path[0]], 0
     while i < len(path)-1:
         j = len(path)-1
-        while j > i+1 and not segment_clear(path[i], path[j], obstacles, allow_escape=i == 0):
+        while j > i+1:
+            candidate = result + path[j:]
+            original = result + path[i+1:]
+            if (segment_clear(path[i], path[j], obstacles, allow_escape=i == 0) and
+                    path_time(candidate, heading, omni=omni) <= path_time(original, heading, omni=omni)+1e-9):
+                break
             j -= 1
         result.append(path[j])
         i = j
