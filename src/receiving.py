@@ -93,6 +93,18 @@ def receive(ctx: Any, player: Any, state: Reception) -> tuple[MoveIntent, str | 
         if ctx.now-state.buffer_since >= P.RECEIVE_BUFFER_TIMEOUT_S:
             return hold(ctx, player), 'buffer_timeout'
         state.reason = 'waiting_for_stability'
+        # 缓冲边缘的球可能已停住：只有机器人与球都相对平稳才允许微量补位。
+        # 否则 0.45 m 的缓冲入口会把机器人锁在 0.35 m 确认范围之外。
+        if (metrics is not None and distance > P.BALL_CONTROL_RADIUS_M
+                and metrics[1] < .25 and metrics[2] < .25 and metrics[3] < .3):
+            ratio = max(0., distance-P.RECEIVE_STANDOFF_M)/max(distance, 1e-9)
+            target = (pose.x+(ball.x-pose.x)*ratio, pose.y+(ball.y-pose.y)*ratio)
+            state.speed_limit = P.RECEIVE_BUFFER_SPEED_MPS
+            state.reason = 'slow_buffer_adjustment'
+            return MoveIntent(target, face=angle_to(pose.x, pose.y, ball.x, ball.y),
+                maintain_face=True, arrive_dist=.03, avoid_ball=False, motion_priority=90,
+                opponent_mode='contest', max_speed=state.speed_limit,
+                max_yaw_rate=P.RECEIVE_MAX_YAW_RADPS), None
         return hold(ctx, player), None
     intercept = player.ball_intercept or {}
     contact = intercept.get('target')

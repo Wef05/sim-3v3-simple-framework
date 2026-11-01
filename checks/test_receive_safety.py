@@ -46,6 +46,17 @@ class ReceiveSafetyTests(unittest.TestCase):
         self.ball(.7,3.3)
         self.assertEqual(R.receive(self.ctx,self.player,self.state)[1],'buffer_timeout')
 
+    def test_stationary_ball_at_buffer_edge_allows_slow_adjustment(self):
+        self.ball(.57)
+        intent,outcome=R.receive(self.ctx,self.player,self.state)
+        self.assertIsNone(outcome)
+        self.assertGreater(intent.max_speed,0.)
+        self.assertLessEqual(intent.max_speed,.12)
+        self.assertGreater(intent.target[0],.57)
+        self.player.teammate_motion.velocities[3]=(-1.,0.)
+        intent,_=R.receive(self.ctx,self.player,self.state)
+        self.assertEqual(intent.max_speed,0.)
+
     def test_repeated_observation_cannot_confirm(self):
         self.ball(.7)
         R.receive(self.ctx,self.player,self.state)
