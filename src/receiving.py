@@ -6,6 +6,7 @@ from . import param as P
 from .intents import MoveIntent, KickIntent, StopIntent
 from .actions.kick_planner import resolve_target
 from .utils.geom import angle_to, normalize_angle, behind_ball
+from .utils import receive_pose
 
 
 @dataclass
@@ -33,6 +34,8 @@ class ExitProtection:
     stable_since: float | None = None
     last_sample: float | None = None
     target: tuple | None = None
+    planned_attack: tuple | None = None
+    adjustment_since: float | None = None
 
 
 def motion_metrics(ctx: Any, player: Any) -> tuple[float, float, float, float] | None:
@@ -61,7 +64,7 @@ def hold(ctx: Any, player: Any) -> MoveIntent:
         max_yaw_rate=P.RECEIVE_MAX_YAW_RADPS)
 
 
-def receive(ctx: Any, player: Any, state: Reception) -> tuple[MoveIntent, str | None]:
+def receive(ctx: Any, player: Any, state: Reception, pose_plan: Any = None) -> tuple[MoveIntent, str | None]:
     """返回 (意图, outcome)：近身观测优先于远处预测，缓冲期限不因抖动重置。"""
     ball, pose = ctx.ball, player.pose
     distance = math.hypot(ball.x-pose.x, ball.y-pose.y)
@@ -132,10 +135,29 @@ def receive(ctx: Any, player: Any, state: Reception) -> tuple[MoveIntent, str | 
     # 终点停在接触点前，不将行走目标放进球心。
     ratio = max(0., length-P.RECEIVE_STANDOFF_M)/max(length, 1e-9)
     target = (pose.x+dx*ratio, pose.y+dy*ratio)
+    if pose_plan is not None:
+        # 轨迹更新只平移已选接应侧，不在来球途中突然横跨球路换边。
+        offset = (pose_plan.waiting[0]-pose_plan.contact[0],
+                  pose_plan.waiting[1]-pose_plan.contact[1])
+        side_target = (contact[0]+offset[0], contact[1]+offset[1])
+        if math.hypot(*details_velocity(player)) < .3:
+            side_target = behind_ball(*contact, pose_plan.attack_target, P.RECEIVE_STANDOFF_M)
+        path = receive_pose.route(ctx, player.id, (pose.x, pose.y), side_target,
+                                  (ball.x, ball.y), pose.theta)
+        if path is None:
+            state.reason = 'planned_receive_route_blocked'
+            return hold(ctx, player), None
+        target = path[1]
     return MoveIntent(target, face=angle_to(pose.x, pose.y, ball.x, ball.y),
+        direct_path=pose_plan is not None,
         maintain_face=True, arrive_dist=.03, avoid_ball=False, avoid_robots=True,
         motion_priority=90, opponent_mode='contest', max_speed=state.speed_limit,
         max_yaw_rate=P.RECEIVE_MAX_YAW_RADPS), None
+
+
+def details_velocity(player: Any) -> tuple[float, float]:
+    details = player.motion.ball_prediction_details() or {}
+    return details['velocity'] if details.get('velocity_estimated') else (math.inf, math.inf)
 
 
 def protect_exit(ctx: Any, player: Any, state: ExitProtection, intent: Any) -> tuple[Any, bool]:
@@ -147,11 +169,21 @@ def protect_exit(ctx: Any, player: Any, state: ExitProtection, intent: Any) -> t
             return hold(ctx, player), False
         return (StopIntent() if isinstance(intent, KickIntent) else intent), False
     state.phase = 'prepare_kick'
-    if not isinstance(intent, KickIntent):
-        state.stable_since = None
-        state.reason = 'waiting_for_kick_proposal'
-        return intent, False
-    target = resolve_target(ctx, intent.target)
+    proposed_kick = isinstance(intent, KickIntent)
+    if not proposed_kick:
+        if state.planned_attack is None:
+            state.stable_since = None
+            state.reason = 'waiting_for_kick_proposal'
+            return intent, False
+        if state.adjustment_since is None:
+            state.adjustment_since = ctx.now
+        if (ctx.now-state.adjustment_since > P.PASS_POSE_MAX_ADJUST_S
+                or math.dist((player.pose.x, player.pose.y), (ctx.ball.x, ctx.ball.y)) > P.RECEIVE_BUFFER_EXIT_M
+                or not receive_pose.attack_clear(ctx, (ctx.ball.x, ctx.ball.y), state.planned_attack, player.id)):
+            state.planned_attack, state.stable_since = None, None
+            state.reason = 'planned_attack_expired_or_blocked'
+            return intent, False
+    target = resolve_target(ctx, intent.target) if proposed_kick else state.planned_attack
     current = player.motion.predict_ball_position(0.)
     metrics = motion_metrics(ctx, player)
     if target is None or current is None or metrics is None:
@@ -181,12 +213,22 @@ def protect_exit(ctx: Any, player: Any, state: ExitProtection, intent: Any) -> t
         state.stable_since = sample
     state.reason = reason
     if fresh and state.stable_since is not None and sample-state.stable_since >= P.RECEIVE_KICK_STABLE_S:
-        state.phase, state.reason = 'released', 'kick_pose_confirmed'
-        return intent, True
+        state.phase, state.reason = ('released' if proposed_kick else 'attack_ready'), 'kick_pose_confirmed'
+        if not proposed_kick:
+            state.planned_attack = None
+        return intent, proposed_kick
     if behind:
         # 已在球后时只慢转，不能为准备射门继续挤向球。
         return MoveIntent((pose.x, pose.y), face=direction, maintain_face=True,
             arrive_dist=.02, max_speed=0., max_yaw_rate=P.RECEIVE_MAX_YAW_RADPS), False
-    return MoveIntent(behind_ball(ball.x, ball.y, target, P.RECEIVE_STANDOFF_M),
-        face=direction, maintain_face=True, avoid_ball=True, avoid_robots=True,
-        motion_priority=85, max_speed=.4, max_yaw_rate=P.RECEIVE_MAX_YAW_RADPS), False
+    behind_point = behind_ball(ball.x, ball.y, target, P.RECEIVE_STANDOFF_M)
+    path = receive_pose.route(ctx, player.id, (pose.x, pose.y), behind_point,
+                              (ball.x, ball.y), direction)
+    if path is None:
+        state.reason = 'behind_route_blocked'
+        return hold(ctx, player), False
+    # 已按球的控制距离检查整段路径，避免通用避球半径使 0.30 m 球后点永不可达。
+    return MoveIntent(path[1], face=direction, maintain_face=True,
+        avoid_ball=False, avoid_robots=True, direct_path=True,
+        motion_priority=85, max_speed=P.PASS_POSE_REPOSITION_SPEED_MPS,
+        max_yaw_rate=P.RECEIVE_MAX_YAW_RADPS), False

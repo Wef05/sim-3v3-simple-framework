@@ -59,7 +59,7 @@ class PassingTests(unittest.TestCase):
     def release(self):
         plan = self.store.passing.active
         self.assertIsNotNone(plan)
-        self.players[1].pose = Pose2D(*plan.target, math.pi)
+        self.players[1].pose = Pose2D(*plan.pose_plan.waiting, plan.pose_plan.receive_heading)
         self.players[0].pose = Pose2D(*C.behind_ball(0., 0., plan.target, P.CHASE_BEHIND_M),
                                     C.angle_to(0., 0., *plan.target))
         self.step(1.1)
@@ -211,6 +211,7 @@ class PassingTests(unittest.TestCase):
 
     def test_repeated_sample_does_not_complete_receive(self):
         plan, _ = self.receive()
+        self.players[1].pose = Pose2D(*plan.pose_plan.behind, plan.pose_plan.heading)
         self.step(2., plan.target, (0., 0.))
         self.step(2.3, sample=2.)
         self.assertIsNotNone(self.store.passing.active)
@@ -321,7 +322,7 @@ class PipelineTests(unittest.TestCase):
             game=GameControlState(state=GameState.PLAYING, kicking_team=1, secondary_time=10),
             teammates={1: RobotState(1, Pose2D(-.35, 0.), 1.),
                        2: RobotState(2, Pose2D(-6., 0.), 1.),
-                       3: RobotState(3, Pose2D(3., 0., 0.), 1.)})
+                       3: RobotState(3, Pose2D(-.6, 2., -math.pi/2), 1.)})
         players = [Player(i, SoccerConfig(), Mock(mode='walk', fall_down_state='normal')) for i in (1, 2, 3)]
         store = SimpleNamespace()
         role_allocator.init_store(store)

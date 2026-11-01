@@ -15,6 +15,7 @@ from .utils.kick_lane import check_kick_lane, point_segment
 from .utils.free_position import nearest_free_position
 from .utils import goalkeeper
 from . import receiving
+from .utils import receive_pose
 
 Point = tuple[float, float]
 
@@ -48,6 +49,8 @@ class PassPlan:
     support_updated: float = 0.0
     evidence: str = 'not_requested'
     reception: receiving.Reception = field(default_factory=receiving.Reception)
+    pose_plan: receive_pose.ReceivePose | None = None
+    pose_checked_at: float = 0.
 
 
 @dataclass
@@ -60,6 +63,7 @@ class SupportTask:
     until: float
     ball_anchor: Point
     phase_key: tuple
+    pose_plan: receive_pose.ReceivePose | None = None
 
 
 @dataclass
@@ -72,6 +76,9 @@ class TeamPassing:
     last_time: float | None = None
     events: list[dict] = field(default_factory=list)
     exit_protections: dict[int, receiving.ExitProtection] = field(default_factory=dict)
+    selection: receive_pose.Selection | None = None
+    kickoff_anchor: Point | None = None
+    anchor_phase: tuple | None = None
 
 
 def _state(store):
@@ -145,7 +152,7 @@ def _finish(ctx, players, store, reason, success=False):
         if plan.passer != P.GUARD_PLAYER_ID:
             state.support = SupportTask(plan.id, plan.passer, plan.receiver,
                 plan.support_target, plan.support_side, ctx.now+P.PASS_SUPPORT_HOLD_S,
-                _ball(ctx), _phase_key(ctx))
+                _ball(ctx), _phase_key(ctx), plan.pose_plan)
 
 
 def validate_plan(ctx: Any, players: list, store: Any) -> None:
@@ -159,6 +166,9 @@ def validate_plan(ctx: Any, players: list, store: Any) -> None:
         state.kickoff_receiver = None
     # 出球保护按球员持有，不随普通角色切换清除；新的比赛阶段与无效观测显式清理。
     phase = _phase_key(ctx)
+    if state.anchor_phase != phase:
+        state.kickoff_anchor = None
+        state.anchor_phase = phase
     for pid, protection in list(state.exit_protections.items()):
         if protection.phase_key[0] in ('our_kickoff', 'our_set_play') and phase[0] == 'normal' and phase[2] == protection.phase_key[2]:
             protection.phase_key = phase
@@ -288,32 +298,23 @@ def _prepare_route(ctx, passer, target):
     return stage, stage, direction
 
 
-def _choose_target(ctx, passer, receiver, preferred):
+def _choose_pose(ctx, passer, receiver, preferred, state):
+    kickoff = _phase_key(ctx)[0] == 'our_kickoff' and passer.id == 1 and receiver.id == 3
+    if kickoff and state.kickoff_anchor is None:
+        state.kickoff_anchor = _xy(receiver)
+    anchor = state.kickoff_anchor if kickoff else _xy(receiver)
     free = nearest_free_position(ctx, receiver.pose, P.FREEMAN_BALL_RADIUS_M,
                                  P.FREEMAN_OPPONENT_RADIUS_M, P.FREEMAN_GOAL_LINE_MARGIN_M)
-    seeds = [preferred, _xy(receiver)] + ([free] if free else [])
-    candidates = sorted({(point[0]+dx, point[1]+dy) for point in seeds
-                         for dx, dy in ((0, 0), (.5, 0), (-.5, 0), (0, .5), (0, -.5))})
-    choices = []
-    for target in candidates:
-        receiver_time = math.dist(_xy(receiver), target)/P.NAV_LATERAL_SPEED_MPS
-        if receiver_time > P.PASS_PREPARE_TIMEOUT_S/2 or not _lane_safe(ctx, passer.id, receiver.id, target):
-            continue
-        route = _prepare_route(ctx, passer, target)
-        if route is None:
-            continue
-        passer_time = math.dist(_xy(passer), route[0])/P.NAV_FORWARD_SPEED_MPS
-        if passer_time > P.PASS_PREPARE_TIMEOUT_S:
-            continue
-        choices.append((max(receiver_time, passer_time)+.1*math.dist(_ball(ctx), target), target))
-    return min(choices)[1] if choices else None
+    state.selection = receive_pose.choose(ctx, passer, receiver, preferred, anchor,
+                                         kickoff, _lane_safe, _prepare_route, free)
+    return state.selection.selected
 
 
 def _hold(p, ball):
     return FaceIntent(angle_to(*_xy(p), *ball))
 
 
-def _support_safe(ctx, passer, receiver, target, contact):
+def _support_safe(ctx, passer, receiver, target, contact, pose_plan=None):
     if not _inside(ctx, target):
         return False
     start, ball = _xy(passer), _ball(ctx)
@@ -325,7 +326,13 @@ def _support_safe(ctx, passer, receiver, target, contact):
     # 只接受已验算直线，执行层 direct_path 禁止绕行后横穿接球走廊。
     # 起点已在球路附近时允许单调离开，不能向球路更深处移动。
     corridor = 2*P.NAV_BODY_RADIUS_M+P.NAV_SAFETY_MARGIN_M
-    segments = ((ball, contact), (_xy(receiver), contact))
+    segments = [(ball, contact), (_xy(receiver), contact)]
+    # 支援路线避开接球后的绕球路线与计划进攻走廊。
+    if pose_plan is not None:
+        shift = (contact[0]-pose_plan.contact[0], contact[1]-pose_plan.contact[1])
+        adjusted = [(p[0]+shift[0], p[1]+shift[1]) for p in pose_plan.adjustment_path]
+        segments.extend(zip(adjusted, adjusted[1:]))
+        segments.append((contact, pose_plan.attack_target))
     for a, b in segments:
         previous = point_segment(start, a, b)
         for i in range(1, 17):
@@ -348,7 +355,7 @@ def _support_intent(ctx, passer, receiver, plan):
     contact = plan.contact or plan.target
     if ctx.now-plan.support_updated >= P.PASS_SUPPORT_REFRESH_S:
         plan.support_updated = ctx.now
-        if plan.support_target is None or not _support_safe(ctx, passer, receiver, plan.support_target, contact):
+        if plan.support_target is None or not _support_safe(ctx, passer, receiver, plan.support_target, contact, plan.pose_plan):
             dx, dy = -ctx.field.length/2-contact[0], -contact[1]
             length = math.hypot(dx, dy)
             ux, uy = (dx/length, dy/length) if length > 1e-6 else (-1.0, 0.0)
@@ -356,13 +363,13 @@ def _support_intent(ctx, passer, receiver, plan):
             for side in (-1, 1):
                 target = (contact[0]+P.PASS_SUPPORT_BACK_M*ux-side*P.PASS_SUPPORT_SIDE_M*uy,
                           contact[1]+P.PASS_SUPPORT_BACK_M*uy+side*P.PASS_SUPPORT_SIDE_M*ux)
-                if _support_safe(ctx, passer, receiver, target, contact):
+                if _support_safe(ctx, passer, receiver, target, contact, plan.pose_plan):
                     choices.append((0 if side == plan.support_side else 1, math.dist(_xy(passer), target), side, target))
             if choices:
                 _, _, plan.support_side, plan.support_target = min(choices)
             else:
                 plan.support_target = None
-    if plan.support_target is None or not _support_safe(ctx, passer, receiver, plan.support_target, contact):
+    if plan.support_target is None or not _support_safe(ctx, passer, receiver, plan.support_target, contact, plan.pose_plan):
         return _hold(passer, _ball(ctx))
     return MoveIntent(plan.support_target, face=angle_to(*_xy(passer), *_ball(ctx)),
                       avoid_ball=True, avoid_robots=True, maintain_face=True,
@@ -397,16 +404,18 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
             receiver = own.get(proposal.receiver_id)
             if (not _available(receiver) or receiver.id in (passer.id, P.GUARD_PLAYER_ID)):
                 continue
-            target = _choose_target(ctx, passer, receiver, proposal.target)
-            if target is None:
+            pose_plan = _choose_pose(ctx, passer, receiver, proposal.target, state)
+            if pose_plan is None:
                 state.cooldown_until = ctx.now+P.PASS_RESELECT_INTERVAL_S
                 continue
+            target = pose_plan.contact
             state.sequence += 1
             distance = math.dist(_ball(ctx), target)
             state.active = PassPlan(state.sequence, passer.id, receiver.id, proposal.source,
                 target, _ball(ctx), _phase_key(ctx), ctx.now, stage_since=ctx.now,
                 last_reselect=ctx.now, support_updated=ctx.now-P.PASS_SUPPORT_REFRESH_S,
-                flight_range=(distance/P.PASS_ASSUMED_SPEED_MAX_MPS, distance/P.PASS_ASSUMED_SPEED_MIN_MPS))
+                flight_range=(distance/P.PASS_ASSUMED_SPEED_MAX_MPS, distance/P.PASS_ASSUMED_SPEED_MIN_MPS),
+                pose_plan=pose_plan, pose_checked_at=ctx.now)
             state.support = None
             _event(state, state.active, ctx.now, 'prepare', 'proposal_accepted')
             break
@@ -415,7 +424,7 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
         support = state.support
         if support and not emergency:
             passer, receiver = own[support.passer], own[support.receiver]
-            if support.target and _support_safe(ctx, passer, receiver, support.target, _xy(receiver)):
+            if support.target and _support_safe(ctx, passer, receiver, support.target, _ball(ctx), support.pose_plan):
                 final[passer.id] = MoveIntent(support.target, face=angle_to(*_xy(passer), *_ball(ctx)),
                     avoid_ball=True, avoid_robots=True, maintain_face=True, direct_path=True, motion_priority=20)
             else:
@@ -458,7 +467,8 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
                     plan.evidence = 'observed_motion_after_request_not_touch_confirmation'
                     _event(state, plan, ctx.now, 'receive', plan.evidence)
                     state.exit_protections[receiver.id] = receiving.ExitProtection(
-                        receiver.id, plan.id, plan.phase_key, ctx.now, 'active_receive')
+                        receiver.id, plan.id, plan.phase_key, ctx.now, 'active_receive',
+                        planned_attack=plan.pose_plan.attack_target if plan.pose_plan else None)
             # 证据积累时也立即退出踢球，禁止连续追踢刚离脚的球。
             if plan.stage == 'release':
                 plan.last_sample = sample
@@ -473,6 +483,17 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
             return cancel(plan.stage+'_timeout')
         safe = _lane_safe(ctx, passer.id, receiver.id, plan.target)
         route = _prepare_route(ctx, passer, plan.target)
+        if safe and route is not None and plan.pose_plan is not None and (
+                ctx.now-plan.pose_checked_at >= P.PASS_POSE_REFRESH_S or plan.stage == 'release'):
+            old = plan.pose_plan
+            # 只复核冻结姿态的剩余耗时；不能借复核悄悄换接应侧。
+            current, reason = receive_pose.evaluate(ctx, passer, receiver, plan.target,
+                old.attack_target, state.selection.anchor if state.selection else old.contact,
+                False, _prepare_route, ctx.now, waiting_override=old.waiting)
+            safe = current is not None and math.dist(current.waiting, old.waiting) < .05
+            plan.pose_checked_at = ctx.now
+            if not safe and state.selection:
+                state.selection.reason = 'active_pose_invalid:' + reason
         if not safe or route is None:
             if plan.stage == 'release':
                 return cancel('release_route_unsafe')
@@ -483,16 +504,19 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
                 plan.reselects += 1
                 if plan.reselects > P.PASS_MAX_RESELECTS:
                     return cancel('no_safe_target')
-                target = _choose_target(ctx, passer, receiver, plan.target)
-                if target is not None:
+                new_pose = _choose_pose(ctx, passer, receiver, plan.target, state)
+                if new_pose is not None:
+                    target = new_pose.contact
+                    plan.pose_plan, plan.pose_checked_at = new_pose, ctx.now
                     plan.target, plan.origin = target, ball
                     distance = math.dist(ball, target)
                     plan.flight_range = (distance/P.PASS_ASSUMED_SPEED_MAX_MPS, distance/P.PASS_ASSUMED_SPEED_MIN_MPS)
             final[passer.id], final[receiver.id] = StopIntent(), _hold(receiver, ball)
             return final
         stage, waypoint, direction = route
-        receiver_angle = angle_to(*_xy(receiver), *ball)
-        plan.receiver_ready = (math.dist(_xy(receiver), plan.target) <= P.PASS_READY_DISTANCE_M
+        waiting = plan.pose_plan.waiting if plan.pose_plan else plan.target
+        receiver_angle = angle_to(*waiting, *ball)
+        plan.receiver_ready = (math.dist(_xy(receiver), waiting) <= P.PASS_READY_DISTANCE_M
             and abs(normalize_angle(receiver_angle-receiver.pose.theta)) <= P.PASS_READY_ANGLE_RAD)
         plan.passer_ready = (math.dist(_xy(passer), stage) <= P.GUARD_STAGE_TOLERANCE_M
             and abs(normalize_angle(direction-passer.pose.theta)) <= P.PASS_READY_ANGLE_RAD)
@@ -509,7 +533,7 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
         elif not plan.receiver_ready:
             return cancel('receiver_left_before_release')
         final[receiver.id] = (FaceIntent(receiver_angle) if plan.receiver_ready else
-            MoveIntent(plan.target, face=receiver_angle, avoid_ball=True, avoid_robots=True,
+            MoveIntent(waiting, face=receiver_angle, avoid_ball=True, avoid_robots=True,
                        maintain_face=True, arrive_dist=.08, motion_priority=85))
         if plan.stage == 'release':
             final[passer.id] = KickIntent(KickTarget.position(plan.target), style='pass')
@@ -529,7 +553,7 @@ def _coordinate_pass(ctx: Any, players: list, assignments: dict,
            and math.dist((r.pose.x, r.pose.y), ball)+.15 < math.dist(_xy(receiver), ball)
            for r in ctx.opponents.values()):
         return cancel('opponent_near_ball')
-    reception_intent, outcome = receiving.receive(ctx, receiver, plan.reception)
+    reception_intent, outcome = receiving.receive(ctx, receiver, plan.reception, plan.pose_plan)
     if outcome not in (None, 'received'):
         return cancel(outcome)
     intercept = receiver.ball_intercept or {}

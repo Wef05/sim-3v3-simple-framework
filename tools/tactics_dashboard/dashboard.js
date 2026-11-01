@@ -922,11 +922,16 @@ function passingLines(d,pid){
   const team=d.passing;if(!team)return [];
   const a=team.active,s=team.support;
   const protection=team.exit_protections?.[pid];
-  const safety=protection?[`接球后保护：${protection.phase} / ${protection.reason}`]:[];
+  const selection=team.selection,pose=a?.pose_plan;
+  const selectionLines=selection&&pid===3?[`选点：${selection.reason}；参考点 ${pointText(selection.anchor)}`,
+    `候选 ${selection.candidates?.length||0} 个；${Object.entries((selection.candidates||[]).reduce((r,c)=>(r[c.reason]=(r[c.reason]||0)+1,r),{})).map(([k,v])=>`${k} ${v}`).join(' / ')}`]:[];
+  const safety=[...(protection?[`接球后保护：${protection.phase} / ${protection.reason}`]:[]),...selectionLines];
   const names={prepare:'准备接应',release:'请求出球',receive:'接球中'};
   if(a&&(a.passer===pid||a.receiver===pid))return [
     `传接计划 #${a.id} · ${a.passer} → ${a.receiver} · ${names[a.stage]||a.stage}`,
     `共同目标：${pointText(a.target)}；实际接触点：${pointText(a.contact)}`,
+    ...(pose?[`接应站位 ${pointText(pose.waiting)}；球后点 ${pointText(pose.behind)}`,
+      `预计准备 ${predictionFixed(pose.prepare_s)} s；可进攻 ${predictionFixed(pose.attack_ready_s)} s；争抢余量 ${predictionFixed(pose.receive_margin_s)} s（未标定）`]:[]),
     `就绪：传球者 ${a.passer_ready?'是':'否'} / 接球者 ${a.receiver_ready?'是':'否'}`,
     `传后支援：${pointText(a.support_target)}；证据：${a.evidence}`,
     ...(a.receiver===pid&&a.reception?[`接球动作：${a.reception.phase} / ${a.reception.reason}；限速 ${Number(a.reception.speed_limit).toFixed(2)} m/s`,
@@ -946,6 +951,14 @@ function drawPassing(d,xy){
   }
   if(a){marker(a.target,`接球 #${a.id}`,'#f9cf58');marker(a.contact,'实际接触','#ff9470');
     marker(a.support_target,'传后支援','#6ee7d0');
+    const pose=a.pose_plan;if(pose){
+      marker(pose.waiting,'接应站位','#77caff');marker(pose.behind,'球后点','#cda4ff');
+      if(pose.contact?.every(Number.isFinite)&&pose.attack_target?.every(Number.isFinite)){
+        g.setLineDash([]);g.strokeStyle='#cda4ff';g.beginPath();g.moveTo(...xy(...pose.contact));g.lineTo(...xy(...pose.attack_target));g.stroke();
+        const [ex,ey]=xy(...pose.attack_target),[bx,by]=xy(...pose.contact),angle=Math.atan2(ey-by,ex-bx);
+        g.beginPath();g.moveTo(ex-10*Math.cos(angle-.4),ey-10*Math.sin(angle-.4));g.lineTo(ex,ey);g.lineTo(ex-10*Math.cos(angle+.4),ey-10*Math.sin(angle+.4));g.stroke();
+      }
+    }
     if(a.origin&&a.target){g.setLineDash([5,5]);g.strokeStyle='#f9cf58';g.beginPath();
       g.moveTo(...xy(...a.origin));g.lineTo(...xy(...a.target));g.stroke();}}
   else marker(s.target,`支援 #${s.plan_id}`,'#6ee7d0');
