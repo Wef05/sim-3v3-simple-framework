@@ -1,0 +1,10 @@
+{
+  "checked_files": 44,
+  "mismatches": [
+    "__init__.py"
+  ],
+  "artifact_sha256": "f7c881d1cf9de591dc916b2b050342617b2009af32676336652114bedc01f22d",
+  "exception": "src/__init__.py contains only documentation; package/deployed init is empty",
+  "empty_init_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "verified_executable_source_files": 43
+}

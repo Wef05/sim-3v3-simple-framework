@@ -126,6 +126,20 @@ class Player:
         self.action = task.role.value
         self.tactical_target = None
         self.freeman_region = None
+        # 回场不依赖球观测或战术角色（开球等待者也可能刚解除处罚）。
+        # READY 保留指定阵型目标，由导航处理场外起点。
+        if (task.role != Role.UNAVAILABLE and self.context is not None
+                and get_phase(self.context) not in (Phase.STOPPED, Phase.READY)
+                and not self.is_penalized and not self.is_fallen and self.mode == 'walk'
+                and self.pose is not None
+                and all(math.isfinite(v) for v in (self.pose.x, self.pose.y, self.pose.theta))
+                and (abs(self.pose.x) > self.context.field.length/2
+                     or abs(self.pose.y) > self.context.field.width/2)):
+            from .utils.path_planner import clamp_target
+            self._guard_memory = None
+            self.action = 'return_to_field'
+            return MoveIntent(clamp_target(self.context, (self.pose.x, self.pose.y)),
+                              avoid_ball=True, avoid_robots=True)
         if task.role == Role.ATTACKER:
             # 调试阶段：我方开球固定传给 3 号，其余阶段默认射门。
             target = 3 if get_phase(self.context) == Phase.OUR_KICKOFF else 0

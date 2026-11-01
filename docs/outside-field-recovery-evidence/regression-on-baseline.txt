@@ -1,0 +1,58 @@
+======================================================================
+FAIL: test_blocked_ready_entry_makes_progress_for_all_headings (checks.test_field_reentry.ReentryTests.test_blocked_ready_entry_makes_progress_for_all_headings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/outside-field-baseline/checks/test_field_reentry.py", line 127, in test_blocked_ready_entry_makes_progress_for_all_headings
+    self.assertLess(abs(p[1]), 4., (heading, p, c.navigation_status))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 5.5 not less than 4.0 : (0.0, [0.0, 5.5, -1.5983541576725664], {'state': 'turning', 'priority': 10, 'opponent_mode': 'avoid', 'avoid_ball': False, 'blocker': 'opponent:1', 'target': [0.0, 0.0], 'effective_target': [0.0, 0.0], 'route_reason': 'no_route', 'estimated_time_s': None, 'candidate_time_s': None, 'previous_time_s': None, 'switch_margin_s': 0.35, 'direction_held': True, 'blocker_priority': None, 'speed': 0.0, 'waypoint': [0.0, 0.0], 'path': None, 'command': [0.0, 0.0, -1.1023132104902862]})
+
+======================================================================
+FAIL: test_outside_drift_allows_inward_braking_but_not_outward_command (checks.test_field_reentry.ReentryTests.test_outside_drift_allows_inward_braking_but_not_outward_command)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/outside-field-baseline/checks/test_field_reentry.py", line 28, in test_outside_drift_allows_inward_braking_but_not_outward_command
+    self.assertIsNone(f.check(1, intent, inward))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'field_boundary' is not None
+
+======================================================================
+FAIL: test_outside_routes_round_obstacle_without_further_exit (checks.test_field_reentry.ReentryTests.test_outside_routes_round_obstacle_without_further_exit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/outside-field-baseline/checks/test_field_reentry.py", line 104, in test_outside_routes_round_obstacle_without_further_exit
+    self.assertIsNotNone(path)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_penalty_release_returns_without_ball (checks.test_field_reentry.ReentryTests.test_penalty_release_returns_without_ball)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/outside-field-baseline/checks/test_field_reentry.py", line 64, in test_penalty_release_returns_without_ball
+    self.assertIsInstance(intent, MoveIntent)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: StopIntent() is not an instance of <class 'src.intents.MoveIntent'>
+
+======================================================================
+FAIL: test_stopped_states_never_request_reentry (checks.test_field_reentry.ReentryTests.test_stopped_states_never_request_reentry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/outside-field-baseline/checks/test_field_reentry.py", line 78, in test_stopped_states_never_request_reentry
+    self.assertIsInstance(p.decide(self.task(p)), StopIntent)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: MoveIntent(target=(-2.0, 0.0), face=0.0, avoid_ball=True, avoid_robots=True, arrive_dist=0.15, maintain_face=False, direct_path=False, motion_priority=10, opponent_mode='avoid', ball_keepout=0.0) is not an instance of <class 'src.intents.StopIntent'>
+
+======================================================================
+FAIL: test_waiting_kickoff_player_returns_and_resumes_waiting_inside (checks.test_field_reentry.ReentryTests.test_waiting_kickoff_player_returns_and_resumes_waiting_inside)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/outside-field-baseline/checks/test_field_reentry.py", line 84, in test_waiting_kickoff_player_returns_and_resumes_waiting_inside
+    self.assertIsInstance(p.decide(self.task(p)), MoveIntent)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: StopIntent() is not an instance of <class 'src.intents.MoveIntent'>
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.166s
+
+FAILED (failures=6)

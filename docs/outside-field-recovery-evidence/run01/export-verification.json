@@ -1,0 +1,20 @@
+{
+  "format": "soccer-tactics-replay",
+  "team_id": 1,
+  "frames": 2924,
+  "frame_range": [
+    615712,
+    618635
+  ],
+  "sim_range": [
+    42.488,
+    122.797999999
+  ],
+  "raw_bytes": 60224395,
+  "gzip_bytes": 4813256,
+  "sha256_raw": "6e3f30579765ef2308a6ef04b5ad23a65187f4000f76d54b1461f0c9d71db5fe",
+  "max_sim_gap_s": 0.2740000000000009,
+  "gaps_over_0_1s": 52,
+  "clock_rewinds": 0,
+  "history_preserved": true
+}

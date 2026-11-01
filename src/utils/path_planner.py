@@ -82,9 +82,23 @@ def plan_global_path(context, start, target, obstacles, *, heading=0., omni=Fals
     xmin, xmax, ymin, ymax = _bounds(context)
     res = GLOBAL_GRID_RESOLUTION_M
     nx, ny = int((xmax-xmin)/res), int((ymax-ymin)/res)
+    xs = [xmin+i*res for i in range(nx+1)]
+    ys = [ymin+j*res for j in range(ny+1)]
+    outside = start != clamp_target(context, start)
+    if outside:
+        # 仅增加真实场外起点所在的行/列，允许沿边线绕开入口障碍。
+        # 不按场外距离扩展整片网格，避免异常定位导致搜索规模无界增长。
+        xs = sorted(set(xs + [xmax, min(xmin, start[0]), max(xmax, start[0])]))
+        ys = sorted(set(ys + [ymax, min(ymin, start[1]), max(ymax, start[1])]))
+        nx, ny = len(xs)-1, len(ys)-1
+
+    def inward(a, b):
+        # 每条边只允许保持或减少越界量；入场后不能再次走出安全边界。
+        return all(min(lo, old)-1e-8 <= value <= max(hi, old)+1e-8
+                   for old, value, lo, hi in zip(a, b, (xmin, ymin), (xmax, ymax)))
 
     def xy(node):
-        return xmin+node[0]*res, ymin+node[1]*res
+        return xs[node[0]], ys[node[1]]
 
     @lru_cache(None)
     def free(node):
@@ -92,10 +106,11 @@ def plan_global_path(context, start, target, obstacles, *, heading=0., omni=Fals
 
     @lru_cache(None)
     def edge_clear(a, b):
-        return segment_clear(xy(a), xy(b), obstacles)
+        return inward(xy(a), xy(b)) and segment_clear(xy(a), xy(b), obstacles)
 
     def nearby(point):
-        ix, iy = round((point[0]-xmin)/res), round((point[1]-ymin)/res)
+        ix = min(range(len(xs)), key=lambda i: abs(xs[i]-point[0]))
+        iy = min(range(len(ys)), key=lambda i: abs(ys[i]-point[1]))
         return [(i, j) for i in range(ix-2, ix+3)
                 if 0 <= i <= nx for j in range(iy-2, iy+3)
                 if 0 <= j <= ny]
@@ -107,6 +122,7 @@ def plan_global_path(context, start, target, obstacles, *, heading=0., omni=Fals
     starts = {(node, arrival_heading(start, xy(node))):
               segment_time(start, xy(node), heading, omni=omni)
               for node in nearby(start) if free(node) and
+              inward(start, xy(node)) and
               segment_clear(start, xy(node), obstacles, allow_escape=True)}
     goals = {node for node in nearby(target)
              if free(node) and segment_clear(xy(node), target, obstacles)}
@@ -138,7 +154,7 @@ def plan_global_path(context, start, target, obstacles, *, heading=0., omni=Fals
                 nxt = node[0]+dx, node[1]+dy
                 if not (0 <= nxt[0] <= nx and 0 <= nxt[1] <= ny):
                     continue
-                nxt_state = (nxt, heading if omni else math.atan2(dy, dx))
+                nxt_state = (nxt, arrival_heading(xy(node), xy(nxt)))
                 if nxt_state in closed or not free(nxt) or not edge_clear(node, nxt):
                     continue
                 cost = costs[state]+segment_time(xy(node), xy(nxt), angle, omni=omni)

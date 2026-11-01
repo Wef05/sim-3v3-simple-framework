@@ -29,7 +29,7 @@ class Phase(Enum):
 def get_phase(context: Context) -> Phase:
     """根据裁判机状态判断当前比赛阶段。"""
     g = context.game
-    if g is None:
+    if g is None or g.stopped:
         return Phase.STOPPED
 
     state = g.state
