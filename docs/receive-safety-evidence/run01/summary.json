@@ -1,0 +1,16 @@
+{
+  "frames": 1118,
+  "bytes": 1506985,
+  "elapsed": 0.14000000000021373,
+  "score": {
+    "home": 0,
+    "away": 0
+  },
+  "end_state": "finished",
+  "finish_reason": "operator_finish",
+  "valid_opening": false,
+  "reason": "own_robots_not_ready_at_playing",
+  "first_sim": 12.752,
+  "last_sim": 32.743999999,
+  "history_preserved": true
+}

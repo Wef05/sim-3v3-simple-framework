@@ -1,0 +1,523 @@
+{
+  "gameControl": {
+    "status": "finished",
+    "ready": true,
+    "checks": {
+      "team1": true,
+      "team2": true
+    },
+    "lastError": null,
+    "startedAtWallTime": 1793531051.6218839,
+    "resultDir": "logs/game-control",
+    "runtimeDir": "logs/game-control/runtime"
+  },
+  "match": {
+    "matchId": "local-match",
+    "status": "finished",
+    "isFinal": true,
+    "startedAtWallTime": 1793531098.7659755,
+    "endedAtWallTime": 1793531157.0846202,
+    "durationSeconds": 58.318644762039185,
+    "latestEventId": "local-match:7",
+    "eventsTotal": 7,
+    "game": {
+      "phase": "firstHalf",
+      "state": "finished",
+      "setPlay": "noSetPlay",
+      "kickingSide": null,
+      "droppedBall": false,
+      "stopped": false,
+      "secondaryTime": 0,
+      "regularDurationSeconds": 600.0,
+      "timeRemaining": 599.8599999999998,
+      "primaryTime": 599.8599999999998,
+      "drawPolicy": "allow_draw",
+      "extraTimeMaxSeconds": 12000.0,
+      "timingStage": "regulation"
+    },
+    "timing": {
+      "timeRemaining": 599.8599999999998,
+      "primaryTime": 599.8599999999998,
+      "stage": "regulation",
+      "extraTimeElapsedSeconds": 0.0,
+      "regularDurationSeconds": 600.0,
+      "drawPolicy": "allow_draw",
+      "extraTimeMaxSeconds": 12000.0
+    },
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "winner": "draw",
+    "endReason": "operator_finish",
+    "finishedEventId": "local-match:7",
+    "teams": {
+      "home": {
+        "side": "home",
+        "teamNumber": 1,
+        "teamName": "Challenger",
+        "externalTeamId": null,
+        "score": 0,
+        "stats": {
+          "goals": {
+            "total": 0,
+            "events": []
+          },
+          "outOfBounds": {
+            "awarded": {
+              "total": 0,
+              "events": [],
+              "throwIn": 0,
+              "goalKick": 0,
+              "cornerKick": 0
+            },
+            "caused": {
+              "total": 0,
+              "events": [],
+              "throwIn": 0,
+              "goalKick": 0,
+              "cornerKick": 0
+            }
+          },
+          "fouls": {
+            "total": 0,
+            "events": [],
+            "byReason": {},
+            "byRobot": {}
+          },
+          "removals": {
+            "total": 0,
+            "events": [],
+            "byReason": {},
+            "byRobot": {}
+          },
+          "discipline": {
+            "warnings": {
+              "total": 0,
+              "events": []
+            },
+            "cautions": {
+              "total": 0,
+              "events": []
+            },
+            "sentOff": {
+              "total": 0,
+              "events": []
+            }
+          },
+          "invalidGoals": {
+            "total": 0,
+            "events": [],
+            "byReason": {}
+          },
+          "ballResets": {
+            "total": 0,
+            "events": [],
+            "byReason": {}
+          }
+        }
+      },
+      "away": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null,
+        "score": 0,
+        "stats": {
+          "goals": {
+            "total": 0,
+            "events": []
+          },
+          "outOfBounds": {
+            "awarded": {
+              "total": 0,
+              "events": [],
+              "throwIn": 0,
+              "goalKick": 0,
+              "cornerKick": 0
+            },
+            "caused": {
+              "total": 0,
+              "events": [],
+              "throwIn": 0,
+              "goalKick": 0,
+              "cornerKick": 0
+            }
+          },
+          "fouls": {
+            "total": 0,
+            "events": [],
+            "byReason": {},
+            "byRobot": {}
+          },
+          "removals": {
+            "total": 0,
+            "events": [],
+            "byReason": {},
+            "byRobot": {}
+          },
+          "discipline": {
+            "warnings": {
+              "total": 0,
+              "events": []
+            },
+            "cautions": {
+              "total": 0,
+              "events": []
+            },
+            "sentOff": {
+              "total": 0,
+              "events": []
+            }
+          },
+          "invalidGoals": {
+            "total": 0,
+            "events": [],
+            "byReason": {}
+          },
+          "ballResets": {
+            "total": 0,
+            "events": [],
+            "byReason": {}
+          }
+        }
+      }
+    },
+    "warnings": []
+  },
+  "game": {
+    "playersPerTeam": 3,
+    "sides": "homeDefendsLeftGoal",
+    "stopped": false,
+    "phase": "firstHalf",
+    "state": "finished",
+    "setPlay": "noSetPlay",
+    "kickingSide": null,
+    "droppedBall": false,
+    "regularDurationSeconds": 600.0,
+    "timeRemaining": 599.8599999999998,
+    "primaryTime": 599.8599999999998,
+    "drawPolicy": "allow_draw",
+    "extraTimeMaxSeconds": 12000.0,
+    "finishReason": "operator_finish",
+    "secondaryTime": 0,
+    "ballPlacement": null,
+    "teams": {
+      "home": {
+        "number": 1,
+        "name": "Challenger",
+        "externalTeamId": null,
+        "fieldPlayerColor": "red",
+        "goalkeeperColor": "blue",
+        "goalkeeper": 1,
+        "score": 0,
+        "penaltyCounter": 0,
+        "timeoutBudget": 1,
+        "messageBudget": 12000,
+        "illegalCommunication": false,
+        "penaltyShot": 0,
+        "singleShots": 0,
+        "players": [
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          }
+        ]
+      },
+      "away": {
+        "number": 2,
+        "name": "Booster AI",
+        "externalTeamId": null,
+        "fieldPlayerColor": "blue",
+        "goalkeeperColor": "yellow",
+        "goalkeeper": 1,
+        "score": 0,
+        "penaltyCounter": 0,
+        "timeoutBudget": 1,
+        "messageBudget": 12000,
+        "illegalCommunication": false,
+        "penaltyShot": 0,
+        "singleShots": 0,
+        "players": [
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          }
+        ]
+      }
+    },
+    "timingStage": "regulation"
+  }
+}

@@ -1,0 +1,4 @@
+Baseline: git archive 4ffada4 into /tmp/receive-safety-baseline
+Command (cwd baseline): python3 -m unittest discover -s checks -p test_*.py
+Observed result: Ran 100 tests in 1.349s; FAILED (errors=1).
+Only error: ModuleNotFoundError: No module named checks.goalkeeper_replay_cases, imported by checks/test_goalkeeper_replay.py:4.

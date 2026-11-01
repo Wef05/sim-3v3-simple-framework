@@ -1,0 +1,34 @@
+{
+  "summary": {
+    "frames": 1118,
+    "bytes": 1506985,
+    "elapsed": 0.14000000000021373,
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "end_state": "finished",
+    "finish_reason": "operator_finish",
+    "valid_opening": false,
+    "reason": "own_robots_not_ready_at_playing",
+    "first_sim": 12.752,
+    "last_sim": 32.743999999,
+    "history_preserved": true
+  },
+  "capture": {
+    "frames": 1118,
+    "first_id": 488280,
+    "last_id": 489397,
+    "first_sim": 12.752,
+    "last_sim": 32.743999999,
+    "max_sim_gap": 0.142000000000003,
+    "max_receive_gap": 0.647839207900688,
+    "raw_bytes": 21276951,
+    "sha256": "f90fd02eb5c383f3f14bca79d1aa29b27d99144a858bba11ae542ff79376da93"
+  },
+  "events": [],
+  "reception_frames": {},
+  "protection_frames": {},
+  "player3_kick_frames": [],
+  "event_frames": []
+}
