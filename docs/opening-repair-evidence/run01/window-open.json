@@ -1,0 +1,5 @@
+{
+  "observed_at": "2026-11-01T12:15:44.583197+00:00",
+  "method": "Studio simulator official reset after deployed source hash check",
+  "minimum_settle_wall_seconds": 60
+}

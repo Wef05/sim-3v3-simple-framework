@@ -1,0 +1,57 @@
+{
+  "referee/robot_rules.py": {
+    "sha256": "f9a6a701ab5b1d7793ff0c9fb24b29fefb1910eb281ee9ae282337440300685b",
+    "excerpts": [
+      {
+        "start": 503,
+        "end": 579,
+        "text": "    return illegal_kickoff_position(context, robot, game)\n\n\ndef illegal_kickoff_position(context: RuleContext, robot: dict[str, Any], game: Any) -> CheckResult:\n    field = context.field\n    if field is None:\n        return CheckResult.fail()\n    half_length = field.length / 2\n    y_limit = field.width / 2 + ILLEGAL_POSITION_FIELD_Y_MARGIN\n    position = vec3(robot.get(\"position\"))\n    x, y, _ = position\n    if abs(x) > half_length + POSITION_TOLERANCE or abs(y) > y_limit:\n        return CheckResult.pass_(\n            reason=\"illegalPosition\",\n            evidence=illegal_position_evidence(\n                \"field_boundary\",\n                \"Robot position is outside the field boundary tolerance.\",\n                position,\n                [\n                    {\"name\": \"absX\", \"value\": abs(x), \"unit\": \"m\", \"threshold\": half_length + POSITION_TOLERANCE, \"operator\": \"<=\"},\n                    {\"name\": \"absY\", \"value\": abs(y), \"unit\": \"m\", \"threshold\": y_limit, \"operator\": \"<=\"},\n                ],\n            ),\n        )\n\n    own_half_sign = defending_goal_sign(robot_side(robot), game[\"sides\"])\n    in_own_half = x <= POSITION_TOLERANCE if own_half_sign < 0 else x >= -POSITION_TOLERANCE\n    center_distance = (x * x + y * y) ** 0.5\n    center_threshold = field.circle_radius + POSITION_TOLERANCE\n    in_center_circle = center_distance <= center_threshold\n    if not in_own_half:\n        if game[\"setPlay\"] != \"kickOff\" or robot_side(robot) != game[\"kickingSide\"] or not in_center_circle:\n            sub_rule = \"kickoff_kicking_side_outside_center\" if game[\"setPlay\"] == \"kickOff\" and robot_side(robot) == game[\"kickingSide\"] else \"outside_own_half\"\n            return CheckResult.pass_(\n                reason=\"illegalPosition\",\n                evidence=illegal_position_evidence(\n                    sub_rule,\n                    \"Robot is outside its own half and is not in an allowed kickoff center-circle position.\",\n                    position,\n                    [\n                        own_half_measurement(x, own_half_sign),\n                        {\"name\": \"centerDistance\", \"value\": center_distance, \"unit\": \"m\", \"threshold\": center_threshold, \"operator\": \"<=\"},\n                    ],\n                ),\n            )\n\n    if (game[\"setPlay\"] != \"kickOff\" or robot_side(robot) != game[\"kickingSide\"]) and in_center_circle:\n        return CheckResult.pass_(\n            reason=\"illegalPosition\",\n            evidence=illegal_position_evidence(\n                \"kickoff_non_kicking_side_in_center_circle\",\n                \"Non-kicking-side robot is inside the kickoff center circle before the ball is free.\",\n                position,\n                [\n                    {\"name\": \"centerDistance\", \"value\": center_distance, \"unit\": \"m\", \"threshold\": center_threshold, \"operator\": \">\"},\n                ],\n            ),\n        )\n    return CheckResult.fail()\n\n\ndef illegal_kickoff_position_before_ball_free(context: RuleContext, robot: dict[str, Any]) -> CheckResult:\n    game = context.game\n    if game.get(\"setPlay\") != \"kickOff\" or game.get(\"kickingSide\") is None or game.get(\"stopped\"):\n        return CheckResult.fail()\n    tracker = context.trackers.get(\"set_play_runtime\")\n    active = getattr(tracker, \"active\", None)\n    if active is not None and active.ball_free:\n        return CheckResult.fail()\n    return illegal_kickoff_position(context, robot, game)\n\n\ndef illegal_free_kick_avoidance(context: RuleContext, robot: dict[str, Any]) -> CheckResult:\n    \"\"\"One-shot avoidance check at the moment the ball becomes free.\n\n    Per § 13.3.2 / § 13.3.3, the rule book judges the avoidance region only\n    when the kick is taken. By the time this predicate runs, the engine has"
+      }
+    ]
+  },
+  "referee/ball_rules.py": {
+    "sha256": "1c39cbefd99cbdb6a73dc3eb32082e3f3002e980afa4b39bdb0ec31c35e19d82",
+    "excerpts": [
+      {
+        "start": 158,
+        "end": 177,
+        "text": "    return CheckResult.fail()\n\n\ndef set_play_complete(context: RuleContext, _subject: Any) -> CheckResult:\n    game = context.game\n    if game[\"state\"] != \"playing\" or game[\"setPlay\"] == \"noSetPlay\" or game[\"stopped\"] or game[\"kickingSide\"] is None:\n        return CheckResult.fail()\n    set_play_runtime = context.trackers.get(\"set_play_runtime\")\n    if set_play_runtime is None or not set_play_runtime.active:\n        return CheckResult.fail()\n    active = set_play_runtime.active\n    if active.ball_free and active.kicking_side_moved_ball:\n        return CheckResult.pass_(reason=active.ball_free_reason or \"kicking_side_touch\")\n    if not active.kicking_side_moved_ball:\n        return CheckResult.fail()\n    contacts = list(context.facts.get(\"contacts\") or [])\n    kicking_side_touched = any(contact.side == game[\"kickingSide\"] for contact in contacts)\n    return CheckResult.pass_(reason=\"kicking_side_touch\") if kicking_side_touched else CheckResult.fail()\n\n"
+      },
+      {
+        "start": 311,
+        "end": 320,
+        "text": "def finish_set_play(context: RuleContext, _subject: Any, check: CheckResult) -> Iterable[RuleCommand]:\n    reason = check.reason or \"kicking_side_touch\"\n    yield RuntimeCommand(\"complete_active_set_play\", {\"lastTouchSide\": context.game.get(\"kickingSide\"), \"reason\": reason})\n    yield ControlActionCommand({\"type\": \"ballFree\"})\n    yield EmitEventCommand({\n        \"type\": \"ball_free\",\n        \"source\": \"auto_referee\",\n        \"outcome\": {\"reason\": reason},\n    })\n"
+      }
+    ]
+  },
+  "trackers/set_play.py": {
+    "sha256": "74ff73ac609917255cc287f9f0736a3ed9ae69ab0898233ae6c3cab45f682643",
+    "excerpts": [
+      {
+        "start": 153,
+        "end": 190,
+        "text": "            tracker.last_counted_touch_key == touch.key\n            and 0.0 <= touch.touched_at - tracker.last_counted_touch_at <= SAME_ROBOT_TOUCH_DEDUP_MS\n        ):\n            _logger.info(\n                f\"[SetPlayTracker] Ignoring repeated touch from same robot within \"\n                f\"{SAME_ROBOT_TOUCH_DEDUP_MS:.0f}ms: set_play={tracker.set_play}, \"\n                f\"robot={touch.key}, elapsed_since_last={touch.touched_at - tracker.last_counted_touch_at:.1f}ms\"\n            )\n            return\n        tracker.last_counted_touch_key = touch.key\n        tracker.last_counted_touch_at = touch.touched_at\n        tracker.touch_count += 1\n        if tracker.first_touch_side is None:\n            tracker.first_touch_side = touch.side\n            tracker.first_touch_player_key = touch.key\n        tracker.touched_players.add(touch.key)\n        tracker.touched_players_by_side.setdefault(touch.side, set()).add(touch.key)\n        if touch.side == tracker.kicking_side:\n            tracker.kicking_side_touched_players.add(touch.key)\n            if tracker.first_kicking_player_key is None:\n                tracker.first_kicking_player_key = touch.key\n            if ball and math.hypot(ball[0], ball[1]) > self.field.circle_radius + POSITION_TOLERANCE:\n                tracker.kickoff_player_touched_outside_center = (\n                    tracker.kickoff_player_touched_outside_center\n                    or touch.key == tracker.first_kicking_player_key\n                )\n            tracker.kicking_side_moved_ball = True\n            tracker.ball_free = True\n            tracker.ball_free_reason = \"kicking_side_touch\"\n            _logger.info(\n                f\"[SetPlayTracker] Touch detected (kicking side): \"\n                f\"set_play={tracker.set_play}, kicking_side={tracker.kicking_side}, \"\n                f\"robot={touch.key}, touch_count={tracker.touch_count}, \"\n                f\"ball_free={tracker.ball_free}, reason={tracker.ball_free_reason}\"\n            )\n        elif tracker.kicking_side_moved_ball:\n            tracker.ball_free = True\n            tracker.ball_free_reason = tracker.ball_free_reason or \"opponent_touch_after_kick\""
+      }
+    ]
+  },
+  "core.py": {
+    "sha256": "a10939b1285900dbcabd8e5d52d5cce5ba39a89571ddddf76847812f00cfbdb5",
+    "excerpts": [
+      {
+        "start": 540,
+        "end": 560,
+        "text": "        self.game[\"state\"] = \"playing\"\n        self.pending_publish = True\n\n    def finish_set_play(self) -> None:\n        if self.game[\"state\"] != \"playing\" or self.game[\"setPlay\"] == \"noSetPlay\":\n            return\n        self.automatic_set_play = False\n        self.game[\"droppedBall\"] = False\n        self.game[\"secondaryTime\"] = 0\n        self.game[\"setPlay\"] = \"noSetPlay\"\n        self.game[\"kickingSide\"] = None\n        self.game[\"stopped\"] = False\n        self.pending_publish = True\n\n    def finish_half(self, reason: str | None = None) -> None:\n        if self.game[\"state\"] not in (\"ready\", \"set\", \"playing\"):\n            return\n        self.game[\"secondaryTime\"] = 0\n        self.game[\"setPlay\"] = \"noSetPlay\"\n        self.game[\"kickingSide\"] = None\n        self.game[\"droppedBall\"] = False"
+      },
+      {
+        "start": 570,
+        "end": 585,
+        "text": "            \"header\": \"RGme\",\n            \"version\": GAME_CONTROL_STRUCT_VERSION,\n            \"packetNumber\": self.packet_number,\n            \"playersPerTeam\": int(game.get(\"playersPerTeam\", PLAYERS_PER_TEAM)),\n            \"competitionType\": COMPETITION_TYPE_LARGE,\n            \"stopped\": 1 if game[\"stopped\"] else 0,\n            \"gamePhase\": game_phase_code(game[\"phase\"], game[\"state\"]),\n            \"state\": STATE_CODE[game[\"state\"]],\n            \"setPlay\": SET_PLAY_CODE[game[\"setPlay\"]],\n            \"firstHalf\": 1 if game[\"phase\"] in (\"firstHalf\", \"firstExtraHalf\") else 0,\n            \"kickingTeam\": KICKING_TEAM_NONE if game[\"kickingSide\"] is None else game[\"teams\"][game[\"kickingSide\"]][\"number\"],\n            \"secsRemaining\": clamp_signed16(ceil_signed_timer(game[\"timeRemaining\"])),\n            \"secondaryTime\": clamp_signed16(ceil_timer(game[\"secondaryTime\"])),\n            \"teams\": [encode_team(game[\"teams\"][side]) for side in team_order],\n        }\n"
+      },
+      {
+        "start": 610,
+        "end": 620,
+        "text": "            self.game[\"timeRemaining\"] -= dt_seconds\n            self.game[\"primaryTime\"] = self.game[\"timeRemaining\"]\n            if self.game[\"timeRemaining\"] <= 0 and self.game[\"phase\"] != \"penaltyShootout\":\n                if self.auto_advance_state:\n                    self._finish_if_time_limit_reached()\n\n        if run_always and self.game[\"secondaryTime\"] > 0:\n            self.game[\"secondaryTime\"] = max(0, self.game[\"secondaryTime\"] - dt_seconds)\n            if self.game[\"secondaryTime\"] <= 0 and self.auto_advance_state:\n                self._handle_secondary_expired()\n"
+      }
+    ]
+  }
+}

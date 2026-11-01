@@ -1,0 +1,3313 @@
+{
+  "summary": {
+    "frames": 3235,
+    "bytes": 16031560,
+    "elapsed": 60.20599999989429,
+    "score": {
+      "home": 0,
+      "away": 1
+    },
+    "end_state": "finished",
+    "finish_reason": "operator_finish",
+    "valid_opening": true,
+    "reason": "requested_60_seconds",
+    "first_sim": 36.601999999,
+    "last_sim": 119.615999999,
+    "history_preserved": true
+  },
+  "capture": {
+    "frames": 3235,
+    "first_id": 567358,
+    "last_id": 570592,
+    "first_sim": 36.601999999,
+    "last_sim": 119.615999999,
+    "max_sim_gap": 0.9519999999999982,
+    "max_receive_gap": 2.5266497500706464,
+    "raw_bytes": 104985715,
+    "sha256": "830e9501fbe970c8e2d40817cd49171d5ea2827983d0c1a3c95f463543d697fe",
+    "max_packet_bytes": 49255
+  },
+  "events": [],
+  "phases": {},
+  "actions": {
+    "1:stopped": 490,
+    "2:stopped": 490,
+    "3:stopped": 490,
+    "1:ready": 1949,
+    "2:ready": 1949,
+    "3:ready": 1949,
+    "1:attack:pass_preposition": 430,
+    "2:guard:set": 670,
+    "3:freeman:receive_preposition": 430,
+    "1:attack": 366,
+    "3:freeman:receive_no_safe_candidate": 75,
+    "3:freeman:move": 138,
+    "2:guard:anticipate:ray": 78,
+    "3:freeman:wait": 153,
+    "2:guard:block:best_effort": 27,
+    "2:guard:block:reachable": 4,
+    "2:guard:block:hold": 7,
+    "2:guard:block:unreachable_hold": 10
+  },
+  "kick_frames": [
+    {
+      "frame": 568708,
+      "sim": 69.486,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568709,
+      "sim": 69.86,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568710,
+      "sim": 69.886,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568711,
+      "sim": 69.92,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568712,
+      "sim": 69.946,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568713,
+      "sim": 69.972,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568714,
+      "sim": 69.994,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568715,
+      "sim": 70.136,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568716,
+      "sim": 70.152,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568717,
+      "sim": 70.184,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568718,
+      "sim": 70.214,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568719,
+      "sim": 70.244,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568720,
+      "sim": 70.282,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568721,
+      "sim": 70.312,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568722,
+      "sim": 70.348,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568723,
+      "sim": 70.392,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568724,
+      "sim": 70.422,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568725,
+      "sim": 70.448,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568726,
+      "sim": 70.472,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568727,
+      "sim": 70.488,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568728,
+      "sim": 70.516,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568729,
+      "sim": 70.646,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568730,
+      "sim": 70.678,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568731,
+      "sim": 70.704,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568732,
+      "sim": 70.712,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568733,
+      "sim": 70.734,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568734,
+      "sim": 70.75,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568735,
+      "sim": 70.766,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568736,
+      "sim": 70.79,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568737,
+      "sim": 70.818,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568738,
+      "sim": 70.838,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568739,
+      "sim": 70.868,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568740,
+      "sim": 70.888,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568741,
+      "sim": 70.924,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568742,
+      "sim": 70.958,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568743,
+      "sim": 70.984,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568744,
+      "sim": 71.012,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568745,
+      "sim": 71.046,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568746,
+      "sim": 71.168,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568747,
+      "sim": 71.198,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568748,
+      "sim": 71.23,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568749,
+      "sim": 71.262,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568750,
+      "sim": 71.3,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568751,
+      "sim": 71.326,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568752,
+      "sim": 71.354,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568753,
+      "sim": 71.378,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568754,
+      "sim": 71.4,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568755,
+      "sim": 71.432,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568756,
+      "sim": 71.46,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568757,
+      "sim": 71.508,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568758,
+      "sim": 71.53,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568759,
+      "sim": 71.566,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568760,
+      "sim": 71.688,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568761,
+      "sim": 71.712,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568762,
+      "sim": 71.73,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568763,
+      "sim": 71.75,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568764,
+      "sim": 71.776,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568765,
+      "sim": 71.8,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568766,
+      "sim": 71.822,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568767,
+      "sim": 71.838,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568768,
+      "sim": 71.844,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568769,
+      "sim": 71.874,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568770,
+      "sim": 71.896,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568771,
+      "sim": 71.924,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568772,
+      "sim": 71.954,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568773,
+      "sim": 71.988,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568774,
+      "sim": 72.018,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568775,
+      "sim": 72.048,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568776,
+      "sim": 72.082,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568777,
+      "sim": 72.208,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568778,
+      "sim": 72.244,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568779,
+      "sim": 72.28,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568780,
+      "sim": 72.306,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568781,
+      "sim": 72.342,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568782,
+      "sim": 72.368,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568783,
+      "sim": 72.4,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568784,
+      "sim": 72.438,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568785,
+      "sim": 72.474,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568786,
+      "sim": 72.488,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568787,
+      "sim": 72.534,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568788,
+      "sim": 72.57,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568789,
+      "sim": 72.6,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568790,
+      "sim": 72.72,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568791,
+      "sim": 72.764,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568792,
+      "sim": 72.798,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568793,
+      "sim": 72.826,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568794,
+      "sim": 72.862,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568795,
+      "sim": 72.894,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568796,
+      "sim": 72.924,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568797,
+      "sim": 72.96,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568798,
+      "sim": 72.996,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568799,
+      "sim": 73.028,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568800,
+      "sim": 73.056,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568801,
+      "sim": 73.09,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568802,
+      "sim": 73.114,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568803,
+      "sim": 73.248,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568804,
+      "sim": 73.28,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568805,
+      "sim": 73.324,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568806,
+      "sim": 73.362,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568807,
+      "sim": 73.402,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568808,
+      "sim": 73.436,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568809,
+      "sim": 73.47,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568810,
+      "sim": 73.5,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568811,
+      "sim": 73.532,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568812,
+      "sim": 73.556,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568813,
+      "sim": 73.566,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568814,
+      "sim": 73.588,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568815,
+      "sim": 73.606,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568816,
+      "sim": 73.63,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568817,
+      "sim": 73.716,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568818,
+      "sim": 73.748,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568819,
+      "sim": 73.774,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568820,
+      "sim": 73.8,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568821,
+      "sim": 73.834,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568822,
+      "sim": 73.87,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568823,
+      "sim": 73.906,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568824,
+      "sim": 73.956,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568825,
+      "sim": 73.986,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568826,
+      "sim": 74.036,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568827,
+      "sim": 74.058,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568828,
+      "sim": 74.086,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568829,
+      "sim": 74.226,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568830,
+      "sim": 74.262,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568831,
+      "sim": 74.304,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568832,
+      "sim": 74.352,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568833,
+      "sim": 74.396,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568834,
+      "sim": 74.422,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568835,
+      "sim": 74.592,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568836,
+      "sim": 74.638,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568837,
+      "sim": 74.682,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568838,
+      "sim": 74.718,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568839,
+      "sim": 74.742,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568840,
+      "sim": 74.878,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568841,
+      "sim": 74.904,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568842,
+      "sim": 74.932,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568843,
+      "sim": 74.962,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568844,
+      "sim": 75.0,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568845,
+      "sim": 75.026,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568846,
+      "sim": 75.05,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568847,
+      "sim": 75.066,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568848,
+      "sim": 75.186,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568849,
+      "sim": 75.218,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568850,
+      "sim": 75.242,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568851,
+      "sim": 75.27,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568852,
+      "sim": 75.304,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568853,
+      "sim": 75.338,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568854,
+      "sim": 75.36,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568855,
+      "sim": 75.38,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568856,
+      "sim": 75.408,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568857,
+      "sim": 75.444,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568858,
+      "sim": 75.47,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568859,
+      "sim": 75.504,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568860,
+      "sim": 75.532,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568861,
+      "sim": 75.57,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568862,
+      "sim": 75.694,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568863,
+      "sim": 75.73,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568864,
+      "sim": 75.772,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568865,
+      "sim": 75.812,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568866,
+      "sim": 75.836,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568867,
+      "sim": 75.912,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568930,
+      "sim": 78.841999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568931,
+      "sim": 78.869999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568932,
+      "sim": 78.929999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568933,
+      "sim": 78.963999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568934,
+      "sim": 78.999999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568935,
+      "sim": 79.041999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568936,
+      "sim": 79.071999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568937,
+      "sim": 79.121999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568938,
+      "sim": 79.157999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568939,
+      "sim": 79.181999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568940,
+      "sim": 79.221999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568941,
+      "sim": 79.447999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568942,
+      "sim": 79.485999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568943,
+      "sim": 79.515999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568944,
+      "sim": 79.545999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568945,
+      "sim": 79.587999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568946,
+      "sim": 79.629999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568947,
+      "sim": 79.661999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568948,
+      "sim": 79.695999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568949,
+      "sim": 79.727999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568950,
+      "sim": 79.879999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568951,
+      "sim": 79.90999999900001,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568952,
+      "sim": 79.945999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568953,
+      "sim": 79.975999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568954,
+      "sim": 80.001999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568955,
+      "sim": 80.115999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568956,
+      "sim": 80.145999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568957,
+      "sim": 80.173999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568958,
+      "sim": 80.255999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568959,
+      "sim": 80.425999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568960,
+      "sim": 80.457999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568961,
+      "sim": 80.475999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568962,
+      "sim": 80.521999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568963,
+      "sim": 80.537999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568964,
+      "sim": 80.567999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568965,
+      "sim": 80.727999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568966,
+      "sim": 80.751999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568967,
+      "sim": 80.775999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568968,
+      "sim": 80.821999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568969,
+      "sim": 80.835999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568970,
+      "sim": 80.911999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568971,
+      "sim": 80.947999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568972,
+      "sim": 80.969999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568973,
+      "sim": 80.989999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568974,
+      "sim": 81.015999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568975,
+      "sim": 81.039999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568981,
+      "sim": 81.325999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568982,
+      "sim": 81.365999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568983,
+      "sim": 81.381999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568984,
+      "sim": 81.451999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568985,
+      "sim": 81.469999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568986,
+      "sim": 81.485999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568987,
+      "sim": 81.503999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568988,
+      "sim": 81.521999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568989,
+      "sim": 81.551999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568990,
+      "sim": 81.581999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568992,
+      "sim": 81.619999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    },
+    {
+      "frame": 568993,
+      "sim": 81.633999999,
+      "id": 1,
+      "target": [
+        7.25,
+        0.0
+      ],
+      "power": 5.0,
+      "passing": null
+    }
+  ],
+  "timeline": [],
+  "selection_count": 3,
+  "selected_count": 0,
+  "selection_reasons": {
+    "preposition_wait:receive_race": 1,
+    "preparation_timeout": 2
+  },
+  "first_selection": {
+    "evaluated_at": 59.498,
+    "anchor": [
+      -0.42558878610316403,
+      3.4685372808971686
+    ],
+    "kickoff": true,
+    "candidates": [
+      {
+        "contact": [
+          -1.925588786103164,
+          3.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.836644209742282,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -0.06140135167408367,
+          2.7441028744001255
+        ],
+        "prepare_s": 5.180124600991829,
+        "after_receive_s": 1.889362694791151,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.2208035401332016,
+        "receive_margin_s": -1.4208035401332015,
+        "attack_margin_s": -3.1101662349243524,
+        "protected_s": 5.180124600991829,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -1.925588786103164,
+          3.6185372808971685
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.927265228369508,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          -0.07211425095542978,
+          2.8671171936231516
+        ],
+        "prepare_s": 4.54863343936446,
+        "after_receive_s": 1.899261414110464,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.286699704671618,
+        "receive_margin_s": -1.486699704671618,
+        "attack_margin_s": -3.1859611187820818,
+        "protected_s": 4.54863343936446,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -1.925588786103164,
+          3.7685372808971684
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 6.020260006325174,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 3,
+          "behind_outside_field": 1
+        },
+        "attack_target": [
+          -0.08308636037600103,
+          2.9906010295310814
+        ],
+        "prepare_s": 4.645566071296227,
+        "after_receive_s": 1.907046190756409,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.3532021458561547,
+        "receive_margin_s": -1.5532021458561547,
+        "attack_margin_s": -3.2602483366125634,
+        "protected_s": 4.645566071296227,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -1.4862489578829854,
+          2.407877109117347
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.8874488545428045,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          0.4377998048752618,
+          1.8619500457394103
+        ],
+        "prepare_s": 5.210851415631462,
+        "after_receive_s": 1.9500420186428695,
+        "prepare_margin_s": null,
+        "lane_margin_s": -0.8716907154761013,
+        "receive_margin_s": -1.0716907154761013,
+        "attack_margin_s": -2.821732734118971,
+        "protected_s": 5.210851415631462,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -1.4862489578829852,
+          4.52919745267699
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 6.2165333896156945,
+        "reason": "contact_outside_field"
+      },
+      {
+        "contact": [
+          -1.425588786103164,
+          3.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.44330742874466,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          0.42383099072607466,
+          2.7071920969806422
+        ],
+        "prepare_s": 4.113407234765121,
+        "after_receive_s": 2.0867800975360042,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.3622425569867778,
+        "receive_margin_s": -1.5622425569867777,
+        "attack_margin_s": -3.449022654522782,
+        "protected_s": 4.113407234765121,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -1.425588786103164,
+          3.6185372808971685
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.540365802015868,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          0.41210288760993796,
+          2.829303910869305
+        ],
+        "prepare_s": 4.097937280954235,
+        "after_receive_s": 2.089850044438446,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.4318209571080434,
+        "receive_margin_s": -1.6318209571080433,
+        "attack_margin_s": -3.5216710015464896,
+        "protected_s": 4.097937280954235,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -1.425588786103164,
+          3.7685372808971684
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.639743848479918,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 3,
+          "behind_outside_field": 1
+        },
+        "attack_target": [
+          0.4001127394721591,
+          2.951950519118643
+        ],
+        "prepare_s": 4.083542370080038,
+        "after_receive_s": 2.0909410676270195,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.5017884809309527,
+        "receive_margin_s": -1.7017884809309527,
+        "attack_margin_s": -3.592729548557972,
+        "protected_s": 4.083542370080038,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -1.1326955672897117,
+          2.761430499710621
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.779479352425595,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          0.7611113590413672,
+          2.1183944775622257
+        ],
+        "prepare_s": 4.112665596141022,
+        "after_receive_s": 2.190512955276371,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.1260075404058385,
+        "receive_margin_s": -1.3260075404058385,
+        "attack_margin_s": -3.3165204956822096,
+        "protected_s": 4.112665596141022,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -1.1326955672897114,
+          4.175644062083716
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.716832771085105,
+        "reason": "contact_outside_field"
+      },
+      {
+        "contact": [
+          -0.925588786103164,
+          3.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.068804188024578,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          0.9066331539438317,
+          2.666687692501425
+        ],
+        "prepare_s": 3.9776815638897456,
+        "after_receive_s": 2.3066203823994904,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.5321614190739872,
+        "receive_margin_s": -1.7321614190739871,
+        "attack_margin_s": -3.8387818014734774,
+        "protected_s": 3.9776815638897456,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.925588786103164,
+          3.6185372808971685
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.172894098360766,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          0.8937582809099074,
+          2.787889190698356
+        ],
+        "prepare_s": 3.9669116004754215,
+        "after_receive_s": 2.3002838051969405,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.604725797883619,
+        "receive_margin_s": -1.8047257978836189,
+        "attack_margin_s": -3.9050096030805594,
+        "protected_s": 3.9669116004754215,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.925588786103164,
+          3.7685372808971684
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.279194143917779,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 2,
+          "behind_outside_field": 2
+        },
+        "attack_target": [
+          0.8806231553154185,
+          2.909701777045054
+        ],
+        "prepare_s": 3.9569710398585873,
+        "after_receive_s": 2.2923886558873114,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.6774754231384077,
+        "receive_margin_s": -1.8774754231384077,
+        "attack_margin_s": -3.9698640790257187,
+        "protected_s": 3.9569710398585873,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.7791421766964379,
+          3.114983890303895
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.722254700326253,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          1.0775372605272184,
+          2.3715180421367803
+        ],
+        "prepare_s": 3.9613849333617708,
+        "after_receive_s": 2.3903557124714228,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.4159029201894502,
+        "receive_margin_s": -1.6159029201894501,
+        "attack_margin_s": -3.8062586326608727,
+        "protected_s": 3.9613849333617708,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.7791421766964377,
+          3.8220906714904426
+        ],
+        "upper_left": true,
+        "preferred_region": false,
+        "enemy_distance": 5.217189519357947,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 2,
+          "behind_outside_field": 2
+        },
+        "attack_target": [
+          1.0158972830267952,
+          2.9401420686588917
+        ],
+        "prepare_s": 3.915993838524775,
+        "after_receive_s": 2.3498926340429147,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.7607775748785337,
+        "receive_margin_s": -1.9607775748785337,
+        "attack_margin_s": -4.110670208921448,
+        "protected_s": 3.915993838524775,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.4255887861031643,
+          1.9685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 3.7510507149387977,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          1.5076321780491146,
+          1.4560368382025954
+        ],
+        "prepare_s": 3.9281332078483486,
+        "after_receive_s": 2.6169356454164623,
+        "prepare_margin_s": null,
+        "lane_margin_s": -0.9942141522372328,
+        "receive_margin_s": -1.1942141522372327,
+        "attack_margin_s": -3.611149797653695,
+        "protected_s": 3.9281332078483486,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.4255887861031642,
+          2.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.037190399330123,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          1.4722877744185947,
+          1.8376137030986384
+        ],
+        "prepare_s": 3.885021090861432,
+        "after_receive_s": 2.6267342157939004,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.2396833634411184,
+        "receive_margin_s": -1.4396833634411184,
+        "attack_margin_s": -3.8664175792350184,
+        "protected_s": 3.885021090861432,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.42558878610316414,
+          2.9685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.362044380201072,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          1.4315110144238712,
+          2.226122079758045
+        ],
+        "prepare_s": 3.856438366522332,
+        "after_receive_s": 2.596047611523418,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.4866504544614167,
+        "receive_margin_s": -1.6866504544614167,
+        "attack_margin_s": -4.082698065984834,
+        "protected_s": 3.856438366522332,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.42558878610316403,
+          3.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.717621861620981,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          1.3864722823956974,
+          2.6221126333172644
+        ],
+        "prepare_s": 3.836356197724021,
+        "after_receive_s": 2.5438296712944806,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.734480390992866,
+        "receive_margin_s": -1.934480390992866,
+        "attack_margin_s": -4.278310062287346,
+        "protected_s": 3.836356197724021,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.425588786103164,
+          3.9685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.097497511882144,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "behind_outside_field": 3,
+          "receive_race": 1
+        },
+        "primary_rejection": "receive_race",
+        "attack_target": [
+          1.5727452455226134,
+          3.8869217306247714
+        ],
+        "prepare_s": 3.825160712652322,
+        "after_receive_s": 3.449431580598002,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.9828517407060702,
+        "receive_margin_s": -2.18285174070607,
+        "attack_margin_s": -5.432283321304071,
+        "protected_s": 3.825160712652322,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        }
+      },
+      {
+        "contact": [
+          -0.425588786103164,
+          4.468537280897168
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.496635856416641,
+        "reason": "contact_outside_field"
+      },
+      {
+        "contact": [
+          -0.4255887861031639,
+          4.968537280897168
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.911136150728178,
+        "reason": "contact_outside_field"
+      },
+      {
+        "contact": [
+          -0.07203539550989035,
+          3.1149838903038947
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.218156656359506,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          1.7582808054665362,
+          2.308793711473105
+        ],
+        "prepare_s": 3.7626780869100696,
+        "after_receive_s": 2.7815590830162584,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.5579083521711934,
+        "receive_margin_s": -1.7579083521711933,
+        "attack_margin_s": -4.339467435187451,
+        "protected_s": 3.7626780869100696,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 6
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -0.07203539550989024,
+          3.822090671490442
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.765734214550263,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 2,
+          "behind_outside_field": 2
+        },
+        "attack_target": [
+          1.687443315385597,
+          2.871178127717065
+        ],
+        "prepare_s": 3.7594419859868804,
+        "after_receive_s": 2.651731439988237,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.911384720516812,
+        "receive_margin_s": -2.111384720516812,
+        "attack_margin_s": -4.563116160505048,
+        "protected_s": 3.7594419859868804,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          -7.733400338169171e-17,
+          3.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.4412309381973225,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          1.7920646747764946,
+          2.5805596902912926
+        ],
+        "prepare_s": 3.7451352004166085,
+        "after_receive_s": 2.7527902553226165,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.7342686404485843,
+        "receive_margin_s": -1.9342686404485843,
+        "attack_margin_s": -4.4870588957712005,
+        "protected_s": 3.7451352004166085,
+        "provisional": false,
+        "pose_rejections": {
+          "receive_race": 4,
+          "receive_route_unavailable": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          0.07441121389683597,
+          3.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.395353929088408,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 4
+        },
+        "attack_target": [
+          1.862672052602074,
+          2.5729239866941187
+        ],
+        "prepare_s": 3.7287629065300707,
+        "after_receive_s": 2.7894206851568986,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.734667684149267,
+        "receive_margin_s": -1.934667684149267,
+        "attack_margin_s": -4.524088369306165,
+        "protected_s": 3.7287629065300707,
+        "provisional": false,
+        "pose_rejections": {
+          "kickoff_waiting_outside_own_half": 1,
+          "receive_race": 4
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          0.2815179950833833,
+          2.761430499710621
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 3.7188351840241336,
+        "reason": "receive_race",
+        "direction_rejections": {
+          "receive_race": 2,
+          "kickoff_waiting_outside_own_half": 2
+        },
+        "attack_target": [
+          2.1313588229715514,
+          2.001108915459577
+        ],
+        "prepare_s": 3.6668700174163966,
+        "after_receive_s": 4.048358807880057,
+        "prepare_margin_s": null,
+        "lane_margin_s": -1.3878716426860067,
+        "receive_margin_s": -1.5878716426860067,
+        "attack_margin_s": -5.436230450566064,
+        "protected_s": 3.6668700174163966,
+        "provisional": false,
+        "pose_rejections": {
+          "kickoff_waiting_outside_own_half": 2,
+          "receive_race": 2
+        },
+        "primary_rejection": "receive_race"
+      },
+      {
+        "contact": [
+          0.28151799508338354,
+          4.175644062083716
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.865027150821034,
+        "reason": "contact_outside_field"
+      },
+      {
+        "contact": [
+          0.574411213896836,
+          3.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 4.108809595815021,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "kickoff_waiting_outside_own_half": 4
+        },
+        "primary_rejection": "kickoff_waiting_outside_own_half"
+      },
+      {
+        "contact": [
+          0.635071385676657,
+          2.407877109117347
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 3.2197243165031404,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "kickoff_waiting_outside_own_half": 4
+        },
+        "primary_rejection": "kickoff_waiting_outside_own_half"
+      },
+      {
+        "contact": [
+          0.6350713856766574,
+          4.52919745267699
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 5.012460049987096,
+        "reason": "contact_outside_field"
+      },
+      {
+        "contact": [
+          1.074411213896836,
+          3.4685372808971686
+        ],
+        "upper_left": false,
+        "preferred_region": false,
+        "enemy_distance": 3.8659405617999743,
+        "reason": "kickoff_waiting_outside_own_half",
+        "direction_rejections": {
+          "kickoff_waiting_outside_own_half": 4
+        },
+        "primary_rejection": "kickoff_waiting_outside_own_half"
+      }
+    ],
+    "selected": null,
+    "reason": "preposition_wait:receive_race",
+    "preparation": {
+      "contact": [
+        -1.925588786103164,
+        3.6185372808971685
+      ],
+      "waiting": [
+        -1.961702613151978,
+        3.916355667663144
+      ],
+      "behind": [
+        -1.961702613151978,
+        3.916355667663144
+      ],
+      "attack_target": [
+        -1.4797948700146695,
+        -0.057772757917251255
+      ],
+      "heading": -1.4501242503549177,
+      "receive_heading": -1.4501242503549177,
+      "approach_path": [
+        [
+          -0.4450332395650421,
+          3.4868604611198237
+        ],
+        [
+          -1.961702613151978,
+          3.916355667663144
+        ]
+      ],
+      "adjustment_path": [
+        [
+          -1.961702613151978,
+          3.916355667663144
+        ],
+        [
+          -1.961702613151978,
+          3.916355667663144
+        ]
+      ],
+      "preferred_region": true,
+      "enemy_distance": 5.927365866629496,
+      "prepare_s": 4.158135599539901,
+      "attack_ready_s": 6.6576296972631015,
+      "prepare_margin_s": null,
+      "lane_margin_s": 0.38918883559154827,
+      "receive_margin_s": 0.18918883559154825,
+      "selected_at": 60.014,
+      "attack_margin_s": -0.060811164408451746,
+      "provisional": true,
+      "follow_up": "checked_adjustment"
+    }
+  },
+  "selected": []
+}
