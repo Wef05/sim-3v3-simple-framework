@@ -1,0 +1,3 @@
+Command: /opt/homebrew/bin/python3.11 /Users/limingzhe/.codex/skills/.system/skill-creator/scripts/quick_validate.py /Users/limingzhe/.codex/skills/booster-sim-test
+Skill is valid!
+Default Python 3.13 and bundled runtime lack PyYAML; existing Homebrew Python 3.11 used successfully.

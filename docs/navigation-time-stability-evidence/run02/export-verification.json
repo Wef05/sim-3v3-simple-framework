@@ -1,0 +1,20 @@
+{
+  "frames": 1361,
+  "bytes": 28119739,
+  "first_id": 312072,
+  "last_id": 313432,
+  "sim_start": 37.587999999,
+  "sim_end": 77.096,
+  "receive_span_s": 64.72316337493248,
+  "max_receive_gap_s": 0.45632750005461276,
+  "receive_gaps_gt_0_2_s": 12,
+  "max_sim_gap_s": 0.23999999999999488,
+  "clock_rollbacks": 0,
+  "states": {
+    "INITIAL": 10,
+    "READY": 531,
+    "SET": 183,
+    "PLAYING": 618,
+    "FINISHED": 19
+  }
+}

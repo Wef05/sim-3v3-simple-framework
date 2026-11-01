@@ -1,0 +1,7 @@
+{
+  "local_original": "/Users/limingzhe/.codex/worktrees/navigation-time-stability/sim-3v3-simple-framework/results/navigation-time-stability/run03/dashboard-captured-window.json",
+  "sha256": "299efd00b9efbbb03949dfa878dbdfffd06ce6fa44b3665b2cbefd283ab62a30",
+  "bytes": 74817040,
+  "bounded_replay": "dashboard-team1.json.gz",
+  "boundary_note": "run02 bounded at last frame before simulation clock reset (313432); run03 bounded by end-boundary.json; original frame objects unchanged"
+}
