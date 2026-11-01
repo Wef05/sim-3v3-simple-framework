@@ -17,7 +17,7 @@ from .framework.types import GameState, Penalty, SetPlay
 from .param import *
 from .role_allocator import Phase, get_phase
 from .intents import (Role, RoleTask, KickTarget, MoveIntent, FaceIntent,
-                      KickIntent, StopIntent, RecoverIntent)
+                      KickIntent, StopIntent, RecoverIntent, PassProposal)
 from .actions.controller import ActionController
 from .actions.kick_planner import resolve_target
 from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
@@ -123,12 +123,13 @@ class Player:
         if task.role != Role.GUARD:
             self._guard_memory = None
         self.guard_decision = None
+        self.pass_proposal = None
         self.action = task.role.value
         self.tactical_target = None
         self.freeman_region = None
         if task.role == Role.ATTACKER:
             # 调试阶段：我方开球固定传给 3 号，其余阶段默认射门。
-            target = 3 if get_phase(self.context) == Phase.OUR_KICKOFF else 0
+            target = 3 if self.id == 1 and get_phase(self.context) == Phase.OUR_KICKOFF else 0
             return self.attack(target)
         if task.role == Role.GUARD:
             return self.guard(task.pass_to)
@@ -205,8 +206,11 @@ class Player:
                      if (result := check_kick_lane(self.context.field, origin, target))['blocked']), None)
         # 队友目标必须保留传球语义，开球传给 3 号也按距离调度力度。
         style = 'pass' if aim.kind == 'teammate' else 'shot'
+        if lane is None and aim.kind == 'teammate':
+            self.pass_proposal = PassProposal(aim.player_id, 'kickoff', target)
         if lane is not None:
-            fallback = blocked_attack_target(self.context, self.id, origins)
+            fallback = blocked_attack_target(self.context, self.id, origins,
+                                             getattr(self, 'guard_receivers', None))
             if fallback is None:
                 self.action = 'attack:blocked:no_safe_alternative:' + lane['reason']
                 return StopIntent()
@@ -214,6 +218,8 @@ class Player:
             aim, style = KickTarget.position(target), 'pass'
             self.action = 'attack:fallback:' + label
             self.tactical_target = target
+            if label.startswith('pass:'):
+                self.pass_proposal = PassProposal(int(label.split(':')[1]), 'blocked_attack', target)
 
         self.interception_risk = estimate_interception_risk(
             self.pose, self.motion, self.context.opponents, target, self.ball_intercept,
@@ -358,7 +364,10 @@ def decide(context, players, assignments, store):
         preliminary[p.id] = p.decide(assignments[p.id])
     # 收齐所有人之后才开放给协调层；只读映射防止协调函数意外污染初稿。
     snapshot = MappingProxyType(preliminary)
-    final = coordinate(context, MappingProxyType(dict(assignments)), snapshot)
+    from .coordination import coordinate_pass, constrain_roles
+    coordinated = coordinate_pass(context, players, assignments, snapshot, store)
+    effective = constrain_roles(context, players, store, assignments)
+    final = coordinate(context, MappingProxyType(effective), coordinated)
     # 漏掉球员可能让旧动作残留；多出编号则说明协作层引用了错误对象。
     if set(final) != set(preliminary):
         raise ValueError('Coordination must return exactly one intent per player')

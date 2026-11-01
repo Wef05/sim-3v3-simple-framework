@@ -95,6 +95,7 @@ def make_snapshot(context, players, store):
         'normal_attacker': getattr(store, 'normal_attacker', None),
         'attack_decision': getattr(store, 'normal_attack_decision', None),
         'threat': getattr(store, 'threat', None),
+        'passing': asdict(store.passing) if hasattr(store, 'passing') else None,
         'kick_error': store.kick_error_tracker.snapshot() if hasattr(store, 'kick_error_tracker') else None,
         'ball_prediction': players[0].motion.ball_prediction_details() if players else None,
         'kickoff_taker': (getattr(store, 'kickoff_taker', None)

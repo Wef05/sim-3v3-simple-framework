@@ -3,11 +3,11 @@ import math
 
 from ..framework.types import Penalty
 from ..param import (ARRIVE_DIST, GUARD_PASS_MAX_DIST_M, GUARD_PASS_LANE_MARGIN_M,
-                     OPPONENT_RADIUS, TEAMMATE_RADIUS)
+                     OPPONENT_RADIUS, TEAMMATE_RADIUS, GUARD_PLAYER_ID)
 from .kick_lane import check_kick_lane, point_segment
 
 
-def blocked_attack_target(context, player_id, origins):
+def blocked_attack_target(context, player_id, origins, available_receivers=None):
     """返回 (落点, 动作标签)；所有候选均检查观测和补偿后的球路。
 
     固定候选顺序避免静止球每帧换方向。空位短传只把球向场内送，
@@ -39,7 +39,8 @@ def blocked_attack_target(context, player_id, origins):
         math.dist(ball, (item[1].pose.x, item[1].pose.y))
         if item[1].pose is not None else math.inf, item[0]))
     for pid, robot in receivers:
-        if pid == player_id or robot.pose is None:
+        if (pid in (player_id, GUARD_PLAYER_ID) or robot.pose is None
+                or available_receivers is not None and pid not in available_receivers):
             continue
         state = context.game.get_player_state(context.team_id, pid) if context.game else None
         if state is not None and state.penalty != Penalty.NONE:

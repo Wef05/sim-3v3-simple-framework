@@ -104,4 +104,12 @@ class RecoverIntent:
     """
     pass
 
+@dataclass(frozen=True)
+class PassProposal:
+    """角色层的传球提议，不代表执行许可；协作层决定共同接球点。"""
+    receiver_id: int
+    source: str
+    target: tuple[float, float]
+
+
 ActionIntent = MoveIntent | FaceIntent | KickIntent | StopIntent | RecoverIntent

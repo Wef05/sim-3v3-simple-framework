@@ -121,6 +121,8 @@ def _select_future_attacker(
 
 def init_store(store):
     """初始化全队跨帧记忆；个体行为记忆留在 Player，执行状态留在控制器。"""
+    from .coordination import TeamPassing
+    store.passing = TeamPassing()
     store.prev_phase = None
     store.cur_phase = None
     store.kickoff_taker = None
@@ -151,6 +153,8 @@ def assign(context, players, store):
     返回 id → RoleTask，覆盖全部输入球员；此处读取就绪状态但不负责起身。
     起身、切模式和停车属于执行阶段，保证分配阶段没有机器人控制副作用。
     """
+    from .coordination import validate_plan, constrain_roles
+    validate_plan(context, players, store)
     phase = get_phase(context)
     store.prev_phase = getattr(store, 'cur_phase', None)
     store.cur_phase = phase
@@ -200,4 +204,4 @@ def assign(context, players, store):
     elif phase == Phase.STOPPED:
         for p in active:
             result[p.id] = RoleTask(Role.STAY, reason='stopped')
-    return result
+    return constrain_roles(context, players, store, result)

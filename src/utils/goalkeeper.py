@@ -7,7 +7,7 @@ import math
 
 from ..param import *
 from ..framework.types import GameState, SetPlay, Penalty, KICKING_TEAM_NONE
-from ..intents import MoveIntent, FaceIntent, KickIntent, KickTarget, StopIntent
+from ..intents import MoveIntent, FaceIntent, KickIntent, KickTarget, StopIntent, PassProposal
 from .geom import clamp, angle_to, normalize_angle, own_goal_area_center, behind_ball
 from .kick_lane import check_kick_lane, point_segment
 
@@ -464,6 +464,8 @@ def decide_guard(player, preferred=None):
             plan = memory.plan
             if plan is not None:
                 player.guard_decision.update(outlet_style=plan[1], receiver_id=plan[2])
+                if plan[1] == 'pass' and plan[2] is not None:
+                    player.pass_proposal = PassProposal(plan[2], 'guard', tuple(plan[0]))
         player.action = 'guard:'+action
         player.tactical_target = getattr(intent, 'target', None) if isinstance(intent, MoveIntent) else (intent.target.point if isinstance(intent, KickIntent) else None)
         return intent

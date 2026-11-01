@@ -65,6 +65,7 @@ drawBallPrediction(d,xy);
 drawBlockPoints(d,xy,s);
 renderBlockPoints(d);
 drawCandidateTarget(d,xy);
+drawPassing(d,xy);
 g.font='16px system-ui';g.fillStyle='#9ab7b2';g.fillText('−X',30,720);g.fillText('+X →',1000,720);
 // Draw distances under robot markers; skip missing observations.
 if($('distances').checked){
@@ -119,7 +120,7 @@ if($('kick-error-visible').checked){
 
 function renderPacket(d){displayedPacket=d;const w=d.context;$('empty').hidden=true;c.hidden=false;
 const score=w.game?.teams?.map(t=>`${t.team_number} 队 ${t.score}`).join(' : ')||'比分未知';$('summary').textContent=`${phases[d.phase]||d.phase||'阶段未知'}　 |　${score}　 |　剩余 ${w.game?.secs_remaining??'—'} s　 |　球${w.ball?'可见':'未知'}　 |　帧 ${d.sequence}`;
-$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;if(p.role==='guard'){card.className+=' guard-card';for(const text of guardDecisionLines(p))line(card,text)}else line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));if(p.navigation)line(card,navigationLabel(p.navigation));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
+$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;if(p.role==='guard'){card.className+=' guard-card';for(const text of guardDecisionLines(p))line(card,text)}else line(card,`动作：${p.action}`);for(const text of passingLines(d,p.id))line(card,text);line(card,kickPowerLabel(p));if(p.navigation)line(card,navigationLabel(p.navigation));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
 
 // Playback uses receiver monotonic timestamps, never the Agent's clock.
 let liveFrames=[], archive=null, viewing='live', playing=false, cursor=0;
@@ -914,4 +915,34 @@ function navigationLabel(n){
   const routes={new:'新路线',retained:'保留路线',faster:'耗时优势换路',unsafe:'旧路线受阻重规划',no_route:'暂无全局路线'};
   const eta=Number.isFinite(n.estimated_time_s)?` · 预计 ${n.estimated_time_s.toFixed(2)} s（模型估计）`:'';
   return `导航：${states[n.state||n.reason]||'未知'} · 优先级 ${Number.isFinite(n.priority)?n.priority:'—'} · 指令 ${speed}${n.route_reason?' · '+(routes[n.route_reason]||'路线状态未知'):''}${eta}${typeof n.blocker==='string'?' · 阻挡/让行对象 '+n.blocker:''}${Number.isFinite(n.blocker_priority)?'（优先级 '+n.blocker_priority+'）':''}${n.direction_held?' · 保持绕行方向':''}`;
+}
+
+// 旧回放没有 passing 字段时保持原样；所有文字走 textContent。
+function passingLines(d,pid){
+  const team=d.passing;if(!team)return [];
+  const a=team.active,s=team.support;
+  const names={prepare:'准备接应',release:'请求出球',receive:'接球中'};
+  if(a&&(a.passer===pid||a.receiver===pid))return [
+    `传接计划 #${a.id} · ${a.passer} → ${a.receiver} · ${names[a.stage]||a.stage}`,
+    `共同目标：${pointText(a.target)}；实际接触点：${pointText(a.contact)}`,
+    `就绪：传球者 ${a.passer_ready?'是':'否'} / 接球者 ${a.receiver_ready?'是':'否'}`,
+    `传后支援：${pointText(a.support_target)}；证据：${a.evidence}`
+  ];
+  if(s&&s.passer===pid)return [`计划 #${s.plan_id} 传后支援：${pointText(s.target)}`];
+  const last=(team.events||[]).filter(e=>e.passer===pid||e.receiver===pid).at(-1);
+  return last?[`最近传接 #${last.id}：${last.event} / ${last.reason}`]:[];
+}
+function drawPassing(d,xy){
+  const a=d.passing?.active,s=d.passing?.support;if(!a&&!s)return;
+  g.save();g.font='13px system-ui';
+  function marker(point,label,color){if(!point||!point.every(Number.isFinite))return;
+    const [x,y]=xy(...point);g.strokeStyle=color;g.fillStyle=color;g.lineWidth=2;
+    g.beginPath();g.arc(x,y,8,0,Math.PI*2);g.stroke();g.fillText(label,x+11,y-8);
+  }
+  if(a){marker(a.target,`接球 #${a.id}`,'#f9cf58');marker(a.contact,'实际接触','#ff9470');
+    marker(a.support_target,'传后支援','#6ee7d0');
+    if(a.origin&&a.target){g.setLineDash([5,5]);g.strokeStyle='#f9cf58';g.beginPath();
+      g.moveTo(...xy(...a.origin));g.lineTo(...xy(...a.target));g.stroke();}}
+  else marker(s.target,`支援 #${s.plan_id}`,'#6ee7d0');
+  g.restore();
 }
