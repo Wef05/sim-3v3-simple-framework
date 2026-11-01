@@ -154,7 +154,8 @@ Thumbs.db
 
 old_src/*
 ref/*
-docs/
+docs/*
+!docs/navigation-policy.md
 checks/*
 !checks/test_agent_pipeline.py
 !checks/test_goalkeeper.py
@@ -175,5 +176,6 @@ checks/*
 !checks/test_goalkeeper_replay.py
 
 !checks/goalkeeper_replay_cases.py
+!checks/test_navigation.py
 
 !checks/test_dashboard_guard.cjs

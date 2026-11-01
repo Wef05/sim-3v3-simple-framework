@@ -6,6 +6,7 @@
 """
 from __future__ import annotations
 import math
+from dataclasses import replace
 from .utils.interception_risk import estimate_interception_risk
 from .utils.kick_lane import check_kick_lane
 from .utils.blocked_attack import blocked_attack_target
@@ -323,18 +324,24 @@ class Player:
 
 
 def coordinate(context, assignments, preliminary):
-    """整队协调扩展点：输入完整初步意图快照，返回最终意图表。
+    """Assign navigation policy from roles; actions resolves geometric conflicts.
 
-    当前直接透传以保留既有战术，并未实现传球接应或冲突消解。
-    后续例如看到 1 号传给 3 号，可同时替换 1 号的出球目标和 3 号的接应点。
-    需要两人锁定同一落点时，可用 KickTarget.position 与 MoveIntent 共享坐标。
-
-    使用 dict(preliminary) 创建结果，再替换条目，不要修改输入对象。
-    所有调整都基于同一批初步意图，不边改结果边让后面的队友读取；若有多个
-    候选配合，需制定统一优先级并一次解决冲突，避免按遍历顺序抢占任务。
-    这里不能下发命令，也不能遗漏或增加球员编号；最终统一交给 actions。
+    Do not modify targets here or issue commands. Priority only allocates space;
+    every robot still observes physical clearance, including against opponents.
     """
-    return dict(preliminary)
+    final = dict(preliminary)
+    restricted = get_phase(context) in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY)
+    for pid, intent in preliminary.items():
+        if not isinstance(intent, MoveIntent):
+            continue
+        role = assignments[pid].role
+        priority = {Role.ATTACKER: 80, Role.GUARD: 60, Role.FREEMAN: 20}.get(role, 10)
+        contest = role == Role.ATTACKER or (role == Role.GUARD and intent.direct_path)
+        final[pid] = replace(intent, motion_priority=max(intent.motion_priority, priority),
+            opponent_mode='contest' if contest and not restricted else 'avoid',
+            avoid_ball=True if restricted else intent.avoid_ball,
+            ball_keepout=max(intent.ball_keepout, context.field.circle_radius) if restricted else intent.ball_keepout)
+    return final
 
 def decide(context, players, assignments, store):
     """main 调用的整队唯一入口：收集初稿 → 协调 → 保存并返回最终意图。

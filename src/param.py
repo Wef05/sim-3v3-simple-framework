@@ -183,14 +183,27 @@ TARGET_IGNORE = 0.0                     # 终点忽略半径 (m)；终点附近�
 # 全局路径规划器 (A* Grid Planner)
 # ======================================================================
 
-USE_GLOBAL_PATH_PLANNER = True          # 是否启用全局规划器；False 时回退到局部 VFH
+USE_GLOBAL_PATH_PLANNER = True          # 是否启用全局规划器；False 时只使用预测速度避障
 GLOBAL_GRID_RESOLUTION_M = 0.35         # 栅格分辨率 (m/格)；越小路径越精细，但计算量越大
-GLOBAL_FIELD_MARGIN_M = 0.25            # 场地边界外扩余量 (m)；确保边界附近路径可行
+GLOBAL_FIELD_MARGIN_M = 0.25            # 机器人中心距场地边界的内缩余量 (m)
 GLOBAL_OBSTACLE_MARGIN_M = 0.10         # 障碍物膨胀余量 (m)；在障碍半径上额外扩大多少
 GLOBAL_PATH_LOOKAHEAD_M = 0.9           # 从规划路径中提取前方多远的路径点 (m)
 
+# 行走安全层：自身尺寸与障碍半径相加，优先级不覆盖物理间距。
+NAV_BODY_RADIUS_M = 0.25
+NAV_SAFETY_MARGIN_M = 0.04
+NAV_OPPONENT_EXTRA_M = 0.15             # 站位避人额外距离；争球取消此额外距离
+NAV_HORIZON_S = 0.9                    # 动态避障前视窗口
+NAV_REACTION_S = 0.10                  # 观测/执行延迟预算（须用实测校准）
+NAV_BRAKE_S = 0.25                     # 速度过渡预算（须用实测校准）
+NAV_PREDICTION_STEP_S = 0.10
+NAV_TRACK_MAX_AGE_S = 0.5
+NAV_TRACK_MAX_SPEED_MPS = 3.5
+NAV_YIELD_MARGIN_M = 0.10              # 低优先级为已规划队友额外留空
+NAV_SIDE_HOLD_S = 0.6                  # 方向偏好短暂保持，减少左右摇摆
+
 # ======================================================================
-# 局部路径规划器 (VFH Direction Scan)
+# 旧局部 VFH 参数（保留兼容；当前行走使用 NAV_* 预测速度避障）
 # ======================================================================
 
 PLAN_LOOKAHEAD = 1.2                    # 前方探测射线长度 (m)；规划器"看"的范围

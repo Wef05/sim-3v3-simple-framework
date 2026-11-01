@@ -1,169 +1,116 @@
-"""Global path planner for walk_to.
-
-The planner is intentionally small: it builds an 8-neighbor grid inside the
-field, marks existing circular obstacles as blocked, and runs A*.  The caller
-can then follow the first waypoint while keeping the existing velocity control.
-"""
-
+"""Eight-neighbor A* with swept-body edge checks and visible-only smoothing."""
 from __future__ import annotations
-
 import heapq
 import math
-
-from ..framework.types import Context
-from ..param import (
-    GLOBAL_FIELD_MARGIN_M,
-    GLOBAL_GRID_RESOLUTION_M,
-    GLOBAL_OBSTACLE_MARGIN_M,
-)
-from .obstacles import Obstacle
+from functools import lru_cache
+from ..param import (GLOBAL_FIELD_MARGIN_M, GLOBAL_GRID_RESOLUTION_M,
+                     GLOBAL_OBSTACLE_MARGIN_M, NAV_BODY_RADIUS_M)
+from .kick_lane import point_segment
 
 
-def plan_global_path(
-    context: Context,
-    start: tuple[float, float],
-    target: tuple[float, float],
-    obstacles: list[Obstacle],
-) -> list[tuple[float, float]] | None:
-    """Return an A* path from start to target, or None if no path is found."""
-    min_x, max_x, min_y, max_y = _bounds(context)
-    sx, sy = _clamp_point(start[0], start[1], min_x, max_x, min_y, max_y)
-    tx, ty = _clamp_point(target[0], target[1], min_x, max_x, min_y, max_y)
-
-    start_idx = _to_idx(sx, sy, min_x, min_y)
-    goal_idx = _to_idx(tx, ty, min_x, min_y)
-    if start_idx == goal_idx:
-        return [(tx, ty)]
-
-    open_heap: list[tuple[float, int, tuple[int, int]]] = []
-    counter = 0
-    heapq.heappush(open_heap, (0.0, counter, start_idx))
-    came_from: dict[tuple[int, int], tuple[int, int]] = {}
-    g_score: dict[tuple[int, int], float] = {start_idx: 0.0}
-    closed: set[tuple[int, int]] = set()
-
-    while open_heap:
-        _, _, current = heapq.heappop(open_heap)
-        if current in closed:
+def segment_clear(start, end, obstacles, *, margin=GLOBAL_OBSTACLE_MARGIN_M,
+                  allow_escape=False):
+    """Check the entire swept disk; overlap may only be exited monotonically."""
+    dx, dy = end[0]-start[0], end[1]-start[1]
+    left, right = min(start[0], end[0]), max(start[0], end[0])
+    bottom, top = min(start[1], end[1]), max(start[1], end[1])
+    for o in obstacles:
+        radius = o.radius + NAV_BODY_RADIUS_M + margin
+        if o.x < left-radius or o.x > right+radius or o.y < bottom-radius or o.y > top+radius:
             continue
-        if current == goal_idx:
-            return _reconstruct(came_from, current, min_x, min_y, (tx, ty))
-        closed.add(current)
+        ox, oy = start[0]-o.x, start[1]-o.y
+        if allow_escape and math.hypot(ox, oy) <= radius:
+            if ox*dx + oy*dy >= 0 and math.hypot(dx, dy) > 1e-9:
+                continue
+        if point_segment((o.x, o.y), start, end) <= radius:
+            return False
+    return True
 
-        for neighbor, step_cost in _neighbors(current):
-            x, y = _to_xy(neighbor, min_x, min_y)
-            if not (min_x <= x <= max_x and min_y <= y <= max_y):
-                continue
-            if (
-                neighbor != start_idx
-                and neighbor != goal_idx
-                and _blocked(x, y, obstacles)
-            ):
-                continue
-            tentative = g_score[current] + step_cost
-            if tentative >= g_score.get(neighbor, math.inf):
-                continue
-            came_from[neighbor] = current
-            g_score[neighbor] = tentative
-            counter += 1
-            heapq.heappush(
-                open_heap,
-                (tentative + _heuristic(neighbor, goal_idx), counter, neighbor),
-            )
 
+def _bounds(context):
+    x = context.field.length/2 - max(GLOBAL_FIELD_MARGIN_M, NAV_BODY_RADIUS_M)
+    y = context.field.width/2 - max(GLOBAL_FIELD_MARGIN_M, NAV_BODY_RADIUS_M)
+    return -x, x, -y, y
+
+
+def clamp_target(context, point):
+    xmin, xmax, ymin, ymax = _bounds(context)
+    return max(xmin, min(xmax, point[0])), max(ymin, min(ymax, point[1]))
+
+
+def plan_global_path(context, start, target, obstacles):
+    """Return exact-start, exact-target collision-checked path, or None.
+
+    Outside starts are not silently teleported into the field. A robot already
+    touching an inflated obstacle can escape, but cannot move deeper into it.
+    """
+    target = clamp_target(context, target)
+    if not segment_clear(target, target, obstacles):
+        return None
+    if segment_clear(start, target, obstacles, allow_escape=True):
+        return [start, target]
+    xmin, xmax, ymin, ymax = _bounds(context)
+    res = GLOBAL_GRID_RESOLUTION_M
+    nx, ny = int((xmax-xmin)/res), int((ymax-ymin)/res)
+
+    def xy(node):
+        return xmin+node[0]*res, ymin+node[1]*res
+
+    @lru_cache(None)
+    def free(node):
+        return segment_clear(xy(node), xy(node), obstacles)
+
+    def nearby(point):
+        ix, iy = round((point[0]-xmin)/res), round((point[1]-ymin)/res)
+        return [(i, j) for i in range(ix-2, ix+3)
+                if 0 <= i <= nx for j in range(iy-2, iy+3)
+                if 0 <= j <= ny]
+
+    # Connect actual endpoints to nearby grid nodes with full segment checks.
+    starts = {node: math.dist(start, xy(node)) for node in set(nearby(start))
+              if free(node) and segment_clear(start, xy(node), obstacles, allow_escape=True)}
+    goals = {node for node in set(nearby(target))
+             if free(node) and segment_clear(xy(node), target, obstacles)}
+    if not starts or not goals:
+        return None
+    queue = [(cost+math.dist(xy(node), target), node) for node, cost in starts.items()]
+    heapq.heapify(queue)
+    costs, previous, closed = dict(starts), {}, set()
+    while queue:
+        _, node = heapq.heappop(queue)
+        if node in closed:
+            continue
+        closed.add(node)
+        if node in goals:
+            path = [target, xy(node)]
+            while node in previous:
+                node = previous[node]
+                path.append(xy(node))
+            path.append(start)
+            path.reverse()
+            return _smooth_path(path, obstacles)
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                if not (dx or dy):
+                    continue
+                nxt = node[0]+dx, node[1]+dy
+                if not (0 <= nxt[0] <= nx and 0 <= nxt[1] <= ny) or nxt in closed:
+                    continue
+                if not free(nxt) or not segment_clear(xy(node), xy(nxt), obstacles):
+                    continue
+                cost = costs[node]+res*math.hypot(dx, dy)
+                if cost < costs.get(nxt, math.inf):
+                    costs[nxt], previous[nxt] = cost, node
+                    heapq.heappush(queue, (cost+math.dist(xy(nxt), target), nxt))
     return None
 
 
-def _bounds(context: Context) -> tuple[float, float, float, float]:
-    half_l = context.field.length / 2.0 - GLOBAL_FIELD_MARGIN_M
-    half_w = context.field.width / 2.0 - GLOBAL_FIELD_MARGIN_M
-    return -half_l, half_l, -half_w, half_w
-
-
-def _clamp_point(
-    x: float,
-    y: float,
-    min_x: float,
-    max_x: float,
-    min_y: float,
-    max_y: float,
-) -> tuple[float, float]:
-    return (max(min_x, min(max_x, x)), max(min_y, min(max_y, y)))
-
-
-def _to_idx(x: float, y: float, min_x: float, min_y: float) -> tuple[int, int]:
-    return (
-        int(round((x - min_x) / GLOBAL_GRID_RESOLUTION_M)),
-        int(round((y - min_y) / GLOBAL_GRID_RESOLUTION_M)),
-    )
-
-
-def _to_xy(idx: tuple[int, int], min_x: float, min_y: float) -> tuple[float, float]:
-    return (
-        min_x + idx[0] * GLOBAL_GRID_RESOLUTION_M,
-        min_y + idx[1] * GLOBAL_GRID_RESOLUTION_M,
-    )
-
-
-def _neighbors(idx: tuple[int, int]) -> list[tuple[tuple[int, int], float]]:
-    x, y = idx
-    out: list[tuple[tuple[int, int], float]] = []
-    for dx in (-1, 0, 1):
-        for dy in (-1, 0, 1):
-            if dx == 0 and dy == 0:
-                continue
-            cost = math.sqrt(2.0) if dx != 0 and dy != 0 else 1.0
-            out.append(((x + dx, y + dy), cost))
-    return out
-
-
-def _blocked(x: float, y: float, obstacles: list[Obstacle]) -> bool:
-    for obs in obstacles:
-        if math.hypot(x - obs.x, y - obs.y) <= obs.radius + GLOBAL_OBSTACLE_MARGIN_M:
-            return True
-    return False
-
-
-def _heuristic(a: tuple[int, int], b: tuple[int, int]) -> float:
-    return math.hypot(a[0] - b[0], a[1] - b[1])
-
-
-def _reconstruct(
-    came_from: dict[tuple[int, int], tuple[int, int]],
-    current: tuple[int, int],
-    min_x: float,
-    min_y: float,
-    target: tuple[float, float],
-) -> list[tuple[float, float]]:
-    indices = [current]
-    while current in came_from:
-        current = came_from[current]
-        indices.append(current)
-    indices.reverse()
-    path = [_to_xy(idx, min_x, min_y) for idx in indices]
-    path[-1] = target
-    return _smooth_path(path)
-
-
-def _smooth_path(path: list[tuple[float, float]]) -> list[tuple[float, float]]:
-    if len(path) <= 2:
-        return path
-    smoothed = [path[0]]
-    prev_dx = 0
-    prev_dy = 0
-    for i in range(1, len(path)):
-        dx = _sign(path[i][0] - path[i - 1][0])
-        dy = _sign(path[i][1] - path[i - 1][1])
-        if i > 1 and (dx, dy) != (prev_dx, prev_dy):
-            smoothed.append(path[i - 1])
-        prev_dx, prev_dy = dx, dy
-    smoothed.append(path[-1])
-    return smoothed
-
-
-def _sign(v: float) -> int:
-    if v > 0:
-        return 1
-    if v < 0:
-        return -1
-    return 0
+def _smooth_path(path, obstacles):
+    result, i = [path[0]], 0
+    while i < len(path)-1:
+        j = len(path)-1
+        while j > i+1 and not segment_clear(path[i], path[j], obstacles, allow_escape=i == 0):
+            j -= 1
+        result.append(path[j])
+        i = j
+    return result

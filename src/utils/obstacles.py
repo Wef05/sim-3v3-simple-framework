@@ -1,11 +1,9 @@
-"""避障:障碍收集 + 单障碍绕行 via 点 —— 纯函数,可单测。
+"""Physical obstacle geometry shared by navigation and tactical checks.
 
-【utils】移植自旧 MotionController 的路径绕行层:从起点到目标画一条走廊,找第一个
-挡路的圆形障碍,在其侧面生成一个 via 点绕过去。绕哪侧由调用方跨帧记忆(walk_to
-用 self._avoid_side)。
-
-障碍是可选的:球在对方重开时才算障碍(见 collect_obstacles 的 ball/robots 开关)。
-半径等常数在此,可调。
+collect_obstacles preserves the tactical API. NavigationFrame always includes
+posts/nets and robots regardless of the legacy optional flags. detour is kept
+for older callers; the active walking controller uses swept-body A* and
+predictive velocity selection instead.
 """
 
 from __future__ import annotations

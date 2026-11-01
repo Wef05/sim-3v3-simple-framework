@@ -433,7 +433,8 @@ def outlet(ctx, pid, pose, motion, threat, memory, preferred, available_receiver
     memory.plan = plan
     memory.close_clear = False
     return MoveIntent(waypoint, face=direction, avoid_ball=False, avoid_robots=True,
-                      maintain_face=True, arrive_dist=GUARD_STAGE_TOLERANCE_M, direct_path=True), 'prepare'
+                      maintain_face=True, arrive_dist=GUARD_STAGE_TOLERANCE_M, direct_path=True,
+                      motion_priority=80, opponent_mode='contest'), 'prepare'
 
 
 def decide_guard(player, preferred=None):
@@ -491,7 +492,8 @@ def decide_guard(player, preferred=None):
         if math.dist((pose.x, pose.y), target) < GUARD_BLOCK_ARRIVE_M:
             return result(FaceIntent(face), 'block:hold' if reachable else 'block:unreachable_hold')
         return result(MoveIntent(target, face=face, avoid_ball=False, avoid_robots=True,
-                                 maintain_face=True, arrive_dist=GUARD_BLOCK_ARRIVE_M, direct_path=True), 'block:reachable' if reachable else 'block:best_effort')
+                                 maintain_face=True, arrive_dist=GUARD_BLOCK_ARRIVE_M, direct_path=True,
+                                 motion_priority=100, opponent_mode='contest'), 'block:reachable' if reachable else 'block:best_effort')
     if memory.kick_since is not None and ctx.now-memory.kick_since >= GUARD_KICK_TIMEOUT_S:
         memory.plan, memory.kick_since = None, None
         memory.close_clear = False

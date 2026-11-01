@@ -63,6 +63,7 @@ class MoveIntent:
     face=None 表示不要求指定的最终朝向，不等于禁止转身。
     maintain_face=True 时，远距离也采用全向移动并维持指定朝向。
     avoid_ball 可在主动接球时关闭；arrive_dist 是允许的到达误差（米）。
+    avoid_robots 保留旧调用兼容；身体防碰撞始终启用，opponent_mode 决定额外余量。
     """
     target: tuple[float, float]
     face: float | None = None
@@ -71,6 +72,9 @@ class MoveIntent:
     arrive_dist: float = ARRIVE_DIST
     maintain_face: bool = False
     direct_path: bool = False  # 限时动作：仅走已验算直线，新增障碍时停止而非绕行
+    motion_priority: int = 10  # 越大越先规划；同级按编号。不是免碰撞权限。
+    opponent_mode: str = 'avoid'  # avoid 保留战术余量；contest 只去掉额外余量
+    ball_keepout: float = 0.0  # 球的排斥区域半径；0 使用球体半径
 
 @dataclass(frozen=True)
 class FaceIntent:
