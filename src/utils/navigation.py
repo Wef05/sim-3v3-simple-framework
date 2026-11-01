@@ -72,13 +72,19 @@ class MovingObstacle:
 
 class NavigationFrame:
     """One observation snapshot and reservations of already planned team commands."""
-    def __init__(self, context, tracker):
+    def __init__(self, context, tracker, priorities=None):
         self.context, self.tracker = context, tracker
         self.static = goal_obstacles(context)
         self.reservations = {}
+        self.priorities = dict(priorities or {})
 
     def reserve(self, pid, velocity):
         self.reservations[pid] = velocity
+
+    def blocker_priority(self, label: str | None) -> int | None:
+        if label and (label.startswith("team:") or label.startswith("yield:team:")):
+            return self.priorities.get(int(label.rsplit(":", 1)[1]))
+        return None
 
     def obstacles(self, pid, intent):
         dynamic = []
@@ -164,8 +170,14 @@ class NavigationFrame:
                     return o.label
             if o.reserved is not None:
                 other = self.trajectory(o.position, o.velocity, o.reserved)
-                if trajectories_conflict(trajectory, other, radius+NAV_YIELD_MARGIN_M):
-                    return 'yield:'+o.label
+                other_id = int(o.label.rsplit(':', 1)[1])
+                priority = self.priorities.get(other_id)
+                # 预约权按优先级和编号分配；低优先级停车预约不能反压紧急封堵。
+                # 未提供优先级的独立调用保持原有保守行为；实体/制动碰撞始终检查。
+                precedes = priority is None or (-priority, other_id) < (-intent.motion_priority, pid)
+                margin = NAV_YIELD_MARGIN_M if precedes else 0.
+                if trajectories_conflict(trajectory, other, radius+margin):
+                    return ('yield:' if precedes else '')+o.label
         if intent.avoid_ball and self.context.ball is not None:
             ball = self.context.ball
             other = [(t, self.tracker.ball.predict_ball_position(t) or (ball.x, ball.y))

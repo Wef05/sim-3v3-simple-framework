@@ -1,0 +1,65 @@
+FFFFFF.
+======================================================================
+FAIL: test_locked_lane_reselection_preserves_timeout (checks.test_guard_priority.ClearanceReplayTests.test_locked_lane_reselection_preserves_timeout) (frame=367396)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/keeper-priority-baseline/checks/test_guard_priority.py", line 64, in test_locked_lane_reselection_preserves_timeout
+    self.assertEqual(result is not None,succeeds)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False != True
+
+======================================================================
+FAIL: test_locked_lane_reselection_preserves_timeout (checks.test_guard_priority.ClearanceReplayTests.test_locked_lane_reselection_preserves_timeout) (frame=367399)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/keeper-priority-baseline/checks/test_guard_priority.py", line 64, in test_locked_lane_reselection_preserves_timeout
+    self.assertEqual(result is not None,succeeds)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False != True
+
+======================================================================
+FAIL: test_locked_lane_reselection_preserves_timeout (checks.test_guard_priority.ClearanceReplayTests.test_locked_lane_reselection_preserves_timeout) (frame=370165)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/keeper-priority-baseline/checks/test_guard_priority.py", line 64, in test_locked_lane_reselection_preserves_timeout
+    self.assertEqual(result is not None,succeeds)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False != True
+
+======================================================================
+FAIL: test_conflicting_kick_cancelled_before_guard_moves (checks.test_guard_priority.KeeperPriorityTests.test_conflicting_kick_cancelled_before_guard_moves) (order=(1, 2))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/keeper-priority-baseline/checks/test_guard_priority.py", line 39, in test_conflicting_kick_cancelled_before_guard_moves
+    by_id[1]._backend.kick.assert_not_called()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/mock.py", line 940, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'kick' to not have been called. Called 1 times.
+Calls: [call(0.07138879958668494, 5.0, 0.0, -2.0)].
+
+======================================================================
+FAIL: test_conflicting_kick_cancelled_before_guard_moves (checks.test_guard_priority.KeeperPriorityTests.test_conflicting_kick_cancelled_before_guard_moves) (order=(2, 1))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/keeper-priority-baseline/checks/test_guard_priority.py", line 39, in test_conflicting_kick_cancelled_before_guard_moves
+    by_id[1]._backend.kick.assert_not_called()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/mock.py", line 940, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'kick' to not have been called. Called 1 times.
+Calls: [call(0.07138879958668494, 5.0, 0.0, -2.0)].
+
+======================================================================
+FAIL: test_lower_reservation_removes_only_extra_margin (checks.test_guard_priority.KeeperPriorityTests.test_lower_reservation_removes_only_extra_margin) (separation=0.7, priority=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/keeper-priority-baseline/checks/test_guard_priority.py", line 25, in test_lower_reservation_removes_only_extra_margin
+    self.assertEqual(f.check(1, MoveIntent((1, 0), motion_priority=100), (0, .1, 0)), expected)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'yield:team:2' != None
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.009s
+
+FAILED (failures=6)

@@ -90,7 +90,10 @@ def execute(context, players, intents):
     if tracker is None:
         tracker = MotionTracker()
     tracker.update(context)
-    frame = NavigationFrame(context, tracker)
+    # 仅替换本帧执行意图，不修改角色层交付的共享映射。
+    intents = dict(intents)
+    priorities = {p.id: getattr(intents.get(p.id), 'motion_priority', 0) for p in players}
+    frame = NavigationFrame(context, tracker, priorities)
     commands = {}
     for p in players:
         p.controller.context = context
@@ -99,6 +102,31 @@ def execute(context, players, intents):
         intent = intents.get(p.id, StopIntent())
         if not isinstance(intent, MoveIntent):
             frame.reserve(p.id, (0., 0., 0.))
+    # SDK 踢球会自行挪步，不能只登记零速度却仍让其继续踢。
+    # 紧急封堵走廊与队友接近球的走廊冲突时，明确取消低优先级踢球。
+    from ..utils.kick_lane import segment_distance
+    cancelled_kicks = {}
+    for high in sorted(players, key=lambda p: (-priorities[p.id], p.id)):
+        intent = intents.get(high.id)
+        pose = high.controller.pose
+        if (not isinstance(intent, MoveIntent) or not intent.direct_path
+                or intent.motion_priority < 100 or pose is None
+                or high.controller.is_penalized or high.controller.is_fallen
+                or high.controller.mode != 'walk' or context.ball is None):
+            continue
+        for low in players:
+            other = low.controller.pose
+            if (not isinstance(intents.get(low.id), KickIntent) or other is None
+                    or priorities[low.id] >= intent.motion_priority):
+                continue
+            if segment_distance((pose.x, pose.y), intent.target,
+                                (other.x, other.y), (context.ball.x, context.ball.y)) <= 2*NAV_BODY_RADIUS_M+NAV_SAFETY_MARGIN_M:
+                intents[low.id] = StopIntent()
+                cancelled_kicks[low.id] = high.id
+                low.controller.navigation_status = dict(
+                    state='kick_yield', priority=priorities[low.id],
+                    blocker=f'team:{high.id}', blocker_priority=intent.motion_priority,
+                    command=[0., 0., 0.], speed=0.)
     # Complete the whole team's plan before any SDK call. Stable tie-break by ID.
     for p in sorted(players, key=lambda p: (-getattr(intents.get(p.id), 'motion_priority', 0), p.id)):
         controller, intent = p.controller, intents.get(p.id, StopIntent())
@@ -130,7 +158,8 @@ def execute(context, players, intents):
         frame.reserve(p.id, (0., 0., 0.))
         if p.controller.navigation_status is not None:
             p.controller.navigation_status.update(state='team_conflict_stop',
-                blocker=f'team:{other_id}', command=[0., 0., 0.], speed=0.)
+                blocker=f'team:{other_id}', blocker_priority=priorities[other_id],
+                command=[0., 0., 0.], speed=0.)
         return True
 
     for _ in range(len(players)+1):
@@ -148,5 +177,6 @@ def execute(context, players, intents):
                         changed = halt(high, low.id) or changed
         if not changed:
             break
-    for p in players:
+    # 先释放冲突踢球，再下发封堵；制动预测和最终队内碰撞复核仍然保留。
+    for p in sorted(players, key=lambda p: (p.id not in cancelled_kicks, p.id)):
         p.controller.execute(intents.get(p.id, StopIntent()), commands.get(p.id))

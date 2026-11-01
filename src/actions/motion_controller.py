@@ -204,7 +204,8 @@ class MotionController(Executor):
             if best is not None and offset == 0. and not held and (scale == 1. or speeds == (0.,)):
                 break
         if best is None:
-            info.update(state='blocked', blocker=blocker or 'no_safe_velocity')
+            info.update(state='blocked', blocker=blocker or 'no_safe_velocity',
+                        blocker_priority=frame.blocker_priority(blocker))
             # Stop is fail-safe, not a claim an incoming robot cannot hit us.
             info['stop_conflict'] = frame.check(self.id, intent, (0., 0., 0.))
             return (0., 0., 0.), False
@@ -219,7 +220,8 @@ class MotionController(Executor):
         info.update(state='turning' if actual_speed < 1e-6 else
                     'yielding' if blocker and blocker.startswith('yield:') else
                     'avoiding' if blocker or abs(chosen_offset) > 1e-6 else 'moving',
-                    blocker=blocker, speed=actual_speed, waypoint=list(waypoint),
+                    blocker=blocker, blocker_priority=frame.blocker_priority(blocker),
+                    speed=actual_speed, waypoint=list(waypoint),
                     path=path, command=list(best))
         from ..framework import debugdraw
         debugdraw.point(*target, rgb=(0., 1., 0.), scale=.15, ns='target')

@@ -1,0 +1,145 @@
+{
+  "frames": 3051,
+  "first_id": 413098,
+  "last_id": 416148,
+  "sim_range": [
+    2929.029999944,
+    3024.363999942
+  ],
+  "max_sim_gap": 1.3479999999999563,
+  "guard_actions": {
+    "stopped": 539,
+    "ready": 1188,
+    "guard:set": 891,
+    "guard:set:restricted": 352,
+    "guard:anticipate:ray": 67,
+    "guard:block:best_effort": 14
+  },
+  "block_navigation": {
+    "blocked_direct": 14
+  },
+  "clearance": {},
+  "rejections": {
+    "range": 556
+  },
+  "transitions": [
+    {
+      "id": 413098,
+      "sim": 2929.029999944,
+      "remaining": 0,
+      "action": "stopped"
+    },
+    {
+      "id": 413111,
+      "sim": 2929.187999944,
+      "remaining": 600,
+      "action": "ready"
+    },
+    {
+      "id": 414157,
+      "sim": 2952.995999943,
+      "remaining": 600,
+      "action": "stopped"
+    },
+    {
+      "id": 414401,
+      "sim": 2957.839999943,
+      "remaining": 600,
+      "action": "guard:set"
+    },
+    {
+      "id": 414556,
+      "sim": 2964.093999943,
+      "remaining": 594,
+      "action": "stopped"
+    },
+    {
+      "id": 414693,
+      "sim": 2967.113999943,
+      "remaining": 594,
+      "action": "guard:set:restricted"
+    },
+    {
+      "id": 415045,
+      "sim": 2976.041999943,
+      "remaining": 585,
+      "action": "guard:set"
+    },
+    {
+      "id": 415118,
+      "sim": 2981.431999943,
+      "remaining": 580,
+      "action": "guard:anticipate:ray"
+    },
+    {
+      "id": 415170,
+      "sim": 2983.825999943,
+      "remaining": 578,
+      "action": "guard:set"
+    },
+    {
+      "id": 415279,
+      "sim": 2991.199999943,
+      "remaining": 570,
+      "action": "guard:block:best_effort"
+    },
+    {
+      "id": 415293,
+      "sim": 2992.225999943,
+      "remaining": 569,
+      "action": "guard:set"
+    },
+    {
+      "id": 415309,
+      "sim": 2992.737999943,
+      "remaining": 569,
+      "action": "stopped"
+    },
+    {
+      "id": 415445,
+      "sim": 2995.579999942,
+      "remaining": 569,
+      "action": "guard:set"
+    },
+    {
+      "id": 415640,
+      "sim": 3005.591999942,
+      "remaining": 559,
+      "action": "guard:anticipate:ray"
+    },
+    {
+      "id": 415655,
+      "sim": 3006.121999942,
+      "remaining": 558,
+      "action": "guard:set"
+    },
+    {
+      "id": 415998,
+      "sim": 3020.157999942,
+      "remaining": 544,
+      "action": "ready"
+    },
+    {
+      "id": 416140,
+      "sim": 3024.095999942,
+      "remaining": 540,
+      "action": "stopped"
+    }
+  ],
+  "interesting_ids": [
+    415279,
+    415280,
+    415281,
+    415282,
+    415283,
+    415284,
+    415285,
+    415286,
+    415287,
+    415288,
+    415289,
+    415290,
+    415291,
+    415292
+  ]
+}
