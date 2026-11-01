@@ -22,7 +22,7 @@ from .actions.controller import ActionController
 from .actions.kick_planner import resolve_target
 from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
                          opponent_goal, behind_ball)
-from .utils.free_position import nearest_free_position
+from .utils.free_position import nearest_free_position, shot_triangle
 from .utils.ball_motion import BallMotion
 from .utils.restart_defense import restart_intent, kickoff_targets
 
@@ -284,13 +284,16 @@ class Player:
         坐标轴平行场地坐标轴、包含敌方门中心的四分之一圆。
         球的水平延长线穿过敌方大禁区（含边界，即 |ball.y|<=大禁区宽/2）时，
         改取朝向敌方球门的半圆，不限制相对球位的 y 方向。
+        排除本帧 attacker 与敌方两门柱的三角形，并留出身体及球体安全余量。
         每帧重算；无可行点或观测不足时停止，不主动踢球。
         """
         ctx, pose = self.context, self.pose
-        self.freeman_region = dict(ball_radius=ball_radius, opponent_radius=opponent_radius,
+        exclusion = getattr(self, "freeman_shot_triangle", ())
+        self.freeman_region = dict(shot_triangle=exclusion, shot_clearance=FREEMAN_SHOT_CLEARANCE_M, ball_radius=ball_radius, opponent_radius=opponent_radius,
                                    goal_line_margin=FREEMAN_GOAL_LINE_MARGIN_M)
         target = None if ctx is None or pose is None else nearest_free_position(
             ctx, pose, ball_radius, opponent_radius, FREEMAN_GOAL_LINE_MARGIN_M,
+            exclusion=exclusion, shot_clearance=FREEMAN_SHOT_CLEARANCE_M,
         )
         self.tactical_target = target
         if target is None:
@@ -377,7 +380,11 @@ def decide(context, players, assignments, store):
     """
     preliminary = {}
     freeman_ids = tuple(pid for pid, task in assignments.items() if task.role == Role.FREEMAN)
+    attacker = next((context.teammates.get(pid) for pid, task in assignments.items()
+                     if task.role == Role.ATTACKER), None)
+    exclusion = shot_triangle(context, attacker.pose if attacker is not None else None)
     for p in players:
+        p.freeman_shot_triangle = exclusion
         p.evaluation_freeman_ids = freeman_ids
         p.context = context
         preliminary[p.id] = p.decide(assignments[p.id])

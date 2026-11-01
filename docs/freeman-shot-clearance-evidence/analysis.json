@@ -1,0 +1,17 @@
+{
+  "frames": 1773,
+  "raw_bytes": 35228119,
+  "compressed_bytes": 2480572,
+  "id_range": [
+    606608,
+    608380
+  ],
+  "simulation_clock_range": [
+    33.091999999,
+    78.257999999
+  ],
+  "freeman_targets": 202,
+  "minimum_triangle_distance_m": 0.37999999999999917,
+  "violations": 0,
+  "actual_match_seconds": 15.896000000003141
+}
