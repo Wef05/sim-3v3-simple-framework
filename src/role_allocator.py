@@ -29,7 +29,7 @@ class Phase(Enum):
 def get_phase(context: Context) -> Phase:
     """根据裁判机状态判断当前比赛阶段。"""
     g = context.game
-    if g is None:
+    if g is None or g.stopped:
         return Phase.STOPPED
 
     state = g.state
@@ -166,30 +166,22 @@ def assign(context, players, store):
             active.append(p)
     if phase != Phase.NORMAL:
         _clear_normal_sticky(store)
-    # 我方定位球暂时沿用正常分工；敌方定位球除门将外均为自由人。
-    # 这不代表完整规则约束已经实现；例如守门行为还会单独检查主动触球权限。
+    # 敌方重启期间固定防守职责，解除裁判限制后才恢复正常分工。
     if phase in (Phase.NORMAL, Phase.OUR_SET_PLAY):
         _assign_normal(context, active, store, result)
-    elif phase == Phase.OPP_SET_PLAY:
-        # 固定 2 号防守，其余可行动球员为自由人。
-        _assign_normal(context, active, store, result)
+    elif phase in (Phase.OPP_SET_PLAY, Phase.OPP_KICKOFF):
+        role = Role.OPP_SET_PLAY if phase == Phase.OPP_SET_PLAY else Role.OPP_KICKOFF
         for p in active:
-            if result[p.id].role != Role.GUARD:
-                result[p.id] = RoleTask(Role.FREEMAN)
-        _clear_normal_sticky(store)
+            if p.id == GUARD_PLAYER_ID:
+                result[p.id] = RoleTask(Role.GUARD, pass_to=3)
+            elif p.id in (1, 3):
+                result[p.id] = RoleTask(role, slot=0 if p.id == 1 else 1)
     elif phase == Phase.OUR_KICKOFF:
         # 1 号担任 attacker，2 号守门；踢球目标由 Player 选择，不可行动时不自动换人。
         store.kickoff_taker = 1
         for p in active:
             result[p.id] = (RoleTask(Role.ATTACKER) if p.id == 1 else
                             RoleTask(Role.GUARD, pass_to=3) if p.id == GUARD_PLAYER_ID else RoleTask(Role.STAY))
-    elif phase == Phase.OPP_KICKOFF and active:
-        for p in active:
-            if p.id == GUARD_PLAYER_ID:
-                result[p.id] = RoleTask(Role.GUARD, pass_to=3)
-        for slot, p in enumerate(p for p in active if p.id != GUARD_PLAYER_ID):
-            if slot < 2:
-                result[p.id] = RoleTask(Role.OPP_KICKOFF, slot=slot)
     elif phase == Phase.READY:
         ours = context.game is not None and context.game.kicking_team == context.team_id
         # 只分配站位序号。站位坐标、面向和避障要求都由 player 决定。

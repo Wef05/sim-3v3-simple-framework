@@ -24,6 +24,7 @@ from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
                          opponent_goal, behind_ball)
 from .utils.free_position import nearest_free_position, shot_triangle
 from .utils.ball_motion import BallMotion
+from .utils.restart_defense import restart_intent, kickoff_targets
 
 class Player:
     """跨帧存活的角色行为对象，通过组合持有执行控制器。
@@ -120,12 +121,29 @@ class Player:
         不要在这里读取正在逐个填充的意图表，否则会依赖球员遍历顺序。
         每次清空本帧显示目标，避免上一个角色的目标残留在新角色上。
         """
+        restart = task.role in (Role.OPP_KICKOFF, Role.OPP_SET_PLAY)
+        if not restart:
+            self._restart_memory = None
         if task.role != Role.GUARD:
             self._guard_memory = None
         self.guard_decision = None
         self.action = task.role.value
         self.tactical_target = None
         self.freeman_region = None
+        # 回场不依赖球观测或战术角色（开球等待者也可能刚解除处罚）。
+        # READY 保留指定阵型目标，由导航处理场外起点。
+        if (task.role != Role.UNAVAILABLE and self.context is not None
+                and get_phase(self.context) not in (Phase.STOPPED, Phase.READY)
+                and not self.is_penalized and not self.is_fallen and self.mode == 'walk'
+                and self.pose is not None
+                and all(math.isfinite(v) for v in (self.pose.x, self.pose.y, self.pose.theta))
+                and (abs(self.pose.x) > self.context.field.length/2
+                     or abs(self.pose.y) > self.context.field.width/2)):
+            from .utils.path_planner import clamp_target
+            self._guard_memory = None
+            self.action = 'return_to_field'
+            return MoveIntent(clamp_target(self.context, (self.pose.x, self.pose.y)),
+                              avoid_ball=True, avoid_robots=True)
         if task.role == Role.ATTACKER:
             # 调试阶段：我方开球固定传给 3 号，其余阶段默认射门。
             target = 3 if get_phase(self.context) == Phase.OUR_KICKOFF else 0
@@ -137,18 +155,25 @@ class Player:
         if task.role == Role.READY:
             # 分配层只给 slot；把任务解释成「去哪里、面向哪里」是角色层职责。
             field = self.context.field
+            if not task.our_kickoff and task.slot in (0, 2):
+                target = kickoff_targets(self.context)[0 if task.slot == 0 else 1]
+                return MoveIntent(target, face=0.0, avoid_ball=True, avoid_robots=True,
+                                  ball_keepout=field.circle_radius)
+            shift = OUR_KICKOFF_THREE_SHIFT_M / math.sqrt(2)
             slots = [
                 (-field.circle_radius if task.our_kickoff else -field.circle_radius - .5, 0.0),
                 (-field.length / 2 + field.goal_area_length, 0.0),
-                (-.5, field.circle_radius + 2) if task.our_kickoff else
+                (-.5 - shift, field.circle_radius + 2 + shift) if task.our_kickoff else
                 (-field.length / 2 + field.penalty_area_length, 0.0),
             ]
             return MoveIntent(slots[task.slot], face=0.0, avoid_ball=True, avoid_robots=True)
-        if task.role == Role.OPP_KICKOFF:
-            r = self.context.field.circle_radius
-            self.action = 'opp_kickoff:ready'
-            return MoveIntent([(-r-.5, 0.0), (-r-2, .5)][task.slot],
-                              avoid_ball=True, avoid_robots=True)
+        if restart:
+            intent, self._restart_memory, label = restart_intent(
+                self.context, self.pose, task.slot, task.role == Role.OPP_KICKOFF,
+                getattr(self, '_restart_memory', None))
+            self.action = f'{task.role.value}:{label}'
+            self.tactical_target = getattr(intent, 'target', None)
+            return intent
         if task.role == Role.UNAVAILABLE:
             self.action = task.reason
             return RecoverIntent()

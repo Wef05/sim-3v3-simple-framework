@@ -115,10 +115,11 @@ class MotionController(Executor):
             return (0., 0., yaw if abs(yaw) > .2 else 0.), True
 
         now = self.context.now
-        omni = distance <= OMNI_DIST or intent.maintain_face
+        outside = (pose.x, pose.y) != clamp_target(self.context, (pose.x, pose.y))
+        omni = distance <= OMNI_DIST or intent.maintain_face or outside
         game = self.context.game
         phase = None if game is None else (game.state, game.set_play, game.game_phase, game.first_half, game.kicking_team, game.stopped)
-        key = (phase, omni, intent.direct_path, intent.avoid_ball, intent.opponent_mode, intent.ball_keepout, intent.motion_priority)
+        key = (phase, omni, outside, intent.direct_path, intent.avoid_ball, intent.opponent_mode, intent.ball_keepout, intent.motion_priority)
         last = getattr(self, '_nav_last_time', now)
         anchor = getattr(self, '_nav_target', target)
         face_anchor = getattr(self, '_nav_face', intent.face)
@@ -173,6 +174,10 @@ class MotionController(Executor):
             error = normalize_angle(desired-pose.theta)
             yaw = (self._angular(normalize_angle(intent.face-pose.theta))
                    if omni and intent.face is not None else 0. if omni else self._angular(error))
+            if outside:
+                # 场外用保持朝向的全向平移沿入口路径移动，避免先转后走反复选侧。
+                # 入场后恢复原有朝向控制；速度仍接受完整预测碰撞检查。
+                yaw = 0.
             # Rotation itself has no translational command, but momentum is still checked.
             speeds = (0.,) if not omni and abs(error) > TURN_THRESHOLD else (1., .65, .35, .15)
             for scale in speeds:

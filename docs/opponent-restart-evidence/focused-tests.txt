@@ -1,0 +1,14 @@
+test_all_set_plays_field_edges_and_missing_ball (checks.test_restart_defense.RestartDefenseTests.test_all_set_plays_field_edges_and_missing_ball) ... ok
+test_hold_faces_ball_and_retains_keepout (checks.test_restart_defense.RestartDefenseTests.test_hold_faces_ball_and_retains_keepout) ... ok
+test_missing_ball_and_return_to_observation (checks.test_restart_defense.RestartDefenseTests.test_missing_ball_and_return_to_observation) ... ok
+test_player_clears_restart_memory_on_stop (checks.test_restart_defense.RestartDefenseTests.test_player_clears_restart_memory_on_stop) ... ok
+test_ready_kickoff_consistency_and_own_shift (checks.test_restart_defense.RestartDefenseTests.test_ready_kickoff_consistency_and_own_shift) ... ok
+test_restart_roles_and_release (checks.test_restart_defense.RestartDefenseTests.test_restart_roles_and_release) ... ok
+test_side_restarts_mirror (checks.test_restart_defense.RestartDefenseTests.test_side_restarts_mirror) ... ok
+test_small_noise_holds_and_large_motion_replans (checks.test_restart_defense.RestartDefenseTests.test_small_noise_holds_and_large_motion_replans) ... ok
+test_unavailable_does_not_shift_slots (checks.test_restart_defense.RestartDefenseTests.test_unavailable_does_not_shift_slots) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.006s
+
+OK
