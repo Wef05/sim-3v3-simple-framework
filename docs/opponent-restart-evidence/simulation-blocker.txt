@@ -1,0 +1,5 @@
+Studio workspace: opponent-restart-defense
+Prompt: 是否信任此文件夹中的文件的作者?
+Action: click 是
+Automatic approval rejected: trusting this worktree enables tasks, debugging and extensions; existing implementation/simulation approval did not explicitly authorize directory trust.
+No bypass attempted; no build, deployment or match started for this task.

@@ -1,0 +1,15 @@
+{
+  "baseline": "e8b4d9d74f90530f0690146f8b523f85d84ab767",
+  "branch": "codex/opponent-restart-defense",
+  "worktree": "/Users/limingzhe/.codex/worktrees/opponent-restart-defense/sim-3v3-simple-framework",
+  "files": {
+    "src/intents.py": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+    "src/param.py": "edecef2daf9c4d3aa863826ee469e0f81b4e1509427afe40c51c7c58839ba7cf",
+    "src/player.py": "4ee89054664e92dd8ab9d51c8cd77118824da4fcf9eab213e1d2d3c808539535",
+    "src/role_allocator.py": "99adbaae7f1b35e1fc2390d7ff05d0b13872965cc8f5f9427299e012cdb567d7",
+    "src/utils/restart_defense.py": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+    "checks/test_restart_defense.py": "27745c8fc9f3b55593b9b86cddb663dc89a84c65740166f8586649ca46f72092"
+  },
+  "build": "blocked_by_studio_workspace_trust_approval",
+  "simulation": "not_started"
+}

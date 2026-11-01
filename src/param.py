@@ -241,3 +241,9 @@ BLOCK_HORIZON_S = 8.0
 BLOCK_STEP_S = 0.025
 BLOCK_POSITION_TOLERANCE_M = 0.10  # 从有效接触半径中扣除的误差预算
 BLOCK_TIME_MARGIN_S = 0.10       # 提前到位余量
+
+# 敌方重启防守剧本：米；保守初值，待仿真实测。
+RESTART_TARGET_MARGIN_M = 0.4  # 球排斥半径外留出自身尺寸与制动余量
+RESTART_PAIR_GAP_M = 1.0      # 两名外场球员目标点最小间距
+RESTART_ANCHOR_DRIFT_M = 0.25 # 小幅球位噪声不重排阵型
+OUR_KICKOFF_THREE_SHIFT_M = 1.0  # 看板左上方向的总位移

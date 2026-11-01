@@ -15,6 +15,7 @@ class Role(str, Enum):
     FREEMAN = 'freeman'
     READY = 'ready'
     OPP_KICKOFF = 'opp_kickoff'
+    OPP_SET_PLAY = 'opp_set_play'
     STAY = 'stay'
     UNAVAILABLE = 'unavailable'
 
