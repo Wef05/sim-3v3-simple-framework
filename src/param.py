@@ -241,3 +241,6 @@ BLOCK_HORIZON_S = 8.0
 BLOCK_STEP_S = 0.025
 BLOCK_POSITION_TOLERANCE_M = 0.10  # 从有效接触半径中扣除的误差预算
 BLOCK_TIME_MARGIN_S = 0.10       # 提前到位余量
+
+# 自由人射门通道余量（米）：机器人半径 + 球半径 + 2 cm 到达误差。
+FREEMAN_SHOT_CLEARANCE_M = NAV_BODY_RADIUS_M + BALL_OBSTACLE_RADIUS + 0.02

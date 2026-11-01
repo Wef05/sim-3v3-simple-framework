@@ -348,6 +348,12 @@ function drawFreemanOverlay(d,xy,s){
   const f=w.field,b=w.ball,hl=f.length/2,hw=f.width/2,bounds=freemanBounds(f,b,pose,r.goal_line_margin);
   const enemies=Object.values(w.opponents).filter(o=>o.pose).map(o=>o.pose);
   noteBox.textContent=`${p.id} 号：青色球圆 ≤ ${r.ball_radius} m；蓝色为${bounds.semicircle?'朝向敌方球门的半平面（球的水平线穿过敌方大禁区，取 1/2 圆）':'敌方球门所在象限（取 1/4 圆）'}；红色圆内为对手排除区（半径 ${r.opponent_radius} m）；橙色为门线前 ${r.goal_line_margin} m 排除带；亮绿色为最终可选区。${fallback?' 本帧未记录参数，按 7 / 3 / 1 m 参考值绘制，不能确认为历史实际参数。':p.target?' ◇ 为 Agent 实际选定目的地。':' Agent 本帧未选出目的地。'}`;
+  const triangle=Array.isArray(r.shot_triangle)&&r.shot_triangle.length===3&&r.shot_triangle.every(v=>Array.isArray(v)&&v.length===2&&v.every(Number.isFinite))?r.shot_triangle:null;
+  const clearance=Number.isFinite(r.shot_clearance)&&r.shot_clearance>0?r.shot_clearance:0;
+  if(triangle)noteBox.textContent+=` 紫色为 attacker 射门三角形及 ${clearance.toFixed(2)} m 安全余量。`;
+  else if(!('shot_triangle' in r))noteBox.textContent+=' 本帧未记录射门排除区。';
+  function trianglePath(){g.moveTo(...xy(...triangle[0]));for(const v of triangle.slice(1))g.lineTo(...xy(...v));g.closePath()}
+  function excludePath(draw){g.beginPath();g.rect(0,0,c.width,c.height);draw();g.clip('evenodd')}
   function rectangle(x0,y0,x1,y1){const [x,y]=xy(x0,y1);g.beginPath();g.rect(x,y,(x1-x0)*s,(y1-y0)*s)}
   function circle(point,radius){g.beginPath();g.arc(...xy(point.x,point.y),radius*s,0,2*Math.PI)}
   g.save();rectangle(-hl,-hw,hl,hw);g.clip();
@@ -358,9 +364,19 @@ function drawFreemanOverlay(d,xy,s){
   if(qx0<=qx1&&qy0<=qy1){rectangle(qx0,qy0,qx1,qy1);g.fillStyle='rgba(111,145,255,.12)';g.fill();g.strokeStyle='#8d9fff';g.setLineDash([8,5]);g.stroke();g.setLineDash([])}
   rectangle(Math.max(-hl,hl-r.goal_line_margin),-hw,hl,hw);g.fillStyle='rgba(255,171,67,.22)';g.fill();g.strokeStyle='#ffab43';g.stroke();
   for(const e of enemies){circle(e,r.opponent_radius);g.fillStyle='rgba(249,101,124,.12)';g.fill();g.strokeStyle='rgba(249,101,124,.75)';g.stroke()}
+  if(triangle){g.beginPath();trianglePath();g.fillStyle='rgba(197,111,255,.22)';g.fill();g.strokeStyle='rgba(197,111,255,.45)';g.lineWidth=2*clearance*s;g.lineJoin='round';g.stroke();g.lineWidth=1}
   if(bounds.xmin<=bounds.xmax&&bounds.ymin<=bounds.ymax){
     g.save();rectangle(bounds.xmin,bounds.ymin,bounds.xmax,bounds.ymax);g.clip();circle(b,r.ball_radius);g.clip();
     for(const e of enemies){g.beginPath();g.rect(0,0,c.width,c.height);g.moveTo(xy(e.x,e.y)[0]+r.opponent_radius*s,xy(e.x,e.y)[1]);g.arc(...xy(e.x,e.y),r.opponent_radius*s,0,2*Math.PI);g.clip('evenodd')}
+    if(triangle){
+      excludePath(trianglePath);
+      for(let i=0;i<3;i++){
+        const a=triangle[i],b=triangle[(i+1)%3],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy);
+        excludePath(()=>{const q=xy(...a);g.moveTo(q[0]+clearance*s,q[1]);g.arc(...q,clearance*s,0,2*Math.PI)});
+        if(len>1e-12){const nx=-dy/len*clearance,ny=dx/len*clearance;
+          excludePath(()=>{g.moveTo(...xy(a[0]+nx,a[1]+ny));g.lineTo(...xy(b[0]+nx,b[1]+ny));g.lineTo(...xy(b[0]-nx,b[1]-ny));g.lineTo(...xy(a[0]-nx,a[1]-ny));g.closePath()});}
+      }
+    }
     g.fillStyle='rgba(76,255,144,.46)';g.fillRect(0,0,c.width,c.height);
     g.strokeStyle='rgba(172,255,186,.65)';g.lineWidth=1;
     for(let x=-c.height;x<c.width;x+=14){g.beginPath();g.moveTo(x,0);g.lineTo(x+c.height,c.height);g.stroke()}
