@@ -1,0 +1,1 @@
+{"reset_observed_at": "2026-11-01T10:34:45.789646+00:00", "method": "official Simulator reset after deploying bcbfb8e", "user_requested_retry": true, "source_commit": "bcbfb8e", "prestart_wait_seconds": 60, "valid_start": "all own robots in field and within 0.8 m of READY targets at first PLAYING"}

@@ -1,0 +1,3108 @@
+[
+  {
+    "frame": 473942,
+    "sim": 110.921999999,
+    "ball": {
+      "x": -7.726570515159718e-17,
+      "y": 1.580029093811158e-16,
+      "last_seen_at": 110.921999999,
+      "confidence": 1.0,
+      "received_at": 15816.322928536
+    },
+    "poses": {
+      "1": {
+        "x": -1.4819469375283638,
+        "y": -0.11076085975177505,
+        "theta": 0.1087739646760263
+      },
+      "2": {
+        "x": -5.94438053404062,
+        "y": -0.07866628513538086,
+        "theta": 0.020356113951532792
+      },
+      "3": {
+        "x": -0.5479872152575926,
+        "y": 3.40510369451351,
+        "theta": 0.0833879457235019
+      }
+    },
+    "passing": {
+      "active": {
+        "id": 1,
+        "passer": 1,
+        "receiver": 3,
+        "source": "kickoff",
+        "target": [
+          -7.726570515159718e-17,
+          2.90510369451351
+        ],
+        "origin": [
+          -7.726570515159718e-17,
+          1.580029093811158e-16
+        ],
+        "phase_key": [
+          "our_kickoff",
+          "NONE",
+          true
+        ],
+        "started": 110.921999999,
+        "stage": "prepare",
+        "stage_since": 110.921999999,
+        "ready_since": null,
+        "release_since": null,
+        "received_since": null,
+        "requested_at": null,
+        "released_at": null,
+        "last_sample": 110.921999999,
+        "last_reselect": 110.921999999,
+        "reselects": 0,
+        "receiver_ready": false,
+        "passer_ready": false,
+        "flight_range": [
+          0.581020738902702,
+          1.452551847256755
+        ],
+        "contact": null,
+        "support_target": null,
+        "support_side": 0,
+        "support_updated": 110.421999999,
+        "evidence": "not_requested"
+      },
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 0.0,
+      "last_time": 110.921999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "attack:pass_prepare",
+        "navigation": {
+          "state": "moving",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -7.726570515159718e-17,
+            -0.3499999999999998
+          ],
+          "effective_target": [
+            -7.726570515159718e-17,
+            -0.3499999999999998
+          ],
+          "route_reason": "no_route",
+          "estimated_time_s": null,
+          "candidate_time_s": null,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 2.0,
+          "waypoint": [
+            -7.726570515159718e-17,
+            -0.3499999999999998
+          ],
+          "path": null,
+          "command": [
+            1.928165275395643,
+            -0.5312049235073445,
+            2.0
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "moving",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 1.3991133499577963,
+          "candidate_time_s": 1.3991133499577963,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.8417411090011414,
+          "waypoint": [
+            -6.5,
+            0.0
+          ],
+          "path": [
+            [
+              -5.94438053404062,
+              -0.07866628513538086
+            ],
+            [
+              -6.5,
+              0.0
+            ]
+          ],
+          "command": [
+            -0.8308546863873276,
+            0.13493918886182357,
+            -0.014246326921595467
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "freeman:receive_prepare",
+        "navigation": {
+          "state": "moving",
+          "priority": 85,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "effective_target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 1.3832105011432425,
+          "candidate_time_s": 1.3832105011432425,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 1.1127229993097945,
+          "waypoint": [
+            -1.1102230246251565e-16,
+            2.90510369451351
+          ],
+          "path": [
+            [
+              -0.5479872152575926,
+              3.40510369451351
+            ],
+            [
+              -7.726570515159718e-17,
+              2.90510369451351
+            ]
+          ],
+          "command": [
+            0.7566561321358802,
+            -0.8158578129148205,
+            -2.0
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "frame": 474199,
+    "sim": 117.931999999,
+    "ball": {
+      "x": -1.495714516952896e-16,
+      "y": 2.362899034729024e-16,
+      "last_seen_at": 117.925999999,
+      "confidence": 1.0,
+      "received_at": 15847.125900508
+    },
+    "poses": {
+      "1": {
+        "x": -0.010711124191768102,
+        "y": -0.4114797183272608,
+        "theta": 1.5656858910653988
+      },
+      "2": {
+        "x": -6.46558548495772,
+        "y": 0.03646898201382038,
+        "theta": 0.0640531864411814
+      },
+      "3": {
+        "x": 0.009058599111568644,
+        "y": 2.800674302973298,
+        "theta": -1.5471571624264244
+      }
+    },
+    "passing": {
+      "active": {
+        "id": 1,
+        "passer": 1,
+        "receiver": 3,
+        "source": "kickoff",
+        "target": [
+          -7.726570515159718e-17,
+          2.90510369451351
+        ],
+        "origin": [
+          -1.495714516952896e-16,
+          2.362899034729024e-16
+        ],
+        "phase_key": [
+          "our_kickoff",
+          "NONE",
+          true
+        ],
+        "started": 110.921999999,
+        "stage": "release",
+        "stage_since": 117.931999999,
+        "ready_since": 117.717999999,
+        "release_since": null,
+        "received_since": null,
+        "requested_at": 117.931999999,
+        "released_at": null,
+        "last_sample": 117.925999999,
+        "last_reselect": 110.921999999,
+        "reselects": 0,
+        "receiver_ready": true,
+        "passer_ready": true,
+        "flight_range": [
+          0.581020738902702,
+          1.452551847256755
+        ],
+        "contact": null,
+        "support_target": null,
+        "support_side": 0,
+        "support_updated": 110.421999999,
+        "evidence": "kick_requested_only"
+      },
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 0.0,
+      "last_time": 117.931999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "attack:pass_release",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "freeman:receive_prepare",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 474260,
+    "sim": 119.361999999,
+    "ball": {
+      "x": -0.03345579550274418,
+      "y": 0.16681192282156576,
+      "last_seen_at": 119.355999999,
+      "confidence": 1.0,
+      "received_at": 15852.097273719
+    },
+    "poses": {
+      "1": {
+        "x": -0.11673226747719873,
+        "y": -0.0756083443751483,
+        "theta": 1.1125425457227764
+      },
+      "2": {
+        "x": -6.4665195861941696,
+        "y": 0.03654300449450053,
+        "theta": 0.07627936573070178
+      },
+      "3": {
+        "x": 0.009349125536581224,
+        "y": 2.8017317866561937,
+        "theta": -1.5449746244345515
+      }
+    },
+    "passing": {
+      "active": {
+        "id": 1,
+        "passer": 1,
+        "receiver": 3,
+        "source": "kickoff",
+        "target": [
+          -7.726570515159718e-17,
+          2.90510369451351
+        ],
+        "origin": [
+          -1.495714516952896e-16,
+          2.362899034729024e-16
+        ],
+        "phase_key": [
+          "normal",
+          "NONE",
+          true
+        ],
+        "started": 110.921999999,
+        "stage": "release",
+        "stage_since": 117.931999999,
+        "ready_since": 117.717999999,
+        "release_since": null,
+        "received_since": null,
+        "requested_at": 117.931999999,
+        "released_at": null,
+        "last_sample": 119.355999999,
+        "last_reselect": 110.921999999,
+        "reselects": 0,
+        "receiver_ready": true,
+        "passer_ready": false,
+        "flight_range": [
+          0.581020738902702,
+          1.452551847256755
+        ],
+        "contact": null,
+        "support_target": null,
+        "support_side": 0,
+        "support_updated": 110.421999999,
+        "evidence": "kick_requested_only"
+      },
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 0.0,
+      "last_time": 119.361999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "attack:pass_release",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "freeman:receive_prepare",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 474271,
+    "sim": 119.621999999,
+    "ball": {
+      "x": -0.08282631696459915,
+      "y": 0.44323182410120215,
+      "last_seen_at": 119.615999999,
+      "confidence": 1.0,
+      "received_at": 15852.899587178
+    },
+    "poses": {
+      "1": {
+        "x": -0.07150337003274204,
+        "y": 0.005284155070716283,
+        "theta": 1.2942839812298004
+      },
+      "2": {
+        "x": -6.4666758114777165,
+        "y": 0.0365306300060138,
+        "theta": 0.07818711929371873
+      },
+      "3": {
+        "x": 0.0043972370023329915,
+        "y": 2.803234803593717,
+        "theta": -1.5573172796607846
+      }
+    },
+    "passing": {
+      "active": {
+        "id": 1,
+        "passer": 1,
+        "receiver": 3,
+        "source": "kickoff",
+        "target": [
+          -7.726570515159718e-17,
+          2.90510369451351
+        ],
+        "origin": [
+          -1.495714516952896e-16,
+          2.362899034729024e-16
+        ],
+        "phase_key": [
+          "normal",
+          "NONE",
+          true
+        ],
+        "started": 110.921999999,
+        "stage": "receive",
+        "stage_since": 119.621999999,
+        "ready_since": 117.717999999,
+        "release_since": 119.517999999,
+        "received_since": null,
+        "requested_at": 117.931999999,
+        "released_at": 119.621999999,
+        "last_sample": 119.615999999,
+        "last_reselect": 110.921999999,
+        "reselects": 0,
+        "receiver_ready": true,
+        "passer_ready": true,
+        "flight_range": [
+          0.581020738902702,
+          1.452551847256755
+        ],
+        "contact": [
+          -0.19956627871173063,
+          1.0785919578836969
+        ],
+        "support_target": null,
+        "support_side": 0,
+        "support_updated": 110.421999999,
+        "evidence": "observed_motion_after_request_not_touch_confirmation"
+      },
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 0.0,
+      "last_time": 119.621999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "freeman:post_pass_yield",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack:receiving",
+        "navigation": {
+          "state": "moving",
+          "priority": 90,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -0.19956627871173063,
+            1.0785919578836969
+          ],
+          "effective_target": [
+            -0.19956627871173063,
+            1.0785919578836969
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 2.350510206341011,
+          "candidate_time_s": 2.350510206341011,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 2.0,
+          "waypoint": [
+            -0.10130392404316334,
+            1.9094634320709802
+          ],
+          "path": [
+            [
+              0.0043972370023329915,
+              2.803234803593717
+            ],
+            [
+              -0.19956627871173063,
+              1.0785919578836969
+            ]
+          ],
+          "command": [
+            1.982812161478622,
+            -0.2616408459940357,
+            -0.10084263780912604
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "frame": 474319,
+    "sim": 121.505999999,
+    "ball": {
+      "x": -0.3527199705670452,
+      "y": 1.3489697234038383,
+      "last_seen_at": 121.501999999,
+      "confidence": 1.0,
+      "received_at": 15858.875746347
+    },
+    "poses": {
+      "1": {
+        "x": -0.036302078793661,
+        "y": -0.15889855074620318,
+        "theta": 1.7622876381185684
+      },
+      "2": {
+        "x": -6.471065614029936,
+        "y": 0.023144774173931033,
+        "theta": 0.13673376025543524
+      },
+      "3": {
+        "x": -0.16495482302047673,
+        "y": 1.7728976122085496,
+        "theta": -1.8578150502428445
+      }
+    },
+    "passing": {
+      "active": {
+        "id": 1,
+        "passer": 1,
+        "receiver": 3,
+        "source": "kickoff",
+        "target": [
+          -7.726570515159718e-17,
+          2.90510369451351
+        ],
+        "origin": [
+          -1.495714516952896e-16,
+          2.362899034729024e-16
+        ],
+        "phase_key": [
+          "normal",
+          "NONE",
+          true
+        ],
+        "started": 110.921999999,
+        "stage": "receive",
+        "stage_since": 119.621999999,
+        "ready_since": 117.717999999,
+        "release_since": 119.517999999,
+        "received_since": null,
+        "requested_at": 117.931999999,
+        "released_at": 119.621999999,
+        "last_sample": 121.501999999,
+        "last_reselect": 110.921999999,
+        "reselects": 0,
+        "receiver_ready": true,
+        "passer_ready": true,
+        "flight_range": [
+          0.581020738902702,
+          1.452551847256755
+        ],
+        "contact": [
+          -0.35555563552278246,
+          1.3536410786118422
+        ],
+        "support_target": [
+          -2.4395720232558062,
+          -0.7383966568138132
+        ],
+        "support_side": 1,
+        "support_updated": 121.429999999,
+        "evidence": "observed_motion_after_request_not_touch_confirmation"
+      },
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 0.0,
+      "last_time": 121.505999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "freeman:post_pass_support",
+        "navigation": {
+          "state": "moving",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -2.4395720232558062,
+            -0.7383966568138132
+          ],
+          "effective_target": [
+            -2.4395720232558062,
+            -0.7383966568138132
+          ],
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 2.0,
+          "waypoint": [
+            -2.4395720232558062,
+            -0.7383966568138132
+          ],
+          "path": null,
+          "command": [
+            -0.09021121814792782,
+            1.9979644481622456,
+            0.030703927503528128
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack:receiving",
+        "navigation": {
+          "state": "avoiding",
+          "priority": 90,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -0.35555563552278246,
+            1.3536410786118422
+          ],
+          "effective_target": [
+            -0.35555563552278246,
+            1.3536410786118422
+          ],
+          "route_reason": "retained",
+          "estimated_time_s": 0.6506550401127995,
+          "candidate_time_s": 0.6245533198246571,
+          "previous_time_s": 0.6506550401127995,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.6908224077522738,
+          "waypoint": [
+            -0.35555563552278246,
+            1.3536410786118422
+          ],
+          "path": [
+            [
+              -0.16495482302047673,
+              1.7728976122085496
+            ],
+            [
+              -0.17759986886855186,
+              1.7781093048692427
+            ],
+            [
+              -0.35555563552278246,
+              1.3536410786118422
+            ]
+          ],
+          "command": [
+            0.680945535914666,
+            0.11639921035186272,
+            -0.2598598767003622
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "frame": 474329,
+    "sim": 121.891999999,
+    "ball": {
+      "x": -0.40975511952026306,
+      "y": 1.2892574700393666,
+      "last_seen_at": 121.885999999,
+      "confidence": 1.0,
+      "received_at": 15860.346302181
+    },
+    "poses": {
+      "1": {
+        "x": -0.1020629928390005,
+        "y": -0.2526422442184806,
+        "theta": 1.7537287225988567
+      },
+      "2": {
+        "x": -6.472418876456074,
+        "y": 0.031308909227464446,
+        "theta": 0.1529403337144689
+      },
+      "3": {
+        "x": -0.22459949521348915,
+        "y": 1.467964462518277,
+        "theta": -2.015277160876631
+      }
+    },
+    "passing": {
+      "active": {
+        "id": 1,
+        "passer": 1,
+        "receiver": 3,
+        "source": "kickoff",
+        "target": [
+          -7.726570515159718e-17,
+          2.90510369451351
+        ],
+        "origin": [
+          -1.495714516952896e-16,
+          2.362899034729024e-16
+        ],
+        "phase_key": [
+          "normal",
+          "NONE",
+          true
+        ],
+        "started": 110.921999999,
+        "stage": "receive",
+        "stage_since": 119.621999999,
+        "ready_since": 117.717999999,
+        "release_since": 119.517999999,
+        "received_since": null,
+        "requested_at": 117.931999999,
+        "released_at": 119.621999999,
+        "last_sample": 121.885999999,
+        "last_reselect": 110.921999999,
+        "reselects": 0,
+        "receiver_ready": true,
+        "passer_ready": true,
+        "flight_range": [
+          0.581020738902702,
+          1.452551847256755
+        ],
+        "contact": [
+          -0.41732782763469894,
+          1.2764982277224062
+        ],
+        "support_target": [
+          -2.4395720232558062,
+          -0.7383966568138132
+        ],
+        "support_side": 1,
+        "support_updated": 121.429999999,
+        "evidence": "observed_motion_after_request_not_touch_confirmation"
+      },
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 0.0,
+      "last_time": 121.891999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "freeman:post_pass_support",
+        "navigation": {
+          "state": "avoiding",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "ball",
+          "target": [
+            -2.4395720232558062,
+            -0.7383966568138132
+          ],
+          "effective_target": [
+            -2.4395720232558062,
+            -0.7383966568138132
+          ],
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 1.3,
+          "waypoint": [
+            -2.4395720232558062,
+            -0.7383966568138132
+          ],
+          "path": null,
+          "command": [
+            -0.028545715474201254,
+            1.2996865553386578,
+            0.028068401476359032
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack:receiving",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 474330,
+    "sim": 121.943999999,
+    "ball": {
+      "x": -0.5144817818224495,
+      "y": 1.1137192098799145,
+      "last_seen_at": 121.941999999,
+      "confidence": 1.0,
+      "received_at": 15860.48317339
+    },
+    "poses": {
+      "1": {
+        "x": -0.10404631106522373,
+        "y": -0.26593999515218947,
+        "theta": 1.7401740118129307
+      },
+      "2": {
+        "x": -6.472614473491949,
+        "y": 0.031108568947168326,
+        "theta": 0.15517491178506093
+      },
+      "3": {
+        "x": -0.2437106608601481,
+        "y": 1.4410395270957301,
+        "theta": -2.0508662883143254
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 121.943999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "freeman:move",
+        "navigation": {
+          "state": "turning",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -0.5144817818224495,
+            -3.0747184042718674
+          ],
+          "effective_target": [
+            -0.5144817818224495,
+            -3.0747184042718674
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 6.111926147816962,
+          "candidate_time_s": 6.111926147816962,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.0,
+          "waypoint": [
+            -0.23417768827179986,
+            -1.1564824279796881
+          ],
+          "path": [
+            [
+              -0.10404631106522373,
+              -0.26593999515218947
+            ],
+            [
+              -0.5144817818224495,
+              -3.0747184042718674
+            ]
+          ],
+          "command": [
+            0.0,
+            0.0,
+            2.0
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 474332,
+    "sim": 122.089999999,
+    "ball": {
+      "x": -0.7630254033152453,
+      "y": 0.716769352719754,
+      "last_seen_at": 122.087999999,
+      "confidence": 1.0,
+      "received_at": 15860.928888348
+    },
+    "poses": {
+      "1": {
+        "x": -0.13452735858984238,
+        "y": -0.28316039601867976,
+        "theta": 1.754937293903754
+      },
+      "2": {
+        "x": -6.4729962086552275,
+        "y": 0.030278115077410878,
+        "theta": 0.16015050893321184
+      },
+      "3": {
+        "x": -0.2829598252093526,
+        "y": 1.3971905249646737,
+        "theta": -2.1862056924972104
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 122.089999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "freeman:move",
+        "navigation": {
+          "state": "turning",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -0.7630254033152453,
+            -1.5919540125316178
+          ],
+          "effective_target": [
+            -0.7630254033152453,
+            -1.5919540125316178
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 3.945597343396454,
+          "candidate_time_s": 3.945597343396454,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.0,
+          "waypoint": [
+            -0.524124923576792,
+            -1.094464122964538
+          ],
+          "path": [
+            [
+              -0.13452735858984238,
+              -0.28316039601867976
+            ],
+            [
+              -0.7630254033152453,
+              -1.5919540125316178
+            ]
+          ],
+          "command": [
+            0.0,
+            0.0,
+            2.0
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 474402,
+    "sim": 126.143999999,
+    "ball": {
+      "x": -5.333243400418767,
+      "y": -4.645737105998753,
+      "last_seen_at": 126.141999999,
+      "confidence": 1.0,
+      "received_at": 15874.227322521
+    },
+    "poses": {
+      "1": {
+        "x": -0.899492755788589,
+        "y": -0.9742028914294892,
+        "theta": -2.435527706262662
+      },
+      "2": {
+        "x": -6.121974438770653,
+        "y": -1.0570218352263578,
+        "theta": -1.2096217313371869
+      },
+      "3": {
+        "x": -2.6270843523772647,
+        "y": -0.617944249972522,
+        "theta": -2.33720990308073
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 126.143999999,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "freeman:move",
+        "navigation": {
+          "state": "avoiding",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "opponent:1",
+          "target": [
+            -2.46449863525678,
+            -3.2795285380327597
+          ],
+          "effective_target": [
+            -2.46449863525678,
+            -3.2795285380327597
+          ],
+          "route_reason": "unsafe",
+          "estimated_time_s": 3.7151389361564138,
+          "candidate_time_s": 3.7151389361564138,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 1.9136343466021493,
+          "waypoint": [
+            -1.4049939194421794,
+            -1.7188293572127475
+          ],
+          "path": [
+            [
+              -0.899492755788589,
+              -0.9742028914294892
+            ],
+            [
+              -2.46449863525678,
+              -3.2795285380327597
+            ]
+          ],
+          "command": [
+            1.9136343466021493,
+            0.0,
+            0.589896593061143
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "avoiding",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.2,
+            -0.9899476654021151
+          ],
+          "effective_target": [
+            -6.2,
+            -0.9899476654021151
+          ],
+          "route_reason": "retained",
+          "estimated_time_s": 0.25397542667386735,
+          "candidate_time_s": 0.2509612847180882,
+          "previous_time_s": 0.25397542667386735,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.1543392304024588,
+          "waypoint": [
+            -6.2,
+            -0.9899476654021151
+          ],
+          "path": [
+            [
+              -6.121974438770653,
+              -1.0570218352263578
+            ],
+            [
+              -6.13660852503077,
+              -1.0512203448184483
+            ],
+            [
+              -6.145618249819922,
+              -1.0459655683179436
+            ],
+            [
+              -6.150331477232619,
+              -1.0420057146065076
+            ],
+            [
+              -6.2,
+              -0.9899476654021151
+            ]
+          ],
+          "command": [
+            -0.14211143921866,
+            -0.060207448745353505,
+            -0.2896665883321865
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack",
+        "navigation": {
+          "state": "avoiding",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -6.168178433111896,
+            -4.35
+          ],
+          "effective_target": [
+            -6.168178433111896,
+            -4.25
+          ],
+          "route_reason": "faster",
+          "estimated_time_s": 6.763454246978505,
+          "candidate_time_s": 6.763454246978505,
+          "previous_time_s": 8.964221299071678,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 1.9997739600195517,
+          "waypoint": [
+            -3.2553598964574055,
+            -1.2623585892844305
+          ],
+          "path": [
+            [
+              -2.6270843523772647,
+              -0.617944249972522
+            ],
+            [
+              -6.168178433111896,
+              -4.25
+            ]
+          ],
+          "command": [
+            1.9997739600195517,
+            0.0,
+            -0.030069535308424378
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "frame": 475698,
+    "sim": 156.258,
+    "ball": {
+      "x": -6.0,
+      "y": -2.0,
+      "last_seen_at": 156.256,
+      "confidence": 1.0,
+      "received_at": 15987.274742115
+    },
+    "poses": {
+      "1": {
+        "x": -2.5731815053687788,
+        "y": -3.8309780344526225,
+        "theta": 0.39063106225099115
+      },
+      "2": {
+        "x": -6.220781312240901,
+        "y": -1.9956525617925593,
+        "theta": -0.33696610787569303
+      },
+      "3": {
+        "x": -6.793849247215466,
+        "y": -1.2904303538766724,
+        "theta": -1.718724653360455
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 156.258,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "freeman:move",
+        "navigation": {
+          "state": "avoiding",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -2.72973940219945,
+            -3.8133699643371104
+          ],
+          "effective_target": [
+            -2.72973940219945,
+            -3.8133699643371104
+          ],
+          "route_reason": "retained",
+          "estimated_time_s": 0.5403886924122331,
+          "candidate_time_s": 0.38415113785983435,
+          "previous_time_s": 0.5403886924122331,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.23631746271653484,
+          "waypoint": [
+            -2.72973940219945,
+            -3.8133699643371104
+          ],
+          "path": [
+            [
+              -2.5731815053687788,
+              -3.8309780344526225
+            ],
+            [
+              -2.573179785623454,
+              -3.8309767161855373
+            ],
+            [
+              -2.5731776874395265,
+              -3.830975024897586
+            ],
+            [
+              -2.5731764038097173,
+              -3.830973708579733
+            ],
+            [
+              -2.5731747644954917,
+              -3.8309715731734864
+            ],
+            [
+              -2.573173051687487,
+              -3.8309690733994812
+            ],
+            [
+              -2.5731708678147385,
+              -3.8309660945684225
+            ],
+            [
+              -2.5731636960553015,
+              -3.8309590131740117
+            ],
+            [
+              -2.5731611673721986,
+              -3.830956971166804
+            ],
+            [
+              -2.5731594201921006,
+              -3.830955609528285
+            ],
+            [
+              -2.573157464009787,
+              -3.8309540632870864
+            ],
+            [
+              -2.5731555915946047,
+              -3.8309524296714663
+            ],
+            [
+              -2.573152681793104,
+              -3.8309495292449895
+            ],
+            [
+              -2.573151355216981,
+              -3.830948190228214
+            ],
+            [
+              -2.573148434398507,
+              -3.8309455446319345
+            ],
+            [
+              -2.573140582411412,
+              -3.8309394502914147
+            ],
+            [
+              -2.5731388851702266,
+              -3.830938259555812
+            ],
+            [
+              -2.5731346041505856,
+              -3.8309354857298126
+            ],
+            [
+              -2.573132268322809,
+              -3.830934010146725
+            ],
+            [
+              -2.5731286338614727,
+              -3.8309314066649143
+            ],
+            [
+              -2.5731255743299832,
+              -3.8309288156130847
+            ],
+            [
+              -2.5731227691566687,
+              -3.830926401876439
+            ],
+            [
+              -2.5731191015066464,
+              -3.8309236004286427
+            ],
+            [
+              -2.5731073050324804,
+              -3.8309165131596474
+            ],
+            [
+              -2.573103697536996,
+              -3.8309146086312107
+            ],
+            [
+              -2.573099471250034,
+              -3.830912422498622
+            ],
+            [
+              -2.5730937889949517,
+              -3.8309087965403323
+            ],
+            [
+              -2.573089633426624,
+              -3.830905373655229
+            ],
+            [
+              -2.573086503826243,
+              -3.8309027342910023
+            ],
+            [
+              -2.573083455233646,
+              -3.830900368239096
+            ],
+            [
+              -2.5730615409580766,
+              -3.8308882476814228
+            ],
+            [
+              -2.5730558910310246,
+              -3.8308855955419494
+            ],
+            [
+              -2.5730511709894577,
+              -3.8308834004171484
+            ],
+            [
+              -2.573045041819847,
+              -3.8308802002298954
+            ],
+            [
+              -2.573037666487605,
+              -3.830875196369526
+            ],
+            [
+              -2.5730322551877736,
+              -3.830870950129044
+            ],
+            [
+              -2.573026218173674,
+              -3.8308664047872765
+            ],
+            [
+              -2.5729966871133914,
+              -3.830849641974552
+            ],
+            [
+              -2.572985860077846,
+              -3.830844776890513
+            ],
+            [
+              -2.5729766208218003,
+              -3.830840742247978
+            ],
+            [
+              -2.5729694342070872,
+              -3.8308373241540647
+            ],
+            [
+              -2.572960835397105,
+              -3.8308325935694714
+            ],
+            [
+              -2.5729537460771623,
+              -3.830828294633376
+            ],
+            [
+              -2.572946035617169,
+              -3.830823656363693
+            ],
+            [
+              -2.5729345963896266,
+              -3.83081742558218
+            ],
+            [
+              -2.5728931680733367,
+              -3.830798390624437
+            ],
+            [
+              -2.5728849396607285,
+              -3.8307947194232495
+            ],
+            [
+              -2.5728679726244823,
+              -3.830786893883661
+            ],
+            [
+              -2.572856007324377,
+              -3.830780617156498
+            ],
+            [
+              -2.572839526033803,
+              -3.830770737918689
+            ],
+            [
+              -2.57282799430708,
+              -3.8307636240603986
+            ],
+            [
+              -2.572817664896444,
+              -3.830757349918411
+            ],
+            [
+              -2.572756300907957,
+              -3.830718722105447
+            ],
+            [
+              -2.572745480949093,
+              -3.830711425645901
+            ],
+            [
+              -2.5727193594281252,
+              -3.8306934478153276
+            ],
+            [
+              -2.5727023605616526,
+              -3.830681781759155
+            ],
+            [
+              -2.5726822981322437,
+              -3.830668435322722
+            ],
+            [
+              -2.5726559703552496,
+              -3.8306517921642382
+            ],
+            [
+              -2.572628203002419,
+              -3.830635196416207
+            ],
+            [
+              -2.572599970151091,
+              -3.8306191012978332
+            ],
+            [
+              -2.572590943554533,
+              -3.830614133080723
+            ],
+            [
+              -2.5724201964649662,
+              -3.8305366775418466
+            ],
+            [
+              -2.5723241123452993,
+              -3.830503516752817
+            ],
+            [
+              -2.572241095733815,
+              -3.830478890779847
+            ],
+            [
+              -2.5721710504456747,
+              -3.8304599471976633
+            ],
+            [
+              -2.5720956251570644,
+              -3.8304407241319045
+            ],
+            [
+              -2.5719589364853674,
+              -3.8304083777126703
+            ],
+            [
+              -2.5718925552957144,
+              -3.830394009266843
+            ],
+            [
+              -2.5717598747081496,
+              -3.830088052727436
+            ],
+            [
+              -2.571894675489939,
+              -3.8300295952518524
+            ],
+            [
+              -2.5721665390215036,
+              -3.829914335630698
+            ],
+            [
+              -2.573999902657969,
+              -3.8291598480309608
+            ],
+            [
+              -2.5744390555627166,
+              -3.828993813422708
+            ],
+            [
+              -2.574778160713165,
+              -3.828846950544334
+            ],
+            [
+              -2.5750782724316967,
+              -3.8286243981395
+            ],
+            [
+              -2.575140280986918,
+              -3.828446063457312
+            ],
+            [
+              -2.574990374998649,
+              -3.82811452511849
+            ],
+            [
+              -2.574668298845234,
+              -3.8278031254383658
+            ],
+            [
+              -2.5712466731901826,
+              -3.8259316077167913
+            ],
+            [
+              -2.5688436747570833,
+              -3.825048811773603
+            ],
+            [
+              -2.565957311419978,
+              -3.8241277305180787
+            ],
+            [
+              -2.5620271911720143,
+              -3.822889070037043
+            ],
+            [
+              -2.556466808671107,
+              -3.8210536258050967
+            ],
+            [
+              -2.5506767875800183,
+              -3.819177615216985
+            ],
+            [
+              -2.5434132829858656,
+              -3.81699627130961
+            ],
+            [
+              -2.5424089068706537,
+              -3.8070838264198397
+            ],
+            [
+              -2.72973940219945,
+              -3.8133699643371104
+            ]
+          ],
+          "command": [
+            -0.2061928688391804,
+            0.1154575420864717,
+            -0.01994223937372619
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "action": "guard:close_clear",
+        "navigation": null
+      },
+      {
+        "id": 3,
+        "action": "attack",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 476078,
+    "sim": 166.168,
+    "ball": {
+      "x": -2.0911137240901305,
+      "y": -4.450246768567749,
+      "last_seen_at": 166.162,
+      "confidence": 1.0,
+      "received_at": 16048.597686601
+    },
+    "poses": {
+      "1": {
+        "x": -1.9197452728379976,
+        "y": -4.436505855366061,
+        "theta": 0.2831614085805055
+      },
+      "2": {
+        "x": -6.353407395005736,
+        "y": -0.8307310321726682,
+        "theta": -0.6532654456169183
+      },
+      "3": {
+        "x": -6.681899045883687,
+        "y": -1.1770056465438599,
+        "theta": -1.234250837074053
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 166.168,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "stopped",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "stopped",
+        "navigation": null
+      },
+      {
+        "id": 3,
+        "action": "stopped",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 476549,
+    "sim": 172.792,
+    "ball": {
+      "x": -2.169762325082855,
+      "y": -4.436506865500612,
+      "last_seen_at": 172.788,
+      "confidence": 1.0,
+      "received_at": 16091.233903704
+    },
+    "poses": {
+      "1": {
+        "x": -3.989579875282627,
+        "y": 4.978998145949374,
+        "theta": -1.4682770085074541
+      },
+      "2": {
+        "x": -6.376467630382018,
+        "y": -0.8120650474769875,
+        "theta": -0.6735681809660524
+      },
+      "3": {
+        "x": -6.684647121860623,
+        "y": -1.180481127487169,
+        "theta": -1.2230245917367508
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 172.792,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "penalized",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "guard:set:restricted",
+        "navigation": {
+          "state": "avoiding",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "team:3",
+          "target": [
+            -6.5,
+            -0.6121908396796689
+          ],
+          "effective_target": [
+            -6.5,
+            -0.6121908396796689
+          ],
+          "route_reason": "no_route",
+          "estimated_time_s": null,
+          "candidate_time_s": null,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": 20,
+          "speed": 0.35245194976562255,
+          "waypoint": [
+            -6.5,
+            -0.6121908396796689
+          ],
+          "path": null,
+          "command": [
+            -0.32983777799078984,
+            0.12421520480073028,
+            -0.07522856511752707
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "action": "freeman:move",
+        "navigation": {
+          "state": "blocked",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "team:2",
+          "target": [
+            -2.169762325082855,
+            -1.180481127487169
+          ],
+          "effective_target": [
+            -2.169762325082855,
+            -1.180481127487169
+          ],
+          "route_reason": "unsafe",
+          "estimated_time_s": 6.485290166229052,
+          "candidate_time_s": 6.485290166229052,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "blocker_priority": 60,
+          "stop_conflict": "team:2"
+        }
+      }
+    ]
+  },
+  {
+    "frame": 476627,
+    "sim": 177.014,
+    "ball": {
+      "x": -6.0056919713624195,
+      "y": -0.08505174943524496,
+      "last_seen_at": 177.008,
+      "confidence": 1.0,
+      "received_at": 16105.633338044
+    },
+    "poses": {
+      "1": {
+        "x": -3.9902512937397683,
+        "y": 4.980510152510251,
+        "theta": -1.4503301125675974
+      },
+      "2": {
+        "x": -6.323538568501481,
+        "y": -0.8218554272775281,
+        "theta": -0.3485532569043821
+      },
+      "3": {
+        "x": -6.1204118969118095,
+        "y": -1.027957735715194,
+        "theta": 1.179490629211297
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 177.014,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "penalized",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "blocked",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "field_boundary",
+          "target": [
+            -6.3150552479843824,
+            0.004061103573466223
+          ],
+          "effective_target": [
+            -6.3150552479843824,
+            0.004061103573466223
+          ],
+          "route_reason": "no_route",
+          "estimated_time_s": null,
+          "candidate_time_s": null,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "blocker_priority": null,
+          "stop_conflict": "team:3"
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 476674,
+    "sim": 178.988,
+    "ball": {
+      "x": -6.303936841242008,
+      "y": 0.21324901907903346,
+      "last_seen_at": 178.986,
+      "confidence": 1.0,
+      "received_at": 16112.684893839
+    },
+    "poses": {
+      "1": {
+        "x": -3.9905323834173156,
+        "y": 4.9810493195875125,
+        "theta": -1.44453241226005
+      },
+      "2": {
+        "x": -6.678318409465181,
+        "y": -0.7115221842698325,
+        "theta": 0.3240851932851706
+      },
+      "3": {
+        "x": -6.398794511507056,
+        "y": -0.5665836196675322,
+        "theta": 2.4736424118000833
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 178.988,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "penalized",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "guard:anticipate:ray",
+        "navigation": {
+          "state": "blocked",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "field_boundary",
+          "target": [
+            -6.563856807580144,
+            0.3315294576901604
+          ],
+          "effective_target": [
+            -6.563856807580144,
+            0.3315294576901604
+          ],
+          "route_reason": "no_route",
+          "estimated_time_s": null,
+          "candidate_time_s": null,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "blocker_priority": null,
+          "stop_conflict": null
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 476709,
+    "sim": 180.008,
+    "ball": {
+      "x": -6.304626659531717,
+      "y": 0.2139389240954526,
+      "last_seen_at": 180.006,
+      "confidence": 1.0,
+      "received_at": 16116.075242174
+    },
+    "poses": {
+      "1": {
+        "x": -3.9906636357278535,
+        "y": 4.981294558120426,
+        "theta": -1.4419550495438553
+      },
+      "2": {
+        "x": -6.8365360244842135,
+        "y": -0.6769689796512509,
+        "theta": 0.4683253321560653
+      },
+      "3": {
+        "x": -6.745930144011971,
+        "y": -0.37674489836201835,
+        "theta": 2.636716827530465
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 180.008,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "penalized",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "guard:anticipate:ray",
+        "navigation": {
+          "state": "blocked",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "field_boundary",
+          "target": [
+            -6.75,
+            0.2229812454840074
+          ],
+          "effective_target": [
+            -6.75,
+            0.2229812454840074
+          ],
+          "route_reason": "no_route",
+          "estimated_time_s": null,
+          "candidate_time_s": null,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "blocker_priority": null,
+          "stop_conflict": "field_boundary"
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack",
+        "navigation": null
+      }
+    ]
+  },
+  {
+    "frame": 476729,
+    "sim": 180.83,
+    "ball": {
+      "x": -7.155402606570144,
+      "y": -0.07525956209816449,
+      "last_seen_at": 180.83,
+      "confidence": 1.0,
+      "received_at": 16121.393857385
+    },
+    "poses": {
+      "1": {
+        "x": -3.990761581260038,
+        "y": 4.981475777851296,
+        "theta": -1.4400716454804838
+      },
+      "2": {
+        "x": -6.879984849641132,
+        "y": -0.6379009313809866,
+        "theta": 0.6304224953703786
+      },
+      "3": {
+        "x": -6.863329552590906,
+        "y": -0.2810762513000617,
+        "theta": 2.60775865779607
+      }
+    },
+    "passing": {
+      "active": null,
+      "support": null,
+      "kickoff_receiver": null,
+      "sequence": 1,
+      "cooldown_until": 122.929999999,
+      "last_time": 180.83,
+      "events": [
+        {
+          "id": 1,
+          "time": 110.921999999,
+          "event": "prepare",
+          "reason": "proposal_accepted",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 117.931999999,
+          "event": "release",
+          "reason": "kick_requested_only",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.361999999,
+          "event": "phase_continued",
+          "reason": "restart_released_to_normal",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 119.621999999,
+          "event": "receive",
+          "reason": "observed_motion_after_request_not_touch_confirmation",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        },
+        {
+          "id": 1,
+          "time": 121.929999999,
+          "event": "cancelled",
+          "reason": "no_receivable_contact",
+          "passer": 1,
+          "receiver": 3,
+          "target": [
+            -7.726570515159718e-17,
+            2.90510369451351
+          ],
+          "source": "kickoff"
+        }
+      ]
+    },
+    "players": [
+      {
+        "id": 1,
+        "action": "penalized",
+        "navigation": null
+      },
+      {
+        "id": 2,
+        "action": "guard:set",
+        "navigation": {
+          "state": "blocked",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "field_boundary",
+          "target": [
+            -6.75,
+            -0.028033154291980167
+          ],
+          "effective_target": [
+            -6.75,
+            -0.028033154291980167
+          ],
+          "route_reason": "no_route",
+          "estimated_time_s": null,
+          "candidate_time_s": null,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "blocker_priority": null,
+          "stop_conflict": "team:3"
+        }
+      },
+      {
+        "id": 3,
+        "action": "attack",
+        "navigation": null
+      }
+    ]
+  }
+]

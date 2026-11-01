@@ -1,0 +1,21 @@
+{
+  "window_open_observed_at": "2026-11-01T10:16:49.569588+00:00",
+  "base": "e8b4d9d74f90530f0690146f8b523f85d84ab767",
+  "commit": "0e526d3b60f6b49253b54cd9bab43f76f43e733d",
+  "branch": "codex/pass-coordination",
+  "worktree": "/Users/limingzhe/.codex/worktrees/pass-coordination/sim-3v3-simple-framework",
+  "other_related_chats": "keeper-block-continuity and navigation-time-stability idle",
+  "container_before": "exited; Running=false; Paused=false; Pid=0; no referee process",
+  "scheduler_processes": "none observed",
+  "history_mode": "preserve; bounded export",
+  "experiment": "one 60-second referee-clock test; fixed 600-second format; operator finish",
+  "seed": "not controlled",
+  "metrics": [
+    "score",
+    "robot behavior",
+    "conceded goals",
+    "unconverted attacks",
+    "passing lifecycle and post-pass support"
+  ],
+  "valid_sample": "verified task source running; players enter field; monotonic referee clock; bounded replay"
+}

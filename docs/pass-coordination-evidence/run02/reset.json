@@ -1,0 +1,1 @@
+{"reset_observed_at": "2026-11-01T10:26:27.644479+00:00", "method": "official Simulator reset button", "user_requested_retry": true, "source_commit": "0e526d3", "prestart_wait_seconds": 60, "valid_start": "all three own robots in field and near READY slots at first PLAYING; fresh snapshots, walk mode, not fallen or penalized"}

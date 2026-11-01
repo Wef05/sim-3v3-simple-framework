@@ -1,0 +1,15 @@
+{
+  "frames": 3951,
+  "bytes": 5344592,
+  "initial": 600.0,
+  "elapsed": 60.0439999999096,
+  "score": [
+    0,
+    1
+  ],
+  "end_state": "finished",
+  "finish_reason": "operator_finish",
+  "first_sim": 35.475999999,
+  "last_sim": 115.075999999,
+  "history_preserved": true
+}

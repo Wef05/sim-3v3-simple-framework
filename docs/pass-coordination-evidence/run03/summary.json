@@ -1,0 +1,16 @@
+{
+  "frames": 4471,
+  "bytes": 8300990,
+  "elapsed": 60.18200000018294,
+  "score": {
+    "home": 0,
+    "away": 1
+  },
+  "end_state": "finished",
+  "finish_reason": "operator_finish",
+  "valid_opening": true,
+  "reason": "requested_60_seconds",
+  "first_sim": 85.669999999,
+  "last_sim": 183.276,
+  "history_preserved": true
+}

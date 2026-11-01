@@ -1,0 +1,15 @@
+{
+  "frames": 771,
+  "bytes": 1071668,
+  "initial": 600.0,
+  "elapsed": 0.0,
+  "score": [
+    0,
+    0
+  ],
+  "end_state": "set",
+  "finish_reason": null,
+  "first_sim": 35.475999999,
+  "last_sim": 50.828,
+  "history_preserved": true
+}

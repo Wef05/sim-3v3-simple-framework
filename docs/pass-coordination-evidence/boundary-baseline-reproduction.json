@@ -1,0 +1,1811 @@
+{
+  "baseline": "e8b4d9d",
+  "task": "0e526d3",
+  "same_results": true,
+  "blocked_frames": 59,
+  "total": 60,
+  "current": [
+    {
+      "frame": 450620,
+      "sim": 35.475999999,
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "command": [
+        1.902510956836968,
+        0.0,
+        0.6270295423307556
+      ],
+      "state": "moving",
+      "blocker": null
+    },
+    {
+      "frame": 450621,
+      "sim": 35.485999999,
+      "velocity": [
+        -2.4407364256663523e-05,
+        3.810358435122979e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450622,
+      "sim": 35.497999999,
+      "velocity": [
+        -3.4156368711186904e-05,
+        5.33089501431156e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450623,
+      "sim": 35.507999999,
+      "velocity": [
+        -2.273092589711209e-05,
+        3.5502802919758336e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450624,
+      "sim": 35.515999999,
+      "velocity": [
+        -4.058275100097851e-05,
+        6.334388905466739e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450625,
+      "sim": 35.539999999,
+      "velocity": [
+        -3.405156911995955e-05,
+        5.3129810728702067e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450626,
+      "sim": 35.549999999,
+      "velocity": [
+        -2.3599975640386177e-05,
+        3.6845653713274874e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450627,
+      "sim": 35.563999999,
+      "velocity": [
+        -2.2638579588718032e-05,
+        3.5334680337210895e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450628,
+      "sim": 35.577999999,
+      "velocity": [
+        -1.977178933909978e-05,
+        3.087265176838275e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450629,
+      "sim": 35.589999999,
+      "velocity": [
+        -4.7051494034276325e-05,
+        7.344513338243726e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450630,
+      "sim": 35.601999999,
+      "velocity": [
+        -2.819933746828416e-05,
+        4.403454978429065e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450631,
+      "sim": 35.607999999,
+      "velocity": [
+        -2.8191903522772955e-05,
+        4.400226654156279e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450632,
+      "sim": 35.617999999,
+      "velocity": [
+        -2.8191903522772955e-05,
+        4.400226654156279e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450633,
+      "sim": 35.627999999,
+      "velocity": [
+        -9.386134585614019e-06,
+        1.4653679455041331e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450634,
+      "sim": 35.635999999,
+      "velocity": [
+        -5.6283031846269365e-05,
+        8.785564231677407e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450635,
+      "sim": 35.639999999,
+      "velocity": [
+        -5.6283031846269365e-05,
+        8.785564231677407e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450636,
+      "sim": 35.649999999,
+      "velocity": [
+        -2.004763786723823e-05,
+        3.1338726280687626e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450637,
+      "sim": 35.669999999,
+      "velocity": [
+        -4.210639076294968e-05,
+        6.577658151483169e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450638,
+      "sim": 35.685999999,
+      "velocity": [
+        -3.367356147994717e-05,
+        5.256003605680149e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450639,
+      "sim": 35.697999999,
+      "velocity": [
+        -4.898585509452375e-05,
+        7.651394806633482e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450640,
+      "sim": 35.703999999,
+      "velocity": [
+        -1.398634252857777e-05,
+        2.184490810463283e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450641,
+      "sim": 35.717999999,
+      "velocity": [
+        -9.311319345191414e-06,
+        1.4551470917111845e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450642,
+      "sim": 35.731999999,
+      "velocity": [
+        -3.413088466174022e-05,
+        5.332210130227698e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450643,
+      "sim": 35.747999999,
+      "velocity": [
+        -2.788421763858782e-05,
+        4.357732078889215e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450644,
+      "sim": 35.763999999,
+      "velocity": [
+        -3.482022603586697e-05,
+        5.4421759876385386e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450645,
+      "sim": 35.779999999,
+      "velocity": [
+        -2.5681677468393928e-05,
+        4.0134757363678776e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450646,
+      "sim": 35.791999999,
+      "velocity": [
+        -3.472288589991527e-05,
+        5.426927018884153e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450647,
+      "sim": 35.811999999,
+      "velocity": [
+        -2.771880409153061e-05,
+        4.335011939539072e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450648,
+      "sim": 35.823999999,
+      "velocity": [
+        -3.383424022433099e-05,
+        5.2909061921801235e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450649,
+      "sim": 35.837999999,
+      "velocity": [
+        -3.16130439920909e-05,
+        4.941584062579392e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450650,
+      "sim": 35.857999999,
+      "velocity": [
+        -2.208214175958729e-05,
+        3.453825376809737e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450651,
+      "sim": 35.879999999,
+      "velocity": [
+        -5.516191992065353e-05,
+        8.626685521473947e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450652,
+      "sim": 35.921999999,
+      "velocity": [
+        -2.1816010806292878e-05,
+        3.413089175270629e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450653,
+      "sim": 35.933999999,
+      "velocity": [
+        -4.391962051820449e-05,
+        6.870286410888528e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450654,
+      "sim": 35.943999999,
+      "velocity": [
+        -1.8290621054775867e-05,
+        2.8611937485932852e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450655,
+      "sim": 35.951999999,
+      "velocity": [
+        -3.287387269069285e-05,
+        5.143698427191225e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450656,
+      "sim": 35.969999999,
+      "velocity": [
+        -3.757870137289091e-05,
+        5.882860310003161e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450657,
+      "sim": 35.989999999,
+      "velocity": [
+        -1.6372189381994246e-05,
+        2.5623463129061267e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450658,
+      "sim": 36.001999999,
+      "velocity": [
+        -5.447110523746758e-05,
+        8.527583950088053e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450659,
+      "sim": 36.013999999,
+      "velocity": [
+        -2.0388628424463677e-05,
+        3.1927797239376296e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450660,
+      "sim": 36.027999999,
+      "velocity": [
+        -2.7153753690004273e-05,
+        4.2520472698375464e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450661,
+      "sim": 36.063999999,
+      "velocity": [
+        -1.9133902031415465e-05,
+        2.996103866964352e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450662,
+      "sim": 36.079999999,
+      "velocity": [
+        -3.79051254384497e-05,
+        5.93356604739033e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450663,
+      "sim": 36.095999999,
+      "velocity": [
+        -2.9273072021939186e-05,
+        4.5839553153291177e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450664,
+      "sim": 36.115999999,
+      "velocity": [
+        -2.6983018508448753e-05,
+        4.225350593855431e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450665,
+      "sim": 36.157999999,
+      "velocity": [
+        -2.6933614661301144e-05,
+        4.2162782810078736e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450666,
+      "sim": 36.175999999,
+      "velocity": [
+        -2.9855203790654444e-05,
+        4.674204460523217e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450667,
+      "sim": 36.215999999,
+      "velocity": [
+        -2.399305866266154e-05,
+        3.756670721868219e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450668,
+      "sim": 36.247999999,
+      "velocity": [
+        -2.8544301885109138e-05,
+        4.469031672134654e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450669,
+      "sim": 36.257999999,
+      "velocity": [
+        -1.9082763401208728e-05,
+        2.987611631105718e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450670,
+      "sim": 36.271999999,
+      "velocity": [
+        -3.335393325419874e-05,
+        5.222515470080712e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450671,
+      "sim": 36.289999999,
+      "velocity": [
+        -1.9035369693202988e-05,
+        2.9811246170052258e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450672,
+      "sim": 36.305999999,
+      "velocity": [
+        -2.281273046657043e-05,
+        3.573590940623838e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450673,
+      "sim": 36.323999999,
+      "velocity": [
+        -3.62276129499305e-05,
+        5.676252514484379e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450674,
+      "sim": 36.333999999,
+      "velocity": [
+        -3.09353147172793e-05,
+        4.8487952838033327e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450675,
+      "sim": 36.349999999,
+      "velocity": [
+        -1.136027215155285e-05,
+        1.780083953255522e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450676,
+      "sim": 36.385999999,
+      "velocity": [
+        -2.0883990384978377e-05,
+        3.274664308138501e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450677,
+      "sim": 36.395999999,
+      "velocity": [
+        -8.801018743416618e-05,
+        0.00013803442255876962
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450678,
+      "sim": 36.431999999,
+      "velocity": [
+        -2.357196267416902e-05,
+        3.696596504921511e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450679,
+      "sim": 36.447999999,
+      "velocity": [
+        -2.6263323701014336e-05,
+        4.122030798176403e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    }
+  ],
+  "baseline_results": [
+    {
+      "frame": 450620,
+      "sim": 35.475999999,
+      "velocity": [
+        0.0,
+        0.0
+      ],
+      "command": [
+        1.902510956836968,
+        0.0,
+        0.6270295423307556
+      ],
+      "state": "moving",
+      "blocker": null
+    },
+    {
+      "frame": 450621,
+      "sim": 35.485999999,
+      "velocity": [
+        -2.4407364256663523e-05,
+        3.810358435122979e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450622,
+      "sim": 35.497999999,
+      "velocity": [
+        -3.4156368711186904e-05,
+        5.33089501431156e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450623,
+      "sim": 35.507999999,
+      "velocity": [
+        -2.273092589711209e-05,
+        3.5502802919758336e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450624,
+      "sim": 35.515999999,
+      "velocity": [
+        -4.058275100097851e-05,
+        6.334388905466739e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450625,
+      "sim": 35.539999999,
+      "velocity": [
+        -3.405156911995955e-05,
+        5.3129810728702067e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450626,
+      "sim": 35.549999999,
+      "velocity": [
+        -2.3599975640386177e-05,
+        3.6845653713274874e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450627,
+      "sim": 35.563999999,
+      "velocity": [
+        -2.2638579588718032e-05,
+        3.5334680337210895e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450628,
+      "sim": 35.577999999,
+      "velocity": [
+        -1.977178933909978e-05,
+        3.087265176838275e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450629,
+      "sim": 35.589999999,
+      "velocity": [
+        -4.7051494034276325e-05,
+        7.344513338243726e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450630,
+      "sim": 35.601999999,
+      "velocity": [
+        -2.819933746828416e-05,
+        4.403454978429065e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450631,
+      "sim": 35.607999999,
+      "velocity": [
+        -2.8191903522772955e-05,
+        4.400226654156279e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450632,
+      "sim": 35.617999999,
+      "velocity": [
+        -2.8191903522772955e-05,
+        4.400226654156279e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450633,
+      "sim": 35.627999999,
+      "velocity": [
+        -9.386134585614019e-06,
+        1.4653679455041331e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450634,
+      "sim": 35.635999999,
+      "velocity": [
+        -5.6283031846269365e-05,
+        8.785564231677407e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450635,
+      "sim": 35.639999999,
+      "velocity": [
+        -5.6283031846269365e-05,
+        8.785564231677407e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450636,
+      "sim": 35.649999999,
+      "velocity": [
+        -2.004763786723823e-05,
+        3.1338726280687626e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450637,
+      "sim": 35.669999999,
+      "velocity": [
+        -4.210639076294968e-05,
+        6.577658151483169e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450638,
+      "sim": 35.685999999,
+      "velocity": [
+        -3.367356147994717e-05,
+        5.256003605680149e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450639,
+      "sim": 35.697999999,
+      "velocity": [
+        -4.898585509452375e-05,
+        7.651394806633482e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450640,
+      "sim": 35.703999999,
+      "velocity": [
+        -1.398634252857777e-05,
+        2.184490810463283e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450641,
+      "sim": 35.717999999,
+      "velocity": [
+        -9.311319345191414e-06,
+        1.4551470917111845e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450642,
+      "sim": 35.731999999,
+      "velocity": [
+        -3.413088466174022e-05,
+        5.332210130227698e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450643,
+      "sim": 35.747999999,
+      "velocity": [
+        -2.788421763858782e-05,
+        4.357732078889215e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450644,
+      "sim": 35.763999999,
+      "velocity": [
+        -3.482022603586697e-05,
+        5.4421759876385386e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450645,
+      "sim": 35.779999999,
+      "velocity": [
+        -2.5681677468393928e-05,
+        4.0134757363678776e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450646,
+      "sim": 35.791999999,
+      "velocity": [
+        -3.472288589991527e-05,
+        5.426927018884153e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450647,
+      "sim": 35.811999999,
+      "velocity": [
+        -2.771880409153061e-05,
+        4.335011939539072e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450648,
+      "sim": 35.823999999,
+      "velocity": [
+        -3.383424022433099e-05,
+        5.2909061921801235e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450649,
+      "sim": 35.837999999,
+      "velocity": [
+        -3.16130439920909e-05,
+        4.941584062579392e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450650,
+      "sim": 35.857999999,
+      "velocity": [
+        -2.208214175958729e-05,
+        3.453825376809737e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450651,
+      "sim": 35.879999999,
+      "velocity": [
+        -5.516191992065353e-05,
+        8.626685521473947e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450652,
+      "sim": 35.921999999,
+      "velocity": [
+        -2.1816010806292878e-05,
+        3.413089175270629e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450653,
+      "sim": 35.933999999,
+      "velocity": [
+        -4.391962051820449e-05,
+        6.870286410888528e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450654,
+      "sim": 35.943999999,
+      "velocity": [
+        -1.8290621054775867e-05,
+        2.8611937485932852e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450655,
+      "sim": 35.951999999,
+      "velocity": [
+        -3.287387269069285e-05,
+        5.143698427191225e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450656,
+      "sim": 35.969999999,
+      "velocity": [
+        -3.757870137289091e-05,
+        5.882860310003161e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450657,
+      "sim": 35.989999999,
+      "velocity": [
+        -1.6372189381994246e-05,
+        2.5623463129061267e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450658,
+      "sim": 36.001999999,
+      "velocity": [
+        -5.447110523746758e-05,
+        8.527583950088053e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450659,
+      "sim": 36.013999999,
+      "velocity": [
+        -2.0388628424463677e-05,
+        3.1927797239376296e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450660,
+      "sim": 36.027999999,
+      "velocity": [
+        -2.7153753690004273e-05,
+        4.2520472698375464e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450661,
+      "sim": 36.063999999,
+      "velocity": [
+        -1.9133902031415465e-05,
+        2.996103866964352e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450662,
+      "sim": 36.079999999,
+      "velocity": [
+        -3.79051254384497e-05,
+        5.93356604739033e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450663,
+      "sim": 36.095999999,
+      "velocity": [
+        -2.9273072021939186e-05,
+        4.5839553153291177e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450664,
+      "sim": 36.115999999,
+      "velocity": [
+        -2.6983018508448753e-05,
+        4.225350593855431e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450665,
+      "sim": 36.157999999,
+      "velocity": [
+        -2.6933614661301144e-05,
+        4.2162782810078736e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450666,
+      "sim": 36.175999999,
+      "velocity": [
+        -2.9855203790654444e-05,
+        4.674204460523217e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450667,
+      "sim": 36.215999999,
+      "velocity": [
+        -2.399305866266154e-05,
+        3.756670721868219e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450668,
+      "sim": 36.247999999,
+      "velocity": [
+        -2.8544301885109138e-05,
+        4.469031672134654e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450669,
+      "sim": 36.257999999,
+      "velocity": [
+        -1.9082763401208728e-05,
+        2.987611631105718e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450670,
+      "sim": 36.271999999,
+      "velocity": [
+        -3.335393325419874e-05,
+        5.222515470080712e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450671,
+      "sim": 36.289999999,
+      "velocity": [
+        -1.9035369693202988e-05,
+        2.9811246170052258e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450672,
+      "sim": 36.305999999,
+      "velocity": [
+        -2.281273046657043e-05,
+        3.573590940623838e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450673,
+      "sim": 36.323999999,
+      "velocity": [
+        -3.62276129499305e-05,
+        5.676252514484379e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450674,
+      "sim": 36.333999999,
+      "velocity": [
+        -3.09353147172793e-05,
+        4.8487952838033327e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450675,
+      "sim": 36.349999999,
+      "velocity": [
+        -1.136027215155285e-05,
+        1.780083953255522e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450676,
+      "sim": 36.385999999,
+      "velocity": [
+        -2.0883990384978377e-05,
+        3.274664308138501e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450677,
+      "sim": 36.395999999,
+      "velocity": [
+        -8.801018743416618e-05,
+        0.00013803442255876962
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450678,
+      "sim": 36.431999999,
+      "velocity": [
+        -2.357196267416902e-05,
+        3.696596504921511e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    },
+    {
+      "frame": 450679,
+      "sim": 36.447999999,
+      "velocity": [
+        -2.6263323701014336e-05,
+        4.122030798176403e-05
+      ],
+      "command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "state": "blocked",
+      "blocker": "field_boundary"
+    }
+  ]
+}
