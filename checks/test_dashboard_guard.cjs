@@ -42,3 +42,12 @@ assert.equal(ctx.passingLines({passing:{active:pass}},2).length,0);
 assert.match(ctx.passingLines({passing:{support:{plan_id:7,passer:1,target:[0,2]}}},1).join(' '),/传后支援/);
 assert.match(ctx.passingLines({passing:{events:[{id:7,passer:1,receiver:3,event:'cancelled',reason:'release_timeout'}]}},3).join(' '),/release_timeout/);
 console.log('Passing cards: shared target, evidence, support, cancellation and legacy replay passed.');
+
+vm.runInContext(source.slice(source.indexOf('const predictionNumber='),source.indexOf('function validBallPrediction(')),ctx);
+const pose={waiting:[-1,4],behind:[-1.3,4],prepare_s:2,attack_ready_s:5,receive_margin_s:.4};
+assert.match(ctx.passingLines({passing:{active:{...pass,pose_plan:pose}}},3).join(' '),/接应站位.*球后点/);
+assert.match(ctx.passingLines({passing:{active:{...pass,pose_plan:pose}}},3).join(' '),/未标定/);
+const selection={reason:'no_safe_pose',anchor:[-.5,3.5],candidates:[{reason:'receive_race'},{reason:'receive_race'}]};
+assert.match(ctx.passingLines({passing:{selection}},3).join(' '),/receive_race 2/);
+assert.equal(ctx.passingLines({passing:{selection}},2).length,0);
+console.log('Receiving pose cards: separate targets, timing estimates, rejected selection and legacy frames passed.');

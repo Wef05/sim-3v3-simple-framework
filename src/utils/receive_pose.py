@@ -233,13 +233,15 @@ def choose(ctx: Any, passer: Any, receiver: Any, preferred: Point, anchor: Point
         attacks.extend((r.pose.x, r.pose.y) for pid, r in ctx.teammates.items()
                        if pid not in (receiver.id, P.GUARD_PLAYER_ID) and r.pose is not None
                        and math.dist(contact, (r.pose.x, r.pose.y)) >= P.PASS_MIN_DISTANCE_M)
-        record['directions'] = []
+        record['direction_rejections'] = {}
         for attack in attacks:
             diagnostic = dict(attack_target=attack)
-            record['directions'].append(diagnostic)
             pose, reason = evaluate(ctx, passer, receiver, contact, attack,
                                     anchor, kickoff, prepare_route, ctx.now, diagnostics=diagnostic)
-            diagnostic['reason'] = reason
+            record.update(diagnostic)
+            if reason != 'ok':
+                counts = record['direction_rejections']
+                counts[reason] = counts.get(reason, 0)+1
             if pose:
                 options.append(pose)
             else:
@@ -255,7 +257,7 @@ def choose(ctx: Any, passer: Any, receiver: Any, preferred: Point, anchor: Point
                     -math.floor((pose.enemy_distance or 0.)/P.PASS_POSE_CLEARANCE_BUCKET_M),
                     math.dist(origin, pose.contact), pose.contact, pose.heading)
         pose = min(options, key=rank)
-        record.update(reason='ok', preferred_region=pose.preferred_region,
+        record.update(reason='ok', attack_target=pose.attack_target, preferred_region=pose.preferred_region,
                       prepare_s=pose.prepare_s, attack_ready_s=pose.attack_ready_s,
                       prepare_margin_s=pose.prepare_margin_s, lane_margin_s=pose.lane_margin_s,
                       receive_margin_s=pose.receive_margin_s)
