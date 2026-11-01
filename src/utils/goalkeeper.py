@@ -444,6 +444,10 @@ def decide_guard(player, preferred=None):
         memory = GuardMemory()
         player._guard_memory = memory
     def result(intent, action):
+        if isinstance(intent, KickIntent) or action == 'prepare':
+            plan = memory.plan
+            if plan is not None:
+                player.guard_decision.update(outlet_style=plan[1], receiver_id=plan[2])
         player.action = 'guard:'+action
         player.tactical_target = getattr(intent, 'target', None) if isinstance(intent, MoveIntent) else (intent.target.point if isinstance(intent, KickIntent) else None)
         return intent
@@ -493,6 +497,7 @@ def decide_guard(player, preferred=None):
         memory.close_clear = False
         memory.retry_at = ctx.now+GUARD_RETRY_S
     speed = math.hypot(*details.get('velocity', (0, 0))) if known else math.inf
+    player.guard_decision['ball_speed_mps'] = speed if known else None
     if not restricted and known and speed <= GUARD_CLEAR_MAX_BALL_SPEED and ctx.now >= memory.retry_at:
         close = close_clearance(ctx, player.id, pose, memory)
         if close is not None:
@@ -505,6 +510,10 @@ def decide_guard(player, preferred=None):
         if choice:
             memory.target = None
             return result(*choice)
+    player.guard_decision['outlet_wait_reason'] = (
+        'restricted' if restricted else 'unknown_velocity' if not known else
+        'fast_ball' if speed > GUARD_CLEAR_MAX_BALL_SPEED else
+        'retry_cooldown' if ctx.now < memory.retry_at else 'no_safe_outlet')
     memory.plan, memory.kick_since, memory.close_clear = None, None, False
     margin = GUARD_RAY_EXIT_MARGIN_M if memory.ray_active else GUARD_RAY_GOAL_MARGIN_M
     ray = shooter_ray(ctx, pose, player.threat, details, margin)

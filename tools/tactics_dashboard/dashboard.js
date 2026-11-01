@@ -9,6 +9,45 @@ function kickPowerLabel(p){
   if(!Object.hasOwn(p,'kick_power'))return '踢球力度：未记录（旧数据）';
   return Number.isFinite(p.kick_power)?`踢球力度：${p.kick_power} 档（指令）`:'踢球力度：—（本帧未下发）';
 }
+// Display only this frame's Agent decision; never recompute tactics in the browser.
+function guardDecisionLines(p){
+  const actions={
+    'guard:set':['预站位，面向球','按球位或威胁者预计触球位置布防'],
+    'guard:anticipate:ray':['提前封住射门方向','按近球对手 → 球的延长线提前站位'],
+    'guard:block:reachable':['移动封堵来球','预测存在能在球进门前到达的封堵点'],
+    'guard:block:best_effort':['尽力靠近球路','未找到可按时到达的封堵点，在可达范围内尽力补位'],
+    'guard:block:hold':['保持位置挡球','模型判断当前位置已覆盖来球路径'],
+    'guard:block:unreachable_hold':['原地保底，面向球','未找到可达封堵点；原地保持不表示已挡住球'],
+    'guard:close_clear':['请求近身应急解围','低速球已在脚前，己方更近且存在可用出球通道'],
+    'guard:prepare':['调整脚位，准备出球','已选出传球或解围方向，正在接近球后位置并调整朝向'],
+    'guard:pass':['请求传球','通过接应、通道、脚位和争抢时间检查'],
+    'guard:clear_kick':['请求向前场解围','已满足标准出球的脚位、朝向和时间条件'],
+    'guard:kick_hold':['保持踢球请求','沿用已选出球目标，继续检查安全条件及超时'],
+    'guard:set:restricted':['限制触球期间站位','对方开球或定位球期间不主动处理球'],
+    'guard:home:no_ball':['返回门前待命点','球观测缺失或已过期'],
+    'guard:stop':['停止','缺少上下文或自身位置'],
+    'guard:stopped':['停止','比赛未开始、已暂停或缺少裁判信息']
+  };
+  const info=actions[p.action],d=p.guard_decision;
+  const lines=[`正在执行：${info?.[0]||p.action||'未知'}`];
+  if(info)lines.push(`依据：${info[1]}`);
+  if(!d||typeof d!=='object'||Array.isArray(d)||!Object.keys(d).length){
+    lines.push('本帧未记录详细依据（可能为旧版数据）；以上仅解释动作类型。');return lines;
+  }
+  const finite=Number.isFinite;
+  if(finite(d.shooter_id))lines.push(`预判射手：敌方 ${d.shooter_id} 号${finite(d.ray_goal_y)?` · 射线到己方门线 Y=${d.ray_goal_y.toFixed(2)} m`:''}`);
+  const sources={measured_prediction:'当前球轨迹预测',short_hold_envelope:'短期威胁保持（防止预测抖动）'};
+  if(sources[d.shot_source])lines.push(`来球判断：${sources[d.shot_source]}`);
+  if(finite(d.goal_time_s)&&d.goal_time_s>=0)lines.push(`预计到门线：${d.goal_time_s.toFixed(2)} s${Array.isArray(d.goal_crossing)&&d.goal_crossing.length===2&&d.goal_crossing.every(finite)?` · 交点 ${pointText(d.goal_crossing)}`:''}`);
+  if(d.ball_fresh===false)lines.push('球观测：缺失或过期');
+  else if(d.velocity_known===false)lines.push('球速：估计无效，不能据此主动出球');
+  else if(finite(d.ball_speed_mps))lines.push(`球速：${d.ball_speed_mps.toFixed(2)} m/s`);
+  const waits={restricted:'对方重启限制主动触球',unknown_velocity:'球速未知',fast_ball:'球速超过主动处理阈值',retry_cooldown:'上次踢球请求超时，等待重试',no_safe_outlet:'未选出满足条件的出球方案'};
+  if(waits[d.outlet_wait_reason])lines.push(`未出球：${waits[d.outlet_wait_reason]}`);
+  if(d.outlet_style)lines.push(`出球计划：${d.outlet_style==='pass'?'传球':'解围'}${finite(d.receiver_id)?` · 我方 ${d.receiver_id} 号`:''}`);
+  if(['guard:close_clear','guard:pass','guard:clear_kick','guard:kick_hold'].includes(p.action))lines.push('这是出球请求；是否触球成功需观察后续球轨迹。');
+  return lines;
+}
 function line(parent,txt){let p=document.createElement('p');p.textContent=txt;parent.append(p)}
 function draw(d){renderThreat(d);renderBallSpeed(d);renderKickVisibility();const w=d.context,f=w.field,s=Math.min(980/(f.length+2),640/(f.width+2));const xy=(x,y)=>[550+x*s,370-y*s];g.clearRect(0,0,1100,740);g.fillStyle='#112c2b';g.fillRect(0,0,1100,740);g.strokeStyle='#4f7972';g.lineWidth=2;
 function path(points){g.beginPath();points.forEach((p,i)=>g[i?'lineTo':'moveTo'](...xy(...p)));g.stroke()}
@@ -74,7 +113,7 @@ if($('kick-error-visible').checked){
 
 function renderPacket(d){displayedPacket=d;const w=d.context;$('empty').hidden=true;c.hidden=false;
 const score=w.game?.teams?.map(t=>`${t.team_number} 队 ${t.score}`).join(' : ')||'比分未知';$('summary').textContent=`${phases[d.phase]||d.phase||'阶段未知'}　 |　${score}　 |　剩余 ${w.game?.secs_remaining??'—'} s　 |　球${w.ball?'可见':'未知'}　 |　帧 ${d.sequence}`;
-$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));if(p.navigation)line(card,navigationLabel(p.navigation));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
+$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;if(p.role==='guard'){card.className+=' guard-card';for(const text of guardDecisionLines(p))line(card,text)}else line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));if(p.navigation)line(card,navigationLabel(p.navigation));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
 
 // Playback uses receiver monotonic timestamps, never the Agent's clock.
 let liveFrames=[], archive=null, viewing='live', playing=false, cursor=0;

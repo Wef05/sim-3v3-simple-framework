@@ -175,3 +175,5 @@ checks/*
 !checks/test_goalkeeper_replay.py
 
 !checks/goalkeeper_replay_cases.py
+
+!checks/test_dashboard_guard.cjs
