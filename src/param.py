@@ -53,7 +53,11 @@ RECEIVE_ARRIVE_M = 0.05        # 等待点到达误差 (m)，小于通常行走�
 RECEIVE_HANDOFF_M = 0.65       # 到位后低速球交接 SDK 的最大距离 (m)
 RECEIVE_REPLAN_M = 0.40        # 来球横向偏离/静止球移位的重新选点阈值 (m)
 RECEIVE_DIRECTION_CHANGE_RAD = math.radians(30)  # 来球方向明显改变时重选等待点
-RECEIVE_ROBOT_STILL_MPS = 0.15 # 稳定交接所需机器人观测平移速度上限 (m/s)
+RECEIVE_ROBOT_STILL_MPS = 0.15 # 位置窗口拟合的平移趋势速度上限 (m/s)
+RECEIVE_ARRIVE_EXIT_M = 0.15   # 已到位后的退出距离；不改变 0.60 m 等待点
+RECEIVE_SETTLE_WINDOW_S = 0.30 # 机器人位置观测窗口 (仿真秒)
+RECEIVE_SETTLE_MIN_SPAN_S = 0.25 # 至少覆盖此观测时间且有三个不同时间样本
+RECEIVE_SETTLE_SPREAD_M = 0.08 # 窗口内最大位置跨度，防止大幅往返被平均为零
 CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 
 

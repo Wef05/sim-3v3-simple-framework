@@ -41,7 +41,8 @@ class BlockedAttackTests(unittest.TestCase):
                 targets = set()
                 for tick in range(61):
                     p.context = replace(p.context, now=tick*.1,
-                                        ball=BallState(*ball, last_seen_at=tick*.1))
+                                        ball=BallState(*ball, last_seen_at=tick*.1),
+                                        teammates={k: replace(v, last_seen_at=tick*.1) for k,v in p.context.teammates.items()})
                     p.motion.update(p.context)
                     intent = p.attack()
                     self.assertIsInstance(intent, KickIntent)

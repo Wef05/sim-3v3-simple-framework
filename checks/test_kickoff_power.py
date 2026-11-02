@@ -33,9 +33,10 @@ class KickoffPowerTests(unittest.TestCase):
                     current = ctx if kickoff else replace(ctx, game=replace(ctx.game, secondary_time=0))
                     # 静止球先由连续观测确认，再检验开球/射门力度链路。
                     store = SimpleNamespace()
-                    for elapsed in (0., .1, .2, .3):
+                    for elapsed in (0., .1, .2, .3, .4, .5, .6):
                         sample = replace(current, now=current.now+elapsed,
-                                         ball=replace(current.ball, last_seen_at=current.now+elapsed))
+                                         ball=replace(current.ball, last_seen_at=current.now+elapsed),
+                                         teammates={k: replace(v, last_seen_at=current.now+elapsed) for k,v in current.teammates.items()})
                         prepare_frame(sample, [player], store)
                         intent = player.decide(RoleTask(Role.ATTACKER))
                     current = sample

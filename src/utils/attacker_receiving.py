@@ -1,7 +1,8 @@
 """先拦球再自动踢球；只产生意图，不把近身低速误报为触球确认。"""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from collections import deque
+from dataclasses import dataclass, field
 import math
 
 from ..framework.types import BallState, Pose2D
@@ -10,7 +11,9 @@ from ..param import (BALL_MOTION_MAX_GAP_S,
                      CHASE_BEHIND_M, KICK_ENTER_M, KICK_EXIT_M,
                      RECEIVE_STABLE_S, RECEIVE_MAX_SPEED_MPS, RECEIVE_STANDOFF_M,
                      RECEIVE_ARRIVE_M, RECEIVE_HANDOFF_M, RECEIVE_REPLAN_M,
-                     RECEIVE_DIRECTION_CHANGE_RAD, RECEIVE_ROBOT_STILL_MPS)
+                     RECEIVE_DIRECTION_CHANGE_RAD, RECEIVE_ROBOT_STILL_MPS,
+                     RECEIVE_ARRIVE_EXIT_M, RECEIVE_SETTLE_WINDOW_S,
+                     RECEIVE_SETTLE_MIN_SPAN_S, RECEIVE_SETTLE_SPREAD_M)
 from .geom import angle_to, behind_ball
 
 
@@ -26,6 +29,41 @@ class ReceiveMemory:
     incoming: tuple[float, float] | None = None
     last_pose: tuple[float, float] | None = None
     robot_speed: float | None = None
+    arrived: bool = False
+    pose_samples: deque = field(default_factory=lambda: deque(maxlen=128))
+
+
+def _settle_metrics(memory: ReceiveMemory, observed_at: float,
+                    position: tuple[float, float]) -> dict:
+    """按观测时间去重，用位置趋势和跨度区分小幅摆动与持续/往返移动。"""
+    samples = memory.pose_samples
+    if samples and (observed_at < samples[-1][0]
+                    or observed_at-samples[-1][0] > BALL_MOTION_MAX_GAP_S):
+        samples.clear()
+        memory.stable_since = None
+        memory.arrived = False
+    if not samples or observed_at > samples[-1][0]:
+        samples.append((observed_at, *position))
+    while samples and observed_at-samples[0][0] > RECEIVE_SETTLE_WINDOW_S+1e-9:
+        samples.popleft()
+    span = samples[-1][0]-samples[0][0] if samples else 0.0
+    result = dict(sample_count=len(samples), span_s=span, trend_mps=None,
+                  spread_m=None, ready=False, settled=False)
+    if len(samples) < 3 or span+1e-9 < RECEIVE_SETTLE_MIN_SPAN_S:
+        return result
+    # 减去窗口起点再拟合，避免大仿真时间的数值消减误差。
+    times = [s[0]-samples[0][0] for s in samples]
+    mean_t = sum(times)/len(times)
+    denominator = sum((t-mean_t)**2 for t in times)
+    velocity = [sum((t-mean_t)*s[axis] for t, s in zip(times, samples))/denominator
+                for axis in (1, 2)]
+    trend = math.hypot(*velocity)
+    positions = [s[1:] for s in samples]
+    spread = max(math.dist(a, b) for i, a in enumerate(positions)
+                 for b in positions[i+1:])
+    result.update(ready=True, trend_mps=trend, spread_m=spread,
+                  settled=trend <= RECEIVE_ROBOT_STILL_MPS and spread <= RECEIVE_SETTLE_SPREAD_M)
+    return result
 
 
 def receive_intent(
@@ -33,6 +71,7 @@ def receive_intent(
     current_ball: tuple[float, float] | None, intercept: dict | None,
     target: tuple[float, float], aim: KickTarget, style: str,
     now: float, phase: str, speed: float | None, memory: ReceiveMemory | None,
+    pose_observed_at: float | None,
 ) -> tuple[MoveIntent | FaceIntent | KickIntent | StopIntent, ReceiveMemory | None, dict]:
     """同帧 B→I 与 B→T 的点积为负才跳过拦球；退化向量不分类。
 
@@ -54,11 +93,17 @@ def receive_intent(
                          ball.x, ball.y, ball.last_seen_at, *current_ball, *target))
             or not 0 <= now - ball.last_seen_at <= BALL_MOTION_MAX_GAP_S):
         return StopIntent(), None, detail
+    if (pose_observed_at is None or not math.isfinite(pose_observed_at)
+            or not 0 <= now-pose_observed_at <= BALL_MOTION_MAX_GAP_S):
+        detail['reason'] = 'invalid_robot_observation'
+        return StopIntent(), None, detail
     position = pose.x, pose.y
     if memory.last_pose is not None and elapsed > 0:
         memory.robot_speed = math.dist(position, memory.last_pose) / elapsed
     memory.last_pose = position
     detail['robot_speed_mps'] = memory.robot_speed
+    settling = _settle_metrics(memory, pose_observed_at, position)
+    detail['settling'] = settling
     distance = max(math.hypot(pose.x-ball.x, pose.y-ball.y),
                    math.hypot(pose.x-current_ball[0], pose.y-current_ball[1]))
     detail['ball_distance_m'] = distance
@@ -83,12 +128,14 @@ def receive_intent(
     if memory.stage == 'auto_kick':
         memory.stage, memory.stable_since = 'intercept', None
         memory.wait_point = None
+        memory.arrived = False
     if not valid:
         detail['reason'] = 'no_intercept_estimate'
         return StopIntent(), None, detail
     if rebound:
         memory.stable_since = None
         memory.wait_point = None
+        memory.arrived = False
         if distance <= KICK_ENTER_M:
             memory.stage = 'auto_kick'
             detail.update(stage='auto_kick', reason='rebound_over_90')
@@ -129,16 +176,26 @@ def receive_intent(
                              anchor[1]+RECEIVE_STANDOFF_M*direction[1])
         memory.ball_anchor, memory.incoming = anchor, incoming
         memory.stable_since = None
+        memory.arrived = False
     wait = memory.wait_point
-    arrived = math.dist(position, wait) <= RECEIVE_ARRIVE_M
-    detail.update(wait_point=wait, replanned=replan, arrived=arrived)
+    wait_distance = math.dist(position, wait)
+    # 进入与退出使用不同阈值；已停车后的小幅漂移不能重新触发行走。
+    if memory.arrived and wait_distance > RECEIVE_ARRIVE_EXIT_M:
+        memory.arrived = False
+        memory.stable_since = None
+    elif not memory.arrived and wait_distance <= RECEIVE_ARRIVE_M:
+        memory.arrived = True
+    arrived = memory.arrived
+    detail.update(wait_point=wait, replanned=replan, arrived=arrived,
+                  wait_distance_m=wait_distance, arrival_exit_m=RECEIVE_ARRIVE_EXIT_M)
 
     # 不再为满足旧 0.35 m 条件主动贴球。到安全等待点且机器人已减速，
     # 才积累近身低速观测；只到预测点或只发停车指令都不足以确认稳定。
     stable = (arrived and distance <= RECEIVE_HANDOFF_M and speed is not None
               and math.isfinite(speed) and 0 <= speed <= RECEIVE_MAX_SPEED_MPS
-              and memory.robot_speed is not None and memory.robot_speed <= RECEIVE_ROBOT_STILL_MPS)
-    observed = ball.last_seen_at
+              and settling['settled'])
+    # 两类观测都必须推进，重复机器人快照不能借新球帧累计停稳时间。
+    observed = min(ball.last_seen_at, pose_observed_at)
     if (memory.last_observed is not None
             and (observed < memory.last_observed
                  or observed - memory.last_observed > BALL_MOTION_MAX_GAP_S)):

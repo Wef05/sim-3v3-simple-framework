@@ -1,4 +1,5 @@
 """接球、补射边界与跨帧生命周期回归。"""
+import math
 import unittest
 from dataclasses import replace
 from unittest.mock import patch
@@ -17,7 +18,7 @@ class AttackerReceivingTests(unittest.TestCase):
         args = dict(pose=Pose2D(-.6, 0, 0), ball=BallState(0, 0, last_seen_at=now),
                     current_ball=(0, 0), intercept=dict(status='intercept', target=(1, 0)),
                     target=(7, 0), aim=KickTarget.goal(), style='shot', now=now,
-                    phase='normal', speed=1., memory=self.memory)
+                    phase='normal', speed=1., memory=self.memory, pose_observed_at=now)
         args.update(changes)
         intent, self.memory, detail = receive_intent(**args)
         return intent, detail
@@ -51,9 +52,9 @@ class AttackerReceivingTests(unittest.TestCase):
         self.assertIsInstance(intent, KickIntent)
 
     def test_stationary_ball_requires_fresh_stable_observations(self):
-        for now in (0., .1, .2):
+        for now in (0., .1, .2, .3, .4):
             self.assertIsInstance(self.step(now, speed=0.)[0], FaceIntent)
-        intent, info = self.step(.25, speed=0.)
+        intent, info = self.step(.45, speed=0.)
         self.assertIsInstance(intent, KickIntent)
         self.assertEqual(info['reason'], 'near_ball_low_speed')
         self.assertFalse(info['contact_confirmed'])
@@ -110,8 +111,9 @@ class AttackerReceivingTests(unittest.TestCase):
         with patch('src.player.evaluate_attack_targets', return_value=candidates([.2]*7)), patch(
                 'src.player.evaluate_scoring', return_value={'evaluated_at':0}):
             self.assertIsInstance(p.attack(), FaceIntent)  # 到位但球速未知，不启动踢球。
-            for now in (.1, .2, .25):
-                p.context = replace(p.context, now=now, ball=BallState(3, 0, last_seen_at=now))
+            for now in (.1, .2, .3, .4, .45):
+                p.context = replace(p.context, now=now, ball=BallState(3, 0, last_seen_at=now),
+                                    teammates={3: replace(p.context.teammates[3], last_seen_at=now)})
                 p.motion.update(p.context)
                 intent = p.attack()
             self.assertIsInstance(intent, KickIntent)
@@ -152,7 +154,9 @@ class AttackerReceivingTests(unittest.TestCase):
         self.assertIsInstance(self.step(.1, pose=Pose2D(-.6, 0), speed=0.)[0], FaceIntent)
         self.assertGreater(self.memory.robot_speed, .15)
         self.assertIsInstance(self.step(.2, speed=0.)[0], FaceIntent)
-        self.assertIsInstance(self.step(.35, speed=0.)[0], KickIntent)
+        for now in (.3, .4, .5):
+            self.assertIsInstance(self.step(now, speed=0.)[0], FaceIntent)
+        self.assertIsInstance(self.step(.55, speed=0.)[0], KickIntent)
 
     def test_navigation_blocks_crossing_ball_on_way_to_wait_point(self):
         from checks.test_navigation import context, controller, frame
@@ -171,6 +175,66 @@ class AttackerReceivingTests(unittest.TestCase):
         self.assertFalse(info['arrived'])
         for now in (.1, .3):
             self.assertIsInstance(self.step(now, pose=Pose2D(-.2, 0), speed=0.)[0], MoveIntent)
+
+    def test_arrival_holds_through_small_drift_and_hands_off(self):
+        self.step(speed=0.)
+        for i in range(1, 26):
+            x = -.53 + (.002 if i % 2 else -.002)
+            intent, info = self.step(i*.02, speed=0., pose=Pose2D(x, 0))
+            self.assertTrue(self.memory.arrived)
+            self.assertNotIsInstance(intent, MoveIntent)
+        self.assertIsInstance(intent, KickIntent)
+
+    def test_arrival_exit_clears_stability_and_resumes_safe_approach(self):
+        self.step(speed=0.)
+        intent, info = self.step(.1, speed=0., pose=Pose2D(-.44, 0))
+        self.assertIsInstance(intent, MoveIntent)
+        self.assertTrue(intent.avoid_ball)
+        self.assertFalse(info['arrived'])
+        self.assertIsNone(self.memory.stable_since)
+
+    def test_duplicate_robot_observation_cannot_complete_window(self):
+        for i in range(10):
+            intent, info = self.step(i*.05, speed=0., pose_observed_at=0.)
+            self.assertNotIsInstance(intent, KickIntent)
+            self.assertEqual(info['settling']['sample_count'], 1)
+
+    def test_window_rejects_continuous_and_back_forth_motion(self):
+        from src.utils.attacker_receiving import _settle_metrics
+        for positions in ([(-.6+i*.01, 0) for i in range(31)],
+                          [(-.6+.06*math.cos(i*math.pi/15), 0) for i in range(31)]):
+            memory = ReceiveMemory('normal', 0.)
+            for i, position in enumerate(positions):
+                metrics = _settle_metrics(memory, i*.01, position)
+            self.assertTrue(metrics['ready'])
+            self.assertFalse(metrics['settled'])
+
+    def test_window_rewind_and_stale_pose_clear_evidence(self):
+        for now in (0., .1, .2, .3):
+            self.step(now, speed=0.)
+        intent, info = self.step(.35, speed=0., pose_observed_at=.15)
+        self.assertNotIsInstance(intent, KickIntent)
+        self.assertEqual(info['settling']['sample_count'], 1)
+        self.assertIsInstance(self.step(.8, speed=0., pose_observed_at=.1)[0], StopIntent)
+        self.assertIsNone(self.memory)
+
+    def test_recorded_opening_jitter_reaches_normal_handoff(self):
+        import json
+        from pathlib import Path
+        samples = json.loads((Path(__file__).parent/'fixtures/attacker-settle-opening.json').read_text())
+        for sample in samples:
+            intent, info = self.step(
+                sample['now'], pose=Pose2D(**sample['pose']),
+                pose_observed_at=sample['pose_observed_at'],
+                ball=BallState(**sample['ball']), current_ball=tuple(sample['current_ball']),
+                intercept=sample['intercept'], target=tuple(sample['target']), speed=sample['speed'])
+            if isinstance(intent, KickIntent):
+                self.assertEqual(info['reason'], 'near_ball_low_speed')
+                self.assertLess(sample['now'], 60.)
+                self.assertTrue(info['settling']['settled'])
+                break
+        else:
+            self.fail('Recorded opening never reaches normal handoff')
 
 
 if __name__ == '__main__':

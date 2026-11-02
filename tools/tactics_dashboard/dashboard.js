@@ -817,6 +817,10 @@ function renderAttackChoice(d){
   if(receiving){
     const stages={intercept:'前往拦球点',wait_ball:'等待来球',rebound_chase:'补射接近',auto_kick:'自动踢球',unavailable:'接球数据不足'};
     line(box,`接球阶段：${stages[receiving.stage]||receiving.stage} · ${receiving.reason}`);
+    if(receiving.settling){
+      const s=receiving.settling,fmt=v=>Number.isFinite(v)?v.toFixed(3):'未知';
+      line(box,`停稳窗口：${s.sample_count} 个观测 / ${fmt(s.span_s)} s · 趋势 ${fmt(s.trend_mps)} m/s · 跨度 ${fmt(s.spread_m)} m · ${s.settled?'已停稳':'尚未停稳'}`);
+    }
     if(receiving.wait_point)line(box,`等待点 ${pointText(receiving.wait_point)} · 安全间距 ${Number(receiving.standoff_m).toFixed(2)} m`);
     line(box,`拦球点 ${pointText(receiving.intercept_point)} · 出球点 ${pointText(receiving.outgoing_target)} · 夹角 ${Number.isFinite(receiving.angle_deg)?receiving.angle_deg.toFixed(1)+'°':'未定义'}`);
     line(box,`近身低速持续 ${Number.isFinite(receiving.stable_s)?receiving.stable_s.toFixed(2):'0.00'} s；不代表已确认触球。`);

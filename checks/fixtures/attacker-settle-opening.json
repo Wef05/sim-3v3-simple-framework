@@ -1,0 +1,6097 @@
+[
+  {
+    "frame": 206742,
+    "now": 54.444,
+    "pose": {
+      "x": -1.4978202168554502,
+      "y": -0.11433506596823614,
+      "theta": 0.09298868609785746
+    },
+    "pose_observed_at": 54.44,
+    "ball": {
+      "x": -7.729432495681331e-17,
+      "y": 1.5844492880529606e-16,
+      "last_seen_at": 54.44
+    },
+    "current_ball": [
+      -7.729432495681331e-17,
+      1.5844492880529606e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.729432495681331e-17,
+        1.5844492880529606e-16
+      ],
+      "ball_position": [
+        -7.729432495681331e-17,
+        1.5844492880529606e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.5021777222855053,
+      "turn_angle_rad": 0.016802129209628286,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1521777222855052,
+      "move_time_s": 0.5760888611427526,
+      "arrival_time_s": 0.5760888611427526,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.023911138857247494,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.122907516644397,
+      4.298679271618524
+    ],
+    "speed": 2.2702045864303246e-18
+  },
+  {
+    "frame": 206743,
+    "now": 54.514,
+    "pose": {
+      "x": -1.4978519900564262,
+      "y": -0.11434497723036556,
+      "theta": 0.09355847258924534
+    },
+    "pose_observed_at": 54.508,
+    "ball": {
+      "x": -7.73291573355904e-17,
+      "y": 1.582967562507138e-16,
+      "last_seen_at": 54.508
+    },
+    "current_ball": [
+      -7.73291573355904e-17,
+      1.582967562507138e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.73291573355904e-17,
+        1.582967562507138e-16
+      ],
+      "ball_position": [
+        -7.73291573355904e-17,
+        1.582967562507138e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.502210157712232,
+      "turn_angle_rad": 0.017366946914266337,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.152210157712232,
+      "move_time_s": 0.576105078856116,
+      "arrival_time_s": 0.576105078856116,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.02389492114388414,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1229470976099585,
+      4.29867548654261
+    ],
+    "speed": 2.2384073010500502e-18
+  },
+  {
+    "frame": 206744,
+    "now": 54.554,
+    "pose": {
+      "x": -1.4978704010032813,
+      "y": -0.11435174076980345,
+      "theta": 0.09386266777260986
+    },
+    "pose_observed_at": 54.554,
+    "ball": {
+      "x": -7.726749058696111e-17,
+      "y": 1.580355621833301e-16,
+      "last_seen_at": 54.554
+    },
+    "current_ball": [
+      -7.726749058696111e-17,
+      1.580355621833301e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.726749058696111e-17,
+        1.580355621833301e-16
+      ],
+      "ball_position": [
+        -7.726749058696111e-17,
+        1.580355621833301e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.5022290300812373,
+      "turn_angle_rad": 0.01766758570521014,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1522290300812372,
+      "move_time_s": 0.5761145150406186,
+      "arrival_time_s": 0.5761145150406186,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.023885484959381476,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1229712702544272,
+      4.298672980546043
+    ],
+    "speed": 5.834238648385037e-18
+  },
+  {
+    "frame": 206745,
+    "now": 54.6,
+    "pose": {
+      "x": -1.497820714324046,
+      "y": -0.11438031946764066,
+      "theta": 0.0929795631451891
+    },
+    "pose_observed_at": 54.6,
+    "ball": {
+      "x": -7.732225197189994e-17,
+      "y": 1.5790778019852096e-16,
+      "last_seen_at": 54.6
+    },
+    "current_ball": [
+      -7.732225197189994e-17,
+      1.5790778019852096e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.732225197189994e-17,
+        1.5790778019852096e-16
+      ],
+      "ball_position": [
+        -7.732225197189994e-17,
+        1.5790778019852096e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.502181663361564,
+      "turn_angle_rad": 0.016762993665442413,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.152181663361564,
+      "move_time_s": 0.576090831680782,
+      "arrival_time_s": 0.576090831680782,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.023909168319218077,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1229941402993306,
+      4.298670409702801
+    ],
+    "speed": 3.022211796171471e-18
+  },
+  {
+    "frame": 206746,
+    "now": 54.642,
+    "pose": {
+      "x": -1.4974438328605304,
+      "y": -0.11445591071789599,
+      "theta": 0.09129699634341547
+    },
+    "pose_observed_at": 54.64,
+    "ball": {
+      "x": -7.764880160763462e-17,
+      "y": 1.5804468177345434e-16,
+      "last_seen_at": 54.64
+    },
+    "current_ball": [
+      -7.764880160763462e-17,
+      1.5804468177345434e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.764880160763462e-17,
+        1.5804468177345434e-16
+      ],
+      "ball_position": [
+        -7.764880160763462e-17,
+        1.5804468177345434e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.5018116353492201,
+      "turn_angle_rad": 0.015011131480047957,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1518116353492203,
+      "move_time_s": 0.5759058176746101,
+      "arrival_time_s": 0.5759058176746101,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.024094182325389957,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.123020220992809,
+      4.298667262073389
+    ],
+    "speed": 8.852143307474286e-18
+  },
+  {
+    "frame": 206747,
+    "now": 54.676,
+    "pose": {
+      "x": -1.4966879089374359,
+      "y": -0.11451863636083447,
+      "theta": 0.08983454330651189
+    },
+    "pose_observed_at": 54.676,
+    "ball": {
+      "x": -7.802816881746764e-17,
+      "y": 1.5831282437426425e-16,
+      "last_seen_at": 54.676
+    },
+    "current_ball": [
+      -7.802816881746764e-17,
+      1.5831282437426425e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.802816881746764e-17,
+        1.5831282437426425e-16
+      ],
+      "ball_position": [
+        -7.802816881746764e-17,
+        1.5831282437426425e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.501062695170811,
+      "turn_angle_rad": 0.013468632746417505,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1510626951708112,
+      "move_time_s": 0.5755313475854056,
+      "arrival_time_s": 0.5755313475854056,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.024468652414594505,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1230415950536394,
+      4.298664526809025
+    ],
+    "speed": 1.2904562257464231e-17
+  },
+  {
+    "frame": 206748,
+    "now": 54.724,
+    "pose": {
+      "x": -1.4952981598304873,
+      "y": -0.11452913519123001,
+      "theta": 0.08836366751302926
+    },
+    "pose_observed_at": 54.718,
+    "ball": {
+      "x": -7.81890753048686e-17,
+      "y": 1.5840147101915918e-16,
+      "last_seen_at": 54.718
+    },
+    "current_ball": [
+      -7.81890753048686e-17,
+      1.5840147101915918e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.81890753048686e-17,
+        1.5840147101915918e-16
+      ],
+      "ball_position": [
+        -7.81890753048686e-17,
+        1.5840147101915918e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4996778019294987,
+      "turn_angle_rad": 0.011920077224279346,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1496778019294989,
+      "move_time_s": 0.5748389009647494,
+      "arrival_time_s": 0.5748389009647494,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.025161099035250656,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1230639237572784,
+      4.298661523394863
+    ],
+    "speed": 4.3740321468371165e-18
+  },
+  {
+    "frame": 206749,
+    "now": 54.768,
+    "pose": {
+      "x": -1.4934283982679593,
+      "y": -0.11444736286588744,
+      "theta": 0.08725840063989604
+    },
+    "pose_observed_at": 54.758,
+    "ball": {
+      "x": -7.837352378786032e-17,
+      "y": 1.584412460759363e-16,
+      "last_seen_at": 54.758
+    },
+    "current_ball": [
+      -7.837352378786032e-17,
+      1.584412460759363e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.837352378786032e-17,
+        1.584412460759363e-16
+      ],
+      "ball_position": [
+        -7.837352378786032e-17,
+        1.584412460759363e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4978072571663412,
+      "turn_angle_rad": 0.010773911495324265,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1478072571663414,
+      "move_time_s": 0.5739036285831707,
+      "arrival_time_s": 0.5739036285831707,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.02609637141682941,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1230838637827747,
+      4.298658715546746
+    ],
+    "speed": 4.717209054327794e-18
+  },
+  {
+    "frame": 206750,
+    "now": 54.818,
+    "pose": {
+      "x": -1.4891061385953968,
+      "y": -0.1141356719678987,
+      "theta": 0.0854551751718147
+    },
+    "pose_observed_at": 54.812,
+    "ball": {
+      "x": -7.857386918851755e-17,
+      "y": 1.5836081268728884e-16,
+      "last_seen_at": 54.812
+    },
+    "current_ball": [
+      -7.857386918851755e-17,
+      1.5836081268728884e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.857386918851755e-17,
+        1.5836081268728884e-16
+      ],
+      "ball_position": [
+        -7.857386918851755e-17,
+        1.5836081268728884e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4934738175200986,
+      "turn_angle_rad": 0.0089576399751327,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1434738175200985,
+      "move_time_s": 0.5717369087600492,
+      "arrival_time_s": 0.5717369087600492,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.028263091239950855,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1231156178578594,
+      4.298653993141348
+    ],
+    "speed": 3.997933690139336e-18
+  },
+  {
+    "frame": 206751,
+    "now": 54.86,
+    "pose": {
+      "x": -1.484548189172702,
+      "y": -0.11384354125618856,
+      "theta": 0.08394640431686477
+    },
+    "pose_observed_at": 54.856,
+    "ball": {
+      "x": -7.861755550778224e-17,
+      "y": 1.5818633737576699e-16,
+      "last_seen_at": 54.856
+    },
+    "current_ball": [
+      -7.861755550778224e-17,
+      1.5818633737576699e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.861755550778224e-17,
+        1.5818633737576699e-16
+      ],
+      "ball_position": [
+        -7.861755550778224e-17,
+        1.5818633737576699e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4889068734684845,
+      "turn_angle_rad": 0.007410548684963643,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1389068734684846,
+      "move_time_s": 0.5694534367342423,
+      "arrival_time_s": 0.5694534367342423,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.030546563265757776,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1231405689556828,
+      4.2986499969659855
+    ],
+    "speed": 4.087759445448399e-18
+  },
+  {
+    "frame": 206752,
+    "now": 54.914,
+    "pose": {
+      "x": -1.4772282458319854,
+      "y": -0.11360071373132435,
+      "theta": 0.08192301806508245
+    },
+    "pose_observed_at": 54.914,
+    "ball": {
+      "x": -7.877665159916654e-17,
+      "y": 1.5818844474929574e-16,
+      "last_seen_at": 54.914
+    },
+    "current_ball": [
+      -7.877665159916654e-17,
+      1.5818844474929574e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.877665159916654e-17,
+        1.5818844474929574e-16
+      ],
+      "ball_position": [
+        -7.877665159916654e-17,
+        1.5818844474929574e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4815898259788742,
+      "turn_angle_rad": 0.005172815204873518,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1315898259788741,
+      "move_time_s": 0.5657949129894371,
+      "arrival_time_s": 0.5657949129894371,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.03420508701056302,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.123172768396309,
+      4.298644645052127
+    ],
+    "speed": 2.743276686533883e-18
+  },
+  {
+    "frame": 206753,
+    "now": 54.95,
+    "pose": {
+      "x": -1.473326184756085,
+      "y": -0.11357406328243898,
+      "theta": 0.080865336118265
+    },
+    "pose_observed_at": 54.95,
+    "ball": {
+      "x": -7.886492095075213e-17,
+      "y": 1.5820228237078243e-16,
+      "last_seen_at": 54.95
+    },
+    "current_ball": [
+      -7.886492095075213e-17,
+      1.5820228237078243e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.886492095075213e-17,
+        1.5820228237078243e-16
+      ],
+      "ball_position": [
+        -7.886492095075213e-17,
+        1.5820228237078243e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4776972337181948,
+      "turn_angle_rad": 0.003930644822899315,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.127697233718195,
+      "move_time_s": 0.5638486168590975,
+      "arrival_time_s": 0.5638486168590975,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.036151383140902604,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1231876674858772,
+      4.298642088455124
+    ],
+    "speed": 2.4818722705646542e-18
+  },
+  {
+    "frame": 206754,
+    "now": 55.05,
+    "pose": {
+      "x": -1.457291195393357,
+      "y": -0.1139432570665693,
+      "theta": 0.07556510403854495
+    },
+    "pose_observed_at": 55.046,
+    "ball": {
+      "x": -7.957757728190084e-17,
+      "y": 1.5867264623745296e-16,
+      "last_seen_at": 55.046
+    },
+    "current_ball": [
+      -7.957757728190084e-17,
+      1.5867264623745296e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.957757728190084e-17,
+        1.5867264623745296e-16
+      ],
+      "ball_position": [
+        -7.957757728190084e-17,
+        1.5867264623745296e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4617389281270228,
+      "turn_angle_rad": 0.002464538159264909,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1117389281270227,
+      "move_time_s": 0.5558694640635113,
+      "arrival_time_s": 0.5558694640635113,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.044130535936488746,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1232402763553524,
+      4.2986326111325575
+    ],
+    "speed": 8.894645299009207e-18
+  },
+  {
+    "frame": 206755,
+    "now": 55.096,
+    "pose": {
+      "x": -1.448824710563404,
+      "y": -0.11438976746488062,
+      "theta": 0.07179184624390457
+    },
+    "pose_observed_at": 55.092,
+    "ball": {
+      "x": -7.996556311999197e-17,
+      "y": 1.5909844617668395e-16,
+      "last_seen_at": 55.09
+    },
+    "current_ball": [
+      -7.996556311999197e-17,
+      1.5909844617668395e-16
+    ],
+    "intercept": {
+      "target": [
+        -7.996556311999197e-17,
+        1.5909844617668395e-16
+      ],
+      "ball_position": [
+        -7.996556311999197e-17,
+        1.5909844617668395e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4533334307170536,
+      "turn_angle_rad": 0.0069981985187120704,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.1033334307170537,
+      "move_time_s": 0.5516667153585268,
+      "arrival_time_s": 0.5516667153585268,
+      "status": "intercept",
+      "score_s": 0.6000000000000001,
+      "intercept_time_s": 0.6000000000000001,
+      "target_time_s": 0.6000000000000001,
+      "slack_s": 0.04833328464147324,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.12326519372859,
+      4.298627839374743
+    ],
+    "speed": 1.3092144015464475e-17
+  },
+  {
+    "frame": 206756,
+    "now": 55.136,
+    "pose": {
+      "x": -1.4413643231003384,
+      "y": -0.11486209234560663,
+      "theta": 0.06779664910989809
+    },
+    "pose_observed_at": 55.134,
+    "ball": {
+      "x": -8.034627110814769e-17,
+      "y": 1.595324603255632e-16,
+      "last_seen_at": 55.134
+    },
+    "current_ball": [
+      -8.034627110814769e-17,
+      1.595324603255632e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.034627110814769e-17,
+        1.595324603255632e-16
+      ],
+      "ball_position": [
+        -8.034627110814769e-17,
+        1.595324603255632e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4459337509597414,
+      "turn_angle_rad": 0.011725141452807314,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0959337509597415,
+      "move_time_s": 0.5479668754798708,
+      "arrival_time_s": 0.5479668754798708,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.0020331245201292703,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1232868529701634,
+      4.298623537961013
+    ],
+    "speed": 1.3121075833537396e-17
+  },
+  {
+    "frame": 206757,
+    "now": 55.186,
+    "pose": {
+      "x": -1.432661638323533,
+      "y": -0.11508091674729153,
+      "theta": 0.061280807993637894
+    },
+    "pose_observed_at": 55.184,
+    "ball": {
+      "x": -8.088286353355753e-17,
+      "y": 1.6014266049043553e-16,
+      "last_seen_at": 55.184
+    },
+    "current_ball": [
+      -8.088286353355753e-17,
+      1.6014266049043553e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.088286353355753e-17,
+        1.6014266049043553e-16
+      ],
+      "ball_position": [
+        -8.088286353355753e-17,
+        1.6014266049043553e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4372762390449747,
+      "turn_angle_rad": 0.018873746700457168,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0872762390449746,
+      "move_time_s": 0.5436381195224873,
+      "arrival_time_s": 0.5436381195224873,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.006361880477512738,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1233134679817998,
+      4.298618088043792
+    ],
+    "speed": 1.625146974544166e-17
+  },
+  {
+    "frame": 206758,
+    "now": 55.238,
+    "pose": {
+      "x": -1.4272325130948447,
+      "y": -0.11434318697545237,
+      "theta": 0.0555687470383749
+    },
+    "pose_observed_at": 55.232,
+    "ball": {
+      "x": -8.115353188209857e-17,
+      "y": 1.6038477950296885e-16,
+      "last_seen_at": 55.232
+    },
+    "current_ball": [
+      -8.115353188209857e-17,
+      1.6038477950296885e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.115353188209857e-17,
+        1.6038477950296885e-16
+      ],
+      "ball_position": [
+        -8.115353188209857e-17,
+        1.6038477950296885e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4318055073377562,
+      "turn_angle_rad": 0.02437582251017681,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0818055073377564,
+      "move_time_s": 0.5409027536688782,
+      "arrival_time_s": 0.5409027536688782,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.009097246331121855,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.12333277150936,
+      4.298613990480941
+    ],
+    "speed": 7.565769814577159e-18
+  },
+  {
+    "frame": 206759,
+    "now": 55.262,
+    "pose": {
+      "x": -1.424107170707623,
+      "y": -0.11309311566759249,
+      "theta": 0.05303269547754803
+    },
+    "pose_observed_at": 55.254,
+    "ball": {
+      "x": -8.12652452476587e-17,
+      "y": 1.604699980738083e-16,
+      "last_seen_at": 55.254
+    },
+    "current_ball": [
+      -8.12652452476587e-17,
+      1.604699980738083e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.12652452476587e-17,
+        1.604699980738083e-16
+      ],
+      "ball_position": [
+        -8.12652452476587e-17,
+        1.604699980738083e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.428590664421504,
+      "turn_angle_rad": 0.02621433994953324,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0785906644215042,
+      "move_time_s": 0.5392953322107521,
+      "arrival_time_s": 0.5392953322107521,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.010704667789247946,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.123345918810189,
+      4.298611139670835
+    ],
+    "speed": 6.386659789427652e-18
+  },
+  {
+    "frame": 206760,
+    "now": 55.3,
+    "pose": {
+      "x": -1.4186420149325527,
+      "y": -0.10955622064213995,
+      "theta": 0.04833312905716747
+    },
+    "pose_observed_at": 55.296,
+    "ball": {
+      "x": -8.159485082044854e-17,
+      "y": 1.6078575760760304e-16,
+      "last_seen_at": 55.296
+    },
+    "current_ball": [
+      -8.159485082044854e-17,
+      1.6078575760760304e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.159485082044854e-17,
+        1.6078575760760304e-16
+      ],
+      "ball_position": [
+        -8.159485082044854e-17,
+        1.6078575760760304e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.422866027429597,
+      "turn_angle_rad": 0.02874001720637064,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0728660274295971,
+      "move_time_s": 0.5364330137147986,
+      "arrival_time_s": 0.5364330137147986,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.013566986285201477,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.123369022900237,
+      4.298606038659584
+    ],
+    "speed": 1.0867787096268786e-17
+  },
+  {
+    "frame": 206761,
+    "now": 55.344,
+    "pose": {
+      "x": -1.4113320276584989,
+      "y": -0.10762069110632042,
+      "theta": 0.050188402137496806
+    },
+    "pose_observed_at": 55.34,
+    "ball": {
+      "x": -8.211086034140368e-17,
+      "y": 1.6126291972379633e-16,
+      "last_seen_at": 55.34
+    },
+    "current_ball": [
+      -8.211086034140368e-17,
+      1.6126291972379633e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.211086034140368e-17,
+        1.6126291972379633e-16
+      ],
+      "ball_position": [
+        -8.211086034140368e-17,
+        1.6126291972379633e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.4154293714095563,
+      "turn_angle_rad": 0.025919003448164064,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0654293714095564,
+      "move_time_s": 0.5327146857047782,
+      "arrival_time_s": 0.5327146857047782,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.017285314295221843,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.123388959180756,
+      4.298601533909844
+    ],
+    "speed": 1.597307766674578e-17
+  },
+  {
+    "frame": 206762,
+    "now": 55.388,
+    "pose": {
+      "x": -1.394996613505946,
+      "y": -0.11017342951469052,
+      "theta": 0.04795608155977696
+    },
+    "pose_observed_at": 55.386,
+    "ball": {
+      "x": -8.287135682306275e-17,
+      "y": 1.6178155806811675e-16,
+      "last_seen_at": 55.386
+    },
+    "current_ball": [
+      -8.287135682306275e-17,
+      1.6178155806811675e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.287135682306275e-17,
+        1.6178155806811675e-16
+      ],
+      "ball_position": [
+        -8.287135682306275e-17,
+        1.6178155806811675e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.3993404647419034,
+      "turn_angle_rad": 0.030857884477921357,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0493404647419036,
+      "move_time_s": 0.5246702323709518,
+      "arrival_time_s": 0.5246702323709518,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.02532976762904826,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1234156726064266,
+      4.298595330624144
+    ],
+    "speed": 2.0011110227106267e-17
+  },
+  {
+    "frame": 206763,
+    "now": 55.432,
+    "pose": {
+      "x": -1.3762412246058464,
+      "y": -0.11484311940805599,
+      "theta": 0.04699824139559671
+    },
+    "pose_observed_at": 55.43,
+    "ball": {
+      "x": -8.360559025484747e-17,
+      "y": 1.6236446834312534e-16,
+      "last_seen_at": 55.43
+    },
+    "current_ball": [
+      -8.360559025484747e-17,
+      1.6236446834312534e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.360559025484747e-17,
+        1.6236446834312534e-16
+      ],
+      "ball_position": [
+        -8.360559025484747e-17,
+        1.6236446834312534e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.3810245654513076,
+      "turn_angle_rad": 0.0362558129740992,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0310245654513075,
+      "move_time_s": 0.5155122827256537,
+      "arrival_time_s": 0.5155122827256537,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.0344877172743463,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1234372580072645,
+      4.298590167507988
+    ],
+    "speed": 2.1306537829198967e-17
+  },
+  {
+    "frame": 206764,
+    "now": 55.48,
+    "pose": {
+      "x": -1.3546599431147257,
+      "y": -0.12141688878056443,
+      "theta": 0.05127232848282011
+    },
+    "pose_observed_at": 55.476,
+    "ball": {
+      "x": -8.435732152462147e-17,
+      "y": 1.6294528397989211e-16,
+      "last_seen_at": 55.476
+    },
+    "current_ball": [
+      -8.435732152462147e-17,
+      1.6294528397989211e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.435732152462147e-17,
+        1.6294528397989211e-16
+      ],
+      "ball_position": [
+        -8.435732152462147e-17,
+        1.6294528397989211e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.3600902993407253,
+      "turn_angle_rad": 0.03811786775576795,
+      "turn_time_s": 0.0,
+      "move_distance_m": 1.0100902993407255,
+      "move_time_s": 0.5050451496703627,
+      "arrival_time_s": 0.5050451496703627,
+      "status": "intercept",
+      "score_s": 0.55,
+      "intercept_time_s": 0.55,
+      "target_time_s": 0.55,
+      "slack_s": 0.04495485032963731,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1234586866223109,
+      4.298584904528418
+    ],
+    "speed": 2.0651564131373608e-17
+  },
+  {
+    "frame": 206765,
+    "now": 55.578,
+    "pose": {
+      "x": -1.304199002802856,
+      "y": -0.1382906586500216,
+      "theta": 0.05373595740235094
+    },
+    "pose_observed_at": 55.572,
+    "ball": {
+      "x": -8.576913852246105e-17,
+      "y": 1.643601397926322e-16,
+      "last_seen_at": 55.572
+    },
+    "current_ball": [
+      -8.576913852246105e-17,
+      1.643601397926322e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.576913852246105e-17,
+        1.643601397926322e-16
+      ],
+      "ball_position": [
+        -8.576913852246105e-17,
+        1.643601397926322e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.3115103298037043,
+      "turn_angle_rad": 0.05190424076467255,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.9615103298037043,
+      "move_time_s": 0.48075516490185216,
+      "arrival_time_s": 0.48075516490185216,
+      "status": "intercept",
+      "score_s": 0.5,
+      "intercept_time_s": 0.5,
+      "target_time_s": 0.5,
+      "slack_s": 0.01924483509814784,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1235030138406767,
+      4.298573607334936
+    ],
+    "speed": 2.082042362054174e-17
+  },
+  {
+    "frame": 206766,
+    "now": 55.618,
+    "pose": {
+      "x": -1.2807763640095762,
+      "y": -0.14150926213815318,
+      "theta": 0.05157594921532909
+    },
+    "pose_observed_at": 55.616,
+    "ball": {
+      "x": -8.642924076716896e-17,
+      "y": 1.6494520624911956e-16,
+      "last_seen_at": 55.618
+    },
+    "current_ball": [
+      -8.642924076716896e-17,
+      1.6494520624911956e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.642924076716896e-17,
+        1.6494520624911956e-16
+      ],
+      "ball_position": [
+        -8.642924076716896e-17,
+        1.6494520624911956e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.2885701245475447,
+      "turn_angle_rad": 0.05846482545823948,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.9385701245475447,
+      "move_time_s": 0.46928506227377237,
+      "arrival_time_s": 0.46928506227377237,
+      "status": "intercept",
+      "score_s": 0.5,
+      "intercept_time_s": 0.5,
+      "target_time_s": 0.5,
+      "slack_s": 0.03071493772622763,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1235211361503077,
+      4.29856884307207
+    ],
+    "speed": 1.9175314598966375e-17
+  },
+  {
+    "frame": 206767,
+    "now": 55.674,
+    "pose": {
+      "x": -1.236004650913104,
+      "y": -0.14228515359645408,
+      "theta": 0.0384345459818991
+    },
+    "pose_observed_at": 55.672,
+    "ball": {
+      "x": -8.701499441671526e-17,
+      "y": 1.6540482699789024e-16,
+      "last_seen_at": 55.672
+    },
+    "current_ball": [
+      -8.701499441671526e-17,
+      1.6540482699789024e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.701499441671526e-17,
+        1.6540482699789024e-16
+      ],
+      "ball_position": [
+        -8.701499441671526e-17,
+        1.6540482699789024e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.2441674171962511,
+      "turn_angle_rad": 0.07617795707132183,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.8941674171962511,
+      "move_time_s": 0.4470837085981256,
+      "arrival_time_s": 0.4470837085981256,
+      "status": "intercept",
+      "score_s": 0.45,
+      "intercept_time_s": 0.45,
+      "target_time_s": 0.45,
+      "slack_s": 0.002916291401874438,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1235523198662871,
+      4.298560423991237
+    ],
+    "speed": 1.3788011067469012e-17
+  },
+  {
+    "frame": 206768,
+    "now": 55.72,
+    "pose": {
+      "x": -1.2019723116650094,
+      "y": -0.13890160826240652,
+      "theta": 0.038754302043031576
+    },
+    "pose_observed_at": 55.718,
+    "ball": {
+      "x": -8.762146678981871e-17,
+      "y": 1.658265219009181e-16,
+      "last_seen_at": 55.718
+    },
+    "current_ball": [
+      -8.762146678981871e-17,
+      1.658265219009181e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.762146678981871e-17,
+        1.658265219009181e-16
+      ],
+      "ball_position": [
+        -8.762146678981871e-17,
+        1.658265219009181e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.209971526436556,
+      "turn_angle_rad": 0.07629676599863006,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.859971526436556,
+      "move_time_s": 0.429985763218278,
+      "arrival_time_s": 0.429985763218278,
+      "status": "intercept",
+      "score_s": 0.45,
+      "intercept_time_s": 0.45,
+      "target_time_s": 0.45,
+      "slack_s": 0.020014236781721984,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.123572912930728,
+      4.298554671385104
+    ],
+    "speed": 1.6058072344412062e-17
+  },
+  {
+    "frame": 206769,
+    "now": 55.772,
+    "pose": {
+      "x": -1.1640362249314153,
+      "y": -0.1319117411375971,
+      "theta": 0.06274295714962852
+    },
+    "pose_observed_at": 55.764,
+    "ball": {
+      "x": -8.806316054641795e-17,
+      "y": 1.6624209609398048e-16,
+      "last_seen_at": 55.762
+    },
+    "current_ball": [
+      -8.806316054641795e-17,
+      1.6624209609398048e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.806316054641795e-17,
+        1.6624209609398048e-16
+      ],
+      "ball_position": [
+        -8.806316054641795e-17,
+        1.6624209609398048e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.171486679566837,
+      "turn_angle_rad": 0.05009835991064654,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.8214866795668371,
+      "move_time_s": 0.41074333978341854,
+      "arrival_time_s": 0.41074333978341854,
+      "status": "intercept",
+      "score_s": 0.45,
+      "intercept_time_s": 0.45,
+      "target_time_s": 0.45,
+      "slack_s": 0.039256660216581474,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1235933754778766,
+      4.298548839475606
+    ],
+    "speed": 1.3783210916941863e-17
+  },
+  {
+    "frame": 206770,
+    "now": 55.828,
+    "pose": {
+      "x": -1.1071957059738773,
+      "y": -0.11771750171637986,
+      "theta": 0.0751427578080029
+    },
+    "pose_observed_at": 55.828,
+    "ball": {
+      "x": -8.849404959834165e-17,
+      "y": 1.6669747964776358e-16,
+      "last_seen_at": 55.824
+    },
+    "current_ball": [
+      -8.849404959834165e-17,
+      1.6669747964776358e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.849404959834165e-17,
+        1.6669747964776358e-16
+      ],
+      "ball_position": [
+        -8.849404959834165e-17,
+        1.6669747964776358e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.1134360069340934,
+      "turn_angle_rad": 0.03077973151238754,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.7634360069340934,
+      "move_time_s": 0.3817180034670467,
+      "arrival_time_s": 0.3817180034670467,
+      "status": "intercept",
+      "score_s": 0.4,
+      "intercept_time_s": 0.4,
+      "target_time_s": 0.4,
+      "slack_s": 0.018281996532953315,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1236228817848886,
+      4.298540290743352
+    ],
+    "speed": 1.011175272721836e-17
+  },
+  {
+    "frame": 206771,
+    "now": 55.878,
+    "pose": {
+      "x": -1.0751248584409658,
+      "y": -0.10758518589066993,
+      "theta": 0.06730985466788837
+    },
+    "pose_observed_at": 55.862,
+    "ball": {
+      "x": -8.886542931847558e-17,
+      "y": 1.6701067609646948e-16,
+      "last_seen_at": 55.862
+    },
+    "current_ball": [
+      -8.886542931847558e-17,
+      1.6701067609646948e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.886542931847558e-17,
+        1.6701067609646948e-16
+      ],
+      "ball_position": [
+        -8.886542931847558e-17,
+        1.6701067609646948e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.0804943467972596,
+      "turn_angle_rad": 0.032425747965436916,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.7304943467972597,
+      "move_time_s": 0.36524717339862983,
+      "arrival_time_s": 0.36524717339862983,
+      "status": "intercept",
+      "score_s": 0.4,
+      "intercept_time_s": 0.4,
+      "target_time_s": 0.4,
+      "slack_s": 0.03475282660137019,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1236402552015874,
+      4.29853515975115
+    ],
+    "speed": 1.2784569993664755e-17
+  },
+  {
+    "frame": 206772,
+    "now": 55.922,
+    "pose": {
+      "x": -1.0329687756204144,
+      "y": -0.09383164222747696,
+      "theta": 0.06408592131141796
+    },
+    "pose_observed_at": 55.916,
+    "ball": {
+      "x": -8.93737079749742e-17,
+      "y": 1.673555370659893e-16,
+      "last_seen_at": 55.916
+    },
+    "current_ball": [
+      -8.93737079749742e-17,
+      1.673555370659893e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.93737079749742e-17,
+        1.673555370659893e-16
+      ],
+      "ball_position": [
+        -8.93737079749742e-17,
+        1.673555370659893e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.0372217065265474,
+      "turn_angle_rad": 0.02650232865597138,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.6872217065265475,
+      "move_time_s": 0.34361085326327373,
+      "arrival_time_s": 0.34361085326327373,
+      "status": "intercept",
+      "score_s": 0.35000000000000003,
+      "intercept_time_s": 0.35000000000000003,
+      "target_time_s": 0.35000000000000003,
+      "slack_s": 0.006389146736726303,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1236638573273514,
+      4.29852807074169
+    ],
+    "speed": 1.1374596285367559e-17
+  },
+  {
+    "frame": 206773,
+    "now": 55.946,
+    "pose": {
+      "x": -1.0074464209224014,
+      "y": -0.08694356401039363,
+      "theta": 0.08672108348288102
+    },
+    "pose_observed_at": 55.946,
+    "ball": {
+      "x": -8.968991190795342e-17,
+      "y": 1.6752707388414453e-16,
+      "last_seen_at": 55.946
+    },
+    "current_ball": [
+      -8.968991190795342e-17,
+      1.6752707388414453e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.968991190795342e-17,
+        1.6752707388414453e-16
+      ],
+      "ball_position": [
+        -8.968991190795342e-17,
+        1.6752707388414453e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 1.0111911166303755,
+      "turn_angle_rad": 0.0006334523128360692,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.6611911166303756,
+      "move_time_s": 0.3305955583151878,
+      "arrival_time_s": 0.3305955583151878,
+      "status": "intercept",
+      "score_s": 0.35000000000000003,
+      "intercept_time_s": 0.35000000000000003,
+      "target_time_s": 0.35000000000000003,
+      "slack_s": 0.019404441684812257,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1236791682586904,
+      4.298523376009107
+    ],
+    "speed": 1.199119154557214e-17
+  },
+  {
+    "frame": 206774,
+    "now": 55.99,
+    "pose": {
+      "x": -0.9851238228096006,
+      "y": -0.08390486701072469,
+      "theta": 0.0925256080432295
+    },
+    "pose_observed_at": 55.984,
+    "ball": {
+      "x": -8.99350056004077e-17,
+      "y": 1.6767117345085624e-16,
+      "last_seen_at": 55.984
+    },
+    "current_ball": [
+      -8.99350056004077e-17,
+      1.6767117345085624e-16
+    ],
+    "intercept": {
+      "target": [
+        -8.99350056004077e-17,
+        1.6767117345085624e-16
+      ],
+      "ball_position": [
+        -8.99350056004077e-17,
+        1.6767117345085624e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.9886905344823974,
+      "turn_angle_rad": 0.00755876978482746,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.6386905344823974,
+      "move_time_s": 0.3193452672411987,
+      "arrival_time_s": 0.3193452672411987,
+      "status": "intercept",
+      "score_s": 0.35000000000000003,
+      "intercept_time_s": 0.35000000000000003,
+      "target_time_s": 0.35000000000000003,
+      "slack_s": 0.030654732758801317,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1236917359135556,
+      4.298519453405328
+    ],
+    "speed": 7.48200071044744e-18
+  },
+  {
+    "frame": 206775,
+    "now": 56.11,
+    "pose": {
+      "x": -0.8738131783005791,
+      "y": -0.0825367858485065,
+      "theta": 0.06774394056365414
+    },
+    "pose_observed_at": 56.11,
+    "ball": {
+      "x": -9.106300989331866e-17,
+      "y": 1.6873707160228203e-16,
+      "last_seen_at": 56.11
+    },
+    "current_ball": [
+      -9.106300989331866e-17,
+      1.6873707160228203e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.106300989331866e-17,
+        1.6873707160228203e-16
+      ],
+      "ball_position": [
+        -9.106300989331866e-17,
+        1.6873707160228203e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.8777025644202948,
+      "turn_angle_rad": 0.026432516825573613,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.5277025644202948,
+      "move_time_s": 0.2638512822101474,
+      "arrival_time_s": 0.2638512822101474,
+      "status": "intercept",
+      "score_s": 0.30000000000000004,
+      "intercept_time_s": 0.30000000000000004,
+      "target_time_s": 0.30000000000000004,
+      "slack_s": 0.036148717789852625,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1237494763058566,
+      4.2985009673602335
+    ],
+    "speed": 1.231702194553792e-17
+  },
+  {
+    "frame": 206776,
+    "now": 56.158,
+    "pose": {
+      "x": -0.8410135210281515,
+      "y": -0.0847606258441129,
+      "theta": 0.07123128008228577
+    },
+    "pose_observed_at": 56.15,
+    "ball": {
+      "x": -9.145257303324398e-17,
+      "y": 1.691527204720994e-16,
+      "last_seen_at": 56.15
+    },
+    "current_ball": [
+      -9.145257303324398e-17,
+      1.691527204720994e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.145257303324398e-17,
+        1.691527204720994e-16
+      ],
+      "ball_position": [
+        -9.145257303324398e-17,
+        1.691527204720994e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.8452739829461537,
+      "turn_angle_rad": 0.029213454448791743,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.49527398294615377,
+      "move_time_s": 0.24763699147307688,
+      "arrival_time_s": 0.24763699147307688,
+      "status": "intercept",
+      "score_s": 0.25,
+      "intercept_time_s": 0.25,
+      "target_time_s": 0.25,
+      "slack_s": 0.002363008526923116,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.123766148253728,
+      4.298495497589845
+    ],
+    "speed": 1.4241739337440353e-17
+  },
+  {
+    "frame": 206777,
+    "now": 56.198,
+    "pose": {
+      "x": -0.7970633475398188,
+      "y": -0.08989151435185536,
+      "theta": 0.06915019296928876
+    },
+    "pose_observed_at": 56.196,
+    "ball": {
+      "x": -9.194093704034317e-17,
+      "y": 1.6964348491142899e-16,
+      "last_seen_at": 56.196
+    },
+    "current_ball": [
+      -9.194093704034317e-17,
+      1.6964348491142899e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.194093704034317e-17,
+        1.6964348491142899e-16
+      ],
+      "ball_position": [
+        -9.194093704034317e-17,
+        1.6964348491142899e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.8021162411669842,
+      "turn_angle_rad": 0.04315366329491195,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.45211624116698423,
+      "move_time_s": 0.22605812058349212,
+      "arrival_time_s": 0.22605812058349212,
+      "status": "intercept",
+      "score_s": 0.25,
+      "intercept_time_s": 0.25,
+      "target_time_s": 0.25,
+      "slack_s": 0.023941879416507883,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1237888294050233,
+      4.298487943717342
+    ],
+    "speed": 1.5051096624920695e-17
+  },
+  {
+    "frame": 206778,
+    "now": 56.246,
+    "pose": {
+      "x": -0.7666029532077338,
+      "y": -0.09369159101362626,
+      "theta": 0.04883586890757451
+    },
+    "pose_observed_at": 56.242,
+    "ball": {
+      "x": -9.22810954807799e-17,
+      "y": 1.7009559726022052e-16,
+      "last_seen_at": 56.242
+    },
+    "current_ball": [
+      -9.22810954807799e-17,
+      1.7009559726022052e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.22810954807799e-17,
+        1.7009559726022052e-16
+      ],
+      "ball_position": [
+        -9.22810954807799e-17,
+        1.7009559726022052e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.772307064640408,
+      "turn_angle_rad": 0.07277759498550193,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.422307064640408,
+      "move_time_s": 0.211153532320204,
+      "arrival_time_s": 0.211153532320204,
+      "status": "intercept",
+      "score_s": 0.25,
+      "intercept_time_s": 0.25,
+      "target_time_s": 0.25,
+      "slack_s": 0.03884646767979599,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1238070363010797,
+      4.298481788956495
+    ],
+    "speed": 1.2299686867434271e-17
+  },
+  {
+    "frame": 206779,
+    "now": 56.284,
+    "pose": {
+      "x": -0.7408656133240978,
+      "y": -0.09445879873093783,
+      "theta": 0.060677914676673016
+    },
+    "pose_observed_at": 56.278,
+    "ball": {
+      "x": -9.255100779263532e-17,
+      "y": 1.7052330978215407e-16,
+      "last_seen_at": 56.278
+    },
+    "current_ball": [
+      -9.255100779263532e-17,
+      1.7052330978215407e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.255100779263532e-17,
+        1.7052330978215407e-16
+      ],
+      "ball_position": [
+        -9.255100779263532e-17,
+        1.7052330978215407e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.7468629872096912,
+      "turn_angle_rad": 0.06613577498327039,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.39686298720969126,
+      "move_time_s": 0.19843149360484563,
+      "arrival_time_s": 0.19843149360484563,
+      "status": "intercept",
+      "score_s": 0.2,
+      "intercept_time_s": 0.2,
+      "target_time_s": 0.2,
+      "slack_s": 0.0015685063951543787,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1238234070174977,
+      4.298476172342449
+    ],
+    "speed": 1.4048819683459474e-17
+  },
+  {
+    "frame": 206780,
+    "now": 56.322,
+    "pose": {
+      "x": -0.7166580721669287,
+      "y": -0.09148623270053899,
+      "theta": 0.0739809000858954
+    },
+    "pose_observed_at": 56.32,
+    "ball": {
+      "x": -9.271155823864055e-17,
+      "y": 1.7086141013460094e-16,
+      "last_seen_at": 56.32
+    },
+    "current_ball": [
+      -9.271155823864055e-17,
+      1.7086141013460094e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.271155823864055e-17,
+        1.7086141013460094e-16
+      ],
+      "ball_position": [
+        -9.271155823864055e-17,
+        1.7086141013460094e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.7224738909993604,
+      "turn_angle_rad": 0.052989099842987095,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.37247389099936046,
+      "move_time_s": 0.18623694549968023,
+      "arrival_time_s": 0.18623694549968023,
+      "status": "intercept",
+      "score_s": 0.2,
+      "intercept_time_s": 0.2,
+      "target_time_s": 0.2,
+      "slack_s": 0.013763054500319782,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.123839700470905,
+      4.298470507539562
+    ],
+    "speed": 8.91151685596405e-18
+  },
+  {
+    "frame": 206781,
+    "now": 56.364,
+    "pose": {
+      "x": -0.6893176547591513,
+      "y": -0.08384813176782833,
+      "theta": 0.09454417566037761
+    },
+    "pose_observed_at": 56.364,
+    "ball": {
+      "x": -9.279645088269712e-17,
+      "y": 1.7118547631146615e-16,
+      "last_seen_at": 56.364
+    },
+    "current_ball": [
+      -9.279645088269712e-17,
+      1.7118547631146615e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.279645088269712e-17,
+        1.7118547631146615e-16
+      ],
+      "ball_position": [
+        -9.279645088269712e-17,
+        1.7118547631146615e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.6943985443271116,
+      "turn_angle_rad": 0.026500485914365657,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.3443985443271116,
+      "move_time_s": 0.1721992721635558,
+      "arrival_time_s": 0.1721992721635558,
+      "status": "intercept",
+      "score_s": 0.2,
+      "intercept_time_s": 0.2,
+      "target_time_s": 0.2,
+      "slack_s": 0.027800727836444217,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1238593354663038,
+      4.298463640415088
+    ],
+    "speed": 7.613658344709114e-18
+  },
+  {
+    "frame": 206782,
+    "now": 56.406,
+    "pose": {
+      "x": -0.6650293636013269,
+      "y": -0.07494486578005435,
+      "theta": 0.10705944913296438
+    },
+    "pose_observed_at": 56.406,
+    "ball": {
+      "x": -9.276035069359655e-17,
+      "y": 1.7140850792700738e-16,
+      "last_seen_at": 56.406
+    },
+    "current_ball": [
+      -9.276035069359655e-17,
+      1.7140850792700738e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.276035069359655e-17,
+        1.7140850792700738e-16
+      ],
+      "ball_position": [
+        -9.276035069359655e-17,
+        1.7140850792700738e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.6692389613275487,
+      "turn_angle_rad": 0.005161153845766889,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.3192389613275487,
+      "move_time_s": 0.15961948066377435,
+      "arrival_time_s": 0.15961948066377435,
+      "status": "intercept",
+      "score_s": 0.2,
+      "intercept_time_s": 0.2,
+      "target_time_s": 0.2,
+      "slack_s": 0.04038051933622566,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1238779881653325,
+      4.2984570596044795
+    ],
+    "speed": 5.379389005086185e-18
+  },
+  {
+    "frame": 206783,
+    "now": 56.458,
+    "pose": {
+      "x": -0.642377121471266,
+      "y": -0.06440791496049002,
+      "theta": 0.09366377930324857
+    },
+    "pose_observed_at": 56.452,
+    "ball": {
+      "x": -9.300870977340904e-17,
+      "y": 1.7181680981557564e-16,
+      "last_seen_at": 56.452
+    },
+    "current_ball": [
+      -9.300870977340904e-17,
+      1.7181680981557564e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.300870977340904e-17,
+        1.7181680981557564e-16
+      ],
+      "ball_position": [
+        -9.300870977340904e-17,
+        1.7181680981557564e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.6455979752905575,
+      "turn_angle_rad": 0.006267200731678357,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.29559797529055754,
+      "move_time_s": 0.14779898764527877,
+      "arrival_time_s": 0.14779898764527877,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.0022010123547212546,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1238965248159762,
+      4.298450425088631
+    ],
+    "speed": 1.0389227205844116e-17
+  },
+  {
+    "frame": 206784,
+    "now": 56.498,
+    "pose": {
+      "x": -0.6244160593442624,
+      "y": -0.055693430872848095,
+      "theta": 0.06388831469521206
+    },
+    "pose_observed_at": 56.49,
+    "ball": {
+      "x": -9.332105566886441e-17,
+      "y": 1.7225518783933024e-16,
+      "last_seen_at": 56.49
+    },
+    "current_ball": [
+      -9.332105566886441e-17,
+      1.7225518783933024e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.332105566886441e-17,
+        1.7225518783933024e-16
+      ],
+      "ball_position": [
+        -9.332105566886441e-17,
+        1.7225518783933024e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.62689486631285,
+      "turn_angle_rad": 0.02506911026597558,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.27689486631285,
+      "move_time_s": 0.138447433156425,
+      "arrival_time_s": 0.138447433156425,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.01155256684357503,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1239116034527201,
+      4.298444953554666
+    ],
+    "speed": 1.4165016065562162e-17
+  },
+  {
+    "frame": 206785,
+    "now": 56.588,
+    "pose": {
+      "x": -0.593845048817369,
+      "y": -0.03936450312542148,
+      "theta": 0.0976963372415563
+    },
+    "pose_observed_at": 56.588,
+    "ball": {
+      "x": -9.40720872510326e-17,
+      "y": 1.7348062758374222e-16,
+      "last_seen_at": 56.588
+    },
+    "current_ball": [
+      -9.40720872510326e-17,
+      1.7348062758374222e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.40720872510326e-17,
+        1.7348062758374222e-16
+      ],
+      "ball_position": [
+        -9.40720872510326e-17,
+        1.7348062758374222e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5951483059802948,
+      "turn_angle_rad": 0.03150567280481538,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.2451483059802948,
+      "move_time_s": 0.1225741529901474,
+      "arrival_time_s": 0.1225741529901474,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.027425847009852622,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1239547954794988,
+      4.2984289984684665
+    ],
+    "speed": 1.4666041535569584e-17
+  },
+  {
+    "frame": 206786,
+    "now": 56.612,
+    "pose": {
+      "x": -0.588732710487139,
+      "y": -0.03827473790942403,
+      "theta": 0.11018433134886399
+    },
+    "pose_observed_at": 56.612,
+    "ball": {
+      "x": -9.434792230005944e-17,
+      "y": 1.7390052761359235e-16,
+      "last_seen_at": 56.612
+    },
+    "current_ball": [
+      -9.434792230005944e-17,
+      1.7390052761359235e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.434792230005944e-17,
+        1.7390052761359235e-16
+      ],
+      "ball_position": [
+        -9.434792230005944e-17,
+        1.7390052761359235e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5899755587815214,
+      "turn_angle_rad": 0.04526361276445595,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.23997555878152144,
+      "move_time_s": 0.11998777939076072,
+      "arrival_time_s": 0.11998777939076072,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.030012220609239304,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1239654892195547,
+      4.298424980540905
+    ],
+    "speed": 2.093313633382313e-17
+  },
+  {
+    "frame": 206787,
+    "now": 56.638,
+    "pose": {
+      "x": -0.5856784681320765,
+      "y": -0.03828759961595806,
+      "theta": 0.11452541551306983
+    },
+    "pose_observed_at": 56.636,
+    "ball": {
+      "x": -9.449404900719124e-17,
+      "y": 1.7412606364868332e-16,
+      "last_seen_at": 56.636
+    },
+    "current_ball": [
+      -9.449404900719124e-17,
+      1.7412606364868332e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.449404900719124e-17,
+        1.7412606364868332e-16
+      ],
+      "ball_position": [
+        -9.449404900719124e-17,
+        1.7412606364868332e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5869286228476913,
+      "turn_angle_rad": 0.04924523419038748,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.23692862284769134,
+      "move_time_s": 0.11846431142384567,
+      "arrival_time_s": 0.11846431142384567,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.03153568857615435,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1239720459791753,
+      4.298422501139774
+    ],
+    "speed": 1.1197370541855551e-17
+  },
+  {
+    "frame": 206788,
+    "now": 56.674,
+    "pose": {
+      "x": -0.5784549369477833,
+      "y": -0.03985027718815975,
+      "theta": 0.1163841368340319
+    },
+    "pose_observed_at": 56.674,
+    "ball": {
+      "x": -9.462631670696004e-17,
+      "y": 1.7443268320239982e-16,
+      "last_seen_at": 56.674
+    },
+    "current_ball": [
+      -9.462631670696004e-17,
+      1.7443268320239982e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.462631670696004e-17,
+        1.7443268320239982e-16
+      ],
+      "ball_position": [
+        -9.462631670696004e-17,
+        1.7443268320239982e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5798259727463378,
+      "turn_angle_rad": 0.04760191886670126,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.22982597274633787,
+      "move_time_s": 0.11491298637316893,
+      "arrival_time_s": 0.11491298637316893,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.03508701362683109,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1239875575455631,
+      4.298416588322345
+    ],
+    "speed": 8.787672960964957e-18
+  },
+  {
+    "frame": 206789,
+    "now": 56.712,
+    "pose": {
+      "x": -0.5734318502325357,
+      "y": -0.0419417239692302,
+      "theta": 0.11644093674082492
+    },
+    "pose_observed_at": 56.704,
+    "ball": {
+      "x": -9.47171244943679e-17,
+      "y": 1.746655187375547e-16,
+      "last_seen_at": 56.704
+    },
+    "current_ball": [
+      -9.47171244943679e-17,
+      1.746655187375547e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.47171244943679e-17,
+        1.746655187375547e-16
+      ],
+      "ball_position": [
+        -9.47171244943679e-17,
+        1.746655187375547e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5749636467383136,
+      "turn_angle_rad": 0.04342934641538142,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.2249636467383136,
+      "move_time_s": 0.1124818233691568,
+      "arrival_time_s": 0.1124818233691568,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.037518176630843225,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1239989336036722,
+      4.298412207551714
+    ],
+    "speed": 8.33056225158372e-18
+  },
+  {
+    "frame": 206790,
+    "now": 56.742,
+    "pose": {
+      "x": -0.5669462638336007,
+      "y": -0.04621370811802897,
+      "theta": 0.12071789340204624
+    },
+    "pose_observed_at": 56.74,
+    "ball": {
+      "x": -9.496344765521748e-17,
+      "y": 1.7516735048390917e-16,
+      "last_seen_at": 56.74
+    },
+    "current_ball": [
+      -9.496344765521748e-17,
+      1.7516735048390917e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.496344765521748e-17,
+        1.7516735048390917e-16
+      ],
+      "ball_position": [
+        -9.496344765521748e-17,
+        1.7516735048390917e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5688266633104474,
+      "turn_angle_rad": 0.03938433045719818,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.21882666331044742,
+      "move_time_s": 0.10941333165522371,
+      "arrival_time_s": 0.10941333165522371,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.04058666834477631,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1240159142741453,
+      4.298405618410019
+    ],
+    "speed": 1.5528503293031247e-17
+  },
+  {
+    "frame": 206791,
+    "now": 56.778,
+    "pose": {
+      "x": -0.5614650127277999,
+      "y": -0.051084812484666293,
+      "theta": 0.1280132555745614
+    },
+    "pose_observed_at": 56.774,
+    "ball": {
+      "x": -9.530682386529221e-17,
+      "y": 1.7568566828638264e-16,
+      "last_seen_at": 56.774
+    },
+    "current_ball": [
+      -9.530682386529221e-17,
+      1.7568566828638264e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.530682386529221e-17,
+        1.7568566828638264e-16
+      ],
+      "ball_position": [
+        -9.530682386529221e-17,
+        1.7568566828638264e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5637841950463155,
+      "turn_angle_rad": 0.03727822631860355,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.21378419504631552,
+      "move_time_s": 0.10689209752315776,
+      "arrival_time_s": 0.10689209752315776,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.043107902476842264,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1240303879628093,
+      4.298399955372421
+    ],
+    "speed": 1.8286469131371195e-17
+  },
+  {
+    "frame": 206792,
+    "now": 56.816,
+    "pose": {
+      "x": -0.5546522648011168,
+      "y": -0.057799838363636113,
+      "theta": 0.13642208437379832
+    },
+    "pose_observed_at": 56.812,
+    "ball": {
+      "x": -9.55879814611589e-17,
+      "y": 1.7605975044469242e-16,
+      "last_seen_at": 56.812
+    },
+    "current_ball": [
+      -9.55879814611589e-17,
+      1.7605975044469242e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.55879814611589e-17,
+        1.7605975044469242e-16
+      ],
+      "ball_position": [
+        -9.55879814611589e-17,
+        1.7605975044469242e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.557655768520214,
+      "turn_angle_rad": 0.032587721602935396,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.20765576852021406,
+      "move_time_s": 0.10382788426010703,
+      "arrival_time_s": 0.10382788426010703,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.046172115739892994,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1240455776466818,
+      4.298393950742835
+    ],
+    "speed": 1.231475071190843e-17
+  },
+  {
+    "frame": 206793,
+    "now": 56.86,
+    "pose": {
+      "x": -0.5458471301326179,
+      "y": -0.06761077802279858,
+      "theta": 0.14795429789994913
+    },
+    "pose_observed_at": 56.852,
+    "ball": {
+      "x": -9.578267059301581e-17,
+      "y": 1.7643666328880317e-16,
+      "last_seen_at": 56.852
+    },
+    "current_ball": [
+      -9.578267059301581e-17,
+      1.7643666328880317e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.578267059301581e-17,
+        1.7643666328880317e-16
+      ],
+      "ball_position": [
+        -9.578267059301581e-17,
+        1.7643666328880317e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5500184603982516,
+      "turn_angle_rad": 0.024718038133046516,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.20001846039825166,
+      "move_time_s": 0.10000923019912583,
+      "arrival_time_s": 0.10000923019912583,
+      "status": "intercept",
+      "score_s": 0.15000000000000002,
+      "intercept_time_s": 0.15000000000000002,
+      "target_time_s": 0.15000000000000002,
+      "slack_s": 0.04999076980087419,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124062263940582,
+      4.298387284740362
+    ],
+    "speed": 1.0605633824731404e-17
+  },
+  {
+    "frame": 206794,
+    "now": 56.896,
+    "pose": {
+      "x": -0.5389105263316681,
+      "y": -0.0777545188526583,
+      "theta": 0.16048237372995516
+    },
+    "pose_observed_at": 56.872,
+    "ball": {
+      "x": -9.602353994522524e-17,
+      "y": 1.7687966912872572e-16,
+      "last_seen_at": 56.872
+    },
+    "current_ball": [
+      -9.602353994522524e-17,
+      1.7687966912872572e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.602353994522524e-17,
+        1.7687966912872572e-16
+      ],
+      "ball_position": [
+        -9.602353994522524e-17,
+        1.7687966912872572e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5444908820109698,
+      "turn_angle_rad": 0.01719027411191723,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.19449088201096987,
+      "move_time_s": 0.09724544100548493,
+      "arrival_time_s": 0.09724544100548493,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.0027545589945150717,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1240764857554852,
+      4.298381561665014
+    ],
+    "speed": 2.5212706074477685e-17
+  },
+  {
+    "frame": 206795,
+    "now": 56.944,
+    "pose": {
+      "x": -0.5330801818586854,
+      "y": -0.09091854600364606,
+      "theta": 0.1535331794556078
+    },
+    "pose_observed_at": 56.944,
+    "ball": {
+      "x": -9.643163124168842e-17,
+      "y": 1.7753001440299092e-16,
+      "last_seen_at": 56.944
+    },
+    "current_ball": [
+      -9.643163124168842e-17,
+      1.7753001440299092e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.643163124168842e-17,
+        1.7753001440299092e-16
+      ],
+      "ball_position": [
+        -9.643163124168842e-17,
+        1.7753001440299092e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5407778308121609,
+      "turn_angle_rad": 0.015394617663258585,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.19077783081216093,
+      "move_time_s": 0.09538891540608047,
+      "arrival_time_s": 0.09538891540608047,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.00461108459391954,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124098467158672,
+      4.298372641650115
+    ],
+    "speed": 1.0663623354267235e-17
+  },
+  {
+    "frame": 206796,
+    "now": 56.984,
+    "pose": {
+      "x": -0.5313340923619904,
+      "y": -0.09386931780363156,
+      "theta": 0.15555578158317226
+    },
+    "pose_observed_at": 56.978,
+    "ball": {
+      "x": -9.650771697271247e-17,
+      "y": 1.7775230539332263e-16,
+      "last_seen_at": 56.984
+    },
+    "current_ball": [
+      -9.650771697271247e-17,
+      1.7775230539332263e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.650771697271247e-17,
+        1.7775230539332263e-16
+      ],
+      "ball_position": [
+        -9.650771697271247e-17,
+        1.7775230539332263e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5395621989456445,
+      "turn_angle_rad": 0.019307105714402223,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.18956219894564452,
+      "move_time_s": 0.09478109947282226,
+      "arrival_time_s": 0.09478109947282226,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.0052189005271777444,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1241078375241018,
+      4.2983688109818825
+    ],
+    "speed": 5.873793644662064e-18
+  },
+  {
+    "frame": 206797,
+    "now": 57.018,
+    "pose": {
+      "x": -0.5268338793929038,
+      "y": -0.09566487872814242,
+      "theta": 0.15460864033186153
+    },
+    "pose_observed_at": 57.01,
+    "ball": {
+      "x": -9.667728076912048e-17,
+      "y": 1.7807893568309068e-16,
+      "last_seen_at": 57.01
+    },
+    "current_ball": [
+      -9.667728076912048e-17,
+      1.7807893568309068e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.667728076912048e-17,
+        1.7807893568309068e-16
+      ],
+      "ball_position": [
+        -9.667728076912048e-17,
+        1.7807893568309068e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5354490690049305,
+      "turn_angle_rad": 0.02501866849706108,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.18544906900493052,
+      "move_time_s": 0.09272453450246526,
+      "arrival_time_s": 0.09272453450246526,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.007275465497534744,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1241257070354973,
+      4.298361452472039
+    ],
+    "speed": 1.4154641869684244e-17
+  },
+  {
+    "frame": 206798,
+    "now": 57.128,
+    "pose": {
+      "x": -0.5180062777872437,
+      "y": -0.08860727787778956,
+      "theta": 0.1440030093409528
+    },
+    "pose_observed_at": 57.124,
+    "ball": {
+      "x": -9.704297339264032e-17,
+      "y": 1.790257908591585e-16,
+      "last_seen_at": 57.124
+    },
+    "current_ball": [
+      -9.704297339264032e-17,
+      1.790257908591585e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.704297339264032e-17,
+        1.790257908591585e-16
+      ],
+      "ball_position": [
+        -9.704297339264032e-17,
+        1.790257908591585e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5255299739500182,
+      "turn_angle_rad": 0.02541179927773415,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17552997395001824,
+      "move_time_s": 0.08776498697500912,
+      "arrival_time_s": 0.08776498697500912,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012235013024990887,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1241657048462272,
+      4.298344753795709
+    ],
+    "speed": 8.903685156593471e-18
+  },
+  {
+    "frame": 206799,
+    "now": 57.168,
+    "pose": {
+      "x": -0.5155291591440845,
+      "y": -0.08057688700917698,
+      "theta": 0.14571890335849957
+    },
+    "pose_observed_at": 57.166,
+    "ball": {
+      "x": -9.723565171268162e-17,
+      "y": 1.795441721062137e-16,
+      "last_seen_at": 57.166
+    },
+    "current_ball": [
+      -9.723565171268162e-17,
+      1.795441721062137e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.723565171268162e-17,
+        1.795441721062137e-16
+      ],
+      "ball_position": [
+        -9.723565171268162e-17,
+        1.795441721062137e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5217882220287234,
+      "turn_angle_rad": 0.009326039593131996,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17178822202872346,
+      "move_time_s": 0.08589411101436173,
+      "arrival_time_s": 0.08589411101436173,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.014105888985638276,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1241824558663471,
+      4.29833766604835
+    ],
+    "speed": 1.3167421237150775e-17
+  },
+  {
+    "frame": 206800,
+    "now": 57.214,
+    "pose": {
+      "x": -0.5145720502650745,
+      "y": -0.06886541575803107,
+      "theta": 0.15334761451222184
+    },
+    "pose_observed_at": 57.212,
+    "ball": {
+      "x": -9.76577766559598e-17,
+      "y": 1.802965072678754e-16,
+      "last_seen_at": 57.212
+    },
+    "current_ball": [
+      -9.76577766559598e-17,
+      1.802965072678754e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.76577766559598e-17,
+        1.802965072678754e-16
+      ],
+      "ball_position": [
+        -9.76577766559598e-17,
+        1.802965072678754e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5191597445888199,
+      "turn_angle_rad": 0.02030766783770016,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.16915974458881988,
+      "move_time_s": 0.08457987229440994,
+      "arrival_time_s": 0.08457987229440994,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.015420127705590064,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1242006242607825,
+      4.2983299146574385
+    ],
+    "speed": 1.8753672144630295e-17
+  },
+  {
+    "frame": 206801,
+    "now": 57.26,
+    "pose": {
+      "x": -0.5145834906588634,
+      "y": -0.06044261579451216,
+      "theta": 0.15181307991893636
+    },
+    "pose_observed_at": 57.25,
+    "ball": {
+      "x": -9.780567489312783e-17,
+      "y": 1.8057288296059586e-16,
+      "last_seen_at": 57.25
+    },
+    "current_ball": [
+      -9.780567489312783e-17,
+      1.8057288296059586e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.780567489312783e-17,
+        1.8057288296059586e-16
+      ],
+      "ball_position": [
+        -9.780567489312783e-17,
+        1.8057288296059586e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5181211042437314,
+      "turn_angle_rad": 0.03488953650051965,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1681211042437314,
+      "move_time_s": 0.0840605521218657,
+      "arrival_time_s": 0.0840605521218657,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01593944787813431,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1242126791876736,
+      4.298324731054195
+    ],
+    "speed": 8.248957463052414e-18
+  },
+  {
+    "frame": 206802,
+    "now": 57.306,
+    "pose": {
+      "x": -0.5172650027196902,
+      "y": -0.0515007054067763,
+      "theta": 0.15103894534542595
+    },
+    "pose_observed_at": 57.306,
+    "ball": {
+      "x": -9.826308533129311e-17,
+      "y": 1.8115649179330856e-16,
+      "last_seen_at": 57.306
+    },
+    "current_ball": [
+      -9.826308533129311e-17,
+      1.8115649179330856e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.826308533129311e-17,
+        1.8115649179330856e-16
+      ],
+      "ball_position": [
+        -9.826308533129311e-17,
+        1.8115649179330856e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5198224751739738,
+      "turn_angle_rad": 0.05180250636166374,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.16982247517397386,
+      "move_time_s": 0.08491123758698693,
+      "arrival_time_s": 0.08491123758698693,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.015088762413013074,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1242336480475195,
+      4.298315664859207
+    ],
+    "speed": 1.3241087426091927e-17
+  },
+  {
+    "frame": 206803,
+    "now": 57.328,
+    "pose": {
+      "x": -0.5181044804170207,
+      "y": -0.050447146333583874,
+      "theta": 0.15134607694817334
+    },
+    "pose_observed_at": 57.32,
+    "ball": {
+      "x": -9.843242526261632e-17,
+      "y": 1.8136325091032166e-16,
+      "last_seen_at": 57.32
+    },
+    "current_ball": [
+      -9.843242526261632e-17,
+      1.8136325091032166e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.843242526261632e-17,
+        1.8136325091032166e-16
+      ],
+      "ball_position": [
+        -9.843242526261632e-17,
+        1.8136325091032166e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5205546726342901,
+      "turn_angle_rad": 0.05428337059049437,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17055467263429014,
+      "move_time_s": 0.08527733631714507,
+      "arrival_time_s": 0.08527733631714507,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.014722663682854936,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1242396120965306,
+      4.298313073519905
+    ],
+    "speed": 1.9089657527924403e-17
+  },
+  {
+    "frame": 206804,
+    "now": 57.376,
+    "pose": {
+      "x": -0.5196903934695349,
+      "y": -0.050141021958496644,
+      "theta": 0.1460941337560448
+    },
+    "pose_observed_at": 57.364,
+    "ball": {
+      "x": -9.914726878330187e-17,
+      "y": 1.8209025335443556e-16,
+      "last_seen_at": 57.364
+    },
+    "current_ball": [
+      -9.914726878330187e-17,
+      1.8209025335443556e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.914726878330187e-17,
+        1.8209025335443556e-16
+      ],
+      "ball_position": [
+        -9.914726878330187e-17,
+        1.8209025335443556e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.522103655558513,
+      "turn_angle_rad": 0.04990936601854305,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17210365555851304,
+      "move_time_s": 0.08605182777925652,
+      "arrival_time_s": 0.08605182777925652,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.013948172220743488,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1242574228516247,
+      4.298305297247519
+    ],
+    "speed": 2.317216613694592e-17
+  },
+  {
+    "frame": 206805,
+    "now": 57.43,
+    "pose": {
+      "x": -0.5206938335778079,
+      "y": -0.05385516281494773,
+      "theta": 0.1261436954280892
+    },
+    "pose_observed_at": 57.426,
+    "ball": {
+      "x": -9.975351655884096e-17,
+      "y": 1.8254560882182355e-16,
+      "last_seen_at": 57.426
+    },
+    "current_ball": [
+      -9.975351655884096e-17,
+      1.8254560882182355e-16
+    ],
+    "intercept": {
+      "target": [
+        -9.975351655884096e-17,
+        1.8254560882182355e-16
+      ],
+      "ball_position": [
+        -9.975351655884096e-17,
+        1.8254560882182355e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5234715339803859,
+      "turn_angle_rad": 0.023080550074377995,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17347153398038595,
+      "move_time_s": 0.08673576699019298,
+      "arrival_time_s": 0.08673576699019298,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01326423300980703,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1242787922896031,
+      4.298295874268935
+    ],
+    "speed": 1.2229220808296867e-17
+  },
+  {
+    "frame": 206806,
+    "now": 57.478,
+    "pose": {
+      "x": -0.5215436155977969,
+      "y": -0.05754684859695765,
+      "theta": 0.12794283220229097
+    },
+    "pose_observed_at": 57.474,
+    "ball": {
+      "x": -1.0036753586097316e-16,
+      "y": 1.831290115137608e-16,
+      "last_seen_at": 57.474
+    },
+    "current_ball": [
+      -1.0036753586097316e-16,
+      1.831290115137608e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0036753586097316e-16,
+        1.831290115137608e-16
+      ],
+      "ball_position": [
+        -1.0036753586097316e-16,
+        1.831290115137608e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5247088552276049,
+      "turn_angle_rad": 0.018047901615962866,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17470885522760493,
+      "move_time_s": 0.08735442761380247,
+      "arrival_time_s": 0.08735442761380247,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01264557238619754,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1242956263790989,
+      4.298288381408204
+    ],
+    "speed": 1.7645457054610713e-17
+  },
+  {
+    "frame": 206807,
+    "now": 57.526,
+    "pose": {
+      "x": -0.5234515508823699,
+      "y": -0.05944472376617175,
+      "theta": 0.12840565464517945
+    },
+    "pose_observed_at": 57.526,
+    "ball": {
+      "x": -1.0114322623412246e-16,
+      "y": 1.8374650611662462e-16,
+      "last_seen_at": 57.526
+    },
+    "current_ball": [
+      -1.0114322623412246e-16,
+      1.8374650611662462e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0114322623412246e-16,
+        1.8374650611662462e-16
+      ],
+      "ball_position": [
+        -1.0114322623412246e-16,
+        1.8374650611662462e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5268160981830327,
+      "turn_angle_rad": 0.01532711088072089,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17681609818303268,
+      "move_time_s": 0.08840804909151634,
+      "arrival_time_s": 0.08840804909151634,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011591950908483667,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1243138194752145,
+      4.298280229677787
+    ],
+    "speed": 1.9066559874801378e-17
+  },
+  {
+    "frame": 206808,
+    "now": 57.632,
+    "pose": {
+      "x": -0.5251515553766478,
+      "y": -0.05809755676945887,
+      "theta": 0.12414306787930583
+    },
+    "pose_observed_at": 57.626,
+    "ball": {
+      "x": -1.0243746487171747e-16,
+      "y": 1.8488373467557413e-16,
+      "last_seen_at": 57.626
+    },
+    "current_ball": [
+      -1.0243746487171747e-16,
+      1.8488373467557413e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0243746487171747e-16,
+        1.8488373467557413e-16
+      ],
+      "ball_position": [
+        -1.0243746487171747e-16,
+        1.8488373467557413e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5283554506363048,
+      "turn_angle_rad": 0.013961040048313276,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17835545063630487,
+      "move_time_s": 0.08917772531815243,
+      "arrival_time_s": 0.08917772531815243,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.010822274681847571,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124352012539575,
+      4.298262947053187
+    ],
+    "speed": 1.72288782175001e-17
+  },
+  {
+    "frame": 206809,
+    "now": 57.676,
+    "pose": {
+      "x": -0.5250521167461614,
+      "y": -0.056500409928034595,
+      "theta": 0.11943969148513381
+    },
+    "pose_observed_at": 57.676,
+    "ball": {
+      "x": -1.032786770276317e-16,
+      "y": 1.856304309804659e-16,
+      "last_seen_at": 57.676
+    },
+    "current_ball": [
+      -1.032786770276317e-16,
+      1.856304309804659e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.032786770276317e-16,
+        1.856304309804659e-16
+      ],
+      "ball_position": [
+        -1.032786770276317e-16,
+        1.856304309804659e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5280833472300187,
+      "turn_angle_rad": 0.012243044760952018,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17808334723001873,
+      "move_time_s": 0.08904167361500936,
+      "arrival_time_s": 0.08904167361500936,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.010958326384990641,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1243712573790874,
+      4.298254119752726
+    ],
+    "speed": 2.249616201041116e-17
+  },
+  {
+    "frame": 206810,
+    "now": 57.722,
+    "pose": {
+      "x": -0.524973735483101,
+      "y": -0.055436452138951674,
+      "theta": 0.11777640615958453
+    },
+    "pose_observed_at": 57.722,
+    "ball": {
+      "x": -1.0375102392235129e-16,
+      "y": 1.8605093193363486e-16,
+      "last_seen_at": 57.722
+    },
+    "current_ball": [
+      -1.0375102392235129e-16,
+      1.8605093193363486e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0375102392235129e-16,
+        1.8605093193363486e-16
+      ],
+      "ball_position": [
+        -1.0375102392235129e-16,
+        1.8605093193363486e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.527892624662284,
+      "turn_angle_rad": 0.012567787157351837,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17789262466228406,
+      "move_time_s": 0.08894631233114203,
+      "arrival_time_s": 0.08894631233114203,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011053687668857975,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1243847171754004,
+      4.298247894178421
+    ],
+    "speed": 1.3747875597483708e-17
+  },
+  {
+    "frame": 206811,
+    "now": 57.774,
+    "pose": {
+      "x": -0.5248290375043354,
+      "y": -0.0542459580873824,
+      "theta": 0.11709035581495542
+    },
+    "pose_observed_at": 57.774,
+    "ball": {
+      "x": -1.0445614029713356e-16,
+      "y": 1.868210959267025e-16,
+      "last_seen_at": 57.774
+    },
+    "current_ball": [
+      -1.0445614029713356e-16,
+      1.868210959267025e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0445614029713356e-16,
+        1.868210959267025e-16
+      ],
+      "ball_position": [
+        -1.0445614029713356e-16,
+        1.868210959267025e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5276250018493674,
+      "turn_angle_rad": 0.014096789114264416,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17762500184936747,
+      "move_time_s": 0.08881250092468373,
+      "arrival_time_s": 0.08881250092468373,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01118749907531627,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1244030388869672,
+      4.29823936634616
+    ],
+    "speed": 2.0080659081770442e-17
+  },
+  {
+    "frame": 206812,
+    "now": 57.816,
+    "pose": {
+      "x": -0.5246796932082199,
+      "y": -0.053568587552817376,
+      "theta": 0.1171483581807328
+    },
+    "pose_observed_at": 57.814,
+    "ball": {
+      "x": -1.0494928420481098e-16,
+      "y": 1.874003940252261e-16,
+      "last_seen_at": 57.81
+    },
+    "current_ball": [
+      -1.0494928420481098e-16,
+      1.874003940252261e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0494928420481098e-16,
+        1.874003940252261e-16
+      ],
+      "ball_position": [
+        -1.0494928420481098e-16,
+        1.874003940252261e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5274072184161642,
+      "turn_angle_rad": 0.015403213707972374,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17740721841616425,
+      "move_time_s": 0.08870360920808212,
+      "arrival_time_s": 0.08870360920808212,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011296390791917882,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124417052666906,
+      4.298232816517847
+    ],
+    "speed": 2.1132613330275565e-17
+  },
+  {
+    "frame": 206813,
+    "now": 57.876,
+    "pose": {
+      "x": -0.5244409559200643,
+      "y": -0.0529193500597554,
+      "theta": 0.11664396740195446
+    },
+    "pose_observed_at": 57.862,
+    "ball": {
+      "x": -1.0549626781697962e-16,
+      "y": 1.8794845068187272e-16,
+      "last_seen_at": 57.862
+    },
+    "current_ball": [
+      -1.0549626781697962e-16,
+      1.8794845068187272e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0549626781697962e-16,
+        1.8794845068187272e-16
+      ],
+      "ball_position": [
+        -1.0549626781697962e-16,
+        1.8794845068187272e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5271041394801389,
+      "turn_angle_rad": 0.016078156459089263,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17710413948013892,
+      "move_time_s": 0.08855206974006946,
+      "arrival_time_s": 0.08855206974006946,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011447930259930544,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1244351600980442,
+      4.298224311912085
+    ],
+    "speed": 1.489059175979915e-17
+  },
+  {
+    "frame": 206814,
+    "now": 57.922,
+    "pose": {
+      "x": -0.5241969190963823,
+      "y": -0.05243380736909368,
+      "theta": 0.11518620607910082
+    },
+    "pose_observed_at": 57.916,
+    "ball": {
+      "x": -1.0622284849330925e-16,
+      "y": 1.8874509557973724e-16,
+      "last_seen_at": 57.916
+    },
+    "current_ball": [
+      -1.0622284849330925e-16,
+      1.8874509557973724e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0622284849330925e-16,
+        1.8874509557973724e-16
+      ],
+      "ball_position": [
+        -1.0622284849330925e-16,
+        1.8874509557973724e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5268127885172856,
+      "turn_angle_rad": 0.01549089249044254,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17681278851728566,
+      "move_time_s": 0.08840639425864283,
+      "arrival_time_s": 0.08840639425864283,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011593605741357177,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1244531583325332,
+      4.298215800153408
+    ],
+    "speed": 1.996707313996962e-17
+  },
+  {
+    "frame": 206815,
+    "now": 57.97,
+    "pose": {
+      "x": -0.5240095332833606,
+      "y": -0.05207379874197397,
+      "theta": 0.11373300636825612
+    },
+    "pose_observed_at": 57.968,
+    "ball": {
+      "x": -1.0684306000410511e-16,
+      "y": 1.8943587632927118e-16,
+      "last_seen_at": 57.968
+    },
+    "current_ball": [
+      -1.0684306000410511e-16,
+      1.8943587632927118e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0684306000410511e-16,
+        1.8943587632927118e-16
+      ],
+      "ball_position": [
+        -1.0684306000410511e-16,
+        1.8943587632927118e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5265906108992686,
+      "turn_angle_rad": 0.014682539986709237,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17659061089926864,
+      "move_time_s": 0.08829530544963432,
+      "arrival_time_s": 0.08829530544963432,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011704694550365685,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1244710583352644,
+      4.298207279749868
+    ],
+    "speed": 1.7852953384389096e-17
+  },
+  {
+    "frame": 206816,
+    "now": 58.02,
+    "pose": {
+      "x": -0.523899082322799,
+      "y": -0.05184049212424143,
+      "theta": 0.11281442415058247
+    },
+    "pose_observed_at": 58.016,
+    "ball": {
+      "x": -1.0738170548615255e-16,
+      "y": 1.9004167760995604e-16,
+      "last_seen_at": 58.016
+    },
+    "current_ball": [
+      -1.0738170548615255e-16,
+      1.9004167760995604e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0738170548615255e-16,
+        1.9004167760995604e-16
+      ],
+      "ball_position": [
+        -1.0738170548615255e-16,
+        1.9004167760995604e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5264576764397632,
+      "turn_angle_rad": 0.014184201875403216,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17645767643976318,
+      "move_time_s": 0.08822883821988159,
+      "arrival_time_s": 0.08822883821988159,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011771161780118417,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1244888712663046,
+      4.298198748276708
+    ],
+    "speed": 1.6888293979218356e-17
+  },
+  {
+    "frame": 206817,
+    "now": 58.044,
+    "pose": {
+      "x": -0.523869598329275,
+      "y": -0.05177078609416064,
+      "theta": 0.1125228959792508
+    },
+    "pose_observed_at": 58.042,
+    "ball": {
+      "x": -1.0772587618420171e-16,
+      "y": 1.9042619957887705e-16,
+      "last_seen_at": 58.042
+    },
+    "current_ball": [
+      -1.0772587618420171e-16,
+      1.9042619957887705e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0772587618420171e-16,
+        1.9042619957887705e-16
+      ],
+      "ball_position": [
+        -1.0772587618420171e-16,
+        1.9042619957887705e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5264214759548504,
+      "turn_angle_rad": 0.014018929870243252,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17642147595485047,
+      "move_time_s": 0.08821073797742524,
+      "arrival_time_s": 0.08821073797742524,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01178926202257477,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124497743505799,
+      4.298194482055862
+    ],
+    "speed": 1.9848189146473258e-17
+  },
+  {
+    "frame": 206818,
+    "now": 58.152,
+    "pose": {
+      "x": -0.5239104946379434,
+      "y": -0.051753408677197084,
+      "theta": 0.11165529869493326
+    },
+    "pose_observed_at": 58.146,
+    "ball": {
+      "x": -1.0877448064473645e-16,
+      "y": 1.9160728167581217e-16,
+      "last_seen_at": 58.146
+    },
+    "current_ball": [
+      -1.0877448064473645e-16,
+      1.9160728167581217e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0877448064473645e-16,
+        1.9160728167581217e-16
+      ],
+      "ball_position": [
+        -1.0877448064473645e-16,
+        1.9160728167581217e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.526460465468665,
+      "turn_angle_rad": 0.01319182017573181,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.176460465468665,
+      "move_time_s": 0.0882302327343325,
+      "arrival_time_s": 0.0882302327343325,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011769767265667502,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1245309542195638,
+      4.298178406109554
+    ],
+    "speed": 1.5186605046908336e-17
+  },
+  {
+    "frame": 206819,
+    "now": 58.198,
+    "pose": {
+      "x": -0.5240283839788495,
+      "y": -0.05187597921649377,
+      "theta": 0.11129370029956138
+    },
+    "pose_observed_at": 58.196,
+    "ball": {
+      "x": -1.0935876540039734e-16,
+      "y": 1.9232699485813028e-16,
+      "last_seen_at": 58.196
+    },
+    "current_ball": [
+      -1.0935876540039734e-16,
+      1.9232699485813028e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0935876540039734e-16,
+        1.9232699485813028e-16
+      ],
+      "ball_position": [
+        -1.0935876540039734e-16,
+        1.9232699485813028e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5265898445993377,
+      "turn_angle_rad": 0.012620594098290375,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1765898445993377,
+      "move_time_s": 0.08829492229966884,
+      "arrival_time_s": 0.08829492229966884,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011705077700331162,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1245484407732909,
+      4.298169888450157
+    ],
+    "speed": 1.8540504205660262e-17
+  },
+  {
+    "frame": 206820,
+    "now": 58.232,
+    "pose": {
+      "x": -0.5241392298827231,
+      "y": -0.0519937548967334,
+      "theta": 0.11116266920960453
+    },
+    "pose_observed_at": 58.23,
+    "ball": {
+      "x": -1.0975208198400173e-16,
+      "y": 1.928094627547816e-16,
+      "last_seen_at": 58.23
+    },
+    "current_ball": [
+      -1.0975208198400173e-16,
+      1.928094627547816e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0975208198400173e-16,
+        1.928094627547816e-16
+      ],
+      "ball_position": [
+        -1.0975208198400173e-16,
+        1.928094627547816e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5267117644882403,
+      "turn_angle_rad": 0.012287777080961376,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17671176448824033,
+      "move_time_s": 0.08835588224412017,
+      "arrival_time_s": 0.08835588224412017,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01164411775587984,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1245598117163644,
+      4.298164327264335
+    ],
+    "speed": 1.8308042889982272e-17
+  },
+  {
+    "frame": 206821,
+    "now": 58.272,
+    "pose": {
+      "x": -0.5242819536652353,
+      "y": -0.05214285829544287,
+      "theta": 0.11115297695108661
+    },
+    "pose_observed_at": 58.264,
+    "ball": {
+      "x": -1.0999965628296159e-16,
+      "y": 1.931220641274921e-16,
+      "last_seen_at": 58.264
+    },
+    "current_ball": [
+      -1.0999965628296159e-16,
+      1.931220641274921e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.0999965628296159e-16,
+        1.931220641274921e-16
+      ],
+      "ball_position": [
+        -1.0999965628296159e-16,
+        1.931220641274921e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.526868526873882,
+      "turn_angle_rad": 0.012023208444695592,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.176868526873882,
+      "move_time_s": 0.088434263436941,
+      "arrival_time_s": 0.088434263436941,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01156573656305901,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1245717989640993,
+      4.298158439502661
+    ],
+    "speed": 1.172835013950033e-17
+  },
+  {
+    "frame": 206822,
+    "now": 58.304,
+    "pose": {
+      "x": -0.5244548236189387,
+      "y": -0.052330251608932475,
+      "theta": 0.11127364706879705
+    },
+    "pose_observed_at": 58.3,
+    "ball": {
+      "x": -1.1044678660008451e-16,
+      "y": 1.9362001165814443e-16,
+      "last_seen_at": 58.3
+    },
+    "current_ball": [
+      -1.1044678660008451e-16,
+      1.9362001165814443e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1044678660008451e-16,
+        1.9362001165814443e-16
+      ],
+      "ball_position": [
+        -1.1044678660008451e-16,
+        1.9362001165814443e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5270591212099703,
+      "turn_angle_rad": 0.011822539215309541,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17705912120997036,
+      "move_time_s": 0.08852956060498518,
+      "arrival_time_s": 0.08852956060498518,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011470439395014825,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1245850535231565,
+      4.298151898122981
+    ],
+    "speed": 1.8589898021965722e-17
+  },
+  {
+    "frame": 206823,
+    "now": 58.35,
+    "pose": {
+      "x": -0.5246498843604649,
+      "y": -0.05255344057712326,
+      "theta": 0.11149747857847522
+    },
+    "pose_observed_at": 58.348,
+    "ball": {
+      "x": -1.109589866429178e-16,
+      "y": 1.9419970727103288e-16,
+      "last_seen_at": 58.348
+    },
+    "current_ball": [
+      -1.109589866429178e-16,
+      1.9419970727103288e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.109589866429178e-16,
+        1.9419970727103288e-16
+      ],
+      "ball_position": [
+        -1.109589866429178e-16,
+        1.9419970727103288e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5272754169084145,
+      "turn_angle_rad": 0.011661905408837325,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17727541690841453,
+      "move_time_s": 0.08863770845420726,
+      "arrival_time_s": 0.08863770845420726,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011362291545792741,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124599563629194,
+      4.298144707595242
+    ],
+    "speed": 1.611584429294731e-17
+  },
+  {
+    "frame": 206824,
+    "now": 58.398,
+    "pose": {
+      "x": -0.5248183161224186,
+      "y": -0.0527638074601515,
+      "theta": 0.11176331157251694
+    },
+    "pose_observed_at": 58.392,
+    "ball": {
+      "x": -1.1132638562971346e-16,
+      "y": 1.9464012190606726e-16,
+      "last_seen_at": 58.392
+    },
+    "current_ball": [
+      -1.1132638562971346e-16,
+      1.9464012190606726e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1132638562971346e-16,
+        1.9464012190606726e-16
+      ],
+      "ball_position": [
+        -1.1132638562971346e-16,
+        1.9464012190606726e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5274640123413755,
+      "turn_angle_rad": 0.011562724272385526,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17746401234137554,
+      "move_time_s": 0.08873200617068777,
+      "arrival_time_s": 0.08873200617068777,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011267993829312234,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1246126902295737,
+      4.29813817897354
+    ],
+    "speed": 1.3034978892056581e-17
+  },
+  {
+    "frame": 206825,
+    "now": 58.442,
+    "pose": {
+      "x": -0.5249864940419995,
+      "y": -0.05299488866287291,
+      "theta": 0.11211941919008801
+    },
+    "pose_observed_at": 58.436,
+    "ball": {
+      "x": -1.1161412493679846e-16,
+      "y": 1.950111785077689e-16,
+      "last_seen_at": 58.424
+    },
+    "current_ball": [
+      -1.1161412493679846e-16,
+      1.950111785077689e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1161412493679846e-16,
+        1.950111785077689e-16
+      ],
+      "ball_position": [
+        -1.1161412493679846e-16,
+        1.950111785077689e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5276545054776852,
+      "turn_angle_rad": 0.01151497143031027,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17765450547768524,
+      "move_time_s": 0.08882725273884262,
+      "arrival_time_s": 0.08882725273884262,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011172747261157384,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1246270628429995,
+      4.298130997183604
+    ],
+    "speed": 1.467342778351858e-17
+  },
+  {
+    "frame": 206826,
+    "now": 58.498,
+    "pose": {
+      "x": -0.5251956277599883,
+      "y": -0.05331408340570362,
+      "theta": 0.11279863583104129
+    },
+    "pose_observed_at": 58.498,
+    "ball": {
+      "x": -1.1220171704236504e-16,
+      "y": 1.9575628842580043e-16,
+      "last_seen_at": 58.498
+    },
+    "current_ball": [
+      -1.1220171704236504e-16,
+      1.9575628842580043e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1220171704236504e-16,
+        1.9575628842580043e-16
+      ],
+      "ball_position": [
+        -1.1220171704236504e-16,
+        1.9575628842580043e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5278947233185783,
+      "turn_angle_rad": 0.011632378163043258,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17789472331857836,
+      "move_time_s": 0.08894736165928918,
+      "arrival_time_s": 0.08894736165928918,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011052638340710824,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1246478374840905,
+      4.298120581110005
+    ],
+    "speed": 1.2823272480382389e-17
+  },
+  {
+    "frame": 206827,
+    "now": 58.546,
+    "pose": {
+      "x": -0.5253160495271554,
+      "y": -0.05354004037139768,
+      "theta": 0.11349271028139907
+    },
+    "pose_observed_at": 58.546,
+    "ball": {
+      "x": -1.1252662360403482e-16,
+      "y": 1.9622282691019808e-16,
+      "last_seen_at": 58.546
+    },
+    "current_ball": [
+      -1.1252662360403482e-16,
+      1.9622282691019808e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1252662360403482e-16,
+        1.9622282691019808e-16
+      ],
+      "ball_position": [
+        -1.1252662360403482e-16,
+        1.9622282691019808e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5280373924390086,
+      "turn_angle_rad": 0.011923754206047493,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17803739243900862,
+      "move_time_s": 0.08901869621950431,
+      "arrival_time_s": 0.08901869621950431,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.010981303780495694,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1246639612159293,
+      4.298112444882659
+    ],
+    "speed": 1.1844303000137856e-17
+  },
+  {
+    "frame": 206828,
+    "now": 58.656,
+    "pose": {
+      "x": -0.5254207418658708,
+      "y": -0.053902001510497254,
+      "theta": 0.11532957154662911
+    },
+    "pose_observed_at": 58.654,
+    "ball": {
+      "x": -1.1336115171633616e-16,
+      "y": 1.974732358192185e-16,
+      "last_seen_at": 58.654
+    },
+    "current_ball": [
+      -1.1336115171633616e-16,
+      1.974732358192185e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1336115171633616e-16,
+        1.974732358192185e-16
+      ],
+      "ball_position": [
+        -1.1336115171633616e-16,
+        1.974732358192185e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.528178361682604,
+      "turn_angle_rad": 0.013098944083079295,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17817836168260404,
+      "move_time_s": 0.08908918084130202,
+      "arrival_time_s": 0.08908918084130202,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.010910819158697987,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1246978462587802,
+      4.298095178355875
+    ],
+    "speed": 1.3919594483852013e-17
+  },
+  {
+    "frame": 206829,
+    "now": 58.696,
+    "pose": {
+      "x": -0.5254091291736954,
+      "y": -0.05396600379919826,
+      "theta": 0.11594971918628587
+    },
+    "pose_observed_at": 58.696,
+    "ball": {
+      "x": -1.1359459544025612e-16,
+      "y": 1.977873332325357e-16,
+      "last_seen_at": 58.696
+    },
+    "current_ball": [
+      -1.1359459544025612e-16,
+      1.977873332325357e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1359459544025612e-16,
+        1.977873332325357e-16
+      ],
+      "ball_position": [
+        -1.1359459544025612e-16,
+        1.977873332325357e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5281733452050718,
+      "turn_angle_rad": 0.013596303930730566,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17817334520507178,
+      "move_time_s": 0.08908667260253589,
+      "arrival_time_s": 0.08908667260253589,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.010913327397464118,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1247079961878876,
+      4.298089968208833
+    ],
+    "speed": 9.317806487485103e-18
+  },
+  {
+    "frame": 206830,
+    "now": 58.736,
+    "pose": {
+      "x": -0.5253702930432649,
+      "y": -0.05400973482005708,
+      "theta": 0.11671122763610563
+    },
+    "pose_observed_at": 58.73,
+    "ball": {
+      "x": -1.1390236656625829e-16,
+      "y": 1.9821406286133552e-16,
+      "last_seen_at": 58.73
+    },
+    "current_ball": [
+      -1.1390236656625829e-16,
+      1.9821406286133552e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1390236656625829e-16,
+        1.9821406286133552e-16
+      ],
+      "ball_position": [
+        -1.1390236656625829e-16,
+        1.9821406286133552e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5281391826665569,
+      "turn_angle_rad": 0.01426793034156773,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17813918266655693,
+      "move_time_s": 0.08906959133327846,
+      "arrival_time_s": 0.08906959133327846,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.010930408666721542,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1247206367449427,
+      4.298083471004702
+    ],
+    "speed": 1.547464837396386e-17
+  },
+  {
+    "frame": 206831,
+    "now": 58.762,
+    "pose": {
+      "x": -0.5253077832521326,
+      "y": -0.05401117719601735,
+      "theta": 0.11739749713264135
+    },
+    "pose_observed_at": 58.76,
+    "ball": {
+      "x": -1.14346787370484e-16,
+      "y": 1.9874780308212805e-16,
+      "last_seen_at": 58.76
+    },
+    "current_ball": [
+      -1.14346787370484e-16,
+      1.9874780308212805e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.14346787370484e-16,
+        1.9874780308212805e-16
+      ],
+      "ball_position": [
+        -1.14346787370484e-16,
+        1.9874780308212805e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5280771481586464,
+      "turn_angle_rad": 0.014939377518602914,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1780771481586464,
+      "move_time_s": 0.0890385740793232,
+      "arrival_time_s": 0.0890385740793232,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01096142592067681,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1247332232221956,
+      4.298076991947813
+    ],
+    "speed": 2.315139723453806e-17
+  },
+  {
+    "frame": 206832,
+    "now": 58.806,
+    "pose": {
+      "x": -0.5252114130182284,
+      "y": -0.0539607973623058,
+      "theta": 0.11805402727279467
+    },
+    "pose_observed_at": 58.806,
+    "ball": {
+      "x": -1.150481732170215e-16,
+      "y": 1.9939136068819168e-16,
+      "last_seen_at": 58.806
+    },
+    "current_ball": [
+      -1.150481732170215e-16,
+      1.9939136068819168e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.150481732170215e-16,
+        1.9939136068819168e-16
+      ],
+      "ball_position": [
+        -1.150481732170215e-16,
+        1.9939136068819168e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5279761320519895,
+      "turn_angle_rad": 0.01567215917980745,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17797613205198948,
+      "move_time_s": 0.08898806602599474,
+      "arrival_time_s": 0.08898806602599474,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011011933974005267,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1247476261691312,
+      4.298069553853735
+    ],
+    "speed": 2.0693419888350517e-17
+  },
+  {
+    "frame": 206833,
+    "now": 58.848,
+    "pose": {
+      "x": -0.5251269515562962,
+      "y": -0.0538895893408325,
+      "theta": 0.11848350732809386
+    },
+    "pose_observed_at": 58.842,
+    "ball": {
+      "x": -1.1540769652347252e-16,
+      "y": 1.9962871950482191e-16,
+      "last_seen_at": 58.842
+    },
+    "current_ball": [
+      -1.1540769652347252e-16,
+      1.9962871950482191e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1540769652347252e-16,
+        1.9962871950482191e-16
+      ],
+      "ball_position": [
+        -1.1540769652347252e-16,
+        1.9962871950482191e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5278848388523126,
+      "turn_angle_rad": 0.01621947349890446,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17788483885231265,
+      "move_time_s": 0.08894241942615633,
+      "arrival_time_s": 0.08894241942615633,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011057580573843678,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124758221930634,
+      4.298064059133168
+    ],
+    "speed": 1.196691090336609e-17
+  },
+  {
+    "frame": 206834,
+    "now": 58.898,
+    "pose": {
+      "x": -0.5249988922928265,
+      "y": -0.05375355056602561,
+      "theta": 0.11901737459901512
+    },
+    "pose_observed_at": 58.892,
+    "ball": {
+      "x": -1.159695934354209e-16,
+      "y": 2.001924430620585e-16,
+      "last_seen_at": 58.892
+    },
+    "current_ball": [
+      -1.159695934354209e-16,
+      2.001924430620585e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.159695934354209e-16,
+        2.001924430620585e-16
+      ],
+      "ball_position": [
+        -1.159695934354209e-16,
+        2.001924430620585e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5277435751453058,
+      "turn_angle_rad": 0.016984996854996492,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1777435751453058,
+      "move_time_s": 0.0888717875726529,
+      "arrival_time_s": 0.0888717875726529,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.0111282124273471,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1247725092576628,
+      4.298056628082318
+    ],
+    "speed": 1.5918698296537753e-17
+  },
+  {
+    "frame": 206835,
+    "now": 58.948,
+    "pose": {
+      "x": -0.5248348125142999,
+      "y": -0.053549232634042904,
+      "theta": 0.11962801403701293
+    },
+    "pose_observed_at": 58.948,
+    "ball": {
+      "x": -1.1679574660596643e-16,
+      "y": 2.010485450441113e-16,
+      "last_seen_at": 58.948
+    },
+    "current_ball": [
+      -1.1679574660596643e-16,
+      2.010485450441113e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1679574660596643e-16,
+        2.010485450441113e-16
+      ],
+      "ball_position": [
+        -1.1679574660596643e-16,
+        2.010485450441113e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5275595707999382,
+      "turn_angle_rad": 0.017949232199198528,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17755957079993823,
+      "move_time_s": 0.08877978539996911,
+      "arrival_time_s": 0.08877978539996911,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011220214600030892,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1247891923312354,
+      4.298047924974625
+    ],
+    "speed": 2.1245044927070002e-17
+  },
+  {
+    "frame": 206836,
+    "now": 58.99,
+    "pose": {
+      "x": -0.5247007382513061,
+      "y": -0.05336844440746057,
+      "theta": 0.12008805417628508
+    },
+    "pose_observed_at": 58.988,
+    "ball": {
+      "x": -1.1720825004903866e-16,
+      "y": 2.0137427250304873e-16,
+      "last_seen_at": 58.988
+    },
+    "current_ball": [
+      -1.1720825004903866e-16,
+      2.0137427250304873e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1720825004903866e-16,
+        2.0137427250304873e-16
+      ],
+      "ball_position": [
+        -1.1720825004903866e-16,
+        2.0137427250304873e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5274078645412276,
+      "turn_angle_rad": 0.01872448466149544,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1774078645412276,
+      "move_time_s": 0.0887039322706138,
+      "arrival_time_s": 0.0887039322706138,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011296067729386211,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1248020954324518,
+      4.2980411682189645
+    ],
+    "speed": 1.3140050134328957e-17
+  },
+  {
+    "frame": 206837,
+    "now": 59.04,
+    "pose": {
+      "x": -0.5245570460577428,
+      "y": -0.05316843985843504,
+      "theta": 0.1205127092927874
+    },
+    "pose_observed_at": 59.034,
+    "ball": {
+      "x": -1.1769613019247198e-16,
+      "y": 2.01889900470527e-16,
+      "last_seen_at": 59.034
+    },
+    "current_ball": [
+      -1.1769613019247198e-16,
+      2.01889900470527e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.1769613019247198e-16,
+        2.01889900470527e-16
+      ],
+      "ball_position": [
+        -1.1769613019247198e-16,
+        2.01889900470527e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5272447036868221,
+      "turn_angle_rad": 0.019498954058874002,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1772447036868221,
+      "move_time_s": 0.08862235184341105,
+      "arrival_time_s": 0.08862235184341105,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011377648156588954,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124815545639298,
+      4.298034099769576
+    ],
+    "speed": 1.54317087447792e-17
+  },
+  {
+    "frame": 206838,
+    "now": 59.086,
+    "pose": {
+      "x": -0.5243998855535804,
+      "y": -0.052947803499275956,
+      "theta": 0.12092271388705812
+    },
+    "pose_observed_at": 59.08,
+    "ball": {
+      "x": -1.18461173465413e-16,
+      "y": 2.026082512830281e-16,
+      "last_seen_at": 59.08
+    },
+    "current_ball": [
+      -1.18461173465413e-16,
+      2.026082512830281e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.18461173465413e-16,
+        2.026082512830281e-16
+      ],
+      "ball_position": [
+        -1.18461173465413e-16,
+        2.026082512830281e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5270661342412412,
+      "turn_angle_rad": 0.020295367980557408,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17706613424124118,
+      "move_time_s": 0.08853306712062059,
+      "arrival_time_s": 0.08853306712062059,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011466932879379416,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1248301617053145,
+      4.298026395915084
+    ],
+    "speed": 2.281385903628071e-17
+  },
+  {
+    "frame": 206839,
+    "now": 59.192,
+    "pose": {
+      "x": -0.5240453080176174,
+      "y": -0.052471187141682564,
+      "theta": 0.12179245502453973
+    },
+    "pose_observed_at": 59.192,
+    "ball": {
+      "x": -1.2012209551856953e-16,
+      "y": 2.0403805451046306e-16,
+      "last_seen_at": 59.192
+    },
+    "current_ball": [
+      -1.2012209551856953e-16,
+      2.0403805451046306e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2012209551856953e-16,
+        2.0403805451046306e-16
+      ],
+      "ball_position": [
+        -1.2012209551856953e-16,
+        2.0403805451046306e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5266656532709693,
+      "turn_angle_rad": 0.021997867726450192,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17666565327096928,
+      "move_time_s": 0.08833282663548464,
+      "arrival_time_s": 0.08833282663548464,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011667173364515365,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1248640018086409,
+      4.298008496334165
+    ],
+    "speed": 1.9567630578118672e-17
+  },
+  {
+    "frame": 206840,
+    "now": 59.232,
+    "pose": {
+      "x": -0.5239495710833829,
+      "y": -0.052353420940482384,
+      "theta": 0.12206871283461594
+    },
+    "pose_observed_at": 59.226,
+    "ball": {
+      "x": -1.2081167166669487e-16,
+      "y": 2.0465917542503627e-16,
+      "last_seen_at": 59.226
+    },
+    "current_ball": [
+      -1.2081167166669487e-16,
+      2.0465917542503627e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2081167166669487e-16,
+        2.0465917542503627e-16
+      ],
+      "ball_position": [
+        -1.2081167166669487e-16,
+        2.0465917542503627e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5265586707316025,
+      "turn_angle_rad": 0.022478551182357462,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17655867073160247,
+      "move_time_s": 0.08827933536580124,
+      "arrival_time_s": 0.08827933536580124,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011720664634198769,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1248735982009304,
+      4.298003381402616
+    ],
+    "speed": 2.7296058098233776e-17
+  },
+  {
+    "frame": 206841,
+    "now": 59.268,
+    "pose": {
+      "x": -0.5238231390095127,
+      "y": -0.05220847342670132,
+      "theta": 0.12238678838346596
+    },
+    "pose_observed_at": 59.268,
+    "ball": {
+      "x": -1.2140063910846867e-16,
+      "y": 2.0514033641042333e-16,
+      "last_seen_at": 59.268
+    },
+    "current_ball": [
+      -1.2140063910846867e-16,
+      2.0514033641042333e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2140063910846867e-16,
+        2.0514033641042333e-16
+      ],
+      "ball_position": [
+        -1.2140063910846867e-16,
+        2.0514033641042333e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5264184700970567,
+      "turn_angle_rad": 0.02304672949222679,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1764184700970567,
+      "move_time_s": 0.08820923504852834,
+      "arrival_time_s": 0.08820923504852834,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01179076495147166,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1248867419369517,
+      4.297996354972239
+    ],
+    "speed": 1.8107742254381636e-17
+  },
+  {
+    "frame": 206842,
+    "now": 59.312,
+    "pose": {
+      "x": -0.5237257897204546,
+      "y": -0.05210467041428539,
+      "theta": 0.12256142226556685
+    },
+    "pose_observed_at": 59.31,
+    "ball": {
+      "x": -1.21905411044388e-16,
+      "y": 2.0554613505357486e-16,
+      "last_seen_at": 59.31
+    },
+    "current_ball": [
+      -1.21905411044388e-16,
+      2.0554613505357486e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.21905411044388e-16,
+        2.0554613505357486e-16
+      ],
+      "ball_position": [
+        -1.21905411044388e-16,
+        2.0554613505357486e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.526311314240246,
+      "turn_angle_rad": 0.023399274162078335,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17631131424024604,
+      "move_time_s": 0.08815565712012302,
+      "arrival_time_s": 0.08815565712012302,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011844342879876985,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124897454181885,
+      4.297990614843664
+    ],
+    "speed": 1.5420545496146323e-17
+  },
+  {
+    "frame": 206843,
+    "now": 59.362,
+    "pose": {
+      "x": -0.5235766757769611,
+      "y": -0.051953926100789825,
+      "theta": 0.12280097781688268
+    },
+    "pose_observed_at": 59.36,
+    "ball": {
+      "x": -1.2279606293854734e-16,
+      "y": 2.0632634273662288e-16,
+      "last_seen_at": 59.358
+    },
+    "current_ball": [
+      -1.2279606293854734e-16,
+      2.0632634273662288e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2279606293854734e-16,
+        2.0632634273662288e-16
+      ],
+      "ball_position": [
+        -1.2279606293854734e-16,
+        2.0632634273662288e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5261480265618595,
+      "turn_angle_rad": 0.023895870570606645,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17614802656185957,
+      "move_time_s": 0.08807401328092979,
+      "arrival_time_s": 0.08807401328092979,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01192598671907022,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1249157814054607,
+      4.297980759830108
+    ],
+    "speed": 2.4667800027252187e-17
+  },
+  {
+    "frame": 206844,
+    "now": 59.406,
+    "pose": {
+      "x": -0.5234846848888047,
+      "y": -0.05186764015924887,
+      "theta": 0.12299715369612255
+    },
+    "pose_observed_at": 59.404,
+    "ball": {
+      "x": -1.2331473841746137e-16,
+      "y": 2.0679457065015408e-16,
+      "last_seen_at": 59.404
+    },
+    "current_ball": [
+      -1.2331473841746137e-16,
+      2.0679457065015408e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2331473841746137e-16,
+        2.0679457065015408e-16
+      ],
+      "ball_position": [
+        -1.2331473841746137e-16,
+        2.0679457065015408e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5260479706346375,
+      "turn_angle_rad": 0.02423800406925905,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1760479706346375,
+      "move_time_s": 0.08802398531731875,
+      "arrival_time_s": 0.08802398531731875,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011976014682681252,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1249287093100953,
+      4.297973763232834
+    ],
+    "speed": 1.5190374020135776e-17
+  },
+  {
+    "frame": 206845,
+    "now": 59.43,
+    "pose": {
+      "x": -0.5234579834714763,
+      "y": -0.05184367191899514,
+      "theta": 0.12306756569163359
+    },
+    "pose_observed_at": 59.426,
+    "ball": {
+      "x": -1.2344517029764513e-16,
+      "y": 2.0692242307705227e-16,
+      "last_seen_at": 59.426
+    },
+    "current_ball": [
+      -1.2344517029764513e-16,
+      2.0692242307705227e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2344517029764513e-16,
+        2.0692242307705227e-16
+      ],
+      "ball_position": [
+        -1.2344517029764513e-16,
+        2.0692242307705227e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5260190365168058,
+      "turn_angle_rad": 0.024348754386135735,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17601903651680584,
+      "move_time_s": 0.08800951825840292,
+      "arrival_time_s": 0.08800951825840292,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.011990481741597087,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1249328084533219,
+      4.297971542799706
+    ],
+    "speed": 8.30198602546464e-18
+  },
+  {
+    "frame": 206846,
+    "now": 59.48,
+    "pose": {
+      "x": -0.5233729298497334,
+      "y": -0.05177062263423858,
+      "theta": 0.12331299178735243
+    },
+    "pose_observed_at": 59.472,
+    "ball": {
+      "x": -1.2403485840866154e-16,
+      "y": 2.0761894224998087e-16,
+      "last_seen_at": 59.472
+    },
+    "current_ball": [
+      -1.2403485840866154e-16,
+      2.0761894224998087e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2403485840866154e-16,
+        2.0761894224998087e-16
+      ],
+      "ball_position": [
+        -1.2403485840866154e-16,
+        2.0761894224998087e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.525927201300171,
+      "turn_angle_rad": 0.024716461407762114,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17592720130017103,
+      "move_time_s": 0.08796360065008552,
+      "arrival_time_s": 0.08796360065008552,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01203639934991449,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.124947397092668,
+      4.297963638457785
+    ],
+    "speed": 1.9839514743098393e-17
+  },
+  {
+    "frame": 206847,
+    "now": 59.526,
+    "pose": {
+      "x": -0.5232982479979967,
+      "y": -0.051710959076389625,
+      "theta": 0.1235384882054674
+    },
+    "pose_observed_at": 59.526,
+    "ball": {
+      "x": -1.2461164477580422e-16,
+      "y": 2.085027617354975e-16,
+      "last_seen_at": 59.526
+    },
+    "current_ball": [
+      -1.2461164477580422e-16,
+      2.085027617354975e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2461164477580422e-16,
+        2.085027617354975e-16
+      ],
+      "ball_position": [
+        -1.2461164477580422e-16,
+        2.085027617354975e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5258470116358681,
+      "turn_angle_rad": 0.025040888392478325,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17584701163586813,
+      "move_time_s": 0.08792350581793407,
+      "arrival_time_s": 0.08792350581793407,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012076494182065939,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1249630711380203,
+      4.297955112388955
+    ],
+    "speed": 1.954400785154845e-17
+  },
+  {
+    "frame": 206848,
+    "now": 59.566,
+    "pose": {
+      "x": -0.523259478269671,
+      "y": -0.051682124937317594,
+      "theta": 0.12367891904709444
+    },
+    "pose_observed_at": 59.564,
+    "ball": {
+      "x": -1.247901181393837e-16,
+      "y": 2.088457998884179e-16,
+      "last_seen_at": 59.564
+    },
+    "current_ball": [
+      -1.247901181393837e-16,
+      2.088457998884179e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.247901181393837e-16,
+        2.088457998884179e-16
+      ],
+      "ball_position": [
+        -1.247901181393837e-16,
+        2.088457998884179e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.525805594908503,
+      "turn_angle_rad": 0.025228640578209727,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.175805594908503,
+      "move_time_s": 0.0879027974542515,
+      "arrival_time_s": 0.0879027974542515,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012097202545748503,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1249728902295029,
+      4.29794976072368
+    ],
+    "speed": 1.0176010430082807e-17
+  },
+  {
+    "frame": 206849,
+    "now": 59.616,
+    "pose": {
+      "x": -0.5232183594959614,
+      "y": -0.051653286201104986,
+      "theta": 0.12384712132262624
+    },
+    "pose_observed_at": 59.612,
+    "ball": {
+      "x": -1.2519207449689537e-16,
+      "y": 2.0950154615399843e-16,
+      "last_seen_at": 59.61
+    },
+    "current_ball": [
+      -1.2519207449689537e-16,
+      2.0950154615399843e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2519207449689537e-16,
+        2.0950154615399843e-16
+      ],
+      "ball_position": [
+        -1.2519207449689537e-16,
+        2.0950154615399843e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.525761841225681,
+      "turn_angle_rad": 0.025443741410394252,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17576184122568106,
+      "move_time_s": 0.08788092061284053,
+      "arrival_time_s": 0.08788092061284053,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012119079387159476,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1249855455286153,
+      4.297942852732989
+    ],
+    "speed": 1.6720374559491292e-17
+  },
+  {
+    "frame": 206850,
+    "now": 59.72,
+    "pose": {
+      "x": -0.5231610554396495,
+      "y": -0.05161583692778587,
+      "theta": 0.12421492342630266
+    },
+    "pose_observed_at": 59.714,
+    "ball": {
+      "x": -1.262079202885025e-16,
+      "y": 2.1111095315274929e-16,
+      "last_seen_at": 59.714
+    },
+    "current_ball": [
+      -1.262079202885025e-16,
+      2.1111095315274929e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.262079202885025e-16,
+        2.1111095315274929e-16
+      ],
+      "ball_position": [
+        -1.262079202885025e-16,
+        2.1111095315274929e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.52570113615103,
+      "turn_angle_rad": 0.025871726545454513,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17570113615103,
+      "move_time_s": 0.087850568075515,
+      "arrival_time_s": 0.087850568075515,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012149431924485005,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1250135399036514,
+      4.297927504779064
+    ],
+    "speed": 1.8299907341939608e-17
+  },
+  {
+    "frame": 206851,
+    "now": 59.768,
+    "pose": {
+      "x": -0.5231467629403315,
+      "y": -0.0516059677713575,
+      "theta": 0.12443348583893445
+    },
+    "pose_observed_at": 59.762,
+    "ball": {
+      "x": -1.2660649120964877e-16,
+      "y": 2.11873366705009e-16,
+      "last_seen_at": 59.762
+    },
+    "current_ball": [
+      -1.2660649120964877e-16,
+      2.11873366705009e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2660649120964877e-16,
+        2.11873366705009e-16
+      ],
+      "ball_position": [
+        -1.2660649120964877e-16,
+        2.11873366705009e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5256859437768577,
+      "turn_angle_rad": 0.02610630263553318,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17568594377685776,
+      "move_time_s": 0.08784297188842888,
+      "arrival_time_s": 0.08784297188842888,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012157028111571128,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.125028860359033,
+      4.297919079489797
+    ],
+    "speed": 1.7923123883064905e-17
+  },
+  {
+    "frame": 206852,
+    "now": 59.808,
+    "pose": {
+      "x": -0.5231424653899,
+      "y": -0.05160172964084842,
+      "theta": 0.12460517607068675
+    },
+    "pose_observed_at": 59.804,
+    "ball": {
+      "x": -1.2698368090615498e-16,
+      "y": 2.1247248874801643e-16,
+      "last_seen_at": 59.804
+    },
+    "current_ball": [
+      -1.2698368090615498e-16,
+      2.1247248874801643e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2698368090615498e-16,
+        2.1247248874801643e-16
+      ],
+      "ball_position": [
+        -1.2698368090615498e-16,
+        2.1247248874801643e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5256812509459985,
+      "turn_angle_rad": 0.02628521354319198,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.1756812509459985,
+      "move_time_s": 0.08784062547299926,
+      "arrival_time_s": 0.08784062547299926,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.01215937452700075,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1250412900673443,
+      4.297912234311527
+    ],
+    "speed": 1.6856391050759704e-17
+  },
+  {
+    "frame": 206853,
+    "now": 59.852,
+    "pose": {
+      "x": -0.5231435942890069,
+      "y": -0.051599874020110445,
+      "theta": 0.12473292011435938
+    },
+    "pose_observed_at": 59.85,
+    "ball": {
+      "x": -1.2720066496575494e-16,
+      "y": 2.1275643545609288e-16,
+      "last_seen_at": 59.85
+    },
+    "current_ball": [
+      -1.2720066496575494e-16,
+      2.1275643545609288e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2720066496575494e-16,
+        2.1275643545609288e-16
+      ],
+      "ball_position": [
+        -1.2720066496575494e-16,
+        2.1275643545609288e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5256821922459541,
+      "turn_angle_rad": 0.026416681269343142,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17568219224595416,
+      "move_time_s": 0.08784109612297708,
+      "arrival_time_s": 0.08784109612297708,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012158903877022925,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1250525503898159,
+      4.297906019830031
+    ],
+    "speed": 7.768745703474979e-18
+  },
+  {
+    "frame": 206854,
+    "now": 59.894,
+    "pose": {
+      "x": -0.5231505445367951,
+      "y": -0.0515986196766977,
+      "theta": 0.12485517861054017
+    },
+    "pose_observed_at": 59.894,
+    "ball": {
+      "x": -1.2750701452796639e-16,
+      "y": 2.131861620790222e-16,
+      "last_seen_at": 59.894
+    },
+    "current_ball": [
+      -1.2750701452796639e-16,
+      2.131861620790222e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2750701452796639e-16,
+        2.131861620790222e-16
+      ],
+      "ball_position": [
+        -1.2750701452796639e-16,
+        2.131861620790222e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.525688985809752,
+      "turn_angle_rad": 0.026542612104045016,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.175688985809752,
+      "move_time_s": 0.087844492904876,
+      "arrival_time_s": 0.087844492904876,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012155507095124002,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1250654443142947,
+      4.297898886180246
+    ],
+    "speed": 1.1994209706701819e-17
+  },
+  {
+    "frame": 206855,
+    "now": 59.938,
+    "pose": {
+      "x": -0.5231617648346105,
+      "y": -0.05159705451266352,
+      "theta": 0.12495732452281715
+    },
+    "pose_observed_at": 59.936,
+    "ball": {
+      "x": -1.2778805852484513e-16,
+      "y": 2.1360986588772404e-16,
+      "last_seen_at": 59.936
+    },
+    "current_ball": [
+      -1.2778805852484513e-16,
+      2.1360986588772404e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.2778805852484513e-16,
+        2.1360986588772404e-16
+      ],
+      "ball_position": [
+        -1.2778805852484513e-16,
+        2.1360986588772404e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.525699998306303,
+      "turn_angle_rad": 0.026649815894120812,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.175699998306303,
+      "move_time_s": 0.0878499991531515,
+      "arrival_time_s": 0.0878499991531515,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012150000846848502,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1250771617058106,
+      4.297892394933253
+    ],
+    "speed": 1.2105700520210958e-17
+  },
+  {
+    "frame": 206856,
+    "now": 59.99,
+    "pose": {
+      "x": -0.5231774543839391,
+      "y": -0.05159481381630879,
+      "theta": 0.12507507524647787
+    },
+    "pose_observed_at": 59.984,
+    "ball": {
+      "x": -1.280704855511051e-16,
+      "y": 2.1396516371482433e-16,
+      "last_seen_at": 59.984
+    },
+    "current_ball": [
+      -1.280704855511051e-16,
+      2.1396516371482433e-16
+    ],
+    "intercept": {
+      "target": [
+        -1.280704855511051e-16,
+        2.1396516371482433e-16
+      ],
+      "ball_position": [
+        -1.280704855511051e-16,
+        2.1396516371482433e-16
+      ],
+      "approach_normal": null,
+      "distance_m": 0.5257153921927702,
+      "turn_angle_rad": 0.026774737408273616,
+      "turn_time_s": 0.0,
+      "move_distance_m": 0.17571539219277021,
+      "move_time_s": 0.08785769609638511,
+      "arrival_time_s": 0.08785769609638511,
+      "status": "intercept",
+      "score_s": 0.1,
+      "intercept_time_s": 0.1,
+      "target_time_s": 0.1,
+      "slack_s": 0.012142303903614898,
+      "horizon_s": 3.0,
+      "step_s": 0.05,
+      "control_radius_m": 0.35,
+      "linear_speed_mps": 2.0,
+      "angular_speed_rps": 2.0,
+      "turn_threshold_rad": 0.5,
+      "omni_distance_m": 1.0
+    },
+    "target": [
+      -1.1250893904899826,
+      4.297885603186344
+    ],
+    "speed": 9.455707489400059e-18
+  }
+]

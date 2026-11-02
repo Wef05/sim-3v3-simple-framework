@@ -24,3 +24,8 @@ assert.match(lines.join('\n'),/0.10 s；不代表已确认触球/);
 ctx.renderAttackChoice({context:{now:0},players:[{role:'attack',attack_receive:{stage:'unavailable',reason:'missing_observation',intercept_point:null,outgoing_target:[7,0],angle_deg:null,stable_s:0}}]});
 assert.match(lines.join('\n'),/未定义/);
 console.log('Receiving stage, angle, stability and missing-angle display passed.');
+ctx.renderAttackChoice({context:{now:0},players:[{role:'attack',attack_receive:{stage:'wait_ball',reason:'stabilizing',intercept_point:[0,0],outgoing_target:[7,0],angle_deg:null,stable_s:.1,settling:{sample_count:9,span_s:.28,trend_mps:.02,spread_m:.01,settled:true}}}]});
+assert.match(lines.join('\n'),/9 个观测/);
+assert.match(lines.join('\n'),/0.020 m\/s/);
+assert.match(lines.join('\n'),/已停稳/);
+console.log('Observation-window settling metrics display passed.');
