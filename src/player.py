@@ -27,6 +27,8 @@ from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
                          opponent_goal, goalkeeper_home)
 from .utils.free_position import nearest_free_position, shot_triangle
 from .utils.ball_motion import BallMotion
+from .utils.freeman_cover import CoverMemory, freeman_cover, cover_position
+from .utils.kick_lane import point_segment
 from .utils.restart_defense import restart_intent, kickoff_targets
 from .utils.restart_escape import escape_intent
 
@@ -48,6 +50,8 @@ class Player:
         self.tactical_target = None
         self.freeman_region = None
         self._guard_memory = None
+        self._cover_memory = CoverMemory()
+        self.freeman_cover = None
         self._receive_memory = None
         self.attack_receive = None
 
@@ -133,6 +137,9 @@ class Player:
             self._restart_memory = None
         if task.role != Role.GUARD:
             self._guard_memory = None
+        if task.role != Role.FREEMAN or get_phase(self.context) != Phase.NORMAL:
+            self._cover_memory = CoverMemory()
+        self.freeman_cover = None
         if task.role != Role.ATTACKER:
             self._receive_memory = None
         self.attack_receive = None
@@ -302,6 +309,13 @@ class Player:
         每帧重算；无可行点或观测不足时停止，不主动踢球。
         """
         ctx, pose = self.context, self.pose
+        if ctx is not None and pose is not None and get_phase(ctx) == Phase.NORMAL:
+            intent, self.freeman_cover = freeman_cover(
+                ctx, self.id, pose, self.motion, self.threat, self._cover_memory)
+            if intent is not None:
+                self.tactical_target = intent.target
+                self.action = 'freeman:cover:' + self.freeman_cover['strategy']
+                return intent
         exclusion = getattr(self, "freeman_shot_triangle", ())
         self.freeman_region = dict(shot_triangle=exclusion, shot_clearance=FREEMAN_SHOT_CLEARANCE_M, ball_radius=ball_radius, opponent_radius=opponent_radius,
                                    goal_line_margin=FREEMAN_GOAL_LINE_MARGIN_M)
@@ -378,6 +392,20 @@ def coordinate(context, assignments, preliminary):
             continue
         role = assignments[pid].role
         priority = {Role.ATTACKER: 80, Role.GUARD: 60, Role.FREEMAN: 20}.get(role, 10)
+        if role == Role.FREEMAN and intent.motion_priority == 50:
+            guard = next((i for i, task in assignments.items() if task.role == Role.GUARD), None)
+            robot = context.teammates.get(guard)
+            gi = preliminary.get(guard)
+            if robot is not None and robot.pose is not None:
+                start = (robot.pose.x, robot.pose.y)
+                end = gi.target if isinstance(gi, MoveIntent) else start
+                # 守门员先占路径；自由人改为前方空侧补位，取消接触封堵承诺。
+                if point_segment(intent.target, start, end) < FREEMAN_COVER_CLEARANCE_M:
+                    ball = context.ball
+                    source = (ball.x, ball.y) if ball is not None else None
+                    target = cover_position(context, source, (start, end))
+                    intent = replace(intent, target=target, direct_path=False,
+                                     maintain_face=False, avoid_ball=True)
         contest = role == Role.ATTACKER or (role == Role.GUARD and intent.direct_path)
         final[pid] = replace(intent, motion_priority=max(intent.motion_priority, priority),
             opponent_mode='contest' if contest and not restricted else 'avoid',
@@ -411,6 +439,10 @@ def decide(context, players, assignments, store):
     # 可视化目标以最终意图为准；协调函数如果替换行为，也应注意调试标签的含义。
     for p in players:
         intent = final[p.id]
+        if getattr(p, 'freeman_cover', None) is not None and isinstance(intent, MoveIntent):
+            if intent != preliminary[p.id] and intent.target != preliminary[p.id].target:
+                p.freeman_cover.update(strategy='guard_yield', target=intent.target)
+                p.action = 'freeman:cover:guard_yield'
         if isinstance(intent, MoveIntent):
             p.tactical_target = intent.target
         elif isinstance(intent, KickIntent):

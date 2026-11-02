@@ -51,24 +51,27 @@ fallback 仅供排名，不据此宣称能抢先；时间差为敌方减我方�
     threat = min(valid, key=lambda c: (intercept_score(c['intercept']), c['id'])) if valid else None
     partial = any(not c['penalized'] and c['intercept']['status'] == 'unavailable'
                   for c in candidates)
+    velocity_known = bool((motion.ball_prediction_details() or {}).get("velocity_estimated"))
     comparisons = []
     for p in sorted(players, key=lambda p: p.id):
         own = estimate_ball_intercept(p.pose, motion, fallen=p.is_fallen,
                                       penalized=p.is_penalized, approach_normal=own_normal)
         ready = p.pose is not None and not p.is_fallen and not p.is_penalized and p.mode == 'walk'
-        known = (ready and threat is not None and not partial and
+        eligible = not p.is_fallen and not p.is_penalized and p.mode == 'walk'
+        known = (velocity_known and ready and threat is not None and not partial and
                  own.get('status') == 'intercept' and threat['intercept']['status'] == 'intercept')
         margin = (threat['intercept']['intercept_time_s'] - own['intercept_time_s']) if known else None
-        comparisons.append(dict(id=p.id, score_s=own.get('score_s'), intercept=own,
+        comparisons.append(dict(id=p.id, eligible=eligible, score_s=own.get('score_s'), intercept=own,
                                 margin_s=margin, can_beat=margin > 0 if known else None))
-    winners = [c for c in comparisons if c['can_beat'] is True]
+    eligible_rows = [c for c in comparisons if c["eligible"]]
+    winners = [c for c in eligible_rows if c['can_beat'] is True]
     best = min(winners, key=lambda c: (c['score_s'], c['id'])) if winners else None
     return dict(status='unavailable' if threat is None else 'partial' if partial else 'ok',
                 threat_id=threat['id'] if threat else None,
                 threat_intercept=threat['intercept'] if threat else None,
                 opponents=candidates, teammates=comparisons,
-                can_beat=True if winners else False if comparisons and all(
-                    c['can_beat'] is False for c in comparisons) else None,
+                can_beat=True if winners else False if eligible_rows and all(
+                    c['can_beat'] is False for c in eligible_rows) else None,
                 first_player_id=best['id'] if best else None,
                 opponent_motion_assumption='ready',
                 approach_basis=side_basis, own_approach_normal=own_normal,
