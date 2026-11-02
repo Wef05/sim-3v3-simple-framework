@@ -1,0 +1,14 @@
+{
+  "samples.jsonl.gz": {
+    "bytes": 22338,
+    "sha256": "3551a80b8d89b4f7882d802ccc27026210f5b2135083b9e5a6b10551fd61a4fc"
+  },
+  "dashboard-team1.json.gz": {
+    "bytes": 5212280,
+    "sha256": "d1f7438e3a3a534225b4147450b1b6be65d5dd9457cdd0457e2fa08e3a0be0a1"
+  },
+  "capture-window.json.gz": {
+    "bytes": 5222538,
+    "sha256": "0498532897daebc449aa8f753ac6f3119c65c7fbabcb9eae1b3bab74100918a5"
+  }
+}

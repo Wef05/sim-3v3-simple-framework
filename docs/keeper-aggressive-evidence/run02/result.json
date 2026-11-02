@@ -1,0 +1,402 @@
+{
+  "matchId": "local-match",
+  "status": "finished",
+  "isFinal": true,
+  "startedAtWallTime": 1793600895.0427835,
+  "endedAtWallTime": 1793601058.854834,
+  "durationSeconds": 163.8120505809784,
+  "latestEventId": "local-match:40",
+  "eventsTotal": 40,
+  "game": {
+    "phase": "firstHalf",
+    "state": "finished",
+    "setPlay": "noSetPlay",
+    "kickingSide": null,
+    "droppedBall": false,
+    "stopped": false,
+    "secondaryTime": 0,
+    "regularDurationSeconds": 600.0,
+    "timeRemaining": 539.9019999999934,
+    "primaryTime": 539.9019999999934,
+    "drawPolicy": "allow_draw",
+    "extraTimeMaxSeconds": 12000.0,
+    "timingStage": "regulation"
+  },
+  "timing": {
+    "timeRemaining": 539.9019999999934,
+    "primaryTime": 539.9019999999934,
+    "stage": "regulation",
+    "extraTimeElapsedSeconds": 0.0,
+    "regularDurationSeconds": 600.0,
+    "drawPolicy": "allow_draw",
+    "extraTimeMaxSeconds": 12000.0
+  },
+  "score": {
+    "home": 1,
+    "away": 0
+  },
+  "winner": "home",
+  "endReason": "operator_finish",
+  "finishedEventId": "local-match:40",
+  "teams": {
+    "home": {
+      "side": "home",
+      "teamNumber": 1,
+      "teamName": "Challenger",
+      "externalTeamId": null,
+      "score": 1,
+      "stats": {
+        "goals": {
+          "total": 1,
+          "events": [
+            {
+              "eventId": "local-match:36",
+              "type": "goal",
+              "timeRemaining": 0.0,
+              "timing": {
+                "timeRemaining": 547.792000000032,
+                "primaryTime": 547.792000000032,
+                "stage": "regulation",
+                "extraTimeElapsedSeconds": 0.0
+              },
+              "actor": {
+                "side": "home",
+                "teamNumber": 1,
+                "teamName": "Challenger",
+                "externalTeamId": null
+              },
+              "reason": "ball_crossed_goal_line"
+            }
+          ]
+        },
+        "outOfBounds": {
+          "awarded": {
+            "total": 1,
+            "events": [
+              {
+                "eventId": "local-match:25",
+                "type": "corner_kick_setup",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 567.1460000000583,
+                  "primaryTime": 567.1460000000583,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "home",
+                  "teamNumber": 1,
+                  "teamName": "Challenger",
+                  "externalTeamId": null
+                },
+                "evidence": {
+                  "ruleId": "ball_out",
+                  "ruleName": "Ball out of bounds",
+                  "summary": "Ball out of bounds, restart with cornerKick.",
+                  "measurements": [],
+                  "positions": {
+                    "target": [
+                      6.95,
+                      -4.45,
+                      0.11
+                    ],
+                    "from": [
+                      7.13903431636076,
+                      -3.494969939422971,
+                      0.10996128411920211
+                    ]
+                  }
+                },
+                "reason": "ball_out"
+              }
+            ],
+            "throwIn": 0,
+            "goalKick": 0,
+            "cornerKick": 1
+          },
+          "caused": {
+            "total": 1,
+            "events": [
+              {
+                "eventId": "local-match:10",
+                "type": "throw_in_setup",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 592.7520000000127,
+                  "primaryTime": 592.7520000000127,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "away",
+                  "teamNumber": 2,
+                  "teamName": "Booster AI",
+                  "externalTeamId": null
+                },
+                "evidence": {
+                  "ruleId": "ball_out",
+                  "ruleName": "Ball out of bounds",
+                  "summary": "Ball out of bounds, restart with throwIn.",
+                  "measurements": [],
+                  "positions": {
+                    "target": [
+                      1.2492608562648235,
+                      4.45,
+                      0.11
+                    ],
+                    "from": [
+                      1.2492608562648235,
+                      4.6354038127845145,
+                      0.10989490592480587
+                    ]
+                  }
+                },
+                "reason": "ball_out"
+              }
+            ],
+            "throwIn": 1,
+            "goalKick": 0,
+            "cornerKick": 0
+          }
+        },
+        "fouls": {
+          "total": 0,
+          "events": [],
+          "byReason": {},
+          "byRobot": {}
+        },
+        "removals": {
+          "total": 0,
+          "events": [],
+          "byReason": {},
+          "byRobot": {}
+        },
+        "discipline": {
+          "warnings": {
+            "total": 0,
+            "events": []
+          },
+          "cautions": {
+            "total": 0,
+            "events": []
+          },
+          "sentOff": {
+            "total": 0,
+            "events": []
+          }
+        },
+        "invalidGoals": {
+          "total": 0,
+          "events": [],
+          "byReason": {}
+        },
+        "ballResets": {
+          "total": 0,
+          "events": [],
+          "byReason": {}
+        }
+      }
+    },
+    "away": {
+      "side": "away",
+      "teamNumber": 2,
+      "teamName": "Booster AI",
+      "externalTeamId": null,
+      "score": 0,
+      "stats": {
+        "goals": {
+          "total": 0,
+          "events": []
+        },
+        "outOfBounds": {
+          "awarded": {
+            "total": 1,
+            "events": [
+              {
+                "eventId": "local-match:10",
+                "type": "throw_in_setup",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 592.7520000000127,
+                  "primaryTime": 592.7520000000127,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "away",
+                  "teamNumber": 2,
+                  "teamName": "Booster AI",
+                  "externalTeamId": null
+                },
+                "evidence": {
+                  "ruleId": "ball_out",
+                  "ruleName": "Ball out of bounds",
+                  "summary": "Ball out of bounds, restart with throwIn.",
+                  "measurements": [],
+                  "positions": {
+                    "target": [
+                      1.2492608562648235,
+                      4.45,
+                      0.11
+                    ],
+                    "from": [
+                      1.2492608562648235,
+                      4.6354038127845145,
+                      0.10989490592480587
+                    ]
+                  }
+                },
+                "reason": "ball_out"
+              }
+            ],
+            "throwIn": 1,
+            "goalKick": 0,
+            "cornerKick": 0
+          },
+          "caused": {
+            "total": 1,
+            "events": [
+              {
+                "eventId": "local-match:25",
+                "type": "corner_kick_setup",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 567.1460000000583,
+                  "primaryTime": 567.1460000000583,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "home",
+                  "teamNumber": 1,
+                  "teamName": "Challenger",
+                  "externalTeamId": null
+                },
+                "evidence": {
+                  "ruleId": "ball_out",
+                  "ruleName": "Ball out of bounds",
+                  "summary": "Ball out of bounds, restart with cornerKick.",
+                  "measurements": [],
+                  "positions": {
+                    "target": [
+                      6.95,
+                      -4.45,
+                      0.11
+                    ],
+                    "from": [
+                      7.13903431636076,
+                      -3.494969939422971,
+                      0.10996128411920211
+                    ]
+                  }
+                },
+                "reason": "ball_out"
+              }
+            ],
+            "throwIn": 0,
+            "goalKick": 0,
+            "cornerKick": 1
+          }
+        },
+        "fouls": {
+          "total": 1,
+          "events": [
+            {
+              "eventId": "local-match:38",
+              "type": "penalty",
+              "timeRemaining": 0.0,
+              "timing": {
+                "timeRemaining": 540.7579999999978,
+                "primaryTime": 540.7579999999978,
+                "stage": "regulation",
+                "extraTimeElapsedSeconds": 0.0
+              },
+              "actor": {
+                "side": "away",
+                "robotName": "robot6",
+                "playerNumber": 3
+              },
+              "evidence": {
+                "ruleId": "fallenRobot",
+                "ruleName": "Fallen robot",
+                "summary": "Robot remained fallen beyond the allowed duration.",
+                "measurements": [
+                  {
+                    "name": "upDot",
+                    "value": 0.1729143651688528,
+                    "threshold": 0.45,
+                    "operator": "<="
+                  },
+                  {
+                    "name": "height",
+                    "value": 0.15149945804341847,
+                    "unit": "m",
+                    "threshold": 0.25,
+                    "operator": "<="
+                  },
+                  {
+                    "name": "fallenDuration",
+                    "value": 10002.000000048574,
+                    "unit": "ms",
+                    "threshold": 10000.0,
+                    "operator": ">="
+                  }
+                ],
+                "positions": {
+                  "robot": [
+                    6.798795754875079,
+                    -0.7990876265107222,
+                    0.15149945804341847
+                  ],
+                  "reference": [
+                    6.795041762593229,
+                    -0.7942418053150008,
+                    0.1511232872002436
+                  ]
+                }
+              },
+              "reason": "fallenRobot"
+            }
+          ],
+          "byReason": {
+            "fallenRobot": 1
+          },
+          "byRobot": {
+            "robot6": 1
+          }
+        },
+        "removals": {
+          "total": 0,
+          "events": [],
+          "byReason": {},
+          "byRobot": {}
+        },
+        "discipline": {
+          "warnings": {
+            "total": 0,
+            "events": []
+          },
+          "cautions": {
+            "total": 0,
+            "events": []
+          },
+          "sentOff": {
+            "total": 0,
+            "events": []
+          }
+        },
+        "invalidGoals": {
+          "total": 0,
+          "events": [],
+          "byReason": {}
+        },
+        "ballResets": {
+          "total": 0,
+          "events": [],
+          "byReason": {}
+        }
+      }
+    }
+  },
+  "warnings": []
+}
