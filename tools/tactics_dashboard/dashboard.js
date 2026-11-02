@@ -119,7 +119,7 @@ if($('kick-error-visible').checked){
 
 function renderPacket(d){displayedPacket=d;const w=d.context;$('empty').hidden=true;c.hidden=false;
 const score=w.game?.teams?.map(t=>`${t.team_number} 队 ${t.score}`).join(' : ')||'比分未知';$('summary').textContent=`${phases[d.phase]||d.phase||'阶段未知'}　 |　${score}　 |　剩余 ${w.game?.secs_remaining??'—'} s　 |　球${w.ball?'可见':'未知'}　 |　帧 ${d.sequence}`;
-$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;if(p.role==='guard'){card.className+=' guard-card';for(const text of guardDecisionLines(p))line(card,text)}else line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));if(p.navigation)line(card,navigationLabel(p.navigation));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
+$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;if(p.role==='guard'){card.className+=' guard-card';for(const text of guardDecisionLines(p))line(card,text)}else line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));for(const text of autoKickLines(p))line(card,text);if(p.navigation)line(card,navigationLabel(p.navigation));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 自动踢球请求中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
 
 // Playback uses receiver monotonic timestamps, never the Agent's clock.
 let liveFrames=[], archive=null, viewing='live', playing=false, cursor=0;
@@ -922,6 +922,25 @@ function drawThreat(d,xy){
   const lx=Math.max(6,Math.min(c.width-width-6,x+28)),ly=Math.max(16,Math.min(c.height-16,y+16));
   g.fillStyle='#311a28';g.fillRect(lx,ly-13,width,26);g.fillStyle='#ff99a7';g.fillText(label,lx+7,ly);
   g.restore();
+}
+
+function autoKickLines(p){
+  const control=p.kick_control, a=p.auto_kick;
+  if(!control)return ['自动踢球：旧回放未记录接管状态'];
+  const states={idle:'未接管',active:'后端已接受请求',blocked:'请求被阻止',failed:'请求失败',release_failed:'取消失败，等待重试'};
+  const reasons={too_far:'距离过远',ball_behind:'球在身体后方',misaligned:'朝向未对齐',not_staged:'未到球后准备位置',approach_blocked:'接近路线受阻',stage_blocked:'准备位置不可用',no_intercept:'没有可用截球位置',cooldown:'退出后冷却',timeout:'达到单次时间上限',observation_invalid:'观测缺失、过期或无效',target_unavailable:'目标不可用',ball_lane_blocked:'球路受阻',phase_changed:'比赛阶段变化',role_changed:'角色变化',clock_reset:'仿真时间重置',return_to_field:'切换回场',execution_rejected:'执行未接受请求',backend_error:'后端错误',backend_unavailable:'后端不可用',release_failed:'底层取消失败',goal_structure:'接近路线被球门结构阻挡',unavailable:'机器人当前不可执行',ready:'满足启动条件'};
+  const lines=[`自动踢球：${states[control.state]||control.state}（不代表已出脚或触球）`];
+  if(control.reason)lines.push(`执行原因：${reasons[control.reason]||control.reason}`);
+  if(p.role==='attack'&&a){
+    const stages={idle:'等待',cooldown:'冷却',blocked:'准备受阻',aligning:'自主对齐',approaching:'自主接近',requested:'请求自动踢球'};
+    lines.push(`踢球准备：${stages[a.state]||a.state||'等待'} · ${reasons[a.reason]||a.reason||''}`);
+    if(Number.isFinite(a.remaining_s))lines.push(`本次请求 ${a.elapsed_s.toFixed(2)} s · 剩余预算 ${a.remaining_s.toFixed(2)} s`);
+    if(a.cooldown_remaining_s>0)lines.push(`冷却剩余 ${a.cooldown_remaining_s.toFixed(2)} s`);
+    if(a.last_exit_reason)lines.push(`最近退出：${reasons[a.last_exit_reason]||a.last_exit_reason}`);
+    if(Number.isFinite(a.angle_error_deg))lines.push(`朝向误差 ${a.angle_error_deg.toFixed(1)}° · 站位误差 ${a.stage_error_m.toFixed(2)} m`);
+    if(a.stage_target)lines.push(`踢球准备点：${pointText(a.stage_target)}`);
+  }else if(p.role==='guard')lines.push('接管条件：守门员独立清球策略');
+  return lines;
 }
 
 function navigationLabel(n){

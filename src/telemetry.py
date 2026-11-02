@@ -104,6 +104,8 @@ def make_snapshot(context, players, store):
             target=getattr(p, 'tactical_target', None),
             guard_decision=getattr(p, 'guard_decision', None),
             navigation=getattr(getattr(p, 'controller', None), 'navigation_status', None),
+            auto_kick=getattr(getattr(p, 'attack_kick', None), 'diagnostics', None),
+            kick_control=getattr(getattr(p, 'controller', None), 'kick_control', None),
             freeman_region=getattr(p, 'freeman_region', None),
             intercept=getattr(p, 'ball_intercept', None),
             interception_risk=getattr(p, 'interception_risk', None),

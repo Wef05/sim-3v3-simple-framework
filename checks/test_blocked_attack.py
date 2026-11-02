@@ -11,6 +11,7 @@ from src.actions.kick_planner import plan_kick
 from src.utils.blocked_attack import blocked_attack_target
 from src.utils.kick_lane import check_kick_lane
 from src.utils.geom import behind_ball, clamp
+from src.utils.path_planner import clamp_target
 from src.param import CHASE_BEHIND_M, ARRIVE_DIST
 
 
@@ -29,7 +30,7 @@ class BlockedAttackTests(unittest.TestCase):
             self.addCleanup(mock.stop)
         return p
 
-    def test_replay_positions_and_mirrors_keep_producing_safe_short_kicks(self):
+    def test_replay_fallback_lanes_remain_safe_but_do_not_bypass_preparation(self):
         for ball, pid in (((6.95, 4.45), 3), ((6.46, 4.37), 1),
                           ((6.95, -4.45), 3), ((6.46, -4.37), 1)):
             with self.subTest(ball=ball):
@@ -37,35 +38,37 @@ class BlockedAttackTests(unittest.TestCase):
                 self.assertTrue(check_kick_lane(p.context.field, ball, (7, 0))['blocked'])
                 targets = set()
                 for tick in range(61):
-                    p.context = replace(p.context, now=tick)
+                    p.context = replace(p.context, now=tick, ball=replace(p.context.ball, last_seen_at=tick))
+                    p.motion.update(p.context)
                     intent = p.attack()
-                    self.assertIsInstance(intent, KickIntent)
-                    self.assertEqual(intent.style, 'pass')
-                    plan = plan_kick(p.context, intent)
-                    self.assertFalse(check_kick_lane(p.context.field, ball, plan.target)['blocked'])
-                    self.assertLess(plan.target[0], ball[0])
-                    self.assertLess(abs(plan.target[1]), abs(ball[1]))
-                    targets.add(plan.target)
+                    self.assertIsInstance(intent, StopIntent)
+                    self.assertEqual(p.attack_kick.diagnostics['reason'], 'stage_blocked')
+                    target = p.tactical_target
+                    self.assertFalse(check_kick_lane(p.context.field, ball, target)['blocked'])
+                    self.assertLess(target[0], ball[0])
+                    self.assertLess(abs(target[1]), abs(ball[1]))
+                    targets.add(target)
                 self.assertEqual(len(targets), 1)
 
     def test_open_teammate_is_preferred(self):
         p = self.player()
         p.context.teammates[1] = RobotState(1, Pose2D(4.5, 2, 0))
         intent = p.attack()
-        self.assertEqual(intent.target.point, (4.5, 2))
+        self.assertEqual(p.tactical_target, (4.5, 2))
+        self.assertIsInstance(intent, StopIntent)
         self.assertEqual(p.action, 'attack:fallback:pass:1')
 
     def test_marked_receiver_is_rejected(self):
         p = self.player()
         p.context.teammates[1] = RobotState(1, Pose2D(3, 3.8, 0))
         p.context.opponents[1] = RobotState(1, Pose2D(3, 3.8, 0))
-        self.assertIsInstance(p.attack(), KickIntent)
+        self.assertIsInstance(p.attack(), StopIntent)
         self.assertEqual(p.action, 'attack:fallback:infield')
 
     def test_unavailable_receiver_is_ignored(self):
         p = self.player()
         p.context.teammates[1] = RobotState(1)
-        self.assertIsInstance(p.attack(), KickIntent)
+        self.assertIsInstance(p.attack(), StopIntent)
         self.assertEqual(p.action, 'attack:fallback:infield')
 
     def test_chase_uses_fallback_direction(self):
@@ -73,8 +76,7 @@ class BlockedAttackTests(unittest.TestCase):
         intent = p.attack()
         self.assertIsInstance(intent, MoveIntent)
         expected = behind_ball(6.95, 4.45, p.tactical_target, CHASE_BEHIND_M)
-        expected = (clamp(expected[0], -7+ARRIVE_DIST, 7-ARRIVE_DIST),
-                    clamp(expected[1], -4.5+ARRIVE_DIST, 4.5-ARRIVE_DIST))
+        expected = clamp_target(p.context, expected)
         self.assertEqual(intent.target, expected)
 
     def test_fully_blocked_lanes_still_stop_safely(self):
@@ -84,7 +86,7 @@ class BlockedAttackTests(unittest.TestCase):
         self.assertIn('no_safe_alternative', p.action)
 
     def test_clear_shot_is_unchanged(self):
-        p = self.player(ball=(3, 0))
+        p = self.player(ball=(3, 0), pose=(2.65, 0))
         intent = p.attack()
         self.assertEqual(intent.target.kind, 'goal')
         self.assertEqual(intent.style, 'shot')

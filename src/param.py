@@ -43,8 +43,15 @@ ANGULAR_GAIN = 2.0             # 转向 P 增益
 # Player 踢球 / 射门规划
 # ======================================================================
 
-KICK_ENTER_M = 2.0             # 距球小于该值进入踢球状态
-KICK_EXIT_M = 2.5              # 踢球中距球大于该值才退出踢球状态
+KICK_ENTER_M = 0.55             # 距球小于该值进入踢球状态
+KICK_EXIT_M = 0.75              # 踢球中距球大于该值才退出踢球状态
+# 普通进攻的保守初值，按仿真时间限制接管；守门员使用独立清球条件。
+ATTACK_KICK_STAGE_TOLERANCE_M = 0.15
+ATTACK_KICK_ENTER_ANGLE_RAD = math.radians(20)
+ATTACK_KICK_EXIT_ANGLE_RAD = math.radians(35)
+ATTACK_KICK_TIMEOUT_S = 1.2
+ATTACK_KICK_RETRY_S = 0.5
+ATTACK_KICK_MAX_OBSERVATION_AGE_S = 0.25
 RIGHT_FOOT_KICK_CORRECTION_DEG = -5.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
 CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 

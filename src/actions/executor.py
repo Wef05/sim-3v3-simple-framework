@@ -24,6 +24,7 @@ class Executor:
         self._avoid_side = None
         self.tactical_target = None
         self.kick_observation = None
+        self.kick_control = dict(state="idle", requested=False, accepted=False, reason=None)
 
     @property
     def is_kicking(self) -> bool:
@@ -83,16 +84,16 @@ class Executor:
         self,
         kick_direction: float | None = None,
         power: float = KICK_POWER_DEFAULT,
-    ) -> None:
+    ) -> bool:
         pose = self.pose
         if pose is None:
             _log.warning("player %d kick skipped: pose unknown", self.id)
-            return
+            return False
 
         ball = self.context.ball if self.context is not None else None
         if ball is None:
             _log.warning("player %d kick skipped: ball unknown", self.id)
-            return
+            return False
 
         if kick_direction is None:
             raise ValueError("executor requires a planned kick direction")
@@ -102,7 +103,7 @@ class Executor:
                 "player %d kick ball=(%.3f, %.3f) dir=%.3f (no backend)",
                 self.id, ball.x, ball.y, kick_direction,
             )
-            return
+            return False
         # 场地坐标 → 体坐标(用当前 pose)
         dx = ball.x - pose.x
         dy = ball.y - pose.y
@@ -116,21 +117,32 @@ class Executor:
             kick_direction - pose.theta + math.radians(RIGHT_FOOT_KICK_CORRECTION_DEG)
         )
         power_clamped = max(KICK_POWER_MIN, min(KICK_POWER_MAX, power))
-        self._kicking = True
-        self._backend.kick(direction_body, power_clamped, ball_x_body, ball_y_body)
+        # 后端明确返回 False 时不能把请求写成已接受，也不能保留成功遥测。
+        accepted = self._backend.kick(direction_body, power_clamped, ball_x_body, ball_y_body) is not False
+        self._kicking = accepted
+        if not accepted:
+            self.kick_observation = None
+            error = getattr(self._backend, 'last_kick_error', None)
+            self.kick_control.update(state='failed', accepted=False,
+                                     reason=error if isinstance(error, str) else 'backend_error')
+            return False
         self.kick_observation = dict(
             player_id=self.id, time=self.context.now, robot=[pose.x, pose.y],
             planned_direction=kick_direction, power=power_clamped,
             command_direction=normalize_angle(direction_body + pose.theta),
         )
 
-    def release_kick(self) -> None:
+        return True
+
+    def release_kick(self) -> bool:
         self.kick_observation = None
-        self._kicking = False  # 清除踢球迟滞标志(取消方块显示)
+        self._kicking = False
         if self._backend is None:
-            _log.debug("player %d release_kick (no backend)", self.id)
-            return
-        self._backend.release_kick()
+            return True
+        released = self._backend.release_kick() is not False
+        if not released:
+            self.kick_control.update(state='release_failed', accepted=False, reason='release_failed')
+        return released
 
     def request_mode(self, mode: str) -> None:
         if self._backend is None:

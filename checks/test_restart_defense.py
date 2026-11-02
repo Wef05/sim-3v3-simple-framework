@@ -6,6 +6,8 @@ from types import SimpleNamespace
 
 from src.framework.types import ADULT_FIELD_DIMENSIONS, BallState, Context, GameControlState, GameState, Pose2D, SetPlay
 from src.intents import Role, RoleTask, MoveIntent
+from src.framework.config import SoccerConfig
+from src.framework.types import RobotState
 from src.player import Player, coordinate
 from src.role_allocator import assign, init_store
 from src.utils.restart_defense import defensive_targets, restart_intent, kickoff_targets, _legal
@@ -96,19 +98,25 @@ class RestartDefenseTests(unittest.TestCase):
         final=coordinate(ctx,{1:RoleTask(Role.OPP_SET_PLAY)},{1:intent})[1]
         self.assertTrue(final.avoid_ball);self.assertGreaterEqual(final.ball_keepout,ctx.field.circle_radius)
 
+    def real_player(self, ctx):
+        p=Player(1,SoccerConfig(),None)
+        p.context=replace(ctx,teammates={1:RobotState(1,Pose2D(-2,0))})
+        p._mode='walk'
+        return p
+
     def test_ready_kickoff_consistency_and_own_shift(self):
         ctx=self.context(SetPlay.NONE,(0.,0.))
         for slot,target in zip((0,2),kickoff_targets(ctx)):
-            stub=SimpleNamespace(context=ctx)
+            stub=self.real_player(ctx)
             intent=Player.decide(stub,RoleTask(Role.READY,slot=slot,our_kickoff=False))
             self.assertEqual(intent.target,target)
-        intent=Player.decide(SimpleNamespace(context=ctx),RoleTask(Role.READY,slot=2,our_kickoff=True))
+        intent=Player.decide(self.real_player(ctx),RoleTask(Role.READY,slot=2,our_kickoff=True))
         old=(-.5,ctx.field.circle_radius+2)
         self.assertAlmostEqual(math.dist(intent.target,old),1.)
         self.assertLess(intent.target[0],old[0]);self.assertGreater(intent.target[1],old[1])
 
     def test_player_clears_restart_memory_on_stop(self):
-        ctx=self.context(); p=SimpleNamespace(context=ctx,pose=Pose2D(-2,0))
+        ctx=self.context(); p=self.real_player(ctx)
         intent=Player.decide(p,RoleTask(Role.OPP_SET_PLAY,slot=0))
         self.assertIsInstance(intent,MoveIntent);self.assertIsNotNone(p._restart_memory)
         Player.decide(p,RoleTask(Role.STAY))

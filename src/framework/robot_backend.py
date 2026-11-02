@@ -49,6 +49,7 @@ class RobotBackend:
         self._fall_down_state: str | None = None
         self._fall_down_recoverable: bool = False
         self._kicking = False
+        self.last_kick_error = None
 
         # 慢操作 worker:长度 1 覆盖式意图槽 + 唤醒事件
         self._pending: tuple[str, object] | None = None
@@ -131,36 +132,40 @@ class RobotBackend:
 
     def kick(
         self, direction: float, power: float, ball_x: float, ball_y: float,
-    ) -> None:
+    ) -> bool:
         """启动或更新踢球(体坐标系)。非 walk 模式跳过(需先 request_mode)。"""
         if self._mode != "walk":
-            _log.debug(
-                "player %d kick skipped: mode=%s (call request_mode first)",
-                self._player_id, self._mode,
-            )
-            return
+            self.last_kick_error = 'mode_not_ready'
+            return False
         try:
+            # 先保守标记占用。start 或更新中途失败时也必须尝试关闭底层控制。
             if not self._kicking:
-                self._kick_manager.start()
                 self._kicking = True
+                self._kick_manager.start()
                 _log.info("player %d kick started", self._player_id)
             self._kick_manager.update_command(direction=direction, power=power)
             self._kick_manager.update_ball(x=ball_x, y=ball_y)
+            self.last_kick_error = None
+            return True
         except Exception as exc:
             _log.warning("player %d kick failed: %s", self._player_id, exc)
-            self._kicking = False
+            self.last_kick_error = 'backend_error'
+            self.release_kick()
+            return False
 
-    def release_kick(self) -> None:
-        """结束踢球,底盘重新接受 set_velocity。"""
+    def release_kick(self) -> bool:
+        """关闭成功才释放底盘；失败保留占用标志，让后续停车继续重试。"""
         if not self._kicking:
-            return
+            return True
         try:
             self._kick_manager.stop()
+            self._kicking = False
             _log.info("player %d kick released", self._player_id)
+            return True
         except Exception as exc:
             _log.warning("player %d kick stop failed: %s", self._player_id, exc)
-        finally:
-            self._kicking = False
+            self.last_kick_error = 'release_failed'
+            return False
 
     # ------------------------------------------------------------------
     # 慢操作(步骤 3)—— 非阻塞,由 worker 线程执行

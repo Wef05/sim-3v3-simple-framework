@@ -1,5 +1,6 @@
 """Opening passes must retain pass semantics from decision to dashboard."""
 import unittest
+import math
 from dataclasses import replace
 from types import SimpleNamespace
 from unittest.mock import Mock
@@ -29,6 +30,12 @@ class KickoffPowerTests(unittest.TestCase):
                                                     kicking_team=1, secondary_time=10))
                 for kickoff in (True, False):
                     current = ctx if kickoff else replace(ctx, game=replace(ctx.game, secondary_time=0))
+                    # 收紧接管后必须先在对应出球方向的球后站好；力度语义保持原检查。
+                    direction = math.atan2(receiver[1], receiver[0]) if kickoff else 0.
+                    current = replace(current, teammates=dict(current.teammates))
+                    current.teammates[1] = RobotState(1, Pose2D(-.35*math.cos(direction),
+                                                               -.35*math.sin(direction), direction))
+                    player = Player(1, SoccerConfig(), backend)
                     player.context = current
                     player.motion.update(current)
                     intent = player.decide(RoleTask(Role.ATTACKER))

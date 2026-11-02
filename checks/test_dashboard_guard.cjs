@@ -13,6 +13,7 @@ Object.assign(ctx,{$:id=>id==='cards'?cards:(elements[id]??=element()),c:{},phas
   roleNames:{},document:{createElement:element},pointText:JSON.stringify,
   line:(parent,text)=>parent.append(text),renderInterceptions(){},renderCandidateTargets(){},
   renderScoringProbability(){},renderAttackChoice(){},draw(){}});
+vm.runInContext(source.slice(source.indexOf('function autoKickLines('),source.indexOf('function navigationLabel(')),ctx);
 vm.runInContext(source.slice(source.indexOf('function renderPacket('),source.indexOf('// Playback uses')),ctx);
 
 function renderGuard(action,decision){
@@ -32,3 +33,11 @@ assert.doesNotMatch(malformed,/NaN|Infinity|bad/);
 console.log('Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.');
 assert.match(renderGuard('guard:close_clear',{close_clear_target_status:'reselected',close_clear_old_target_reason:'robot_lane'}),/不重置超时/);
 assert.match(renderGuard('guard:set',{close_clear_rejection:'contested'}),/争抢|更近|距离/);
+
+const active=ctx.autoKickLines({role:'attack',kick_control:{state:'active',accepted:true},auto_kick:{state:'requested',reason:'ready',elapsed_s:.4,remaining_s:.8,stage_target:[-.35,0],angle_error_deg:5,stage_error_m:.02}}).join('\n');
+assert.match(active,/后端已接受请求/);assert.match(active,/不代表已出脚或触球/);assert.match(active,/剩余预算 0.80/);
+const cooling=ctx.autoKickLines({role:'attack',kick_control:{state:'idle'},auto_kick:{state:'cooldown',reason:'cooldown',last_exit_reason:'timeout',cooldown_remaining_s:.3}}).join('\n');
+assert.match(cooling,/达到单次时间上限/);assert.match(cooling,/冷却剩余 0.30/);assert.doesNotMatch(cooling,/0.80/);
+assert.match(ctx.autoKickLines({}).join(''),/旧回放未记录/);
+assert.match(ctx.autoKickLines({kick_control:{state:'release_failed',reason:'release_failed'}}).join(''),/取消失败/);
+console.log('Auto-kick cards: accepted/requested distinction, budget, cooldown, failure, legacy data passed.');

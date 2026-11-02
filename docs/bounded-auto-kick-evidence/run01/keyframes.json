@@ -1,0 +1,3806 @@
+[
+  {
+    "id": 800572,
+    "sequence": 2910,
+    "now": 80.327999999,
+    "remaining": 600,
+    "state": "PLAYING",
+    "ball": {
+      "x": -7.727277774146463e-17,
+      "y": 1.5811594410016642e-16,
+      "last_seen_at": 80.317999999,
+      "confidence": 1.0,
+      "received_at": 231.753546438
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -1.4140749538142336,
+          "y": -0.08152515146063476,
+          "theta": 0.18032457704710592
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753468104
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -5.928380017659089,
+          "y": -0.06613455945053107,
+          "theta": 0.0488821789797912
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753497313
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -1.2593769943708095,
+          "y": 4.103908400564274,
+          "theta": 0.08921800292301899
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753520063
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.748523166746852,
+          "y": 0.0008701259681522983,
+          "theta": -3.068709235339988
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753699396
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.749281447371066,
+          "y": -2.653967471317779,
+          "theta": -2.9338252619799903
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753721063
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.7332326931938855,
+          "y": -0.00459901216810534,
+          "theta": 3.0681579730121444
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753741229
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "approaching",
+          "reason": "too_far",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null,
+          "distance_m": 1.4164230742703279,
+          "angle_error_deg": 96.72797740181772,
+          "stage_error_m": 1.5377225565534975,
+          "stage_target": [
+            0.10267946182225582,
+            -0.33459965349637133
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            0.10267946182225582,
+            -0.33459965349637133
+          ],
+          "effective_target": [
+            0.10267946182225582,
+            -0.33459965349637133
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 2.249800416849325,
+          "candidate_time_s": 2.249800416849325,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 2.0,
+          "waypoint": [
+            -0.5263472110851446,
+            -0.22964488272259787
+          ],
+          "path": [
+            [
+              -1.4140749538142336,
+              -0.08152515146063476
+            ],
+            [
+              0.10267946182225582,
+              -0.33459965349637133
+            ]
+          ],
+          "command": [
+            1.8817079984045815,
+            -0.677624533750235,
+            2.0
+          ]
+        },
+        "target": [
+          0.10267946182225582,
+          -0.33459965349637133
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 9.23702282016716e-18,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet"
+        },
+        "navigation": {
+          "state": "moving",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 1.4345496876308863,
+          "candidate_time_s": 1.4345496876308863,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.8631495608361064,
+          "waypoint": [
+            -6.5,
+            0.0
+          ],
+          "path": [
+            [
+              -5.928380017659089,
+              -0.06613455945053107
+            ],
+            [
+              -6.5,
+              0.0
+            ]
+          ],
+          "command": [
+            -0.8515585058619561,
+            0.14097969877154676,
+            -0.07545410927787746
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "stay",
+        "action": "stay",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": null,
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 800717,
+    "sequence": 3055,
+    "now": 85.777999999,
+    "remaining": 595,
+    "state": "PLAYING",
+    "ball": {
+      "x": -1.2812705792056934e-16,
+      "y": 2.1402397268294582e-16,
+      "last_seen_at": 85.763999999,
+      "confidence": 1.0,
+      "received_at": 244.086171401
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 0.019049797028558038,
+          "y": -0.4570694080469599,
+          "theta": 1.8651300944146467
+        },
+        "last_seen_at": 85.763999999,
+        "received_at": 244.085838276
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.471865418726127,
+          "y": 0.03737646436311352,
+          "theta": 0.05417565449279434
+        },
+        "last_seen_at": 85.763999999,
+        "received_at": 244.085900401
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -1.2612800119541971,
+          "y": 4.103204454015048,
+          "theta": 0.14412210321259322
+        },
+        "last_seen_at": 85.763999999,
+        "received_at": 244.085950068
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.7503965122516463,
+          "y": 0.0017143720239845017,
+          "theta": -3.0492521926038254
+        },
+        "last_seen_at": 85.763999999,
+        "received_at": 244.085998734
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.747956070266228,
+          "y": -2.6216854238248315,
+          "theta": -2.955115437299757
+        },
+        "last_seen_at": 85.763999999,
+        "received_at": 244.086073068
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.7350444183468765,
+          "y": -0.004059927194501338,
+          "theta": 3.0848070207318163
+        },
+        "last_seen_at": 85.763999999,
+        "received_at": 244.086123109
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "requested",
+          "reason": "ready",
+          "elapsed_s": 0.0,
+          "remaining_s": 1.2,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null,
+          "distance_m": 0.45746621573535656,
+          "angle_error_deg": 0.22277094709254328,
+          "stage_error_m": 0.14842868971747106,
+          "stage_target": [
+            0.10283735445560171,
+            -0.3345511598075439
+          ]
+        },
+        "kick_control": {
+          "state": "active",
+          "requested": true,
+          "accepted": true,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": [
+          -1.2612800119541971,
+          4.103204454015048
+        ],
+        "kick_power": 3.0
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 5.989038985473991e-18,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet"
+        },
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "stay",
+        "action": "stay",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": null,
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 800729,
+    "sequence": 3067,
+    "now": 86.641999999,
+    "remaining": 594,
+    "state": "PLAYING",
+    "ball": {
+      "x": -1.4037953415080606e-16,
+      "y": 2.256824644553054e-16,
+      "last_seen_at": 86.639999999,
+      "confidence": 1.0,
+      "received_at": 245.848539068
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -0.061181528190770974,
+          "y": -0.45984975298822994,
+          "theta": 1.7650787159476824
+        },
+        "last_seen_at": 86.639999999,
+        "received_at": 245.848355068
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.472518479142404,
+          "y": 0.03770686216992354,
+          "theta": 0.06408829111673311
+        },
+        "last_seen_at": 86.639999999,
+        "received_at": 245.848404818
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -1.2616303066937826,
+          "y": 4.103038761916243,
+          "theta": 0.149867351549784
+        },
+        "last_seen_at": 86.639999999,
+        "received_at": 245.848442485
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.750618278268773,
+          "y": 0.0018294399620437506,
+          "theta": -3.0470399248824536
+        },
+        "last_seen_at": 86.639999999,
+        "received_at": 245.84846736
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.7451773317207957,
+          "y": -2.6265683503964925,
+          "theta": -2.943171492523766
+        },
+        "last_seen_at": 86.639999999,
+        "received_at": 245.848487902
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.7352583416246805,
+          "y": -0.003981912554593019,
+          "theta": 3.086721843287103
+        },
+        "last_seen_at": 86.639999999,
+        "received_at": 245.848508902
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "requested",
+          "reason": "ready",
+          "elapsed_s": 0.8640000000000043,
+          "remaining_s": 0.33599999999999564,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null,
+          "distance_m": 0.4639019020386685,
+          "angle_error_deg": 5.960411652878422,
+          "stage_error_m": 0.2064316834596112,
+          "stage_target": [
+            0.10286724389805918,
+            -0.3345419706596125
+          ]
+        },
+        "kick_control": {
+          "state": "active",
+          "requested": true,
+          "accepted": true,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": [
+          -1.2616303066937826,
+          4.103038761916243
+        ],
+        "kick_power": 3.0
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 1.0383715739424753e-17,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet"
+        },
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "stay",
+        "action": "stay",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": null,
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 800742,
+    "sequence": 3080,
+    "now": 86.981999999,
+    "remaining": 594,
+    "state": "PLAYING",
+    "ball": {
+      "x": -1.4451609073592027e-16,
+      "y": 2.303848987509488e-16,
+      "last_seen_at": 86.977999999,
+      "confidence": 1.0,
+      "received_at": 246.722988611
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -0.08598255106324297,
+          "y": -0.37992197780545,
+          "theta": 1.5110671066278538
+        },
+        "last_seen_at": 86.977999999,
+        "received_at": 246.722846777
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.472754513317487,
+          "y": 0.037782673518338424,
+          "theta": 0.06731605506259121
+        },
+        "last_seen_at": 86.977999999,
+        "received_at": 246.722876319
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -1.2617572381389413,
+          "y": 4.1029777121127475,
+          "theta": 0.1518519013170186
+        },
+        "last_seen_at": 86.977999999,
+        "received_at": 246.722900402
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.750696385707788,
+          "y": 0.0018703022718593852,
+          "theta": -3.0462653251643603
+        },
+        "last_seen_at": 86.977999999,
+        "received_at": 246.722921819
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.746346884303501,
+          "y": -2.615488048944757,
+          "theta": -2.95596073526287
+        },
+        "last_seen_at": 86.977999999,
+        "received_at": 246.722944194
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.735333682507773,
+          "y": -0.003954158449436758,
+          "theta": 3.087393836357955
+        },
+        "last_seen_at": 86.977999999,
+        "received_at": 246.722966236
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "cooldown",
+          "reason": "cooldown",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.5,
+          "last_exit_reason": "timeout",
+          "distance_m": 0.38953011219538364,
+          "angle_error_deg": 20.516063706082214,
+          "stage_error_m": 0.19423694965475433,
+          "stage_target": [
+            0.10287809765110253,
+            -0.33453863308097914
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            0.10287809765110253,
+            -0.33453863308097914
+          ],
+          "effective_target": [
+            0.10287809765110253,
+            -0.33453863308097914
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 0.41975558769576626,
+          "candidate_time_s": 0.41975558769576626,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.2913554244821315,
+          "waypoint": [
+            0.10287809765110252,
+            -0.33453863308097914
+          ],
+          "path": [
+            [
+              -0.08598255106324297,
+              -0.37992197780545
+            ],
+            [
+              0.10287809765110253,
+              -0.33453863308097914
+            ]
+          ],
+          "command": [
+            0.08486431133414202,
+            -0.27872214127504263,
+            0.7161457224400897
+          ]
+        },
+        "target": [
+          0.10287809765110253,
+          -0.33453863308097914
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 1.78826387356343e-17,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet"
+        },
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "stay",
+        "action": "stay",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": null,
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 800772,
+    "sequence": 3110,
+    "now": 88.003999999,
+    "remaining": 593,
+    "state": "PLAYING",
+    "ball": {
+      "x": -1.5900734020821836e-16,
+      "y": 2.457204235544347e-16,
+      "last_seen_at": 88.003999999,
+      "confidence": 1.0,
+      "received_at": 248.990753445
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 0.021566111273602223,
+          "y": -0.21155320987767212,
+          "theta": 1.816178849554173
+        },
+        "last_seen_at": 88.003999999,
+        "received_at": 248.990614028
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.473461717934517,
+          "y": 0.03789382300854825,
+          "theta": 0.07630066450258632
+        },
+        "last_seen_at": 88.003999999,
+        "received_at": 248.99064382
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -1.2621480197831494,
+          "y": 4.102787096684924,
+          "theta": 0.1576840313252477
+        },
+        "last_seen_at": 88.003999999,
+        "received_at": 248.99066732
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.7509298447752433,
+          "y": 0.001993460201549002,
+          "theta": -3.0439584584622703
+        },
+        "last_seen_at": 88.003999999,
+        "received_at": 248.990688653
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.7469884317743425,
+          "y": -2.6273982027538763,
+          "theta": -2.9489653433704888
+        },
+        "last_seen_at": 88.003999999,
+        "received_at": 248.990710195
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.7355589985426905,
+          "y": -0.0038703987973299518,
+          "theta": 3.089401796207844
+        },
+        "last_seen_at": 88.003999999,
+        "received_at": 248.990731112
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "requested",
+          "reason": "ready",
+          "elapsed_s": 0.0,
+          "remaining_s": 1.2,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "timeout",
+          "distance_m": 0.21264961266132582,
+          "angle_error_deg": 3.040182058402664,
+          "stage_error_m": 0.14744478991065704,
+          "stage_target": [
+            0.10291157391029147,
+            -0.3345283365505924
+          ]
+        },
+        "kick_control": {
+          "state": "active",
+          "requested": true,
+          "accepted": true,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": [
+          -1.2621480197831494,
+          4.102787096684924
+        ],
+        "kick_power": 3.0
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 1.7505627406824706e-17,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet"
+        },
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "stay",
+        "action": "stay",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": null,
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 800812,
+    "sequence": 3151,
+    "now": 89.175999999,
+    "remaining": 592,
+    "state": "PLAYING",
+    "ball": {
+      "x": -0.04639357591189621,
+      "y": 0.19449123466502533,
+      "last_seen_at": 89.169999999,
+      "confidence": 1.0,
+      "received_at": 251.927122613
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -0.1281176248047333,
+          "y": 0.02425716244218077,
+          "theta": 1.2476269842682004
+        },
+        "last_seen_at": 89.169999999,
+        "received_at": 251.927331946
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.474180203439692,
+          "y": 0.03785252603123419,
+          "theta": 0.08474656677316224
+        },
+        "last_seen_at": 89.169999999,
+        "received_at": 251.92736178
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -1.2625708135888296,
+          "y": 4.102576396623135,
+          "theta": 0.16361171209326986
+        },
+        "last_seen_at": 89.169999999,
+        "received_at": 251.927383821
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.7511737352927503,
+          "y": 0.002123435344154988,
+          "theta": -3.041561429587646
+        },
+        "last_seen_at": 89.169999999,
+        "received_at": 251.927404946
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.74668506301827,
+          "y": -2.6118563069757883,
+          "theta": -2.970655918963203
+        },
+        "last_seen_at": 89.169999999,
+        "received_at": 251.927427196
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.735794540196667,
+          "y": -0.0037819521372809478,
+          "theta": 3.09149830802736
+        },
+        "last_seen_at": 89.169999999,
+        "received_at": 251.927448196
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "cooldown",
+          "reason": "cooldown",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.5,
+          "last_exit_reason": "phase_changed",
+          "distance_m": 0.2010254084118091,
+          "angle_error_deg": 73.12068851347735,
+          "stage_error_m": 0.3322939907305873,
+          "stage_target": [
+            -0.39768896500604906,
+            0.21855226999182054
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -0.39768896500604906,
+            0.21855226999182054
+          ],
+          "effective_target": [
+            -0.39768896500604906,
+            0.21855226999182054
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 0.7173120198659872,
+          "candidate_time_s": 0.7173120198659872,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.49844098609588094,
+          "waypoint": [
+            -0.3976889650060491,
+            0.21855226999182054
+          ],
+          "path": [
+            [
+              -0.1281176248047333,
+              0.02425716244218077
+            ],
+            [
+              -0.39768896500604906,
+              0.21855226999182054
+            ]
+          ],
+          "command": [
+            0.14794270632716813,
+            0.4759793821845936,
+            -2.0
+          ]
+        },
+        "target": [
+          -0.39768896500604906,
+          0.21855226999182054
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 2.3686745350823135,
+          "outlet_wait_reason": "fast_ball"
+        },
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -0.0463935759118963,
+            4.102576396623135
+          ],
+          "effective_target": [
+            -0.0463935759118963,
+            4.102576396623135
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 1.6215696502359112,
+          "candidate_time_s": 1.6215696502359112,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 1.799903578124521,
+          "waypoint": [
+            -0.3625708135888296,
+            4.102576396623135
+          ],
+          "path": [
+            [
+              -1.2625708135888296,
+              4.102576396623135
+            ],
+            [
+              -0.0463935759118963,
+              4.102576396623135
+            ]
+          ],
+          "command": [
+            1.799903578124521,
+            0.0,
+            -0.3272234241865397
+          ]
+        },
+        "target": [
+          -0.0463935759118963,
+          4.102576396623135
+        ],
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 800897,
+    "sequence": 3238,
+    "now": 94.251999999,
+    "remaining": 587,
+    "state": "PLAYING",
+    "ball": {
+      "x": -0.41126870556760425,
+      "y": 3.194184051084996,
+      "last_seen_at": 94.251999999,
+      "confidence": 1.0,
+      "received_at": 264.673254119
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 0.39444470661926045,
+          "y": 0.8976235744027532,
+          "theta": -0.3390847791962101
+        },
+        "last_seen_at": 94.251999999,
+        "received_at": 264.673099994
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.486273486789027,
+          "y": 0.012609604433800029,
+          "theta": 0.5398294872039363
+        },
+        "last_seen_at": 94.251999999,
+        "received_at": 264.673135661
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -0.7604024269787703,
+          "y": 3.4500881632023415,
+          "theta": -0.4388211873046181
+        },
+        "last_seen_at": 94.251999999,
+        "received_at": 264.673168536
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 0.5764942271816359,
+          "y": 2.963153664414867,
+          "theta": 2.1620808004747563
+        },
+        "last_seen_at": 94.251999999,
+        "received_at": 264.673192827
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 1.3161294585550822,
+          "y": -0.5999892576602809,
+          "theta": 2.335626780645922
+        },
+        "last_seen_at": 94.251999999,
+        "received_at": 264.673213369
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.525493582422548,
+          "y": 1.2384461426144195,
+          "theta": 2.680327591514329
+        },
+        "last_seen_at": 94.251999999,
+        "received_at": 264.673233036
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "phase_changed"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "turning",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "opponent:2",
+          "target": [
+            -0.4112687055676043,
+            -3.052762297015038
+          ],
+          "effective_target": [
+            -0.4112687055676043,
+            -3.052762297015038
+          ],
+          "route_reason": "faster",
+          "estimated_time_s": 6.308529582118987,
+          "candidate_time_s": 6.308529582118987,
+          "previous_time_s": 8.951685200365802,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.0,
+          "waypoint": [
+            0.21458523181267608,
+            0.015778594078943886
+          ],
+          "path": [
+            [
+              0.39444470661926045,
+              0.8976235744027532
+            ],
+            [
+              -0.4112687055676043,
+              -3.052762297015038
+            ]
+          ],
+          "command": [
+            0.0,
+            0.0,
+            -2.0
+          ]
+        },
+        "target": [
+          -0.4112687055676043,
+          -3.052762297015038
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 6.970821066734025e-05,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet"
+        },
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "requested",
+          "reason": "ready",
+          "elapsed_s": 0.0800000000000125,
+          "remaining_s": 1.1199999999999875,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null,
+          "distance_m": 0.4328755826158095,
+          "angle_error_deg": 2.510065212519634,
+          "stage_error_m": 0.12399249139256861,
+          "stage_target": [
+            -0.7343158485039175,
+            3.3288708857819524
+          ]
+        },
+        "kick_control": {
+          "state": "active",
+          "requested": true,
+          "accepted": true,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": [
+          7.25,
+          0.0
+        ],
+        "kick_power": 5.0
+      }
+    ]
+  },
+  {
+    "id": 800913,
+    "sequence": 3254,
+    "now": 95.087999999,
+    "remaining": 586,
+    "state": "PLAYING",
+    "ball": {
+      "x": -0.26748042696871677,
+      "y": 3.067389065756118,
+      "last_seen_at": 95.073999999,
+      "confidence": 1.0,
+      "received_at": 266.48237587
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 0.3641804107494696,
+          "y": 0.8621824106991403,
+          "theta": -0.9999697579221382
+        },
+        "last_seen_at": 95.073999999,
+        "received_at": 266.482224037
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.48604655406068,
+          "y": 0.012882833311723518,
+          "theta": 0.5427295906662423
+        },
+        "last_seen_at": 95.073999999,
+        "received_at": 266.48225687
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -0.3846909134373283,
+          "y": 3.2968663898780535,
+          "theta": -1.0126213438160607
+        },
+        "last_seen_at": 95.073999999,
+        "received_at": 266.482285995
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 0.4084378483875265,
+          "y": 3.420219413054101,
+          "theta": 2.798646360506051
+        },
+        "last_seen_at": 95.073999999,
+        "received_at": 266.482307328
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 0.9547213878706742,
+          "y": -0.14993004708165633,
+          "theta": 2.2853104125296553
+        },
+        "last_seen_at": 95.073999999,
+        "received_at": 266.482326745
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.480789112805209,
+          "y": 1.217318900518198,
+          "theta": 2.7869761436211244
+        },
+        "last_seen_at": 95.073999999,
+        "received_at": 266.482346245
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "phase_changed"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "turning",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "opponent:2",
+          "target": [
+            -0.26748042696871677,
+            -2.8896787077809
+          ],
+          "effective_target": [
+            -0.26748042696871677,
+            -2.8896787077809
+          ],
+          "route_reason": "faster",
+          "estimated_time_s": 5.310505137797919,
+          "candidate_time_s": 5.310505137797919,
+          "previous_time_s": 6.456400888773486,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.0,
+          "waypoint": [
+            0.2147598659335223,
+            -0.025327308000832938
+          ],
+          "path": [
+            [
+              0.3641804107494696,
+              0.8621824106991403
+            ],
+            [
+              -0.26748042696871677,
+              -2.8896787077809
+            ]
+          ],
+          "command": [
+            0.0,
+            0.0,
+            -1.020451491299147
+          ]
+        },
+        "target": [
+          -0.26748042696871677,
+          -2.8896787077809
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 1.7835079269562202,
+          "outlet_wait_reason": "fast_ball"
+        },
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "cooldown",
+          "reason": "cooldown",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.5,
+          "last_exit_reason": "misaligned",
+          "distance_m": 0.2773818843501946,
+          "angle_error_deg": 35.837181524985276,
+          "stage_error_m": 0.2285709405616692,
+          "stage_target": [
+            -0.5704737850754393,
+            3.1885704029818256
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -0.5704737850754393,
+            3.1885704029818256
+          ],
+          "effective_target": [
+            -0.5704737850754393,
+            3.1885704029818256
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 0.4779309980653755,
+          "candidate_time_s": 0.4779309980653755,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.32256381754134217,
+          "waypoint": [
+            -0.5704737850754393,
+            3.1885704029818256
+          ],
+          "path": [
+            [
+              -0.3846909134373283,
+              3.2968663898780535
+            ],
+            [
+              -0.5704737850754393,
+              3.1885704029818256
+            ]
+          ],
+          "command": [
+            -0.009808057639035925,
+            -0.32241466838869726,
+            1.2509536244917512
+          ]
+        },
+        "target": [
+          -0.5704737850754393,
+          3.1885704029818256
+        ],
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 801852,
+    "sequence": 4227,
+    "now": 119.841999999,
+    "remaining": 564,
+    "state": "PLAYING",
+    "ball": {
+      "x": 1.7474299590766667,
+      "y": -1.8713751515330268,
+      "last_seen_at": 119.841999999,
+      "confidence": 1.0,
+      "received_at": 339.178911111
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 1.3423923043047967,
+          "y": -1.868203644581479,
+          "theta": 0.316078564004472
+        },
+        "last_seen_at": 119.841999999,
+        "received_at": 339.178596277
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.473111358982239,
+          "y": 0.008340055846980917,
+          "theta": -0.12387763800265839
+        },
+        "last_seen_at": 119.841999999,
+        "received_at": 339.178656777
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 1.8799464559593786,
+          "y": 0.30831002068590385,
+          "theta": 0.794213736231439
+        },
+        "last_seen_at": 119.841999999,
+        "received_at": 339.178709277
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.8491650495705625,
+          "y": -1.7627827665088602,
+          "theta": -2.5804077945852772
+        },
+        "last_seen_at": 119.841999999,
+        "received_at": 339.178761819
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.992582801553907,
+          "y": -3.050102581584817,
+          "theta": -2.9499463347303334
+        },
+        "last_seen_at": 119.841999999,
+        "received_at": 339.178811194
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.219540556460075,
+          "y": -1.2656831316726238,
+          "theta": 0.9980561937802912
+        },
+        "last_seen_at": 119.841999999,
+        "received_at": 339.178860819
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "requested",
+          "reason": "ready",
+          "elapsed_s": 0.0,
+          "remaining_s": 1.2,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "phase_changed",
+          "distance_m": 0.4050500712744539,
+          "angle_error_deg": 0.6727446584301041,
+          "stage_error_m": 0.13730549710443501,
+          "stage_target": [
+            1.4160687005334927,
+            -1.9840681696693945
+          ]
+        },
+        "kick_control": {
+          "state": "active",
+          "requested": true,
+          "accepted": true,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": [
+          7.25,
+          0.0
+        ],
+        "kick_power": 5.0
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 3.65939955644153e-11,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet"
+        },
+        "navigation": {
+          "state": "arrived",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.5,
+            0.0
+          ],
+          "effective_target": [
+            -6.5,
+            0.0
+          ]
+        },
+        "target": [
+          -6.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "misaligned"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "avoiding",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            1.7474299590766667,
+            1.0275899308873868
+          ],
+          "effective_target": [
+            1.7474299590766667,
+            1.0275899308873868
+          ],
+          "route_reason": "faster",
+          "estimated_time_s": 1.4434557082368245,
+          "candidate_time_s": 1.4434557082368245,
+          "previous_time_s": 1.8397076126583776,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 1.0970776978511676,
+          "waypoint": [
+            1.7474299590766667,
+            1.0275899308873868
+          ],
+          "path": [
+            [
+              1.8799464559593786,
+              0.30831002068590385
+            ],
+            [
+              1.7474299590766667,
+              1.0275899308873868
+            ]
+          ],
+          "command": [
+            0.8857718004395669,
+            0.6472926638457027,
+            -1.708714568652408
+          ]
+        },
+        "target": [
+          1.7474299590766667,
+          1.0275899308873868
+        ],
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 801876,
+    "sequence": 4251,
+    "now": 121.071999999,
+    "remaining": 563,
+    "state": "PLAYING",
+    "ball": {
+      "x": 1.747429959068974,
+      "y": -1.8713751515314958,
+      "last_seen_at": 121.059999999,
+      "confidence": 1.0,
+      "received_at": 343.038215029
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 1.628538121716944,
+          "y": -1.7719708290882885,
+          "theta": -0.09200836409064975
+        },
+        "last_seen_at": 121.059999999,
+        "received_at": 343.039929529
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.484996660802754,
+          "y": -0.08071192824904372,
+          "theta": -0.213954145953109
+        },
+        "last_seen_at": 121.059999999,
+        "received_at": 343.040043946
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 2.2888177141296104,
+          "y": 0.8841839923324718,
+          "theta": 0.03334194450353224
+        },
+        "last_seen_at": 121.059999999,
+        "received_at": 343.040108154
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.61785752735742,
+          "y": -2.096132506718573,
+          "theta": -2.659686250051471
+        },
+        "last_seen_at": 121.059999999,
+        "received_at": 343.040159529
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.8371954064232425,
+          "y": -3.0657217473806146,
+          "theta": 2.6986552914293886
+        },
+        "last_seen_at": 121.059999999,
+        "received_at": 343.040510113
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.503829160156135,
+          "y": -0.8756827863692748,
+          "theta": 1.2611185343536595
+        },
+        "last_seen_at": 121.059999999,
+        "received_at": 343.040547529
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "cooldown",
+          "reason": "cooldown",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.5,
+          "last_exit_reason": "timeout",
+          "distance_m": 0.15497254050100193,
+          "angle_error_deg": 24.054403312700572,
+          "stage_error_m": 0.3002141516020945,
+          "stage_target": [
+            1.4160687005257238,
+            -1.9840681696676397
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            1.4160687005257238,
+            -1.9840681696676397
+          ],
+          "effective_target": [
+            1.4160687005257238,
+            -1.9840681696676397
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 0.7024790568272791,
+          "candidate_time_s": 0.7024790568272791,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.4503212274031418,
+          "waypoint": [
+            1.4160687005257238,
+            -1.9840681696676397
+          ],
+          "path": [
+            [
+              1.628538121716944,
+              -1.7719708290882885
+            ],
+            [
+              1.4160687005257238,
+              -1.9840681696676397
+            ]
+          ],
+          "command": [
+            -0.28812527124402154,
+            -0.34608241203567564,
+            0.8396570748185123
+          ]
+        },
+        "target": [
+          1.4160687005257238,
+          -1.9840681696676397
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:anticipate:ray",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 1.3625464393127873e-13,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet",
+          "shooter_id": 1,
+          "ray_goal_y": 0.38734147683824105
+        },
+        "navigation": {
+          "state": "avoiding",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "field_boundary",
+          "target": [
+            -6.5,
+            0.2582340339127911
+          ],
+          "effective_target": [
+            -6.5,
+            0.2582340339127911
+          ],
+          "route_reason": "retained",
+          "estimated_time_s": 0.7956668710698742,
+          "candidate_time_s": 0.7604509075219069,
+          "previous_time_s": 0.7956668710698742,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.5089167881579257,
+          "waypoint": [
+            -6.5,
+            0.2582340339127911
+          ],
+          "path": [
+            [
+              -6.484996660802754,
+              -0.08071192824904372
+            ],
+            [
+              -6.473182142331208,
+              -0.07353474567846315
+            ],
+            [
+              -6.463124017002688,
+              -0.0619413957747976
+            ],
+            [
+              -6.450727808297128,
+              -0.04220315137325519
+            ],
+            [
+              -6.450302514647313,
+              -0.042117831385312346
+            ],
+            [
+              -6.5,
+              0.2582340339127911
+            ]
+          ],
+          "command": [
+            -0.2528659408150637,
+            0.4416504423689529,
+            -0.00044626874297637453
+          ]
+        },
+        "target": [
+          -6.5,
+          0.2582340339127911
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "misaligned"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            2.288644898590794,
+            0.8857492892385648
+          ],
+          "effective_target": [
+            2.288644898590794,
+            0.8857492892385648
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 0.0035022948811835554,
+          "candidate_time_s": 0.0035022948811835554,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.0023622117036860893,
+          "waypoint": [
+            2.288644898590794,
+            0.8857492892385648
+          ],
+          "path": [
+            [
+              2.2888177141296104,
+              0.8841839923324718
+            ],
+            [
+              2.288644898590794,
+              0.8857492892385648
+            ]
+          ],
+          "command": [
+            -0.00018080867426414383,
+            0.0023552817997730927,
+            -0.4377231637887927
+          ]
+        },
+        "target": [
+          2.288644898590794,
+          0.8857492892385648
+        ],
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 802162,
+    "sequence": 4539,
+    "now": 133.339999999,
+    "remaining": 550,
+    "state": "PLAYING",
+    "ball": {
+      "x": -2.56846532683766,
+      "y": -0.5303397367120798,
+      "last_seen_at": 133.335999999,
+      "confidence": 1.0,
+      "received_at": 384.450598632
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -1.2716431930078873,
+          "y": -1.617259002310129,
+          "theta": 0.07957379438769537
+        },
+        "last_seen_at": 133.335999999,
+        "received_at": 384.450077798
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.302137564903279,
+          "y": 0.06688167606051168,
+          "theta": -0.18817704698313878
+        },
+        "last_seen_at": 133.335999999,
+        "received_at": 384.45012909
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 4.441608430188158,
+          "y": 2.4298901037167044,
+          "theta": -0.7836509855534286
+        },
+        "last_seen_at": 133.335999999,
+        "received_at": 384.450151507
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -0.7911693489718814,
+          "y": -1.0062414369898316,
+          "theta": 2.8285613174742137
+        },
+        "last_seen_at": 133.335999999,
+        "received_at": 384.450172923
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 0.9097971525976103,
+          "y": -2.223322051944269,
+          "theta": 2.8182431601018645
+        },
+        "last_seen_at": 133.335999999,
+        "received_at": 384.45019259
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.496346383643176,
+          "y": -0.45681555287836073,
+          "theta": 1.0183836714549541
+        },
+        "last_seen_at": 133.335999999,
+        "received_at": 384.450569798
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "approaching",
+          "reason": "too_far",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "timeout",
+          "distance_m": 1.6980516678849555,
+          "angle_error_deg": 1.4809331235352725,
+          "stage_error_m": 1.9686772315743093,
+          "stage_target": [
+            -5.066706544660211,
+            0.17292657558632588
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -5.066706544660211,
+            0.17292657558632588
+          ],
+          "effective_target": [
+            -5.066706544660211,
+            0.17292657558632588
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 10.21452643873474,
+          "candidate_time_s": 10.21452643873474,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 2.0,
+          "waypoint": [
+            -2.085626548520809,
+            -1.2332914295283581
+          ],
+          "path": [
+            [
+              -1.2716431930078873,
+              -1.617259002310129
+            ],
+            [
+              -5.066706544660211,
+              0.17292657558632588
+            ]
+          ],
+          "command": [
+            -1.7353025017223354,
+            0.9943466334816067,
+            -0.051694318015068866
+          ]
+        },
+        "target": [
+          -5.066706544660211,
+          0.17292657558632588
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:block:reachable",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "shot_source": "short_hold_envelope",
+          "goal_time_s": 2.8599306990122484,
+          "goal_crossing": [
+            -7.0,
+            0.9102456672357915
+          ]
+        },
+        "navigation": {
+          "state": "moving",
+          "priority": 100,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -6.178777935703937,
+            0.4329960360159172
+          ],
+          "effective_target": [
+            -6.178777935703937,
+            0.4329960360159172
+          ],
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.5795075288846122,
+          "waypoint": [
+            -6.178777935703937,
+            0.4329960360159172
+          ],
+          "path": null,
+          "command": [
+            0.07904026076750774,
+            0.5740919901999627,
+            0.05913034704959763
+          ]
+        },
+        "target": [
+          -6.178777935703937,
+          0.4329960360159172
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "misaligned"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            3.8801428426024254,
+            2.1927931423503044
+          ],
+          "effective_target": [
+            3.8801428426024254,
+            2.1927931423503044
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 1.3798423105101294,
+          "candidate_time_s": 1.3798423105101294,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.9142110227115994,
+          "waypoint": [
+            3.8801428426024254,
+            2.1927931423503044
+          ],
+          "path": [
+            [
+              4.441608430188158,
+              2.4298901037167044
+            ],
+            [
+              3.8801428426024254,
+              2.1927931423503044
+            ]
+          ],
+          "command": [
+            -0.3455242226642092,
+            -0.8464010902637605,
+            0.04801558732554789
+          ]
+        },
+        "target": [
+          3.8801428426024254,
+          2.1927931423503044
+        ],
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 802213,
+    "sequence": 4590,
+    "now": 136.279999999,
+    "remaining": 547,
+    "state": "PLAYING",
+    "ball": {
+      "x": -4.818936055878004,
+      "y": 0.6942714330135161,
+      "last_seen_at": 136.277999999,
+      "confidence": 1.0,
+      "received_at": 395.704659636
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -3.2973773019759847,
+          "y": -1.685295394609644,
+          "theta": -0.031221073825806717
+        },
+        "last_seen_at": 136.277999999,
+        "received_at": 395.704388678
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.317437966543713,
+          "y": 0.31045262217948727,
+          "theta": 0.07931844431646422
+        },
+        "last_seen_at": 136.277999999,
+        "received_at": 395.704452386
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 3.772265616486717,
+          "y": 2.5299911956100543,
+          "theta": -2.5874068771227283
+        },
+        "last_seen_at": 136.277999999,
+        "received_at": 395.704480719
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -3.4827670879032717,
+          "y": 0.26226461483995184,
+          "theta": 2.603382272374266
+        },
+        "last_seen_at": 136.277999999,
+        "received_at": 395.704505303
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 0.3830989954267855,
+          "y": -1.0570938511559667,
+          "theta": 1.5935000920289593
+        },
+        "last_seen_at": 136.277999999,
+        "received_at": 395.704527469
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.503808445794276,
+          "y": 0.1517261225114138,
+          "theta": 2.028405659303546
+        },
+        "last_seen_at": 136.277999999,
+        "received_at": 395.704616678
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "approaching",
+          "reason": "too_far",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "timeout",
+          "distance_m": 2.824852214141438,
+          "angle_error_deg": 1.5048000912438864,
+          "stage_error_m": 3.0432786760244332,
+          "stage_target": [
+            -5.196282531161162,
+            0.7419685615467371
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "avoiding",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -5.196282531161162,
+            0.7419685615467371
+          ],
+          "effective_target": [
+            -5.196282531161162,
+            0.7419685615467371
+          ],
+          "route_reason": "retained",
+          "estimated_time_s": 7.372205776388421,
+          "candidate_time_s": 7.211870547895909,
+          "previous_time_s": 7.372205776388421,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 2.0,
+          "waypoint": [
+            -3.7584059830928234,
+            -1.001743253306353
+          ],
+          "path": [
+            [
+              -3.2973773019759847,
+              -1.685295394609644
+            ],
+            [
+              -3.2362007206183945,
+              -1.6350211846964986
+            ],
+            [
+              -5.196282531161162,
+              0.7419685615467371
+            ]
+          ],
+          "command": [
+            -1.5496006119261874,
+            1.2644120940255144,
+            -0.05252743235303382
+          ]
+        },
+        "target": [
+          -5.196282531161162,
+          0.7419685615467371
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:set",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 0.32046347276055404,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet"
+        },
+        "navigation": {
+          "state": "avoiding",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -6.2,
+            0.4092102702417086
+          ],
+          "effective_target": [
+            -6.2,
+            0.4092102702417086
+          ],
+          "route_reason": "retained",
+          "estimated_time_s": 0.39138027363897393,
+          "candidate_time_s": 0.258788531655813,
+          "previous_time_s": 0.39138027363897393,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.23016447452329233,
+          "waypoint": [
+            -6.2,
+            0.4092102702417086
+          ],
+          "path": [
+            [
+              -6.317437966543713,
+              0.31045262217948727
+            ],
+            [
+              -6.3194042428406725,
+              0.299358975154639
+            ],
+            [
+              -6.319880526230638,
+              0.29845318647897684
+            ],
+            [
+              -6.320349065639991,
+              0.297561870992478
+            ],
+            [
+              -6.319420012261371,
+              0.29707349383773207
+            ],
+            [
+              -6.317607832272294,
+              0.296007194424233
+            ],
+            [
+              -6.315920336661917,
+              0.294692053134394
+            ],
+            [
+              -6.314479866382068,
+              0.29306839124162753
+            ],
+            [
+              -6.313484656890196,
+              0.29149316423383986
+            ],
+            [
+              -6.312195961600552,
+              0.2887713122696611
+            ],
+            [
+              -6.3099141018568705,
+              0.28172462567846174
+            ],
+            [
+              -6.3093414412534585,
+              0.2785223285275897
+            ],
+            [
+              -6.309028478731179,
+              0.2783197861210773
+            ],
+            [
+              -6.2,
+              0.4092102702417086
+            ]
+          ],
+          "command": [
+            0.22554053479964095,
+            0.04590373072937788,
+            0.3428519289344134
+          ]
+        },
+        "target": [
+          -6.2,
+          0.4092102702417086
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "misaligned"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "avoiding",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            2.0265370499971223,
+            2.1569737119275656
+          ],
+          "effective_target": [
+            2.0265370499971223,
+            2.1569737119275656
+          ],
+          "route_reason": "faster",
+          "estimated_time_s": 2.3801812334323085,
+          "candidate_time_s": 2.3801812334323085,
+          "previous_time_s": 4.9036716374425176,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 1.9991781827071258,
+          "waypoint": [
+            2.8921333600170582,
+            2.3419294740353904
+          ],
+          "path": [
+            [
+              3.772265616486717,
+              2.5299911956100543
+            ],
+            [
+              2.0265370499971223,
+              2.1569737119275656
+            ]
+          ],
+          "command": [
+            1.9991781827071258,
+            0.0,
+            -0.05733667520929764
+          ]
+        },
+        "target": [
+          2.0265370499971223,
+          2.1569737119275656
+        ],
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 802246,
+    "sequence": 4623,
+    "now": 138.349999999,
+    "remaining": 545,
+    "state": "PLAYING",
+    "ball": {
+      "x": -4.902064016038412,
+      "y": 0.7748037591655916,
+      "last_seen_at": 138.349999999,
+      "confidence": 1.0,
+      "received_at": 401.041500097
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -4.76627648901257,
+          "y": -1.6439975108430391,
+          "theta": -0.04780887436582952
+        },
+        "last_seen_at": 138.349999999,
+        "received_at": 401.041324347
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.376741922758289,
+          "y": 0.648383085593829,
+          "theta": 0.14221598943858144
+        },
+        "last_seen_at": 138.349999999,
+        "received_at": 401.041377764
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 2.279890337073967,
+          "y": 1.7209685969353137,
+          "theta": -2.093801875252851
+        },
+        "last_seen_at": 138.349999999,
+        "received_at": 401.041406055
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -4.619389725012253,
+          "y": 0.7135929649882381,
+          "theta": 3.1301142370192294
+        },
+        "last_seen_at": 138.349999999,
+        "received_at": 401.041429889
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 0.40012741549278913,
+          "y": -0.48890986808392106,
+          "theta": 2.124855967950444
+        },
+        "last_seen_at": 138.349999999,
+        "received_at": 401.04145393
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.471053700189485,
+          "y": 0.2268815090768003,
+          "theta": 3.049992546206363
+        },
+        "last_seen_at": 138.349999999,
+        "received_at": 401.04147768
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "approaching",
+          "reason": "too_far",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "timeout",
+          "distance_m": 2.422609716048204,
+          "angle_error_deg": 0.9089381389152658,
+          "stage_error_m": 2.4888013212873137,
+          "stage_target": [
+            -5.251354765415991,
+            0.7970741969531422
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "avoiding",
+          "priority": 80,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": null,
+          "target": [
+            -5.251354765415991,
+            0.7970741969531422
+          ],
+          "effective_target": [
+            -5.251354765415991,
+            0.7970741969531422
+          ],
+          "route_reason": "faster",
+          "estimated_time_s": 5.573364758466203,
+          "candidate_time_s": 5.573364758466203,
+          "previous_time_s": 5.935604567951349,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 2.0,
+          "waypoint": [
+            -4.94169043026573,
+            -0.7612574872720939
+          ],
+          "path": [
+            [
+              -4.76627648901257,
+              -1.6439975108430391
+            ],
+            [
+              -5.251354765415991,
+              0.7970741969531422
+            ]
+          ],
+          "command": [
+            -0.7626452516319925,
+            1.8488840472466561,
+            -0.031727926442041976
+          ]
+        },
+        "target": [
+          -5.251354765415991,
+          0.7970741969531422
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:anticipate:ray",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "ball_speed_mps": 0.0001412098958761711,
+          "close_clear_rejection": "range",
+          "outlet_wait_reason": "no_safe_outlet",
+          "shooter_id": 1,
+          "ray_goal_y": 1.2290945517430203
+        },
+        "navigation": {
+          "state": "avoiding",
+          "priority": 60,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "field_boundary",
+          "target": [
+            -6.5,
+            1.05
+          ],
+          "effective_target": [
+            -6.5,
+            1.05
+          ],
+          "route_reason": "retained",
+          "estimated_time_s": 0.9514442923265652,
+          "candidate_time_s": 0.9365396372752096,
+          "previous_time_s": 0.9514442923265652,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.6301583721339652,
+          "waypoint": [
+            -6.5,
+            1.05
+          ],
+          "path": [
+            [
+              -6.376741922758289,
+              0.648383085593829
+            ],
+            [
+              -6.381799740951085,
+              0.6461058058453234
+            ],
+            [
+              -6.5,
+              1.05
+            ]
+          ],
+          "command": [
+            -0.07260960789899207,
+            0.6259611959309328,
+            -0.11339485506387634
+          ]
+        },
+        "target": [
+          -6.5,
+          1.05
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "misaligned"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "moving",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            1.978512971384744,
+            2.0623053398026356
+          ],
+          "effective_target": [
+            1.978512971384744,
+            2.0623053398026356
+          ],
+          "route_reason": "retained",
+          "estimated_time_s": 1.215822555667012,
+          "candidate_time_s": 1.0254471820763535,
+          "previous_time_s": 1.215822555667012,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.6830175322108194,
+          "waypoint": [
+            1.978512971384744,
+            2.0623053398026356
+          ],
+          "path": [
+            [
+              2.279890337073967,
+              1.7209685969353137
+            ],
+            [
+              2.3291580331355646,
+              1.810231471779204
+            ],
+            [
+              1.978512971384744,
+              2.0623053398026356
+            ]
+          ],
+          "command": [
+            -0.21776048980843143,
+            -0.64737417185562,
+            2.0
+          ]
+        },
+        "target": [
+          1.978512971384744,
+          2.0623053398026356
+        ],
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 802268,
+    "sequence": 4645,
+    "now": 139.343999999,
+    "remaining": 544,
+    "state": "PLAYING",
+    "ball": {
+      "x": -6.539781741893216,
+      "y": 0.16900743561328932,
+      "last_seen_at": 139.337999999,
+      "confidence": 1.0,
+      "received_at": 404.605463765
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -5.426294116586053,
+          "y": -1.6305931241596887,
+          "theta": 0.0006973896058407603
+        },
+        "last_seen_at": 139.337999999,
+        "received_at": 404.607839349
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.428878918013109,
+          "y": 0.7536281415905665,
+          "theta": -0.3221355300090659
+        },
+        "last_seen_at": 139.337999999,
+        "received_at": 404.607983599
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 1.9508853405553126,
+          "y": 1.5429315174585736,
+          "theta": -1.3687481071980552
+        },
+        "last_seen_at": 139.337999999,
+        "received_at": 404.608091974
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -5.227282869629012,
+          "y": 0.7215481233879641,
+          "theta": -2.8891507786146553
+        },
+        "last_seen_at": 139.337999999,
+        "received_at": 404.608157015
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 0.36491070179278773,
+          "y": -0.4449794611598352,
+          "theta": 3.0585279285854057
+        },
+        "last_seen_at": 139.337999999,
+        "received_at": 404.608212307
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.426113632007795,
+          "y": 0.20030095945575244,
+          "theta": -3.12576173989603
+        },
+        "last_seen_at": 139.337999999,
+        "received_at": 404.608271015
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "attack",
+        "action": "attack",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "blocked",
+          "reason": "stage_blocked",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "timeout",
+          "distance_m": 2.118431162321216,
+          "angle_error_deg": 0.7421388604386333,
+          "stage_error_m": 2.3264591652605677,
+          "stage_target": [
+            -6.90087340073691,
+            0.16885906536301235
+          ]
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": null,
+        "target": null,
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "guard",
+        "action": "guard:block:best_effort",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": {
+          "ball_fresh": true,
+          "velocity_known": true,
+          "shot_source": "measured_prediction",
+          "goal_time_s": 0.25175841618329287,
+          "goal_crossing": [
+            -7.000000000627834,
+            -0.010025483105779803
+          ]
+        },
+        "navigation": {
+          "state": "avoiding",
+          "priority": 100,
+          "opponent_mode": "contest",
+          "avoid_ball": false,
+          "blocker": "field_boundary",
+          "target": [
+            -6.510323415926617,
+            0.3605238438244828
+          ],
+          "effective_target": [
+            -6.510323415926617,
+            0.3605238438244828
+          ],
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.39141629121230803,
+          "waypoint": [
+            -6.510323415926617,
+            0.3605238438244828
+          ],
+          "path": null,
+          "command": [
+            0.046018966590141965,
+            -0.3887016436039005,
+            -2.0
+          ]
+        },
+        "target": [
+          -6.510323415926617,
+          0.3605238438244828
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "freeman",
+        "action": "freeman:move",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "misaligned"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "turning",
+          "priority": 20,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            0.047114918879416934,
+            2.5381406906883064
+          ],
+          "effective_target": [
+            0.047114918879416934,
+            2.5381406906883064
+          ],
+          "route_reason": "new",
+          "estimated_time_s": 4.618804348335447,
+          "candidate_time_s": 4.618804348335447,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": false,
+          "blocker_priority": null,
+          "speed": 0.0,
+          "waypoint": [
+            1.1532921511337835,
+            1.9598788812689145
+          ],
+          "path": [
+            [
+              1.9508853405553126,
+              1.5429315174585736
+            ],
+            [
+              0.047114918879416934,
+              2.5381406906883064
+            ]
+          ],
+          "command": [
+            0.0,
+            0.0,
+            -2.0
+          ]
+        },
+        "target": [
+          0.047114918879416934,
+          2.5381406906883064
+        ],
+        "kick_power": null
+      }
+    ]
+  },
+  {
+    "id": 802314,
+    "sequence": 4691,
+    "now": 140.413999999,
+    "remaining": 543,
+    "state": "READY",
+    "ball": {
+      "x": -7.242574586894426,
+      "y": -0.46610964654630743,
+      "last_seen_at": 140.413999999,
+      "confidence": 1.0,
+      "received_at": 407.848802017
+    },
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -5.802978190469679,
+          "y": -1.6302718225180153,
+          "theta": 0.18545479356814729
+        },
+        "last_seen_at": 140.413999999,
+        "received_at": 407.84828735
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -6.5265082392098615,
+          "y": 0.6347966191738303,
+          "theta": -1.1269831262157446
+        },
+        "last_seen_at": 140.413999999,
+        "received_at": 407.848458184
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 1.992472775432373,
+          "y": 1.5328866560830672,
+          "theta": -2.1403050968861974
+        },
+        "last_seen_at": 140.413999999,
+        "received_at": 407.8485186
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -5.625963993141174,
+          "y": 0.5731200844718018,
+          "theta": -2.5993230550112028
+        },
+        "last_seen_at": 140.413999999,
+        "received_at": 407.8485696
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 0.32447767021498697,
+          "y": -0.47862577540107976,
+          "theta": -2.266007772063064
+        },
+        "last_seen_at": 140.413999999,
+        "received_at": 407.848720267
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.3562265741273665,
+          "y": 0.24438741443249556,
+          "theta": -2.292244412185373
+        },
+        "last_seen_at": 140.413999999,
+        "received_at": 407.848770225
+      }
+    },
+    "players": [
+      {
+        "id": 1,
+        "role": "ready",
+        "action": "ready",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "timeout"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "avoiding",
+          "priority": 10,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -1.5,
+            0.0
+          ],
+          "effective_target": [
+            -1.5,
+            0.0
+          ],
+          "route_reason": "faster",
+          "estimated_time_s": 6.135276144896846,
+          "candidate_time_s": 6.135276144896846,
+          "previous_time_s": 8.104399961619546,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 1.9684761586542758,
+          "waypoint": [
+            -4.961357747214075,
+            -1.311406600999203
+          ],
+          "path": [
+            [
+              -5.802978190469679,
+              -1.6302718225180153
+            ],
+            [
+              -1.5,
+              0.0
+            ]
+          ],
+          "command": [
+            1.9684761586542758,
+            0.0,
+            0.3555671745829206
+          ]
+        },
+        "target": [
+          -1.5,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 2,
+        "role": "ready",
+        "action": "ready",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": null
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "avoiding",
+          "priority": 10,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": "opponent:1",
+          "target": [
+            -6.0,
+            0.0
+          ],
+          "effective_target": [
+            -6.0,
+            0.0
+          ],
+          "route_reason": "no_route",
+          "estimated_time_s": null,
+          "candidate_time_s": null,
+          "previous_time_s": null,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 1.23709327286118,
+          "waypoint": [
+            -6.0,
+            0.0
+          ],
+          "path": null,
+          "command": [
+            0.8631408250918171,
+            -0.8862210118351986,
+            2.0
+          ]
+        },
+        "target": [
+          -6.0,
+          0.0
+        ],
+        "kick_power": null
+      },
+      {
+        "id": 3,
+        "role": "ready",
+        "action": "ready",
+        "auto_kick": {
+          "policy": "bounded_attack",
+          "state": "idle",
+          "reason": "role_changed",
+          "elapsed_s": 0.0,
+          "remaining_s": null,
+          "cooldown_remaining_s": 0.0,
+          "last_exit_reason": "misaligned"
+        },
+        "kick_control": {
+          "state": "idle",
+          "requested": false,
+          "accepted": false,
+          "reason": null
+        },
+        "guard_decision": null,
+        "navigation": {
+          "state": "turning",
+          "priority": 10,
+          "opponent_mode": "avoid",
+          "avoid_ball": true,
+          "blocker": null,
+          "target": [
+            -1.2071067811865475,
+            4.207106781186548
+          ],
+          "effective_target": [
+            -1.2071067811865475,
+            4.207106781186548
+          ],
+          "route_reason": "faster",
+          "estimated_time_s": 6.757459963798327,
+          "candidate_time_s": 6.757459963798327,
+          "previous_time_s": 9.147525285454217,
+          "switch_margin_s": 0.35,
+          "direction_held": true,
+          "blocker_priority": null,
+          "speed": 0.0,
+          "waypoint": [
+            1.3019133086591066,
+            2.110058747274093
+          ],
+          "path": [
+            [
+              1.992472775432373,
+              1.5328866560830672
+            ],
+            [
+              -1.2071067811865475,
+              4.207106781186548
+            ]
+          ],
+          "command": [
+            0.0,
+            0.0,
+            -2.0
+          ]
+        },
+        "target": [
+          -1.2071067811865475,
+          4.207106781186548
+        ],
+        "kick_power": null
+      }
+    ]
+  }
+]

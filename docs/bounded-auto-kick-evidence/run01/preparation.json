@@ -1,0 +1,7 @@
+{
+  "worktree": "/Users/limingzhe/.codex/worktrees/bounded-auto-kick/sim-3v3-simple-framework",
+  "branch": "codex/bounded-auto-kick",
+  "base_commit": "ddf350a74c5ae4cb584d1160e690b41f1b4e1a27",
+  "window_observed_at_utc": "2026-11-02T03:05:56.308284+00:00",
+  "note": "Observed simulator resource-loading window before this timestamp; wait at least 30 seconds after this timestamp before start."
+}

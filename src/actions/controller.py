@@ -15,6 +15,8 @@ class ActionController(MotionController):
     def execute(self, intent, motion_command=None):
         """执行一名球员本帧最终意图；未知类型先停车，再报错。"""
         self.kick_observation = None
+        self.kick_control = dict(state='idle', requested=isinstance(intent, KickIntent),
+                                 accepted=False, reason=None)
         if not isinstance(intent, MoveIntent):
             self.reset_navigation()
         # 分配之后 SDK 状态仍可能变化，协调层也可能替换意图，因此下发前再次检查。
@@ -23,11 +25,15 @@ class ActionController(MotionController):
             self.reset_navigation()
             self.stop()
             self.ensure_ready()
+            if self.kick_control["state"] != "release_failed":
+                self.kick_control.update(state="blocked", reason="unavailable")
             return
         if self.is_fallen or self.mode != 'walk':
             self.reset_navigation()
             self.stop()
             self.ensure_ready()
+            if self.kick_control["state"] != "release_failed":
+                self.kick_control.update(state="blocked", reason="unavailable")
             return
         # walk_to 内部先释放踢球；否则踢球控制器可能仍占用底盘，普通移动不生效。
         if isinstance(intent, MoveIntent):
@@ -44,6 +50,7 @@ class ActionController(MotionController):
             # 目标丢失时取消旧踢球，不能继续沿用上一帧的方向。
             plan = plan_kick(self.context, intent)
             if plan is None:
+                self.kick_control.update(state="blocked", reason="target_unavailable")
                 self.stop()
                 return
             # SDK kick owns its internal stepping. Reject an approach through
@@ -58,6 +65,7 @@ class ActionController(MotionController):
                 margin=NAV_SAFETY_MARGIN_M, allow_escape=True,
             ):
                 self.navigation_status = dict(state='kick_approach_blocked', blocker='goal_structure')
+                self.kick_control.update(state='blocked', reason='goal_structure')
                 self.stop()
                 return
             self.tactical_target = plan.target
@@ -67,7 +75,10 @@ class ActionController(MotionController):
             debugdraw.line([(x-s, y+s), (x+s, y-s)], rgb=(1, 0, 1), ns='kick_target')
             # 停止普通行走，再将球位置和计划交给底层；身体坐标转换只做一次。
             self.set_velocity(0.0, 0.0, 0.0)
-            self.kick(plan.direction, plan.power)
+            if self.kick(plan.direction, plan.power):
+                self.kick_control.update(state='active', accepted=True, reason=None)
+            elif self.kick_control['state'] == 'idle':
+                self.kick_control.update(state='failed', reason='backend_unavailable')
         elif isinstance(intent, (StopIntent, RecoverIntent)):
             self.stop()
         else:

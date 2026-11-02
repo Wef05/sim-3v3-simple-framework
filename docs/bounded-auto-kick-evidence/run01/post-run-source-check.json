@@ -1,0 +1,4 @@
+{
+  "only_change": "attack_kick.py type annotations/imports and honest timing docstring",
+  "normalized_ast_equal": true
+}

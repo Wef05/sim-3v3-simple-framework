@@ -1,0 +1,234 @@
+{
+  "frames": 2768,
+  "first_id": 799690,
+  "last_id": 802457,
+  "recording_span_s": 227.66152970818803,
+  "simulation_clock_range": [
+    59.43,
+    143.565999999
+  ],
+  "max_recording_gap_s": 1.0072466668207198,
+  "max_simulation_gap_s": 0.5720000000000027,
+  "referee_elapsed_s": 60.06199999998125,
+  "score": {
+    "home": 0,
+    "away": 1
+  },
+  "end_reason": "operator_finish",
+  "is_final": true,
+  "bursts": [
+    {
+      "player": 1,
+      "first_id": 800717,
+      "first_now": 85.777999999,
+      "inferred_request_since": 85.777999999,
+      "entry_observed": {
+        "policy": "bounded_attack",
+        "state": "requested",
+        "reason": "ready",
+        "elapsed_s": 0.0,
+        "remaining_s": 1.2,
+        "cooldown_remaining_s": 0.0,
+        "last_exit_reason": null,
+        "distance_m": 0.45746621573535656,
+        "angle_error_deg": 0.22277094709254328,
+        "stage_error_m": 0.14842868971747106,
+        "stage_target": [
+          0.10283735445560171,
+          -0.3345511598075439
+        ]
+      },
+      "last_id": 800741,
+      "last_now": 86.951999999,
+      "last_elapsed": 1.1739999999999924,
+      "exit_id": 800742,
+      "exit_now": 86.981999999,
+      "exit_reason": "timeout",
+      "observed_release_after_s": 1.2039999999999935,
+      "control_at_exit": {
+        "state": "idle",
+        "requested": false,
+        "accepted": false,
+        "reason": null
+      }
+    },
+    {
+      "player": 1,
+      "first_id": 800772,
+      "first_now": 88.003999999,
+      "inferred_request_since": 88.003999999,
+      "entry_observed": {
+        "policy": "bounded_attack",
+        "state": "requested",
+        "reason": "ready",
+        "elapsed_s": 0.0,
+        "remaining_s": 1.2,
+        "cooldown_remaining_s": 0.0,
+        "last_exit_reason": "timeout",
+        "distance_m": 0.21264961266132582,
+        "angle_error_deg": 3.040182058402664,
+        "stage_error_m": 0.14744478991065704,
+        "stage_target": [
+          0.10291157391029147,
+          -0.3345283365505924
+        ]
+      },
+      "last_id": 800811,
+      "last_now": 89.143999999,
+      "last_elapsed": 1.1400000000000006,
+      "exit_id": 800812,
+      "exit_now": 89.175999999,
+      "exit_reason": "phase_changed",
+      "observed_release_after_s": 1.171999999999997,
+      "control_at_exit": {
+        "state": "idle",
+        "requested": false,
+        "accepted": false,
+        "reason": null
+      }
+    },
+    {
+      "player": 1,
+      "first_id": 801852,
+      "first_now": 119.841999999,
+      "inferred_request_since": 119.841999999,
+      "entry_observed": {
+        "policy": "bounded_attack",
+        "state": "requested",
+        "reason": "ready",
+        "elapsed_s": 0.0,
+        "remaining_s": 1.2,
+        "cooldown_remaining_s": 0.0,
+        "last_exit_reason": "phase_changed",
+        "distance_m": 0.4050500712744539,
+        "angle_error_deg": 0.6727446584301041,
+        "stage_error_m": 0.13730549710443501,
+        "stage_target": [
+          1.4160687005334927,
+          -1.9840681696693945
+        ]
+      },
+      "last_id": 801875,
+      "last_now": 121.019999999,
+      "last_elapsed": 1.1780000000000115,
+      "exit_id": 801876,
+      "exit_now": 121.071999999,
+      "exit_reason": "timeout",
+      "observed_release_after_s": 1.230000000000004,
+      "control_at_exit": {
+        "state": "idle",
+        "requested": false,
+        "accepted": false,
+        "reason": null
+      }
+    },
+    {
+      "player": 3,
+      "first_id": 800897,
+      "first_now": 94.251999999,
+      "inferred_request_since": 94.171999999,
+      "entry_observed": {
+        "policy": "bounded_attack",
+        "state": "requested",
+        "reason": "ready",
+        "elapsed_s": 0.0800000000000125,
+        "remaining_s": 1.1199999999999875,
+        "cooldown_remaining_s": 0.0,
+        "last_exit_reason": null,
+        "distance_m": 0.4328755826158095,
+        "angle_error_deg": 2.510065212519634,
+        "stage_error_m": 0.12399249139256861,
+        "stage_target": [
+          -0.7343158485039175,
+          3.3288708857819524
+        ]
+      },
+      "last_id": 800912,
+      "last_now": 95.043999999,
+      "last_elapsed": 0.8719999999999999,
+      "exit_id": 800913,
+      "exit_now": 95.087999999,
+      "exit_reason": "misaligned",
+      "observed_release_after_s": 0.916000000000011,
+      "control_at_exit": {
+        "state": "idle",
+        "requested": false,
+        "accepted": false,
+        "reason": null
+      }
+    }
+  ],
+  "first_playing": {
+    "id": 800572,
+    "now": 80.327999999,
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -1.4140749538142336,
+          "y": -0.08152515146063476,
+          "theta": 0.18032457704710592
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753468104
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -5.928380017659089,
+          "y": -0.06613455945053107,
+          "theta": 0.0488821789797912
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753497313
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -1.2593769943708095,
+          "y": 4.103908400564274,
+          "theta": 0.08921800292301899
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753520063
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.748523166746852,
+          "y": 0.0008701259681522983,
+          "theta": -3.068709235339988
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753699396
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.749281447371066,
+          "y": -2.653967471317779,
+          "theta": -2.9338252619799903
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753721063
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.7332326931938855,
+          "y": -0.00459901216810534,
+          "theta": 3.0681579730121444
+        },
+        "last_seen_at": 80.317999999,
+        "received_at": 231.753741229
+      }
+    }
+  },
+  "minimum_post_distance_m": {
+    "1": 1.3698439946173633,
+    "2": 0.7618929823327142,
+    "3": 2.7069001270117465
+  }
+}
