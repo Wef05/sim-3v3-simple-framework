@@ -131,7 +131,7 @@ class PredictionTests(unittest.TestCase):
         ctx = context(((6.65, 1.3),))
         f = frame(ctx)
         f.tracker.velocities['team', 1] = (2., 0.)
-        self.assertEqual(f.check(1, MoveIntent((6., 1.3)), (0, 0, 0)), 'field_boundary')
+        self.assertEqual(f.check(1, MoveIntent((6., 1.3)), (0, 0, 0)), 'goal_structure')
 
     def test_ball_avoidance_is_scenario_specific(self):
         ctx = context(ball=BallState(.6, 0, last_seen_at=1))
@@ -182,12 +182,12 @@ class PolicyAndExecutionTests(unittest.TestCase):
         command, _ = c.plan_walk(MoveIntent((1, 0), direct_path=True), frame(ctx))
         self.assertEqual(command, (0., 0., 0.))
 
-    def test_deadline_target_is_not_silently_clamped(self):
+    def test_deadline_target_keeps_exact_goal_mouth_position(self):
         ctx = context(((6., 0.),))
         c = controller(ctx)
         command, _ = c.plan_walk(MoveIntent((7.1, 0), direct_path=True), frame(ctx))
-        self.assertEqual(command, (0., 0., 0.))
-        self.assertEqual(c.navigation_status['blocker'], 'field_boundary')
+        self.assertGreater(math.hypot(*command[:2]), 0.)
+        self.assertEqual(c.navigation_status['effective_target'], [7.1, 0])
 
     def test_open_field_makes_progress(self):
         ctx = context()

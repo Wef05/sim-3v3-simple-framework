@@ -55,34 +55,82 @@ class AutoKickTests(unittest.TestCase):
         self.assertIsInstance(self.tick(pose=Pose2D(-.35,0,0)),KickIntent)
         self.assertTrue(self.p.controller.kick_control['accepted'])
 
-    def test_exit_distance_with_hysteresis(self):
+    def test_relaxed_entry_accepts_small_stage_and_angle_errors(self):
+        self.assertIsInstance(self.tick(pose=Pose2D(-.53, 0, math.radians(24))), KickIntent)
+
+    def test_distance_grace_recovers_and_restarts(self):
         self.tick()
-        self.assertIsInstance(self.tick(10.1, Pose2D(-.7,0,0)),KickIntent)
-        self.assertNotIsInstance(self.tick(10.2, Pose2D(-.751,0,0)),KickIntent)
+        self.assertIsInstance(self.tick(10.1, Pose2D(-1.49,0,0)), KickIntent)
+        self.assertIsInstance(self.tick(10.2, Pose2D(-1.51,0,0)), KickIntent)
+        self.assertEqual(self.p.attack_kick.diagnostics['reason'], 'grace_pending')
+        self.assertIsInstance(self.tick(10.49, Pose2D(-1.51,0,0)), KickIntent)
+        self.assertIsInstance(self.tick(10.5, Pose2D(-1.4,0,0)), KickIntent)
+        self.assertEqual(self.p.attack_kick.diagnostics['exit_grace'], [])
+        self.assertIsInstance(self.tick(10.6, Pose2D(-1.51,0,0)), KickIntent)
+        self.assertNotIsInstance(self.tick(10.9, Pose2D(-1.51,0,0)), KickIntent)
         self.assertFalse(self.p.is_kicking)
         self.assertEqual(self.p.attack_kick.last_exit,'too_far')
 
-    def test_angle_hysteresis_then_exit(self):
+    def test_angle_grace_then_exit(self):
         self.tick()
-        self.assertIsInstance(self.tick(10.1,Pose2D(-.35,0,math.radians(30))),KickIntent)
-        self.assertNotIsInstance(self.tick(10.2,Pose2D(-.35,0,math.radians(36))),KickIntent)
+        self.assertIsInstance(self.tick(10.1,Pose2D(-.35,0,math.radians(69))),KickIntent)
+        self.assertIsInstance(self.tick(10.2,Pose2D(-.35,0,math.radians(71))),KickIntent)
+        self.assertNotIsInstance(self.tick(10.5,Pose2D(-.35,0,math.radians(71))),KickIntent)
         self.assertEqual(self.p.attack_kick.last_exit,'misaligned')
 
-    def test_ball_behind_immediately_exits(self):
+    def test_ball_behind_has_longer_grace(self):
         self.tick()
-        self.assertNotIsInstance(self.tick(10.1,Pose2D(.35,0,0)),KickIntent)
+        pose=Pose2D(.35,0,0)
+        self.assertIsInstance(self.tick(10.1,pose),KickIntent)
+        self.assertIsInstance(self.tick(10.59,pose),KickIntent)
+        self.assertNotIsInstance(self.tick(10.6,pose),KickIntent)
         self.assertEqual(self.p.attack_kick.last_exit,'ball_behind')
+
+    def test_multiple_grace_conditions_are_independent(self):
+        self.tick()
+        self.tick(10.1,Pose2D(-1.6,0,0))
+        self.tick(10.2,Pose2D(-1.6,0,math.radians(71)))
+        self.assertEqual(len(self.p.attack_kick.diagnostics['exit_grace']),2)
+        self.assertIsInstance(self.tick(10.3,Pose2D(-1.4,0,math.radians(71))),KickIntent)
+        self.assertNotIsInstance(self.tick(10.5,Pose2D(-1.4,0,math.radians(71))),KickIntent)
+        self.assertEqual(self.p.attack_kick.last_exit,'misaligned')
+
+    def test_safety_cancels_immediately_during_grace(self):
+        self.tick()
+        self.tick(10.1,Pose2D(-1.6,0,0))
+        self.ctx=replace(self.ctx,opponents={2:RobotState(2,Pose2D(-.8,0))})
+        self.assertNotIsInstance(self.tick(10.11),KickIntent)
+        self.assertEqual(self.p.attack_kick.last_exit,'approach_blocked')
+        self.assertFalse(self.p.is_kicking)
+        self.assertEqual(self.p.attack_kick.diagnostics['exit_grace'],[])
+
+    def test_phase_change_and_clock_reset_clear_grace(self):
+        self.tick()
+        self.tick(10.1,Pose2D(-1.6,0,0))
+        self.ctx=replace(self.ctx,game=replace(self.ctx.game,secondary_time=10))
+        self.assertNotIsInstance(self.tick(10.11),KickIntent)
+        self.assertEqual(self.p.attack_kick._exceeded_since,{})
+        self.tick(10.7,Pose2D(-.35,0,0))
+        self.tick(10.8,Pose2D(-1.6,0,0))
+        self.assertNotIsInstance(self.tick(1.),KickIntent)
+        self.assertEqual(self.p.attack_kick._exceeded_since,{})
+
+    def test_outside_stage_is_allowed_and_does_not_force_reentry(self):
+        self.ctx=replace(self.ctx,ball=BallState(0,4.5,last_seen_at=10))
+        self.tick(execute_intent=False)
+        self.p.context=self.ctx=replace(self.ctx,teammates={1:RobotState(1,Pose2D(0,4.85,-math.pi/2))})
+        self.assertIsInstance(self.p.attack((0.,0.)),KickIntent)
 
     def test_timeout_cooldown_and_pause_do_not_refresh_budget(self):
         self.tick()
         for _ in range(3):
-            self.assertIsInstance(self.tick(10.8),KickIntent)
-        self.assertAlmostEqual(self.p.attack_kick.diagnostics['remaining_s'],.4)
-        self.assertNotIsInstance(self.tick(11.2),KickIntent)
+            self.assertIsInstance(self.tick(14.8),KickIntent)
+        self.assertAlmostEqual(self.p.attack_kick.diagnostics['remaining_s'],.2)
+        self.assertNotIsInstance(self.tick(15.),KickIntent)
         self.assertEqual(self.p.attack_kick.last_exit,'timeout')
         self.assertFalse(self.p.is_kicking)
-        self.assertNotIsInstance(self.tick(11.69),KickIntent)
-        self.assertIsInstance(self.tick(11.71),KickIntent)
+        self.assertNotIsInstance(self.tick(15.49),KickIntent)
+        self.assertIsInstance(self.tick(15.51),KickIntent)
         self.assertAlmostEqual(self.p.attack_kick.diagnostics['elapsed_s'],0.)
 
     def test_clock_rollback_cancels_old_request(self):
@@ -150,7 +198,7 @@ class AutoKickTests(unittest.TestCase):
         self.p.motion.update(self.ctx)
         p=make_snapshot(self.ctx,[self.p],SimpleNamespace())['players'][0]
         self.assertTrue(p['kick_control']['accepted'])
-        self.assertEqual(p['auto_kick']['remaining_s'],1.2)
+        self.assertEqual(p['auto_kick']['remaining_s'],5.0)
         self.assertEqual(p['auto_kick']['state'],'requested')
 
 

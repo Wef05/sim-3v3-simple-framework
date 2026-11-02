@@ -1,0 +1,350 @@
+{
+  "gameControl": {
+    "status": "running",
+    "ready": true,
+    "checks": {
+      "team1": true,
+      "team2": true
+    },
+    "lastError": null,
+    "startedAtWallTime": 1793585620.0052989,
+    "resultDir": "logs/game-control",
+    "runtimeDir": "logs/game-control/runtime"
+  },
+  "match": null,
+  "game": {
+    "playersPerTeam": 3,
+    "sides": "homeDefendsLeftGoal",
+    "stopped": false,
+    "phase": "firstHalf",
+    "state": "initial",
+    "setPlay": "noSetPlay",
+    "kickingSide": "home",
+    "droppedBall": false,
+    "regularDurationSeconds": 600.0,
+    "timeRemaining": 600.0,
+    "primaryTime": 600.0,
+    "drawPolicy": "allow_draw",
+    "extraTimeMaxSeconds": 12000.0,
+    "finishReason": null,
+    "secondaryTime": 0,
+    "ballPlacement": null,
+    "teams": {
+      "home": {
+        "number": 1,
+        "name": "Challenger",
+        "externalTeamId": null,
+        "fieldPlayerColor": "red",
+        "goalkeeperColor": "blue",
+        "goalkeeper": 1,
+        "score": 0,
+        "penaltyCounter": 0,
+        "timeoutBudget": 1,
+        "messageBudget": 12000,
+        "illegalCommunication": false,
+        "penaltyShot": 0,
+        "singleShots": 0,
+        "players": [
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          }
+        ]
+      },
+      "away": {
+        "number": 2,
+        "name": "Booster AI",
+        "externalTeamId": null,
+        "fieldPlayerColor": "blue",
+        "goalkeeperColor": "yellow",
+        "goalkeeper": 1,
+        "score": 0,
+        "penaltyCounter": 0,
+        "timeoutBudget": 1,
+        "messageBudget": 12000,
+        "illegalCommunication": false,
+        "penaltyShot": 0,
+        "singleShots": 0,
+        "players": [
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          }
+        ]
+      }
+    },
+    "timingStage": "regulation"
+  }
+}

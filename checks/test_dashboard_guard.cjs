@@ -41,3 +41,8 @@ assert.match(cooling,/达到单次时间上限/);assert.match(cooling,/冷却剩
 assert.match(ctx.autoKickLines({}).join(''),/旧回放未记录/);
 assert.match(ctx.autoKickLines({kick_control:{state:'release_failed',reason:'release_failed'}}).join(''),/取消失败/);
 console.log('Auto-kick cards: accepted/requested distinction, budget, cooldown, failure, legacy data passed.');
+
+const grace=ctx.autoKickLines({role:'attack',kick_control:{state:'active'},auto_kick:{state:'requested',reason:'grace_pending',elapsed_s:2,remaining_s:3,exit_grace:[{reason:'too_far',remaining_s:.2},{reason:'misaligned',remaining_s:.1}]}}).join('\n');
+assert.match(grace,/宽限中/);assert.match(grace,/距离过远 · 剩余 0.20/);assert.match(grace,/朝向未对齐 · 剩余 0.10/);
+assert.doesNotMatch(cooling,/退出宽限/);
+console.log('Auto-kick grace: independent reasons and remaining times passed.');

@@ -4,7 +4,7 @@ import heapq
 import math
 from functools import lru_cache
 from collections.abc import Sequence
-from ..param import (GLOBAL_FIELD_MARGIN_M, GLOBAL_GRID_RESOLUTION_M,
+from ..param import (GLOBAL_GRID_RESOLUTION_M, GLOBAL_SEARCH_PADDING_M, GLOBAL_MAX_GRID_CELLS,
                      GLOBAL_OBSTACLE_MARGIN_M, NAV_BODY_RADIUS_M, NAV_FORWARD_SPEED_MPS,
                      NAV_LATERAL_SPEED_MPS, NAV_BACKWARD_SPEED_MPS,
                      NAV_TURN_SPEED_RPS, TURN_THRESHOLD)
@@ -31,15 +31,22 @@ def segment_clear(start, end, obstacles, *, margin=GLOBAL_OBSTACLE_MARGIN_M,
     return True
 
 
-def _bounds(context):
-    x = context.field.length/2 - max(GLOBAL_FIELD_MARGIN_M, NAV_BODY_RADIUS_M)
-    y = context.field.width/2 - max(GLOBAL_FIELD_MARGIN_M, NAV_BODY_RADIUS_M)
-    return -x, x, -y, y
+def _search_axes(context, start, target):
+    # 边线不是实体障碍。搜索覆盖场地、真实起终点及绕行空间，
+    # 对极远坐标增大格距以限制节点数；所有连线仍须检查实体碰撞。
+    padding = GLOBAL_SEARCH_PADDING_M
+    xmin = min(-context.field.length/2, start[0], target[0])-padding
+    xmax = max(context.field.length/2, start[0], target[0])+padding
+    ymin = min(-context.field.width/2, start[1], target[1])-padding
+    ymax = max(context.field.width/2, start[1], target[1])+padding
+    res = max(GLOBAL_GRID_RESOLUTION_M, (xmax-xmin)/GLOBAL_MAX_GRID_CELLS,
+              (ymax-ymin)/GLOBAL_MAX_GRID_CELLS)
 
+    def axis(lo, hi):
+        count = min(GLOBAL_MAX_GRID_CELLS, math.ceil((hi-lo)/res))
+        return [lo+(hi-lo)*i/count for i in range(count+1)]
 
-def clamp_target(context, point):
-    xmin, xmax, ymin, ymax = _bounds(context)
-    return max(xmin, min(xmax, point[0])), max(ymin, min(ymax, point[1]))
+    return axis(xmin, xmax), axis(ymin, ymax)
 
 
 def segment_time(start: tuple[float, float], end: tuple[float, float],
@@ -74,28 +81,12 @@ def plan_global_path(context, start, target, obstacles, *, heading=0., omni=Fals
     Keep exact endpoints and swept-body checks. Unknown obstacle velocity is
     handled by the downstream predictive safety layer, not invented here.
     """
-    target = clamp_target(context, target)
     if not segment_clear(target, target, obstacles):
         return None
     if segment_clear(start, target, obstacles, allow_escape=True):
         return [start, target]
-    xmin, xmax, ymin, ymax = _bounds(context)
-    res = GLOBAL_GRID_RESOLUTION_M
-    nx, ny = int((xmax-xmin)/res), int((ymax-ymin)/res)
-    xs = [xmin+i*res for i in range(nx+1)]
-    ys = [ymin+j*res for j in range(ny+1)]
-    outside = start != clamp_target(context, start)
-    if outside:
-        # 仅增加真实场外起点所在的行/列，允许沿边线绕开入口障碍。
-        # 不按场外距离扩展整片网格，避免异常定位导致搜索规模无界增长。
-        xs = sorted(set(xs + [xmax, min(xmin, start[0]), max(xmax, start[0])]))
-        ys = sorted(set(ys + [ymax, min(ymin, start[1]), max(ymax, start[1])]))
-        nx, ny = len(xs)-1, len(ys)-1
-
-    def inward(a, b):
-        # 每条边只允许保持或减少越界量；入场后不能再次走出安全边界。
-        return all(min(lo, old)-1e-8 <= value <= max(hi, old)+1e-8
-                   for old, value, lo, hi in zip(a, b, (xmin, ymin), (xmax, ymax)))
+    xs, ys = _search_axes(context, start, target)
+    nx, ny = len(xs)-1, len(ys)-1
 
     def xy(node):
         return xs[node[0]], ys[node[1]]
@@ -106,7 +97,7 @@ def plan_global_path(context, start, target, obstacles, *, heading=0., omni=Fals
 
     @lru_cache(None)
     def edge_clear(a, b):
-        return inward(xy(a), xy(b)) and segment_clear(xy(a), xy(b), obstacles)
+        return segment_clear(xy(a), xy(b), obstacles)
 
     def nearby(point):
         ix = min(range(len(xs)), key=lambda i: abs(xs[i]-point[0]))
@@ -122,7 +113,6 @@ def plan_global_path(context, start, target, obstacles, *, heading=0., omni=Fals
     starts = {(node, arrival_heading(start, xy(node))):
               segment_time(start, xy(node), heading, omni=omni)
               for node in nearby(start) if free(node) and
-              inward(start, xy(node)) and
               segment_clear(start, xy(node), obstacles, allow_escape=True)}
     goals = {node for node in nearby(target)
              if free(node) and segment_clear(xy(node), target, obstacles)}

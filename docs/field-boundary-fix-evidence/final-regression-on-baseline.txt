@@ -1,0 +1,294 @@
+======================================================================
+FAIL: test_astar_can_detour_outside_and_return (checks.test_field_boundary.FieldBoundaryTests.test_astar_can_detour_outside_and_return)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 64, in test_astar_can_detour_outside_and_return
+    self.assertEqual((path[0], path[-1]), (start, target))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: ((-1.0, 5.2), (1.0, 4.25)) != ((-1.0, 5.2), (1.0, 5.2))
+
+First differing element 1:
+(1.0, 4.25)
+(1.0, 5.2)
+
+- ((-1.0, 5.2), (1.0, 4.25))
+?                     ^  -
+
++ ((-1.0, 5.2), (1.0, 5.2))
+?                     ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(0.0, 4.0), target=(0.0, 5.2), direct=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (0.0, 4.25) != (0.0, 5.2)
+
+First differing element 1:
+4.25
+5.2
+
+- (0.0, 4.25)
+?       ^  -
+
++ (0.0, 5.2)
+?       ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(0.0, 4.0), target=(0.0, 5.2), direct=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (0.0, 4.25) != (0.0, 5.2)
+
+First differing element 1:
+4.25
+5.2
+
+- (0.0, 4.25)
+?       ^  -
+
++ (0.0, 5.2)
+?       ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(0.0, -4.0), target=(0.0, -5.2), direct=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (0.0, -4.25) != (0.0, -5.2)
+
+First differing element 1:
+-4.25
+-5.2
+
+- (0.0, -4.25)
+?        ^  -
+
++ (0.0, -5.2)
+?        ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(0.0, -4.0), target=(0.0, -5.2), direct=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (0.0, -4.25) != (0.0, -5.2)
+
+First differing element 1:
+-4.25
+-5.2
+
+- (0.0, -4.25)
+?        ^  -
+
++ (0.0, -5.2)
+?        ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(6.5, 3.0), target=(7.5, 4.8), direct=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (6.75, 4.25) != (7.5, 4.8)
+
+First differing element 0:
+6.75
+7.5
+
+- (6.75, 4.25)
++ (7.5, 4.8)
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(6.5, 3.0), target=(7.5, 4.8), direct=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (6.75, 4.25) != (7.5, 4.8)
+
+First differing element 0:
+6.75
+7.5
+
+- (6.75, 4.25)
++ (7.5, 4.8)
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(-6.5, -3.0), target=(-7.5, -4.8), direct=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (-6.75, -4.25) != (-7.5, -4.8)
+
+First differing element 0:
+-6.75
+-7.5
+
+- (-6.75, -4.25)
+?   ^ -      ^^
+
++ (-7.5, -4.8)
+?   ^       ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(-6.5, -3.0), target=(-7.5, -4.8), direct=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (-6.75, -4.25) != (-7.5, -4.8)
+
+First differing element 0:
+-6.75
+-7.5
+
+- (-6.75, -4.25)
+?   ^ -      ^^
+
++ (-7.5, -4.8)
+?   ^       ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(6.5, 0.0), target=(7.1, 0.0), direct=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (6.75, 0.0) != (7.1, 0.0)
+
+First differing element 0:
+6.75
+7.1
+
+- (6.75, 0.0)
+?  ^ ^^
+
++ (7.1, 0.0)
+?  ^ ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(6.5, 0.0), target=(7.1, 0.0), direct=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (6.75, 0.0) != (7.1, 0.0)
+
+First differing element 0:
+6.75
+7.1
+
+- (6.75, 0.0)
+?  ^ ^^
+
++ (7.1, 0.0)
+?  ^ ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(-6.5, 0.0), target=(-7.1, 0.0), direct=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (-6.75, 0.0) != (-7.1, 0.0)
+
+First differing element 0:
+-6.75
+-7.1
+
+- (-6.75, 0.0)
+?   ^ ^^
+
++ (-7.1, 0.0)
+?   ^ ^
+
+
+======================================================================
+FAIL: test_cross_lines_in_both_directions_with_exact_targets (checks.test_field_boundary.FieldBoundaryTests.test_cross_lines_in_both_directions_with_exact_targets) (start=(-6.5, 0.0), target=(-7.1, 0.0), direct=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 31, in test_cross_lines_in_both_directions_with_exact_targets
+    self.assertEqual(path[-1], target)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (-6.75, 0.0) != (-7.1, 0.0)
+
+First differing element 0:
+-6.75
+-7.1
+
+- (-6.75, 0.0)
+?   ^ ^^
+
++ (-7.1, 0.0)
+?   ^ ^
+
+
+======================================================================
+FAIL: test_deep_goal_target_stays_blocked_but_can_escape_toward_pitch (checks.test_field_boundary.FieldBoundaryTests.test_deep_goal_target_stays_blocked_but_can_escape_toward_pitch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 46, in test_deep_goal_target_stays_blocked_but_can_escape_toward_pitch
+    self.assertIsNone(plan_global_path(context(), inside, outside, obs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [(-6.5, 0.0), (-6.75, 0.0)] is not None
+
+======================================================================
+FAIL: test_outside_does_not_override_assigned_behavior (checks.test_field_boundary.FieldBoundaryTests.test_outside_does_not_override_assigned_behavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 90, in test_outside_does_not_override_assigned_behavior
+    self.assertIs(p.decide(RoleTask(role)), expected)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: MoveIntent(target=(0.0, 4.25), face=None, avoid_ball=True, avoid_robots=True, arrive_dist=0.15, maintain_face=False, direct_path=False, motion_priority=10, opponent_mode='avoid', ball_keepout=0.0) is not MoveIntent(target=(1.0, 5.3), face=1.0, avoid_ball=False, avoid_robots=False, arrive_dist=0.15, maintain_face=False, direct_path=False, motion_priority=10, opponent_mode='avoid', ball_keepout=0.0)
+
+======================================================================
+FAIL: test_outside_face_request_is_not_suppressed (checks.test_field_boundary.FieldBoundaryTests.test_outside_face_request_is_not_suppressed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 54, in test_outside_face_request_is_not_suppressed
+    self.assertGreater(cmd[2], 0.)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 0.0 not greater than 0.0
+
+======================================================================
+FAIL: test_throw_in_and_corner_keep_ball_approach_outside (checks.test_field_boundary.FieldBoundaryTests.test_throw_in_and_corner_keep_ball_approach_outside)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/field-boundary-baseline-src/checks/test_field_boundary.py", line 78, in test_throw_in_and_corner_keep_ball_approach_outside
+    self.assertTrue(abs(intent.target[0]) > ctx.field.length/2 or
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    abs(intent.target[1]) > ctx.field.width/2, intent)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : MoveIntent(target=(-0.29737405816934165, 4.35), face=None, avoid_ball=False, avoid_robots=False, arrive_dist=0.15, maintain_face=False, direct_path=False, motion_priority=10, opponent_mode='avoid', ball_keepout=0.0)
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.098s
+
+FAILED (failures=17)

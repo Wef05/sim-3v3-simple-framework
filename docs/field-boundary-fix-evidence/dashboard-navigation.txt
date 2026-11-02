@@ -1,0 +1,1 @@
+Navigation cards: current/legacy fields, time estimate, route retention, invalid and missing values passed.

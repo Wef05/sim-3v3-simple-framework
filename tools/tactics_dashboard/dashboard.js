@@ -928,13 +928,16 @@ function autoKickLines(p){
   const control=p.kick_control, a=p.auto_kick;
   if(!control)return ['自动踢球：旧回放未记录接管状态'];
   const states={idle:'未接管',active:'后端已接受请求',blocked:'请求被阻止',failed:'请求失败',release_failed:'取消失败，等待重试'};
-  const reasons={too_far:'距离过远',ball_behind:'球在身体后方',misaligned:'朝向未对齐',not_staged:'未到球后准备位置',approach_blocked:'接近路线受阻',stage_blocked:'准备位置不可用',no_intercept:'没有可用截球位置',cooldown:'退出后冷却',timeout:'达到单次时间上限',observation_invalid:'观测缺失、过期或无效',target_unavailable:'目标不可用',ball_lane_blocked:'球路受阻',phase_changed:'比赛阶段变化',role_changed:'角色变化',clock_reset:'仿真时间重置',return_to_field:'切换回场',execution_rejected:'执行未接受请求',backend_error:'后端错误',backend_unavailable:'后端不可用',release_failed:'底层取消失败',goal_structure:'接近路线被球门结构阻挡',unavailable:'机器人当前不可执行',ready:'满足启动条件'};
+  const reasons={too_far:'距离过远',ball_behind:'球在身体后方',misaligned:'朝向未对齐',not_staged:'未到球后准备位置',approach_blocked:'接近路线受阻',stage_blocked:'准备位置不可用',no_intercept:'没有可用截球位置',cooldown:'退出后冷却',timeout:'达到单次时间上限',observation_invalid:'观测缺失、过期或无效',target_unavailable:'目标不可用',ball_lane_blocked:'球路受阻',phase_changed:'比赛阶段变化',role_changed:'角色变化',clock_reset:'仿真时间重置',return_to_field:'切换回场',execution_rejected:'执行未接受请求',backend_error:'后端错误',backend_unavailable:'后端不可用',release_failed:'底层取消失败',goal_structure:'接近路线被球门结构阻挡',unavailable:'机器人当前不可执行',ready:'准备或持续条件满足',grace_pending:'短暂超限，宽限中'};
   const lines=[`自动踢球：${states[control.state]||control.state}（不代表已出脚或触球）`];
   if(control.reason)lines.push(`执行原因：${reasons[control.reason]||control.reason}`);
   if(p.role==='attack'&&a){
     const stages={idle:'等待',cooldown:'冷却',blocked:'准备受阻',aligning:'自主对齐',approaching:'自主接近',requested:'请求自动踢球'};
     lines.push(`踢球准备：${stages[a.state]||a.state||'等待'} · ${reasons[a.reason]||a.reason||''}`);
     if(Number.isFinite(a.remaining_s))lines.push(`本次请求 ${a.elapsed_s.toFixed(2)} s · 剩余预算 ${a.remaining_s.toFixed(2)} s`);
+    for(const item of Array.isArray(a.exit_grace)?a.exit_grace:[]){
+      if(item&&Number.isFinite(item.remaining_s))lines.push(`退出宽限：${reasons[item.reason]||item.reason} · 剩余 ${item.remaining_s.toFixed(2)} s`);
+    }
     if(a.cooldown_remaining_s>0)lines.push(`冷却剩余 ${a.cooldown_remaining_s.toFixed(2)} s`);
     if(a.last_exit_reason)lines.push(`最近退出：${reasons[a.last_exit_reason]||a.last_exit_reason}`);
     if(Number.isFinite(a.angle_error_deg))lines.push(`朝向误差 ${a.angle_error_deg.toFixed(1)}° · 站位误差 ${a.stage_error_m.toFixed(2)} m`);

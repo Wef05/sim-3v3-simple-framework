@@ -10,9 +10,8 @@ from src.player import Player
 from src.actions.kick_planner import plan_kick
 from src.utils.blocked_attack import blocked_attack_target
 from src.utils.kick_lane import check_kick_lane
-from src.utils.geom import behind_ball, clamp
-from src.utils.path_planner import clamp_target
-from src.param import CHASE_BEHIND_M, ARRIVE_DIST
+from src.utils.geom import behind_ball
+from src.param import CHASE_BEHIND_M
 
 
 class BlockedAttackTests(unittest.TestCase):
@@ -41,8 +40,8 @@ class BlockedAttackTests(unittest.TestCase):
                     p.context = replace(p.context, now=tick, ball=replace(p.context.ball, last_seen_at=tick))
                     p.motion.update(p.context)
                     intent = p.attack()
-                    self.assertIsInstance(intent, StopIntent)
-                    self.assertEqual(p.attack_kick.diagnostics['reason'], 'stage_blocked')
+                    self.assertIsInstance(intent, MoveIntent)
+                    self.assertFalse(p.is_kicking)
                     target = p.tactical_target
                     self.assertFalse(check_kick_lane(p.context.field, ball, target)['blocked'])
                     self.assertLess(target[0], ball[0])
@@ -55,20 +54,20 @@ class BlockedAttackTests(unittest.TestCase):
         p.context.teammates[1] = RobotState(1, Pose2D(4.5, 2, 0))
         intent = p.attack()
         self.assertEqual(p.tactical_target, (4.5, 2))
-        self.assertIsInstance(intent, StopIntent)
+        self.assertIsInstance(intent, MoveIntent)
         self.assertEqual(p.action, 'attack:fallback:pass:1')
 
     def test_marked_receiver_is_rejected(self):
         p = self.player()
         p.context.teammates[1] = RobotState(1, Pose2D(3, 3.8, 0))
         p.context.opponents[1] = RobotState(1, Pose2D(3, 3.8, 0))
-        self.assertIsInstance(p.attack(), StopIntent)
+        self.assertIsInstance(p.attack(), MoveIntent)
         self.assertEqual(p.action, 'attack:fallback:infield')
 
     def test_unavailable_receiver_is_ignored(self):
         p = self.player()
         p.context.teammates[1] = RobotState(1)
-        self.assertIsInstance(p.attack(), StopIntent)
+        self.assertIsInstance(p.attack(), MoveIntent)
         self.assertEqual(p.action, 'attack:fallback:infield')
 
     def test_chase_uses_fallback_direction(self):
@@ -76,7 +75,6 @@ class BlockedAttackTests(unittest.TestCase):
         intent = p.attack()
         self.assertIsInstance(intent, MoveIntent)
         expected = behind_ball(6.95, 4.45, p.tactical_target, CHASE_BEHIND_M)
-        expected = clamp_target(p.context, expected)
         self.assertEqual(intent.target, expected)
 
     def test_fully_blocked_lanes_still_stop_safely(self):
