@@ -1,0 +1,1229 @@
+{
+  "source": "docs/motion-calibration-evidence/baseline-01.jsonl.gz",
+  "manifest": {
+    "event": "manifest",
+    "config": {
+      "run_id": "baseline-20261102-01",
+      "stage": "baseline",
+      "player_id": 1
+    },
+    "trials": [
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 1
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 2
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 3
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 4
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 5
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 6
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 7
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 8
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              0.5
+            ]
+          ]
+        ],
+        "id": 9
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -0.5
+            ]
+          ]
+        ],
+        "id": 10
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 11
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 12
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              2.0
+            ]
+          ]
+        ],
+        "id": 13
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -2.0
+            ]
+          ]
+        ],
+        "id": 14
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 15
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 16
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 17
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 18
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 19
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 20
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 21
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 22
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 23
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 24
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -2.0
+            ]
+          ]
+        ],
+        "id": 25
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              2.0
+            ]
+          ]
+        ],
+        "id": 26
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -0.5
+            ]
+          ]
+        ],
+        "id": 27
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              0.5
+            ]
+          ]
+        ],
+        "id": 28
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 29
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 30
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 31
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 32
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 33
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 34
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 35
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 36
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              2.0
+            ]
+          ]
+        ],
+        "id": 37
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -2.0
+            ]
+          ]
+        ],
+        "id": 38
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              0.5
+            ]
+          ]
+        ],
+        "id": 39
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -0.5
+            ]
+          ]
+        ],
+        "id": 40
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 41
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 42
+      }
+    ]
+  },
+  "raw_records": 1854,
+  "distinct_observations": 1843,
+  "observed_duration_s": 32.850000001,
+  "maximum_gap_s": 0.04400000000000048,
+  "trials": [
+    {
+      "trial": 1,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.2,
+            0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.2980000000000018,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            -0.027221810531132488,
+            0.045731097236191925,
+            -0.05356316719519921
+          ],
+          "measured_span_s": 1.9860000000000042,
+          "velocity_std": [
+            0.022690500876767085,
+            0.13595098380285506,
+            0.020795334135876302
+          ],
+          "measured_mean": [
+            -0.02864695027467887,
+            0.05825802571732674,
+            -0.04639522701532995
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 2.004000000000005,
+        "net_displacement_m": 0.018867281409115904,
+        "net_rotation_rad": -0.03294487977442742
+      }
+    },
+    {
+      "trial": 2,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 3,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 4,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 5,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 6,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 7,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 8,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 9,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 10,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 11,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 12,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 13,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 14,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 15,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 16,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 17,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 18,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 19,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 20,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 21,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 22,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 23,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 24,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 25,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 26,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 27,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 28,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 29,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 30,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 31,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 32,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 33,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 34,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 35,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 36,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 37,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 38,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 39,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 40,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 41,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 42,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    }
+  ],
+  "response": []
+}

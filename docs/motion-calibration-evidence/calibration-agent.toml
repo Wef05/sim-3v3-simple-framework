@@ -1,0 +1,11 @@
+id = "com.example.lqinternalmatch"
+version = "2.0.3"
+name = { en = "lqInternalMatch", zh = "lqInternalMatch" }
+logo = "/res/logo.png"
+description = "3v3 SoccerSim Agent written in Python"
+entry = "src/calibration_agent.py:MotionCalibrationAgent"
+debuggable = true
+
+[requirements]
+min_api_level = 10700
+models = [ "Booster T1", "Booster K1" ]

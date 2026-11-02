@@ -1,0 +1,20 @@
+...........................................E......................................................................
+======================================================================
+ERROR: test_goalkeeper_replay (unittest.loader._FailedTest.test_goalkeeper_replay)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_goalkeeper_replay
+Traceback (most recent call last):
+  File "/Applications/anaconda/anaconda3/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/anaconda/anaconda3/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/limingzhe/.codex/worktrees/field-boundary-fix/sim-3v3-simple-framework/checks/test_goalkeeper_replay.py", line 4, in <module>
+    from checks.goalkeeper_replay_cases import CASES
+ModuleNotFoundError: No module named 'checks.goalkeeper_replay_cases'
+
+
+----------------------------------------------------------------------
+Ran 114 tests in 5.477s
+
+FAILED (errors=1)

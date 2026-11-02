@@ -1,0 +1,622 @@
+{
+  "source": "docs/motion-calibration-evidence/validation-02.jsonl.gz",
+  "manifest": {
+    "event": "manifest",
+    "config": {
+      "run_id": "validation-20261102-02",
+      "stage": "validation",
+      "player_id": 1,
+      "lateral": 0.5,
+      "angular": 1.0
+    },
+    "trials": [
+      {
+        "kind": "reversal",
+        "repeat": 0,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.5,
+              -0.0
+            ]
+          ]
+        ],
+        "id": 1
+      },
+      {
+        "kind": "reversal",
+        "repeat": 1,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              -0.5,
+              0.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              0.5,
+              -0.0
+            ]
+          ]
+        ],
+        "id": 2
+      },
+      {
+        "kind": "reversal",
+        "repeat": 2,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.5,
+              -0.0
+            ]
+          ]
+        ],
+        "id": 3
+      },
+      {
+        "kind": "reversal",
+        "repeat": 0,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 4
+      },
+      {
+        "kind": "reversal",
+        "repeat": 1,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 5
+      },
+      {
+        "kind": "reversal",
+        "repeat": 2,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 6
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.5,
+              0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 7
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.5,
+              -0.5,
+              -0.0
+            ]
+          ]
+        ],
+        "id": 8
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.5,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 9
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.5,
+              -0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 10
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.5,
+              1.0
+            ]
+          ]
+        ],
+        "id": 11
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.5,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 12
+      }
+    ]
+  },
+  "raw_records": 6155,
+  "distinct_observations": 5788,
+  "observed_duration_s": 103.02799999800004,
+  "maximum_gap_s": 0.06400000000007822,
+  "trials": [
+    {
+      "trial": 1,
+      "kind": "reversal",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.3039999999999736,
+              "t90_s": 0.9660000000000082,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.02641045745848618,
+            0.47709650105031326,
+            -0.03248499959700223
+          ],
+          "measured_span_s": 1.9940000000000282,
+          "velocity_std": [
+            0.01894370853448724,
+            0.09423850298170054,
+            0.029023359869340414
+          ],
+          "measured_mean": [
+            0.030871295115811426,
+            0.46725998441480576,
+            -0.03140128493162946
+          ]
+        },
+        {
+          "phase": "drive:1",
+          "command": [
+            -0.0,
+            -0.5,
+            -0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.8740000000000236,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.01102454751847002,
+            -0.4498116103515938,
+            0.023777283485286228
+          ],
+          "measured_span_s": 2.0,
+          "velocity_std": [
+            0.04181035582332874,
+            0.1414674796757401,
+            0.08695293732385087
+          ],
+          "measured_mean": [
+            0.010341894588442,
+            -0.47836060729289515,
+            0.028890871303916228
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.98599999999999,
+        "net_displacement_m": 0.23594854120591807,
+        "net_rotation_rad": 0.17824556821941612
+      }
+    },
+    {
+      "trial": 2,
+      "kind": "reversal",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            -0.5,
+            0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.2340000000000373,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.00968510748896545,
+            -0.5200838413325014,
+            0.02452088253813655
+          ],
+          "measured_span_s": 1.9940000000000282,
+          "velocity_std": [
+            0.04282525267445627,
+            0.14198396656281814,
+            0.09021629392480217
+          ],
+          "measured_mean": [
+            0.0076476635348142995,
+            -0.5119952260311212,
+            0.03745063553162198
+          ]
+        },
+        {
+          "phase": "drive:1",
+          "command": [
+            -0.0,
+            0.5,
+            -0.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.8079999999999927,
+              "t90_s": 1.4560000000000173,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.02350218616806276,
+            0.46139725822443395,
+            -0.03398372239365466
+          ],
+          "measured_span_s": 1.9980000000000473,
+          "velocity_std": [
+            0.018133589299107373,
+            0.09022357126208921,
+            0.026857868940046332
+          ],
+          "measured_mean": [
+            0.02799093902996462,
+            0.4614529832398381,
+            -0.03329021996308395
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9840000000000373,
+        "net_displacement_m": 0.24203406235173397,
+        "net_rotation_rad": 0.09298055411551517
+      }
+    },
+    {
+      "trial": 3,
+      "kind": "reversal",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.31399999999996453,
+              "t90_s": 0.9640000000000555,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.027799369679521648,
+            0.46003314972243414,
+            -0.03044668170585659
+          ],
+          "measured_span_s": 1.9920000000000755,
+          "velocity_std": [
+            0.018575712142271363,
+            0.09309778949917508,
+            0.027462255323113687
+          ],
+          "measured_mean": [
+            0.031905296209626156,
+            0.4642604450355408,
+            -0.030766724115841065
+          ]
+        },
+        {
+          "phase": "drive:1",
+          "command": [
+            -0.0,
+            -0.5,
+            -0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.9239999999999782,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.01423424289750592,
+            -0.4649788554554633,
+            0.018335086324230872
+          ],
+          "measured_span_s": 1.9939999999999145,
+          "velocity_std": [
+            0.04248747341160797,
+            0.14035637209552396,
+            0.08939905534085693
+          ],
+          "measured_mean": [
+            0.011683259659266735,
+            -0.4794897786886879,
+            0.027276946494615255
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9880000000000564,
+        "net_displacement_m": 0.24012098943658025,
+        "net_rotation_rad": 0.18579776581026536
+      }
+    },
+    {
+      "trial": 4,
+      "kind": "reversal",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 5,
+      "kind": "reversal",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 6,
+      "kind": "reversal",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 7,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 8,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 9,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 10,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 11,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 12,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    }
+  ],
+  "response": []
+}

@@ -1,0 +1,170 @@
+{
+  "completed_trials": {
+    "baseline": 42,
+    "validation": 12
+  },
+  "nominal_fixed_protocol_s": 552.0,
+  "nominal_drive_s": 336.0,
+  "observed_drive_span_s": 335.1539999990001,
+  "recorded_simulation_span_s": 1254.205999996,
+  "raw_records": 83441,
+  "replay_frames": 67832,
+  "replay_bytes": 81337086,
+  "raw_runs": [
+    {
+      "file": "baseline-01.jsonl.gz",
+      "run_id": "baseline-20261102-01",
+      "raw_records": 1854,
+      "first": 20.741999999,
+      "last": 53.592,
+      "duration": 32.850000001,
+      "drive_span": 5.974000000000004,
+      "bytes": 187789,
+      "invalid_state_records": 0
+    },
+    {
+      "file": "baseline-02.jsonl.gz",
+      "run_id": "baseline-20261102-02",
+      "raw_records": 22164,
+      "first": 128.127999999,
+      "last": 501.978000001,
+      "duration": 373.850000002,
+      "drive_span": 95.77600000100006,
+      "bytes": 2078166,
+      "invalid_state_records": 0
+    },
+    {
+      "file": "baseline-03.jsonl.gz",
+      "run_id": "baseline-20261102-03",
+      "raw_records": 33679,
+      "first": 16.65,
+      "last": 516.878000001,
+      "duration": 500.22800000100005,
+      "drive_span": 149.64600000000013,
+      "bytes": 3101914,
+      "invalid_state_records": 0
+    },
+    {
+      "file": "validation-01.jsonl.gz",
+      "run_id": "validation-20261102-01",
+      "raw_records": 3165,
+      "first": 537.026000001,
+      "last": 576.468,
+      "duration": 39.441999998999904,
+      "drive_span": 0,
+      "bytes": 243116,
+      "invalid_state_records": 0
+    },
+    {
+      "file": "validation-02.jsonl.gz",
+      "run_id": "validation-20261102-02",
+      "raw_records": 6155,
+      "first": 598.663999999,
+      "last": 701.691999997,
+      "duration": 103.02799999800004,
+      "drive_span": 23.91800000000012,
+      "bytes": 549082,
+      "invalid_state_records": 0
+    },
+    {
+      "file": "validation-03.jsonl.gz",
+      "run_id": "validation-20261102-03",
+      "raw_records": 12586,
+      "first": 743.725999996,
+      "last": 904.095999992,
+      "duration": 160.36999999599993,
+      "drive_span": 41.88399999799992,
+      "bytes": 1068665,
+      "invalid_state_records": 0
+    },
+    {
+      "file": "validation-04.jsonl.gz",
+      "run_id": "validation-20261102-04",
+      "raw_records": 3838,
+      "first": 952.721999991,
+      "last": 997.15999999,
+      "duration": 44.437999999,
+      "drive_span": 17.955999999999904,
+      "bytes": 302270,
+      "invalid_state_records": 0
+    }
+  ],
+  "replays": [
+    {
+      "file": "docs/motion-calibration-evidence/validation-04-dashboard.json.gz",
+      "frames": 2973,
+      "first_id": 131499,
+      "last_id": 134471,
+      "first_sim_time": 952.695999991,
+      "last_sim_time": 997.70399999,
+      "id_gaps": [],
+      "bytes": 3410378,
+      "sha256": "7cc2de84d2fb9afa5fd27bb8f4eaad110aa456eac0695ec11bf89d498b5bc8cc"
+    },
+    {
+      "file": "docs/motion-calibration-evidence/baseline-03-dashboard.json.gz",
+      "frames": 26315,
+      "first_id": 79145,
+      "last_id": 105459,
+      "first_sim_time": 16.418,
+      "last_sim_time": 518.192000001,
+      "id_gaps": [],
+      "bytes": 31958253,
+      "sha256": "06f4efd2004c6477a32ebb8917474bfd0c0da8073f8a87887dbdcece236fb3d7"
+    },
+    {
+      "file": "docs/motion-calibration-evidence/validation-01-dashboard.json.gz",
+      "frames": 2608,
+      "first_id": 106414,
+      "last_id": 109021,
+      "first_sim_time": 537.018000001,
+      "last_sim_time": 579.176,
+      "id_gaps": [],
+      "bytes": 2947036,
+      "sha256": "ad53968a275843d732fe7b55a7728e8ffbe6c54fc9728f69c8942277b3ff9399"
+    },
+    {
+      "file": "docs/motion-calibration-evidence/validation-02-dashboard.json.gz",
+      "frames": 5312,
+      "first_id": 110325,
+      "last_id": 115636,
+      "first_sim_time": 598.541999999,
+      "last_sim_time": 702.981999997,
+      "id_gaps": [],
+      "bytes": 6243649,
+      "sha256": "8ff642c8401569041fc06c2aa7be1e51163d99d37b9117e1bdca0142cf1821ee"
+    },
+    {
+      "file": "docs/motion-calibration-evidence/validation-03-dashboard.json.gz",
+      "frames": 9868,
+      "first_id": 117873,
+      "last_id": 127740,
+      "first_sim_time": 743.711999996,
+      "last_sim_time": 904.649999992,
+      "id_gaps": [],
+      "bytes": 11496959,
+      "sha256": "cc0bc3069c17a29db8725716170e5bd1d18ab92be2b9b8b1daba5df5f9d716dc"
+    },
+    {
+      "frames": 2600,
+      "first_id": 46842,
+      "last_id": 49441,
+      "first_sim_time": 14.05,
+      "last_sim_time": 71.404,
+      "id_gaps": [],
+      "bytes": 3236018,
+      "sha256": "2eb3d04eb0290180b30e0b216b28d47018c10bd9548703c684534817d19d52ac"
+    },
+    {
+      "file": "docs/motion-calibration-evidence/baseline-02-dashboard.json.gz",
+      "frames": 18156,
+      "first_id": 51884,
+      "last_id": 70039,
+      "first_sim_time": 123.887999999,
+      "last_sim_time": 502.414000001,
+      "id_gaps": [],
+      "bytes": 22044793,
+      "sha256": "18c44dcd90e158621b2d683b5a8ccc1fecc3659c6151182ba453f19835dc8db8"
+    }
+  ]
+}

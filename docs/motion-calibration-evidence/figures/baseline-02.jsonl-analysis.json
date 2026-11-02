@@ -1,0 +1,1815 @@
+{
+  "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+  "manifest": {
+    "event": "manifest",
+    "config": {
+      "run_id": "baseline-20261102-02",
+      "stage": "baseline",
+      "player_id": 1,
+      "start_trial": 2
+    },
+    "trials": [
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 2
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 3
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 4
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 5
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 6
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 7
+      },
+      {
+        "kind": "lateral",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 8
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              0.5
+            ]
+          ]
+        ],
+        "id": 9
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -0.5
+            ]
+          ]
+        ],
+        "id": 10
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 11
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 12
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              2.0
+            ]
+          ]
+        ],
+        "id": 13
+      },
+      {
+        "kind": "turn",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -2.0
+            ]
+          ]
+        ],
+        "id": 14
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 15
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 16
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 17
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 18
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 19
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 20
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 21
+      },
+      {
+        "kind": "lateral",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 22
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 23
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 24
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -2.0
+            ]
+          ]
+        ],
+        "id": 25
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              2.0
+            ]
+          ]
+        ],
+        "id": 26
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -0.5
+            ]
+          ]
+        ],
+        "id": 27
+      },
+      {
+        "kind": "turn",
+        "repeat": 1,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              0.5
+            ]
+          ]
+        ],
+        "id": 28
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 29
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 30
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 31
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -2.0,
+              0.0
+            ]
+          ]
+        ],
+        "id": 32
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 33
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.2,
+              0.0
+            ]
+          ]
+        ],
+        "id": 34
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 35
+      },
+      {
+        "kind": "lateral",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 36
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              2.0
+            ]
+          ]
+        ],
+        "id": 37
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -2.0
+            ]
+          ]
+        ],
+        "id": 38
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              0.5
+            ]
+          ]
+        ],
+        "id": 39
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -0.5
+            ]
+          ]
+        ],
+        "id": 40
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 41
+      },
+      {
+        "kind": "turn",
+        "repeat": 2,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 42
+      }
+    ]
+  },
+  "raw_records": 22164,
+  "distinct_observations": 21720,
+  "observed_duration_s": 373.850000002,
+  "maximum_gap_s": 0.060000000000002274,
+  "trials": [
+    {
+      "trial": 2,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            -0.2,
+            0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.23199999999999932,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.012867240744825752,
+            -0.14506151035412365,
+            -0.03959662339745626
+          ],
+          "measured_span_s": 1.990000000000009,
+          "velocity_std": [
+            0.024353894573907048,
+            0.1388866345641376,
+            0.025870005893094124
+          ],
+          "measured_mean": [
+            0.009620322348885591,
+            -0.14470844070446537,
+            -0.03865874967689033
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9960000000000093,
+        "net_displacement_m": 0.013380020748274095,
+        "net_rotation_rad": -0.021277317830282718
+      }
+    },
+    {
+      "trial": 3,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.32399999999998386,
+              "t90_s": 0.931999999999988,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.025790106703998665,
+            0.4297225648821384,
+            -0.02532147308501003
+          ],
+          "measured_span_s": 1.995999999999981,
+          "velocity_std": [
+            0.018440057104387217,
+            0.09351005784186428,
+            0.027242380639675618
+          ],
+          "measured_mean": [
+            0.03077312035430145,
+            0.44451413779307525,
+            -0.024314468218591723
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9840000009999983,
+        "net_displacement_m": 0.23617072460346125,
+        "net_rotation_rad": 0.21267008069530322
+      }
+    },
+    {
+      "trial": 4,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            -0.5,
+            0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.27000000000001023,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            -0.0009072528630811641,
+            -0.4481155969352426,
+            0.013347621254159118
+          ],
+          "measured_span_s": 1.9819999999999993,
+          "velocity_std": [
+            0.04138255778723592,
+            0.13317150109952944,
+            0.08064394789104043
+          ],
+          "measured_mean": [
+            -0.0025620103285576117,
+            -0.4833584490587162,
+            0.032023444062623564
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.97199999999998,
+        "net_displacement_m": 0.24354008661622775,
+        "net_rotation_rad": 0.17920784878305218
+      }
+    },
+    {
+      "trial": 5,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.2980000000000018,
+              "t90_s": 1.304000000000002,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.03187660254587674,
+            0.4695168547587583,
+            -0.03036810350398015
+          ],
+          "measured_span_s": 1.9939999999999998,
+          "velocity_std": [
+            0.018251884115707617,
+            0.08860640897022887,
+            0.026234498872185208
+          ],
+          "measured_mean": [
+            0.03461326074281385,
+            0.4637041157472751,
+            -0.027230933753713736
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9739999999999895,
+        "net_displacement_m": 0.4729346233401344,
+        "net_rotation_rad": 0.19214266651345357
+      }
+    },
+    {
+      "trial": 6,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.24200000000001864,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.00021480059930772632,
+            -0.4700414480507329,
+            0.018178606644649153
+          ],
+          "measured_span_s": 1.9780000000000086,
+          "velocity_std": [
+            0.042226311100200274,
+            0.13698173941368444,
+            0.08930838580607238
+          ],
+          "measured_mean": [
+            -0.0016092946890595254,
+            -0.49018499410697147,
+            0.03509642366245157
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9879999999999995,
+        "net_displacement_m": 0.41281930512942566,
+        "net_rotation_rad": 0.14699860973541104
+      }
+    },
+    {
+      "trial": 7,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.25200000000000955,
+              "t90_s": 1.2940000000000111,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.031014475905582435,
+            0.4653898125416117,
+            -0.03186258986445713
+          ],
+          "measured_span_s": 1.9879999999999995,
+          "velocity_std": [
+            0.01862526216716743,
+            0.09342796653110928,
+            0.027699479615139022
+          ],
+          "measured_mean": [
+            0.035599113403597546,
+            0.4628507901770052,
+            -0.02977289285568678
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9839999999999804,
+        "net_displacement_m": 0.5041242506604461,
+        "net_rotation_rad": 0.19379350979134796
+      }
+    },
+    {
+      "trial": 8,
+      "kind": "lateral",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            -2.0,
+            0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.2259999999999991,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.0015335002147429033,
+            -0.4675907197484924,
+            0.018450840054951095
+          ],
+          "measured_span_s": 1.9879999999999995,
+          "velocity_std": [
+            0.04226126386078036,
+            0.13747723282714935,
+            0.08774300868075
+          ],
+          "measured_mean": [
+            0.0016981491199090167,
+            -0.49109777276055006,
+            0.03283527650667448
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.97199999999998,
+        "net_displacement_m": 0.42030133877686376,
+        "net_rotation_rad": 0.14131195303973387
+      }
+    },
+    {
+      "trial": 9,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "2": {
+              "response_delay_s": 0.17399999999997817,
+              "t90_s": 0.4379999999999882,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.03494520510863995,
+            -0.03685067352443748,
+            0.4598851791859461
+          ],
+          "measured_span_s": 1.9899999999999523,
+          "velocity_std": [
+            0.01495831783906579,
+            0.14356937893832228,
+            0.03183867046949839
+          ],
+          "measured_mean": [
+            0.03700507356443815,
+            -0.023945949963373386,
+            0.46201749042003504
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.990000000000009,
+        "net_displacement_m": 0.05131221774548111,
+        "net_rotation_rad": 0.05679908972627246
+      }
+    },
+    {
+      "trial": 10,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.0,
+            -0.5
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "2": {
+              "response_delay_s": 0.20800000000002683,
+              "t90_s": 0.36400000000003274,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.030624326208617415,
+            -0.05642648525022191,
+            -0.4388332639953194
+          ],
+          "measured_span_s": 1.98599999999999,
+          "velocity_std": [
+            0.025677835454457083,
+            0.15097693338184673,
+            0.07411175054299804
+          ],
+          "measured_mean": [
+            0.01922237198470743,
+            -0.03003208271999479,
+            -0.43964670298145725
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9780000000000086,
+        "net_displacement_m": 0.05441538442547915,
+        "net_rotation_rad": -0.04797162486093053
+      }
+    },
+    {
+      "trial": 11,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "2": {
+              "response_delay_s": 0.18799999999998818,
+              "t90_s": 0.5500000000000114,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.043206590015576564,
+            -0.032499675189581655,
+            0.9132575830181224
+          ],
+          "measured_span_s": 1.9979999999999905,
+          "velocity_std": [
+            0.026846825837811852,
+            0.13916225445657265,
+            0.05312480441257677
+          ],
+          "measured_mean": [
+            0.05120682003400671,
+            -0.018387394276130346,
+            0.9242337637892651
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9840000000000373,
+        "net_displacement_m": 0.04385448778488891,
+        "net_rotation_rad": 0.1711091691281339
+      }
+    },
+    {
+      "trial": 12,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "2": {
+              "response_delay_s": 0.20600000000001728,
+              "t90_s": 0.5600000000000023,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.009791729931674353,
+            -0.03400515836033899,
+            -0.9302076718441826
+          ],
+          "measured_span_s": 1.9920000000000186,
+          "velocity_std": [
+            0.031735959368579286,
+            0.14560183685216746,
+            0.10148544609495634
+          ],
+          "measured_mean": [
+            -0.0024445385700531405,
+            -0.03587537940524632,
+            -0.9291087556616894
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.981999999999971,
+        "net_displacement_m": 0.060267028338060705,
+        "net_rotation_rad": -0.22078166401549515
+      }
+    },
+    {
+      "trial": 13,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.0,
+            2.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "2": {
+              "response_delay_s": 0.17599999999998772,
+              "t90_s": 0.5819999999999936,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.03865243986730709,
+            -0.028233624749371945,
+            0.9135105961644361
+          ],
+          "measured_span_s": 1.9800000010000076,
+          "velocity_std": [
+            0.02621640588266599,
+            0.13837626863699762,
+            0.05286854856886134
+          ],
+          "measured_mean": [
+            0.04775579893631644,
+            -0.017885256683740854,
+            0.9248022276884554
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9879999999999995,
+        "net_displacement_m": 0.04753144852962836,
+        "net_rotation_rad": 0.18768678047936893
+      }
+    },
+    {
+      "trial": 14,
+      "kind": "turn",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.0,
+            -2.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "2": {
+              "response_delay_s": 0.19799999999997908,
+              "t90_s": 0.5679999999999836,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.009605326052488192,
+            -0.037579117131441825,
+            -0.9244425992365819
+          ],
+          "measured_span_s": 1.9979999999999905,
+          "velocity_std": [
+            0.031741116560096115,
+            0.14625812834960433,
+            0.09490501651139746
+          ],
+          "measured_mean": [
+            -0.004198104288866189,
+            -0.0342106672949744,
+            -0.9269903024329813
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9840000000000373,
+        "net_displacement_m": 0.06904373817511245,
+        "net_rotation_rad": -0.22554939776201555
+      }
+    },
+    {
+      "trial": 15,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            -0.5,
+            0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.2400000000000091,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.007701706712501037,
+            -0.46243505618346636,
+            0.010747785561315492
+          ],
+          "measured_span_s": 1.9979999999999905,
+          "velocity_std": [
+            0.04222638714462106,
+            0.1312308195400115,
+            0.08785470570860177
+          ],
+          "measured_mean": [
+            0.0027980625909070156,
+            -0.4848970948133537,
+            0.02678284161084194
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.98599999999999,
+        "net_displacement_m": 0.24759698157002552,
+        "net_rotation_rad": 0.18809724831810737
+      }
+    },
+    {
+      "trial": 16,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "valid": true,
+          "steady_detected": true,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.2799999999999727,
+              "t90_s": 0.8299999999999841,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.029819050575514372,
+            0.4643251933202018,
+            -0.031203631963379524
+          ],
+          "measured_span_s": 1.98599999999999,
+          "velocity_std": [
+            0.018389935504535923,
+            0.09211945149420446,
+            0.026614881400693683
+          ],
+          "measured_mean": [
+            0.03313910547756169,
+            0.4620587921070835,
+            -0.031629416203858826
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9879999999999995,
+        "net_displacement_m": 0.2663940528917488,
+        "net_rotation_rad": 0.11646930565067604
+      }
+    },
+    {
+      "trial": 17,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "command": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "valid": false,
+          "steady_detected": false,
+          "dynamics": {
+            "1": {
+              "response_delay_s": 0.2259999999999991,
+              "t90_s": null,
+              "response_filter_window_s": 0.3
+            }
+          },
+          "complete": true,
+          "measured_median": [
+            0.024876019682690965,
+            -0.27285511151637404,
+            -0.03503289921418415
+          ],
+          "measured_span_s": 1.9940000000000282,
+          "velocity_std": [
+            0.02238961582888265,
+            0.12495832288474742,
+            0.02760682910264213
+          ],
+          "measured_mean": [
+            0.023208235875984508,
+            -0.26611772335271133,
+            -0.028744896611337195
+          ]
+        }
+      ],
+      "braking": {
+        "observation_duration_s": 1.9839999999999804,
+        "net_displacement_m": 0.23884890868517453,
+        "net_rotation_rad": 0.03587019510373239
+      }
+    },
+    {
+      "trial": 18,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 19,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 20,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 21,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 22,
+      "kind": "lateral",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 23,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 24,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 25,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 26,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 27,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 28,
+      "kind": "turn",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 29,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 30,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 31,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 32,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 33,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 34,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 35,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 36,
+      "kind": "lateral",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 37,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 38,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 39,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 40,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 41,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 42,
+      "kind": "turn",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    }
+  ],
+  "response": [
+    {
+      "command": [
+        0.0,
+        0.0,
+        -2.0
+      ],
+      "n": 1,
+      "median": -0.9244425992365819,
+      "min": -0.9244425992365819,
+      "max": -0.9244425992365819,
+      "relative_std": 0.0,
+      "repeatability_passed": false
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "n": 1,
+      "median": -0.9302076718441826,
+      "min": -0.9302076718441826,
+      "max": -0.9302076718441826,
+      "relative_std": 0.0,
+      "repeatability_passed": false
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        -0.5
+      ],
+      "n": 1,
+      "median": -0.4388332639953194,
+      "min": -0.4388332639953194,
+      "max": -0.4388332639953194,
+      "relative_std": 0.0,
+      "repeatability_passed": false
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "n": 1,
+      "median": 0.4598851791859461,
+      "min": 0.4598851791859461,
+      "max": 0.4598851791859461,
+      "relative_std": 0.0,
+      "repeatability_passed": false
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "n": 1,
+      "median": 0.9132575830181224,
+      "min": 0.9132575830181224,
+      "max": 0.9132575830181224,
+      "relative_std": 0.0,
+      "repeatability_passed": false
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "n": 1,
+      "median": 0.9135105961644361,
+      "min": 0.9135105961644361,
+      "max": 0.9135105961644361,
+      "relative_std": 0.0,
+      "repeatability_passed": false
+    },
+    {
+      "command": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "n": 2,
+      "median": 0.4470238791011701,
+      "min": 0.4297225648821384,
+      "max": 0.4643251933202018,
+      "relative_std": 0.03870333337409046,
+      "repeatability_passed": false
+    },
+    {
+      "command": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "n": 1,
+      "median": 0.4695168547587583,
+      "min": 0.4695168547587583,
+      "max": 0.4695168547587583,
+      "relative_std": 0.0,
+      "repeatability_passed": false
+    },
+    {
+      "command": [
+        0.0,
+        2.0,
+        0.0
+      ],
+      "n": 1,
+      "median": 0.4653898125416117,
+      "min": 0.4653898125416117,
+      "max": 0.4653898125416117,
+      "relative_std": 0.0,
+      "repeatability_passed": false
+    }
+  ]
+}

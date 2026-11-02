@@ -1,0 +1,16 @@
+{
+  "checked_at": 1793599560.822816,
+  "status": {
+    "run_id": "validation-20261102-04",
+    "state": "done",
+    "trial": 12,
+    "total": 12,
+    "sim_time": 1017.761999989
+  },
+  "arm_file_removed": true,
+  "agent_processes_after_official_stop": [],
+  "preview_8766_stopped": true,
+  "shared_dashboard_8765_preserved": true,
+  "production_manifest_restored": true,
+  "production_agent_redeployed": false
+}

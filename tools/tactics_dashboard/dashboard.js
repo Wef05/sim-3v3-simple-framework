@@ -1,6 +1,6 @@
 
 const $=id=>document.getElementById(id), c=$('pitch'),g=c.getContext('2d');let latest={};
-const roleNames={attack:'进攻手',guard:'守门 / 防守',freeman:'自由人',support:'支援',kickoff:'开球',ready:'准备',opp_kickoff:'开球防守',stay:'等待',stopped:'停止',penalized:'被罚下',fallen:'倒地',switching_mode:'切换模式',no_pose:'位置未知'};
+const roleNames={calibration:'运动标定',attack:'进攻手',guard:'守门 / 防守',freeman:'自由人',support:'支援',kickoff:'开球',ready:'准备',opp_kickoff:'开球防守',stay:'等待',stopped:'停止',penalized:'被罚下',fallen:'倒地',switching_mode:'切换模式',no_pose:'位置未知'};
 const roleLetters={attack:'A',guard:'G',freeman:'F',support:'S',kickoff:'K',ready:'R',opp_kickoff:'R',stay:'W',stopped:'X',penalized:'P',fallen:'D',switching_mode:'M',no_pose:'?'};
 let displayedPacket=null;
 const phases={normal:'正常比赛',our_kickoff:'我方开球',opp_kickoff:'对方开球',our_set_play:'我方定位球',opp_set_play:'对方定位球',ready:'准备',stopped:'停止'};
@@ -119,7 +119,8 @@ if($('kick-error-visible').checked){
 
 function renderPacket(d){displayedPacket=d;const w=d.context;$('empty').hidden=true;c.hidden=false;
 const score=w.game?.teams?.map(t=>`${t.team_number} 队 ${t.score}`).join(' : ')||'比分未知';$('summary').textContent=`${phases[d.phase]||d.phase||'阶段未知'}　 |　${score}　 |　剩余 ${w.game?.secs_remaining??'—'} s　 |　球${w.ball?'可见':'未知'}　 |　帧 ${d.sequence}`;
-$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;if(p.role==='guard'){card.className+=' guard-card';for(const text of guardDecisionLines(p))line(card,text)}else line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));if(p.navigation)line(card,navigationLabel(p.navigation));line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
+if(d.players.some(p=>p.role==='calibration'))$('summary').textContent=`运动标定 · 非对抗实验 · 仿真时间 ${Number(w.now).toFixed(2)} s · 帧 ${d.sequence}（比分不适用）`;
+$('cards').replaceChildren();for(const p of d.players){let card=document.createElement('article');card.className='card';let h=document.createElement('h3');h.textContent=`${p.id} 号`;let role=document.createElement('span');role.className='role';role.textContent=roleNames[p.role]||p.role;h.append(role);card.append(h);const pose=w.teammates[p.id]?.pose;if(p.role==='guard'){card.className+=' guard-card';for(const text of guardDecisionLines(p))line(card,text)}else line(card,`动作：${p.action}`);line(card,kickPowerLabel(p));if(p.navigation)line(card,navigationLabel(p.navigation));if(p.calibration)for(const text of calibrationLines(p.calibration))line(card,text);line(card,`位置：${pointText(pose?[pose.x,pose.y]:null)}`);line(card,`目的地：${pointText(p.target)}`);line(card,`距球：${pose&&w.ball?Math.hypot(pose.x-w.ball.x,pose.y-w.ball.y).toFixed(2)+' m':'未知'}`);line(card,`模式：${p.mode??'未知'}${p.fallen?' · 倒地':''}${p.kicking?' · 踢球中':''}${p.penalized?' · 判罚 '+p.penalty:''}`);if(['attack','freeman'].includes(p.role))line(card,interceptLabel(p.intercept));$('cards').append(card)}renderInterceptions(d);renderCandidateTargets(d);renderScoringProbability(d);renderAttackChoice(d);$('raw').textContent=JSON.stringify(d,null,2);draw(d)}
 
 // Playback uses receiver monotonic timestamps, never the Agent's clock.
 let liveFrames=[], archive=null, viewing='live', playing=false, cursor=0;
@@ -925,9 +926,18 @@ function drawThreat(d,xy){
 }
 
 function navigationLabel(n){
-  const states={kick_yield:'取消踢球，为紧急封堵让行',moving:'行走',turning:'转向',avoiding:'绕行',yielding:'让行',blocked:'受阻停车',blocked_direct:'直线受阻',team_conflict_stop:'队内冲突停车',kick_approach_blocked:'踢球接近受阻',arrived:'已到位',no_pose:'位置未知',invalid_geometry:'位置无效',stopped:'停止',yield:'让行等待',emergency_stop:'安全停车',team_safety_stop:'队内冲突停车',direct_blocked:'直线受阻',no_route:'暂无可行路线'};
+  const states={calibration:'标定指令',kick_yield:'取消踢球，为紧急封堵让行',moving:'行走',turning:'转向',avoiding:'绕行',yielding:'让行',blocked:'受阻停车',blocked_direct:'直线受阻',team_conflict_stop:'队内冲突停车',kick_approach_blocked:'踢球接近受阻',arrived:'已到位',no_pose:'位置未知',invalid_geometry:'位置无效',stopped:'停止',yield:'让行等待',emergency_stop:'安全停车',team_safety_stop:'队内冲突停车',direct_blocked:'直线受阻',no_route:'暂无可行路线'};
   const speed=Number.isFinite(n.speed)?n.speed.toFixed(2)+' m/s':Array.isArray(n.velocity)&&n.velocity.length===2&&n.velocity.every(Number.isFinite)?Math.hypot(...n.velocity).toFixed(2)+' m/s':'未知';
   const routes={new:'新路线',retained:'保留路线',faster:'耗时优势换路',unsafe:'旧路线受阻重规划',no_route:'暂无全局路线'};
   const eta=Number.isFinite(n.estimated_time_s)?` · 预计 ${n.estimated_time_s.toFixed(2)} s（模型估计）`:'';
   return `导航：${states[n.state||n.reason]||'未知'} · 优先级 ${Number.isFinite(n.priority)?n.priority:'—'} · 指令 ${speed}${n.route_reason?' · '+(routes[n.route_reason]||'路线状态未知'):''}${eta}${typeof n.blocker==='string'?' · 阻挡/让行对象 '+n.blocker:''}${Number.isFinite(n.blocker_priority)?'（优先级 '+n.blocker_priority+'）':''}${n.direction_held?' · 保持绕行方向':''}`;
+}
+
+function calibrationLines(c){
+  const vector=v=>Array.isArray(v)&&v.length===3&&v.every(Number.isFinite)?v.map(x=>x.toFixed(3)).join(' / '):'未取得';
+  const phase={homing:'归位',pre:'停稳观察','drive:0':'恒定指令','drive:1':'反向指令',stop:'停止响应',done:'结束'}[c.phase]||c.phase;
+  return [`标定：${c.run_id} · 第 ${c.trial} 项 · ${phase}`,
+    `请求指令 vx / vy / 转速：${vector(c.requested_command)}（m/s、m/s、rad/s）`,
+    `观测速度 vx / vy / 转速：${vector(c.measured_velocity)}（滑动估计）`,
+    'SDK 执行确认：未提供；以位姿变化核验'];
 }

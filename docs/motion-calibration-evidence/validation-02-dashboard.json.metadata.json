@@ -1,0 +1,11 @@
+{
+  "file": "docs/motion-calibration-evidence/validation-02-dashboard.json.gz",
+  "frames": 5312,
+  "first_id": 110325,
+  "last_id": 115636,
+  "first_sim_time": 598.541999999,
+  "last_sim_time": 702.981999997,
+  "id_gaps": [],
+  "bytes": 6243649,
+  "sha256": "8ff642c8401569041fc06c2aa7be1e51163d99d37b9117e1bdca0142cf1821ee"
+}

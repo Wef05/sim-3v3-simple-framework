@@ -1,0 +1,14 @@
+{"wall": 1793599203.158307, "status": {"run_id": "validation-20261102-04", "state": "homing", "trial": 10, "total": 12, "sim_time": 953.877999991}, "last_id": 131597}
+{"wall": 1793599213.4611719, "status": {"run_id": "validation-20261102-04", "state": "drive:0", "trial": 10, "total": 12, "sim_time": 956.829999991}, "last_id": 131815}
+{"wall": 1793599223.7858691, "status": {"run_id": "validation-20261102-04", "state": "drive:0", "trial": 10, "total": 12, "sim_time": 960.075999991}, "last_id": 132026}
+{"wall": 1793599234.117362, "status": {"run_id": "validation-20261102-04", "state": "stop", "trial": 10, "total": 12, "sim_time": 962.681999991}, "last_id": 132235}
+{"wall": 1793599244.482893, "status": {"run_id": "validation-20261102-04", "state": "homing", "trial": 11, "total": 12, "sim_time": 965.77599999}, "last_id": 132452}
+{"wall": 1793599254.808246, "status": {"run_id": "validation-20261102-04", "state": "pre", "trial": 11, "total": 12, "sim_time": 968.72399999}, "last_id": 132656}
+{"wall": 1793599265.125495, "status": {"run_id": "validation-20261102-04", "state": "drive:0", "trial": 11, "total": 12, "sim_time": 971.62599999}, "last_id": 132870}
+{"wall": 1793599275.4697049, "status": {"run_id": "validation-20261102-04", "state": "drive:0", "trial": 11, "total": 12, "sim_time": 975.04799999}, "last_id": 133092}
+{"wall": 1793599285.83905, "status": {"run_id": "validation-20261102-04", "state": "homing", "trial": 12, "total": 12, "sim_time": 978.36799999}, "last_id": 133319}
+{"wall": 1793599296.1461818, "status": {"run_id": "validation-20261102-04", "state": "homing", "trial": 12, "total": 12, "sim_time": 982.14199999}, "last_id": 133571}
+{"wall": 1793599306.408227, "status": {"run_id": "validation-20261102-04", "state": "homing", "trial": 12, "total": 12, "sim_time": 985.98399999}, "last_id": 133789}
+{"wall": 1793599316.707576, "status": {"run_id": "validation-20261102-04", "state": "drive:0", "trial": 12, "total": 12, "sim_time": 989.88399999}, "last_id": 134021}
+{"wall": 1793599326.978843, "status": {"run_id": "validation-20261102-04", "state": "drive:0", "trial": 12, "total": 12, "sim_time": 993.68799999}, "last_id": 134241}
+{"wall": 1793599337.274658, "status": {"run_id": "validation-20261102-04", "state": "done", "trial": 12, "total": 12, "sim_time": 997.70399999}, "last_id": 134471}

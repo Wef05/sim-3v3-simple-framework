@@ -1,0 +1,436 @@
+{
+  "source": "docs/motion-calibration-evidence/validation-01.jsonl.gz",
+  "manifest": {
+    "event": "manifest",
+    "config": {
+      "run_id": "validation-20261102-01",
+      "stage": "validation",
+      "player_id": 1,
+      "lateral": 0.5,
+      "angular": 1.0
+    },
+    "trials": [
+      {
+        "kind": "reversal",
+        "repeat": 0,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.5,
+              -0.0
+            ]
+          ]
+        ],
+        "id": 1
+      },
+      {
+        "kind": "reversal",
+        "repeat": 1,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              -0.5,
+              0.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              0.5,
+              -0.0
+            ]
+          ]
+        ],
+        "id": 2
+      },
+      {
+        "kind": "reversal",
+        "repeat": 2,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.5,
+              0.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.5,
+              -0.0
+            ]
+          ]
+        ],
+        "id": 3
+      },
+      {
+        "kind": "reversal",
+        "repeat": 0,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 4
+      },
+      {
+        "kind": "reversal",
+        "repeat": 1,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 5
+      },
+      {
+        "kind": "reversal",
+        "repeat": 2,
+        "segments": [
+          [
+            4.0,
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          [
+            4.0,
+            [
+              -0.0,
+              -0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 6
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.5,
+              0.5,
+              0.0
+            ]
+          ]
+        ],
+        "id": 7
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.5,
+              -0.5,
+              -0.0
+            ]
+          ]
+        ],
+        "id": 8
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.5,
+              0.0,
+              1.0
+            ]
+          ]
+        ],
+        "id": 9
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.5,
+              -0.0,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 10
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              0.5,
+              1.0
+            ]
+          ]
+        ],
+        "id": 11
+      },
+      {
+        "kind": "combined",
+        "repeat": 0,
+        "segments": [
+          [
+            6.0,
+            [
+              0.0,
+              -0.5,
+              -1.0
+            ]
+          ]
+        ],
+        "id": 12
+      }
+    ]
+  },
+  "raw_records": 3165,
+  "distinct_observations": 2873,
+  "observed_duration_s": 39.441999998999904,
+  "maximum_gap_s": 0.04200000000003001,
+  "trials": [
+    {
+      "trial": 1,
+      "kind": "reversal",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 2,
+      "kind": "reversal",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 3,
+      "kind": "reversal",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 4,
+      "kind": "reversal",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 5,
+      "kind": "reversal",
+      "repeat": 1,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 6,
+      "kind": "reversal",
+      "repeat": 2,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        },
+        {
+          "phase": "drive:1",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 7,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 8,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 9,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 10,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 11,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    },
+    {
+      "trial": 12,
+      "kind": "combined",
+      "repeat": 0,
+      "segments": [
+        {
+          "phase": "drive:0",
+          "valid": false,
+          "reason": "no_samples"
+        }
+      ],
+      "braking": null
+    }
+  ],
+  "response": []
+}

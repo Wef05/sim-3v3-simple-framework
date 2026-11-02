@@ -1,0 +1,11 @@
+{
+  "file": "docs/motion-calibration-evidence/baseline-02-dashboard.json.gz",
+  "frames": 18156,
+  "first_id": 51884,
+  "last_id": 70039,
+  "first_sim_time": 123.887999999,
+  "last_sim_time": 502.414000001,
+  "id_gaps": [],
+  "bytes": 22044793,
+  "sha256": "18c44dcd90e158621b2d683b5a8ccc1fecc3659c6151182ba453f19835dc8db8"
+}

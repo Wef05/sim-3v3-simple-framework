@@ -1,0 +1,19 @@
+{
+  "container_name": "4x2a0-k1",
+  "container_id": "29ab54748efa4ec458844af26fe90ea8cc3065ca40bb4fec8b4c6070b4286611",
+  "image_name": "booster-robotics-registry.cn-beijing.cr.aliyuncs.com/virtual-robot/virtual-robot:0.9.4-alpha-humble",
+  "image_id": "sha256:b0c29d579d0dcb191af611918ba13ab69aba72676f5dad853069c6d313247c24",
+  "container_started_at": "2026-11-02T04:31:52.823530292Z",
+  "studio_version": "1.110.1",
+  "host_architecture": "arm64",
+  "sdk": {
+    "python": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+    "packages": {
+      "boosteros": "1.2.1",
+      "booster_robotics_sdk_python": "1.6.3"
+    }
+  },
+  "scene": "football_match_pitch_6_K1",
+  "player": "robot1",
+  "random_seed": "not exposed or controlled"
+}

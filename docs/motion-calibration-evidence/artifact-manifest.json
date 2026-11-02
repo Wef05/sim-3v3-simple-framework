@@ -1,0 +1,467 @@
+[
+  {
+    "file": "checks/test_dashboard_calibration.cjs",
+    "bytes": 662,
+    "sha256": "ddc036da0539b9fe048e9f0d273cd6a969c526476f037f67adb796ea8636867e"
+  },
+  {
+    "file": "checks/test_motion_calibration.py",
+    "bytes": 7717,
+    "sha256": "376ee58b035fb8b152f5a379eabffcff813cdcf2826273500a891b117fc16224"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/README.md",
+    "bytes": 2254,
+    "sha256": "8559013025b32ade5ffd271b1376a7ce8d8dcd92effc35e0c44c782db49f75b2"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-01-replay.json.gz",
+    "bytes": 3236018,
+    "sha256": "2eb3d04eb0290180b30e0b216b28d47018c10bd9548703c684534817d19d52ac"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-01-replay.metadata.json",
+    "bytes": 232,
+    "sha256": "20e979e9a48b3867c675ef4f4d2a63c0277d88b7dc0f72341280811988b5ac9e"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-01.jsonl.gz",
+    "bytes": 187789,
+    "sha256": "176cd046066ecb2510d7239b309e8f44e93f2e95b188576f53a6e1922d35747d"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-02-capture/end-boundary.json",
+    "bytes": 212,
+    "sha256": "453e9dc234348e399c61c0e40308d69137f93f3d5e500ded911cb1dcd5cf8bc2"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-02-capture/status.jsonl",
+    "bytes": 12533,
+    "sha256": "197aa1a9250a02b15f3896a33d0c9adbc3397e5f04726dea0314d12fd49279a6"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-02-dashboard.json.gz",
+    "bytes": 22044793,
+    "sha256": "18c44dcd90e158621b2d683b5a8ccc1fecc3659c6151182ba453f19835dc8db8"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-02-dashboard.json.metadata.json",
+    "bytes": 325,
+    "sha256": "9bbe9b55a71207825c9c9dcc4a2ce6228bc321c6e8f270a94918741aa677f38a"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+    "bytes": 2078166,
+    "sha256": "4f9ff6df24d39b1f7437d35b341764a012842d16f9307da4b2fb93caf23552dd"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-03-arm.json",
+    "bytes": 90,
+    "sha256": "0ef04eb183c94edb6fbd81c6a3fc0235e1e8a4261b951f76ee3deab4145893b5"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-03-capture/end-boundary.json",
+    "bytes": 182,
+    "sha256": "3da9f61ecb3d02f40867120c28a78f4e36b09c7a06e3bd3a28bf77d4ae7cdc88"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-03-capture/status.jsonl",
+    "bytes": 18678,
+    "sha256": "77e9695a42ea5a2560903006864312e3b8b200e21ff983493001fd0ddb34ecff"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-03-dashboard.json.gz",
+    "bytes": 31958253,
+    "sha256": "06f4efd2004c6477a32ebb8917474bfd0c0da8073f8a87887dbdcece236fb3d7"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-03-dashboard.json.metadata.json",
+    "bytes": 319,
+    "sha256": "ef3722279902f59a308819cc5a6338de893de0bb4c88ec56edd67b92bc1bb63d"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-03.jsonl.gz",
+    "bytes": 3101914,
+    "sha256": "ee923c9112650db95ca0972e63c2794f54cf51b874f3faa374236f4ae04a2288"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-arm.json",
+    "bytes": 67,
+    "sha256": "efcd9a713a3118b63dfbf7018eb153bc9a5b98d1f832adc4179f6264b9e25b53"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/baseline-tests.txt",
+    "bytes": 1159,
+    "sha256": "50a0052259d533d91db51bc7076b4bd76dc7bd251f91534b00d4b237c6003b46"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/boundaries.json",
+    "bytes": 3379,
+    "sha256": "e343394ba462a3f645e1fdf651fb499eee3cabc3ca9b2c2fab96fd8c4ac784a0"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/calibration-agent.toml",
+    "bytes": 342,
+    "sha256": "b98b97cde47fa42bcae40f21cf53cf55a0f56dbeab0beba4ba42232f1a759162"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/calibration-v2.agent",
+    "bytes": 898674,
+    "sha256": "b8131bff6103fa97717a44013809e1ba7ec5499d29ad373f6cd999e83b595f0d"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/calibration-v3.agent",
+    "bytes": 898844,
+    "sha256": "bd5b30a317e52c0ba350c20f359f3acf1b999aedd2db8b21ce950d202d40513a"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/calibration-v4.agent",
+    "bytes": 899130,
+    "sha256": "e8d64448df44eddc198cc413b9210e7dd5077bde10a5e91df295bb121f5472c8"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/calibration-v5.agent",
+    "bytes": 899152,
+    "sha256": "ab7815946207e58d44ec7baa0679a141485ef8504722e6fecbad8f86e32fb5a1"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/cleanup.json",
+    "bytes": 410,
+    "sha256": "6df56549a658428c043f1504a8c83cc625e299009a71b8153e54383633a8660a"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/dashboard.png",
+    "bytes": 92200,
+    "sha256": "25fe5b0a564d57995b6b71ab5c38f1c6fdb74dfaf87ec383eb3b4d95c02d1011"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/data-summary.json",
+    "bytes": 4982,
+    "sha256": "253f98c839b5830e8ec868b264f8e63bc43b258a5c9fee4c9e200d5467397758"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/environment.json",
+    "bytes": 740,
+    "sha256": "22d364583e69e0d10dff02f742d32aad67cf1ec01ac31c24d6a4bebba6278703"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/baseline-01.jsonl-analysis.json",
+    "bytes": 21259,
+    "sha256": "09cb9ece353b15365c2bfdeb0307504e45839a87326dd0b0e0e60e9778e3108f"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/baseline-02.jsonl-analysis.json",
+    "bytes": 37509,
+    "sha256": "505652499dc61b33ea6899554cc3f16cdb88c0b5dc82bd1007be04d1f810e521"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/baseline-03-analysis.json",
+    "bytes": 38621,
+    "sha256": "7a5c1d3c0f4d021e6a5fb1da7ecd429e5555ef74fb07f4027c1c4b366cd443fa"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/measured-segments.json",
+    "bytes": 50517,
+    "sha256": "6a0e0b6d494d51aa6f7b3d7c7fde5fc938ee617c546362d047388a3d4788aa0c"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/response.png",
+    "bytes": 105061,
+    "sha256": "aadc67cdd71bb98b87713d03e7215b79f318659404f987ca7ee64ee21c0af3cc"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/timeline.png",
+    "bytes": 156854,
+    "sha256": "aaabf9527dd0067070449417cb9b25db534c6744b364a6ae065224b07225e692"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/validation-01.jsonl-analysis.json",
+    "bytes": 7634,
+    "sha256": "d9016046f7d0b907f0583b52f87b8b1bf151420507b7937620436ba8e21d5260"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/validation-02.jsonl-analysis.json",
+    "bytes": 12865,
+    "sha256": "50eed34819dfead904fe1a7ad92587f026d500a628a0fe776337523285420b73"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/validation-03.jsonl-analysis.json",
+    "bytes": 14122,
+    "sha256": "9f26d7a4e5ab63ddf6e098e13b5467a439ee41815078417dfcdf6e4c656eff48"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/figures/validation-04-analysis.json",
+    "bytes": 5266,
+    "sha256": "90e9607b11120d829b5cce9e4adfe0ac397d06f636cf0ea33286a6ae574d9a53"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/focused-tests.txt",
+    "bytes": 137,
+    "sha256": "f37f0ce0400ca8db5198f7c4e0e1309ebac279063b4a6d56dd330d2c68928c3f"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/frozen-baseline.json",
+    "bytes": 44705,
+    "sha256": "e4e5c3e4aa7129bf1905a9e545d2b75e4590e450f6292f47adde9f5e0f34b9d0"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/frozen-baseline.sha256",
+    "bytes": 65,
+    "sha256": "f84c0f8e7a76832feb274290b1f6142f704e5f811b13d215fab593facdbc1b04"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/full-tests.txt",
+    "bytes": 1152,
+    "sha256": "791f6786daf8a8ebdddba3af49205f25dcf83ae2d1039141ab0f197e8da9111f"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/identity-v1.json",
+    "bytes": 18265,
+    "sha256": "5e1f25b45bcde52ae8447856e8ee266b5922b4e8085d3f3df6cf0b48746f8b5f"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/identity-v2.json",
+    "bytes": 18268,
+    "sha256": "7f143bceda69c7d7adef37774d1f3a10bdb3fad9c9c2ab779ba5ef85b63f586f"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/identity-v3.json",
+    "bytes": 18214,
+    "sha256": "5a19958693a2ceaef342841961bdd63bd4cdfd0d3c22c9e490dfc39c5d8090cf"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/identity-v4.json",
+    "bytes": 18213,
+    "sha256": "6548b640c4a3d5855e1549af053ae4a8a3a9279beaadf6e696aef9fb337e0d27"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/identity.json",
+    "bytes": 18213,
+    "sha256": "dbe5c395a090c61afd4465c036f68dba128be69bdd623b448e8811252d0de0a2"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/motion_calibration-v2.py.gz",
+    "bytes": 3069,
+    "sha256": "dffd7b607a6d7faad15fce2281630aca7803003fc0266a3042d65876b2ffb415"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/motion_calibration-v3.py.gz",
+    "bytes": 3233,
+    "sha256": "c70605cd07442eaca9b814fcd516a4b2a982f72c762605df1c2a387852f08bb7"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/motion_calibration-v4.py.gz",
+    "bytes": 3519,
+    "sha256": "4a7d9da95eb0555bed5d383032166c4928560860f69145494a74e1ef6ad99df7"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/preflight.json",
+    "bytes": 434,
+    "sha256": "91a251bd3c43bcc6642031bba3f5fd17339cb860ad4aa65fd7cdeba519081ca0"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/production-agent.toml",
+    "bytes": 321,
+    "sha256": "3aa5740aa3fecad085e7842bc6b7728ceb2e9dfbcda7bd72565b2284d7bdf2e6"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-01-dashboard.json.gz",
+    "bytes": 2947036,
+    "sha256": "ad53968a275843d732fe7b55a7728e8ffbe6c54fc9728f69c8942277b3ff9399"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-01-dashboard.json.metadata.json",
+    "bytes": 321,
+    "sha256": "773aee8222dd488322f97e438b6f080136e537577c7d57ca974f98b3e11d1005"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-01.jsonl.gz",
+    "bytes": 243116,
+    "sha256": "d279a5c9bfd744651115cf5e6de6eb8e0897d3d95c51d1f844b583d848133aa3"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-02-arm.json",
+    "bytes": 107,
+    "sha256": "6038d1c022de2effc70e453c07349a9847d0148e127ff9625c77bdd15ad2e6cb"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-02-capture/end-boundary.json",
+    "bytes": 214,
+    "sha256": "e9b8e5f2449076c78aaa09334bdab3bf145432748bb4833087ee19744f822749"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-02-capture/status.jsonl",
+    "bytes": 5011,
+    "sha256": "0440bdd6da6fc326814acfcb7a8b1894759b48a2d2e93f1b4ea73304dcbb95d1"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-02-dashboard.json.gz",
+    "bytes": 6243649,
+    "sha256": "8ff642c8401569041fc06c2aa7be1e51163d99d37b9117e1bdca0142cf1821ee"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-02-dashboard.json.metadata.json",
+    "bytes": 327,
+    "sha256": "a06dc14dd6cbd118c2efe0b56464a575110144c1069950011a2f69993afe06af"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-02.jsonl.gz",
+    "bytes": 549082,
+    "sha256": "e3d6d2b8477397c2d33455b44536e2048eb2ac61ee16696046b8fff49168b8a5"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-03-arm.json",
+    "bytes": 125,
+    "sha256": "72422efb0622a755f1a707f13d798274c1e6b9944844b45121b2128bac0cc98e"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-03-capture/end-boundary.json",
+    "bytes": 215,
+    "sha256": "d444355936022be308c61b13005c53d620b4c0b7f694e1b99dd5369a291052d2"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-03-capture/status.jsonl",
+    "bytes": 7362,
+    "sha256": "d526dbc4dbb78f1575ea29d6d0636969d915a4a1739bee718ff25065438be510"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-03-dashboard.json.gz",
+    "bytes": 11496959,
+    "sha256": "cc0bc3069c17a29db8725716170e5bd1d18ab92be2b9b8b1daba5df5f9d716dc"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-03-dashboard.json.metadata.json",
+    "bytes": 328,
+    "sha256": "946f51980be98999ef342826f32b3bc4a004d6b2a0fdb08d69ed6115f713aef7"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "bytes": 1068665,
+    "sha256": "5f1f23f061e77c45536c61dfa7b08da9ac94a2e99e1c8653b7497ee57aa36cdf"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-04-arm.json",
+    "bytes": 126,
+    "sha256": "8fd6cbd488d50175fef8631d86286e868c22437b1f7cffff31f968c27565708f"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-04-capture/end-boundary.json",
+    "bytes": 183,
+    "sha256": "65a8b6afea8b4537b60af774acca399d21c8fd564b865db7f0e6a65d7a985e8d"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-04-capture/status.jsonl",
+    "bytes": 2330,
+    "sha256": "50d8aa6bcc36d7386f1b19fd9f28e109f742b4d169aa246c26b2f81ec0edab4c"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-04-dashboard.json.gz",
+    "bytes": 3410378,
+    "sha256": "7cc2de84d2fb9afa5fd27bb8f4eaad110aa456eac0695ec11bf89d498b5bc8cc"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-04-dashboard.json.metadata.json",
+    "bytes": 326,
+    "sha256": "21029104d8480cf91bc14db7f4de22bbaa2c52e2eb460e13e7d14b0a9084d211"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-04.jsonl.gz",
+    "bytes": 302270,
+    "sha256": "c1703aa2c106344e34c789baf3dfbae73d71d1d4250b1048054f59c2c2154bfd"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-arm.json",
+    "bytes": 107,
+    "sha256": "09614c64a6e4bf7b175a490858277a069462b936bdc9e013553064452fa6731d"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-capture/end-boundary.json",
+    "bytes": 202,
+    "sha256": "df7cc32d114c4b4f4b5a9694cccbbdc51c77c986ae1f8f75cd254c31de2fa43f"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-capture/status.jsonl",
+    "bytes": 2113,
+    "sha256": "5a666d9fc21eb1f6f0bd129c10ee46a22a1e7fd93f4980555a23c2abef6ae152"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-freeze.json",
+    "bytes": 446,
+    "sha256": "31bd38aafb3dcda5e251d0ac3f79a9d171582b6806acfbd025bc59f9054c57bc"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-results.json",
+    "bytes": 16313,
+    "sha256": "01f9e139a5a582624bf99d5bbc3daf43ba3cd2766187af6ef282363c46f42028"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/validation-tests.json",
+    "bytes": 624,
+    "sha256": "f65922da5484a222b25bf3e45ee574e59ec9aca281137109c969507e53092374"
+  },
+  {
+    "file": "docs/motion-calibration-evidence/verify_identity.py",
+    "bytes": 1773,
+    "sha256": "fecef3a840f14507f9904c976ff4e4326121e59cabe08d6527ba3882229b6db5"
+  },
+  {
+    "file": "docs/motion-calibration-report.md",
+    "bytes": 12730,
+    "sha256": "08075e9df2f4287922bdfad531e46d8862229f916f801c4f70671a5998598686"
+  },
+  {
+    "file": "docs/motion-calibration.md",
+    "bytes": 4599,
+    "sha256": "1e2e601e58b08fb2751c34d4064bc4a143a069d01a7310a8af9f342314eca0ec"
+  },
+  {
+    "file": "src/calibration_agent.py",
+    "bytes": 727,
+    "sha256": "40c629a2080d43c17d343c266984c2253dc49923ed3d41d35d53ae8a0af00b1e"
+  },
+  {
+    "file": "src/motion_calibration.py",
+    "bytes": 10497,
+    "sha256": "cfd51555cbea7febb3f87a93435a2636b8b8a6a573ec43b8ae6d2701dea9dd1a"
+  },
+  {
+    "file": "src/telemetry.py",
+    "bytes": 5711,
+    "sha256": "4fe66df3f90611692b396ae96407e326964bfd1ac5a6c24acdf6ccaed2637daa"
+  },
+  {
+    "file": "tools/motion_calibration/aggregate.py",
+    "bytes": 2007,
+    "sha256": "8476f14beaba3628baec9c8cc345a970766dfabb158f9c7ac80ebef720dab615"
+  },
+  {
+    "file": "tools/motion_calibration/analyze.py",
+    "bytes": 6540,
+    "sha256": "4136516f78b535b5bb3258b51cfdde046fc16ab7e9a6f0bd139b36a0c25803bd"
+  },
+  {
+    "file": "tools/motion_calibration/capture.py",
+    "bytes": 1656,
+    "sha256": "4ceecef323708259d44afd0f051df93ebf8d5f133de54abe80e7b2b0f1fc972b"
+  },
+  {
+    "file": "tools/motion_calibration/package_replay.py",
+    "bytes": 1881,
+    "sha256": "2b01fc75374aed747331736028a08e0226ed4552faf1b7bdcc455df01ef6fd29"
+  },
+  {
+    "file": "tools/motion_calibration/plot.py",
+    "bytes": 2693,
+    "sha256": "3244cff191ef8d7fb23f4093797170386a65728b8a8f937b257c043690db4197"
+  },
+  {
+    "file": "tools/motion_calibration/validate.py",
+    "bytes": 2361,
+    "sha256": "802967506f14d0b8109c0099fa3ec19197cbaac061e7f904c2c4cd91a5c8771b"
+  },
+  {
+    "file": "tools/tactics_dashboard/dashboard.js",
+    "bytes": 76709,
+    "sha256": "b6c8d0892c13e5cfd469e51b9bbb5a31049506162bdae80e53e58ad7dc7ba556"
+  }
+]

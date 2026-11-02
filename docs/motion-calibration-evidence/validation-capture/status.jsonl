@@ -1,0 +1,13 @@
+{"wall": 1793597952.139602, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 538.150000001}, "last_id": 106485}
+{"wall": 1793597962.463646, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 542.148000001}, "last_id": 106714}
+{"wall": 1793597972.726759, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 546.252}, "last_id": 106947}
+{"wall": 1793597982.982898, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 550.45}, "last_id": 107165}
+{"wall": 1793597993.249797, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 554.404}, "last_id": 107382}
+{"wall": 1793598003.52245, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 558.39}, "last_id": 107599}
+{"wall": 1793598013.789502, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 562.016}, "last_id": 107817}
+{"wall": 1793598026.27648, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 565.15}, "last_id": 108015}
+{"wall": 1793598036.550933, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 567.294}, "last_id": 108201}
+{"wall": 1793598046.8290718, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 571.004}, "last_id": 108428}
+{"wall": 1793598057.148876, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 573.142}, "last_id": 108588}
+{"wall": 1793598067.4374511, "status": {"run_id": "validation-20261102-01", "state": "homing", "trial": 1, "total": 12, "sim_time": 575.794}, "last_id": 108798}
+{"wall": 1793598078.1336782, "status": {"run_id": "validation-20261102-01", "state": "aborted", "trial": 1, "total": 12, "reason": "disarmed", "sim_time": 579.254}, "last_id": 109021}

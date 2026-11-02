@@ -1,0 +1,21 @@
+{
+  "focused": {
+    "command": "python3 -m unittest checks.test_motion_calibration checks.test_navigation",
+    "tests": 38,
+    "passed": 38
+  },
+  "full": {
+    "command": "python3 -m unittest discover -s checks -p 'test_*.py'",
+    "tests": 114,
+    "passed": 113,
+    "errors": [
+      "missing checks.goalkeeper_replay_cases; baseline reproduced"
+    ]
+  },
+  "node": [
+    "checks/test_dashboard_calibration.cjs passed",
+    "checks/test_dashboard_guard.cjs passed",
+    "node --check tools/tactics_dashboard/dashboard.js passed"
+  ],
+  "gzip_analysis": "baseline-01 analysis identical before and after compression"
+}

@@ -1,0 +1,1891 @@
+{
+  "runs": [
+    {
+      "source": "docs/motion-calibration-evidence/baseline-01.jsonl.gz",
+      "raw_records": 1854,
+      "distinct_observations": 1843,
+      "observed_duration_s": 32.850000001,
+      "maximum_gap_s": 0.04400000000000048
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "raw_records": 22164,
+      "distinct_observations": 21720,
+      "observed_duration_s": 373.850000002,
+      "maximum_gap_s": 0.060000000000002274
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "raw_records": 33679,
+      "distinct_observations": 32688,
+      "observed_duration_s": 500.22800000100005,
+      "maximum_gap_s": 0.04200000000000159
+    }
+  ],
+  "response": [
+    {
+      "command": [
+        0.0,
+        -2.0,
+        0.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 0,
+      "trial_means": [
+        -0.49109777276055006,
+        -0.252346102201695,
+        -0.4928685876686801
+      ],
+      "median_trial_mean": -0.49109777276055006,
+      "min": -0.4928685876686801,
+      "max": -0.252346102201695,
+      "relative_std": 0.2741256402506884,
+      "qualified": false
+    },
+    {
+      "command": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 0,
+      "trial_means": [
+        -0.49018499410697147,
+        -0.26611772335271133,
+        -0.49748139833316274
+      ],
+      "median_trial_mean": -0.49018499410697147,
+      "min": -0.49748139833316274,
+      "max": -0.26611772335271133,
+      "relative_std": 0.2569519487813014,
+      "qualified": false
+    },
+    {
+      "command": [
+        0.0,
+        -0.5,
+        0.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 0,
+      "trial_means": [
+        -0.4833584490587162,
+        -0.4848970948133537,
+        -0.4809610589186926
+      ],
+      "median_trial_mean": -0.4833584490587162,
+      "min": -0.4848970948133537,
+      "max": -0.4809610589186926,
+      "relative_std": 0.0033526618738641627,
+      "qualified": false
+    },
+    {
+      "command": [
+        0.0,
+        -0.2,
+        0.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 0,
+      "trial_means": [
+        -0.14470844070446537,
+        -0.15158498554104127,
+        -0.14767418264703983
+      ],
+      "median_trial_mean": -0.14767418264703983,
+      "min": -0.15158498554104127,
+      "max": -0.14470844070446537,
+      "relative_std": 0.01902950424740848,
+      "qualified": false
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        -2.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        -0.9269903024329813,
+        -0.9291143327701962,
+        -0.9409176165715687
+      ],
+      "median_trial_mean": -0.9291143327701962,
+      "min": -0.9409176165715687,
+      "max": -0.9269903024329813,
+      "relative_std": 0.006571028000541735,
+      "qualified": true
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        -0.9291087556616894,
+        -0.9193042433614308,
+        -0.9378371646023862
+      ],
+      "median_trial_mean": -0.9291087556616894,
+      "min": -0.9378371646023862,
+      "max": -0.9193042433614308,
+      "relative_std": 0.008151045197250177,
+      "qualified": true
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        -0.5
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        -0.43964670298145725,
+        -0.43080355637992646,
+        -0.43950607048496393
+      ],
+      "median_trial_mean": -0.43950607048496393,
+      "min": -0.43964670298145725,
+      "max": -0.43080355637992646,
+      "relative_std": 0.009471957884157766,
+      "qualified": true
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        0.46201749042003504,
+        0.4617078845668313,
+        0.4602531911788537
+      ],
+      "median_trial_mean": 0.4617078845668313,
+      "min": 0.4602531911788537,
+      "max": 0.46201749042003504,
+      "relative_std": 0.0016673234465833275,
+      "qualified": true
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        0.9242337637892651,
+        0.920844093825925,
+        0.9218888074694269
+      ],
+      "median_trial_mean": 0.9218888074694269,
+      "min": 0.920844093825925,
+      "max": 0.9242337637892651,
+      "relative_std": 0.0015367265603450024,
+      "qualified": true
+    },
+    {
+      "command": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        0.9248022276884554,
+        0.9195114548940659,
+        0.92171216241085
+      ],
+      "median_trial_mean": 0.92171216241085,
+      "min": 0.9195114548940659,
+      "max": 0.9248022276884554,
+      "relative_std": 0.002353662524297635,
+      "qualified": true
+    },
+    {
+      "command": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 0,
+      "trial_means": [
+        0.05825802571732674,
+        0.06226741728695282,
+        0.10377319511343766
+      ],
+      "median_trial_mean": 0.06226741728695282,
+      "min": 0.05825802571732674,
+      "max": 0.10377319511343766,
+      "relative_std": 0.27520775545079784,
+      "qualified": false
+    },
+    {
+      "command": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        0.44451413779307525,
+        0.4620587921070835,
+        0.4574118604995397
+      ],
+      "median_trial_mean": 0.4574118604995397,
+      "min": 0.44451413779307525,
+      "max": 0.4620587921070835,
+      "relative_std": 0.016323987978270768,
+      "qualified": true
+    },
+    {
+      "command": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        0.4637041157472751,
+        0.4611361538441147,
+        0.44794289005149734
+      ],
+      "median_trial_mean": 0.4611361538441147,
+      "min": 0.44794289005149734,
+      "max": 0.4637041157472751,
+      "relative_std": 0.01508910867265668,
+      "qualified": true
+    },
+    {
+      "command": [
+        0.0,
+        2.0,
+        0.0
+      ],
+      "repeats": 3,
+      "steady_repeats": 3,
+      "trial_means": [
+        0.4628507901770052,
+        0.45747524632277153,
+        0.4674790890847398
+      ],
+      "median_trial_mean": 0.4628507901770052,
+      "min": 0.45747524632277153,
+      "max": 0.4674790890847398,
+      "relative_std": 0.008836646444300638,
+      "qualified": true
+    }
+  ],
+  "segments": [
+    {
+      "source": "docs/motion-calibration-evidence/baseline-01.jsonl.gz",
+      "trial": 1,
+      "kind": "lateral",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2980000000000018,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        -0.027221810531132488,
+        0.045731097236191925,
+        -0.05356316719519921
+      ],
+      "measured_span_s": 1.9860000000000042,
+      "velocity_std": [
+        0.022690500876767085,
+        0.13595098380285506,
+        0.020795334135876302
+      ],
+      "measured_mean": [
+        -0.02864695027467887,
+        0.05825802571732674,
+        -0.04639522701532995
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 2,
+      "kind": "lateral",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -0.2,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.23199999999999932,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.012867240744825752,
+        -0.14506151035412365,
+        -0.03959662339745626
+      ],
+      "measured_span_s": 1.990000000000009,
+      "velocity_std": [
+        0.024353894573907048,
+        0.1388866345641376,
+        0.025870005893094124
+      ],
+      "measured_mean": [
+        0.009620322348885591,
+        -0.14470844070446537,
+        -0.03865874967689033
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 3,
+      "kind": "lateral",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.32399999999998386,
+          "t90_s": 0.931999999999988,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.025790106703998665,
+        0.4297225648821384,
+        -0.02532147308501003
+      ],
+      "measured_span_s": 1.995999999999981,
+      "velocity_std": [
+        0.018440057104387217,
+        0.09351005784186428,
+        0.027242380639675618
+      ],
+      "measured_mean": [
+        0.03077312035430145,
+        0.44451413779307525,
+        -0.024314468218591723
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 4,
+      "kind": "lateral",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -0.5,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.27000000000001023,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        -0.0009072528630811641,
+        -0.4481155969352426,
+        0.013347621254159118
+      ],
+      "measured_span_s": 1.9819999999999993,
+      "velocity_std": [
+        0.04138255778723592,
+        0.13317150109952944,
+        0.08064394789104043
+      ],
+      "measured_mean": [
+        -0.0025620103285576117,
+        -0.4833584490587162,
+        0.032023444062623564
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 5,
+      "kind": "lateral",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2980000000000018,
+          "t90_s": 1.304000000000002,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.03187660254587674,
+        0.4695168547587583,
+        -0.03036810350398015
+      ],
+      "measured_span_s": 1.9939999999999998,
+      "velocity_std": [
+        0.018251884115707617,
+        0.08860640897022887,
+        0.026234498872185208
+      ],
+      "measured_mean": [
+        0.03461326074281385,
+        0.4637041157472751,
+        -0.027230933753713736
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 6,
+      "kind": "lateral",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.24200000000001864,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.00021480059930772632,
+        -0.4700414480507329,
+        0.018178606644649153
+      ],
+      "measured_span_s": 1.9780000000000086,
+      "velocity_std": [
+        0.042226311100200274,
+        0.13698173941368444,
+        0.08930838580607238
+      ],
+      "measured_mean": [
+        -0.0016092946890595254,
+        -0.49018499410697147,
+        0.03509642366245157
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 7,
+      "kind": "lateral",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        2.0,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.25200000000000955,
+          "t90_s": 1.2940000000000111,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.031014475905582435,
+        0.4653898125416117,
+        -0.03186258986445713
+      ],
+      "measured_span_s": 1.9879999999999995,
+      "velocity_std": [
+        0.01862526216716743,
+        0.09342796653110928,
+        0.027699479615139022
+      ],
+      "measured_mean": [
+        0.035599113403597546,
+        0.4628507901770052,
+        -0.02977289285568678
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 8,
+      "kind": "lateral",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -2.0,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2259999999999991,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.0015335002147429033,
+        -0.4675907197484924,
+        0.018450840054951095
+      ],
+      "measured_span_s": 1.9879999999999995,
+      "velocity_std": [
+        0.04226126386078036,
+        0.13747723282714935,
+        0.08774300868075
+      ],
+      "measured_mean": [
+        0.0016981491199090167,
+        -0.49109777276055006,
+        0.03283527650667448
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 9,
+      "kind": "turn",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.17399999999997817,
+          "t90_s": 0.4379999999999882,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.03494520510863995,
+        -0.03685067352443748,
+        0.4598851791859461
+      ],
+      "measured_span_s": 1.9899999999999523,
+      "velocity_std": [
+        0.01495831783906579,
+        0.14356937893832228,
+        0.03183867046949839
+      ],
+      "measured_mean": [
+        0.03700507356443815,
+        -0.023945949963373386,
+        0.46201749042003504
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 10,
+      "kind": "turn",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -0.5
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.20800000000002683,
+          "t90_s": 0.36400000000003274,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.030624326208617415,
+        -0.05642648525022191,
+        -0.4388332639953194
+      ],
+      "measured_span_s": 1.98599999999999,
+      "velocity_std": [
+        0.025677835454457083,
+        0.15097693338184673,
+        0.07411175054299804
+      ],
+      "measured_mean": [
+        0.01922237198470743,
+        -0.03003208271999479,
+        -0.43964670298145725
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 11,
+      "kind": "turn",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.18799999999998818,
+          "t90_s": 0.5500000000000114,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.043206590015576564,
+        -0.032499675189581655,
+        0.9132575830181224
+      ],
+      "measured_span_s": 1.9979999999999905,
+      "velocity_std": [
+        0.026846825837811852,
+        0.13916225445657265,
+        0.05312480441257677
+      ],
+      "measured_mean": [
+        0.05120682003400671,
+        -0.018387394276130346,
+        0.9242337637892651
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 12,
+      "kind": "turn",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.20600000000001728,
+          "t90_s": 0.5600000000000023,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.009791729931674353,
+        -0.03400515836033899,
+        -0.9302076718441826
+      ],
+      "measured_span_s": 1.9920000000000186,
+      "velocity_std": [
+        0.031735959368579286,
+        0.14560183685216746,
+        0.10148544609495634
+      ],
+      "measured_mean": [
+        -0.0024445385700531405,
+        -0.03587537940524632,
+        -0.9291087556616894
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 13,
+      "kind": "turn",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.17599999999998772,
+          "t90_s": 0.5819999999999936,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.03865243986730709,
+        -0.028233624749371945,
+        0.9135105961644361
+      ],
+      "measured_span_s": 1.9800000010000076,
+      "velocity_std": [
+        0.02621640588266599,
+        0.13837626863699762,
+        0.05286854856886134
+      ],
+      "measured_mean": [
+        0.04775579893631644,
+        -0.017885256683740854,
+        0.9248022276884554
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 14,
+      "kind": "turn",
+      "repeat": 0,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -2.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.19799999999997908,
+          "t90_s": 0.5679999999999836,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.009605326052488192,
+        -0.037579117131441825,
+        -0.9244425992365819
+      ],
+      "measured_span_s": 1.9979999999999905,
+      "velocity_std": [
+        0.031741116560096115,
+        0.14625812834960433,
+        0.09490501651139746
+      ],
+      "measured_mean": [
+        -0.004198104288866189,
+        -0.0342106672949744,
+        -0.9269903024329813
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 15,
+      "kind": "lateral",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -0.5,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2400000000000091,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.007701706712501037,
+        -0.46243505618346636,
+        0.010747785561315492
+      ],
+      "measured_span_s": 1.9979999999999905,
+      "velocity_std": [
+        0.04222638714462106,
+        0.1312308195400115,
+        0.08785470570860177
+      ],
+      "measured_mean": [
+        0.0027980625909070156,
+        -0.4848970948133537,
+        0.02678284161084194
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 16,
+      "kind": "lateral",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2799999999999727,
+          "t90_s": 0.8299999999999841,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.029819050575514372,
+        0.4643251933202018,
+        -0.031203631963379524
+      ],
+      "measured_span_s": 1.98599999999999,
+      "velocity_std": [
+        0.018389935504535923,
+        0.09211945149420446,
+        0.026614881400693683
+      ],
+      "measured_mean": [
+        0.03313910547756169,
+        0.4620587921070835,
+        -0.031629416203858826
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-02.jsonl.gz",
+      "trial": 17,
+      "kind": "lateral",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2259999999999991,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.024876019682690965,
+        -0.27285511151637404,
+        -0.03503289921418415
+      ],
+      "measured_span_s": 1.9940000000000282,
+      "velocity_std": [
+        0.02238961582888265,
+        0.12495832288474742,
+        0.02760682910264213
+      ],
+      "measured_mean": [
+        0.023208235875984508,
+        -0.26611772335271133,
+        -0.028744896611337195
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 18,
+      "kind": "lateral",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2880000000000038,
+          "t90_s": 0.8120000000000047,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.030278243035689018,
+        0.4548119861921776,
+        -0.028011629813614325
+      ],
+      "measured_span_s": 2.0,
+      "velocity_std": [
+        0.018377065740901245,
+        0.09393930480206289,
+        0.027098444212689525
+      ],
+      "measured_mean": [
+        0.03229157907948489,
+        0.4611361538441147,
+        -0.028502130001787713
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 19,
+      "kind": "lateral",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -2.0,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2459999999999951,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.024224151408199467,
+        -0.23580746480132878,
+        -0.03646488340596879
+      ],
+      "measured_span_s": 2.0,
+      "velocity_std": [
+        0.019297927809023292,
+        0.12449425470512016,
+        0.029858777108499428
+      ],
+      "measured_mean": [
+        0.0244867314560252,
+        -0.252346102201695,
+        -0.029956405791995416
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 20,
+      "kind": "lateral",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        2.0,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2740000000000009,
+          "t90_s": 0.8659999999999997,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.0307757347673153,
+        0.454211764610816,
+        -0.02937188429081499
+      ],
+      "measured_span_s": 1.9939999999999998,
+      "velocity_std": [
+        0.018734881328194043,
+        0.09530069007268287,
+        0.029983405426392308
+      ],
+      "measured_mean": [
+        0.032941804323496165,
+        0.45747524632277153,
+        -0.028703862121159378
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 21,
+      "kind": "lateral",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -0.2,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.23000000000000398,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.01238084336089528,
+        -0.15786542221933125,
+        -0.03994352094349965
+      ],
+      "measured_span_s": 1.9860000000000042,
+      "velocity_std": [
+        0.024849221846752857,
+        0.13756117964166406,
+        0.02638941162071445
+      ],
+      "measured_mean": [
+        0.008220776529273027,
+        -0.15158498554104127,
+        -0.039229145021299865
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 22,
+      "kind": "lateral",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.3259999999999934,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        -0.02709543215250918,
+        0.03792553379457454,
+        -0.0518374857382128
+      ],
+      "measured_span_s": 1.9780000000000086,
+      "velocity_std": [
+        0.023196663677659782,
+        0.13840810149869948,
+        0.0220972037345908
+      ],
+      "measured_mean": [
+        -0.026613294667982963,
+        0.06226741728695282,
+        -0.047246720374600246
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 23,
+      "kind": "turn",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.19999999999998863,
+          "t90_s": 0.5480000000000018,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.008396509843174537,
+        -0.06467212633199546,
+        -0.9176100293901401
+      ],
+      "measured_span_s": 2.0,
+      "velocity_std": [
+        0.03208154676666477,
+        0.14535445053972362,
+        0.09999718336761516
+      ],
+      "measured_mean": [
+        -0.005203465248088909,
+        -0.04835783133267988,
+        -0.9193042433614308
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 24,
+      "kind": "turn",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.1780000000000257,
+          "t90_s": 0.5560000000000116,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.04295359467513343,
+        0.013691990306427836,
+        0.9099843710239623
+      ],
+      "measured_span_s": 1.9960000000000093,
+      "velocity_std": [
+        0.02658952242409715,
+        0.13968553069111347,
+        0.053567207416159585
+      ],
+      "measured_mean": [
+        0.050858907162665244,
+        0.007993647888752715,
+        0.920844093825925
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 25,
+      "kind": "turn",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -2.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.2079999999999984,
+          "t90_s": 0.5400000000000205,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.011089948584807397,
+        -0.018723792301797236,
+        -0.9242067991923706
+      ],
+      "measured_span_s": 1.9840000000000089,
+      "velocity_std": [
+        0.03131763563361639,
+        0.14741441786910775,
+        0.10408523130922073
+      ],
+      "measured_mean": [
+        -0.002515261732633517,
+        -0.033049240344669994,
+        -0.9291143327701962
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 26,
+      "kind": "turn",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.1939999999999884,
+          "t90_s": 0.5719999999999743,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.04182870852859785,
+        0.006966444649492665,
+        0.9088750807443804
+      ],
+      "measured_span_s": 1.9920000000000186,
+      "velocity_std": [
+        0.026051680084497972,
+        0.1426642357469617,
+        0.04901379566627271
+      ],
+      "measured_mean": [
+        0.05110109637324327,
+        0.005207047824547247,
+        0.9195114548940659
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 27,
+      "kind": "turn",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -0.5
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.18600000000000705,
+          "t90_s": 0.35599999999999454,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.031910184506209256,
+        -0.049231124146660254,
+        -0.42842597788119924
+      ],
+      "measured_span_s": 1.9939999999999998,
+      "velocity_std": [
+        0.026627438186224213,
+        0.14818916039080782,
+        0.06869090173948021
+      ],
+      "measured_mean": [
+        0.018249860077841625,
+        -0.037034018685363865,
+        -0.43080355637992646
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 28,
+      "kind": "turn",
+      "repeat": 1,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.17399999999997817,
+          "t90_s": 0.3639999999999759,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.03251991621918689,
+        -0.04420745518837683,
+        0.4603246230688519
+      ],
+      "measured_span_s": 1.9980000000000189,
+      "velocity_std": [
+        0.0158878279286215,
+        0.14984243750212603,
+        0.030903925916334212
+      ],
+      "measured_mean": [
+        0.03605857543454872,
+        -0.018833276061443107,
+        0.4617078845668313
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 29,
+      "kind": "lateral",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2980000000000018,
+          "t90_s": 0.9060000000000059,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.028824709772064326,
+        0.4323739793948853,
+        -0.027886813778838913
+      ],
+      "measured_span_s": 2.0,
+      "velocity_std": [
+        0.017699401674749593,
+        0.09463919308186132,
+        0.02637155030615095
+      ],
+      "measured_mean": [
+        0.03169838740585744,
+        0.44794289005149734,
+        -0.026878459577676088
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 30,
+      "kind": "lateral",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2440000000000282,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.0024694083707571465,
+        -0.48072002337743763,
+        0.016498784116237654
+      ],
+      "measured_span_s": 2.0,
+      "velocity_std": [
+        0.041661644119315326,
+        0.13705574683231042,
+        0.0878448389421922
+      ],
+      "measured_mean": [
+        -0.0005744131862932399,
+        -0.49748139833316274,
+        0.03489849640329587
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 31,
+      "kind": "lateral",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        2.0,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2540000000000191,
+          "t90_s": 1.282000000000039,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.028868555656313473,
+        0.4712842307158211,
+        -0.03597927141990158
+      ],
+      "measured_span_s": 1.9920000000000186,
+      "velocity_std": [
+        0.01900990275960802,
+        0.09418628023895027,
+        0.028989473716037557
+      ],
+      "measured_mean": [
+        0.033613361420768005,
+        0.4674790890847398,
+        -0.03150293467495099
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 32,
+      "kind": "lateral",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -2.0,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2419999999999618,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.0032162987558929535,
+        -0.4720851719259389,
+        0.00991393165890753
+      ],
+      "measured_span_s": 1.9919999999999618,
+      "velocity_std": [
+        0.0417805278272269,
+        0.13404439538937166,
+        0.0886228866271573
+      ],
+      "measured_mean": [
+        -0.0017716648501456436,
+        -0.4928685876686801,
+        0.03229091249107366
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 33,
+      "kind": "lateral",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.26400000000001,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        -0.025268863945327576,
+        0.11963743245067968,
+        -0.05212274996798433
+      ],
+      "measured_span_s": 1.9879999999999995,
+      "velocity_std": [
+        0.021020239353766478,
+        0.1394646623952879,
+        0.02146834807181236
+      ],
+      "measured_mean": [
+        -0.025843603234751347,
+        0.10377319511343766,
+        -0.04981056230492714
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 34,
+      "kind": "lateral",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -0.2,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.24799999999999045,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.01418237553217343,
+        -0.15882963314279108,
+        -0.03833601446215663
+      ],
+      "measured_span_s": 1.9920000000000186,
+      "velocity_std": [
+        0.024561284595673843,
+        0.1378284569867709,
+        0.025230528807910484
+      ],
+      "measured_mean": [
+        0.010210326383432167,
+        -0.14767418264703983,
+        -0.03918440059633623
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 35,
+      "kind": "lateral",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2960000000000491,
+          "t90_s": 0.8780000000000427,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.03055848914673163,
+        0.44674500581286625,
+        -0.02842761638014548
+      ],
+      "measured_span_s": 1.995999999999981,
+      "velocity_std": [
+        0.01766186594765152,
+        0.09758794786987791,
+        0.027375296929936718
+      ],
+      "measured_mean": [
+        0.03275370581022487,
+        0.4574118604995397,
+        -0.026588986556593197
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 36,
+      "kind": "lateral",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        -0.5,
+        0.0
+      ],
+      "valid": false,
+      "steady_detected": false,
+      "dynamics": {
+        "1": {
+          "response_delay_s": 0.2300000000000182,
+          "t90_s": null,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.0033376669121266455,
+        -0.45194963642037955,
+        0.01203558566467075
+      ],
+      "measured_span_s": 1.9919999999999618,
+      "velocity_std": [
+        0.0421179455358045,
+        0.13406021546040622,
+        0.08733915658261143
+      ],
+      "measured_mean": [
+        -0.00038981560651632355,
+        -0.4809610589186926,
+        0.03126035606664311
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 37,
+      "kind": "turn",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.19399999999995998,
+          "t90_s": 0.5699999999999932,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.04014834885307992,
+        -0.021349098646090647,
+        0.918836189544252
+      ],
+      "measured_span_s": 1.9919999999999618,
+      "velocity_std": [
+        0.02638731164165106,
+        0.13931732656038215,
+        0.051026831235259106
+      ],
+      "measured_mean": [
+        0.04962023901690894,
+        -0.012898600657382188,
+        0.92171216241085
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 38,
+      "kind": "turn",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -2.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.18799999999998818,
+          "t90_s": 0.5860000000000127,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.012802518095930322,
+        -0.012050424083428175,
+        -0.9232228266808892
+      ],
+      "measured_span_s": 1.9920000000000186,
+      "velocity_std": [
+        0.032488909559977096,
+        0.14198850727715753,
+        0.10297119717848832
+      ],
+      "measured_mean": [
+        -0.0007343359280824228,
+        -0.025406831790357225,
+        -0.9409176165715687
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 39,
+      "kind": "turn",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        0.5
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.16599999999999682,
+          "t90_s": 0.37999999999999545,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.035500632602344866,
+        -0.008737566575574715,
+        0.4562816688644208
+      ],
+      "measured_span_s": 1.9979999999999905,
+      "velocity_std": [
+        0.015865439920648785,
+        0.15359135671527205,
+        0.02932211944451071
+      ],
+      "measured_mean": [
+        0.03814511336733679,
+        -0.0030643715929657006,
+        0.4602531911788537
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 40,
+      "kind": "turn",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -0.5
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.19999999999998863,
+          "t90_s": 0.35400000000004184,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.03405029628863432,
+        -0.023334137232360122,
+        -0.44224895229097183
+      ],
+      "measured_span_s": 1.9960000000000377,
+      "velocity_std": [
+        0.026064483021788255,
+        0.14796847710019723,
+        0.07337391415366518
+      ],
+      "measured_mean": [
+        0.021452594123869993,
+        -0.019050142445504747,
+        -0.43950607048496393
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 41,
+      "kind": "turn",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.17400000000003502,
+          "t90_s": 0.5440000000000396,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.037156652719999815,
+        -0.03017956640758991,
+        0.9091838636265902
+      ],
+      "measured_span_s": 1.9879999999999995,
+      "velocity_std": [
+        0.025767120130175493,
+        0.13851369362845778,
+        0.054295776785690475
+      ],
+      "measured_mean": [
+        0.046313550135179016,
+        -0.014414138676217724,
+        0.9218888074694269
+      ]
+    },
+    {
+      "source": "docs/motion-calibration-evidence/baseline-03.jsonl",
+      "trial": 42,
+      "kind": "turn",
+      "repeat": 2,
+      "phase": "drive:0",
+      "command": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "valid": true,
+      "steady_detected": true,
+      "dynamics": {
+        "2": {
+          "response_delay_s": 0.19800000000003593,
+          "t90_s": 0.5920000000000414,
+          "response_filter_window_s": 0.3
+        }
+      },
+      "complete": true,
+      "measured_median": [
+        0.010723645729929215,
+        -0.016287110171779015,
+        -0.9403445407610088
+      ],
+      "measured_span_s": 1.9960000000000946,
+      "velocity_std": [
+        0.030598458029306382,
+        0.14748182561457063,
+        0.10292122360708506
+      ],
+      "measured_mean": [
+        -0.002753018707834578,
+        -0.03351001490604896,
+        -0.9378371646023862
+      ]
+    }
+  ]
+}

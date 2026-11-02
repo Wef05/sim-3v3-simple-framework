@@ -1,0 +1,660 @@
+[
+  {
+    "source": "docs/motion-calibration-evidence/validation-02.jsonl.gz",
+    "trial": 1,
+    "kind": "reversal",
+    "phase": "drive:0",
+    "steady_detected": true,
+    "command": [
+      0.0,
+      0.5,
+      0.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": 0.4574118604995397,
+        "measured": 0.46725998441480576,
+        "error": 0.009848123915266072,
+        "relative_error": 0.02153010178728407,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "1": {
+        "response_delay_s": 0.3039999999999736,
+        "t90_s": 0.9660000000000082,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.98599999999999,
+      "net_displacement_m": 0.23594854120591807,
+      "net_rotation_rad": 0.17824556821941612
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-02.jsonl.gz",
+    "trial": 1,
+    "kind": "reversal",
+    "phase": "drive:1",
+    "steady_detected": false,
+    "command": [
+      -0.0,
+      -0.5,
+      -0.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": -0.4833584490587162,
+        "measured": -0.47836060729289515,
+        "error": 0.004997841765821076,
+        "relative_error": 0.010339824979895947,
+        "baseline_qualified": false
+      }
+    ],
+    "dynamics": {
+      "1": {
+        "response_delay_s": 0.8740000000000236,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.98599999999999,
+      "net_displacement_m": 0.23594854120591807,
+      "net_rotation_rad": 0.17824556821941612
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-02.jsonl.gz",
+    "trial": 2,
+    "kind": "reversal",
+    "phase": "drive:0",
+    "steady_detected": false,
+    "command": [
+      0.0,
+      -0.5,
+      0.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": -0.4833584490587162,
+        "measured": -0.5119952260311212,
+        "error": -0.02863677697240502,
+        "relative_error": -0.05924542547703837,
+        "baseline_qualified": false
+      }
+    ],
+    "dynamics": {
+      "1": {
+        "response_delay_s": 0.2340000000000373,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9840000000000373,
+      "net_displacement_m": 0.24203406235173397,
+      "net_rotation_rad": 0.09298055411551517
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-02.jsonl.gz",
+    "trial": 2,
+    "kind": "reversal",
+    "phase": "drive:1",
+    "steady_detected": true,
+    "command": [
+      -0.0,
+      0.5,
+      -0.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": 0.4574118604995397,
+        "measured": 0.4614529832398381,
+        "error": 0.004041122740298386,
+        "relative_error": 0.00883475722707556,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "1": {
+        "response_delay_s": 0.8079999999999927,
+        "t90_s": 1.4560000000000173,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9840000000000373,
+      "net_displacement_m": 0.24203406235173397,
+      "net_rotation_rad": 0.09298055411551517
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-02.jsonl.gz",
+    "trial": 3,
+    "kind": "reversal",
+    "phase": "drive:0",
+    "steady_detected": true,
+    "command": [
+      0.0,
+      0.5,
+      0.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": 0.4574118604995397,
+        "measured": 0.4642604450355408,
+        "error": 0.006848584536001123,
+        "relative_error": 0.014972468200806558,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "1": {
+        "response_delay_s": 0.31399999999996453,
+        "t90_s": 0.9640000000000555,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9880000000000564,
+      "net_displacement_m": 0.24012098943658025,
+      "net_rotation_rad": 0.18579776581026536
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-02.jsonl.gz",
+    "trial": 3,
+    "kind": "reversal",
+    "phase": "drive:1",
+    "steady_detected": false,
+    "command": [
+      -0.0,
+      -0.5,
+      -0.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": -0.4833584490587162,
+        "measured": -0.4794897786886879,
+        "error": 0.0038686703700283043,
+        "relative_error": 0.008003729690795899,
+        "baseline_qualified": false
+      }
+    ],
+    "dynamics": {
+      "1": {
+        "response_delay_s": 0.9239999999999782,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9880000000000564,
+      "net_displacement_m": 0.24012098943658025,
+      "net_rotation_rad": 0.18579776581026536
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 4,
+    "kind": "reversal",
+    "phase": "drive:0",
+    "steady_detected": true,
+    "command": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 2,
+        "predicted": 0.9218888074694269,
+        "measured": 0.9313431162328195,
+        "error": 0.009454308763392594,
+        "relative_error": 0.010255367769725453,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "2": {
+        "response_delay_s": 0.2300000000000182,
+        "t90_s": 0.5320000000000391,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.981999999999971,
+      "net_displacement_m": 0.04567110006408375,
+      "net_rotation_rad": -0.2521702546753748
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 4,
+    "kind": "reversal",
+    "phase": "drive:1",
+    "steady_detected": true,
+    "command": [
+      -0.0,
+      -0.0,
+      -1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 2,
+        "predicted": -0.9291087556616894,
+        "measured": -0.9314890980756737,
+        "error": -0.0023803424139843266,
+        "relative_error": -0.002561963171135012,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "2": {
+        "response_delay_s": 0.6599999999999682,
+        "t90_s": 1.2019999999999982,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.981999999999971,
+      "net_displacement_m": 0.04567110006408375,
+      "net_rotation_rad": -0.2521702546753748
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 5,
+    "kind": "reversal",
+    "phase": "drive:0",
+    "steady_detected": true,
+    "command": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 2,
+        "predicted": -0.9291087556616894,
+        "measured": -0.934803861850456,
+        "error": -0.005695106188766674,
+        "relative_error": -0.006129644300586484,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "2": {
+        "response_delay_s": 0.19400000000007367,
+        "t90_s": 0.5439999999999827,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9840000000000373,
+      "net_displacement_m": 0.04756446838099563,
+      "net_rotation_rad": 0.21437712607925585
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 5,
+    "kind": "reversal",
+    "phase": "drive:1",
+    "steady_detected": true,
+    "command": [
+      -0.0,
+      -0.0,
+      1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 2,
+        "predicted": 0.9218888074694269,
+        "measured": 0.9267273116524084,
+        "error": 0.0048385041829814845,
+        "relative_error": 0.005248468300925702,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "2": {
+        "response_delay_s": 0.7239999999999327,
+        "t90_s": 1.0639999999999645,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9840000000000373,
+      "net_displacement_m": 0.04756446838099563,
+      "net_rotation_rad": 0.21437712607925585
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 6,
+    "kind": "reversal",
+    "phase": "drive:0",
+    "steady_detected": true,
+    "command": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 2,
+        "predicted": 0.9218888074694269,
+        "measured": 0.9230166607229592,
+        "error": 0.0011278532535322627,
+        "relative_error": 0.0012234157139061116,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "2": {
+        "response_delay_s": 0.17799999999999727,
+        "t90_s": 0.5579999999999927,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 2.0,
+      "net_displacement_m": 0.029546467334604816,
+      "net_rotation_rad": -0.28667233252887153
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 6,
+    "kind": "reversal",
+    "phase": "drive:1",
+    "steady_detected": true,
+    "command": [
+      -0.0,
+      -0.0,
+      -1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 2,
+        "predicted": -0.9291087556616894,
+        "measured": -0.9341528789206521,
+        "error": -0.005044123258962752,
+        "relative_error": -0.005428991200680749,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "2": {
+        "response_delay_s": 0.6779999999999973,
+        "t90_s": 1.1399999999999864,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 2.0,
+      "net_displacement_m": 0.029546467334604816,
+      "net_rotation_rad": -0.28667233252887153
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 7,
+    "kind": "combined",
+    "phase": "drive:0",
+    "steady_detected": false,
+    "command": [
+      0.5,
+      0.5,
+      0.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": 0.4574118604995397,
+        "measured": 0.14667848862232052,
+        "error": -0.31073337187721917,
+        "relative_error": -0.6793295030388306,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "0": {
+        "response_delay_s": 0.2899999999999636,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      },
+      "1": {
+        "response_delay_s": 0.5679999999999836,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9699999989999242,
+      "net_displacement_m": 0.2341301089166342,
+      "net_rotation_rad": 0.10036374806805141
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 8,
+    "kind": "combined",
+    "phase": "drive:0",
+    "steady_detected": false,
+    "command": [
+      0.5,
+      -0.5,
+      -0.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": -0.4833584490587162,
+        "measured": -0.16599201973989386,
+        "error": 0.31736642931882236,
+        "relative_error": 0.6565860800340951,
+        "baseline_qualified": false
+      }
+    ],
+    "dynamics": {
+      "0": {
+        "response_delay_s": 0.3100000000000591,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      },
+      "1": {
+        "response_delay_s": 0.2480000000000473,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9879999999999427,
+      "net_displacement_m": 0.29798367656622826,
+      "net_rotation_rad": 0.07967926108973851
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-03.jsonl.gz",
+    "trial": 9,
+    "kind": "combined",
+    "phase": "drive:0",
+    "steady_detected": true,
+    "command": [
+      0.5,
+      0.0,
+      1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 2,
+        "predicted": 0.9218888074694269,
+        "measured": 0.9263518252244339,
+        "error": 0.004463017755007015,
+        "relative_error": 0.004841167089616742,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "0": {
+        "response_delay_s": 0.2839999999999918,
+        "t90_s": 0.8360000000000127,
+        "response_filter_window_s": 0.3
+      },
+      "2": {
+        "response_delay_s": 0.15999999999996817,
+        "t90_s": 0.5979999999999563,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.990000000000009,
+      "net_displacement_m": 0.26449658123091424,
+      "net_rotation_rad": 0.3261833731498869
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-04.jsonl",
+    "trial": 10,
+    "kind": "combined",
+    "phase": "drive:0",
+    "steady_detected": true,
+    "command": [
+      0.5,
+      -0.0,
+      -1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 2,
+        "predicted": -0.9291087556616894,
+        "measured": -0.9472185895136128,
+        "error": -0.01810983385192344,
+        "relative_error": -0.01949161897524692,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "0": {
+        "response_delay_s": 0.3120000000000118,
+        "t90_s": 0.8840000000000146,
+        "response_filter_window_s": 0.3
+      },
+      "2": {
+        "response_delay_s": 0.18799999999998818,
+        "t90_s": 0.6920000000000073,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9980000000000473,
+      "net_displacement_m": 0.211385672115001,
+      "net_rotation_rad": -0.1655706995882108
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-04.jsonl",
+    "trial": 11,
+    "kind": "combined",
+    "phase": "drive:0",
+    "steady_detected": false,
+    "command": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": 0.4574118604995397,
+        "measured": 0.21341562947577616,
+        "error": -0.24399623102376353,
+        "relative_error": -0.5334278624898251,
+        "baseline_qualified": true
+      },
+      {
+        "axis": 2,
+        "predicted": 0.9218888074694269,
+        "measured": 0.7213778319318714,
+        "error": -0.20051097553755548,
+        "relative_error": -0.21750017346230244,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "1": {
+        "response_delay_s": 0.42200000000002547,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      },
+      "2": {
+        "response_delay_s": 0.19600000000002638,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9840000000000373,
+      "net_displacement_m": 0.07996733227450038,
+      "net_rotation_rad": 0.3149070009042203
+    }
+  },
+  {
+    "source": "docs/motion-calibration-evidence/validation-04.jsonl",
+    "trial": 12,
+    "kind": "combined",
+    "phase": "drive:0",
+    "steady_detected": false,
+    "command": [
+      0.0,
+      -0.5,
+      -1.0
+    ],
+    "comparisons": [
+      {
+        "axis": 1,
+        "predicted": -0.4833584490587162,
+        "measured": -0.43273537190589,
+        "error": 0.05062307715282621,
+        "relative_error": 0.10473195875940249,
+        "baseline_qualified": false
+      },
+      {
+        "axis": 2,
+        "predicted": -0.9291087556616894,
+        "measured": -0.7961853700558374,
+        "error": 0.13292338560585193,
+        "relative_error": 0.14306547516193302,
+        "baseline_qualified": true
+      }
+    ],
+    "dynamics": {
+      "1": {
+        "response_delay_s": 0.23599999999999,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      },
+      "2": {
+        "response_delay_s": 0.19600000000002638,
+        "t90_s": null,
+        "response_filter_window_s": 0.3
+      }
+    },
+    "braking": {
+      "observation_duration_s": 1.9840000000000373,
+      "net_displacement_m": 0.20550467231009076,
+      "net_rotation_rad": -0.15072338919716466
+    }
+  }
+]

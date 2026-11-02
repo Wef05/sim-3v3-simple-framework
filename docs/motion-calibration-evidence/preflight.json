@@ -1,0 +1,8 @@
+{
+  "worktree": "/Users/limingzhe/.codex/worktrees/field-boundary-fix/sim-3v3-simple-framework",
+  "branch": "codex/motion-calibration",
+  "baseline": "3133217399c9335c59d023d2a3dce66b1f2287fb",
+  "production_param_sha256": "6364f225284b3c6f807120f476426cb5fc74d563c8117f2fe6409bdc1f242051",
+  "control": "explicit arm; INITIAL or FINISHED only",
+  "protocol": "42 baseline + 6 reversal + 6 combined; no production parameter update"
+}

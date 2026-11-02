@@ -1,0 +1,339 @@
+{
+  "commit": "3133217399c9335c59d023d2a3dce66b1f2287fb",
+  "branch": "codex/motion-calibration",
+  "worktree": "/Users/limingzhe/.codex/worktrees/field-boundary-fix/sim-3v3-simple-framework",
+  "package": "/Users/limingzhe/.codex/worktrees/field-boundary-fix/sim-3v3-simple-framework/build/com.example.lqinternalmatch-2.0.3.agent",
+  "package_sha256": "e8d64448df44eddc198cc413b9210e7dd5077bde10a5e91df295bb121f5472c8",
+  "files": [
+    {
+      "file": "src/__init__.py",
+      "source_sha256": "2f837a2561fbf836b5e4190774180f053c8c4fe982b57566149491222edd3533",
+      "package_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "deployed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "docstring_only_build_difference": true
+    },
+    {
+      "file": "src/actions/__init__.py",
+      "source_sha256": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "package_sha256": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "deployed_sha256": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/actions/controller.py",
+      "source_sha256": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "package_sha256": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "deployed_sha256": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/actions/executor.py",
+      "source_sha256": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "package_sha256": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "deployed_sha256": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/actions/kick_planner.py",
+      "source_sha256": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "package_sha256": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "deployed_sha256": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/actions/motion_controller.py",
+      "source_sha256": "bf592f0972f1e059c86ecc1aaaca5cb46f62802eb66f26f471c155e36283567b",
+      "package_sha256": "bf592f0972f1e059c86ecc1aaaca5cb46f62802eb66f26f471c155e36283567b",
+      "deployed_sha256": "bf592f0972f1e059c86ecc1aaaca5cb46f62802eb66f26f471c155e36283567b",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/calibration_agent.py",
+      "source_sha256": "40c629a2080d43c17d343c266984c2253dc49923ed3d41d35d53ae8a0af00b1e",
+      "package_sha256": "40c629a2080d43c17d343c266984c2253dc49923ed3d41d35d53ae8a0af00b1e",
+      "deployed_sha256": "40c629a2080d43c17d343c266984c2253dc49923ed3d41d35d53ae8a0af00b1e",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/__init__.py",
+      "source_sha256": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "package_sha256": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "deployed_sha256": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/agent.py",
+      "source_sha256": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "package_sha256": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "deployed_sha256": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/config.py",
+      "source_sha256": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "package_sha256": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "deployed_sha256": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/debugdraw.py",
+      "source_sha256": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "package_sha256": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "deployed_sha256": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/decision_frame.py",
+      "source_sha256": "fbcd7c209301a82fa51c8cebf4c56bf2c171b3d887c46943fcdb48f58e87e3bc",
+      "package_sha256": "fbcd7c209301a82fa51c8cebf4c56bf2c171b3d887c46943fcdb48f58e87e3bc",
+      "deployed_sha256": "fbcd7c209301a82fa51c8cebf4c56bf2c171b3d887c46943fcdb48f58e87e3bc",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/game_codec.py",
+      "source_sha256": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "package_sha256": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "deployed_sha256": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/log_publisher.py",
+      "source_sha256": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "package_sha256": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "deployed_sha256": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/robot_backend.py",
+      "source_sha256": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "package_sha256": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "deployed_sha256": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/ros_source.py",
+      "source_sha256": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "package_sha256": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "deployed_sha256": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/runtime.py",
+      "source_sha256": "64908d5a9c753bc405e76413090d2aa7583fd97930756f38b64bb40a88e01e37",
+      "package_sha256": "64908d5a9c753bc405e76413090d2aa7583fd97930756f38b64bb40a88e01e37",
+      "deployed_sha256": "64908d5a9c753bc405e76413090d2aa7583fd97930756f38b64bb40a88e01e37",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/framework/types.py",
+      "source_sha256": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "package_sha256": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "deployed_sha256": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/intents.py",
+      "source_sha256": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "package_sha256": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "deployed_sha256": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/main.py",
+      "source_sha256": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "package_sha256": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "deployed_sha256": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/motion_calibration.py",
+      "source_sha256": "fa7e43f68d93c936769c692b449eabe60df81289e006314d528597859df80411",
+      "package_sha256": "fa7e43f68d93c936769c692b449eabe60df81289e006314d528597859df80411",
+      "deployed_sha256": "fa7e43f68d93c936769c692b449eabe60df81289e006314d528597859df80411",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/param.py",
+      "source_sha256": "6364f225284b3c6f807120f476426cb5fc74d563c8117f2fe6409bdc1f242051",
+      "package_sha256": "6364f225284b3c6f807120f476426cb5fc74d563c8117f2fe6409bdc1f242051",
+      "deployed_sha256": "6364f225284b3c6f807120f476426cb5fc74d563c8117f2fe6409bdc1f242051",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/player.py",
+      "source_sha256": "942ba25dbe05e105c72c3458db81569d0c922483ca108d66df2d6848dfc71c6a",
+      "package_sha256": "942ba25dbe05e105c72c3458db81569d0c922483ca108d66df2d6848dfc71c6a",
+      "deployed_sha256": "942ba25dbe05e105c72c3458db81569d0c922483ca108d66df2d6848dfc71c6a",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/role_allocator.py",
+      "source_sha256": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "package_sha256": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "deployed_sha256": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/telemetry.py",
+      "source_sha256": "4fe66df3f90611692b396ae96407e326964bfd1ac5a6c24acdf6ccaed2637daa",
+      "package_sha256": "4fe66df3f90611692b396ae96407e326964bfd1ac5a6c24acdf6ccaed2637daa",
+      "deployed_sha256": "4fe66df3f90611692b396ae96407e326964bfd1ac5a6c24acdf6ccaed2637daa",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/telemetry_config.py",
+      "source_sha256": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "package_sha256": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "deployed_sha256": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/telemetry_status.py",
+      "source_sha256": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "package_sha256": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "deployed_sha256": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/__init__.py",
+      "source_sha256": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "package_sha256": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "deployed_sha256": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/attack_targets.py",
+      "source_sha256": "942cb6957f26575f1b6964aab73fb5e4c607e833e5aef53596a1c9c4aab6dcb0",
+      "package_sha256": "942cb6957f26575f1b6964aab73fb5e4c607e833e5aef53596a1c9c4aab6dcb0",
+      "deployed_sha256": "942cb6957f26575f1b6964aab73fb5e4c607e833e5aef53596a1c9c4aab6dcb0",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/ball_motion.py",
+      "source_sha256": "1f71a99d7b3e4490698a8dea01f575b3a5916b6fe262e0dfabff2cc14eb0dc55",
+      "package_sha256": "1f71a99d7b3e4490698a8dea01f575b3a5916b6fe262e0dfabff2cc14eb0dc55",
+      "deployed_sha256": "1f71a99d7b3e4490698a8dea01f575b3a5916b6fe262e0dfabff2cc14eb0dc55",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/block_point.py",
+      "source_sha256": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "package_sha256": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "deployed_sha256": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/blocked_attack.py",
+      "source_sha256": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "package_sha256": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "deployed_sha256": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/free_position.py",
+      "source_sha256": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "package_sha256": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "deployed_sha256": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/geom.py",
+      "source_sha256": "adc4f2c4df6d0fb2c9885e993a47589ad398eddaca3f246258d9245548f0e00f",
+      "package_sha256": "adc4f2c4df6d0fb2c9885e993a47589ad398eddaca3f246258d9245548f0e00f",
+      "deployed_sha256": "adc4f2c4df6d0fb2c9885e993a47589ad398eddaca3f246258d9245548f0e00f",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/goalkeeper.py",
+      "source_sha256": "75663621787da3481c889f17d42cb0f702fd141ddd14e4d12085e3f18015f3d0",
+      "package_sha256": "75663621787da3481c889f17d42cb0f702fd141ddd14e4d12085e3f18015f3d0",
+      "deployed_sha256": "75663621787da3481c889f17d42cb0f702fd141ddd14e4d12085e3f18015f3d0",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/interception.py",
+      "source_sha256": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "package_sha256": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "deployed_sha256": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/interception_risk.py",
+      "source_sha256": "d5a907852be89b1d61d808d0d57c14511a27940f5a4ecace99efcbfa6d7378a3",
+      "package_sha256": "d5a907852be89b1d61d808d0d57c14511a27940f5a4ecace99efcbfa6d7378a3",
+      "deployed_sha256": "d5a907852be89b1d61d808d0d57c14511a27940f5a4ecace99efcbfa6d7378a3",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/kick_error.py",
+      "source_sha256": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "package_sha256": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "deployed_sha256": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/kick_lane.py",
+      "source_sha256": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "package_sha256": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "deployed_sha256": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/navigation.py",
+      "source_sha256": "2011c541d24342c32a5a20a3e85f55c33657620e1d4e4187931064af1aa083b3",
+      "package_sha256": "2011c541d24342c32a5a20a3e85f55c33657620e1d4e4187931064af1aa083b3",
+      "deployed_sha256": "2011c541d24342c32a5a20a3e85f55c33657620e1d4e4187931064af1aa083b3",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/obstacles.py",
+      "source_sha256": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "package_sha256": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "deployed_sha256": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/path_planner.py",
+      "source_sha256": "09138e5383c8696bf09a664acae77d4fda90ef17cbb18a41c4ac629da86e5a24",
+      "package_sha256": "09138e5383c8696bf09a664acae77d4fda90ef17cbb18a41c4ac629da86e5a24",
+      "deployed_sha256": "09138e5383c8696bf09a664acae77d4fda90ef17cbb18a41c4ac629da86e5a24",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/restart_defense.py",
+      "source_sha256": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "package_sha256": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "deployed_sha256": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/scoring_probability.py",
+      "source_sha256": "1262a7edf7e89ef8c3126a8535797c019fb9fa41439aaeadeec66c81d1782077",
+      "package_sha256": "1262a7edf7e89ef8c3126a8535797c019fb9fa41439aaeadeec66c81d1782077",
+      "deployed_sha256": "1262a7edf7e89ef8c3126a8535797c019fb9fa41439aaeadeec66c81d1782077",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/tactical_geometry.py",
+      "source_sha256": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "package_sha256": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "deployed_sha256": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/utils/threat.py",
+      "source_sha256": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "package_sha256": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "deployed_sha256": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "docstring_only_build_difference": false
+    },
+    {
+      "file": "src/visualization.py",
+      "source_sha256": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "package_sha256": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "deployed_sha256": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "docstring_only_build_difference": false
+    }
+  ],
+  "verified_at": 1793598551.566066
+}

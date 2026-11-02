@@ -1,0 +1,142 @@
+{
+  "baseline-01": {
+    "start": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "first_id": 11844,
+      "last_id": 46841,
+      "recording_hz": 30,
+      "retention_seconds": 1800
+    },
+    "end": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "first_id": 14009,
+      "last_id": 49441,
+      "recording_hz": 30,
+      "retention_seconds": 1800
+    }
+  },
+  "baseline-02": {
+    "start": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "first_id": 16019,
+      "last_id": 51883,
+      "recording_hz": 30,
+      "retention_seconds": 1800
+    },
+    "end": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "last_id": 70039,
+      "status": {
+        "run_id": "baseline-20261102-02",
+        "state": "aborted",
+        "trial": 18,
+        "total": 42,
+        "reason": "homing_timeout",
+        "sim_time": 502.358000001
+      }
+    }
+  },
+  "baseline-03": {
+    "start": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "first_id": 39332,
+      "last_id": 79144,
+      "recording_hz": 30,
+      "retention_seconds": 1800
+    },
+    "end": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "last_id": 105459,
+      "status": {
+        "run_id": "baseline-20261102-03",
+        "state": "done",
+        "trial": 42,
+        "total": 42,
+        "sim_time": 518.238000001
+      }
+    }
+  },
+  "validation-01": {
+    "start": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "first_id": 66982,
+      "last_id": 106413,
+      "recording_hz": 30,
+      "retention_seconds": 1800
+    },
+    "end": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "last_id": 109021,
+      "status": {
+        "run_id": "validation-20261102-01",
+        "state": "aborted",
+        "trial": 1,
+        "total": 12,
+        "reason": "disarmed",
+        "sim_time": 579.254
+      }
+    }
+  },
+  "validation-02": {
+    "start": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "first_id": 71053,
+      "last_id": 110324,
+      "recording_hz": 30,
+      "retention_seconds": 1800
+    },
+    "end": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "last_id": 115636,
+      "status": {
+        "run_id": "validation-20261102-02",
+        "state": "aborted",
+        "trial": 4,
+        "total": 12,
+        "reason": "homing_timeout",
+        "sim_time": 703.007999997
+      }
+    }
+  },
+  "validation-03": {
+    "start": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "first_id": 80042,
+      "last_id": 117872,
+      "recording_hz": 30,
+      "retention_seconds": 1800
+    },
+    "end": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "last_id": 127740,
+      "status": {
+        "run_id": "validation-20261102-03",
+        "state": "aborted",
+        "trial": 10,
+        "total": 12,
+        "reason": "homing_timeout",
+        "sim_time": 904.613999992
+      }
+    }
+  },
+  "validation-04": {
+    "start": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "first_id": 94376,
+      "last_id": 131498,
+      "recording_hz": 30,
+      "retention_seconds": 1800
+    },
+    "end": {
+      "session": "621398b52bc5482a87ed098cb9f0f00f",
+      "last_id": 134471,
+      "status": {
+        "run_id": "validation-20261102-04",
+        "state": "done",
+        "trial": 12,
+        "total": 12,
+        "sim_time": 997.70399999
+      }
+    }
+  }
+}
