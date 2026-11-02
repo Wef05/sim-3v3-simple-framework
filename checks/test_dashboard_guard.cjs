@@ -35,3 +35,9 @@ assert.match(renderGuard('guard:set',{close_clear_rejection:'contested'}),/争�
 
 assert.match(renderGuard('guard:direct_clear',{outlet_mode:'own_goal_escape'}),/避开己方球门/);
 assert.match(renderGuard('guard:direct_clear',{outlet_mode:'near_facing'}),/是否触球成功/);
+
+ctx.interceptLabel=()=>'';
+ctx.renderPacket({context:{teammates:{}},players:[{id:3,role:'freeman',action:'freeman:cover:goal_side',freeman_cover:{mode:'cover',reason:'race_lost',strategy:'goal_side',race:false}}]});
+assert.match(cards.children[0].children.filter(x=>typeof x==='string').join(' '),/协防：cover.*race_lost.*抢先 否/);
+ctx.renderPacket({context:{teammates:{}},players:[{id:3,role:'freeman',action:'freeman:wait'}]});
+assert.doesNotMatch(cards.children[0].children.filter(x=>typeof x==='string').join(' '),/协防/);
