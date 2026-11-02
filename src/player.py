@@ -26,6 +26,7 @@ from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
 from .utils.free_position import nearest_free_position, shot_triangle
 from .utils.ball_motion import BallMotion
 from .utils.restart_defense import restart_intent, kickoff_targets
+from .utils.restart_escape import escape_intent
 
 class Player:
     """跨帧存活的角色行为对象，通过组合持有执行控制器。
@@ -131,6 +132,16 @@ class Player:
         self.action = task.role.value
         self.tactical_target = None
         self.freeman_region = None
+        if (task.role not in (Role.UNAVAILABLE, Role.STAY) and
+                get_phase(self.context) in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY)):
+            evacuation, label = escape_intent(self.context, self.id, self.pose)
+            if evacuation is not None:
+                # 撤离优先于门将持位及外场剧本；离开后不复用撤离前的出球计划。
+                self._guard_memory = None
+                self._restart_memory = None
+                self.action = f'{task.role.value}:{label}'
+                self.tactical_target = getattr(evacuation, 'target', None)
+                return evacuation
         if task.role == Role.ATTACKER:
             # 调试阶段：我方开球固定传给 3 号，其余阶段默认射门。
             target = 3 if get_phase(self.context) == Phase.OUR_KICKOFF else 0
@@ -364,7 +375,7 @@ def coordinate(context, assignments, preliminary):
         final[pid] = replace(intent, motion_priority=max(intent.motion_priority, priority),
             opponent_mode='contest' if contest and not restricted else 'avoid',
             avoid_ball=True if restricted else intent.avoid_ball,
-            ball_keepout=max(intent.ball_keepout, context.field.circle_radius) if restricted else intent.ball_keepout)
+            ball_keepout=max(intent.ball_keepout, context.field.circle_radius, OPPONENT_RESTART_AVOID_M) if restricted else intent.ball_keepout)
     return final
 
 def decide(context, players, assignments, store):
