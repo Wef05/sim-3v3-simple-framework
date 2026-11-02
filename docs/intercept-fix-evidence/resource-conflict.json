@@ -1,0 +1,33 @@
+{
+  "task": "intercept-continuous",
+  "worktree": "/private/tmp/intercept-continuous",
+  "branch": "codex/intercept-continuous",
+  "base": "aaee819",
+  "simulation_started_by_this_task": false,
+  "shared_match_at_last_status": {
+    "status": "finished",
+    "game": {
+      "phase": "firstHalf",
+      "state": "finished",
+      "setPlay": "noSetPlay",
+      "kickingSide": null,
+      "droppedBall": false,
+      "stopped": false,
+      "secondaryTime": 0,
+      "regularDurationSeconds": 600.0,
+      "timeRemaining": 168.627999998657,
+      "primaryTime": 168.627999998657,
+      "drawPolicy": "allow_draw",
+      "extraTimeMaxSeconds": 12000.0,
+      "timingStage": "regulation"
+    },
+    "score": {
+      "home": 0,
+      "away": 0
+    },
+    "startedAtWallTime": 1793609942.4419954
+  },
+  "owner_thread": "01a19b17-0c4c-7590-810e-f4c72f7af3d5",
+  "owner_observation": "active; latest commentary: 本次代码已重新部署，场地已复位。接下来等待就绪检查通过后开赛；本场监控只记录状态和回放，不包含按时主动结束比赛的操作。",
+  "action": "Did not build, deploy, reset, start or clear shared history."
+}

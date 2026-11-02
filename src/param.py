@@ -34,7 +34,7 @@ ARRIVE_DIST = 0.15             # 到达目标点阈值 (m)
 OMNI_DIST = 1.0                # 距目标小于该值时使用全向近距控制
 TURN_THRESHOLD = 0.5           # 远距离行走时,角差超过该值先原地转向 (rad)
 MAX_LINEAR = 2.0               # 指令前进速度上限 (m/s)
-MAX_ANGULAR = 2.0              # 指令转向速度上限 (rad/s)
+MAX_ANGULAR = 1.0              # 指令转向速度上限 (rad/s)
 LINEAR_GAIN = 1.5              # 平移 P 增益
 ANGULAR_GAIN = 2.0             # 转向 P 增益
 
@@ -115,8 +115,10 @@ GUARD_PLAYER_ID = 2  # READY 初始站位离己方球门最近的球员；各阶
 
 ATTACKER_KEEP_TIME_MARGIN_S = 0.3  # 预计接球时间优势不足该值时保留当前 attacker
 BALL_INTERCEPT_HORIZON_S = 3.0     # 角色分配只在短期轨迹内寻找接球机会
-BALL_INTERCEPT_STEP_S = 0.05       # 接球时间搜索间隔（秒）
-BALL_CONTROL_RADIUS_M = 0.35      # 进入此范围视为有机会拿到球，并非踢球触发距离
+BALL_INTERCEPT_TIME_TOLERANCE_S = 0.001  # 最早可达时间的搜索误差（秒）
+BALL_INTERCEPT_MAX_EVALUATIONS = 2048  # 单次搜索的预测求值预算
+BALL_INTERCEPT_STEP_S = 0.05       # 区间搜索的初始分段长度（秒）
+BALL_CONTROL_RADIUS_M = 0.2       # 进入此范围视为有机会拿到球，并非踢球触发距离
 BALL_MOTION_MAX_GAP_S = 0.5       # 观测中断后不沿用旧速度
 BALL_MOTION_MAX_SPEED_MPS = 20.0  # 超过此值视为重置/跳变；需按仿真球速校准
 BALL_MOTION_MODE = 'sliding_then_rolling'  # 或 pure_rolling；阶段按实时观测估计
