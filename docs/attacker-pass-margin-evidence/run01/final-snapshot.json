@@ -1,0 +1,1139 @@
+{
+  "1": {
+    "packet": {
+      "version": 1,
+      "block_points": [
+        {
+          "id": 1,
+          "side": "teammates",
+          "state_known": true,
+          "status": "unavailable",
+          "target": null,
+          "horizon_s": 8.0,
+          "step_s": 0.025,
+          "position_tolerance_m": 0.1,
+          "time_margin_s": 0.1,
+          "effective_radius_m": 0.24999999999999997,
+          "model": "nearest_block_sampled_v1",
+          "reason": "no_feasible_point"
+        },
+        {
+          "id": 2,
+          "side": "teammates",
+          "state_known": true,
+          "status": "reachable",
+          "target": [
+            -6.3934609218891225,
+            0.714376111382113
+          ],
+          "horizon_s": 8.0,
+          "step_s": 0.025,
+          "position_tolerance_m": 0.1,
+          "time_margin_s": 0.1,
+          "effective_radius_m": 0.24999999999999997,
+          "model": "nearest_block_sampled_v1",
+          "ball_position": [
+            -6.25647809006331,
+            0.8983503165347075
+          ],
+          "ball_time_s": 0.125,
+          "move_distance_m": 0,
+          "turn_time_s": 0,
+          "move_time_s": 0.0,
+          "arrival_time_s": 0.0,
+          "slack_s": 0.125
+        },
+        {
+          "id": 3,
+          "side": "teammates",
+          "state_known": true,
+          "status": "unavailable",
+          "target": null,
+          "horizon_s": 8.0,
+          "step_s": 0.025,
+          "position_tolerance_m": 0.1,
+          "time_margin_s": 0.1,
+          "effective_radius_m": 0.24999999999999997,
+          "model": "nearest_block_sampled_v1",
+          "reason": "no_feasible_point"
+        },
+        {
+          "id": 1,
+          "side": "opponents",
+          "state_known": false,
+          "status": "reachable",
+          "target": [
+            -6.6438031491670015,
+            0.7420686616226253
+          ],
+          "horizon_s": 8.0,
+          "step_s": 0.025,
+          "position_tolerance_m": 0.1,
+          "time_margin_s": 0.1,
+          "effective_radius_m": 0.24999999999999997,
+          "model": "nearest_block_sampled_v1",
+          "ball_position": [
+            -6.87389173781957,
+            0.6442972886555403
+          ],
+          "ball_time_s": 0.7923923492431643,
+          "move_distance_m": 1.3847846944294984,
+          "turn_time_s": 0.0,
+          "move_time_s": 0.6923923472147492,
+          "arrival_time_s": 0.6923923472147492,
+          "slack_s": 0.10000000202841508
+        },
+        {
+          "id": 2,
+          "side": "opponents",
+          "state_known": false,
+          "status": "unavailable",
+          "target": null,
+          "horizon_s": 8.0,
+          "step_s": 0.025,
+          "position_tolerance_m": 0.1,
+          "time_margin_s": 0.1,
+          "effective_radius_m": 0.24999999999999997,
+          "model": "nearest_block_sampled_v1",
+          "reason": "no_feasible_point"
+        },
+        {
+          "id": 3,
+          "side": "opponents",
+          "state_known": false,
+          "status": "unavailable",
+          "target": null,
+          "horizon_s": 8.0,
+          "step_s": 0.025,
+          "position_tolerance_m": 0.1,
+          "time_margin_s": 0.1,
+          "effective_radius_m": 0.24999999999999997,
+          "model": "nearest_block_sampled_v1",
+          "reason": "no_feasible_point"
+        }
+      ],
+      "context": {
+        "now": 125.627999999,
+        "dt": 0.018000000000000682,
+        "team_id": 1,
+        "field": {
+          "length": 14.0,
+          "width": 9.0,
+          "penalty_dist": 2.1,
+          "goal_width": 2.6,
+          "circle_radius": 1.5,
+          "penalty_area_length": 3.0,
+          "penalty_area_width": 6.0,
+          "goal_area_length": 1.0,
+          "goal_area_width": 4.0
+        },
+        "game": {
+          "packet_number": 129,
+          "players_per_team": 3,
+          "competition_type": "LARGE",
+          "stopped": false,
+          "game_phase": "NORMAL",
+          "state": "FINISHED",
+          "set_play": "NONE",
+          "first_half": true,
+          "kicking_team": 255,
+          "secs_remaining": 540,
+          "secondary_time": 0,
+          "teams": [
+            {
+              "team_number": 1,
+              "field_player_colour": 1,
+              "goalkeeper_colour": 0,
+              "goalkeeper": 1,
+              "score": 0,
+              "penalty_shot": 0,
+              "single_shots": 0,
+              "message_budget": 12000,
+              "players": [
+                {
+                  "penalty": "NONE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "NONE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "NONE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                }
+              ]
+            },
+            {
+              "team_number": 2,
+              "field_player_colour": 0,
+              "goalkeeper_colour": 2,
+              "goalkeeper": 1,
+              "score": 0,
+              "penalty_shot": 0,
+              "single_shots": 0,
+              "message_budget": 12000,
+              "players": [
+                {
+                  "penalty": "NONE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "NONE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "NONE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                },
+                {
+                  "penalty": "SUBSTITUTE",
+                  "secs_till_unpenalised": 0,
+                  "warnings": 0,
+                  "cautions": 0
+                }
+              ]
+            }
+          ],
+          "last_seen_at": 125.469999999,
+          "received_at": 19709.351087217
+        },
+        "ball": {
+          "x": -6.112227976851549,
+          "y": 0.9577062737062733,
+          "last_seen_at": 125.625999999,
+          "confidence": 1.0,
+          "received_at": 19709.587364467
+        },
+        "teammates": {
+          "1": {
+            "player_id": 1,
+            "pose": {
+              "x": -1.1204501862016718,
+              "y": 2.251117041157691,
+              "theta": -0.24400963164710743
+            },
+            "last_seen_at": 125.625999999,
+            "received_at": 19709.58722855
+          },
+          "2": {
+            "player_id": 2,
+            "pose": {
+              "x": -6.3934609218891225,
+              "y": 0.714376111382113,
+              "theta": 0.5779663642134677
+            },
+            "last_seen_at": 125.625999999,
+            "received_at": 19709.587255675
+          },
+          "3": {
+            "player_id": 3,
+            "pose": {
+              "x": -4.796141022386571,
+              "y": 0.4463724477126244,
+              "theta": 2.869037929208275
+            },
+            "last_seen_at": 125.625999999,
+            "received_at": 19709.587278842
+          }
+        },
+        "opponents": {
+          "1": {
+            "player_id": 1,
+            "pose": {
+              "x": -5.3693105254511515,
+              "y": 1.283637864975335,
+              "theta": -2.924239770020498
+            },
+            "last_seen_at": 125.625999999,
+            "received_at": 19709.587299884
+          },
+          "2": {
+            "player_id": 2,
+            "pose": {
+              "x": 0.406243262191327,
+              "y": -0.006570910725644656,
+              "theta": 2.05409113205715
+            },
+            "last_seen_at": 125.625999999,
+            "received_at": 19709.587320675
+          },
+          "3": {
+            "player_id": 3,
+            "pose": {
+              "x": 5.529649141415776,
+              "y": 0.5387488345445322,
+              "theta": 2.6844777189928797
+            },
+            "last_seen_at": 125.625999999,
+            "received_at": 19709.587341259
+          }
+        }
+      },
+      "phase": "stopped",
+      "normal_attacker": null,
+      "attack_decision": null,
+      "threat": {
+        "status": "ok",
+        "threat_id": 1,
+        "threat_intercept": {
+          "target": [
+            -6.355087820583395,
+            0.8627557170844532
+          ],
+          "ball_position": [
+            -6.676976715828577,
+            0.7253237734984119
+          ],
+          "approach_normal": [
+            -0.38052423982865063,
+            0.9247709461822574
+          ],
+          "distance_m": 1.0718669031234638,
+          "turn_angle_rad": 0.18617215965435596,
+          "turn_time_s": 0.0,
+          "move_distance_m": 1.0718669031234638,
+          "move_time_s": 0.5359334515617319,
+          "arrival_time_s": 0.5359334515617319,
+          "status": "intercept",
+          "score_s": 0.55,
+          "intercept_time_s": 0.55,
+          "target_time_s": 0.55,
+          "slack_s": 0.014066548438268156,
+          "horizon_s": 3.0,
+          "step_s": 0.05,
+          "control_radius_m": 0.35,
+          "linear_speed_mps": 2.0,
+          "angular_speed_rps": 2.0,
+          "turn_threshold_rad": 0.5,
+          "omni_distance_m": 1.0
+        },
+        "opponents": [
+          {
+            "id": 1,
+            "penalized": false,
+            "intercept": {
+              "target": [
+                -6.355087820583395,
+                0.8627557170844532
+              ],
+              "ball_position": [
+                -6.676976715828577,
+                0.7253237734984119
+              ],
+              "approach_normal": [
+                -0.38052423982865063,
+                0.9247709461822574
+              ],
+              "distance_m": 1.0718669031234638,
+              "turn_angle_rad": 0.18617215965435596,
+              "turn_time_s": 0.0,
+              "move_distance_m": 1.0718669031234638,
+              "move_time_s": 0.5359334515617319,
+              "arrival_time_s": 0.5359334515617319,
+              "status": "intercept",
+              "score_s": 0.55,
+              "intercept_time_s": 0.55,
+              "target_time_s": 0.55,
+              "slack_s": 0.014066548438268156,
+              "horizon_s": 3.0,
+              "step_s": 0.05,
+              "control_radius_m": 0.35,
+              "linear_speed_mps": 2.0,
+              "angular_speed_rps": 2.0,
+              "turn_threshold_rad": 0.5,
+              "omni_distance_m": 1.0
+            }
+          },
+          {
+            "id": 2,
+            "penalized": false,
+            "intercept": {
+              "target": [
+                -7.0776759573892525,
+                0.5604442701746317
+              ],
+              "ball_position": [
+                -7.4013457885530425,
+                0.42726078623460395
+              ],
+              "approach_normal": [
+                -0.38052423982865063,
+                0.9247709461822574
+              ],
+              "distance_m": 7.50536828547267,
+              "turn_angle_rad": 1.011881522374876,
+              "turn_time_s": 0.255940761187438,
+              "move_distance_m": 7.50536828547267,
+              "move_time_s": 3.752684142736335,
+              "arrival_time_s": 4.008624903923773,
+              "status": "fallback",
+              "score_s": 4.008624903923773,
+              "intercept_time_s": null,
+              "target_time_s": 3.0,
+              "slack_s": -1.0086249039237734,
+              "horizon_s": 3.0,
+              "step_s": 0.05,
+              "control_radius_m": 0.35,
+              "linear_speed_mps": 2.0,
+              "angular_speed_rps": 2.0,
+              "turn_threshold_rad": 0.5,
+              "omni_distance_m": 1.0
+            }
+          },
+          {
+            "id": 3,
+            "penalized": false,
+            "intercept": {
+              "target": [
+                -7.0776759573892525,
+                0.5604442701746317
+              ],
+              "ball_position": [
+                -7.4013457885530425,
+                0.42726078623460395
+              ],
+              "approach_normal": [
+                -0.38052423982865063,
+                0.9247709461822574
+              ],
+              "distance_m": 12.607343766189862,
+              "turn_angle_rad": 0.45539407675878163,
+              "turn_time_s": 0.0,
+              "move_distance_m": 12.607343766189862,
+              "move_time_s": 6.303671883094931,
+              "arrival_time_s": 6.303671883094931,
+              "status": "fallback",
+              "score_s": 6.303671883094931,
+              "intercept_time_s": null,
+              "target_time_s": 3.0,
+              "slack_s": -3.303671883094931,
+              "horizon_s": 3.0,
+              "step_s": 0.05,
+              "control_radius_m": 0.35,
+              "linear_speed_mps": 2.0,
+              "angular_speed_rps": 2.0,
+              "turn_threshold_rad": 0.5,
+              "omni_distance_m": 1.0
+            }
+          }
+        ],
+        "teammates": [
+          {
+            "id": 1,
+            "score_s": 4.152658898413378,
+            "intercept": {
+              "target": [
+                -7.065229917501873,
+                0.5248626367678463
+              ],
+              "ball_position": [
+                -7.4013457885530425,
+                0.42726078623460395
+              ],
+              "approach_normal": [
+                0.38052423982865063,
+                -0.9247709461822574
+              ],
+              "distance_m": 6.190344119865473,
+              "turn_angle_rad": 2.6149736769612835,
+              "turn_time_s": 1.0574868384806417,
+              "move_distance_m": 6.190344119865473,
+              "move_time_s": 3.0951720599327364,
+              "arrival_time_s": 4.152658898413378,
+              "status": "fallback",
+              "score_s": 4.152658898413378,
+              "intercept_time_s": null,
+              "target_time_s": 3.0,
+              "slack_s": -1.152658898413378,
+              "horizon_s": 3.0,
+              "step_s": 0.05,
+              "control_radius_m": 0.35,
+              "linear_speed_mps": 2.0,
+              "angular_speed_rps": 2.0,
+              "turn_threshold_rad": 0.5,
+              "omni_distance_m": 1.0
+            },
+            "margin_s": null,
+            "can_beat": null
+          },
+          {
+            "id": 2,
+            "score_s": 0.05,
+            "intercept": {
+              "target": [
+                -6.3934609218891225,
+                0.714376111382113
+              ],
+              "ball_position": [
+                -6.172325498328877,
+                0.9329773786537691
+              ],
+              "approach_normal": [
+                0.38052423982865063,
+                -0.9247709461822574
+              ],
+              "distance_m": 0.0,
+              "turn_angle_rad": 0.5779663642134677,
+              "turn_time_s": 0.0,
+              "move_distance_m": 0.0,
+              "move_time_s": 0.0,
+              "arrival_time_s": 0.0,
+              "status": "intercept",
+              "score_s": 0.05,
+              "intercept_time_s": 0.05,
+              "target_time_s": 0.05,
+              "slack_s": 0.05,
+              "horizon_s": 3.0,
+              "step_s": 0.05,
+              "control_radius_m": 0.35,
+              "linear_speed_mps": 2.0,
+              "angular_speed_rps": 2.0,
+              "turn_threshold_rad": 0.5,
+              "omni_distance_m": 1.0
+            },
+            "margin_s": 0.5,
+            "can_beat": true
+          },
+          {
+            "id": 3,
+            "score_s": 0.9500000000000001,
+            "intercept": {
+              "target": [
+                -6.636048984034872,
+                0.5742299436829877
+              ],
+              "ball_position": [
+                -6.985206951650692,
+                0.5984933657497451
+              ],
+              "approach_normal": [
+                0.38052423982865063,
+                -0.9247709461822574
+              ],
+              "distance_m": 1.8443450996526156,
+              "turn_angle_rad": 0.20317501434522445,
+              "turn_time_s": 0.0,
+              "move_distance_m": 1.8443450996526156,
+              "move_time_s": 0.9221725498263078,
+              "arrival_time_s": 0.9221725498263078,
+              "status": "intercept",
+              "score_s": 0.9500000000000001,
+              "intercept_time_s": 0.9500000000000001,
+              "target_time_s": 0.9500000000000001,
+              "slack_s": 0.02782745017369226,
+              "horizon_s": 3.0,
+              "step_s": 0.05,
+              "control_radius_m": 0.35,
+              "linear_speed_mps": 2.0,
+              "angular_speed_rps": 2.0,
+              "turn_threshold_rad": 0.5,
+              "omni_distance_m": 1.0
+            },
+            "margin_s": -0.4,
+            "can_beat": false
+          }
+        ],
+        "can_beat": true,
+        "first_player_id": 2,
+        "opponent_motion_assumption": "ready",
+        "approach_basis": "trajectory_line",
+        "own_approach_normal": [
+          0.3805242398286506,
+          -0.9247709461822573
+        ],
+        "model": "shared_ball_intercept_half_plane"
+      },
+      "kick_error": {
+        "method": "observed_first_segment",
+        "run_id": "8a8a278ebaa44bd6b23b8e006805a5b2",
+        "events": [
+          {
+            "id": 1,
+            "player_id": 1,
+            "time": 63.426,
+            "origin": [
+              0.06265618962567066,
+              0.007388058009489446
+            ],
+            "segment_anchor": [
+              0.11980030918965792,
+              0.3972708581371726
+            ],
+            "planned_direction": 1.8401491732870154,
+            "command_direction": 1.7528827106872988,
+            "reference_direction": 1.4252650956710249,
+            "actual_direction": 1.4252650956710249,
+            "error_deg": -23.771106634574327,
+            "status": "complete",
+            "end_reason": "observation_gap"
+          },
+          {
+            "id": 2,
+            "player_id": 1,
+            "time": 76.616,
+            "origin": [
+              -0.5649466514244211,
+              2.620539216582844
+            ],
+            "segment_anchor": [
+              -0.6646401148293835,
+              2.3880313421991812
+            ],
+            "planned_direction": -0.3334690207223701,
+            "command_direction": -0.42073548332208655,
+            "reference_direction": -1.9758597182843023,
+            "actual_direction": -1.9758597182843023,
+            "error_deg": -94.10205528184595,
+            "status": "complete",
+            "end_reason": "observation_gap"
+          },
+          {
+            "id": 3,
+            "player_id": 1,
+            "time": 92.577999999,
+            "origin": [
+              -0.27447817339575525,
+              2.304772692152727
+            ],
+            "segment_anchor": [
+              1.6233641480109353,
+              4.203423433186608
+            ],
+            "planned_direction": -0.30682473136060034,
+            "command_direction": -0.39409119396031667,
+            "reference_direction": 0.785611101917729,
+            "actual_direction": 0.785611101917729,
+            "error_deg": 62.591962635705514,
+            "status": "complete",
+            "end_reason": "observation_gap"
+          },
+          {
+            "id": 4,
+            "player_id": 2,
+            "time": 122.231999999,
+            "origin": [
+              -5.826026760524587,
+              0.575579071003107
+            ],
+            "segment_anchor": [
+              -5.329849298379526,
+              1.0639583221334918
+            ],
+            "planned_direction": 0.3334444120066497,
+            "command_direction": 0.2461779494069332,
+            "reference_direction": 0.7774777989912044,
+            "actual_direction": 0.7774777989912044,
+            "error_deg": 25.441239037114205,
+            "status": "complete",
+            "end_reason": "observation_gap"
+          }
+        ],
+        "latest": {
+          "id": 4,
+          "player_id": 2,
+          "time": 122.231999999,
+          "origin": [
+            -5.826026760524587,
+            0.575579071003107
+          ],
+          "segment_anchor": [
+            -5.329849298379526,
+            1.0639583221334918
+          ],
+          "planned_direction": 0.3334444120066497,
+          "command_direction": 0.2461779494069332,
+          "reference_direction": 0.7774777989912044,
+          "actual_direction": 0.7774777989912044,
+          "error_deg": 25.441239037114205,
+          "status": "complete",
+          "end_reason": "observation_gap"
+        },
+        "count": 4,
+        "mean_absolute_error_deg": 51.47659089731,
+        "turn_threshold_deg": 10.0,
+        "minimum_travel_m": 0.15
+      },
+      "ball_prediction": {
+        "model": "sliding_then_rolling",
+        "position": [
+          -6.1145659451903365,
+          0.9567442477813312
+        ],
+        "velocity": [
+          -1.174289210406328,
+          -0.48319587782636536
+        ],
+        "velocity_kind": "observed_interval_average",
+        "estimation": "online_observations",
+        "phase": "rolling",
+        "current_speed_mps": 1.264653348297291,
+        "initial_speed_mps": null,
+        "motion_age_s": null,
+        "fit_sample_count": 4,
+        "sliding_remaining_s": 0.0,
+        "velocity_estimated": true,
+        "stop": {
+          "position": [
+            -7.4013457885530425,
+            0.42726078623460395
+          ],
+          "time_s": 2.2025346517053546,
+          "distance_m": 1.3914579049816975
+        },
+        "observation_age_s": 0.001999999999995339,
+        "horizon_s": 3.0,
+        "step_s": 0.05,
+        "points": [
+          {
+            "t": 0.0,
+            "position": [
+              -6.1145659451903365,
+              0.9567442477813312
+            ]
+          },
+          {
+            "t": 0.5,
+            "position": [
+              -6.632479765214709,
+              0.7436333542404716
+            ]
+          },
+          {
+            "t": 1.0,
+            "position": [
+              -7.017767559992354,
+              0.5850953445546379
+            ]
+          },
+          {
+            "t": 1.5,
+            "position": [
+              -7.27042932952327,
+              0.48113021872383005
+            ]
+          },
+          {
+            "t": 2.0,
+            "position": [
+              -7.390465073807458,
+              0.43173797674804815
+            ]
+          },
+          {
+            "t": 2.5,
+            "position": [
+              -7.4013457885530425,
+              0.42726078623460395
+            ]
+          },
+          {
+            "t": 3.0,
+            "position": [
+              -7.4013457885530425,
+              0.42726078623460395
+            ]
+          }
+        ]
+      },
+      "kickoff_taker": null,
+      "players": [
+        {
+          "id": 1,
+          "role": "stopped",
+          "action": "stopped",
+          "target": null,
+          "guard_decision": null,
+          "navigation": null,
+          "freeman_region": null,
+          "intercept": {
+            "target": [
+              -7.4013457885530425,
+              0.42726078623460395
+            ],
+            "ball_position": [
+              -7.4013457885530425,
+              0.42726078623460395
+            ],
+            "approach_normal": null,
+            "distance_m": 6.540344119865472,
+            "turn_angle_rad": 2.6149736769612835,
+            "turn_time_s": 1.0574868384806417,
+            "move_distance_m": 6.190344119865473,
+            "move_time_s": 3.0951720599327364,
+            "arrival_time_s": 4.152658898413378,
+            "status": "fallback",
+            "score_s": 4.152658898413378,
+            "intercept_time_s": null,
+            "target_time_s": 3.0,
+            "slack_s": -1.152658898413378,
+            "horizon_s": 3.0,
+            "step_s": 0.05,
+            "control_radius_m": 0.35,
+            "linear_speed_mps": 2.0,
+            "angular_speed_rps": 2.0,
+            "turn_threshold_rad": 0.5,
+            "omni_distance_m": 1.0
+          },
+          "interception_risk": null,
+          "attack_candidates": null,
+          "attack_choice": null,
+          "scoring_probability": null,
+          "mode": "walk",
+          "fallen": false,
+          "penalized": false,
+          "penalty": "NONE",
+          "kicking": false,
+          "kick_power": null
+        },
+        {
+          "id": 2,
+          "role": "stopped",
+          "action": "stopped",
+          "target": null,
+          "guard_decision": null,
+          "navigation": null,
+          "freeman_region": null,
+          "intercept": {
+            "target": [
+              -6.172325498328877,
+              0.9329773786537691
+            ],
+            "ball_position": [
+              -6.172325498328877,
+              0.9329773786537691
+            ],
+            "approach_normal": null,
+            "distance_m": 0.3109459593015213,
+            "turn_angle_rad": 0.20166896818064406,
+            "turn_time_s": 0.0,
+            "move_distance_m": 0.0,
+            "move_time_s": 0.0,
+            "arrival_time_s": 0.0,
+            "status": "intercept",
+            "score_s": 0.05,
+            "intercept_time_s": 0.05,
+            "target_time_s": 0.05,
+            "slack_s": 0.05,
+            "horizon_s": 3.0,
+            "step_s": 0.05,
+            "control_radius_m": 0.35,
+            "linear_speed_mps": 2.0,
+            "angular_speed_rps": 2.0,
+            "turn_threshold_rad": 0.5,
+            "omni_distance_m": 1.0
+          },
+          "interception_risk": null,
+          "attack_candidates": null,
+          "attack_choice": null,
+          "scoring_probability": null,
+          "mode": "walk",
+          "fallen": false,
+          "penalized": false,
+          "penalty": "NONE",
+          "kicking": false,
+          "kick_power": null
+        },
+        {
+          "id": 3,
+          "role": "stopped",
+          "action": "stopped",
+          "target": null,
+          "guard_decision": null,
+          "navigation": null,
+          "freeman_region": null,
+          "intercept": {
+            "target": [
+              -6.985206951650692,
+              0.5984933657497451
+            ],
+            "ball_position": [
+              -6.985206951650692,
+              0.5984933657497451
+            ],
+            "approach_normal": null,
+            "distance_m": 2.1943450996526153,
+            "turn_angle_rad": 0.20317501434522445,
+            "turn_time_s": 0.0,
+            "move_distance_m": 1.8443450996526152,
+            "move_time_s": 0.9221725498263076,
+            "arrival_time_s": 0.9221725498263076,
+            "status": "intercept",
+            "score_s": 0.9500000000000001,
+            "intercept_time_s": 0.9500000000000001,
+            "target_time_s": 0.9500000000000001,
+            "slack_s": 0.02782745017369248,
+            "horizon_s": 3.0,
+            "step_s": 0.05,
+            "control_radius_m": 0.35,
+            "linear_speed_mps": 2.0,
+            "angular_speed_rps": 2.0,
+            "turn_threshold_rad": 0.5,
+            "omni_distance_m": 1.0
+          },
+          "interception_risk": null,
+          "attack_candidates": null,
+          "attack_choice": null,
+          "scoring_probability": null,
+          "mode": "walk",
+          "fallen": false,
+          "penalized": false,
+          "penalty": "NONE",
+          "kicking": false,
+          "kick_power": null
+        }
+      ],
+      "robot_statuses": [
+        {
+          "side": "our",
+          "id": 1,
+          "fallen": false,
+          "fall_state": "normal"
+        },
+        {
+          "side": "our",
+          "id": 2,
+          "fallen": false,
+          "fall_state": "normal"
+        },
+        {
+          "side": "our",
+          "id": 3,
+          "fallen": false,
+          "fall_state": "normal"
+        },
+        {
+          "side": "opp",
+          "id": 1,
+          "fallen": false,
+          "fall_state": "normal"
+        },
+        {
+          "side": "opp",
+          "id": 2,
+          "fallen": false,
+          "fall_state": "normal"
+        },
+        {
+          "side": "opp",
+          "id": 3,
+          "fallen": false,
+          "fall_state": "normal"
+        }
+      ],
+      "sequence": 4335,
+      "sent_at": 1793612155.8064837
+    },
+    "age": 0.01775387499947101
+  }
+}

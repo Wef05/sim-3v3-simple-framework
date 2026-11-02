@@ -1,0 +1,9 @@
+{
+  "history_mode": "preserve",
+  "history_cleared": false,
+  "simulator_closed": true,
+  "docker_state": "exited",
+  "exit_code": 143,
+  "finished_at": "2026-11-02T09:36:25.800630179Z",
+  "dashboard_service_stopped": false
+}

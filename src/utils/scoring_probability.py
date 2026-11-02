@@ -1,4 +1,4 @@
-"""两条进球路线的展示估计，不参与动作；进球率仅取 1-被拦概率。"""
+"""直接射门和传球后射门的路线估计；成功率仅取 1-被拦概率。"""
 import math
 from dataclasses import replace
 from types import SimpleNamespace
@@ -48,16 +48,19 @@ def receiver_distributions(context, motion, origin, target, wait, flight):
     return distributions
 
 
-def evaluate_scoring(context, pose, motion, candidates, freeman_ids):
+def evaluate_scoring(context, pose, motion, candidates, freeman_ids, receiver_ids=None):
     goals=[c for c in candidates['candidates'] if c['kind']=='goal']
     result=dict(evaluated_at=candidates['evaluated_at'],decision_enabled=False,
                 model='one_minus_interception',direct=best_shot(goals),via_freeman=[])
-    for pid in freeman_ids:
+    result['via_teammate'] = []
+    for pid in (freeman_ids if receiver_ids is None else receiver_ids):
         c=next((c for c in candidates['candidates'] if c.get('player_id')==pid),None)
         passing=success(c) if c else None
         row=dict(player_id=pid,pass_probability=passing,shot_probability=None,
                  probability=None,target=None,shots=[],receive_target=c.get('target') if c else None)
-        result['via_freeman'].append(row)
+        result['via_teammate'].append(row)
+        if pid in freeman_ids:
+            result['via_freeman'].append(row)
         if passing is None:continue
         if passing==0:
             row['probability']=0.0;continue

@@ -249,3 +249,5 @@ RESTART_TARGET_MARGIN_M = 0.4  # 球排斥半径外留出自身尺寸与制动�
 RESTART_PAIR_GAP_M = 1.0      # 两名外场球员目标点最小间距
 RESTART_ANCHOR_DRIFT_M = 0.25 # 小幅球位噪声不重排阵型
 OUR_KICKOFF_THREE_SHIFT_M = 1.0  # 看板左上方向的总位移
+
+ATTACK_PASS_RISK_MARGIN = 0.30  # 传射综合被截率至少比直接射门低 30 个百分点。

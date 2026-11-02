@@ -1,0 +1,11 @@
+{
+  "frames": 2646,
+  "bytes": 58350875,
+  "sha256": "f1ac0e4fd039487a21fac397e20b6ae8d9b2da788740222ffa98fc4e3ffb7fb0",
+  "first_id": 260509,
+  "last_id": 263154,
+  "first_sim_time": 39.22,
+  "last_sim_time": 125.627999999,
+  "max_frame_sim_gap": 0.4819999999999993,
+  "final_state": "FINISHED"
+}
