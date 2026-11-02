@@ -74,7 +74,7 @@ class FieldBoundaryTests(unittest.TestCase):
             self.assertEqual((path[0], path[-1]), (start, target))
             self.assertTrue(all(segment_clear(a, b, obs) for a, b in zip(path, path[1:])))
 
-    def test_throw_in_and_corner_keep_ball_approach_outside(self):
+    def test_throw_in_and_corner_keep_unclamped_low_speed_approach(self):
         for play, ball, start in ((SetPlay.THROW_IN, (0., 4.5), (0., 1.)),
                                   (SetPlay.CORNER_KICK, (7., 4.5), (4., 2.)),
                                   (SetPlay.NONE, (-7.2, 0.), (-4., 0.))):
@@ -82,11 +82,17 @@ class FieldBoundaryTests(unittest.TestCase):
             ctx = replace(ctx, game=replace(ctx.game, set_play=play, kicking_team=1))
             p = Player(1, SoccerConfig(), None)
             p._mode = 'walk'
-            prepare_frame(ctx, [p], SimpleNamespace())
+            store = SimpleNamespace()
+            prepare_frame(ctx, [p], store)
+            # 低速直通需要两次有效观测；第一帧未知速度不能冒充静止。
+            ctx = replace(ctx, now=ctx.now+.1, ball=replace(ctx.ball, last_seen_at=ctx.now+.1),
+                          teammates={i: replace(r, last_seen_at=ctx.now+.1) for i,r in ctx.teammates.items()})
+            prepare_frame(ctx, [p], store)
             intent = p.decide(RoleTask(Role.ATTACKER))
             self.assertIsInstance(intent, MoveIntent)
-            self.assertTrue(abs(intent.target[0]) > ctx.field.length/2 or
-                            abs(intent.target[1]) > ctx.field.width/2, intent)
+            self.assertAlmostEqual(math.dist(intent.target, ball), .35)
+            self.assertTrue(intent.avoid_ball)
+            self.assertEqual(p.attack_receive['stage'], 'low_speed_chase')
             self.assertEqual(p.controller.plan_walk(intent, frame(ctx))[1], False)
             self.assertEqual(p.controller.navigation_status['effective_target'], list(intent.target))
 
@@ -138,6 +144,8 @@ class FieldBoundaryTests(unittest.TestCase):
             players=(PlayerState(penalty=Penalty.LEAVING_THE_FIELD),)),)))
         prepare_frame(penalized, [p], store)
         self.assertIsInstance(p.decide(assign(penalized, [p], store)[1]), RecoverIntent)
+        ctx = replace(ctx, now=ctx.now+.1, ball=replace(ctx.ball, last_seen_at=ctx.now+.1),
+                      teammates={i: replace(r, last_seen_at=ctx.now+.1) for i,r in ctx.teammates.items()})
         prepare_frame(ctx, [p], store)
         intent = p.decide(assign(ctx, [p], store)[1])
         self.assertIsInstance(intent, MoveIntent)

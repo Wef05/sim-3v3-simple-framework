@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-02T08:47:35.771229+00:00",
+  "base": "3cd30131e2eacc697d9c0b46fa89e3c65a1e8774",
+  "branch": "codex/attacker-receive-first",
+  "worktree": "/private/tmp/attacker-receive-first",
+  "studio_pid": 830,
+  "container_state": "exited, PID 0, FinishedAt 2026-11-02T08:38:10.34164688Z",
+  "active_match_scheduler": false,
+  "ui_attempts": [
+    "getApp com.boosterrobotics.boosterstudio: -10005 timeoutReached",
+    "getApp com.boosterrobotics.boosterstudio: -10005 timeoutReached"
+  ],
+  "build_attempted": false,
+  "deployment_attempted": false,
+  "match_started": false,
+  "reason": "Studio UI connection unavailable; bounded reconnect exhausted"
+}

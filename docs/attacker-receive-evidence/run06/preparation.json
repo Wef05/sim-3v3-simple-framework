@@ -1,0 +1,7 @@
+{
+  "reset_observed_wall": 1793609415.0982258,
+  "method": "Studio official activation, simulator loading window observed",
+  "worktree": "/private/tmp/attacker-receive-first",
+  "branch": "codex/attacker-receive-first",
+  "preflight": "container exited PID0; no active monitor"
+}

@@ -7,6 +7,7 @@
 from __future__ import annotations
 import math
 from dataclasses import replace
+from .utils.attacker_receiving import receive_intent
 from .utils.interception_risk import estimate_interception_risk
 from .utils.kick_lane import check_kick_lane
 from .utils.blocked_attack import blocked_attack_target
@@ -22,7 +23,7 @@ from .intents import (Role, RoleTask, KickTarget, MoveIntent, FaceIntent,
 from .actions.controller import ActionController
 from .actions.kick_planner import resolve_target
 from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
-                         opponent_goal, behind_ball, goalkeeper_home)
+                         opponent_goal, goalkeeper_home)
 from .utils.free_position import nearest_free_position, shot_triangle
 from .utils.ball_motion import BallMotion
 from .utils.restart_defense import restart_intent, kickoff_targets
@@ -40,11 +41,14 @@ class Player:
         # 构造时提供空估计器；正式逐帧运行时会替换成全队共享实例。
         self.motion = BallMotion()
         self.ball_intercept = None
+        self.block_point = None
         self.threat = None
         self.action = 'init'
         self.tactical_target = None
         self.freeman_region = None
         self._guard_memory = None
+        self._receive_memory = None
+        self.attack_receive = None
 
     # 以下属性只转发观测和运行时接线，不提供 walk_to/kick 等执行接口。
     # backend 的读写兼容框架注入与关闭流程，角色行为不应直接使用它下命令。
@@ -128,6 +132,9 @@ class Player:
             self._restart_memory = None
         if task.role != Role.GUARD:
             self._guard_memory = None
+        if task.role != Role.ATTACKER:
+            self._receive_memory = None
+        self.attack_receive = None
         self.guard_decision = None
         self.action = task.role.value
         self.tactical_target = None
@@ -179,19 +186,18 @@ class Player:
         return StopIntent()
 
     def attack(self, kick_target: int | tuple[float, float] = 0):
-        """追球并踢球：0 为敌方球门，1–3 为对应编号队友的当前位置。
+        """优先拦住来球再交给 SDK 自动踢球；大于 90° 的补射跳过拦球。
 
-        支持指定坐标目标；队友位置未知时停止。
-        踢球迟滞:距球 ≤ ENTER 进入踢球;进入后距球 > EXIT 才退出(EXIT > ENTER),
-        防边界抖动。追球使用预计最早可达的未来球位；窗口内不可达时使用窗口末尾
-        球位。到该预测位置后方 ``CHASE_BEHIND_M`` 处准备踢球，走位目标保留真实球后站位。
-        踢球仍须观测球位和补偿延迟后的当前球位均在近距阈值内，不能对未来球位踢空。
+        kick_target 为 0 时选射门点，1–3 为队友，坐标为显式出球目标。
+        接球状态由 receive_intent 管理；球后追赶仅用于远距离补射。
         """
         self.tactical_target = None
         self.attack_choice = None
+        self.attack_receive = None
         ball = self.context.ball if self.context is not None else None
         current_ball = self.motion.predict_ball_position(0.0)
         if ball is None or self.pose is None or current_ball is None:
+            self._receive_memory = None
             return StopIntent()
 
         # 复用候选概率缓存；正常射门随后按扣分后分数选点。
@@ -228,6 +234,7 @@ class Player:
         # 这里只使用几何目标；真正的踢球力度、坐标变换仍留给执行阶段。
         target = resolve_target(self.context, aim)
         if target is None:
+            self._receive_memory = None
             return StopIntent()
 
         # 在追球前选择替代方向，保证球后站位与最终出球方向一致。
@@ -241,6 +248,7 @@ class Player:
             if fallback is None:
                 if self.attack_choice is not None:
                     self.attack_choice.update(actual_target=None, execution='blocked_stop')
+                self._receive_memory = None
                 self.action = 'attack:blocked:no_safe_alternative:' + lane['reason']
                 return StopIntent()
             target, label = fallback
@@ -255,25 +263,14 @@ class Player:
             self.pose, self.motion, self.context.opponents, target, self.ball_intercept,
             ball_speed=KICK_RISK_BALL_SPEED_MPS)
 
-        # 同时检查观测球位和延迟补偿球位，取更远距离，避免球已离开却仍踢空。
-        # 此处只是决定是否请求踢球，不修改控制器的 is_kicking。
-        d = max(
-            dist(self.pose.x, self.pose.y, ball.x, ball.y),
-            dist(self.pose.x, self.pose.y, *current_ball),
-        )
-        should_kick = d <= (KICK_EXIT_M if self.is_kicking else KICK_ENTER_M)
-
-        if should_kick:
-            return KickIntent(aim, style=style)
-        else:
-            # 使用本帧与角色分配共享的截球结果。
-            if self.ball_intercept is None or self.ball_intercept['status'] == 'unavailable':
-                return StopIntent()
-            predicted_ball = self.ball_intercept['target']
-            chase = behind_ball(*predicted_ball, target, CHASE_BEHIND_M)
-            # 保留球后接近点；边球、角球及门内出球可能需要场外站位。
-            # 实体障碍仍由导航层检查。
-            return MoveIntent(chase)
+        intent, self._receive_memory, self.attack_receive = receive_intent(
+            pose=self.pose, ball=ball, current_ball=current_ball,
+            intercept=self.block_point, target=target, aim=aim, style=style,
+            now=self.context.now, phase=get_phase(self.context),
+            speed=self.motion.current_speed(), memory=self._receive_memory,
+            pose_observed_at=getattr(self.context.teammates.get(self.id), 'last_seen_at', None))
+        self.attack_receive['observed_interval_speed_mps'] = self.motion.observed_speed()
+        return intent
 
     def guard(self, pass_to: int | None = None):
         """守门策略独立维护预站位、限时封堵和出球记忆。"""

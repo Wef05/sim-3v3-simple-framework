@@ -5,11 +5,13 @@ from types import SimpleNamespace
 from unittest.mock import Mock
 
 from src.actions import execute
+from src.actions.kick_planner import resolve_target
 from src.framework.config import SoccerConfig
 from src.framework.types import (ADULT_FIELD_DIMENSIONS, BallState, Context,
                                  GameControlState, GameState, Pose2D, RobotState)
 from src.intents import KickIntent, KickTarget, Role, RoleTask
 from src.player import Player
+from src.framework.decision_frame import prepare_frame
 from src.telemetry import make_snapshot
 
 
@@ -23,18 +25,27 @@ class KickoffPowerTests(unittest.TestCase):
                 player = Player(1, SoccerConfig(), backend)
                 ctx = Context(10, .03, 1, ADULT_FIELD_DIMENSIONS,
                               ball=BallState(0, 0, last_seen_at=10),
-                              teammates={1: RobotState(1, Pose2D(-.5, 0)),
+                              teammates={1: RobotState(1, Pose2D(-.6, 0)),
                                          3: RobotState(3, Pose2D(*receiver))},
                               game=GameControlState(state=GameState.PLAYING,
                                                     kicking_team=1, secondary_time=10))
                 for kickoff in (True, False):
                     current = ctx if kickoff else replace(ctx, game=replace(ctx.game, secondary_time=0))
-                    player.context = current
-                    player.motion.update(current)
-                    intent = player.decide(RoleTask(Role.ATTACKER))
+                    # 静止球先由连续观测确认，再检验开球/射门力度链路。
+                    store = SimpleNamespace()
+                    for elapsed in (0., .1, .2, .3, .4, .5, .6):
+                        sample = replace(current, now=current.now+elapsed,
+                                         ball=replace(current.ball, last_seen_at=current.now+elapsed),
+                                         teammates={k: replace(v, last_seen_at=current.now+elapsed) for k,v in current.teammates.items()})
+                        prepare_frame(sample, [player], store)
+                        intent = player.decide(RoleTask(Role.ATTACKER))
+                    current = sample
                     self.assertIsInstance(intent, KickIntent)
                     self.assertEqual(intent.style, 'pass' if kickoff else 'shot')
-                    self.assertEqual(intent.target, KickTarget.teammate(3) if kickoff else KickTarget.goal())
+                    if kickoff:
+                        self.assertEqual(intent.target, KickTarget.teammate(3))
+                    else:
+                        self.assertEqual(resolve_target(current, intent.target), (7., 0.))
                     execute(current, [player], {1: intent})
                     power = expected if kickoff else 5
                     self.assertEqual(backend.kick.call_args.args[1], power)

@@ -1,0 +1,102 @@
+"""先拦球再自动踢球；只产生意图，不把近身低速误报为触球确认。"""
+from dataclasses import dataclass
+import math
+
+from ..intents import KickIntent, MoveIntent, StopIntent
+from ..param import (ARRIVE_DIST, BALL_CONTROL_RADIUS_M, BALL_MOTION_MAX_GAP_S,
+                     CHASE_BEHIND_M, KICK_ENTER_M, KICK_EXIT_M,
+                     RECEIVE_STABLE_S, RECEIVE_MAX_SPEED_MPS)
+from .geom import angle_to, behind_ball
+
+
+@dataclass
+class ReceiveMemory:
+    phase: object
+    last_time: float
+    stage: str = 'intercept'
+    stable_since: float | None = None
+    last_observed: float | None = None
+
+
+def receive_intent(*, pose, ball, current_ball, intercept, target, aim, style,
+                   now, phase, speed, memory):
+    """同帧 B→I 与 B→T 的点积为负才跳过拦球；退化向量不分类。
+
+    稳定持续时间按新球观测的时间跨度确认，重复快照不能积累拦球证据。
+    自动踢球一旦交接就保持到球超出退出距离，不因角度噪声反复撤销。
+    """
+    reset = (memory is None or memory.phase != phase or now < memory.last_time
+             or now - memory.last_time > BALL_MOTION_MAX_GAP_S)
+    if reset:
+        memory = ReceiveMemory(phase, now)
+    memory.last_time = now
+    detail = dict(stage='unavailable', reason='missing_observation', angle_deg=None,
+                  intercept_point=None, outgoing_target=target, stable_s=0.0,
+                  speed_mps=speed, contact_confirmed=False)
+    if (pose is None or ball is None or current_ball is None
+            or not all(math.isfinite(v) for v in (now, pose.x, pose.y,
+                         ball.x, ball.y, ball.last_seen_at, *current_ball, *target))
+            or not 0 <= now - ball.last_seen_at <= BALL_MOTION_MAX_GAP_S):
+        return StopIntent(), None, detail
+    distance = max(math.hypot(pose.x-ball.x, pose.y-ball.y),
+                   math.hypot(pose.x-current_ball[0], pose.y-current_ball[1]))
+    detail['ball_distance_m'] = distance
+    point = (intercept or {}).get('target')
+    valid = ((intercept or {}).get('status') in ('intercept', 'fallback')
+             and point is not None and len(point) == 2
+             and all(math.isfinite(v) for v in point))
+    rebound = False
+    if valid:
+        detail['intercept_point'] = point
+        detail['intercept_status'] = intercept['status']
+        u = (point[0]-current_ball[0], point[1]-current_ball[1])
+        v = (target[0]-current_ball[0], target[1]-current_ball[1])
+        lengths = math.hypot(*u), math.hypot(*v)
+        if min(lengths) > 1e-6:
+            dot = u[0]*v[0] + u[1]*v[1]
+            detail['angle_deg'] = math.degrees(math.acos(max(-1., min(1., dot / math.prod(lengths)))))
+            rebound = dot < 0
+    if memory.stage == 'auto_kick' and distance <= KICK_EXIT_M:
+        detail.update(stage='auto_kick', reason='kick_hysteresis')
+        return KickIntent(aim, style=style), memory, detail
+    if memory.stage == 'auto_kick':
+        memory.stage, memory.stable_since = 'intercept', None
+    if not valid:
+        detail['reason'] = 'no_intercept_estimate'
+        return StopIntent(), None, detail
+    if rebound:
+        memory.stable_since = None
+        if distance <= KICK_ENTER_M:
+            memory.stage = 'auto_kick'
+            detail.update(stage='auto_kick', reason='rebound_over_90')
+            return KickIntent(aim, style=style), memory, detail
+        detail.update(stage='rebound_chase', reason='rebound_out_of_kick_range')
+        return MoveIntent(behind_ball(*point, target, CHASE_BEHIND_M)), memory, detail
+
+    # 速度未知不等于静止；使用实测区间速度而非模型最终停球速度。
+    stable = (distance <= BALL_CONTROL_RADIUS_M and speed is not None
+              and math.isfinite(speed) and 0 <= speed <= RECEIVE_MAX_SPEED_MPS)
+    observed = ball.last_seen_at
+    if (memory.last_observed is not None
+            and (observed < memory.last_observed
+                 or observed - memory.last_observed > BALL_MOTION_MAX_GAP_S)):
+        memory.stable_since = None
+    memory.last_observed = observed
+    if not stable:
+        memory.stable_since = None
+    elif memory.stable_since is None:
+        memory.stable_since = observed
+    duration = 0.0 if memory.stable_since is None else observed-memory.stable_since
+    detail['stable_s'] = duration
+    if stable and duration + 1e-9 >= RECEIVE_STABLE_S:
+        memory.stage = 'auto_kick'
+        detail.update(stage='auto_kick', reason='near_ball_low_speed')
+        return KickIntent(aim, style=style), memory, detail
+    arrived = math.hypot(pose.x-point[0], pose.y-point[1]) <= ARRIVE_DIST
+    detail.update(stage='wait_ball' if arrived else 'intercept',
+                  reason='stabilizing' if stable else 'await_ball' if arrived else 'go_to_intercept')
+    # 不避让球体，仍沿用导航的机器人和球门结构保护；到点后保持来球朝向。
+    face = angle_to(pose.x, pose.y, *current_ball)
+    if math.hypot(pose.x-current_ball[0], pose.y-current_ball[1]) < 1e-6:
+        face = pose.theta
+    return MoveIntent(tuple(point), face=face), memory, detail

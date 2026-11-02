@@ -1,0 +1,44 @@
+diff --git a/src/param.py b/src/param.py
+index ee6d7be..3076fcb 100644
+--- a/src/param.py
++++ b/src/param.py
+@@ -46,6 +46,7 @@ ANGULAR_GAIN = 2.0             # 转向 P 增益
+ KICK_ENTER_M = 2.0             # 距球小于该值进入踢球状态
+ KICK_EXIT_M = 2.5              # 踢球中距球大于该值才退出踢球状态
+ RIGHT_FOOT_KICK_CORRECTION_DEG = -5.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
++RECEIVE_BYPASS_SPEED_MPS = 0.5 # 严格低于此实测球速直接处理，不等待拦球 (m/s)
+ RECEIVE_MAX_SPEED_MPS = 0.3    # 接球稳定的实测球速上限，待仿真校准 (m/s)
+ RECEIVE_STABLE_S = 0.15        # 到位后连续低速观测所需仿真时间 (s)
+ RECEIVE_STANDOFF_M = 0.60      # 等待点与预测球位的中心间距，含身体/球及停车余量
+diff --git a/src/utils/attacker_receiving.py b/src/utils/attacker_receiving.py
+index 76d3329..58ffcbd 100644
+--- a/src/utils/attacker_receiving.py
++++ b/src/utils/attacker_receiving.py
+@@ -10,6 +10,7 @@ from ..intents import FaceIntent, KickIntent, KickTarget, MoveIntent, StopIntent
+ from ..param import (BALL_MOTION_MAX_GAP_S,
+                      CHASE_BEHIND_M, KICK_ENTER_M, KICK_EXIT_M,
+                      RECEIVE_STABLE_S, RECEIVE_MAX_SPEED_MPS, RECEIVE_STANDOFF_M,
++                     RECEIVE_BYPASS_SPEED_MPS,
+                      RECEIVE_ARRIVE_M, RECEIVE_HANDOFF_M, RECEIVE_REPLAN_M,
+                      RECEIVE_DIRECTION_CHANGE_RAD, RECEIVE_ROBOT_STILL_MPS,
+                      RECEIVE_ARRIVE_EXIT_M, RECEIVE_SETTLE_WINDOW_S,
+@@ -129,6 +130,19 @@ def receive_intent(
+         memory.stage, memory.stable_since = 'intercept', None
+         memory.wait_point = None
+         memory.arrived = False
++    # 低速球无需拦停。使用当前补偿球位，远处仍经导航避球接近球后点。
++    # 该判断不依赖预测拦球点；未知、负值或非有限球速不能获得直通资格。
++    if speed is not None and math.isfinite(speed) and 0 <= speed < RECEIVE_BYPASS_SPEED_MPS:
++        memory.stable_since = None
++        memory.wait_point = None
++        memory.arrived = False
++        if distance <= KICK_ENTER_M:
++            memory.stage = 'auto_kick'
++            detail.update(stage='auto_kick', reason='low_speed_direct')
++            return KickIntent(aim, style=style), memory, detail
++        memory.stage = 'low_speed_chase'
++        detail.update(stage='low_speed_chase', reason='low_speed_out_of_kick_range')
++        return MoveIntent(behind_ball(*current_ball, target, CHASE_BEHIND_M), avoid_ball=True), memory, detail
+     if not valid:
+         detail['reason'] = 'no_intercept_estimate'
+         return StopIntent(), None, detail

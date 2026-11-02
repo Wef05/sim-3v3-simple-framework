@@ -1,0 +1,109 @@
+{
+  "low_speed_frames": 329,
+  "low_chase_frames": 43,
+  "direct_entries": [
+    {
+      "frame": 234926,
+      "sim": 58.36,
+      "player": 1,
+      "receive": {
+        "stage": "auto_kick",
+        "reason": "low_speed_direct",
+        "angle_deg": null,
+        "intercept_point": [
+          -7.782696154179412e-17,
+          1.5815897926192798e-16
+        ],
+        "outgoing_target": [
+          -1.092079576276386,
+          4.237753955544162
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 6.397030771049573e-18,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "settling": {
+          "sample_count": 1,
+          "span_s": 0.0,
+          "trend_mps": null,
+          "spread_m": null,
+          "ready": false,
+          "settled": false
+        },
+        "ball_distance_m": 1.5128822118666616,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 235020,
+      "sim": 62.106,
+      "player": 1,
+      "receive": {
+        "stage": "auto_kick",
+        "reason": "low_speed_direct",
+        "angle_deg": null,
+        "intercept_point": [
+          0.05499006200310736,
+          0.025955553210926085
+        ],
+        "outgoing_target": [
+          7.0,
+          1.095
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.18153936391576694,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "settling": {
+          "sample_count": 1,
+          "span_s": 0.0,
+          "trend_mps": null,
+          "spread_m": null,
+          "ready": false,
+          "settled": false
+        },
+        "ball_distance_m": 0.26154222009013084,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 235723,
+      "sim": 83.599999999,
+      "player": 1,
+      "receive": {
+        "stage": "auto_kick",
+        "reason": "low_speed_direct",
+        "angle_deg": 138.7059482819057,
+        "intercept_point": [
+          -3.7740520739002745,
+          -0.7468352224319158
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0593075612065265,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": 1.0079017285061052,
+        "settling": {
+          "sample_count": 6,
+          "span_s": 0.21999999999999886,
+          "trend_mps": null,
+          "spread_m": null,
+          "ready": false,
+          "settled": false
+        },
+        "ball_distance_m": 1.9718089486014359,
+        "intercept_status": "intercept"
+      }
+    }
+  ],
+  "low_speed_intercept_violations": []
+}

@@ -84,9 +84,10 @@ def make_snapshot(context, players, store):
                 player = own.get(ident) if side == 'teammates' else None
                 blocks.append(dict(id=ident, side=side,
                     state_known=player is not None,
-                    **calculate_block_point(robot.pose, players[0].motion,
-                        fallen=player.is_fallen if player else False,
-                        penalized=player.is_penalized if player else False)))
+                    **(player.block_point if player is not None and player.block_point is not None
+                       else calculate_block_point(robot.pose, players[0].motion,
+                           fallen=player.is_fallen if player else False,
+                           penalized=player.is_penalized if player else False))))
     return {
         'version': 1,
         'block_points': blocks,
@@ -109,6 +110,7 @@ def make_snapshot(context, players, store):
             interception_risk=getattr(p, 'interception_risk', None),
             attack_candidates=getattr(p, 'attack_candidates', None),
             attack_choice=getattr(p, 'attack_choice', None),
+            attack_receive=getattr(p, 'attack_receive', None),
             scoring_probability=getattr(p, 'scoring_probability', None),
             mode=p.mode, fallen=p.is_fallen, penalized=p.is_penalized,
             penalty=p.penalty, kicking=p.is_kicking,

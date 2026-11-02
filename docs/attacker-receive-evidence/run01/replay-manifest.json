@@ -1,0 +1,15 @@
+{
+  "format": "soccer-tactics-replay",
+  "version": 1,
+  "team": 1,
+  "frames": 2831,
+  "json_bytes": 59254553,
+  "gzip_bytes": 4450130,
+  "json_sha256": "d885ea546fb658daf99f161add75dbb37c5d8529664f3043d776909e370a4322",
+  "gzip_sha256": "f94f706bfbae446d24cb9e862d6d70ad661b498297c91839e2052a8f33658871",
+  "first_id": 191365,
+  "last_id": 194195,
+  "sim_start": 74.0,
+  "sim_end": 160.91,
+  "max_sim_gap": 0.2539999999999907
+}
