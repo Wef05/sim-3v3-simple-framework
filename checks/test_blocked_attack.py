@@ -10,8 +10,8 @@ from src.player import Player
 from src.actions.kick_planner import plan_kick
 from src.utils.blocked_attack import blocked_attack_target
 from src.utils.kick_lane import check_kick_lane
-from src.utils.geom import behind_ball, clamp
-from src.param import CHASE_BEHIND_M, ARRIVE_DIST
+from src.utils.geom import behind_ball
+from src.param import CHASE_BEHIND_M
 
 
 class BlockedAttackTests(unittest.TestCase):
@@ -73,8 +73,7 @@ class BlockedAttackTests(unittest.TestCase):
         intent = p.attack()
         self.assertIsInstance(intent, MoveIntent)
         expected = behind_ball(6.95, 4.45, p.tactical_target, CHASE_BEHIND_M)
-        expected = (clamp(expected[0], -7+ARRIVE_DIST, 7-ARRIVE_DIST),
-                    clamp(expected[1], -4.5+ARRIVE_DIST, 4.5-ARRIVE_DIST))
+        # 保留替代出球方向对应的真实球后点，角区允许场外站位。
         self.assertEqual(intent.target, expected)
 
     def test_fully_blocked_lanes_still_stop_safely(self):
