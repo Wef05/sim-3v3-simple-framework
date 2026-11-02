@@ -12,6 +12,7 @@ from .utils.kick_lane import check_kick_lane
 from .utils.blocked_attack import blocked_attack_target
 from .utils.scoring_probability import evaluate_scoring
 from .utils.shot_selection import select_shot
+from .utils.pass_selection import select_pass
 from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
@@ -185,7 +186,10 @@ class Player:
 
         # 复用候选概率缓存；正常射门随后按扣分后分数选点。
         cached = getattr(self, '_candidate_cache', None)
-        signature = (tuple(getattr(self, 'evaluation_freeman_ids', ())), tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
+        receivers = tuple(sorted(pid for pid in getattr(self, 'guard_receivers', ())
+                                 if pid != self.id and pid in self.context.teammates
+                                 and self.context.teammates[pid].pose is not None))
+        signature = (receivers, tuple(getattr(self, 'evaluation_freeman_ids', ())), tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
                      tuple((pid, r.pose is not None) for pid,r in sorted(self.context.opponents.items())),
                      (self.ball_intercept or {}).get('status'))
         if (cached is None or signature != getattr(self, '_candidate_signature', None)
@@ -197,18 +201,24 @@ class Player:
             cached = evaluate_attack_targets(self.context,self.id,self.pose,self.motion,
                                               self.ball_intercept or {},tracker)
             self._scoring_cache = evaluate_scoring(self.context,self.pose,self.motion,cached,
-                                                   getattr(self,'evaluation_freeman_ids',()))
+                                                   getattr(self,'evaluation_freeman_ids',()), receivers)
             self._candidate_cache, self._candidate_signature = cached, signature
         self.attack_candidates = cached
-        self.scoring_probability = self._scoring_cache
+        self.scoring_probability = dict(self._scoring_cache, decision_enabled=False)
 
         origins = ((ball.x, ball.y), current_ball)
+        automatic_pass = False
         if kick_target == 0:
             self.attack_choice = select_shot(self.context.field, cached, origins)
+            if get_phase(self.context) == Phase.NORMAL:
+                self.attack_choice = select_pass(self.context, cached, self._scoring_cache,
+                                                 self.attack_choice, origins, receivers)
+                self.scoring_probability['decision_enabled'] = True
             self.action = 'attack:' + self.attack_choice['reason']
             selected = self.attack_choice['selected']
             if selected is not None:
                 kick_target = tuple(selected['target'])
+                automatic_pass = selected['kind'] == 'pass'
 
         aim = (KickTarget.goal() if kick_target == 0 else
                KickTarget.position(kick_target) if isinstance(kick_target, tuple) else
@@ -224,7 +234,7 @@ class Player:
         lane = next((result for origin in origins
                      if (result := check_kick_lane(self.context.field, origin, target))['blocked']), None)
         # 队友目标必须保留传球语义，开球传给 3 号也按距离调度力度。
-        style = 'pass' if aim.kind == 'teammate' else 'shot'
+        style = 'pass' if automatic_pass or aim.kind == 'teammate' else 'shot'
         if lane is not None:
             fallback = blocked_attack_target(self.context, self.id, origins)
             if fallback is None:

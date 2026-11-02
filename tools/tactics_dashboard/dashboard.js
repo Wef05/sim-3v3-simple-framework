@@ -815,6 +815,16 @@ function renderAttackChoice(d){
   const a=d.players.find(p=>p.role==='attack')?.attack_choice,box=$('attack-choice');if(!box)return;box.replaceChildren();
   if(!a){line(box,'本帧未记录选择依据。');return}
   if(!a.enabled){line(box,'使用指定目标或特殊阶段策略，本帧未自动比较选点。');return}
+  if(a.model==='pass_risk_margin'){
+    const pct=p=>p==null?'未知':(100*p).toFixed(1)+'%';
+    line(box,`直射原始被截率 ${pct(a.direct_risk)} · 最佳传射综合被截率 ${pct(a.best_pass_risk)}`);
+    line(box,`降低 ${a.risk_improvement==null?'未知':(100*a.risk_improvement).toFixed(1)} 个百分点；至少 ${(100*a.required_margin).toFixed(0)} 个百分点才传球。射门中央偏好不计入该差值。`);
+    line(box,a.selected?.kind==='pass'?`传给队友 ${a.selected.player_id} 号，预计接球点 ${pointText(a.selected.target)}`:`保留直接射门 ${pointText(a.actual_target)}`);
+    line(box,`实际目标 ${pointText(a.actual_target)} · 执行 ${a.execution||'待定'} · 数据年龄 ${Math.max(0,d.context.now-a.evaluated_at).toFixed(2)} s`);
+    for(const o of a.pass_options||[])line(box,`队友 ${o.player_id}：传球成功 ${pct(o.pass_probability)} × 后续射门成功 ${pct(o.shot_probability)} = ${pct(o.probability)}${o.excluded_reason?' · 排除：'+o.excluded_reason:''}`);
+    line(box,'接球后立即射门为模型假设，不代表实际接球或进球已确认。');
+    return;
+  }
   if(['shot_edge_penalty','shot_outward_penalty'].includes(a.model)){
     const pct=p=>p==null?'未知':(100*p).toFixed(1)+'%';
     line(box,a.model==='shot_outward_penalty'?'被截率惩罚：中央 +0，每向外一点 +5 个百分点；射门评分 = max(0, 1 − 被截率 − 惩罚)。同分优先中央。模型分数不是实测进球率。':'射门评分 = 1 − 被截概率 − 两端点惩罚（10 个百分点）；同分优先中央。模型分数不是实测进球率。');

@@ -1,0 +1,23 @@
+{
+  "actual_sim_seconds": 60.177999999902795,
+  "score": {
+    "home": 0,
+    "away": 0
+  },
+  "end_reason": "operator_finish",
+  "decision_frames": 520,
+  "pass_choice_frames": 174,
+  "pass_with_kick_power_frames": 138,
+  "threshold_violations": [],
+  "receivers": {
+    "3": 10,
+    "1": 164
+  },
+  "first_pass_frame": 261633,
+  "max_pass_gain": 0.71875,
+  "match_identity": [
+    "local-match",
+    1793611966.5430233
+  ],
+  "source_matches_manifest": true
+}
