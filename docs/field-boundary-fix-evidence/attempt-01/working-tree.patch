@@ -1,0 +1,9 @@
+diff --git a/.booster-studio/project.json b/.booster-studio/project.json
+index b7adc59..26b41fd 100644
+--- a/.booster-studio/project.json
++++ b/.booster-studio/project.json
+@@ -1 +1 @@
+-{"version":2,"scene":{"mode":"pinned","id":"football3v3"},"projectMode":"soccer-match","agentDevTarget":{"serialNumber":"4x2a0","name":"Virtual robot","model":"Booster K1","deviceType":"virtual","updatedAt":1793434951580},"updatedAt":1793434951659}
+\ No newline at end of file
++{"version":2,"scene":{"mode":"pinned","id":"football3v3"},"projectMode":"soccer-match","agentDevTarget":{"serialNumber":"4x2a0","name":"Virtual robot","model":"Booster K1","deviceType":"virtual","updatedAt":1793585613253},"updatedAt":1793585613299}
+\ No newline at end of file

@@ -130,20 +130,6 @@ class Player:
         self.action = task.role.value
         self.tactical_target = None
         self.freeman_region = None
-        # 回场不依赖球观测或战术角色（开球等待者也可能刚解除处罚）。
-        # READY 保留指定阵型目标，由导航处理场外起点。
-        if (task.role != Role.UNAVAILABLE and self.context is not None
-                and get_phase(self.context) not in (Phase.STOPPED, Phase.READY)
-                and not self.is_penalized and not self.is_fallen and self.mode == 'walk'
-                and self.pose is not None
-                and all(math.isfinite(v) for v in (self.pose.x, self.pose.y, self.pose.theta))
-                and (abs(self.pose.x) > self.context.field.length/2
-                     or abs(self.pose.y) > self.context.field.width/2)):
-            from .utils.path_planner import clamp_target
-            self._guard_memory = None
-            self.action = 'return_to_field'
-            return MoveIntent(clamp_target(self.context, (self.pose.x, self.pose.y)),
-                              avoid_ball=True, avoid_robots=True)
         if task.role == Role.ATTACKER:
             # 调试阶段：我方开球固定传给 3 号，其余阶段默认射门。
             target = 3 if get_phase(self.context) == Phase.OUR_KICKOFF else 0
@@ -186,7 +172,7 @@ class Player:
         支持指定坐标目标；队友位置未知时停止。
         踢球迟滞:距球 ≤ ENTER 进入踢球;进入后距球 > EXIT 才退出(EXIT > ENTER),
         防边界抖动。追球使用预计最早可达的未来球位；窗口内不可达时使用窗口末尾
-        球位。到该预测位置后方 ``CHASE_BEHIND_M`` 处准备踢球，走位目标限制在场内。
+        球位。到该预测位置后方 ``CHASE_BEHIND_M`` 处准备踢球，走位目标保留真实球后站位。
         踢球仍须观测球位和补偿延迟后的当前球位均在近距阈值内，不能对未来球位踢空。
         """
         self.tactical_target = None
@@ -260,12 +246,8 @@ class Player:
                 return StopIntent()
             predicted_ball = self.ball_intercept['target']
             chase = behind_ball(*predicted_ball, target, CHASE_BEHIND_M)
-            field = self.context.field
-            # 球轨迹允许出界，但不能让预测点直接把机器人带出场地。
-            chase = (
-                clamp(chase[0], -field.length / 2 + ARRIVE_DIST, field.length / 2 - ARRIVE_DIST),
-                clamp(chase[1], -field.width / 2 + ARRIVE_DIST, field.width / 2 - ARRIVE_DIST),
-            )
+            # 保留球后接近点；边球、角球及门内出球可能需要场外站位。
+            # 实体障碍仍由导航层检查。
             return MoveIntent(chase)
 
     def guard(self, pass_to: int | None = None):

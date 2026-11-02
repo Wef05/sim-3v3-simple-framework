@@ -8,7 +8,7 @@ from ..param import (ARRIVE_DIST, OMNI_DIST, TURN_THRESHOLD, MAX_LINEAR, MAX_ANG
     NAV_SIDE_HOLD_S, NAV_ROUTE_SWITCH_S, NAV_TARGET_RESET_M, NAV_SAFETY_MARGIN_M)
 from ..utils.geom import clamp, normalize_angle
 from ..utils.navigation import MotionTracker, NavigationFrame
-from ..utils.path_planner import plan_global_path, segment_clear, clamp_target, path_time, segment_time
+from ..utils.path_planner import plan_global_path, segment_clear, path_time, segment_time
 
 
 class MotionController(Executor):
@@ -101,12 +101,8 @@ class MotionController(Executor):
             self.reset_navigation()
             info['state'] = 'invalid_geometry'
             return (0., 0., 0.), False
-        target = clamp_target(self.context, intent.target)
+        target = intent.target
         info['effective_target'] = list(target)
-        if intent.direct_path and target != intent.target:
-            self.reset_navigation()
-            info.update(state='blocked_direct', blocker='field_boundary')
-            return (0., 0., 0.), False
         distance = math.hypot(target[0]-pose.x, target[1]-pose.y)
         if distance < intent.arrive_dist:
             self.reset_navigation()
@@ -115,11 +111,10 @@ class MotionController(Executor):
             return (0., 0., yaw if abs(yaw) > .2 else 0.), True
 
         now = self.context.now
-        outside = (pose.x, pose.y) != clamp_target(self.context, (pose.x, pose.y))
-        omni = distance <= OMNI_DIST or intent.maintain_face or outside
+        omni = distance <= OMNI_DIST or intent.maintain_face
         game = self.context.game
         phase = None if game is None else (game.state, game.set_play, game.game_phase, game.first_half, game.kicking_team, game.stopped)
-        key = (phase, omni, outside, intent.direct_path, intent.avoid_ball, intent.opponent_mode, intent.ball_keepout, intent.motion_priority)
+        key = (phase, omni, intent.direct_path, intent.avoid_ball, intent.opponent_mode, intent.ball_keepout, intent.motion_priority)
         last = getattr(self, '_nav_last_time', now)
         anchor = getattr(self, '_nav_target', target)
         face_anchor = getattr(self, '_nav_face', intent.face)
@@ -174,10 +169,6 @@ class MotionController(Executor):
             error = normalize_angle(desired-pose.theta)
             yaw = (self._angular(normalize_angle(intent.face-pose.theta))
                    if omni and intent.face is not None else 0. if omni else self._angular(error))
-            if outside:
-                # 场外用保持朝向的全向平移沿入口路径移动，避免先转后走反复选侧。
-                # 入场后恢复原有朝向控制；速度仍接受完整预测碰撞检查。
-                yaw = 0.
             # Rotation itself has no translational command, but momentum is still checked.
             speeds = (0.,) if not omni and abs(error) > TURN_THRESHOLD else (1., .65, .35, .15)
             for scale in speeds:

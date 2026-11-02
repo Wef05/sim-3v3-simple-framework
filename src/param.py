@@ -185,7 +185,8 @@ TARGET_IGNORE = 0.0                     # 终点忽略半径 (m)；终点附近�
 
 USE_GLOBAL_PATH_PLANNER = True          # 是否启用全局规划器；False 时只使用预测速度避障
 GLOBAL_GRID_RESOLUTION_M = 0.35         # 栅格分辨率 (m/格)；越小路径越精细，但计算量越大
-GLOBAL_FIELD_MARGIN_M = 0.25            # 机器人中心距场地边界的内缩余量 (m)
+GLOBAL_SEARCH_PADDING_M = 1.5           # 场地及起终点之外的搜索余量 (m)，允许跨线绕行
+GLOBAL_MAX_GRID_CELLS = 80              # 每轴最多格数；极远目标增大格距以限制搜索规模
 GLOBAL_OBSTACLE_MARGIN_M = 0.10         # 障碍物膨胀余量 (m)；在障碍半径上额外扩大多少
 GLOBAL_PATH_LOOKAHEAD_M = 0.9           # 从规划路径中提取前方多远的路径点 (m)
 
