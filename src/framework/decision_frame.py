@@ -27,6 +27,7 @@ def prepare_frame(context, players, store):
         p.ball_intercept = estimate_ball_intercept(
             p.pose, store.ball_motion, fallen=p.is_fallen, penalized=p.is_penalized)
         p.interception_risk = None
+        p.attack_receive = None
         p.attack_choice = None
         p.attack_candidates = None
         p.scoring_probability = None

@@ -1,0 +1,5391 @@
+{
+  "frames": 2707,
+  "stages": {
+    "intercept": 550,
+    "wait_ball": 25,
+    "auto_kick": 170,
+    "rebound_chase": 208
+  },
+  "reasons": {
+    "go_to_wait_point": 550,
+    "await_ball": 19,
+    "stabilizing": 6,
+    "rebound_over_90": 2,
+    "kick_hysteresis": 168,
+    "rebound_out_of_kick_range": 208
+  },
+  "first_id": 205934,
+  "last_id": 208640,
+  "sim_start": 34.503999999,
+  "sim_end": 124.099999999,
+  "max_sim_gap": 0.30999999999998806,
+  "approach_frames": 758,
+  "wait_frames": 25,
+  "approach_avoid_ball_false": 0,
+  "minimum_approach": {
+    "frame": 207019,
+    "sim": 69.03,
+    "remaining": 586,
+    "player": 1,
+    "action": "attack:center_fallback",
+    "stage": "intercept",
+    "reason": "go_to_wait_point",
+    "distance": 0.5175422709320451,
+    "ball": [
+      -0.0005905504152602148,
+      -9.495197621153769e-05
+    ],
+    "robot": [
+      -0.5152344559282191,
+      -0.05479095475399191
+    ],
+    "ball_speed": 0.011962703218756235,
+    "kicking": false,
+    "navigation": {
+      "state": "blocked",
+      "priority": 80,
+      "opponent_mode": "contest",
+      "avoid_ball": true,
+      "blocker": "opponent:1",
+      "target": [
+        -0.5971265428652883,
+        -0.05865059083887468
+      ],
+      "effective_target": [
+        -0.5971265428652883,
+        -0.05865059083887468
+      ],
+      "route_reason": "retained",
+      "estimated_time_s": 0.213866449242636,
+      "candidate_time_s": 0.20473360434110102,
+      "previous_time_s": 0.213866449242636,
+      "switch_margin_s": 0.35,
+      "blocker_priority": null,
+      "stop_conflict": "opponent:1"
+    },
+    "receive": {
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "angle_deg": null,
+      "intercept_point": [
+        -0.0005905504152602148,
+        -9.495197621153769e-05
+      ],
+      "outgoing_target": [
+        7.25,
+        0.0
+      ],
+      "stable_s": 0.0,
+      "speed_mps": 0.011962703218756235,
+      "contact_confirmed": false,
+      "wait_point": [
+        -0.5971265428652883,
+        -0.05865059083887468
+      ],
+      "standoff_m": 0.6,
+      "robot_speed_mps": 0.05422911328741225,
+      "ball_distance_m": 0.5175422709320451,
+      "intercept_status": "intercept",
+      "replanned": false,
+      "arrived": false
+    }
+  },
+  "minimum_wait": {
+    "frame": 206792,
+    "sim": 56.816,
+    "remaining": 598,
+    "player": 1,
+    "action": "attack",
+    "stage": "wait_ball",
+    "reason": "await_ball",
+    "distance": 0.557655768520214,
+    "ball": [
+      -9.55879814611589e-17,
+      1.7605975044469242e-16
+    ],
+    "robot": [
+      -0.5546522648011168,
+      -0.057799838363636113
+    ],
+    "ball_speed": 1.231475071190843e-17,
+    "kicking": false,
+    "navigation": null,
+    "receive": {
+      "stage": "wait_ball",
+      "reason": "await_ball",
+      "angle_deg": null,
+      "intercept_point": [
+        -9.55879814611589e-17,
+        1.7605975044469242e-16
+      ],
+      "outgoing_target": [
+        -1.1240455776466818,
+        4.298393950742835
+      ],
+      "stable_s": 0.0,
+      "speed_mps": 1.231475071190843e-17,
+      "contact_confirmed": false,
+      "wait_point": [
+        -0.5982595246759118,
+        -0.045667725305210696
+      ],
+      "standoff_m": 0.6,
+      "robot_speed_mps": 0.25173237293113054,
+      "ball_distance_m": 0.557655768520214,
+      "intercept_status": "intercept",
+      "replanned": false,
+      "arrived": true
+    }
+  },
+  "near_ball_speed_jumps": [],
+  "home_touch_events": [
+    {
+      "event": "local-match:10",
+      "sim": 69.1660000000202,
+      "remaining": 585.2279999999959,
+      "player": 1,
+      "before": {
+        "frame": 207020,
+        "sim": 69.054,
+        "remaining": 586,
+        "player": 1,
+        "action": "attack:center_fallback",
+        "stage": "auto_kick",
+        "reason": "rebound_over_90",
+        "distance": 0.49621960107272167,
+        "ball": [
+          -0.02096783648931508,
+          -0.0022401431389130434
+        ],
+        "robot": [
+          -0.514406204577895,
+          -0.05470412494405411
+        ],
+        "ball_speed": 0.8537454580044012,
+        "kicking": true,
+        "navigation": null,
+        "receive": {
+          "stage": "auto_kick",
+          "reason": "rebound_over_90",
+          "angle_deg": 174.00944428257625,
+          "intercept_point": [
+            -0.10390522191062929,
+            -0.010971263937668577
+          ],
+          "outgoing_target": [
+            7.25,
+            0.0
+          ],
+          "stable_s": 0.0,
+          "speed_mps": 0.8537454580044012,
+          "contact_confirmed": false,
+          "wait_point": null,
+          "standoff_m": 0.6,
+          "robot_speed_mps": 0.03469959661968293,
+          "ball_distance_m": 0.49621960107272167,
+          "intercept_status": "intercept"
+        }
+      },
+      "after": {
+        "frame": 207021,
+        "sim": 69.348,
+        "remaining": 586,
+        "player": 1,
+        "action": "attack:center_fallback",
+        "stage": "auto_kick",
+        "reason": "kick_hysteresis",
+        "distance": 0.2134892460064948,
+        "ball": [
+          -0.2946530528136913,
+          -0.05276042534774508
+        ],
+        "robot": [
+          -0.5079968657600744,
+          -0.060639234770516415
+        ],
+        "ball_speed": 0.953112995659078,
+        "kicking": true,
+        "navigation": null,
+        "receive": {
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "angle_deg": null,
+          "intercept_point": [
+            -0.2980682008144975,
+            -0.05339083660306538
+          ],
+          "outgoing_target": [
+            7.25,
+            0.0
+          ],
+          "stable_s": 0.0,
+          "speed_mps": 0.953112995659078,
+          "contact_confirmed": false,
+          "wait_point": null,
+          "standoff_m": 0.6,
+          "robot_speed_mps": 0.029711843754352974,
+          "ball_distance_m": 0.2134892460064948,
+          "intercept_status": "intercept"
+        }
+      },
+      "window": [
+        {
+          "frame": 207016,
+          "sim": 68.906,
+          "remaining": 586,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "intercept",
+          "reason": "go_to_wait_point",
+          "distance": 0.5241512971681512,
+          "ball": [
+            -2.41280334421561e-16,
+            3.266128658983552e-16
+          ],
+          "robot": [
+            -0.52121232054992,
+            -0.05542832515982486
+          ],
+          "ball_speed": 1.551486340311944e-17,
+          "kicking": false,
+          "navigation": {
+            "state": "blocked",
+            "priority": 80,
+            "opponent_mode": "contest",
+            "avoid_ball": true,
+            "blocker": "opponent:1",
+            "target": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "effective_target": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "route_reason": "retained",
+            "estimated_time_s": 0.1988617482659554,
+            "candidate_time_s": 0.18975126986562915,
+            "previous_time_s": 0.1988617482659554,
+            "switch_margin_s": 0.35,
+            "blocker_priority": null,
+            "stop_conflict": "opponent:1"
+          },
+          "receive": {
+            "stage": "intercept",
+            "reason": "go_to_wait_point",
+            "angle_deg": null,
+            "intercept_point": [
+              -2.41280334421561e-16,
+              3.266128658983552e-16
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 1.551486340311944e-17,
+            "contact_confirmed": false,
+            "wait_point": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.03877393741527496,
+            "ball_distance_m": 0.5241512971681512,
+            "intercept_status": "intercept",
+            "replanned": false,
+            "arrived": false
+          }
+        },
+        {
+          "frame": 207017,
+          "sim": 68.948,
+          "remaining": 586,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "intercept",
+          "reason": "go_to_wait_point",
+          "distance": 0.5221488575979181,
+          "ball": [
+            -2.4172803156630753e-16,
+            3.2690314708324456e-16
+          ],
+          "robot": [
+            -0.519222851084831,
+            -0.05520018480177837
+          ],
+          "ball_speed": 1.2704024299350102e-17,
+          "kicking": false,
+          "navigation": {
+            "state": "blocked",
+            "priority": 80,
+            "opponent_mode": "contest",
+            "avoid_ball": true,
+            "blocker": "opponent:1",
+            "target": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "effective_target": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "route_reason": "retained",
+            "estimated_time_s": 0.2038604238894903,
+            "candidate_time_s": 0.19474008273244675,
+            "previous_time_s": 0.2038604238894903,
+            "switch_margin_s": 0.35,
+            "blocker_priority": null,
+            "stop_conflict": "opponent:1"
+          },
+          "receive": {
+            "stage": "intercept",
+            "reason": "go_to_wait_point",
+            "angle_deg": null,
+            "intercept_point": [
+              -2.4172803156630753e-16,
+              3.2690314708324456e-16
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 1.2704024299350102e-17,
+            "contact_confirmed": false,
+            "wait_point": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.047678752900749924,
+            "ball_distance_m": 0.5221488575979181,
+            "intercept_status": "intercept",
+            "replanned": false,
+            "arrived": false
+          }
+        },
+        {
+          "frame": 207018,
+          "sim": 68.988,
+          "remaining": 586,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "intercept",
+          "reason": "go_to_wait_point",
+          "distance": 0.5204171514332799,
+          "ball": [
+            -2.422098057095611e-16,
+            3.272976652422587e-16
+          ],
+          "robot": [
+            -0.5175003323185786,
+            -0.055021973393275254
+          ],
+          "ball_speed": 1.9459264917076516e-17,
+          "kicking": false,
+          "navigation": {
+            "state": "blocked",
+            "priority": 80,
+            "opponent_mode": "contest",
+            "avoid_ball": true,
+            "blocker": "opponent:1",
+            "target": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "effective_target": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "route_reason": "retained",
+            "estimated_time_s": 0.20818226187227404,
+            "candidate_time_s": 0.19905619541879688,
+            "previous_time_s": 0.20818226187227404,
+            "switch_margin_s": 0.35,
+            "blocker_priority": null,
+            "stop_conflict": "opponent:1"
+          },
+          "receive": {
+            "stage": "intercept",
+            "reason": "go_to_wait_point",
+            "angle_deg": null,
+            "intercept_point": [
+              -2.422098057095611e-16,
+              3.272976652422587e-16
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 1.9459264917076516e-17,
+            "contact_confirmed": false,
+            "wait_point": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.043292827106602066,
+            "ball_distance_m": 0.5204171514332799,
+            "intercept_status": "intercept",
+            "replanned": false,
+            "arrived": false
+          }
+        },
+        {
+          "frame": 207019,
+          "sim": 69.03,
+          "remaining": 586,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "intercept",
+          "reason": "go_to_wait_point",
+          "distance": 0.5175422709320451,
+          "ball": [
+            -0.0005905504152602148,
+            -9.495197621153769e-05
+          ],
+          "robot": [
+            -0.5152344559282191,
+            -0.05479095475399191
+          ],
+          "ball_speed": 0.011962703218756235,
+          "kicking": false,
+          "navigation": {
+            "state": "blocked",
+            "priority": 80,
+            "opponent_mode": "contest",
+            "avoid_ball": true,
+            "blocker": "opponent:1",
+            "target": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "effective_target": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "route_reason": "retained",
+            "estimated_time_s": 0.213866449242636,
+            "candidate_time_s": 0.20473360434110102,
+            "previous_time_s": 0.213866449242636,
+            "switch_margin_s": 0.35,
+            "blocker_priority": null,
+            "stop_conflict": "opponent:1"
+          },
+          "receive": {
+            "stage": "intercept",
+            "reason": "go_to_wait_point",
+            "angle_deg": null,
+            "intercept_point": [
+              -0.0005905504152602148,
+              -9.495197621153769e-05
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.011962703218756235,
+            "contact_confirmed": false,
+            "wait_point": [
+              -0.5971265428652883,
+              -0.05865059083887468
+            ],
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.05422911328741225,
+            "ball_distance_m": 0.5175422709320451,
+            "intercept_status": "intercept",
+            "replanned": false,
+            "arrived": false
+          }
+        },
+        {
+          "frame": 207020,
+          "sim": 69.054,
+          "remaining": 586,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "rebound_over_90",
+          "distance": 0.49621960107272167,
+          "ball": [
+            -0.02096783648931508,
+            -0.0022401431389130434
+          ],
+          "robot": [
+            -0.514406204577895,
+            -0.05470412494405411
+          ],
+          "ball_speed": 0.8537454580044012,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "rebound_over_90",
+            "angle_deg": 174.00944428257625,
+            "intercept_point": [
+              -0.10390522191062929,
+              -0.010971263937668577
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.8537454580044012,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.03469959661968293,
+            "ball_distance_m": 0.49621960107272167,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207021,
+          "sim": 69.348,
+          "remaining": 586,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.2134892460064948,
+          "ball": [
+            -0.2946530528136913,
+            -0.05276042534774508
+          ],
+          "robot": [
+            -0.5079968657600744,
+            -0.060639234770516415
+          ],
+          "ball_speed": 0.953112995659078,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              -0.2980682008144975,
+              -0.05339083660306538
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.953112995659078,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.029711843754352974,
+            "ball_distance_m": 0.2134892460064948,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207022,
+          "sim": 69.482,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.25166833156972973,
+          "ball": [
+            -0.31051645609977235,
+            -0.20220501802213303
+          ],
+          "robot": [
+            -0.5151158929238864,
+            -0.05565803045040985
+          ],
+          "ball_speed": 1.1050307129138435,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              -0.3107413850894986,
+              -0.20432400980744542
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 1.1050307129138435,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.06484080280232274,
+            "ball_distance_m": 0.25272616182487867,
+            "intercept_status": "intercept"
+          }
+        }
+      ]
+    },
+    {
+      "event": "local-match:12",
+      "sim": 69.48000000001947,
+      "remaining": 584.9139999999965,
+      "player": 1,
+      "before": {
+        "frame": 207021,
+        "sim": 69.348,
+        "remaining": 586,
+        "player": 1,
+        "action": "attack:center_fallback",
+        "stage": "auto_kick",
+        "reason": "kick_hysteresis",
+        "distance": 0.2134892460064948,
+        "ball": [
+          -0.2946530528136913,
+          -0.05276042534774508
+        ],
+        "robot": [
+          -0.5079968657600744,
+          -0.060639234770516415
+        ],
+        "ball_speed": 0.953112995659078,
+        "kicking": true,
+        "navigation": null,
+        "receive": {
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "angle_deg": null,
+          "intercept_point": [
+            -0.2980682008144975,
+            -0.05339083660306538
+          ],
+          "outgoing_target": [
+            7.25,
+            0.0
+          ],
+          "stable_s": 0.0,
+          "speed_mps": 0.953112995659078,
+          "contact_confirmed": false,
+          "wait_point": null,
+          "standoff_m": 0.6,
+          "robot_speed_mps": 0.029711843754352974,
+          "ball_distance_m": 0.2134892460064948,
+          "intercept_status": "intercept"
+        }
+      },
+      "after": {
+        "frame": 207022,
+        "sim": 69.482,
+        "remaining": 585,
+        "player": 1,
+        "action": "attack:center_fallback",
+        "stage": "auto_kick",
+        "reason": "kick_hysteresis",
+        "distance": 0.25166833156972973,
+        "ball": [
+          -0.31051645609977235,
+          -0.20220501802213303
+        ],
+        "robot": [
+          -0.5151158929238864,
+          -0.05565803045040985
+        ],
+        "ball_speed": 1.1050307129138435,
+        "kicking": true,
+        "navigation": null,
+        "receive": {
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "angle_deg": null,
+          "intercept_point": [
+            -0.3107413850894986,
+            -0.20432400980744542
+          ],
+          "outgoing_target": [
+            7.25,
+            0.0
+          ],
+          "stable_s": 0.0,
+          "speed_mps": 1.1050307129138435,
+          "contact_confirmed": false,
+          "wait_point": null,
+          "standoff_m": 0.6,
+          "robot_speed_mps": 0.06484080280232274,
+          "ball_distance_m": 0.25272616182487867,
+          "intercept_status": "intercept"
+        }
+      },
+      "window": [
+        {
+          "frame": 207021,
+          "sim": 69.348,
+          "remaining": 586,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.2134892460064948,
+          "ball": [
+            -0.2946530528136913,
+            -0.05276042534774508
+          ],
+          "robot": [
+            -0.5079968657600744,
+            -0.060639234770516415
+          ],
+          "ball_speed": 0.953112995659078,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              -0.2980682008144975,
+              -0.05339083660306538
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.953112995659078,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.029711843754352974,
+            "ball_distance_m": 0.2134892460064948,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207022,
+          "sim": 69.482,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.25166833156972973,
+          "ball": [
+            -0.31051645609977235,
+            -0.20220501802213303
+          ],
+          "robot": [
+            -0.5151158929238864,
+            -0.05565803045040985
+          ],
+          "ball_speed": 1.1050307129138435,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              -0.3107413850894986,
+              -0.20432400980744542
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 1.1050307129138435,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.06484080280232274,
+            "ball_distance_m": 0.25272616182487867,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207023,
+          "sim": 69.528,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.29988015473095503,
+          "ball": [
+            -0.30996150038356907,
+            -0.254859870794819
+          ],
+          "robot": [
+            -0.5221047427657408,
+            -0.04290857470762665
+          ],
+          "ball_speed": 1.0970370243501928,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              -0.30996150038356907,
+              -0.254859870794819
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 1.0970370243501928,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.31607278528809096,
+            "ball_distance_m": 0.29988015473095503,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207024,
+          "sim": 69.566,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.33140026897235814,
+          "ball": [
+            -0.3084290240833614,
+            -0.28210226499364316
+          ],
+          "robot": [
+            -0.5278683079857148,
+            -0.03376270117955076
+          ],
+          "ball_speed": 0.9095154542054987,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              -0.308025261080357,
+              -0.28927984476388635
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.9095154542054987,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.28448535279208415,
+            "ball_distance_m": 0.33707562347065284,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207025,
+          "sim": 69.618,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.38996013891659337,
+          "ball": [
+            -0.3063493127681009,
+            -0.33146806424094677
+          ],
+          "robot": [
+            -0.5404866663870771,
+            -0.019620970965810912
+          ],
+          "ball_speed": 0.8234931245885952,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 90.09937219463775,
+            "intercept_point": [
+              -0.3046826216887146,
+              -0.37103006336482436
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.8234931245885952,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.36447838132390126,
+            "ball_distance_m": 0.38996013891659337,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207026,
+          "sim": 69.66,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.43292950382083706,
+          "ball": [
+            -0.30532775714824073,
+            -0.36879102207255515
+          ],
+          "robot": [
+            -0.5525608488388093,
+            -0.013398628158899382
+          ],
+          "ball_speed": 0.9825509358501207,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 91.25397959413078,
+            "intercept_point": [
+              -0.3028441111057872,
+              -0.45953205927992924
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.9825509358501207,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.32340961990548117,
+            "ball_distance_m": 0.4359494598857773,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207027,
+          "sim": 69.692,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.4591486278936184,
+          "ball": [
+            -0.3048546458345035,
+            -0.3919603289141243
+          ],
+          "robot": [
+            -0.5620637416856338,
+            -0.011617137167464353
+          ],
+          "ball_speed": 0.7241917732530182,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 91.82479843294014,
+            "intercept_point": [
+              -0.30318715673421126,
+              -0.47362095612351807
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.7241917732530182,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.3021386701286709,
+            "ball_distance_m": 0.4618860005972448,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207028,
+          "sim": 69.738,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.4973417465983266,
+          "ball": [
+            -0.3042947538177521,
+            -0.4274876383890428
+          ],
+          "robot": [
+            -0.5774586710885065,
+            -0.011879304484667693
+          ],
+          "ball_speed": 0.8459933572685393,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 92.38418529904408,
+            "intercept_point": [
+              -0.3024182605807262,
+              -0.5465583769686488
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.8459933572685393,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.33472090271360483,
+            "ball_distance_m": 0.502734220365231,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207029,
+          "sim": 69.798,
+          "remaining": 585,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.5443913320262741,
+          "ball": [
+            -0.3037405619275814,
+            -0.47743828231193947
+          ],
+          "robot": [
+            -0.6009254017695337,
+            -0.021320870505007635
+          ],
+          "ball_speed": 0.8057051314441378,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 93.01641518090325,
+            "intercept_point": [
+              -0.3024614567083908,
+              -0.5927271028033915
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.8057051314441378,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.4215812224933167,
+            "ball_distance_m": 0.5483569827247128,
+            "intercept_status": "intercept"
+          }
+        }
+      ]
+    },
+    {
+      "event": "local-match:22",
+      "sim": 98.83999999995105,
+      "remaining": 558.5620000000386,
+      "player": 1,
+      "before": {
+        "frame": 207847,
+        "sim": 98.801999999,
+        "remaining": 559,
+        "player": 1,
+        "action": "attack:best_shot",
+        "stage": "auto_kick",
+        "reason": "kick_hysteresis",
+        "distance": 0.20309250608115015,
+        "ball": [
+          1.533729450022773,
+          -2.1121639808147146
+        ],
+        "robot": [
+          1.3529247459702947,
+          -2.0196641158482307
+        ],
+        "ball_speed": 0.00047464960944893983,
+        "kicking": true,
+        "navigation": null,
+        "receive": {
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "angle_deg": null,
+          "intercept_point": [
+            1.533729450022773,
+            -2.1121639808147146
+          ],
+          "outgoing_target": [
+            7.0,
+            1.095
+          ],
+          "stable_s": 0.0,
+          "speed_mps": 0.00047464960944893983,
+          "contact_confirmed": false,
+          "wait_point": null,
+          "standoff_m": 0.6,
+          "robot_speed_mps": 0.6185579709386586,
+          "ball_distance_m": 0.20309250608115015,
+          "intercept_status": "intercept"
+        }
+      },
+      "after": {
+        "frame": 207848,
+        "sim": 98.867999999,
+        "remaining": 559,
+        "player": 1,
+        "action": "attack:best_shot",
+        "stage": "auto_kick",
+        "reason": "kick_hysteresis",
+        "distance": 0.19133936045008712,
+        "ball": [
+          1.5397667780003765,
+          -2.10751861600343
+        ],
+        "robot": [
+          1.3843107324604482,
+          -1.9959651814416195
+        ],
+        "ball_speed": 0.10882371378262144,
+        "kicking": true,
+        "navigation": null,
+        "receive": {
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "angle_deg": null,
+          "intercept_point": [
+            1.540180602921971,
+            -2.107200202338322
+          ],
+          "outgoing_target": [
+            7.0,
+            1.095
+          ],
+          "stable_s": 0.0,
+          "speed_mps": 0.10882371378262144,
+          "contact_confirmed": false,
+          "wait_point": null,
+          "standoff_m": 0.6,
+          "robot_speed_mps": 0.5958841922790795,
+          "ball_distance_m": 0.19149059086958206,
+          "intercept_status": "intercept"
+        }
+      },
+      "window": [
+        {
+          "frame": 207844,
+          "sim": 98.655999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:best_shot",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.25982401732596627,
+          "ball": [
+            1.5337891462284736,
+            -2.1121042899872076
+          ],
+          "robot": [
+            1.2761969316320183,
+            -2.0781223689305968
+          ],
+          "ball_speed": 0.0011402287799988703,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              1.5337891462284736,
+              -2.1121042899872076
+            ],
+            "outgoing_target": [
+              7.0,
+              1.095
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.0011402287799988703,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.5283266271133573,
+            "ball_distance_m": 0.25982401732596627,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207845,
+          "sim": 98.705999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:best_shot",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.2360923750344557,
+          "ball": [
+            1.5337642078285623,
+            -2.112129226140351
+          ],
+          "robot": [
+            1.3040030246608243,
+            -2.0578207713771075
+          ],
+          "ball_speed": 0.0006530858279509886,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              1.5337642078285623,
+              -2.112129226140351
+            ],
+            "outgoing_target": [
+              7.0,
+              1.095
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.0006530858279509886,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.6885735030483207,
+            "ball_distance_m": 0.2360923750344557,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207846,
+          "sim": 98.757999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:best_shot",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.21480863934945035,
+          "ball": [
+            1.5337435470319942,
+            -2.112149885075532
+          ],
+          "robot": [
+            1.3323363389260492,
+            -2.0374646250697532
+          ],
+          "ball_speed": 0.0006086971363823647,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              1.5337435470319942,
+              -2.112149885075532
+            ],
+            "outgoing_target": [
+              7.0,
+              1.095
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.0006086971363823647,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.6709166954110237,
+            "ball_distance_m": 0.21480863934945035,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207847,
+          "sim": 98.801999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:best_shot",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.20309250608115015,
+          "ball": [
+            1.533729450022773,
+            -2.1121639808147146
+          ],
+          "robot": [
+            1.3529247459702947,
+            -2.0196641158482307
+          ],
+          "ball_speed": 0.00047464960944893983,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              1.533729450022773,
+              -2.1121639808147146
+            ],
+            "outgoing_target": [
+              7.0,
+              1.095
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.00047464960944893983,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.6185579709386586,
+            "ball_distance_m": 0.20309250608115015,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207848,
+          "sim": 98.867999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:best_shot",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.19133936045008712,
+          "ball": [
+            1.5397667780003765,
+            -2.10751861600343
+          ],
+          "robot": [
+            1.3843107324604482,
+            -1.9959651814416195
+          ],
+          "ball_speed": 0.10882371378262144,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              1.540180602921971,
+              -2.107200202338322
+            ],
+            "outgoing_target": [
+              7.0,
+              1.095
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 0.10882371378262144,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.5958841922790795,
+            "ball_distance_m": 0.19149059086958206,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207849,
+          "sim": 98.901999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:best_shot",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.23664786282676914,
+          "ball": [
+            1.634780661405991,
+            -2.0372882927566627
+          ],
+          "robot": [
+            1.4035848628046466,
+            -1.986783701979547
+          ],
+          "ball_speed": 3.475063956391339,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": null,
+            "intercept_point": [
+              1.6514924592025395,
+              -2.0249356247126062
+            ],
+            "outgoing_target": [
+              7.0,
+              1.095
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 3.475063956391339,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.6279199373993374,
+            "ball_distance_m": 0.2508261261511845,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207850,
+          "sim": 98.957999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.38213852300365264,
+          "ball": [
+            1.8188764056345899,
+            -1.9003449445839988
+          ],
+          "robot": [
+            1.4446381504338461,
+            -1.9776468145983535
+          ],
+          "ball_speed": 3.700715811310503,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 17.35956917907453,
+            "intercept_point": [
+              8.612674857241428,
+              3.1533596408844664
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 3.700715811310503,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.7510314200722682,
+            "ball_distance_m": 0.38213852300365264,
+            "intercept_status": "fallback"
+          }
+        },
+        {
+          "frame": 207851,
+          "sim": 98.975999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:best_shot",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.41870538016847453,
+          "ball": [
+            1.8604464123958864,
+            -1.8694222530611388
+          ],
+          "robot": [
+            1.4555304456133447,
+            -1.9759926768502294
+          ],
+          "ball_speed": 2.878334519907962,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 6.668718191414756,
+            "intercept_point": [
+              3.348147508913303,
+              -0.7627656592820855
+            ],
+            "outgoing_target": [
+              7.0,
+              1.095
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 2.878334519907962,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.6120655828227829,
+            "ball_distance_m": 0.41870538016847453,
+            "intercept_status": "intercept"
+          }
+        },
+        {
+          "frame": 207852,
+          "sim": 99.145999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.8560591029808196,
+          "ball": [
+            2.3225631921440693,
+            -1.5264262736628502
+          ],
+          "robot": [
+            1.5909339891156493,
+            -1.9708988791992594
+          ],
+          "ball_speed": 3.4255844297138074,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 19.395919270192312,
+            "intercept_point": [
+              8.113467308083852,
+              2.7717444829383275
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 3.4255844297138074,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.7970548375739096,
+            "ball_distance_m": 0.8625569529333572,
+            "intercept_status": "fallback"
+          }
+        },
+        {
+          "frame": 207853,
+          "sim": 99.179999999,
+          "remaining": 559,
+          "player": 1,
+          "action": "attack:center_fallback",
+          "stage": "auto_kick",
+          "reason": "kick_hysteresis",
+          "distance": 0.9254648069707667,
+          "ball": [
+            2.3976207769626967,
+            -1.47094018568373
+          ],
+          "robot": [
+            1.619818303751748,
+            -1.9724463387949056
+          ],
+          "ball_speed": 3.1113317973768537,
+          "kicking": true,
+          "navigation": null,
+          "receive": {
+            "stage": "auto_kick",
+            "reason": "kick_hysteresis",
+            "angle_deg": 19.680309207773707,
+            "intercept_point": [
+              7.813438179499723,
+              2.5326861180691447
+            ],
+            "outgoing_target": [
+              7.25,
+              0.0
+            ],
+            "stable_s": 0.0,
+            "speed_mps": 3.1113317973768537,
+            "contact_confirmed": false,
+            "wait_point": null,
+            "standoff_m": 0.6,
+            "robot_speed_mps": 0.8507569717086673,
+            "ball_distance_m": 0.9440336267689698,
+            "intercept_status": "fallback"
+          }
+        }
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "frame": 205934,
+      "sim": 34.503999999,
+      "remaining": 540,
+      "player": 1,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 6.385459876966763,
+      "ball": [
+        -4.0203936535922634e-16,
+        4.07349191058366e-16
+      ],
+      "robot": [
+        -3.9953029302112646,
+        4.981129624512665
+      ],
+      "ball_speed": 1.250936179807991e-17,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 205934,
+      "sim": 34.503999999,
+      "remaining": 540,
+      "player": 2,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 7.055161217198785,
+      "ball": [
+        -4.0203936535922634e-16,
+        4.07349191058366e-16
+      ],
+      "robot": [
+        -4.995975905041332,
+        4.981518298361684
+      ],
+      "ball_speed": 1.250936179807991e-17,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 205934,
+      "sim": 34.503999999,
+      "remaining": 540,
+      "player": 3,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 7.801500998393572,
+      "ball": [
+        -4.0203936535922634e-16,
+        4.07349191058366e-16
+      ],
+      "robot": [
+        -6.002172189631196,
+        4.983708140928174
+      ],
+      "ball_speed": 1.250936179807991e-17,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 205939,
+      "sim": 34.601999999,
+      "remaining": 600,
+      "player": 1,
+      "action": "ready",
+      "stage": null,
+      "reason": null,
+      "distance": 6.385463519658916,
+      "ball": [
+        1.632391632017852e-19,
+        -1.976821480095521e-19
+      ],
+      "robot": [
+        -3.9953048487780816,
+        4.981132755330376
+      ],
+      "ball_speed": 2.821897604483973e-18,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 10,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -1.5,
+          0.0
+        ],
+        "effective_target": [
+          -1.5,
+          0.0
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 7.42826192496505,
+        "candidate_time_s": 7.42826192496505,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.8985297916779031,
+        "waypoint": [
+          -3.5922003475124256,
+          4.176454707251912
+        ],
+        "path": [
+          [
+            -3.9953048487780816,
+            4.981132755330376
+          ],
+          [
+            -1.5,
+            0.0
+          ]
+        ],
+        "command": [
+          1.8985297916779031,
+          0.0,
+          0.6398125552475578
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 205939,
+      "sim": 34.601999999,
+      "remaining": 600,
+      "player": 2,
+      "action": "ready",
+      "stage": null,
+      "reason": null,
+      "distance": 7.055165058725542,
+      "ball": [
+        1.632391632017852e-19,
+        -1.976821480095521e-19
+      ],
+      "robot": [
+        -4.995977956019208,
+        4.981521682059802
+      ],
+      "ball_speed": 2.821897604483973e-18,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 10,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -6.0,
+          0.0
+        ],
+        "effective_target": [
+          -6.0,
+          0.0
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 6.775592606621214,
+        "candidate_time_s": 6.775592606621214,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.8842147910922182,
+        "waypoint": [
+          -5.173796565065976,
+          4.099262909206467
+        ],
+        "path": [
+          [
+            -4.995977956019208,
+            4.981521682059802
+          ],
+          [
+            -6.0,
+            0.0
+          ]
+        ],
+        "command": [
+          1.8842147910922182,
+          0.0,
+          -0.6838712401585285
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 205939,
+      "sim": 34.601999999,
+      "remaining": 600,
+      "player": 3,
+      "action": "ready",
+      "stage": null,
+      "reason": null,
+      "distance": 7.801505472217637,
+      "ball": [
+        1.632391632017852e-19,
+        -1.976821480095521e-19
+      ],
+      "robot": [
+        -6.002174530933696,
+        4.983712324487901
+      ],
+      "ball_speed": 2.821897604483973e-18,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 10,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -1.2071067811865475,
+          4.207106781186548
+        ],
+        "effective_target": [
+          -1.2071067811865475,
+          4.207106781186548
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 7.3608782370049255,
+        "candidate_time_s": 7.3608782370049255,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -5.351150573145689,
+          4.362288309514197
+        ],
+        "path": [
+          [
+            -6.002174530933696,
+            4.983712324487901
+          ],
+          [
+            -5.030612244897959,
+            4.056323816948586
+          ],
+          [
+            -1.908163265306122,
+            4.056323816948586
+          ],
+          [
+            -1.2071067811865475,
+            4.207106781186548
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          1.3770453260660287
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 206529,
+      "sim": 49.52,
+      "remaining": 600,
+      "player": 1,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 1.5005455450817795,
+      "ball": [
+        -1.3847587663025103e-16,
+        1.5237964432650666e-16
+      ],
+      "robot": [
+        -1.4961648488266737,
+        -0.1145760795289838
+      ],
+      "ball_speed": 1.6578161313144488e-16,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 206529,
+      "sim": 49.52,
+      "remaining": 600,
+      "player": 2,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 5.935659370206374,
+      "ball": [
+        -1.3847587663025103e-16,
+        1.5237964432650666e-16
+      ],
+      "robot": [
+        -5.935287599708278,
+        -0.06643243084423481
+      ],
+      "ball_speed": 1.6578161313144488e-16,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 206529,
+      "sim": 49.52,
+      "remaining": 600,
+      "player": 3,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 4.43939459167629,
+      "ball": [
+        -1.3847587663025103e-16,
+        1.5237964432650666e-16
+      ],
+      "robot": [
+        -1.1183442525164284,
+        4.296222814690617
+      ],
+      "ball_speed": 1.6578161313144488e-16,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 206742,
+      "sim": 54.444,
+      "remaining": 600,
+      "player": 1,
+      "action": "attack",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 1.5021777222855053,
+      "ball": [
+        -7.729432495681331e-17,
+        1.5844492880529606e-16
+      ],
+      "robot": [
+        -1.4978202168554502,
+        -0.11433506596823614
+      ],
+      "ball_speed": 2.2702045864303246e-18,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "effective_target": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 1.2032054244133787,
+        "candidate_time_s": 1.2032054244133787,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.3532665834282578,
+        "waypoint": [
+          -0.6004309298415826,
+          -0.04583347801041984
+        ],
+        "path": [
+          [
+            -1.4978202168554502,
+            -0.11433506596823614
+          ],
+          [
+            -0.5982595246759118,
+            -0.045667725305210696
+          ]
+        ],
+        "command": [
+          1.3530755665315342,
+          -0.022736690149572848,
+          -0.03360425841925657
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": null,
+        "intercept_point": [
+          -7.729432495681331e-17,
+          1.5844492880529606e-16
+        ],
+        "outgoing_target": [
+          -1.122907516644397,
+          4.298679271618524
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 2.2702045864303246e-18,
+        "contact_confirmed": false,
+        "wait_point": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "ball_distance_m": 1.5021777222855053,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 206742,
+      "sim": 54.444,
+      "remaining": 600,
+      "player": 2,
+      "action": "guard:set",
+      "stage": null,
+      "reason": null,
+      "distance": 5.937866703651042,
+      "ball": [
+        -7.729432495681331e-17,
+        1.5844492880529606e-16
+      ],
+      "robot": [
+        -5.937488810137957,
+        -0.06698969931444125
+      ],
+      "ball_speed": 2.2702045864303246e-18,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 60,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -6.0,
+          0.0
+        ],
+        "effective_target": [
+          -6.0,
+          0.0
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 0.21426210282414723,
+        "candidate_time_s": 0.21426210282414723,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.1374385481314003,
+        "waypoint": [
+          -6.0,
+          0.0
+        ],
+        "path": [
+          [
+            -5.937488810137957,
+            -0.06698969931444125
+          ],
+          [
+            -6.0,
+            0.0
+          ]
+        ],
+        "command": [
+          -0.08736867236611391,
+          0.10609462569541345,
+          -0.10128325496014433
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 206742,
+      "sim": 54.444,
+      "remaining": 600,
+      "player": 3,
+      "action": "stay",
+      "stage": null,
+      "reason": null,
+      "distance": 4.442922998565162,
+      "ball": [
+        -7.729432495681331e-17,
+        1.5844492880529606e-16
+      ],
+      "robot": [
+        -1.122907516644397,
+        4.298679271618524
+      ],
+      "ball_speed": 2.2702045864303246e-18,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 206783,
+      "sim": 56.458,
+      "remaining": 599,
+      "player": 1,
+      "action": "attack",
+      "stage": "wait_ball",
+      "reason": "await_ball",
+      "distance": 0.6455979752905575,
+      "ball": [
+        -9.300870977340904e-17,
+        1.7181680981557564e-16
+      ],
+      "robot": [
+        -0.642377121471266,
+        -0.06440791496049002
+      ],
+      "ball_speed": 1.0389227205844116e-17,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "await_ball",
+        "angle_deg": null,
+        "intercept_point": [
+          -9.300870977340904e-17,
+          1.7181680981557564e-16
+        ],
+        "outgoing_target": [
+          -1.1238965248159762,
+          4.298450425088631
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 1.0389227205844116e-17,
+        "contact_confirmed": false,
+        "wait_point": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.4804427376355664,
+        "ball_distance_m": 0.6455979752905575,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 206787,
+      "sim": 56.638,
+      "remaining": 598,
+      "player": 1,
+      "action": "attack",
+      "stage": "wait_ball",
+      "reason": "stabilizing",
+      "distance": 0.5869286228476913,
+      "ball": [
+        -9.449404900719124e-17,
+        1.7412606364868332e-16
+      ],
+      "robot": [
+        -0.5856784681320765,
+        -0.03828759961595806
+      ],
+      "ball_speed": 1.1197370541855551e-17,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "stabilizing",
+        "angle_deg": null,
+        "intercept_point": [
+          -9.449404900719124e-17,
+          1.7412606364868332e-16
+        ],
+        "outgoing_target": [
+          -1.1239720459791753,
+          4.298422501139774
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 1.1197370541855551e-17,
+        "contact_confirmed": false,
+        "wait_point": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.11747190138003219,
+        "ball_distance_m": 0.5869286228476913,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 206788,
+      "sim": 56.674,
+      "remaining": 598,
+      "player": 1,
+      "action": "attack",
+      "stage": "wait_ball",
+      "reason": "await_ball",
+      "distance": 0.5798259727463378,
+      "ball": [
+        -9.462631670696004e-17,
+        1.7443268320239982e-16
+      ],
+      "robot": [
+        -0.5784549369477833,
+        -0.03985027718815975
+      ],
+      "ball_speed": 8.787672960964957e-18,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "await_ball",
+        "angle_deg": null,
+        "intercept_point": [
+          -9.462631670696004e-17,
+          1.7443268320239982e-16
+        ],
+        "outgoing_target": [
+          -1.1239875575455631,
+          4.298416588322345
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 8.787672960964957e-18,
+        "contact_confirmed": false,
+        "wait_point": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.20529518788956766,
+        "ball_distance_m": 0.5798259727463378,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 206789,
+      "sim": 56.712,
+      "remaining": 598,
+      "player": 1,
+      "action": "attack",
+      "stage": "wait_ball",
+      "reason": "stabilizing",
+      "distance": 0.5749636467383136,
+      "ball": [
+        -9.47171244943679e-17,
+        1.746655187375547e-16
+      ],
+      "robot": [
+        -0.5734318502325357,
+        -0.0419417239692302
+      ],
+      "ball_speed": 8.33056225158372e-18,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "stabilizing",
+        "angle_deg": null,
+        "intercept_point": [
+          -9.47171244943679e-17,
+          1.746655187375547e-16
+        ],
+        "outgoing_target": [
+          -1.1239989336036722,
+          4.298412207551714
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 8.33056225158372e-18,
+        "contact_confirmed": false,
+        "wait_point": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.14318679513560326,
+        "ball_distance_m": 0.5749636467383136,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 206790,
+      "sim": 56.742,
+      "remaining": 598,
+      "player": 1,
+      "action": "attack",
+      "stage": "wait_ball",
+      "reason": "await_ball",
+      "distance": 0.5688266633104474,
+      "ball": [
+        -9.496344765521748e-17,
+        1.7516735048390917e-16
+      ],
+      "robot": [
+        -0.5669462638336007,
+        -0.04621370811802897
+      ],
+      "ball_speed": 1.5528503293031247e-17,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "await_ball",
+        "angle_deg": null,
+        "intercept_point": [
+          -9.496344765521748e-17,
+          1.7516735048390917e-16
+        ],
+        "outgoing_target": [
+          -1.1240159142741453,
+          4.298405618410019
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 1.5528503293031247e-17,
+        "contact_confirmed": false,
+        "wait_point": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.2588707946826479,
+        "ball_distance_m": 0.5688266633104474,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 206793,
+      "sim": 56.86,
+      "remaining": 598,
+      "player": 1,
+      "action": "attack",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 0.5500184603982516,
+      "ball": [
+        -9.578267059301581e-17,
+        1.7643666328880317e-16
+      ],
+      "robot": [
+        -0.5458471301326179,
+        -0.06761077802279858
+      ],
+      "ball_speed": 1.0605633824731404e-17,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "effective_target": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 0.1379941374186465,
+        "candidate_time_s": 0.1379941374186465,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0852305842684402,
+        "waypoint": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "path": [
+          [
+            -0.5458471301326179,
+            -0.06761077802279858
+          ],
+          [
+            -0.5982595246759118,
+            -0.045667725305210696
+          ]
+        ],
+        "command": [
+          -0.07290755562642295,
+          0.04414454470622308,
+          -0.04943607626609303
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": null,
+        "intercept_point": [
+          -9.578267059301581e-17,
+          1.7643666328880317e-16
+        ],
+        "outgoing_target": [
+          -1.124062263940582,
+          4.298387284740362
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 1.0605633824731404e-17,
+        "contact_confirmed": false,
+        "wait_point": [
+          -0.5982595246759118,
+          -0.045667725305210696
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.29960798554641116,
+        "ball_distance_m": 0.5500184603982516,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 206949,
+      "sim": 64.664,
+      "remaining": 590,
+      "player": 3,
+      "action": "freeman:move",
+      "stage": null,
+      "reason": null,
+      "distance": 4.4423729691376055,
+      "ball": [
+        -1.8874836039299234e-16,
+        2.7875799685750024e-16
+      ],
+      "robot": [
+        -1.1261388915769117,
+        4.297265269191837
+      ],
+      "ball_speed": 1.7216420457885502e-17,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 20,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -2.220446049250313e-16,
+          4.297265269191837
+        ],
+        "effective_target": [
+          -2.220446049250313e-16,
+          4.297265269191837
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 1.5015185221025487,
+        "candidate_time_s": 1.5015185221025487,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.6754006305566689,
+        "waypoint": [
+          -0.2261388915769117,
+          4.297265269191837
+        ],
+        "path": [
+          [
+            -1.1261388915769117,
+            4.297265269191837
+          ],
+          [
+            -2.220446049250313e-16,
+            4.297265269191837
+          ]
+        ],
+        "command": [
+          1.6754006305566689,
+          0.0,
+          -0.25589419707403277
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 207020,
+      "sim": 69.054,
+      "remaining": 586,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "auto_kick",
+      "reason": "rebound_over_90",
+      "distance": 0.49621960107272167,
+      "ball": [
+        -0.02096783648931508,
+        -0.0022401431389130434
+      ],
+      "robot": [
+        -0.514406204577895,
+        -0.05470412494405411
+      ],
+      "ball_speed": 0.8537454580044012,
+      "kicking": true,
+      "navigation": null,
+      "receive": {
+        "stage": "auto_kick",
+        "reason": "rebound_over_90",
+        "angle_deg": 174.00944428257625,
+        "intercept_point": [
+          -0.10390522191062929,
+          -0.010971263937668577
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.8537454580044012,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.03469959661968293,
+        "ball_distance_m": 0.49621960107272167,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 207021,
+      "sim": 69.348,
+      "remaining": 586,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "auto_kick",
+      "reason": "kick_hysteresis",
+      "distance": 0.2134892460064948,
+      "ball": [
+        -0.2946530528136913,
+        -0.05276042534774508
+      ],
+      "robot": [
+        -0.5079968657600744,
+        -0.060639234770516415
+      ],
+      "ball_speed": 0.953112995659078,
+      "kicking": true,
+      "navigation": null,
+      "receive": {
+        "stage": "auto_kick",
+        "reason": "kick_hysteresis",
+        "angle_deg": null,
+        "intercept_point": [
+          -0.2980682008144975,
+          -0.05339083660306538
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.953112995659078,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.029711843754352974,
+        "ball_distance_m": 0.2134892460064948,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 207109,
+      "sim": 74.29,
+      "remaining": 581,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 2.6193222459539083,
+      "ball": [
+        2.7774371017372315,
+        -0.22742085244244636
+      ],
+      "robot": [
+        0.26160143705869404,
+        -0.9564064054409457
+      ],
+      "ball_speed": 2.482778611833427,
+      "kicking": false,
+      "navigation": {
+        "state": "blocked",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "opponent:1",
+        "target": [
+          6.870092360474007,
+          1.0200426524345918
+        ],
+        "effective_target": [
+          6.870092360474007,
+          1.0200426524345918
+        ],
+        "route_reason": "no_route",
+        "estimated_time_s": null,
+        "candidate_time_s": null,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "blocker_priority": null,
+        "stop_conflict": "opponent:1"
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 13.883055774812432,
+        "intercept_point": [
+          6.296161236531384,
+          0.845105335175071
+        ],
+        "outgoing_target": [
+          7.0,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 2.482778611833427,
+        "contact_confirmed": false,
+        "wait_point": [
+          6.870092360474007,
+          1.0200426524345918
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.7198324816398232,
+        "ball_distance_m": 2.623762155741728,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 207136,
+      "sim": 75.56,
+      "remaining": 580,
+      "player": 1,
+      "action": "freeman:move",
+      "stage": null,
+      "reason": null,
+      "distance": 4.803647131236119,
+      "ball": [
+        5.072981996965216,
+        0.6018181544602341
+      ],
+      "robot": [
+        0.5322528944060306,
+        -0.9656016931252988
+      ],
+      "ball_speed": 2.0871973276891973,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 20,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.072981996965216,
+          -3.2153259196355823
+        ],
+        "effective_target": [
+          5.072981996965216,
+          -3.2153259196355823
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 11.921231888939303,
+        "candidate_time_s": 11.921231888939303,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          0.17346938775510168,
+          -0.5142857142857142
+        ],
+        "path": [
+          [
+            0.5322528944060306,
+            -0.9656016931252988
+          ],
+          [
+            0.17346938775510168,
+            -0.5142857142857142
+          ],
+          [
+            0.17346938775510168,
+            -0.1714285714285717
+          ],
+          [
+            0.8673469387755102,
+            0.1714285714285717
+          ],
+          [
+            1.2142857142857135,
+            0.1714285714285717
+          ],
+          [
+            5.072981996965216,
+            -3.2153259196355823
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 207136,
+      "sim": 75.56,
+      "remaining": 580,
+      "player": 3,
+      "action": "attack:center_fallback",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 5.459513410481659,
+      "ball": [
+        5.072981996965216,
+        0.6018181544602341
+      ],
+      "robot": [
+        0.8992181695320935,
+        4.121190568973919
+      ],
+      "ball_speed": 2.0871973276891973,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          8.971794800370294,
+          2.299978626571966
+        ],
+        "effective_target": [
+          8.971794800370294,
+          2.299978626571966
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 11.033952159878767,
+        "candidate_time_s": 11.033952159878767,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9606168625278269,
+        "waypoint": [
+          1.7771530940852078,
+          3.923124246117363
+        ],
+        "path": [
+          [
+            0.8992181695320935,
+            4.121190568973919
+          ],
+          [
+            8.971794800370294,
+            2.299978626571966
+          ]
+        ],
+        "command": [
+          1.9606168625278269,
+          0.0,
+          -0.39755791095800935
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 38.98894423293851,
+        "intercept_point": [
+          8.421708919607426,
+          2.0603841279178035
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 2.0871973276891973,
+        "contact_confirmed": false,
+        "wait_point": [
+          8.971794800370294,
+          2.299978626571966
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "ball_distance_m": 5.459513410481659,
+        "intercept_status": "fallback",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 207155,
+      "sim": 76.538,
+      "remaining": 578,
+      "player": 3,
+      "action": "attack:best_shot",
+      "stage": "rebound_chase",
+      "reason": "rebound_out_of_kick_range",
+      "distance": 5.219880817077422,
+      "ball": [
+        6.218470489290143,
+        1.210688916201521
+      ],
+      "robot": [
+        1.8151935355249094,
+        4.013956262162805
+      ],
+      "ball_speed": 1.0798354405323591,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          6.986824647599848,
+          2.0830868302155734
+        ],
+        "effective_target": [
+          6.986824647599848,
+          2.0830868302155734
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 7.360437803719098,
+        "candidate_time_s": 7.360437803719098,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9946302290889941,
+        "waypoint": [
+          2.6583441061817483,
+          3.6991593193551475
+        ],
+        "path": [
+          [
+            1.8151935355249094,
+            4.013956262162805
+          ],
+          [
+            6.986824647599848,
+            2.0830868302155734
+          ]
+        ],
+        "command": [
+          1.9946302290889941,
+          0.0,
+          -0.14659025210215337
+        ]
+      },
+      "receive": {
+        "stage": "rebound_chase",
+        "reason": "rebound_out_of_kick_range",
+        "angle_deg": 91.3741053663582,
+        "intercept_point": [
+          6.989038324455706,
+          1.733093830807331
+        ],
+        "outgoing_target": [
+          7.0,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 1.0798354405323591,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": 1.158165036609879,
+        "ball_distance_m": 5.220701029508706,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 207211,
+      "sim": 78.293999999,
+      "remaining": 577,
+      "player": 3,
+      "action": "attack:fallback:infield",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 4.068569911562874,
+      "ball": [
+        7.1335852873787875,
+        2.006162337859226
+      ],
+      "robot": [
+        3.308684464487736,
+        3.393027443167629
+      ],
+      "ball_speed": 0.2895447496566212,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          6.569079465610144,
+          2.210426399670412
+        ],
+        "effective_target": [
+          6.569079465610144,
+          2.210426399670412
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 4.624326169085431,
+        "candidate_time_s": 4.624326169085431,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9991113348328962,
+        "waypoint": [
+          4.154748054790379,
+          3.0861457050921928
+        ],
+        "path": [
+          [
+            3.308684464487736,
+            3.393027443167629
+          ],
+          [
+            6.569079465610144,
+            2.210426399670412
+          ]
+        ],
+        "command": [
+          1.9991113348328962,
+          0.0,
+          -0.05962318292021673
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 10.060802609719223,
+        "intercept_point": [
+          7.076266819555938,
+          1.966118096775856
+        ],
+        "outgoing_target": [
+          5.633121859145239,
+          0.5058385742867877
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.2895447496566212,
+        "contact_confirmed": false,
+        "wait_point": [
+          6.569079465610144,
+          2.210426399670412
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.8400789460252532,
+        "ball_distance_m": 4.068569911562874,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 207219,
+      "sim": 78.629999999,
+      "remaining": 577,
+      "player": 1,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 7.032791232735168,
+      "ball": [
+        7.014021552128166,
+        2.0055123716497767
+      ],
+      "robot": [
+        0.5765409886825554,
+        -0.8262709036904483
+      ],
+      "ball_speed": 0.2648602890054721,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 207219,
+      "sim": 78.629999999,
+      "remaining": 577,
+      "player": 2,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 13.124330470105603,
+      "ball": [
+        7.014021552128166,
+        2.0055123716497767
+      ],
+      "robot": [
+        -5.95161101328606,
+        -0.029290436293166286
+      ],
+      "ball_speed": 0.2648602890054721,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 207219,
+      "sim": 78.629999999,
+      "remaining": 577,
+      "player": 3,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 3.66464792132653,
+      "ball": [
+        7.014021552128166,
+        2.0055123716497767
+      ],
+      "robot": [
+        3.597478336607534,
+        3.3309846813427404
+      ],
+      "ball_speed": 0.2648602890054721,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 207328,
+      "sim": 81.319999999,
+      "remaining": 577,
+      "player": 1,
+      "action": "opp_set_play:position",
+      "stage": null,
+      "reason": null,
+      "distance": 5.896965515142884,
+      "ball": [
+        6.0,
+        2.0
+      ],
+      "robot": [
+        0.6545422848461049,
+        -0.490036968056113
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 10,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -1.5,
+          0.8
+        ],
+        "effective_target": [
+          -1.5,
+          0.8
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 3.9464594957142514,
+        "candidate_time_s": 3.9464594957142514,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -0.11762609627463971,
+          -0.027699438541832044
+        ],
+        "path": [
+          [
+            0.6545422848461049,
+            -0.490036968056113
+          ],
+          [
+            -1.5,
+            0.8
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 207328,
+      "sim": 81.319999999,
+      "remaining": 577,
+      "player": 2,
+      "action": "guard:set:restricted",
+      "stage": null,
+      "reason": null,
+      "distance": 12.122182440788665,
+      "ball": [
+        6.0,
+        2.0
+      ],
+      "robot": [
+        -5.954753647357802,
+        -0.007777965500763271
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "arrived",
+        "priority": 60,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -6.0,
+          0.0
+        ],
+        "effective_target": [
+          -6.0,
+          0.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 207328,
+      "sim": 81.319999999,
+      "remaining": 577,
+      "player": 3,
+      "action": "opp_set_play:position",
+      "stage": null,
+      "reason": null,
+      "distance": 2.152922601853368,
+      "ball": [
+        6.0,
+        2.0
+      ],
+      "robot": [
+        4.130815861806676,
+        3.0682819792065925
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 10,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -3.5,
+          -0.8
+        ],
+        "effective_target": [
+          -3.5,
+          -0.8
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 13.280709632353574,
+        "candidate_time_s": 13.280709632353574,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          3.328068588428601,
+          2.661346093489854
+        ],
+        "path": [
+          [
+            4.130815861806676,
+            3.0682819792065925
+          ],
+          [
+            -3.5,
+            -0.8
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          -2.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 207716,
+      "sim": 92.283999999,
+      "remaining": 566,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 7.425267722048297,
+      "ball": [
+        5.796364730823526,
+        1.8410022965549964
+      ],
+      "robot": [
+        -1.5635558822724485,
+        0.8580631768648292
+      ],
+      "ball_speed": 2.6367974764850257,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          2.7332893622434646,
+          -0.5405704096491312
+        ],
+        "effective_target": [
+          2.7332893622434646,
+          -0.5405704096491312
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 6.0843674444521,
+        "candidate_time_s": 6.0843674444521,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -0.7077517035413595,
+          0.5794968334806966
+        ],
+        "path": [
+          [
+            -1.5635558822724485,
+            0.8580631768648292
+          ],
+          [
+            2.7332893622434646,
+            -0.5405704096491312
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          -1.1187486383947078
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 74.51598012895859,
+        "intercept_point": [
+          3.206962081064905,
+          -0.17228498305135642
+        ],
+        "outgoing_target": [
+          7.0,
+          -1.095
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 2.6367974764850257,
+        "contact_confirmed": false,
+        "wait_point": [
+          2.7332893622434646,
+          -0.5405704096491312
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "ball_distance_m": 7.425267722048297,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 207716,
+      "sim": 92.283999999,
+      "remaining": 566,
+      "player": 3,
+      "action": "freeman:move",
+      "stage": null,
+      "reason": null,
+      "distance": 8.6666818090938,
+      "ball": [
+        5.796364730823526,
+        1.8410022965549964
+      ],
+      "robot": [
+        -2.4323579100369694,
+        -0.8791994018246043
+      ],
+      "ball_speed": 2.6367974764850257,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 20,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.796364730823526,
+          -2.389221622570428
+        ],
+        "effective_target": [
+          5.796364730823526,
+          -2.389221622570428
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 13.04075731641992,
+        "candidate_time_s": 13.04075731641992,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -1.5471391744667775,
+          -1.0416425924960218
+        ],
+        "path": [
+          [
+            -2.4323579100369694,
+            -0.8791994018246043
+          ],
+          [
+            5.796364730823526,
+            -2.389221622570428
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 207719,
+      "sim": 92.489999999,
+      "remaining": 566,
+      "player": 1,
+      "action": "freeman:move",
+      "stage": null,
+      "reason": null,
+      "distance": 7.011485877642779,
+      "ball": [
+        5.410906776341152,
+        1.5451704135286284
+      ],
+      "robot": [
+        -1.5655270386846576,
+        0.8449522782675079
+      ],
+      "ball_speed": 4.124869212653079,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 20,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.410906776341152,
+          -2.351740092655092
+        ],
+        "effective_target": [
+          5.410906776341152,
+          -2.351740092655092
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 10.337764558522995,
+        "candidate_time_s": 10.337764558522995,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -0.7473313970674974,
+          0.4700444335393885
+        ],
+        "path": [
+          [
+            -1.5655270386846576,
+            0.8449522782675079
+          ],
+          [
+            5.410906776341152,
+            -2.351740092655092
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          -1.2116690028945578
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 207719,
+      "sim": 92.489999999,
+      "remaining": 566,
+      "player": 3,
+      "action": "attack:best_shot",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 8.392788740976982,
+      "ball": [
+        5.410906776341152,
+        1.5451704135286284
+      ],
+      "robot": [
+        -2.596346821263046,
+        -0.9693459762220192
+      ],
+      "ball_speed": 4.124869212653079,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -0.8747946238515623,
+          -3.236201435604478
+        ],
+        "effective_target": [
+          -0.8747946238515623,
+          -3.236201435604478
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 4.979040485551689,
+        "candidate_time_s": 4.979040485551689,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -2.052024031927453,
+          -1.6860835160578507
+        ],
+        "path": [
+          [
+            -2.596346821263046,
+            -0.9693459762220192
+          ],
+          [
+            -0.8747946238515623,
+            -3.236201435604478
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 85.30870931003093,
+        "intercept_point": [
+          -0.3972524882214863,
+          -2.8729473802962597
+        ],
+        "outgoing_target": [
+          7.0,
+          -1.095
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 4.124869212653079,
+        "contact_confirmed": false,
+        "wait_point": [
+          -0.8747946238515623,
+          -3.236201435604478
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "ball_distance_m": 8.392788740976982,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 207720,
+      "sim": 92.679999999,
+      "remaining": 565,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "rebound_chase",
+      "reason": "rebound_out_of_kick_range",
+      "distance": 6.695745397438009,
+      "ball": [
+        5.108010468375797,
+        1.3097793716475514
+      ],
+      "robot": [
+        -1.5728337407706572,
+        0.8633187570054875
+      ],
+      "ball_speed": 1.844269345525449,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          4.059545127529962,
+          0.9171084774086231
+        ],
+        "effective_target": [
+          4.059545127529962,
+          0.9171084774086231
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 7.510180947676639,
+        "candidate_time_s": 7.510180947676639,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9966001544341678,
+        "waypoint": [
+          -0.6728747798548522,
+          0.8719134453270427
+        ],
+        "path": [
+          [
+            -1.5728337407706572,
+            0.8633187570054875
+          ],
+          [
+            4.059545127529962,
+            0.9171084774086231
+          ]
+        ],
+        "command": [
+          1.9966001544341678,
+          0.0,
+          -0.11663291556923433
+        ]
+      },
+      "receive": {
+        "stage": "rebound_chase",
+        "reason": "rebound_out_of_kick_range",
+        "angle_deg": 90.39621558292332,
+        "intercept_point": [
+          4.34839267476748,
+          0.7194545008362555
+        ],
+        "outgoing_target": [
+          7.0,
+          -1.095
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 1.844269345525449,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "ball_distance_m": 6.695745397438009,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 207720,
+      "sim": 92.679999999,
+      "remaining": 565,
+      "player": 3,
+      "action": "freeman:move",
+      "stage": null,
+      "reason": null,
+      "distance": 8.210054280170331,
+      "ball": [
+        5.108010468375797,
+        1.3097793716475514
+      ],
+      "robot": [
+        -2.7621749323439118,
+        -1.0279915841223934
+      ],
+      "ball_speed": 1.844269345525449,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 20,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.108010468375797,
+          -2.261816805729417
+        ],
+        "effective_target": [
+          5.108010468375797,
+          -2.261816805729417
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 12.561935544539047,
+        "candidate_time_s": 12.561935544539047,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -1.8730350184619726,
+          -1.167383884993058
+        ],
+        "path": [
+          [
+            -2.7621749323439118,
+            -1.0279915841223934
+          ],
+          [
+            5.108010468375797,
+            -2.261816805729417
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 207785,
+      "sim": 95.875999999,
+      "remaining": 562,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "auto_kick",
+      "reason": "rebound_over_90",
+      "distance": 1.9641553005137304,
+      "ball": [
+        2.012767860555315,
+        -1.633234643363074
+      ],
+      "robot": [
+        0.3128075006343813,
+        -0.6493439892588329
+      ],
+      "ball_speed": 0.7340559427348605,
+      "kicking": true,
+      "navigation": null,
+      "receive": {
+        "stage": "auto_kick",
+        "reason": "rebound_over_90",
+        "angle_deg": 141.19641566794604,
+        "intercept_point": [
+          1.736258188951304,
+          -1.909587413665933
+        ],
+        "outgoing_target": [
+          7.0,
+          -1.095
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.7340559427348605,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": 1.040627646477324,
+        "ball_distance_m": 1.9641553005137304,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 207786,
+      "sim": 96.013999999,
+      "remaining": 562,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "auto_kick",
+      "reason": "kick_hysteresis",
+      "distance": 1.8147128700685111,
+      "ball": [
+        1.9479504950602888,
+        -1.6980212830884382
+      ],
+      "robot": [
+        0.40509365645369133,
+        -0.7426283919922417
+      ],
+      "ball_speed": 0.6839095039974584,
+      "kicking": true,
+      "navigation": null,
+      "receive": {
+        "stage": "auto_kick",
+        "reason": "kick_hysteresis",
+        "angle_deg": 141.8560902558038,
+        "intercept_point": [
+          1.7184630700324837,
+          -1.9273999227975573
+        ],
+        "outgoing_target": [
+          7.0,
+          -1.095
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.6839095039974584,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.9508702817158404,
+        "ball_distance_m": 1.8147128700685111,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 207866,
+      "sim": 99.933999999,
+      "remaining": 558,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 2.5314379652424246,
+      "ball": [
+        4.005005010409364,
+        -0.21582696048587297
+      ],
+      "robot": [
+        1.998516495372769,
+        -1.7592588543175856
+      ],
+      "ball_speed": 2.693737214003859,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          8.217474102512854,
+          3.360349562162473
+        ],
+        "effective_target": [
+          8.217474102512854,
+          3.360349562162473
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 10.902087568418068,
+        "candidate_time_s": 10.902087568418068,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9999988335617092,
+        "waypoint": [
+          2.808067128500646,
+          -1.366031474291406
+        ],
+        "path": [
+          [
+            1.998516495372769,
+            -1.7592588543175856
+          ],
+          [
+            4.561585205575254,
+            -0.5142857142857142
+          ],
+          [
+            8.217474102512854,
+            3.360349562162473
+          ]
+        ],
+        "command": [
+          1.9999988335617092,
+          0.0,
+          -0.0021600355591299136
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 36.57693963524258,
+        "intercept_point": [
+          7.760073645876458,
+          2.9720393481984093
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 2.693737214003859,
+        "contact_confirmed": false,
+        "wait_point": [
+          8.217474102512854,
+          3.360349562162473
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.6264603013580491,
+        "ball_distance_m": 2.5364347946819157,
+        "intercept_status": "fallback",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 207887,
+      "sim": 101.059999999,
+      "remaining": 557,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "rebound_chase",
+      "reason": "rebound_out_of_kick_range",
+      "distance": 4.361651158982659,
+      "ball": [
+        5.817298463639463,
+        1.4821038411467418
+      ],
+      "robot": [
+        2.605611186918606,
+        -1.4690087743263005
+      ],
+      "ball_speed": 1.9929906221280118,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          8.278942888224826,
+          4.153931178040235
+        ],
+        "effective_target": [
+          8.278942888224826,
+          4.153931178040235
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 10.98261451224054,
+        "candidate_time_s": 10.98261451224054,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.8191249744455196,
+        "waypoint": [
+          3.199943277003448,
+          -0.7931616268917765
+        ],
+        "path": [
+          [
+            2.605611186918606,
+            -1.4690087743263005
+          ],
+          [
+            7.364742884119661,
+            3.942857142857143
+          ],
+          [
+            8.278942888224826,
+            4.153931178040235
+          ]
+        ],
+        "command": [
+          1.8191249744455196,
+          0.0,
+          0.8571325794468234
+        ]
+      },
+      "receive": {
+        "stage": "rebound_chase",
+        "reason": "rebound_out_of_kick_range",
+        "angle_deg": 90.41872835088745,
+        "intercept_point": [
+          8.19478995120122,
+          3.81419851374329
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 1.9929906221280118,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.9188026584590211,
+        "ball_distance_m": 4.361651158982659,
+        "intercept_status": "fallback"
+      }
+    },
+    {
+      "frame": 207908,
+      "sim": 102.191999999,
+      "remaining": 556,
+      "player": 1,
+      "action": "attack:fallback:infield",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 5.174409933163844,
+      "ball": [
+        7.118753431439507,
+        2.7797146907544685
+      ],
+      "robot": [
+        3.4893670141037383,
+        -0.9083840592905039
+      ],
+      "ball_speed": 0.4885738249173509,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          6.463352037122947,
+          2.3229329896855955
+        ],
+        "effective_target": [
+          6.463352037122947,
+          2.3229329896855955
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 5.915502163150731,
+        "candidate_time_s": 5.915502163150731,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9899904443291205,
+        "waypoint": [
+          4.051568646730351,
+          -0.20558300332091373
+        ],
+        "path": [
+          [
+            3.4893670141037383,
+            -0.9083840592905039
+          ],
+          [
+            5.724489795918368,
+            1.8857142857142861
+          ],
+          [
+            6.463352037122947,
+            2.3229329896855955
+          ]
+        ],
+        "command": [
+          1.9899904443291205,
+          0.0,
+          0.20017908081406996
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 10.125448931921524,
+        "intercept_point": [
+          6.955595591315042,
+          2.666001908937011
+        ],
+        "outgoing_target": [
+          5.618753431439507,
+          1.2797146907544685
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.4885738249173509,
+        "contact_confirmed": false,
+        "wait_point": [
+          6.463352037122947,
+          2.3229329896855955
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 1.089514220870395,
+        "ball_distance_m": 5.174409933163844,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 207911,
+      "sim": 102.299999999,
+      "remaining": 556,
+      "player": 1,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 5.0280550509454365,
+      "ball": [
+        7.077628390392816,
+        2.751052612265264
+      ],
+      "robot": [
+        3.5516104269554356,
+        -0.8334326948401826
+      ],
+      "ball_speed": 0.7956773720084137,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 207911,
+      "sim": 102.299999999,
+      "remaining": 556,
+      "player": 2,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 13.359678684424543,
+      "ball": [
+        7.077628390392816,
+        2.751052612265264
+      ],
+      "robot": [
+        -5.9877567058080166,
+        -0.03762571967634858
+      ],
+      "ball_speed": 0.7956773720084137,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 207911,
+      "sim": 102.299999999,
+      "remaining": 556,
+      "player": 3,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 7.945305755362578,
+      "ball": [
+        7.077628390392816,
+        2.751052612265264
+      ],
+      "robot": [
+        0.2974668797948905,
+        -1.391083724989241
+      ],
+      "ball_speed": 0.7956773720084137,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 208042,
+      "sim": 105.201999999,
+      "remaining": 556,
+      "player": 1,
+      "action": "opp_set_play:position",
+      "stage": null,
+      "reason": null,
+      "distance": 3.192782490357773,
+      "ball": [
+        6.0,
+        2.0
+      ],
+      "robot": [
+        3.9374962707640346,
+        -0.43719888347728375
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 10,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -1.5,
+          0.8
+        ],
+        "effective_target": [
+          -1.5,
+          0.8
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 8.938328142094953,
+        "candidate_time_s": 8.938328142094953,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          3.059925706089365,
+          -0.23752438831933625
+        ],
+        "path": [
+          [
+            3.9374962707640346,
+            -0.43719888347728375
+          ],
+          [
+            -1.5,
+            0.8
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 208042,
+      "sim": 105.201999999,
+      "remaining": 556,
+      "player": 2,
+      "action": "guard:set:restricted",
+      "stage": null,
+      "reason": null,
+      "distance": 12.14613306922897,
+      "ball": [
+        6.0,
+        2.0
+      ],
+      "robot": [
+        -5.9700644585433364,
+        -0.06060801554666676
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 60,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -6.0,
+          0.0
+        ],
+        "effective_target": [
+          -6.0,
+          0.0
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 0.15202548583473466,
+        "candidate_time_s": 0.15202548583473466,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.10139676242030313,
+        "waypoint": [
+          -6.0,
+          0.0
+        ],
+        "path": [
+          [
+            -5.9700644585433364,
+            -0.06060801554666676
+          ],
+          [
+            -6.0,
+            0.0
+          ]
+        ],
+        "command": [
+          -0.030616376061926926,
+          0.09666406233008244,
+          0.036874547856935
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 208042,
+      "sim": 105.201999999,
+      "remaining": 556,
+      "player": 3,
+      "action": "opp_set_play:position",
+      "stage": null,
+      "reason": null,
+      "distance": 6.5936665939128165,
+      "ball": [
+        6.0,
+        2.0
+      ],
+      "robot": [
+        0.34854342377797537,
+        -1.3966862850075918
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 10,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -3.5,
+          -0.8
+        ],
+        "effective_target": [
+          -3.5,
+          -0.8
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 7.594556709930137,
+        "candidate_time_s": 7.594556709930137,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -0.5408306422506461,
+          -1.2587958550433722
+        ],
+        "path": [
+          [
+            0.34854342377797537,
+            -1.3966862850075918
+          ],
+          [
+            -3.5,
+            -0.8
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 208225,
+      "sim": 110.049999999,
+      "remaining": 551,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "rebound_chase",
+      "reason": "rebound_out_of_kick_range",
+      "distance": 4.316894690370624,
+      "ball": [
+        5.98119341287787,
+        1.9939845064891868
+      ],
+      "robot": [
+        2.460128755149725,
+        -0.5035509675026981
+      ],
+      "ball_speed": 0.8227176777987899,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.199723370726165,
+          2.0819976960332998
+        ],
+        "effective_target": [
+          5.199723370726165,
+          2.0819976960332998
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 7.103466489373072,
+        "candidate_time_s": 7.103466489373072,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          2.418004258378039,
+          0.31152859122497495
+        ],
+        "path": [
+          [
+            2.460128755149725,
+            -0.5035509675026981
+          ],
+          [
+            2.255102040816327,
+            -0.1714285714285717
+          ],
+          [
+            2.6020408163265305,
+            0.8571428571428568
+          ],
+          [
+            3.9897959183673475,
+            1.8857142857142861
+          ],
+          [
+            5.199723370726165,
+            2.0819976960332998
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          -2.0
+        ]
+      },
+      "receive": {
+        "stage": "rebound_chase",
+        "reason": "rebound_out_of_kick_range",
+        "angle_deg": 99.40912571716613,
+        "intercept_point": [
+          5.428649627606724,
+          1.8172473062117622
+        ],
+        "outgoing_target": [
+          7.0,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.8227176777987899,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "ball_distance_m": 4.316894690370624,
+        "intercept_status": "intercept"
+      }
+    },
+    {
+      "frame": 208225,
+      "sim": 110.049999999,
+      "remaining": 551,
+      "player": 3,
+      "action": "freeman:move",
+      "stage": null,
+      "reason": null,
+      "distance": 7.350070651256365,
+      "ball": [
+        5.98119341287787,
+        1.9939845064891868
+      ],
+      "robot": [
+        -0.8925842990290205,
+        -0.6088444440475625
+      ],
+      "ball_speed": 0.8227176777987899,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 20,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.98119341287787,
+          -3.3127252365539963
+        ],
+        "effective_target": [
+          5.98119341287787,
+          -3.3127252365539963
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 12.416380460422962,
+        "candidate_time_s": 12.416380460422962,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -0.055051849333116465,
+          -0.9382976208517604
+        ],
+        "path": [
+          [
+            -0.8925842990290205,
+            -0.6088444440475625
+          ],
+          [
+            5.98119341287787,
+            -3.3127252365539963
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          -2.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 208242,
+      "sim": 110.877999999,
+      "remaining": 550,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 3.171181866949287,
+      "ball": [
+        4.318734311361247,
+        1.4322433207740815
+      ],
+      "robot": [
+        1.8615515804156781,
+        -0.5724131236100531
+      ],
+      "ball_speed": 0.471030492677134,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.104186342372847,
+          1.4296741986506822
+        ],
+        "effective_target": [
+          5.104186342372847,
+          1.4296741986506822
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 7.133184968680038,
+        "candidate_time_s": 7.133184968680038,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          2.6644203768195576,
+          -0.1657170506501754
+        ],
+        "path": [
+          [
+            1.8615515804156781,
+            -0.5724131236100531
+          ],
+          [
+            4.683673469387756,
+            0.8571428571428568
+          ],
+          [
+            5.104186342372847,
+            1.4296741986506822
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          -2.0
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 27.93038390799018,
+        "intercept_point": [
+          4.504189551950842,
+          1.4316367182793557
+        ],
+        "outgoing_target": [
+          7.0,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.471030492677134,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.104186342372847,
+          1.4296741986506822
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.33789403393872364,
+        "ball_distance_m": 3.171893963615752,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 208244,
+      "sim": 110.947999999,
+      "remaining": 550,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "rebound_chase",
+      "reason": "rebound_out_of_kick_range",
+      "distance": 3.369231097122475,
+      "ball": [
+        4.403823083890925,
+        1.599237959654486
+      ],
+      "robot": [
+        1.8391258880818153,
+        -0.5857211886194593
+      ],
+      "ball_speed": 3.629221370214068,
+      "kicking": false,
+      "navigation": {
+        "state": "turning",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          8.02638842261826,
+          9.40638999213544
+        ],
+        "effective_target": [
+          8.02638842261826,
+          9.40638999213544
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 17.035512632435758,
+        "candidate_time_s": 17.035512632435758,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          2.312937487597204,
+          0.17946020697551257
+        ],
+        "path": [
+          [
+            1.8391258880818153,
+            -0.5857211886194593
+          ],
+          [
+            8.02638842261826,
+            9.40638999213544
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          -2.0
+        ]
+      },
+      "receive": {
+        "stage": "rebound_chase",
+        "reason": "rebound_out_of_kick_range",
+        "angle_deg": 93.730991862142,
+        "intercept_point": [
+          7.997597883606415,
+          9.057576137961888
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 3.629221370214068,
+        "contact_confirmed": false,
+        "wait_point": null,
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.5986298503695398,
+        "ball_distance_m": 3.375851348095565,
+        "intercept_status": "fallback"
+      }
+    },
+    {
+      "frame": 208293,
+      "sim": 113.647999999,
+      "remaining": 548,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 6.124397572699885,
+      "ball": [
+        5.667913079499343,
+        4.627493047608977
+      ],
+      "robot": [
+        2.08963640582263,
+        -0.342837089827909
+      ],
+      "ball_speed": 0.05726466778241909,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.317350368524058,
+          4.140489722499964
+        ],
+        "effective_target": [
+          5.317350368524058,
+          4.140489722499964
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 7.365789598606763,
+        "candidate_time_s": 7.365789598606763,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9935407508622602,
+        "waypoint": [
+          2.6154804722855576,
+          0.3875655510255675
+        ],
+        "path": [
+          [
+            2.08963640582263,
+            -0.342837089827909
+          ],
+          [
+            5.317350368524058,
+            4.140489722499964
+          ]
+        ],
+        "command": [
+          1.9935407508622602,
+          0.0,
+          -0.16078220001182797
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": 16.059409574417163,
+        "intercept_point": [
+          5.667913079499343,
+          4.627343636230239
+        ],
+        "outgoing_target": [
+          7.0,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.05726466778241909,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.317350368524058,
+          4.140489722499964
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.7228642582830788,
+        "ball_distance_m": 6.124397572699885,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 208296,
+      "sim": 113.759999999,
+      "remaining": 547,
+      "player": 1,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 6.017707411925734,
+      "ball": [
+        5.667913079499343,
+        4.619046912383378
+      ],
+      "robot": [
+        2.1239621407272464,
+        -0.24441011314098623
+      ],
+      "ball_speed": 0.04516649853259822,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 208296,
+      "sim": 113.759999999,
+      "remaining": 547,
+      "player": 2,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 12.506114720014313,
+      "ball": [
+        5.667913079499343,
+        4.619046912383378
+      ],
+      "robot": [
+        -5.96638464452326,
+        0.03145256905252937
+      ],
+      "ball_speed": 0.04516649853259822,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 208296,
+      "sim": 113.759999999,
+      "remaining": 547,
+      "player": 3,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 8.633192163266221,
+      "ball": [
+        5.667913079499343,
+        4.619046912383378
+      ],
+      "robot": [
+        -1.3702299056374532,
+        -0.38060810058011735
+      ],
+      "ball_speed": 0.04516649853259822,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 208409,
+      "sim": 116.841999999,
+      "remaining": 547,
+      "player": 1,
+      "action": "attack:best_shot",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 5.361572758703463,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        2.4470254700094367,
+        0.1637025938573206
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "effective_target": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 6.348763678271285,
+        "candidate_time_s": 6.348763678271285,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9795137020713252,
+        "waypoint": [
+          2.9876875068782422,
+          0.8832055902992215
+        ],
+        "path": [
+          [
+            2.4470254700094367,
+            0.1637025938573206
+          ],
+          [
+            5.307471721586806,
+            3.9703313357053993
+          ]
+        ],
+        "command": [
+          1.9795137020713252,
+          0.0,
+          -0.2865056216532045
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": null,
+        "intercept_point": [
+          5.667913079499343,
+          4.45
+        ],
+        "outgoing_target": [
+          7.0,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": null,
+        "ball_distance_m": 5.361572758703463,
+        "intercept_status": "intercept",
+        "replanned": true,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 208409,
+      "sim": 116.841999999,
+      "remaining": 547,
+      "player": 2,
+      "action": "guard:set",
+      "stage": null,
+      "reason": null,
+      "distance": 12.436355696997488,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        -5.9584901207936465,
+        0.03528691232841059
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "arrived",
+        "priority": 60,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -6.0,
+          0.0
+        ],
+        "effective_target": [
+          -6.0,
+          0.0
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 208409,
+      "sim": 116.841999999,
+      "remaining": 547,
+      "player": 3,
+      "action": "freeman:move",
+      "stage": null,
+      "reason": null,
+      "distance": 8.350643906040046,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        -1.0744527502947376,
+        -0.47684043406207166
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 20,
+        "opponent_mode": "avoid",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.667913079499343,
+          -1.2709110707338025
+        ],
+        "effective_target": [
+          5.667913079499343,
+          -1.2709110707338025
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 9.05195327319398,
+        "candidate_time_s": 9.05195327319398,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.9960304958129276,
+        "waypoint": [
+          -0.18063030650100775,
+          -0.582108847988589
+        ],
+        "path": [
+          [
+            -1.0744527502947376,
+            -0.47684043406207166
+          ],
+          [
+            5.667913079499343,
+            -1.2709110707338025
+          ]
+        ],
+        "command": [
+          1.9960304958129276,
+          0.0,
+          -0.12602885324841176
+        ]
+      },
+      "receive": {}
+    },
+    {
+      "frame": 208600,
+      "sim": 122.951999999,
+      "remaining": 541,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "wait_ball",
+      "reason": "await_ball",
+      "distance": 0.6453977042376913,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        5.272007056889498,
+        3.9402975202173964
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "await_ball",
+        "angle_deg": null,
+        "intercept_point": [
+          5.667913079499343,
+          4.45
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.3553326789530341,
+        "ball_distance_m": 0.6453977042376913,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 208607,
+      "sim": 123.209999999,
+      "remaining": 541,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "wait_ball",
+      "reason": "stabilizing",
+      "distance": 0.5805318262140031,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        5.285868423638823,
+        4.0128969433008015
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "stabilizing",
+        "angle_deg": null,
+        "intercept_point": [
+          5.667913079499343,
+          4.45
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.1319894869898461,
+        "ball_distance_m": 0.5805318262140031,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 208609,
+      "sim": 123.259999999,
+      "remaining": 541,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "intercept",
+      "reason": "go_to_wait_point",
+      "distance": 0.5772824455514224,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        5.286268582039737,
+        4.016868958050066
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "effective_target": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 0.11639607886360323,
+        "candidate_time_s": 0.11639607886360323,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.07671034933652258,
+        "waypoint": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "path": [
+          [
+            5.286268582039737,
+            4.016868958050066
+          ],
+          [
+            5.307471721586806,
+            3.9703313357053993
+          ]
+        ],
+        "command": [
+          -0.0329478046368606,
+          -0.06927423666084383,
+          -0.04591143953015586
+        ]
+      },
+      "receive": {
+        "stage": "intercept",
+        "reason": "go_to_wait_point",
+        "angle_deg": null,
+        "intercept_point": [
+          5.667913079499343,
+          4.45
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.06596948764218487,
+        "ball_distance_m": 0.5772824455514224,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": false
+      }
+    },
+    {
+      "frame": 208613,
+      "sim": 123.383999999,
+      "remaining": 541,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "wait_ball",
+      "reason": "stabilizing",
+      "distance": 0.5697596583659524,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        5.296345758548733,
+        4.018069688140699
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "stabilizing",
+        "angle_deg": null,
+        "intercept_point": [
+          5.667913079499343,
+          4.45
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.10304493163989288,
+        "ball_distance_m": 0.5697596583659524,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 208614,
+      "sim": 123.399999999,
+      "remaining": 541,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "wait_ball",
+      "reason": "await_ball",
+      "distance": 0.56802009549974,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        5.300436820045039,
+        4.016862576508324
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "await_ball",
+        "angle_deg": null,
+        "intercept_point": [
+          5.667913079499343,
+          4.45
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.26658944514725263,
+        "ball_distance_m": 0.56802009549974,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 208615,
+      "sim": 123.419999999,
+      "remaining": 541,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "wait_ball",
+      "reason": "stabilizing",
+      "distance": 0.5673631374340432,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        5.3022417495227,
+        4.016196578906857
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "stabilizing",
+        "angle_deg": null,
+        "intercept_point": [
+          5.667913079499343,
+          4.45
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.09619411656243161,
+        "ball_distance_m": 0.5673631374340432,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 208616,
+      "sim": 123.443999999,
+      "remaining": 541,
+      "player": 1,
+      "action": "attack:center_fallback",
+      "stage": "wait_ball",
+      "reason": "await_ball",
+      "distance": 0.5650806283960825,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        5.310291788328855,
+        4.012480710493738
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {
+        "stage": "wait_ball",
+        "reason": "await_ball",
+        "angle_deg": null,
+        "intercept_point": [
+          5.667913079499343,
+          4.45
+        ],
+        "outgoing_target": [
+          7.25,
+          0.0
+        ],
+        "stable_s": 0.0,
+        "speed_mps": 0.0,
+        "contact_confirmed": false,
+        "wait_point": [
+          5.307471721586806,
+          3.9703313357053993
+        ],
+        "standoff_m": 0.6,
+        "robot_speed_mps": 0.3694280556092066,
+        "ball_distance_m": 0.5650806283960825,
+        "intercept_status": "intercept",
+        "replanned": false,
+        "arrived": true
+      }
+    },
+    {
+      "frame": 208619,
+      "sim": 123.527999999,
+      "remaining": 540,
+      "player": 1,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 0.5650104833113636,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        5.3282786981736034,
+        3.998463364417434
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 208619,
+      "sim": 123.527999999,
+      "remaining": 540,
+      "player": 2,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 12.439310270931673,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        -5.961251256882651,
+        0.034235416835793515
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    },
+    {
+      "frame": 208619,
+      "sim": 123.527999999,
+      "remaining": 540,
+      "player": 3,
+      "action": "stopped",
+      "stage": null,
+      "reason": null,
+      "distance": 5.921434147631928,
+      "ball": [
+        5.667913079499343,
+        4.45
+      ],
+      "robot": [
+        4.2232966295900205,
+        -1.2925138813408918
+      ],
+      "ball_speed": 0.0,
+      "kicking": false,
+      "navigation": null,
+      "receive": {}
+    }
+  ]
+}

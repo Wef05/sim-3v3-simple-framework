@@ -1,0 +1,169 @@
+diff --git a/src/framework/decision_frame.py b/src/framework/decision_frame.py
+index e788d0b..ca6773b 100644
+--- a/src/framework/decision_frame.py
++++ b/src/framework/decision_frame.py
+@@ -27,6 +27,7 @@ def prepare_frame(context, players, store):
+         p.ball_intercept = estimate_ball_intercept(
+             p.pose, store.ball_motion, fallen=p.is_fallen, penalized=p.is_penalized)
+         p.interception_risk = None
++        p.attack_receive = None
+         p.attack_choice = None
+         p.attack_candidates = None
+         p.scoring_probability = None
+diff --git a/src/param.py b/src/param.py
+index cfe3f6e..be43827 100644
+--- a/src/param.py
++++ b/src/param.py
+@@ -46,6 +46,8 @@ ANGULAR_GAIN = 2.0             # 转向 P 增益
+ KICK_ENTER_M = 2.0             # 距球小于该值进入踢球状态
+ KICK_EXIT_M = 2.5              # 踢球中距球大于该值才退出踢球状态
+ RIGHT_FOOT_KICK_CORRECTION_DEG = -5.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
++RECEIVE_MAX_SPEED_MPS = 0.3    # 接球稳定的实测球速上限，待仿真校准 (m/s)
++RECEIVE_STABLE_S = 0.15        # 连续近身低速观测所需仿真时间 (s)
+ CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
+ 
+ 
+diff --git a/src/player.py b/src/player.py
+index db7b59a..80bccbf 100644
+--- a/src/player.py
++++ b/src/player.py
+@@ -7,6 +7,7 @@
+ from __future__ import annotations
+ import math
+ from dataclasses import replace
++from .utils.attacker_receiving import receive_intent
+ from .utils.interception_risk import estimate_interception_risk
+ from .utils.kick_lane import check_kick_lane
+ from .utils.blocked_attack import blocked_attack_target
+@@ -22,7 +23,7 @@ from .intents import (Role, RoleTask, KickTarget, MoveIntent, FaceIntent,
+ from .actions.controller import ActionController
+ from .actions.kick_planner import resolve_target
+ from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
+-                         opponent_goal, behind_ball, goalkeeper_home)
++                         opponent_goal, goalkeeper_home)
+ from .utils.free_position import nearest_free_position, shot_triangle
+ from .utils.ball_motion import BallMotion
+ from .utils.restart_defense import restart_intent, kickoff_targets
+@@ -44,6 +45,8 @@ class Player:
+         self.tactical_target = None
+         self.freeman_region = None
+         self._guard_memory = None
++        self._receive_memory = None
++        self.attack_receive = None
+ 
+     # 以下属性只转发观测和运行时接线，不提供 walk_to/kick 等执行接口。
+     # backend 的读写兼容框架注入与关闭流程，角色行为不应直接使用它下命令。
+@@ -127,6 +130,9 @@ class Player:
+             self._restart_memory = None
+         if task.role != Role.GUARD:
+             self._guard_memory = None
++        if task.role != Role.ATTACKER:
++            self._receive_memory = None
++        self.attack_receive = None
+         self.guard_decision = None
+         self.action = task.role.value
+         self.tactical_target = None
+@@ -168,19 +174,18 @@ class Player:
+         return StopIntent()
+ 
+     def attack(self, kick_target: int | tuple[float, float] = 0):
+-        """追球并踢球：0 为敌方球门，1–3 为对应编号队友的当前位置。
++        """优先拦住来球再交给 SDK 自动踢球；大于 90° 的补射跳过拦球。
+ 
+-        支持指定坐标目标；队友位置未知时停止。
+-        踢球迟滞:距球 ≤ ENTER 进入踢球;进入后距球 > EXIT 才退出(EXIT > ENTER),
+-        防边界抖动。追球使用预计最早可达的未来球位；窗口内不可达时使用窗口末尾
+-        球位。到该预测位置后方 ``CHASE_BEHIND_M`` 处准备踢球，走位目标保留真实球后站位。
+-        踢球仍须观测球位和补偿延迟后的当前球位均在近距阈值内，不能对未来球位踢空。
++        kick_target 为 0 时选射门点，1–3 为队友，坐标为显式出球目标。
++        接球状态由 receive_intent 管理；球后追赶仅用于远距离补射。
+         """
+         self.tactical_target = None
+         self.attack_choice = None
++        self.attack_receive = None
+         ball = self.context.ball if self.context is not None else None
+         current_ball = self.motion.predict_ball_position(0.0)
+         if ball is None or self.pose is None or current_ball is None:
++            self._receive_memory = None
+             return StopIntent()
+ 
+         # 复用候选概率缓存；正常射门随后按扣分后分数选点。
+@@ -217,6 +222,7 @@ class Player:
+         # 这里只使用几何目标；真正的踢球力度、坐标变换仍留给执行阶段。
+         target = resolve_target(self.context, aim)
+         if target is None:
++            self._receive_memory = None
+             return StopIntent()
+ 
+         # 在追球前选择替代方向，保证球后站位与最终出球方向一致。
+@@ -230,6 +236,7 @@ class Player:
+             if fallback is None:
+                 if self.attack_choice is not None:
+                     self.attack_choice.update(actual_target=None, execution='blocked_stop')
++                self._receive_memory = None
+                 self.action = 'attack:blocked:no_safe_alternative:' + lane['reason']
+                 return StopIntent()
+             target, label = fallback
+@@ -244,25 +251,12 @@ class Player:
+             self.pose, self.motion, self.context.opponents, target, self.ball_intercept,
+             ball_speed=KICK_RISK_BALL_SPEED_MPS)
+ 
+-        # 同时检查观测球位和延迟补偿球位，取更远距离，避免球已离开却仍踢空。
+-        # 此处只是决定是否请求踢球，不修改控制器的 is_kicking。
+-        d = max(
+-            dist(self.pose.x, self.pose.y, ball.x, ball.y),
+-            dist(self.pose.x, self.pose.y, *current_ball),
+-        )
+-        should_kick = d <= (KICK_EXIT_M if self.is_kicking else KICK_ENTER_M)
+-
+-        if should_kick:
+-            return KickIntent(aim, style=style)
+-        else:
+-            # 使用本帧与角色分配共享的截球结果。
+-            if self.ball_intercept is None or self.ball_intercept['status'] == 'unavailable':
+-                return StopIntent()
+-            predicted_ball = self.ball_intercept['target']
+-            chase = behind_ball(*predicted_ball, target, CHASE_BEHIND_M)
+-            # 保留球后接近点；边球、角球及门内出球可能需要场外站位。
+-            # 实体障碍仍由导航层检查。
+-            return MoveIntent(chase)
++        intent, self._receive_memory, self.attack_receive = receive_intent(
++            pose=self.pose, ball=ball, current_ball=current_ball,
++            intercept=self.ball_intercept, target=target, aim=aim, style=style,
++            now=self.context.now, phase=get_phase(self.context),
++            speed=self.motion.observed_speed(), memory=self._receive_memory)
++        return intent
+ 
+     def guard(self, pass_to: int | None = None):
+         """守门策略独立维护预站位、限时封堵和出球记忆。"""
+diff --git a/src/telemetry.py b/src/telemetry.py
+index 03a892d..9914abc 100644
+--- a/src/telemetry.py
++++ b/src/telemetry.py
+@@ -109,6 +109,7 @@ def make_snapshot(context, players, store):
+             interception_risk=getattr(p, 'interception_risk', None),
+             attack_candidates=getattr(p, 'attack_candidates', None),
+             attack_choice=getattr(p, 'attack_choice', None),
++            attack_receive=getattr(p, 'attack_receive', None),
+             scoring_probability=getattr(p, 'scoring_probability', None),
+             mode=p.mode, fallen=p.is_fallen, penalized=p.is_penalized,
+             penalty=p.penalty, kicking=p.is_kicking,
+diff --git a/src/utils/ball_motion.py b/src/utils/ball_motion.py
+index e418cf1..c906846 100644
+--- a/src/utils/ball_motion.py
++++ b/src/utils/ball_motion.py
+@@ -147,6 +147,14 @@ class BallMotion:
+         self._ball_velocity = (0.0, 0.0)
+         self._reset_fit()
+ 
++    def observed_speed(self) -> float | None:
++        """最近有效观测区间的球速 (m/s)；未知或过期时返回 None。"""
++        if (not self._ball_velocity_estimated or self._ball_sample is None
++                or self.context is None
++                or not 0 <= self.context.now-self._ball_sample[0] <= BALL_MOTION_MAX_GAP_S):
++            return None
++        return math.hypot(*self._ball_velocity)
++
+     def predict_ball_position(self, seconds: float) -> tuple[float, float] | None:
+         """返回从当前帧起 ``seconds`` 秒后的球坐标（米）。
+ 

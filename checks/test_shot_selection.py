@@ -9,8 +9,8 @@ from src.intents import KickIntent, KickTarget, MoveIntent
 from src.player import Player
 from src.utils.shot_selection import select_shot
 from src.utils.attack_targets import evaluate_attack_targets, TeammateMotion
-from src.utils.geom import behind_ball
-from src.param import CHASE_BEHIND_M
+from src.utils.attacker_receiving import ReceiveMemory
+from src.role_allocator import get_phase
 
 
 def candidates(risks, statuses=None):
@@ -73,6 +73,8 @@ class ShotSelectionTests(unittest.TestCase):
             self.assertAlmostEqual(option['penalty'], expected)
 
     def attack(self, p, data, target=0):
+        # 本组聚焦出球选点；接球门控由 test_attacker_receiving 独立验证。
+        p._receive_memory = ReceiveMemory(get_phase(p.context), p.context.now, stage='auto_kick')
         with patch('src.player.evaluate_attack_targets', return_value=data), patch(
                 'src.player.evaluate_scoring', return_value={'evaluated_at':0}):
             return p.attack(target)
@@ -86,7 +88,9 @@ class ShotSelectionTests(unittest.TestCase):
                 self.assertEqual(intent.style, 'shot')
             else:
                 self.assertIsInstance(intent, MoveIntent)
-                self.assertEqual(intent.target, behind_ball(3,0,data['candidates'][0]['target'],CHASE_BEHIND_M))
+                self.assertEqual(intent.target, (2.4, 0))
+                self.assertTrue(intent.avoid_ball)
+                self.assertEqual(p.attack_receive['stage'], 'intercept')
             self.assertEqual(p.attack_choice['actual_target'], data['candidates'][0]['target'])
 
     def test_no_route_kicks_center(self):

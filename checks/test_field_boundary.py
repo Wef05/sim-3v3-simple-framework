@@ -74,7 +74,7 @@ class FieldBoundaryTests(unittest.TestCase):
             self.assertEqual((path[0], path[-1]), (start, target))
             self.assertTrue(all(segment_clear(a, b, obs) for a, b in zip(path, path[1:])))
 
-    def test_throw_in_and_corner_keep_ball_approach_outside(self):
+    def test_throw_in_and_corner_keep_unclamped_intercept(self):
         for play, ball, start in ((SetPlay.THROW_IN, (0., 4.5), (0., 1.)),
                                   (SetPlay.CORNER_KICK, (7., 4.5), (4., 2.)),
                                   (SetPlay.NONE, (-7.2, 0.), (-4., 0.))):
@@ -85,8 +85,9 @@ class FieldBoundaryTests(unittest.TestCase):
             prepare_frame(ctx, [p], SimpleNamespace())
             intent = p.decide(RoleTask(Role.ATTACKER))
             self.assertIsInstance(intent, MoveIntent)
-            self.assertTrue(abs(intent.target[0]) > ctx.field.length/2 or
-                            abs(intent.target[1]) > ctx.field.width/2, intent)
+            self.assertAlmostEqual(math.dist(intent.target, ball), .6)
+            self.assertTrue(intent.avoid_ball)
+            self.assertEqual(p.attack_receive['stage'], 'intercept')
             self.assertEqual(p.controller.plan_walk(intent, frame(ctx))[1], False)
             self.assertEqual(p.controller.navigation_status['effective_target'], list(intent.target))
 

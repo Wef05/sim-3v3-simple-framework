@@ -46,6 +46,14 @@ ANGULAR_GAIN = 2.0             # 转向 P 增益
 KICK_ENTER_M = 2.0             # 距球小于该值进入踢球状态
 KICK_EXIT_M = 2.5              # 踢球中距球大于该值才退出踢球状态
 RIGHT_FOOT_KICK_CORRECTION_DEG = -5.0  # 右脚出球向左偏 5°，指令统一向右补偿 5°
+RECEIVE_MAX_SPEED_MPS = 0.3    # 接球稳定的实测球速上限，待仿真校准 (m/s)
+RECEIVE_STABLE_S = 0.15        # 到位后连续低速观测所需仿真时间 (s)
+RECEIVE_STANDOFF_M = 0.60      # 等待点与预测球位的中心间距，含身体/球及停车余量
+RECEIVE_ARRIVE_M = 0.05        # 等待点到达误差 (m)，小于通常行走误差
+RECEIVE_HANDOFF_M = 0.65       # 到位后低速球交接 SDK 的最大距离 (m)
+RECEIVE_REPLAN_M = 0.40        # 来球横向偏离/静止球移位的重新选点阈值 (m)
+RECEIVE_DIRECTION_CHANGE_RAD = math.radians(30)  # 来球方向明显改变时重选等待点
+RECEIVE_ROBOT_STILL_MPS = 0.15 # 稳定交接所需机器人观测平移速度上限 (m/s)
 CHASE_BEHIND_M = 0.35          # 追球时站到球后方的距离
 
 

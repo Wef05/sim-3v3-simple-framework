@@ -1,4 +1,5 @@
 """角区结构阻挡回归；检查真实行为意图和球路，不需要 SDK。"""
+import math
 import unittest
 from dataclasses import replace
 from unittest.mock import patch
@@ -10,8 +11,8 @@ from src.player import Player
 from src.actions.kick_planner import plan_kick
 from src.utils.blocked_attack import blocked_attack_target
 from src.utils.kick_lane import check_kick_lane
-from src.utils.geom import behind_ball
-from src.param import CHASE_BEHIND_M
+from src.utils.attacker_receiving import ReceiveMemory
+from src.role_allocator import get_phase
 
 
 class BlockedAttackTests(unittest.TestCase):
@@ -20,6 +21,8 @@ class BlockedAttackTests(unittest.TestCase):
         p.context = Context(0, .1, 1, ADULT_FIELD_DIMENSIONS,
                             ball=BallState(*ball), teammates={
                                 pid: RobotState(pid, Pose2D(*(pose or (ball[0]-.3, ball[1]-.3)), 0))})
+        # 此组验证已交接自动踢球后的结构保护与目标选择。
+        p._receive_memory = ReceiveMemory(get_phase(p.context), 0., stage='auto_kick')
         p.motion.update(p.context)
         p.ball_intercept = dict(status='intercept', target=ball, intercept_time_s=0)
         # 候选评分是只读遥测，与本次行为无关。
@@ -37,7 +40,9 @@ class BlockedAttackTests(unittest.TestCase):
                 self.assertTrue(check_kick_lane(p.context.field, ball, (7, 0))['blocked'])
                 targets = set()
                 for tick in range(61):
-                    p.context = replace(p.context, now=tick)
+                    p.context = replace(p.context, now=tick*.1,
+                                        ball=BallState(*ball, last_seen_at=tick*.1))
+                    p.motion.update(p.context)
                     intent = p.attack()
                     self.assertIsInstance(intent, KickIntent)
                     self.assertEqual(intent.style, 'pass')
@@ -68,13 +73,13 @@ class BlockedAttackTests(unittest.TestCase):
         self.assertIsInstance(p.attack(), KickIntent)
         self.assertEqual(p.action, 'attack:fallback:infield')
 
-    def test_chase_uses_fallback_direction(self):
+    def test_intercept_precedes_fallback_kick(self):
         p = self.player(pose=(2, 2))
         intent = p.attack()
         self.assertIsInstance(intent, MoveIntent)
-        expected = behind_ball(6.95, 4.45, p.tactical_target, CHASE_BEHIND_M)
-        # 保留替代出球方向对应的真实球后点，角区允许场外站位。
-        self.assertEqual(intent.target, expected)
+        self.assertAlmostEqual(math.dist(intent.target, (6.95, 4.45)), .6)
+        self.assertTrue(intent.avoid_ball)
+        self.assertEqual(p.attack_receive['outgoing_target'], p.tactical_target)
 
     def test_fully_blocked_lanes_still_stop_safely(self):
         p = self.player()

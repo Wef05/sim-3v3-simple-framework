@@ -813,6 +813,14 @@ function validScoringProbability(a){
 
 function renderAttackChoice(d){
   const a=d.players.find(p=>p.role==='attack')?.attack_choice,box=$('attack-choice');if(!box)return;box.replaceChildren();
+  const receiving=d.players.find(p=>p.role==='attack')?.attack_receive;
+  if(receiving){
+    const stages={intercept:'前往拦球点',wait_ball:'等待来球',rebound_chase:'补射接近',auto_kick:'自动踢球',unavailable:'接球数据不足'};
+    line(box,`接球阶段：${stages[receiving.stage]||receiving.stage} · ${receiving.reason}`);
+    if(receiving.wait_point)line(box,`等待点 ${pointText(receiving.wait_point)} · 安全间距 ${Number(receiving.standoff_m).toFixed(2)} m`);
+    line(box,`拦球点 ${pointText(receiving.intercept_point)} · 出球点 ${pointText(receiving.outgoing_target)} · 夹角 ${Number.isFinite(receiving.angle_deg)?receiving.angle_deg.toFixed(1)+'°':'未定义'}`);
+    line(box,`近身低速持续 ${Number.isFinite(receiving.stable_s)?receiving.stable_s.toFixed(2):'0.00'} s；不代表已确认触球。`);
+  }
   if(!a){line(box,'本帧未记录选择依据。');return}
   if(!a.enabled){line(box,'使用指定目标或特殊阶段策略，本帧未自动比较选点。');return}
   if(['shot_edge_penalty','shot_outward_penalty'].includes(a.model)){

@@ -147,6 +147,14 @@ class BallMotion:
         self._ball_velocity = (0.0, 0.0)
         self._reset_fit()
 
+    def observed_speed(self) -> float | None:
+        """最近有效观测区间的球速 (m/s)；未知或过期时返回 None。"""
+        if (not self._ball_velocity_estimated or self._ball_sample is None
+                or self.context is None
+                or not 0 <= self.context.now-self._ball_sample[0] <= BALL_MOTION_MAX_GAP_S):
+            return None
+        return math.hypot(*self._ball_velocity)
+
     def predict_ball_position(self, seconds: float) -> tuple[float, float] | None:
         """返回从当前帧起 ``seconds`` 秒后的球坐标（米）。
 
