@@ -35,3 +35,7 @@ assert.match(renderGuard('guard:set',{close_clear_rejection:'contested'}),/争�
 
 assert.match(renderGuard('guard:direct_clear',{outlet_mode:'own_goal_escape'}),/避开己方球门/);
 assert.match(renderGuard('guard:direct_clear',{outlet_mode:'near_facing'}),/是否触球成功/);
+
+assert.match(renderGuard('guard:escape',null),/优先撤离定位球保护区/);
+assert.match(renderGuard('guard:escape_blocked',null),/没有找到安全出口/);
+assert.match(renderGuard('guard:escape_outside',null),/场外临时撤离/);
