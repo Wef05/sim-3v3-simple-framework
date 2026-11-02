@@ -76,9 +76,10 @@ class BlockedAttackTests(unittest.TestCase):
 
     def test_intercept_precedes_fallback_kick(self):
         p = self.player(pose=(2, 2))
+        p.block_point = dict(status='reachable', target=(6.95, 4.45))
         intent = p.attack()
         self.assertIsInstance(intent, MoveIntent)
-        self.assertAlmostEqual(math.dist(intent.target, (6.95, 4.45)), .6)
+        self.assertEqual(intent.target, p.block_point['target'])
         self.assertTrue(intent.avoid_ball)
         self.assertEqual(p.attack_receive['outgoing_target'], p.tactical_target)
 

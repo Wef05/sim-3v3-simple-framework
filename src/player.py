@@ -40,6 +40,7 @@ class Player:
         # 构造时提供空估计器；正式逐帧运行时会替换成全队共享实例。
         self.motion = BallMotion()
         self.ball_intercept = None
+        self.block_point = None
         self.threat = None
         self.action = 'init'
         self.tactical_target = None
@@ -253,10 +254,11 @@ class Player:
 
         intent, self._receive_memory, self.attack_receive = receive_intent(
             pose=self.pose, ball=ball, current_ball=current_ball,
-            intercept=self.ball_intercept, target=target, aim=aim, style=style,
+            intercept=self.block_point, target=target, aim=aim, style=style,
             now=self.context.now, phase=get_phase(self.context),
-            speed=self.motion.observed_speed(), memory=self._receive_memory,
+            speed=self.motion.current_speed(), memory=self._receive_memory,
             pose_observed_at=getattr(self.context.teammates.get(self.id), 'last_seen_at', None))
+        self.attack_receive['observed_interval_speed_mps'] = self.motion.observed_speed()
         return intent
 
     def guard(self, pass_to: int | None = None):

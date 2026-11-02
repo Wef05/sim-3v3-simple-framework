@@ -1,0 +1,1599 @@
+{
+  "ok": true,
+  "events": [
+    {
+      "eventId": "local-match:1",
+      "sequence": 1,
+      "wallTime": 1793608340.0638433,
+      "simTime": null,
+      "timing": {
+        "timeRemaining": 600.0,
+        "primaryTime": 600.0,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "operator",
+      "severity": "info",
+      "type": "match_started",
+      "message": {
+        "key": "event.match_started",
+        "fallback": "match_started"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "ready",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "startedState": "ready"
+      }
+    },
+    {
+      "eventId": "local-match:2",
+      "sequence": 2,
+      "wallTime": 1793608340.071626,
+      "simTime": 38.06200000000055,
+      "timing": {
+        "timeRemaining": 600.0,
+        "primaryTime": 600.0,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "operator",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "ready",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "initial",
+        "toState": "ready",
+        "fromSetPlay": "noSetPlay",
+        "toSetPlay": "kickOff",
+        "stopped": false,
+        "reason": "match_start"
+      }
+    },
+    {
+      "eventId": "local-match:3",
+      "sequence": 3,
+      "wallTime": 1793608371.5211453,
+      "simTime": 53.09000000001892,
+      "timing": {
+        "timeRemaining": 600.0,
+        "primaryTime": 600.0,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_placement_started",
+      "message": {
+        "key": "event.ball_placement_started",
+        "fallback": "ball_placement_started"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "set",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "setPlay": "kickOff",
+        "side": "home",
+        "from": [
+          -1.4506123389584673e-16,
+          1.5925612879849762e-16,
+          0.10994635062175352
+        ],
+        "to": [
+          0.0,
+          0.0,
+          0.2
+        ],
+        "expectedSeconds": 3.0
+      }
+    },
+    {
+      "eventId": "local-match:4",
+      "sequence": 4,
+      "wallTime": 1793608371.534631,
+      "simTime": 53.09000000001892,
+      "timing": {
+        "timeRemaining": 600.0,
+        "primaryTime": 600.0,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "set",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "ready",
+        "toState": "set",
+        "fromSetPlay": "kickOff",
+        "toSetPlay": "kickOff",
+        "stopped": false,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:5",
+      "sequence": 5,
+      "wallTime": 1793608377.265909,
+      "simTime": 56.09400000002259,
+      "timing": {
+        "timeRemaining": 600.0,
+        "primaryTime": 600.0,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_placement_complete",
+      "message": {
+        "key": "event.ball_placement_complete",
+        "fallback": "ball_placement_complete"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "set",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "setPlay": "kickOff",
+        "totalSeconds": 3.0
+      }
+    },
+    {
+      "eventId": "local-match:6",
+      "sequence": 6,
+      "wallTime": 1793608380.731101,
+      "simTime": 58.09000000002503,
+      "timing": {
+        "timeRemaining": 600.0,
+        "primaryTime": 600.0,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 10
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "set",
+        "toState": "playing",
+        "fromSetPlay": "kickOff",
+        "toSetPlay": "kickOff",
+        "stopped": false,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:7",
+      "sequence": 7,
+      "wallTime": 1793608387.1938603,
+      "simTime": 61.84000000002961,
+      "timing": {
+        "timeRemaining": 596.2499999999961,
+        "primaryTime": 596.2499999999961,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_touch",
+      "message": {
+        "key": "event.ball_touch",
+        "fallback": "ball_touch"
+      },
+      "actor": {
+        "side": "home",
+        "robotName": "robot1",
+        "playerNumber": 1
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 6.249999999995417
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "previousTouchSide": null,
+        "previousTouchRobotKey": null,
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "stopped": false
+      }
+    },
+    {
+      "eventId": "local-match:8",
+      "sequence": 8,
+      "wallTime": 1793608387.1976705,
+      "simTime": 61.84000000002961,
+      "timing": {
+        "timeRemaining": 596.2499999999961,
+        "primaryTime": 596.2499999999961,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_free",
+      "message": {
+        "key": "event.ball_free",
+        "fallback": "ball_free"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "reason": "kicking_side_touch"
+      }
+    },
+    {
+      "eventId": "local-match:9",
+      "sequence": 9,
+      "wallTime": 1793608387.1996076,
+      "simTime": 61.84000000002961,
+      "timing": {
+        "timeRemaining": 596.2499999999961,
+        "primaryTime": 596.2499999999961,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "playing",
+        "toState": "playing",
+        "fromSetPlay": "kickOff",
+        "toSetPlay": "noSetPlay",
+        "stopped": false,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:10",
+      "sequence": 10,
+      "wallTime": 1793608391.3160484,
+      "simTime": 64.16800000003185,
+      "timing": {
+        "timeRemaining": 593.921999999993,
+        "primaryTime": 593.921999999993,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "throw_in_setup",
+      "message": {
+        "key": "event.throw_in_setup",
+        "fallback": "throw_in_setup"
+      },
+      "actor": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": true,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": {
+        "ruleId": "ball_out",
+        "ruleName": "Ball out of bounds",
+        "summary": "Ball out of bounds, restart with throwIn.",
+        "measurements": [],
+        "positions": {
+          "target": [
+            -0.91188526131918,
+            4.45,
+            0.11
+          ],
+          "from": [
+            -0.91188526131918,
+            4.636913700989379,
+            0.10991296792092554
+          ]
+        }
+      },
+      "outcome": {
+        "reason": "ball_out",
+        "setPlay": "throwIn",
+        "lastTouchSide": "home"
+      }
+    },
+    {
+      "eventId": "local-match:11",
+      "sequence": 11,
+      "wallTime": 1793608391.3179433,
+      "simTime": 64.16800000003185,
+      "timing": {
+        "timeRemaining": 593.921999999993,
+        "primaryTime": 593.921999999993,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_placement_started",
+      "message": {
+        "key": "event.ball_placement_started",
+        "fallback": "ball_placement_started"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": true,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "setPlay": "throwIn",
+        "side": "away",
+        "from": [
+          -0.91188526131918,
+          4.636913700989379,
+          0.10991296792092554
+        ],
+        "to": [
+          -0.91188526131918,
+          4.45,
+          0.11
+        ],
+        "expectedSeconds": 3.0
+      }
+    },
+    {
+      "eventId": "local-match:12",
+      "sequence": 12,
+      "wallTime": 1793608391.3198295,
+      "simTime": 64.16800000003185,
+      "timing": {
+        "timeRemaining": 593.921999999993,
+        "primaryTime": 593.921999999993,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": true,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "playing",
+        "toState": "playing",
+        "fromSetPlay": "noSetPlay",
+        "toSetPlay": "throwIn",
+        "stopped": true,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:13",
+      "sequence": 13,
+      "wallTime": 1793608397.0605826,
+      "simTime": 67.17200000002485,
+      "timing": {
+        "timeRemaining": 593.921999999993,
+        "primaryTime": 593.921999999993,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_placement_complete",
+      "message": {
+        "key": "event.ball_placement_complete",
+        "fallback": "ball_placement_complete"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": true,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "setPlay": "throwIn",
+        "totalSeconds": 3.0
+      }
+    },
+    {
+      "eventId": "local-match:14",
+      "sequence": 14,
+      "wallTime": 1793608397.064459,
+      "simTime": 67.17200000002485,
+      "timing": {
+        "timeRemaining": 593.921999999993,
+        "primaryTime": 593.921999999993,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "throw_in_start",
+      "message": {
+        "key": "event.throw_in_start",
+        "fallback": "throw_in_start"
+      },
+      "actor": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "reason": "ball_placement_complete",
+        "setPlay": "throwIn"
+      }
+    },
+    {
+      "eventId": "local-match:15",
+      "sequence": 15,
+      "wallTime": 1793608397.070653,
+      "simTime": 67.17200000002485,
+      "timing": {
+        "timeRemaining": 593.921999999993,
+        "primaryTime": 593.921999999993,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "playing",
+        "toState": "playing",
+        "fromSetPlay": "throwIn",
+        "toSetPlay": "throwIn",
+        "stopped": false,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:16",
+      "sequence": 16,
+      "wallTime": 1793608399.6432061,
+      "simTime": 68.57600000002158,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "penalty",
+      "type": "penalty",
+      "message": {
+        "key": "event.penalty",
+        "fallback": "penalty"
+      },
+      "actor": {
+        "side": "home",
+        "robotName": "robot3",
+        "playerNumber": 3
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 43.59600000000327
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": {
+        "ruleId": "defender_set_play_interference",
+        "subRuleId": "defender_touched_before_kick",
+        "ruleName": "Defender set play interference",
+        "summary": "Defender home:3 touched the ball before the kicking side, interfering with the throwIn.",
+        "measurements": [],
+        "positions": {
+          "robot": [
+            -0.9118666084338886,
+            4.450065537297114,
+            0.10996547830181085
+          ]
+        }
+      },
+      "outcome": {
+        "reason": "defender_set_play_interference",
+        "penalty": "illegalPosition",
+        "seconds": 30.0,
+        "discipline": {
+          "warning": false,
+          "caution": false,
+          "sentOff": false
+        }
+      }
+    },
+    {
+      "eventId": "local-match:17",
+      "sequence": 17,
+      "wallTime": 1793608399.645233,
+      "simTime": 68.57600000002158,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "penalty",
+      "type": "penalty_started",
+      "message": {
+        "key": "event.penalty_started",
+        "fallback": "penalty_started"
+      },
+      "actor": {
+        "side": "home",
+        "robotName": "robot3",
+        "playerNumber": 3
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 43.59600000000327
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": {
+        "ruleId": "defender_set_play_interference",
+        "subRuleId": "defender_touched_before_kick",
+        "ruleName": "Defender set play interference",
+        "summary": "Defender home:3 touched the ball before the kicking side, interfering with the throwIn.",
+        "measurements": [],
+        "positions": {
+          "robot": [
+            -0.9118666084338886,
+            4.450065537297114,
+            0.10996547830181085
+          ]
+        }
+      },
+      "outcome": {
+        "reason": "defender_set_play_interference",
+        "penalty": "illegalPosition",
+        "seconds": 30.0,
+        "discipline": {
+          "warning": false,
+          "caution": false,
+          "sentOff": false
+        }
+      }
+    },
+    {
+      "eventId": "local-match:18",
+      "sequence": 18,
+      "wallTime": 1793608399.6472805,
+      "simTime": 68.57600000002158,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "warning",
+      "type": "set_play_retake",
+      "message": {
+        "key": "event.set_play_retake",
+        "fallback": "set_play_retake"
+      },
+      "actor": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 43.59600000000327
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": {
+        "ruleId": "defender_set_play_interference",
+        "subRuleId": "defender_touched_before_kick",
+        "ruleName": "Defender set play interference",
+        "summary": "Defender home:3 touched the ball before the kicking side, interfering with the throwIn.",
+        "measurements": [],
+        "positions": {
+          "robot": [
+            -0.9118666084338886,
+            4.450065537297114,
+            0.10996547830181085
+          ]
+        }
+      },
+      "outcome": {
+        "reason": "defender_set_play_interference",
+        "setPlay": "throwIn",
+        "offendingActor": {
+          "side": "home",
+          "robotName": "robot3",
+          "playerNumber": 3
+        }
+      }
+    },
+    {
+      "eventId": "local-match:19",
+      "sequence": 19,
+      "wallTime": 1793608399.65009,
+      "simTime": 68.57600000002158,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "throw_in_setup",
+      "message": {
+        "key": "event.throw_in_setup",
+        "fallback": "throw_in_setup"
+      },
+      "actor": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": true,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": {
+        "ruleId": "defender_set_play_interference",
+        "ruleName": "Defender set play interference",
+        "summary": "Defender home:3 touched the ball before the kicking side, interfering with the throwIn.",
+        "measurements": [],
+        "positions": {
+          "target": [
+            -0.91188526131918,
+            4.45,
+            0.11
+          ],
+          "from": [
+            -0.91188526131918,
+            4.7,
+            0.11
+          ]
+        }
+      },
+      "outcome": {
+        "reason": "defender_set_play_interference",
+        "setPlay": "throwIn",
+        "lastTouchSide": null
+      }
+    },
+    {
+      "eventId": "local-match:20",
+      "sequence": 20,
+      "wallTime": 1793608399.652503,
+      "simTime": 68.57600000002158,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_placement_started",
+      "message": {
+        "key": "event.ball_placement_started",
+        "fallback": "ball_placement_started"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": true,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "setPlay": "throwIn",
+        "side": "away",
+        "from": [
+          -0.91188526131918,
+          4.7,
+          0.11
+        ],
+        "to": [
+          -0.91188526131918,
+          4.45,
+          0.11
+        ],
+        "expectedSeconds": 3.0
+      }
+    },
+    {
+      "eventId": "local-match:21",
+      "sequence": 21,
+      "wallTime": 1793608399.6542654,
+      "simTime": 68.57600000002158,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": true,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "playing",
+        "toState": "playing",
+        "fromSetPlay": "throwIn",
+        "toSetPlay": "throwIn",
+        "stopped": true,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:22",
+      "sequence": 22,
+      "wallTime": 1793608405.5306063,
+      "simTime": 71.58000000001458,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_placement_complete",
+      "message": {
+        "key": "event.ball_placement_complete",
+        "fallback": "ball_placement_complete"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": true,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "setPlay": "throwIn",
+        "totalSeconds": 3.0
+      }
+    },
+    {
+      "eventId": "local-match:23",
+      "sequence": 23,
+      "wallTime": 1793608405.5347328,
+      "simTime": 71.58000000001458,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "throw_in_start",
+      "message": {
+        "key": "event.throw_in_start",
+        "fallback": "throw_in_start"
+      },
+      "actor": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "reason": "ball_placement_complete",
+        "setPlay": "throwIn"
+      }
+    },
+    {
+      "eventId": "local-match:24",
+      "sequence": 24,
+      "wallTime": 1793608405.5395963,
+      "simTime": 71.58000000001458,
+      "timing": {
+        "timeRemaining": 592.5179999999959,
+        "primaryTime": 592.5179999999959,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "playing",
+        "toState": "playing",
+        "fromSetPlay": "throwIn",
+        "toSetPlay": "throwIn",
+        "stopped": false,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:25",
+      "sequence": 25,
+      "wallTime": 1793608418.086126,
+      "simTime": 78.29399999999893,
+      "timing": {
+        "timeRemaining": 585.804000000008,
+        "primaryTime": 585.804000000008,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_touch",
+      "message": {
+        "key": "event.ball_touch",
+        "fallback": "ball_touch"
+      },
+      "actor": {
+        "side": "away",
+        "robotName": "robot4",
+        "playerNumber": 1
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 38.28600000001565
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "previousTouchSide": "home",
+        "previousTouchRobotKey": "home:1",
+        "setPlay": "throwIn",
+        "kickingSide": "away",
+        "stopped": false
+      }
+    },
+    {
+      "eventId": "local-match:26",
+      "sequence": 26,
+      "wallTime": 1793608418.0933132,
+      "simTime": 78.29399999999893,
+      "timing": {
+        "timeRemaining": 585.804000000008,
+        "primaryTime": 585.804000000008,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_free",
+      "message": {
+        "key": "event.ball_free",
+        "fallback": "ball_free"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "reason": "kicking_side_touch"
+      }
+    },
+    {
+      "eventId": "local-match:27",
+      "sequence": 27,
+      "wallTime": 1793608418.0956805,
+      "simTime": 78.29399999999893,
+      "timing": {
+        "timeRemaining": 585.804000000008,
+        "primaryTime": 585.804000000008,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "playing",
+        "toState": "playing",
+        "fromSetPlay": "throwIn",
+        "toSetPlay": "noSetPlay",
+        "stopped": false,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:28",
+      "sequence": 28,
+      "wallTime": 1793608434.4147384,
+      "simTime": 87.1459999999783,
+      "timing": {
+        "timeRemaining": 576.9520000000239,
+        "primaryTime": 576.9520000000239,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_touch",
+      "message": {
+        "key": "event.ball_touch",
+        "fallback": "ball_touch"
+      },
+      "actor": {
+        "side": "home",
+        "robotName": "robot1",
+        "playerNumber": 1
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "previousTouchSide": "away",
+        "previousTouchRobotKey": "away:1",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "stopped": false
+      }
+    },
+    {
+      "eventId": "local-match:29",
+      "sequence": 29,
+      "wallTime": 1793608435.1154566,
+      "simTime": 87.48399999997751,
+      "timing": {
+        "timeRemaining": 576.6140000000248,
+        "primaryTime": 576.6140000000248,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_touch",
+      "message": {
+        "key": "event.ball_touch",
+        "fallback": "ball_touch"
+      },
+      "actor": {
+        "side": "away",
+        "robotName": "robot4",
+        "playerNumber": 1
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "playing",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 0
+      },
+      "evidence": null,
+      "outcome": {
+        "previousTouchSide": "home",
+        "previousTouchRobotKey": "home:1",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "stopped": false
+      }
+    },
+    {
+      "eventId": "local-match:30",
+      "sequence": 30,
+      "wallTime": 1793608452.5875232,
+      "simTime": 97.04799999995522,
+      "timing": {
+        "timeRemaining": 567.050000000044,
+        "primaryTime": 567.050000000044,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "goal",
+      "message": {
+        "key": "event.goal",
+        "fallback": "goal"
+      },
+      "actor": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "ready",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "evidence": null,
+      "outcome": {
+        "reason": "ball_crossed_goal_line"
+      }
+    },
+    {
+      "eventId": "local-match:31",
+      "sequence": 31,
+      "wallTime": 1793608452.589344,
+      "simTime": 97.04799999995522,
+      "timing": {
+        "timeRemaining": 567.050000000044,
+        "primaryTime": 567.050000000044,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "ready",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 45
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "playing",
+        "toState": "ready",
+        "fromSetPlay": "noSetPlay",
+        "toSetPlay": "kickOff",
+        "stopped": false,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:32",
+      "sequence": 32,
+      "wallTime": 1793608461.8870711,
+      "simTime": 101.59199999994463,
+      "timing": {
+        "timeRemaining": 562.5060000000523,
+        "primaryTime": 562.5060000000523,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "penalty_complete",
+      "message": {
+        "key": "event.penalty_complete",
+        "fallback": "penalty_complete"
+      },
+      "actor": {
+        "side": "home",
+        "teamNumber": 1,
+        "teamName": "Challenger",
+        "externalTeamId": null,
+        "playerNumber": 3,
+        "robotName": "robot3"
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "ready",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 40.45600000001059
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "evidence": null,
+      "outcome": {
+        "reason": "penalty_time_expired",
+        "penalty": "illegalPositioning",
+        "seconds": 0
+      }
+    },
+    {
+      "eventId": "local-match:33",
+      "sequence": 33,
+      "wallTime": 1793608501.2996428,
+      "simTime": 121.27999999989875,
+      "timing": {
+        "timeRemaining": 542.8180000000879,
+        "primaryTime": 542.8180000000879,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "ball_placement_started",
+      "message": {
+        "key": "event.ball_placement_started",
+        "fallback": "ball_placement_started"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "set",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "evidence": null,
+      "outcome": {
+        "setPlay": "kickOff",
+        "side": "home",
+        "from": [
+          -7.186925537352209,
+          -0.7221067666162727,
+          0.10985827518638432
+        ],
+        "to": [
+          0.0,
+          0.0,
+          0.2
+        ],
+        "expectedSeconds": 3.0
+      }
+    },
+    {
+      "eventId": "local-match:34",
+      "sequence": 34,
+      "wallTime": 1793608501.308358,
+      "simTime": 121.27999999989875,
+      "timing": {
+        "timeRemaining": 542.8180000000879,
+        "primaryTime": 542.8180000000879,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "auto_referee",
+      "severity": "info",
+      "type": "state_changed",
+      "message": {
+        "key": "event.state_changed",
+        "fallback": "state_changed"
+      },
+      "actor": null,
+      "game": {
+        "phase": "firstHalf",
+        "state": "set",
+        "setPlay": "kickOff",
+        "kickingSide": "home",
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "ready",
+        "toState": "set",
+        "fromSetPlay": "kickOff",
+        "toSetPlay": "kickOff",
+        "stopped": false,
+        "reason": "auto_advance"
+      }
+    },
+    {
+      "eventId": "local-match:35",
+      "sequence": 35,
+      "wallTime": 1793608509.587321,
+      "simTime": 124.2639999998918,
+      "timing": {
+        "timeRemaining": 539.8340000000941,
+        "primaryTime": 539.8340000000941,
+        "stage": "regulation",
+        "extraTimeElapsedSeconds": 0.0
+      },
+      "source": "operator",
+      "severity": "info",
+      "type": "match_finished",
+      "message": {
+        "key": "event.match_finished",
+        "fallback": "match_finished"
+      },
+      "actor": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null
+      },
+      "game": {
+        "phase": "firstHalf",
+        "state": "finished",
+        "setPlay": "noSetPlay",
+        "kickingSide": null,
+        "droppedBall": false,
+        "stopped": false,
+        "secondaryTime": 0
+      },
+      "score": {
+        "home": 0,
+        "away": 1
+      },
+      "evidence": null,
+      "outcome": {
+        "fromState": "set",
+        "toState": "finished",
+        "fromSetPlay": "kickOff",
+        "toSetPlay": "noSetPlay",
+        "stopped": false,
+        "reason": "operator_finish"
+      }
+    }
+  ],
+  "total": 35,
+  "filteredTotal": 35,
+  "limit": 50,
+  "returned": 35,
+  "types": null
+}
