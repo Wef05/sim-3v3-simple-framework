@@ -790,7 +790,7 @@ function renderScoringProbability(d){
   const a=d.players.find(p=>p.role==='attack')?.scoring_probability;
   if(!a){line(box,'本帧没有进球概率评估。');return}
   const pct=p=>typeof p==='number'&&Number.isFinite(p)?(100*p).toFixed(1)+'%':'未知';
-  line(box,`进球率 = 1 − 被拦概率；球网/门柱阻挡为 0。比较所有射门落点与传自由人路线；${a.decision_enabled?'已用于当前决策':'当前特殊阶段/指定目标，未启用自动选择'}。数据年龄 ${Math.max(0,d.context.now-a.evaluated_at).toFixed(2)} s。`);
+  line(box,`进球率 = 1 − 被拦概率；球网/门柱阻挡为 0。以下为未扣两侧惩罚的原始路线估计；实际射门扣分与选点见选择依据。传自由人路线仅展示。数据年龄 ${Math.max(0,d.context.now-a.evaluated_at).toFixed(2)} s。`);
   const card=(title)=>{const e=document.createElement('article');e.className='card';const h=document.createElement('h3');h.textContent=title;e.append(h);box.append(e);return e};
   const own=card('自己直接射门');line(own,`估计进球概率：${pct(a.direct.probability)}`);line(own,`评估最佳落点：${pointText(a.direct.target)}`);
   for(const row of a.via_freeman){const e=card(`传给自由人 ${row.player_id} 号后射门`);
@@ -815,6 +815,14 @@ function renderAttackChoice(d){
   const a=d.players.find(p=>p.role==='attack')?.attack_choice,box=$('attack-choice');if(!box)return;box.replaceChildren();
   if(!a){line(box,'本帧未记录选择依据。');return}
   if(!a.enabled){line(box,'使用指定目标或特殊阶段策略，本帧未自动比较选点。');return}
+  if(a.model==='shot_edge_penalty'){
+    const pct=p=>p==null?'未知':(100*p).toFixed(1)+'%';
+    line(box,'射门评分 = 1 − 被截概率 − 两端点惩罚（10 个百分点）；同分优先中央。模型分数不是实测进球率。');
+    line(box,a.selected?`选择射门点：${pointText(a.selected.target)} · 扣分后 ${pct(a.selected.probability)}`:'没有合适方案，使用球门中央射门兜底。');
+    line(box,`实际目标：${pointText(a.actual_target)} · ${a.execution==='blocked_stop'?'结构阻挡，停止':a.execution==='pass'?'结构阻挡，沿用安全传球替代':'射门'} · 数据年龄 ${Math.max(0,d.context.now-a.evaluated_at).toFixed(2)} s`);
+    for(const o of a.options)line(box,`${pointText(o.target)}：被截 ${pct(o.interception_probability)} · 原始成功 ${pct(o.raw_probability)} − ${(100*o.penalty).toFixed(0)} 个百分点 = ${pct(o.probability)}${o.excluded_reason?' · 排除：'+({unknown_or_blocked:'未知或结构阻挡',zero_probability:'扣分后为零',current_lane_blocked:'当前球路结构阻挡',no_target:'无目标'}[o.excluded_reason]||o.excluded_reason):''}`);
+    return;
+  }
   const name=o=>o.fallback?`保球传给 ${o.player_id} 号 ${pointText(o.target)}`:o.kind==='pass'?`传自由人 ${o.player_id} 号，再射 ${pointText(o.shot_target)}`:`直接射门 ${pointText(o.target)}`;
   const pct=p=>(100*p).toFixed(1)+'%';
   if(a.restart_policy)line(box,`重启类型：${a.restart_policy.restart} · ${a.restart_policy.allow_shot?'允许比较射门':'需先传球'} · ${a.restart_policy.allow_pass?'允许传球':'仅考虑射门'}`);

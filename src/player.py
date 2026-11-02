@@ -11,6 +11,7 @@ from .utils.interception_risk import estimate_interception_risk
 from .utils.kick_lane import check_kick_lane
 from .utils.blocked_attack import blocked_attack_target
 from .utils.scoring_probability import evaluate_scoring
+from .utils.shot_selection import select_shot
 from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
@@ -176,12 +177,13 @@ class Player:
         踢球仍须观测球位和补偿延迟后的当前球位均在近距阈值内，不能对未来球位踢空。
         """
         self.tactical_target = None
+        self.attack_choice = None
         ball = self.context.ball if self.context is not None else None
         current_ball = self.motion.predict_ball_position(0.0)
         if ball is None or self.pose is None or current_ball is None:
             return StopIntent()
 
-        # 观测评估先于既有目标解析，结果不传入任何动作选择分支。
+        # 复用候选概率缓存；正常射门随后按扣分后分数选点。
         cached = getattr(self, '_candidate_cache', None)
         signature = (tuple(getattr(self, 'evaluation_freeman_ids', ())), tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
                      tuple((pid, r.pose is not None) for pid,r in sorted(self.context.opponents.items())),
@@ -200,6 +202,14 @@ class Player:
         self.attack_candidates = cached
         self.scoring_probability = self._scoring_cache
 
+        origins = ((ball.x, ball.y), current_ball)
+        if kick_target == 0:
+            self.attack_choice = select_shot(self.context.field, cached, origins)
+            self.action = 'attack:' + self.attack_choice['reason']
+            selected = self.attack_choice['selected']
+            if selected is not None:
+                kick_target = tuple(selected['target'])
+
         aim = (KickTarget.goal() if kick_target == 0 else
                KickTarget.position(kick_target) if isinstance(kick_target, tuple) else
                KickTarget.teammate(kick_target))
@@ -211,7 +221,6 @@ class Player:
 
         # 在追球前选择替代方向，保证球后站位与最终出球方向一致。
         # 执行器以观测球位规划，因此观测与延迟补偿球位都必须通过检查。
-        origins = ((ball.x, ball.y), current_ball)
         lane = next((result for origin in origins
                      if (result := check_kick_lane(self.context.field, origin, target))['blocked']), None)
         # 队友目标必须保留传球语义，开球传给 3 号也按距离调度力度。
@@ -219,12 +228,17 @@ class Player:
         if lane is not None:
             fallback = blocked_attack_target(self.context, self.id, origins)
             if fallback is None:
+                if self.attack_choice is not None:
+                    self.attack_choice.update(actual_target=None, execution='blocked_stop')
                 self.action = 'attack:blocked:no_safe_alternative:' + lane['reason']
                 return StopIntent()
             target, label = fallback
             aim, style = KickTarget.position(target), 'pass'
             self.action = 'attack:fallback:' + label
-            self.tactical_target = target
+
+        self.tactical_target = target
+        if self.attack_choice is not None:
+            self.attack_choice.update(actual_target=target, execution=style)
 
         self.interception_risk = estimate_interception_risk(
             self.pose, self.motion, self.context.opponents, target, self.ball_intercept,

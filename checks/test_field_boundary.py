@@ -141,7 +141,8 @@ class FieldBoundaryTests(unittest.TestCase):
         prepare_frame(ctx, [p], store)
         intent = p.decide(assign(ctx, [p], store)[1])
         self.assertIsInstance(intent, MoveIntent)
-        self.assertEqual(p.action, Role.ATTACKER.value)
+        self.assertEqual(p.action.split(':')[0], Role.ATTACKER.value)
+        self.assertEqual(p.attack_choice['reason'], 'center_fallback')
         self.assertLess(abs(intent.target[1]), ctx.field.width/2)
         pose = [0., 5.5, 0.]
         for step in range(250):
