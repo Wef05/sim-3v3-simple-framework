@@ -1,0 +1,13 @@
+{
+  "recorded_at": "2026-11-02T04:14:24.153740+00:00",
+  "python": "3.13.3",
+  "platform": "macOS-26.6-arm64-arm-64bit-Mach-O",
+  "baseline": "fa90cfc8a18418fd71d40aa7f274e79f561a66ee",
+  "branch": "codex/shot-point-selection",
+  "worktree": "/private/tmp/shot-point-selection",
+  "simulation_started": false,
+  "studio_reconnect_attempts": 2,
+  "error": "Computer Use server error -10005: timeoutReached",
+  "build_artifact": null,
+  "deployed_artifact": null
+}
