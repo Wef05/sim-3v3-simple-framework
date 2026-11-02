@@ -1,0 +1,23 @@
+[
+  {
+    "case": "clear",
+    "median_ms": 0.004041939973831177,
+    "max_ms": 0.007417052984237671,
+    "target_kept": true,
+    "path_nodes": 2
+  },
+  {
+    "case": "central_obstacle",
+    "median_ms": 3.5197080578655005,
+    "max_ms": 3.9295421447604895,
+    "target_kept": true,
+    "path_nodes": 3
+  },
+  {
+    "case": "outside_detour",
+    "median_ms": 0.9911248926073313,
+    "max_ms": 1.1880411766469479,
+    "target_kept": true,
+    "path_nodes": 5
+  }
+]

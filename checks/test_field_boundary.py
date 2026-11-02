@@ -128,6 +128,33 @@ class FieldBoundaryTests(unittest.TestCase):
         p.controller.execute(intent)
         p._backend.set_velocity.assert_called_with(0., 0., 0.)
 
+    def test_playing_penalty_release_resumes_real_chase_into_field(self):
+        p = Player(1, SoccerConfig(), None)
+        p._mode = 'walk'
+        store = SimpleNamespace()
+        init_store(store)
+        ctx = context(((0., 5.5),), ball=BallState(-1., 0., last_seen_at=1.))
+        penalized = replace(ctx, game=replace(ctx.game, teams=(TeamState(
+            players=(PlayerState(penalty=Penalty.LEAVING_THE_FIELD),)),)))
+        prepare_frame(penalized, [p], store)
+        self.assertIsInstance(p.decide(assign(penalized, [p], store)[1]), RecoverIntent)
+        prepare_frame(ctx, [p], store)
+        intent = p.decide(assign(ctx, [p], store)[1])
+        self.assertIsInstance(intent, MoveIntent)
+        self.assertEqual(p.action, Role.ATTACKER.value)
+        self.assertLess(abs(intent.target[1]), ctx.field.width/2)
+        pose = [0., 5.5, 0.]
+        for step in range(250):
+            p.context = replace(context((tuple(pose),), now=1+step*.05), game=ctx.game)
+            vx, vy, yaw = p.controller.plan_walk(intent, frame(p.context))[0]
+            theta = pose[2]
+            pose[0] += .05*(vx*math.cos(theta)-vy*math.sin(theta))
+            pose[1] += .05*(vx*math.sin(theta)+vy*math.cos(theta))
+            pose[2] += .05*yaw
+            if abs(pose[1]) < 4.4:
+                break
+        self.assertLess(abs(pose[1]), 4.4)
+
     def test_goal_net_and_post_still_block_direct_movement(self):
         for start, target in (((7.25, 0.), (8., 0.)), ((7.25, .4), (7.25, 1.6)),
                               ((6.4, 1.3), (7.4, 1.3))):
