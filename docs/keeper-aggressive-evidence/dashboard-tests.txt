@@ -1,0 +1,3 @@
+Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.
+Navigation cards: current/legacy fields, time estimate, route retention, invalid and missing values passed.
+Freeman overlay: buffered triangle clipping, absent attacker and legacy replay passed.

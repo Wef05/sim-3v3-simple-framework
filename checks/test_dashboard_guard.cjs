@@ -32,3 +32,6 @@ assert.doesNotMatch(malformed,/NaN|Infinity|bad/);
 console.log('Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.');
 assert.match(renderGuard('guard:close_clear',{close_clear_target_status:'reselected',close_clear_old_target_reason:'robot_lane'}),/不重置超时/);
 assert.match(renderGuard('guard:set',{close_clear_rejection:'contested'}),/争抢|更近|距离/);
+
+assert.match(renderGuard('guard:direct_clear',{outlet_mode:'own_goal_escape'}),/避开己方球门/);
+assert.match(renderGuard('guard:direct_clear',{outlet_mode:'near_facing'}),/是否触球成功/);

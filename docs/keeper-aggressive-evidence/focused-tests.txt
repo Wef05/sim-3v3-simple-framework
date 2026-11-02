@@ -1,0 +1,33 @@
+test_adjustment_cannot_abandon_covered_goal_ray (checks.test_guard_aggressive.AggressiveGuardTests.test_adjustment_cannot_abandon_covered_goal_ray) ... ok
+test_ball_behind_goal_is_not_chased_for_clearance (checks.test_guard_aggressive.AggressiveGuardTests.test_ball_behind_goal_is_not_chased_for_clearance) ... ok
+test_fast_ball_outside_foot_reach_still_blocks (checks.test_guard_aggressive.AggressiveGuardTests.test_fast_ball_outside_foot_reach_still_blocks) ... ok
+test_fast_incoming_ball_within_foot_reach_is_kicked (checks.test_guard_aggressive.AggressiveGuardTests.test_fast_incoming_ball_within_foot_reach_is_kicked) ... ok
+test_fresh_unknown_velocity_allows_direct_contact (checks.test_guard_aggressive.AggressiveGuardTests.test_fresh_unknown_velocity_allows_direct_contact) ... ok
+test_kick_commit_survives_opponent_approach (checks.test_guard_aggressive.AggressiveGuardTests.test_kick_commit_survives_opponent_approach) ... ok
+test_near_goal_facing_precedes_teammate_and_contest (checks.test_guard_aggressive.AggressiveGuardTests.test_near_goal_facing_precedes_teammate_and_contest) ... ok
+test_no_executable_escape_does_not_kick_own_goal (checks.test_guard_aggressive.AggressiveGuardTests.test_no_executable_escape_does_not_kick_own_goal) ... ok
+test_outside_area_prefers_ready_teammate (checks.test_guard_aggressive.AggressiveGuardTests.test_outside_area_prefers_ready_teammate) ... ok
+test_own_goal_facing_chooses_executable_side (checks.test_guard_aggressive.AggressiveGuardTests.test_own_goal_facing_chooses_executable_side) ... ok
+test_own_goal_includes_command_correction (checks.test_guard_aggressive.AggressiveGuardTests.test_own_goal_includes_command_correction) ... ok
+test_own_goal_ray_extends_past_short_target (checks.test_guard_aggressive.AggressiveGuardTests.test_own_goal_ray_extends_past_short_target) ... ok
+test_pressure_rejects_adjustment_but_keeps_facing_fallback (checks.test_guard_aggressive.AggressiveGuardTests.test_pressure_rejects_adjustment_but_keeps_facing_fallback) ... ok
+test_receiver_unavailable_is_not_selected (checks.test_guard_aggressive.AggressiveGuardTests.test_receiver_unavailable_is_not_selected) ... ok
+test_recorded_fifth_goal_lane_change_no_longer_cancels_direct_clear (checks.test_guard_aggressive.AggressiveGuardTests.test_recorded_fifth_goal_lane_change_no_longer_cancels_direct_clear) ... ok
+test_recorded_fourth_goal_contested_ball_now_requests_clearance (checks.test_guard_aggressive.AggressiveGuardTests.test_recorded_fourth_goal_contested_ball_now_requests_clearance) ... ok
+test_restricted_restart_never_kicks (checks.test_guard_aggressive.AggressiveGuardTests.test_restricted_restart_never_kicks) ... ok
+test_safe_forward_adjustment_is_allowed (checks.test_guard_aggressive.AggressiveGuardTests.test_safe_forward_adjustment_is_allowed) ... ok
+test_safe_turn_for_teammate_precedes_lower_priority_clearance (checks.test_guard_aggressive.AggressiveGuardTests.test_safe_turn_for_teammate_precedes_lower_priority_clearance) ... ok
+test_side_precedes_facing_without_teammate (checks.test_guard_aggressive.AggressiveGuardTests.test_side_precedes_facing_without_teammate) ... ok
+test_stale_ball_cancels_kick (checks.test_guard_aggressive.AggressiveGuardTests.test_stale_ball_cancels_kick) ... ok
+test_time_rollback_discards_old_commit (checks.test_guard_aggressive.AggressiveGuardTests.test_time_rollback_discards_old_commit) ... ok
+test_timeout_and_cooldown_not_reset_by_new_direction (checks.test_guard_aggressive.AggressiveGuardTests.test_timeout_and_cooldown_not_reset_by_new_direction) ... ok
+test_unknown_opponent_rejects_adjustment (checks.test_guard_aggressive.AggressiveGuardTests.test_unknown_opponent_rejects_adjustment) ... ok
+test_recorded_close_kicks_accept_contest_and_preserve_timeout (checks.test_guard_priority.ClearanceReplayTests.test_recorded_close_kicks_accept_contest_and_preserve_timeout) ... ok
+test_conflicting_kick_cancelled_before_guard_moves (checks.test_guard_priority.KeeperPriorityTests.test_conflicting_kick_cancelled_before_guard_moves) ... ok
+test_lower_reservation_removes_only_extra_margin (checks.test_guard_priority.KeeperPriorityTests.test_lower_reservation_removes_only_extra_margin) ... ok
+test_non_emergency_does_not_cancel_kick (checks.test_guard_priority.KeeperPriorityTests.test_non_emergency_does_not_cancel_kick) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.022s
+
+OK

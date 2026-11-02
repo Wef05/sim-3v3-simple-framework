@@ -1,0 +1,302 @@
+{
+  "frames": 2939,
+  "capture_frames": 2948,
+  "excluded_prestart_frames": 9,
+  "first_id": 146645,
+  "last_id": 149583,
+  "simulation_range": [
+    59.224,
+    145.201999999
+  ],
+  "max_sim_gap": 0.284000000000006,
+  "action_frame_counts": {
+    "ready": 1009,
+    "stopped": 464,
+    "guard:set": 1198,
+    "guard:set:restricted": 231,
+    "guard:anticipate:ray": 37
+  },
+  "kick_frames": 0,
+  "source_bytes": 65225286,
+  "last_game": {
+    "packet_number": 137,
+    "players_per_team": 3,
+    "competition_type": "LARGE",
+    "stopped": false,
+    "game_phase": "NORMAL",
+    "state": "FINISHED",
+    "set_play": "NONE",
+    "first_half": true,
+    "kicking_team": 255,
+    "secs_remaining": 540,
+    "secondary_time": 0,
+    "teams": [
+      {
+        "team_number": 1,
+        "field_player_colour": 1,
+        "goalkeeper_colour": 0,
+        "goalkeeper": 1,
+        "score": 1,
+        "penalty_shot": 0,
+        "single_shots": 0,
+        "message_budget": 12000,
+        "players": [
+          {
+            "penalty": "NONE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "NONE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "NONE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          }
+        ]
+      },
+      {
+        "team_number": 2,
+        "field_player_colour": 0,
+        "goalkeeper_colour": 2,
+        "goalkeeper": 1,
+        "score": 0,
+        "penalty_shot": 0,
+        "single_shots": 0,
+        "message_budget": 12000,
+        "players": [
+          {
+            "penalty": "NONE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "NONE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "INCAPABLE_ROBOT",
+            "secs_till_unpenalised": 30,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "SUBSTITUTE",
+            "secs_till_unpenalised": 0,
+            "warnings": 0,
+            "cautions": 0
+          }
+        ]
+      }
+    ],
+    "last_seen_at": 145.181999999,
+    "received_at": 9068.89975663
+  }
+}

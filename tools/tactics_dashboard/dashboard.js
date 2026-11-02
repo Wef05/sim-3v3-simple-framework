@@ -19,8 +19,9 @@ function guardDecisionLines(p){
     'guard:block:hold':['保持位置挡球','模型判断当前位置已覆盖来球路径'],
     'guard:block:unreachable_hold':['原地保底，面向球','未找到可达封堵点；原地保持不表示已挡住球'],
     'guard:close_clear':['请求近身应急解围','低速球已在脚前，己方更近且存在可用出球通道'],
+    'guard:direct_clear':['请求直接解围','近门沿当前朝向出脚；防乌龙时优先改选边线'],
     'guard:prepare':['调整脚位，准备出球','已选出传球或解围方向，正在接近球后位置并调整朝向'],
-    'guard:pass':['请求传球','通过接应、通道、脚位和争抢时间检查'],
+    'guard:pass':['请求传球','优先选择可执行的队友目标；需调整时才检查防守风险'],
     'guard:clear_kick':['请求向前场解围','已满足标准出球的脚位、朝向和时间条件'],
     'guard:kick_hold':['保持踢球请求','沿用已选出球目标，继续检查安全条件及超时'],
     'guard:set:restricted':['限制触球期间站位','对方开球或定位球期间不主动处理球'],
@@ -42,7 +43,9 @@ function guardDecisionLines(p){
   if(d.ball_fresh===false)lines.push('球观测：缺失或过期');
   else if(d.velocity_known===false)lines.push('球速：估计无效，不能据此主动出球');
   else if(finite(d.ball_speed_mps))lines.push(`球速：${d.ball_speed_mps.toFixed(2)} m/s`);
-  const waits={restricted:'对方重启限制主动触球',unknown_velocity:'球速未知',fast_ball:'球速超过主动处理阈值',retry_cooldown:'上次踢球请求超时，等待重试',no_safe_outlet:'未选出满足条件的出球方案'};
+  const modes={near_facing:'近门立即沿当前朝向解围',own_goal_escape:'避开己方球门，改选边线',pass:'队友优先',sideline:'向边线解围',facing:'沿当前朝向出脚',facing_contested:'接受争球风险，沿当前朝向出脚',committed:'保持已开始的出脚，不因对手逼近取消',safe_adjustment:'调整前检查对手触球时间和球门覆盖'};
+  if(modes[d.outlet_mode])lines.push(`出球方式：${modes[d.outlet_mode]}`);
+  const waits={restricted:'对方重启限制主动触球',unknown_velocity:'球速未知',fast_ball:'球速超过主动处理阈值',retry_cooldown:'上次踢球请求超时，等待重试',no_safe_outlet:'未选出满足条件的出球方案',range:'球不在门前处理范围',own_goal_no_escape:'当前方向会打入己方球门，暂无可执行的边线逃逸',no_executable_kick:'当前没有可执行的出脚或安全调整方案'};
   if(waits[d.outlet_wait_reason])lines.push(`未出球：${waits[d.outlet_wait_reason]}`);
   const rejects={range:'球不在近身处理范围',bearing:'球不在可踢朝向',unknown_opponent:'对手位置未知',contested:'对手更近或领先余量不足',normal_outlet:'交由常规出球评估',no_safe_direction:'没有安全解围方向'};
   if(rejects[d.close_clear_rejection])lines.push(`近身解围未采用：${rejects[d.close_clear_rejection]}`);
@@ -51,7 +54,7 @@ function guardDecisionLines(p){
   const targetReasons={direction:'朝向或场地条件不满足',goal_structure:'球门结构阻挡',robot_lane:'机器人挡住球路'};
   if(targetReasons[d.close_clear_old_target_reason])lines.push(`旧目标失效：${targetReasons[d.close_clear_old_target_reason]}`);
   if(d.outlet_style)lines.push(`出球计划：${d.outlet_style==='pass'?'传球':'解围'}${finite(d.receiver_id)?` · 我方 ${d.receiver_id} 号`:''}`);
-  if(['guard:close_clear','guard:pass','guard:clear_kick','guard:kick_hold'].includes(p.action))lines.push('这是出球请求；是否触球成功需观察后续球轨迹。');
+  if(['guard:direct_clear','guard:close_clear','guard:pass','guard:clear_kick','guard:kick_hold'].includes(p.action))lines.push('这是出球请求；是否触球成功需观察后续球轨迹。');
   return lines;
 }
 function line(parent,txt){let p=document.createElement('p');p.textContent=txt;parent.append(p)}

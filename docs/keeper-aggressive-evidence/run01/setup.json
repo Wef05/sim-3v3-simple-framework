@@ -1,0 +1,11 @@
+{
+  "observed_existing_simulator_wall_time": 1793599944.0860522,
+  "mode": "preserve_history",
+  "worktree": "/private/tmp/keeper-aggressive-20261102",
+  "branch": "codex/keeper-aggressive-clearance",
+  "commit": "3513ca04bcda60e1ee2eead9d2cfe15aa99fafac",
+  "simulator_already_open": true,
+  "dashboard_document": "docs/tactics-dashboard.md absent; inspected tools/tactics_dashboard/server.py and skill runtime reference",
+  "seed": "not controlled",
+  "ui_capture_error": "One post-deploy AX read failed with ScreenCaptureKit -3811; deployment verified from runner and source hashes."
+}

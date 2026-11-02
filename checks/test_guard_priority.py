@@ -10,7 +10,8 @@ from src.framework.types import Context, FieldDimensions, BallState, RobotState,
 from src.intents import MoveIntent, KickIntent, KickTarget
 from src.player import Player
 from src.utils.navigation import MotionTracker, NavigationFrame
-from src.utils.goalkeeper import GuardMemory, close_clearance
+from src.utils.goalkeeper import GuardMemory, outlet, own_goal_direction
+from src.actions.kick_planner import plan_kick
 
 
 class KeeperPriorityTests(unittest.TestCase):
@@ -49,9 +50,9 @@ class KeeperPriorityTests(unittest.TestCase):
 
 
 class ClearanceReplayTests(unittest.TestCase):
-    def test_locked_lane_reselection_preserves_timeout(self):
+    def test_recorded_close_kicks_accept_contest_and_preserve_timeout(self):
         frames={r['id']:r['packet'] for r in json.loads(Path(__file__).with_name('keeper-clearance-frames.json').read_text())}
-        for fid, succeeds in ((367396,True),(367399,True),(370165,True),(364445,False)):
+        for fid in (367396, 367399, 370165, 364445):
             with self.subTest(frame=fid):
                 c=frames[fid]['context']
                 def robots(side):
@@ -60,14 +61,26 @@ class ClearanceReplayTests(unittest.TestCase):
                 old=tuple(next(p for p in frames[fid-1]['players'] if p['id']==2)['target'])
                 started=ctx.now-.4
                 memory=GuardMemory(plan=(old,'clear',None),close_clear=True,kick_since=started)
-                result=close_clearance(ctx,2,ctx.teammates[2].pose,memory)
-                self.assertEqual(result is not None,succeeds)
-                self.assertEqual(memory.kick_since,started)
-                if succeeds:
-                    self.assertNotEqual(memory.plan[0],old)
-                    # A valid replacement remains locked on the next identical frame.
-                    selected=memory.plan
-                    self.assertIsNotNone(close_clearance(ctx,2,ctx.teammates[2].pose,memory))
-                    self.assertEqual(memory.plan,selected)
+                choice = outlet(ctx, 2, ctx.teammates[2].pose, None, {}, memory, None,
+                                allow_adjustment=False)
+                self.assertIsNotNone(choice)
+                result, action = choice
+                self.assertIsInstance(result, KickIntent)
+                self.assertEqual(memory.kick_since, started)
+                plan = plan_kick(ctx, result)
+                self.assertFalse(own_goal_direction(ctx, (ctx.ball.x, ctx.ball.y), plan.direction))
+                if fid == 364445:
+                    # 用户新要求：不再因对手逼近取消已经开始的可执行出脚。
+                    self.assertEqual(action, 'kick_hold')
+                    self.assertEqual(memory.plan[0], old)
+                else:
+                    self.assertEqual(action, 'direct_clear')
+                    self.assertAlmostEqual(plan.direction, ctx.teammates[2].pose.theta)
+                selected = memory.plan
+                self.assertIsNotNone(outlet(ctx, 2, ctx.teammates[2].pose, None, {}, memory, None,
+                                            allow_adjustment=False))
+                self.assertEqual(memory.plan, selected)
+                self.assertEqual(memory.kick_since, started)
+
 
 if __name__=='__main__': unittest.main()

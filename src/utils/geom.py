@@ -52,11 +52,16 @@ def own_goal(ctx: Context) -> tuple[float, float]:
 
 
 def own_goal_area_center(ctx: Context) -> tuple[float, float]:
-    """己方小禁区(球门区)中心 —— 守门员无威胁时的默认站位。
+    """己方小禁区(球门区)中心，用于门前防守几何。
 
     小禁区从己方门线沿 +x 伸进 ``goal_area_length``,中心在门线内侧半个进深处。
     """
     return (-ctx.field.length / 2.0 + ctx.field.goal_area_length / 2.0, 0.0)
+
+
+def goalkeeper_home(ctx: Context) -> tuple[float, float]:
+    """READY 与默认回位共用的小禁区前沿中点（队伍坐标，米）。"""
+    return (-ctx.field.length / 2.0 + ctx.field.goal_area_length, 0.0)
 
 
 def clamp_inside_field(
