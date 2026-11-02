@@ -40,7 +40,7 @@
 
 - 本次仅启动一次比赛，未追加场次。运行目标为虚拟机器人 `4x2a0`、容器 `4x2a0-k1`；赛前容器已停止、无其他测试调度进程。赛前证据保存在 `attempt-01/container-before.json` 和 `processes-before.txt`。
 - 通过 Booster Studio 官方入口构建、部署、运行本任务工作区。双方 runner 均 Active，看板新鲜，三名我方球员均为 walk 后开赛。模拟器窗口打开确认时间为北京时间 10:13:39，实际等待 83.062 秒后开赛；该等待不计入比赛时长。
-- 我方 `com.example.lqinternalmatch` 2.0.3，对手 `com.booster.default3v3ai`。逐文件比较源码、构建 `.agent` 包和 runner 实际目录，共 45 个 Python 文件；唯一差异是构建器将仅含说明文字的顶层 `src/__init__.py` 置空，已检查无执行语句，其余一致。见 `attempt-01/identity.json`、`source.patch`、`working-tree.patch` 与 runner 日志。
+- 我方 `com.example.lqinternalmatch` 2.0.3，对手 `com.booster.default3v3ai`。逐文件比较源码、构建 `.agent` 包和 runner 实际目录，共 45 个 Python 文件；唯一差异是构建器将仅含说明文字的顶层 `src/__init__.py` 置空，已检查无执行语句，其余一致。见 `attempt-01/identity.json`、`source.patch.gz`、`working-tree.patch` 与 runner 日志。
 - 构建包保留在本任务 `build/com.example.lqinternalmatch-2.0.3.agent`；完整包及源文件 SHA-256 在身份记录中。运行未设置随机种子，无法保证严格复现同一球路。
 - 匹配身份以 `matchId=local-match` 加 `startedAtWallTime=1793585702.112163` 联合校验；连续裁判样本未出现身份变化或计时回退。
 - 默认赛制为 600 秒，本次按已说明的短时测试方式，在裁判剩余时间降至 539.818 秒后主动结束，实际经过 **60.182 秒**。`operator_finish`，`isFinal=true`，裁判结果与回放 FINISHED 终态均核实；不是自然完赛，不纳入完整比赛战绩。

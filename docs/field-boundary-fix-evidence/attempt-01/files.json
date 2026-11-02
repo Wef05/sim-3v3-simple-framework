@@ -115,9 +115,9 @@
     "sha256": "486d2572ad2f698661654d3c4eab2c1bd9eb54dcbf7d1c0be7a1074898ce42fb"
   },
   {
-    "path": "attempt-01/source.patch",
-    "bytes": 13900,
-    "sha256": "7fe98fcc7fdad6dff4708be6366861cd44da485c86ca5d1bcc9cdbf43298183d"
+    "path": "attempt-01/source.patch.gz",
+    "bytes": 5337,
+    "sha256": "c2ab20a567dc61b2783cdab83c18fd736c153ac0562d4f207adfd3dc0f4b0dce"
   },
   {
     "path": "attempt-01/start-boundary.json",
