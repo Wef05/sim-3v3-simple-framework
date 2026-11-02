@@ -64,6 +64,7 @@ def evaluate_attack_targets(context, player_id, pose, motion, intercept, teammat
     half = max(0, context.field.goal_width/2-max(POST_RADIUS,NET_POST_INSET_M+NET_RADIUS)-KICK_LANE_BALL_RADIUS_M-.02)
     specs = [dict(id=f'goal_{i}', kind='goal', label=f'球门 {i+1}',
                   goal_edge=i in (0, ATTACK_GOAL_SAMPLES-1),
+                  goal_center_steps=abs(i-(ATTACK_GOAL_SAMPLES-1)/2),
                   target=(goal[0], -half+2*half*i/(ATTACK_GOAL_SAMPLES-1)))
              for i in range(ATTACK_GOAL_SAMPLES)]
     for pid, robot in sorted(context.teammates.items()):

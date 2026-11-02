@@ -16,7 +16,7 @@ from src.param import CHASE_BEHIND_M
 def candidates(risks, statuses=None):
     return dict(evaluated_at=0, candidates=[dict(
         id=f'goal_{i}', kind='goal', target=(7, (i-3)*.35),
-        goal_edge=i in (0, 6), status=(statuses or {}).get(i, 'ok'), probability=risk)
+        goal_edge=i in (0, 6), goal_center_steps=abs(i-3), status=(statuses or {}).get(i, 'ok'), probability=risk)
         for i, risk in enumerate(risks)])
 
 
@@ -36,16 +36,16 @@ class ShotSelectionTests(unittest.TestCase):
     def test_edge_penalty_changes_winner(self):
         result = self.choose(candidates([.2, .9, .9, .25, .9, .9, .9]))
         self.assertEqual(result['selected']['id'], 'goal_3')
-        self.assertAlmostEqual(result['options'][0]['probability'], .7)
+        self.assertAlmostEqual(result['options'][0]['probability'], .65)
         self.assertEqual(result['options'][3]['penalty'], 0)
 
     def test_edge_still_wins_when_better_after_penalty(self):
         result = self.choose(candidates([.05, .9, .9, .3, .9, .9, .9]))
         self.assertEqual(result['selected']['id'], 'goal_0')
-        self.assertAlmostEqual(result['selected']['probability'], .85)
+        self.assertAlmostEqual(result['selected']['probability'], .8)
 
     def test_tie_prefers_center_including_float_tail(self):
-        result = self.choose(candidates([.2, .9, .9, .3, .9, .9, .9]))
+        result = self.choose(candidates([.15, .9, .9, .3, .9, .9, .9]))
         self.assertEqual(result['selected']['id'], 'goal_3')
 
     def test_partial_and_blocked_do_not_hide_known_candidate(self):
@@ -68,6 +68,9 @@ class ShotSelectionTests(unittest.TestCase):
         data = evaluate_attack_targets(p.context, p.id, p.pose, p.motion, p.ball_intercept, tracker)
         goals = [c for c in data['candidates'] if c['kind']=='goal']
         self.assertEqual([c['id'] for c in goals if c['goal_edge']], ['goal_0','goal_6'])
+        result = self.choose(data)
+        for option, expected in zip(result['options'], [.15,.10,.05,0,.05,.10,.15]):
+            self.assertAlmostEqual(option['penalty'], expected)
 
     def attack(self, p, data, target=0):
         with patch('src.player.evaluate_attack_targets', return_value=data), patch(

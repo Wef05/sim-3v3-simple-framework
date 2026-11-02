@@ -815,9 +815,9 @@ function renderAttackChoice(d){
   const a=d.players.find(p=>p.role==='attack')?.attack_choice,box=$('attack-choice');if(!box)return;box.replaceChildren();
   if(!a){line(box,'本帧未记录选择依据。');return}
   if(!a.enabled){line(box,'使用指定目标或特殊阶段策略，本帧未自动比较选点。');return}
-  if(a.model==='shot_edge_penalty'){
+  if(['shot_edge_penalty','shot_outward_penalty'].includes(a.model)){
     const pct=p=>p==null?'未知':(100*p).toFixed(1)+'%';
-    line(box,'射门评分 = 1 − 被截概率 − 两端点惩罚（10 个百分点）；同分优先中央。模型分数不是实测进球率。');
+    line(box,a.model==='shot_outward_penalty'?'被截率惩罚：中央 +0，每向外一点 +5 个百分点；射门评分 = max(0, 1 − 被截率 − 惩罚)。同分优先中央。模型分数不是实测进球率。':'射门评分 = 1 − 被截概率 − 两端点惩罚（10 个百分点）；同分优先中央。模型分数不是实测进球率。');
     line(box,a.selected?`选择射门点：${pointText(a.selected.target)} · 扣分后 ${pct(a.selected.probability)}`:'没有合适方案，使用球门中央射门兜底。');
     line(box,`实际目标：${pointText(a.actual_target)} · ${a.execution==='blocked_stop'?'结构阻挡，停止':a.execution==='pass'?'结构阻挡，沿用安全传球替代':'射门'} · 数据年龄 ${Math.max(0,d.context.now-a.evaluated_at).toFixed(2)} s`);
     for(const o of a.options)line(box,`${pointText(o.target)}：被截 ${pct(o.interception_probability)} · 原始成功 ${pct(o.raw_probability)} − ${(100*o.penalty).toFixed(0)} 个百分点 = ${pct(o.probability)}${o.excluded_reason?' · 排除：'+({unknown_or_blocked:'未知或结构阻挡',zero_probability:'扣分后为零',current_lane_blocked:'当前球路结构阻挡',no_target:'无目标'}[o.excluded_reason]||o.excluded_reason):''}`);

@@ -1,7 +1,7 @@
-"""按未被截概率选择射门点；两端点的精度惩罚是策略假设。"""
+"""按未被截概率选择射门点；从中央逐点向外的被截率惩罚是策略假设。"""
 import math
 
-from ..param import SHOT_EDGE_PENALTY
+from ..param import SHOT_OUTWARD_PENALTY_STEP
 from .kick_lane import check_kick_lane
 
 
@@ -16,7 +16,7 @@ def select_shot(field, candidates: dict, origins: tuple) -> dict:
         valid = (candidate.get('status') == 'ok' and isinstance(risk, (int, float))
                  and math.isfinite(risk) and 0 <= risk <= 1)
         raw = 1 - risk if valid else None
-        penalty = SHOT_EDGE_PENALTY if candidate.get('goal_edge', False) else 0.0
+        penalty = SHOT_OUTWARD_PENALTY_STEP * candidate['goal_center_steps']
         score = max(0.0, raw - penalty) if raw is not None else None
         reason = None
         if target is None:
@@ -35,7 +35,7 @@ def select_shot(field, candidates: dict, origins: tuple) -> dict:
                        key=lambda o: (-round(o['probability'], 12), abs(o['target'][1]), o['id']))
     selected = available[0] if available else None
     runner_up = available[1] if len(available) > 1 else None
-    return dict(enabled=True, model='shot_edge_penalty', evaluated_at=candidates['evaluated_at'],
+    return dict(enabled=True, model='shot_outward_penalty', evaluated_at=candidates['evaluated_at'],
                 options=options, selected=selected, runner_up=runner_up,
                 margin=max(0.0, selected['probability'] - runner_up['probability']) if runner_up else None,
                 reason='best_shot' if selected else 'center_fallback',
