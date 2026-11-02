@@ -6,7 +6,8 @@ from types import SimpleNamespace
 
 from src.framework.types import (Context, GameControlState, GameState, BallState,
                                  RobotState, Pose2D, ADULT_FIELD_DIMENSIONS)
-from src.intents import KickIntent, MoveIntent
+from src.intents import KickIntent, MoveIntent, Role, RoleTask
+from src.player import Player
 from src.actions.kick_planner import plan_kick
 from src.utils.goalkeeper import (decide_guard, own_goal_direction, adjustment_safe,
                                  prepare_outlet)
@@ -41,6 +42,23 @@ def advance(p, seconds):
 
 
 class AggressiveGuardTests(unittest.TestCase):
+    def test_default_and_lost_ball_return_to_ready_target(self):
+        for length, depth in ((14., 1.), (18., 1.5)):
+            for our_kickoff in (True, False):
+                with self.subTest(length=length, our_kickoff=our_kickoff):
+                    p = player(ball=(2., 1.))
+                    p.context = replace(p.context, field=replace(
+                        p.context.field, length=length, goal_area_length=depth))
+                    ready = Player.decide(p, RoleTask(
+                        Role.READY, slot=1, our_kickoff=our_kickoff))
+                    self.assertEqual(ready.target, (-length / 2 + depth, 0.))
+                    default = decide_guard(p)
+                    self.assertEqual(default.target, ready.target)
+                    for ball in (None, replace(p.context.ball, last_seen_at=9.)):
+                        p.context = replace(p.context, ball=ball)
+                        home = decide_guard(p)
+                        self.assertEqual(home.target, ready.target)
+
     def assert_safe_kick(self, p, intent):
         self.assertIsInstance(intent, KickIntent)
         plan = plan_kick(p.context, intent)

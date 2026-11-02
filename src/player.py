@@ -21,7 +21,7 @@ from .intents import (Role, RoleTask, KickTarget, MoveIntent, FaceIntent,
 from .actions.controller import ActionController
 from .actions.kick_planner import resolve_target
 from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
-                         opponent_goal, behind_ball)
+                         opponent_goal, behind_ball, goalkeeper_home)
 from .utils.free_position import nearest_free_position, shot_triangle
 from .utils.ball_motion import BallMotion
 from .utils.restart_defense import restart_intent, kickoff_targets
@@ -148,7 +148,7 @@ class Player:
             shift = OUR_KICKOFF_THREE_SHIFT_M / math.sqrt(2)
             slots = [
                 (-field.circle_radius if task.our_kickoff else -field.circle_radius - .5, 0.0),
-                (-field.length / 2 + field.goal_area_length, 0.0),
+                goalkeeper_home(self.context),
                 (-.5 - shift, field.circle_radius + 2 + shift) if task.our_kickoff else
                 (-field.length / 2 + field.penalty_area_length, 0.0),
             ]

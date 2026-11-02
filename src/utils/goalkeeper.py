@@ -8,7 +8,7 @@ import math
 from ..param import *
 from ..framework.types import Context, GameState, SetPlay, Penalty, Pose2D, KICKING_TEAM_NONE
 from ..intents import MoveIntent, FaceIntent, KickIntent, KickTarget, StopIntent
-from .geom import clamp, angle_to, normalize_angle, own_goal_area_center, behind_ball
+from .geom import clamp, angle_to, normalize_angle, own_goal_area_center, behind_ball, goalkeeper_home
 from .kick_lane import check_kick_lane, point_segment
 from .ball_motion import BallMotion
 
@@ -206,7 +206,7 @@ def preposition(ctx, pose, threat):
         future = estimate.get('ball_position')
         if future and -ctx.field.length/2 < future[0] < 0 and abs(future[1]) < ctx.field.width/2:
             source = tuple(future)
-    home = own_goal_area_center(ctx)
+    home = goalkeeper_home(ctx)
     if source[0] > GUARD_SET_BALL_X:
         return home
     gx = -ctx.field.length/2
@@ -488,7 +488,7 @@ def decide_guard(player, preferred=None):
     if not fresh:
         memory.plan, memory.kick_since, memory.target = None, None, None
         memory.close_clear, memory.ray_active = False, False
-        return result(MoveIntent(own_goal_area_center(ctx), face=0, avoid_ball=True,
+        return result(MoveIntent(goalkeeper_home(ctx), face=0, avoid_ball=True,
                                  avoid_robots=True, maintain_face=True), 'home:no_ball')
     face = angle_to(pose.x, pose.y, ctx.ball.x, ctx.ball.y)
     shot_motion = player.motion
