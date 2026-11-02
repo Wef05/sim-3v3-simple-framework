@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/limingzhe/.codex/worktrees/bounded-auto-kick/sim-3v3-simple-framework/docs/bounded-auto-kick-evidence/run02/run_test.py", line 13, in <module>
+    assert time.time()-opened >= 30
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

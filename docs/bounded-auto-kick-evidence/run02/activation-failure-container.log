@@ -1,0 +1,60 @@
+[ExtensionProcess] Interrupted, stopping child processes...
+[PulseMicrophoneBridge] Stopped
+Exception in thread SpeakerRosSpin:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+[0m[INFO] [1793592169.820433430] [pose_publisher]: Pose publishing stopped[0m
+2026-11-02 12:02:49,820 - transport.websocket.websocket_transport - WARNING - [WS-Client:ws://127.0.0.1:9876/subscribe] Disconnected close_code=None close_reason=None client=camera_transport_client owner=[ExtProc:pulse_microphone_bridge_extension] pid=661 current=mp=ExtProc:pulse_microphone_bridge_extension title=bs-ext-pulse_microphone_bridge_extension requested_host=127.0.0.1 connect_host=127.0.0.1 port=9876 path=/subscribe (pid=661 tid=281472482668832)
+2026-11-02 12:02:49,820 - transport.websocket.websocket_transport - INFO - [WS-Client:ws://127.0.0.1:8788] Client stopped client=physics_transport_client owner=[ExtProc:replay_state_publisher] pid=666 current=mp=ExtProc:replay_state_publisher title=bs-ext-replay_state_publisher requested_host=0.0.0.0 connect_host=127.0.0.1 port=8788 path=/ (pid=666 tid=281472994216544)
+2026-11-02 12:02:49,820 - transport.websocket.physics_ws - INFO - [Physics-WS-Client] Disconnected owner=[ExtProc:replay_state_publisher] pid=666 pid=666
+[ExtProc:replay_state_publisher] Shutdown complete.
+2026-11-02 12:02:49,822 - transport.websocket.camera_hub - INFO - [CameraHub] subscriber disconnected remote=('127.0.0.1', 53232)
+2026-11-02 12:02:49,822 - transport.websocket.websocket_transport - INFO - [WS-Client:ws://127.0.0.1:9876/subscribe] Client stopped client=camera_transport_client owner=[ExtProc:pulse_microphone_bridge_extension] pid=661 current=mp=ExtProc:pulse_microphone_bridge_extension title=bs-ext-pulse_microphone_bridge_extension requested_host=127.0.0.1 connect_host=127.0.0.1 port=9876 path=/subscribe (pid=661 tid=281472994216544)
+2026-11-02 12:02:49,822 - transport.websocket.camera_ws - INFO - [Camera-WS-Client] Disconnected owner=[ExtProc:pulse_microphone_bridge_extension] pid=661 pid=661
+2026-11-02 12:02:49,822 - transport.websocket.websocket_transport - INFO - [WS-Client:ws://127.0.0.1:8788] Client stopped client=physics_transport_client owner=[ExtensionProcess:coordinator] pid=187 current=mp=ExtensionProcess title=bs-ext-coord requested_host=0.0.0.0 connect_host=127.0.0.1 port=8788 path=/ (pid=187 tid=281472994216544)
+2026-11-02 12:02:49,822 - transport.websocket.physics_ws - INFO - [Physics-WS-Client] Disconnected owner=[ExtensionProcess:coordinator] pid=187 pid=187
+[ExtensionProcess] Terminating extension worker pid=648
+[ExtensionProcess] Terminating extension worker pid=650
+[ExtensionProcess] Terminating extension worker pid=653
+[ExtensionProcess] Terminating extension worker pid=658
+[ExtensionProcess] Terminating extension worker pid=661
+[ExtensionProcess] Terminating extension worker pid=664
+[ExtensionProcess] Terminating extension worker pid=666
+[ExtensionProcess] Terminating extension worker pid=671
+[ExtensionProcess] Terminating extension worker pid=676
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/booster_robot/booster_robocup_sim/extensions/speaker_relay_extension.py", line 85, in _spin
+    rclpy.spin_once(self._node, timeout_sec=0.1)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 208, in spin_once
+    executor.spin_once(timeout_sec=timeout_sec)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 808, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 797, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(timeout_sec=timeout_sec)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 780, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 681, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException
+2026-11-02 12:02:49,836 - transport.websocket.camera_hub - INFO - [CameraHub] subscriber disconnected remote=('127.0.0.1', 53234)
+2026-11-02 12:02:49,841 - transport.websocket.camera_hub - INFO - [CameraHub] subscriber disconnected remote=('127.0.0.1', 53222)
+2026-11-02 12:02:49,937 - transport.websocket.camera_hub - INFO - [CameraHub] publisher disconnected remote=('127.0.0.1', 33984)
+[ExtensionProcess] All current extension processes stopped.
+[ExtensionProcess] Coordinator safely exited.
+[ContainerApp] Extension process stopped
+[ContainerApp] Stopping camera hub...
+2026-11-02 12:02:49,987 - websockets.server - INFO - server closing
+2026-11-02 12:02:49,988 - transport.websocket.camera_hub - INFO - [CameraHub] publisher disconnected remote=('192.168.65.1', 38166)
+2026-11-02 12:02:49,988 - websockets.server - INFO - server closed
+2026-11-02 12:02:49,988 - transport.websocket.camera_hub - INFO - [CameraHub] stopped
+[ContainerApp] Camera hub stopped
+[ContainerApp] Gracefully stopping physics process...
+[PhysicsProcess] Setting stop signal...
+[PhysicsProcess] Stop signal set
+[ContainerApp] Waiting for physics process to exit...
+[ContainerApp] Physics process stopped
+[ContainerApp] Cleaning up any remaining booster-motion processes...
+[ContainerApp] Runtime stopped
+[MuJoCoModelCache] Cleared preloaded scene for owner=container_app key=/tmp/booster-active-scenes/football_match_pitch_6_K1-b8bd5d8f5a8d8bd8.bscene

@@ -1,0 +1,3 @@
+Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.
+Auto-kick cards: accepted/requested distinction, budget, cooldown, failure, legacy data passed.
+Auto-kick grace: independent reasons and remaining times passed.

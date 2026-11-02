@@ -1,0 +1,10 @@
+{
+  "window_open_observed_wall_time": 1793592311.2125282,
+  "worktree": "/Users/limingzhe/.codex/worktrees/bounded-auto-kick/sim-3v3-simple-framework",
+  "branch": "codex/bounded-auto-kick",
+  "source_commit": "b90fcec06efa6850b5b3e31a998d7e158254af06",
+  "history_mode": "preserve",
+  "duration_policy": "600s regular, end after referee elapsed >=60s",
+  "first_window_open_observed_wall_time": 1793592173.078869,
+  "activation_failure": "first container exited before deployment/start; Studio official activation retried"
+}

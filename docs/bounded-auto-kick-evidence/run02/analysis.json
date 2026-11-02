@@ -1,0 +1,155 @@
+{
+  "frames": 3316,
+  "first_id": 1423,
+  "last_id": 4738,
+  "recording_span_s": 166.35251170800007,
+  "simulation_clock_range": [
+    49.782,
+    136.811999999
+  ],
+  "max_recording_gap_s": 1.0409409579999647,
+  "max_simulation_gap_s": 0.4140000000000015,
+  "referee_elapsed_s": 60.37599999994086,
+  "score": {
+    "home": 0,
+    "away": 1
+  },
+  "end_reason": "operator_finish",
+  "is_final": true,
+  "bursts": [
+    {
+      "player": 1,
+      "first_id": 2362,
+      "first_now": 74.708,
+      "inferred_request_since": 74.708,
+      "entry_observed": {
+        "policy": "bounded_attack",
+        "state": "requested",
+        "reason": "ready",
+        "elapsed_s": 0.0,
+        "remaining_s": 5.0,
+        "cooldown_remaining_s": 0.0,
+        "last_exit_reason": null,
+        "exit_grace": [],
+        "distance_m": 0.4330954565318369,
+        "angle_error_deg": 0.3528297785912943,
+        "stage_error_m": 0.19301981672701368,
+        "stage_target": [
+          0.08689579091305324,
+          -0.3390414746334064
+        ]
+      },
+      "last_id": 2396,
+      "last_now": 76.088,
+      "last_elapsed": 1.3799999999999955,
+      "exit_id": 2397,
+      "exit_now": 76.132,
+      "exit_reason": "phase_changed",
+      "observed_release_after_s": 1.4240000000000066,
+      "control_at_exit": {
+        "state": "idle",
+        "requested": false,
+        "accepted": false,
+        "reason": null
+      }
+    }
+  ],
+  "first_playing": {
+    "id": 2237,
+    "now": 69.758,
+    "teammates": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": -1.4792883637784648,
+          "y": -0.11476884222899941,
+          "theta": 0.07263377498373337
+        },
+        "last_seen_at": 69.752,
+        "received_at": 409.883367853
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": -5.934899663601286,
+          "y": -0.06975690153472114,
+          "theta": 0.06102879207235541
+        },
+        "last_seen_at": 69.752,
+        "received_at": 409.88339277
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": -1.0972818446444723,
+          "y": 4.29092966302767,
+          "theta": 0.07932932006910083
+        },
+        "last_seen_at": 69.752,
+        "received_at": 409.883426853
+      }
+    },
+    "opponents": {
+      "1": {
+        "player_id": 1,
+        "pose": {
+          "x": 2.7851937654356016,
+          "y": 0.0068873325425854795,
+          "theta": 3.065823270675899
+        },
+        "last_seen_at": 69.752,
+        "received_at": 409.883446561
+      },
+      "2": {
+        "player_id": 2,
+        "pose": {
+          "x": 2.775646300026064,
+          "y": -2.619185754962509,
+          "theta": -2.9624703057039974
+        },
+        "last_seen_at": 69.752,
+        "received_at": 409.883476353
+      },
+      "3": {
+        "player_id": 3,
+        "pose": {
+          "x": 5.7257853840868105,
+          "y": -0.006489079858643931,
+          "theta": 3.06385855004341
+        },
+        "last_seen_at": 69.752,
+        "received_at": 409.883496436
+      }
+    }
+  },
+  "minimum_post_distance_m": {
+    "1": 0.9840212588020723,
+    "2": 0.8986856423507542,
+    "3": 3.7975954251291335
+  },
+  "grace_episodes": [],
+  "auto_kick_state_counts": {
+    "1": {
+      "idle": 2920,
+      "approaching": 343,
+      "requested": 35,
+      "cooldown": 5,
+      "blocked": 13
+    },
+    "2": {
+      "idle": 3316
+    },
+    "3": {
+      "idle": 3294,
+      "approaching": 22
+    }
+  },
+  "observed_phase_simulation_seconds": {
+    "INITIAL": 0.0940000000000012,
+    "READY": 42.003999999999984,
+    "SET": 9.702000000000012,
+    "PLAYING": 29.303999998999984,
+    "PLAYING:stopped": 5.466000000000008,
+    "FINISHED": 0.46000000000000796
+  }
+}

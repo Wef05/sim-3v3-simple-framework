@@ -1,0 +1,22 @@
+{
+  "dashboard-team1.json": {
+    "bytes": 66037230,
+    "gzip_bytes": 4623958,
+    "sha256": "9a9de083a673bf774b19c101c862ae3960695640e511a71d029b63507165b638"
+  },
+  "status-samples.json": {
+    "bytes": 3623482,
+    "gzip_bytes": 38145,
+    "sha256": "310de2c33ac59f095a78c586060ad753004c02c8b9c3126739791807d1a51668"
+  },
+  "state-samples.json": {
+    "bytes": 7923247,
+    "gzip_bytes": 776514,
+    "sha256": "53be92e01c274f4fac57d5fd8d793015ee448242e90d7654fe4c1589a36b8da1"
+  },
+  "source.patch": {
+    "bytes": 37605,
+    "gzip_bytes": 12063,
+    "sha256": "46c8a45507c5e8bf9f833571c8534b6b0123ca383da3fed89d4cc4e1753a3109"
+  }
+}

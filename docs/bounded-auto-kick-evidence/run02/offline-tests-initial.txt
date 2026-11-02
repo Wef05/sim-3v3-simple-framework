@@ -1,0 +1,32 @@
+...................player 1 kick stop failed: injected
+.player 1 kick failed: injected
+player 1 kick failed: injected
+player 1 kick failed: injected
+..................F.........................E.............................................................
+======================================================================
+ERROR: test_goalkeeper_replay (unittest.loader._FailedTest.test_goalkeeper_replay)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_goalkeeper_replay
+Traceback (most recent call last):
+  File "/Applications/anaconda/anaconda3/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/anaconda/anaconda3/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/limingzhe/.codex/worktrees/bounded-auto-kick/sim-3v3-simple-framework/checks/test_goalkeeper_replay.py", line 4, in <module>
+    from checks.goalkeeper_replay_cases import CASES
+ModuleNotFoundError: No module named 'checks.goalkeeper_replay_cases'
+
+
+======================================================================
+FAIL: test_throw_in_and_corner_keep_ball_approach_outside (test_field_boundary.FieldBoundaryTests.test_throw_in_and_corner_keep_ball_approach_outside)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/limingzhe/.codex/worktrees/bounded-auto-kick/sim-3v3-simple-framework/checks/test_field_boundary.py", line 87, in test_throw_in_and_corner_keep_ball_approach_outside
+    self.assertIsInstance(intent, MoveIntent)
+AssertionError: StopIntent() is not an instance of <class 'src.intents.MoveIntent'>
+
+----------------------------------------------------------------------
+Ran 126 tests in 1.556s
+
+FAILED (failures=1, errors=1)

@@ -1,0 +1,24 @@
+...................player 1 kick stop failed: injected
+.player 1 kick failed: injected
+player 1 kick failed: injected
+player 1 kick failed: injected
+.............................................E.............................................................
+======================================================================
+ERROR: test_goalkeeper_replay (unittest.loader._FailedTest.test_goalkeeper_replay)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_goalkeeper_replay
+Traceback (most recent call last):
+  File "/Applications/anaconda/anaconda3/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Applications/anaconda/anaconda3/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/limingzhe/.codex/worktrees/bounded-auto-kick/sim-3v3-simple-framework/checks/test_goalkeeper_replay.py", line 4, in <module>
+    from checks.goalkeeper_replay_cases import CASES
+ModuleNotFoundError: No module named 'checks.goalkeeper_replay_cases'
+
+
+----------------------------------------------------------------------
+Ran 127 tests in 1.525s
+
+FAILED (errors=1)
