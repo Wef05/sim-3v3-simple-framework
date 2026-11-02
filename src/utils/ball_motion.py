@@ -147,6 +147,28 @@ class BallMotion:
         self._ball_velocity = (0.0, 0.0)
         self._reset_fit()
 
+    def observed_speed(self) -> float | None:
+        """最近有效观测区间的球速 (m/s)；未知或过期时返回 None。"""
+        if (not self._ball_velocity_estimated or self._ball_sample is None
+                or self.context is None
+                or not 0 <= self.context.now-self._ball_sample[0] <= BALL_MOTION_MAX_GAP_S):
+            return None
+        return math.hypot(*self._ball_velocity)
+
+    def current_speed(self) -> float | None:
+        """当前决策时刻的模型估计速度；区间平均值仅用于拟合，不直接判低速。
+
+        从最新观测时刻的拟合速度沿现有分段摩擦模型推进，和球位预测同源。
+        无有效速度、时间回退或观测过期时返回 None，不把未知当静止。
+        """
+        if self.observed_speed() is None:
+            return None
+        age = self.context.now-self._ball_sample[0]
+        sliding = min(age, max(0.0, self._slide_until-self._ball_sample[0])) if self._slide_until is not None else 0.0
+        speed = max(0.0, self._current_speed-BALL_SLIDE_DECEL_MPS2*sliding)
+        decel = BALL_PURE_ROLL_DECEL_MPS2 if self.mode == 'pure_rolling' else BALL_ROLL_DECEL_MPS2
+        return max(0.0, speed-decel*max(0.0, age-sliding))
+
     def predict_ball_position(self, seconds: float) -> tuple[float, float] | None:
         """返回从当前帧起 ``seconds`` 秒后的球坐标（米）。
 
@@ -196,7 +218,8 @@ class BallMotion:
             model=self.mode, position=position, velocity=self._ball_velocity,
             velocity_kind='observed_interval_average',
             estimation='online_observations', phase=self._phase,
-            current_speed_mps=self._current_speed,
+            current_speed_mps=self.current_speed(),
+            current_speed_kind='estimated_at_decision_time',
             initial_speed_mps=None, motion_age_s=None,
             fit_sample_count=len(self._speed_samples),
             sliding_remaining_s=max(0.0, self._slide_until-self._ball_sample[0]) if self._slide_until is not None else 0.0,

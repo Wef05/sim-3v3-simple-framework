@@ -1,0 +1,16 @@
+{
+  "worktree": "/private/tmp/restart-escape-20261102",
+  "branch": "codex/restart-escape",
+  "baseline": "aaee8191710b2d10f96410abbd8c84f95144efff",
+  "source_sha256": {
+    "src/player.py": "cbeb93a0a3ce06c4afd72bc062d04a26f3f5de9d3bc5ad34b269174a90033f0f",
+    "src/utils/restart_escape.py": "8eb178ab2c864f75ad9f0b689c62e54fcf2ac9c2413540cb7a3c7259cf72af64",
+    "checks/test_restart_escape.py": "0bd61defe3fb13f926d6d4a0346ef4b782f4bee009c7e7272fb8c0d7349d4130",
+    "checks/test_restart_defense.py": "51083e51b39aa2940f6826c75a56c5afd5f21b2c1e075f5172bc9fe1e3c43e97",
+    "tools/tactics_dashboard/dashboard.js": "36e6427e66364d381e1ff20ce7d832e35dc96f84ae26daf351eb17e1a425b88e",
+    "checks/test_dashboard_guard.cjs": "72efabcba76a8a6d194b7bca43a9fde15c2a51a7e6c4399dce67ce9c57bb1b18"
+  },
+  "built": false,
+  "deployed": false,
+  "own_match_started": false
+}

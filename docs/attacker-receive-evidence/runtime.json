@@ -1,0 +1,9 @@
+{
+  "at": "2026-11-02T07:26:26.199390+00:00",
+  "base": "aaee819",
+  "branch": "codex/attacker-receive-first",
+  "worktree": "/private/tmp/attacker-receive-first",
+  "simulator_opened_utc": "2026-11-02T07:26:26.199655+00:00",
+  "history": "preserve",
+  "duration_goal_s": 60
+}

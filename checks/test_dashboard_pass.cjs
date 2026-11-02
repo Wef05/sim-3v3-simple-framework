@@ -1,0 +1,16 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('tools/tactics_dashboard/dashboard.js','utf8');
+const box={text:[],replaceChildren(){this.text=[]}};
+const ctx={$:()=>box,line:(parent,text)=>parent.text.push(text),pointText:JSON.stringify};
+vm.createContext(ctx);
+const start=source.indexOf('function renderAttackChoice(');
+const end=source.indexOf('\nfunction ',source.indexOf('function validAttackChoice(')+1);
+vm.runInContext(source.slice(start,end),ctx);
+const selected={id:'pass_2',kind:'pass',player_id:2,target:[2,1],shot_target:[7,0],pass_probability:.8,shot_probability:.75,probability:.6};
+const choice={enabled:true,model:'pass_risk_margin',evaluated_at:1,options:[],selected,runner_up:null,margin:null,required_margin:.3,direct_risk:.7,best_pass_risk:.4,risk_improvement:.3,actual_target:[2,1],execution:'pass',pass_options:[selected]};
+assert(ctx.validAttackChoice(choice));
+ctx.renderAttackChoice({context:{now:1},players:[{role:'attack',attack_choice:choice}]});
+assert.match(box.text.join('\n'),/70.0%.*40.0%/);
+assert.match(box.text.join('\n'),/30.0 个百分点/);
+assert.match(box.text.join('\n'),/传给队友 2/);
+console.log('Pass decision card renders risk difference, threshold, receiver and two-leg probabilities.');

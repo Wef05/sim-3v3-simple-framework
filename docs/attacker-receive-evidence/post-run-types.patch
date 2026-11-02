@@ -1,0 +1,38 @@
+--- tested
++++ final
+@@ -1,8 +1,11 @@
+ """先拦球再自动踢球；只产生意图，不把近身低速误报为触球确认。"""
++from __future__ import annotations
++
+ from dataclasses import dataclass
+ import math
+ 
+-from ..intents import KickIntent, MoveIntent, StopIntent
++from ..framework.types import BallState, Pose2D
++from ..intents import KickIntent, KickTarget, MoveIntent, StopIntent
+ from ..param import (ARRIVE_DIST, BALL_CONTROL_RADIUS_M, BALL_MOTION_MAX_GAP_S,
+                      CHASE_BEHIND_M, KICK_ENTER_M, KICK_EXIT_M,
+                      RECEIVE_STABLE_S, RECEIVE_MAX_SPEED_MPS)
+@@ -11,15 +14,19 @@
+ 
+ @dataclass
+ class ReceiveMemory:
+-    phase: object
++    phase: str
+     last_time: float
+     stage: str = 'intercept'
+     stable_since: float | None = None
+     last_observed: float | None = None
+ 
+ 
+-def receive_intent(*, pose, ball, current_ball, intercept, target, aim, style,
+-                   now, phase, speed, memory):
++def receive_intent(
++    *, pose: Pose2D | None, ball: BallState | None,
++    current_ball: tuple[float, float] | None, intercept: dict | None,
++    target: tuple[float, float], aim: KickTarget, style: str,
++    now: float, phase: str, speed: float | None, memory: ReceiveMemory | None,
++) -> tuple[MoveIntent | KickIntent | StopIntent, ReceiveMemory | None, dict]:
+     """同帧 B→I 与 B→T 的点积为负才跳过拦球；退化向量不分类。
+ 
+     稳定持续时间按新球观测的时间跨度确认，重复快照不能积累拦球证据。

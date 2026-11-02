@@ -7,11 +7,13 @@
 from __future__ import annotations
 import math
 from dataclasses import replace
+from .utils.attacker_receiving import receive_intent
 from .utils.interception_risk import estimate_interception_risk
 from .utils.kick_lane import check_kick_lane
 from .utils.blocked_attack import blocked_attack_target
 from .utils.scoring_probability import evaluate_scoring
 from .utils.shot_selection import select_shot
+from .utils.pass_selection import select_pass
 from .utils.attack_targets import evaluate_attack_targets, TeammateMotion
 from types import MappingProxyType
 from .framework.types import GameState, Penalty, SetPlay
@@ -22,12 +24,13 @@ from .intents import (Role, RoleTask, KickTarget, MoveIntent, FaceIntent,
 from .actions.controller import ActionController
 from .actions.kick_planner import resolve_target
 from .utils.geom import (angle_to, clamp, dist, own_goal, own_goal_area_center,
-                         opponent_goal, behind_ball, goalkeeper_home)
+                         opponent_goal, goalkeeper_home)
 from .utils.free_position import nearest_free_position, shot_triangle
 from .utils.ball_motion import BallMotion
 from .utils.freeman_cover import CoverMemory, freeman_cover, cover_position
 from .utils.kick_lane import point_segment
 from .utils.restart_defense import restart_intent, kickoff_targets
+from .utils.restart_escape import escape_intent
 
 class Player:
     """跨帧存活的角色行为对象，通过组合持有执行控制器。
@@ -41,6 +44,7 @@ class Player:
         # 构造时提供空估计器；正式逐帧运行时会替换成全队共享实例。
         self.motion = BallMotion()
         self.ball_intercept = None
+        self.block_point = None
         self.threat = None
         self.action = 'init'
         self.tactical_target = None
@@ -48,6 +52,8 @@ class Player:
         self._guard_memory = None
         self._cover_memory = CoverMemory()
         self.freeman_cover = None
+        self._receive_memory = None
+        self.attack_receive = None
 
     # 以下属性只转发观测和运行时接线，不提供 walk_to/kick 等执行接口。
     # backend 的读写兼容框架注入与关闭流程，角色行为不应直接使用它下命令。
@@ -134,10 +140,23 @@ class Player:
         if task.role != Role.FREEMAN or get_phase(self.context) != Phase.NORMAL:
             self._cover_memory = CoverMemory()
         self.freeman_cover = None
+        if task.role != Role.ATTACKER:
+            self._receive_memory = None
+        self.attack_receive = None
         self.guard_decision = None
         self.action = task.role.value
         self.tactical_target = None
         self.freeman_region = None
+        if (task.role not in (Role.UNAVAILABLE, Role.STAY) and
+                get_phase(self.context) in (Phase.OPP_KICKOFF, Phase.OPP_SET_PLAY)):
+            evacuation, label = escape_intent(self.context, self.id, self.pose)
+            if evacuation is not None:
+                # 撤离优先于门将持位及外场剧本；离开后不复用撤离前的出球计划。
+                self._guard_memory = None
+                self._restart_memory = None
+                self.action = f'{task.role.value}:{label}'
+                self.tactical_target = getattr(evacuation, 'target', None)
+                return evacuation
         if task.role == Role.ATTACKER:
             # 调试阶段：我方开球固定传给 3 号，其余阶段默认射门。
             target = 3 if get_phase(self.context) == Phase.OUR_KICKOFF else 0
@@ -175,24 +194,26 @@ class Player:
         return StopIntent()
 
     def attack(self, kick_target: int | tuple[float, float] = 0):
-        """追球并踢球：0 为敌方球门，1–3 为对应编号队友的当前位置。
+        """优先拦住来球再交给 SDK 自动踢球；大于 90° 的补射跳过拦球。
 
-        支持指定坐标目标；队友位置未知时停止。
-        踢球迟滞:距球 ≤ ENTER 进入踢球;进入后距球 > EXIT 才退出(EXIT > ENTER),
-        防边界抖动。追球使用预计最早可达的未来球位；窗口内不可达时使用窗口末尾
-        球位。到该预测位置后方 ``CHASE_BEHIND_M`` 处准备踢球，走位目标保留真实球后站位。
-        踢球仍须观测球位和补偿延迟后的当前球位均在近距阈值内，不能对未来球位踢空。
+        kick_target 为 0 时选射门点，1–3 为队友，坐标为显式出球目标。
+        接球状态由 receive_intent 管理；球后追赶仅用于远距离补射。
         """
         self.tactical_target = None
         self.attack_choice = None
+        self.attack_receive = None
         ball = self.context.ball if self.context is not None else None
         current_ball = self.motion.predict_ball_position(0.0)
         if ball is None or self.pose is None or current_ball is None:
+            self._receive_memory = None
             return StopIntent()
 
         # 复用候选概率缓存；正常射门随后按扣分后分数选点。
         cached = getattr(self, '_candidate_cache', None)
-        signature = (tuple(getattr(self, 'evaluation_freeman_ids', ())), tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
+        receivers = tuple(sorted(pid for pid in getattr(self, 'guard_receivers', ())
+                                 if pid != self.id and pid in self.context.teammates
+                                 and self.context.teammates[pid].pose is not None))
+        signature = (receivers, tuple(getattr(self, 'evaluation_freeman_ids', ())), tuple((pid, r.pose is not None) for pid,r in sorted(self.context.teammates.items())),
                      tuple((pid, r.pose is not None) for pid,r in sorted(self.context.opponents.items())),
                      (self.ball_intercept or {}).get('status'))
         if (cached is None or signature != getattr(self, '_candidate_signature', None)
@@ -204,18 +225,24 @@ class Player:
             cached = evaluate_attack_targets(self.context,self.id,self.pose,self.motion,
                                               self.ball_intercept or {},tracker)
             self._scoring_cache = evaluate_scoring(self.context,self.pose,self.motion,cached,
-                                                   getattr(self,'evaluation_freeman_ids',()))
+                                                   getattr(self,'evaluation_freeman_ids',()), receivers)
             self._candidate_cache, self._candidate_signature = cached, signature
         self.attack_candidates = cached
-        self.scoring_probability = self._scoring_cache
+        self.scoring_probability = dict(self._scoring_cache, decision_enabled=False)
 
         origins = ((ball.x, ball.y), current_ball)
+        automatic_pass = False
         if kick_target == 0:
             self.attack_choice = select_shot(self.context.field, cached, origins)
+            if get_phase(self.context) == Phase.NORMAL:
+                self.attack_choice = select_pass(self.context, cached, self._scoring_cache,
+                                                 self.attack_choice, origins, receivers)
+                self.scoring_probability['decision_enabled'] = True
             self.action = 'attack:' + self.attack_choice['reason']
             selected = self.attack_choice['selected']
             if selected is not None:
                 kick_target = tuple(selected['target'])
+                automatic_pass = selected['kind'] == 'pass'
 
         aim = (KickTarget.goal() if kick_target == 0 else
                KickTarget.position(kick_target) if isinstance(kick_target, tuple) else
@@ -224,6 +251,7 @@ class Player:
         # 这里只使用几何目标；真正的踢球力度、坐标变换仍留给执行阶段。
         target = resolve_target(self.context, aim)
         if target is None:
+            self._receive_memory = None
             return StopIntent()
 
         # 在追球前选择替代方向，保证球后站位与最终出球方向一致。
@@ -231,12 +259,13 @@ class Player:
         lane = next((result for origin in origins
                      if (result := check_kick_lane(self.context.field, origin, target))['blocked']), None)
         # 队友目标必须保留传球语义，开球传给 3 号也按距离调度力度。
-        style = 'pass' if aim.kind == 'teammate' else 'shot'
+        style = 'pass' if automatic_pass or aim.kind == 'teammate' else 'shot'
         if lane is not None:
             fallback = blocked_attack_target(self.context, self.id, origins)
             if fallback is None:
                 if self.attack_choice is not None:
                     self.attack_choice.update(actual_target=None, execution='blocked_stop')
+                self._receive_memory = None
                 self.action = 'attack:blocked:no_safe_alternative:' + lane['reason']
                 return StopIntent()
             target, label = fallback
@@ -251,25 +280,14 @@ class Player:
             self.pose, self.motion, self.context.opponents, target, self.ball_intercept,
             ball_speed=KICK_RISK_BALL_SPEED_MPS)
 
-        # 同时检查观测球位和延迟补偿球位，取更远距离，避免球已离开却仍踢空。
-        # 此处只是决定是否请求踢球，不修改控制器的 is_kicking。
-        d = max(
-            dist(self.pose.x, self.pose.y, ball.x, ball.y),
-            dist(self.pose.x, self.pose.y, *current_ball),
-        )
-        should_kick = d <= (KICK_EXIT_M if self.is_kicking else KICK_ENTER_M)
-
-        if should_kick:
-            return KickIntent(aim, style=style)
-        else:
-            # 使用本帧与角色分配共享的截球结果。
-            if self.ball_intercept is None or self.ball_intercept['status'] == 'unavailable':
-                return StopIntent()
-            predicted_ball = self.ball_intercept['target']
-            chase = behind_ball(*predicted_ball, target, CHASE_BEHIND_M)
-            # 保留球后接近点；边球、角球及门内出球可能需要场外站位。
-            # 实体障碍仍由导航层检查。
-            return MoveIntent(chase)
+        intent, self._receive_memory, self.attack_receive = receive_intent(
+            pose=self.pose, ball=ball, current_ball=current_ball,
+            intercept=self.block_point, target=target, aim=aim, style=style,
+            now=self.context.now, phase=get_phase(self.context),
+            speed=self.motion.current_speed(), memory=self._receive_memory,
+            pose_observed_at=getattr(self.context.teammates.get(self.id), 'last_seen_at', None))
+        self.attack_receive['observed_interval_speed_mps'] = self.motion.observed_speed()
+        return intent
 
     def guard(self, pass_to: int | None = None):
         """守门策略独立维护预站位、限时封堵和出球记忆。"""
@@ -392,7 +410,7 @@ def coordinate(context, assignments, preliminary):
         final[pid] = replace(intent, motion_priority=max(intent.motion_priority, priority),
             opponent_mode='contest' if contest and not restricted else 'avoid',
             avoid_ball=True if restricted else intent.avoid_ball,
-            ball_keepout=max(intent.ball_keepout, context.field.circle_radius) if restricted else intent.ball_keepout)
+            ball_keepout=max(intent.ball_keepout, context.field.circle_radius, OPPONENT_RESTART_AVOID_M) if restricted else intent.ball_keepout)
     return final
 
 def decide(context, players, assignments, store):

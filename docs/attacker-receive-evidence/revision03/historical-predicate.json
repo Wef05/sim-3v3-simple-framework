@@ -1,0 +1,41 @@
+{
+  "source": "run02 recorded opening; offline decision only",
+  "frame": 206808,
+  "now": 57.632,
+  "detail": {
+    "stage": "auto_kick",
+    "reason": "near_ball_low_speed",
+    "angle_deg": null,
+    "intercept_point": [
+      -1.0243746487171747e-16,
+      1.8488373467557413e-16
+    ],
+    "outgoing_target": [
+      -1.124352012539575,
+      4.298262947053187
+    ],
+    "stable_s": 0.19999999999999574,
+    "speed_mps": 1.72288782175001e-17,
+    "contact_confirmed": false,
+    "wait_point": [
+      -0.5982595246759118,
+      -0.045667725305210696
+    ],
+    "standoff_m": 0.6,
+    "robot_speed_mps": 0.020462945258630127,
+    "settling": {
+      "sample_count": 5,
+      "span_s": 0.26200000000000045,
+      "trend_mps": 0.03830293183450481,
+      "spread_m": 0.010035196680198187,
+      "ready": true,
+      "settled": true
+    },
+    "ball_distance_m": 0.5283554506363048,
+    "intercept_status": "intercept",
+    "replanned": false,
+    "arrived": true,
+    "wait_distance_m": 0.0741571027298919,
+    "arrival_exit_m": 0.15
+  }
+}

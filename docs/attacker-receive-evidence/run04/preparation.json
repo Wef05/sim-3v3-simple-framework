@@ -1,0 +1,7 @@
+{
+  "reset_observed_wall": 1793608292.467832,
+  "method": "Studio official activation; simulator window observed Loading Simulation Resources",
+  "worktree": "/private/tmp/attacker-receive-first",
+  "branch": "codex/attacker-receive-first",
+  "preflight_container": "exited pid 0; no match scheduler found"
+}

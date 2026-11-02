@@ -6,6 +6,7 @@
 from ..utils.ball_motion import BallMotion
 from ..utils.attack_targets import TeammateMotion
 from ..utils.interception import estimate_ball_intercept
+from ..utils.block_point import calculate_block_point
 from ..utils.threat import calculate_threat
 
 def prepare_frame(context, players, store):
@@ -26,7 +27,10 @@ def prepare_frame(context, players, store):
         # 球轨迹共享，但机器人位姿和到达能力不同，所以截球结果按人计算。
         p.ball_intercept = estimate_ball_intercept(
             p.pose, store.ball_motion, fallen=p.is_fallen, penalized=p.is_penalized)
+        p.block_point = calculate_block_point(
+            p.pose, store.ball_motion, fallen=p.is_fallen, penalized=p.is_penalized)
         p.interception_risk = None
+        p.attack_receive = None
         p.attack_choice = None
         p.attack_candidates = None
         p.scoring_probability = None

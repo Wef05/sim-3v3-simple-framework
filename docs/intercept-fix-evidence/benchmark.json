@@ -1,0 +1,25 @@
+{
+  "old_algorithm_new_parameters": {
+    "mean_ms": 0.09658982207474764,
+    "p95_ms": 0.21674999879905954,
+    "max_ms": 0.3142080022371374,
+    "statuses": {
+      "fallback": 92,
+      "intercept": 8
+    },
+    "max_evaluations": 0
+  },
+  "new": {
+    "mean_ms": 0.2562719699781155,
+    "p95_ms": 0.5190000010770746,
+    "max_ms": 1.8263749989273492,
+    "statuses": {
+      "fallback": 92,
+      "intercept": 7,
+      "unavailable": 1
+    },
+    "max_evaluations": 65
+  },
+  "old_prepare_frame_mean_ms": 0.33150912015116774,
+  "new_prepare_frame_mean_ms": 1.342495220105775
+}

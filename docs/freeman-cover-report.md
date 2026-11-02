@@ -45,3 +45,15 @@
 3. 保留历史、补齐双方身份、计时和事件证据，完成四项分析。
 
 0.6 秒、0.2 m/s、2 秒和 0.9 m 为保守初值，尚未标定。直接封堵依赖简化轨迹、直线路径及估计到达时间，不能保证实际触球；对手先触球或时间未知时回退补位。守门员路径让位只检查当前意图，动态碰撞由已有导航保护。单元测试不证明战术提升，草稿 PR 尚未完成实场验收。
+
+## PR #15 冲突解决（2026-11-02）
+
+按用户批准的局部任务，将 MAIN `cd1d49d` 合入 PR 原提交 `2a2642e`。独立工作区 `/private/tmp/pr15-conflict-resolution`，本地分支 `codex/pr15-conflict-resolution`，结果推送原 PR 分支 `codex/freeman-cover`。
+
+- `src/player.py` 同时保留自由人协防与进攻者接球状态初始化、重置逻辑。
+- `src/param.py` 同时保留协防参数与传射风险差阈值。
+- `checks/test_dashboard_guard.cjs` 同时保留协防卡片与重启撤离检查。自动合并的遥测与看板代码已核对。
+- 协防、接球、重启撤离、守门优先级与连续性专项共 47 项通过；全部 5 个 `test_dashboard_*.cjs` 脚本通过，JavaScript 语法检查通过。
+- 合并后完整 Python 共 209 项：206 通过、1 失败、2 错误。最新 MAIN 基线共 202 项：199 通过、1 失败、2 错误。两边均为缺少 `checks.goalkeeper_replay_cases`，以及 `test_pass_selection` 中两个预期踢球而获得停止意图的用例；本次未修改这些既有问题。
+- 原始日志：[合并后检查](freeman-cover-evidence/conflict-resolution-tests.txt)、[MAIN 基线检查](freeman-cover-evidence/conflict-resolution-main-tests.txt)。
+- 本次仅解决冲突，按批准范围不运行仿真、不合并 PR；原仿真待验证限制仍然有效。

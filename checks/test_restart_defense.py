@@ -108,7 +108,7 @@ class RestartDefenseTests(unittest.TestCase):
         self.assertLess(intent.target[0],old[0]);self.assertGreater(intent.target[1],old[1])
 
     def test_player_clears_restart_memory_on_stop(self):
-        ctx=self.context(); p=SimpleNamespace(context=ctx,pose=Pose2D(-2,0))
+        ctx=self.context(); p=SimpleNamespace(id=1,context=ctx,pose=Pose2D(-5,0))
         intent=Player.decide(p,RoleTask(Role.OPP_SET_PLAY,slot=0))
         self.assertIsInstance(intent,MoveIntent);self.assertIsNotNone(p._restart_memory)
         Player.decide(p,RoleTask(Role.STAY))

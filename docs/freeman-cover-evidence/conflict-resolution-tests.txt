@@ -1,0 +1,38 @@
+............................................................................E.........................................................................................F.E........................................
+======================================================================
+ERROR: test_goalkeeper_replay (unittest.loader._FailedTest.test_goalkeeper_replay)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_goalkeeper_replay
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/private/tmp/pr15-conflict-resolution/checks/test_goalkeeper_replay.py", line 4, in <module>
+    from checks.goalkeeper_replay_cases import CASES
+ModuleNotFoundError: No module named 'checks.goalkeeper_replay_cases'
+
+
+======================================================================
+ERROR: test_special_phase_and_receiver_loss_preserve_shot (test_pass_selection.PassSelectionTests.test_special_phase_and_receiver_loss_preserve_shot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pr15-conflict-resolution/checks/test_pass_selection.py", line 94, in test_special_phase_and_receiver_loss_preserve_shot
+    self.assertEqual(p.attack().style, 'pass')
+                     ^^^^^^^^^^^^^^^^
+AttributeError: 'StopIntent' object has no attribute 'style'
+
+======================================================================
+FAIL: test_real_attack_uses_pass_style_and_preserves_explicit_target (test_pass_selection.PassSelectionTests.test_real_attack_uses_pass_style_and_preserves_explicit_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/pr15-conflict-resolution/checks/test_pass_selection.py", line 79, in test_real_attack_uses_pass_style_and_preserves_explicit_target
+    self.assertIsInstance(intent, KickIntent)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: StopIntent() is not an instance of <class 'src.intents.KickIntent'>
+
+----------------------------------------------------------------------
+Ran 209 tests in 1.745s
+
+FAILED (failures=1, errors=2)

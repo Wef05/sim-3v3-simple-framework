@@ -1,0 +1,26 @@
+[0000.0s/INFO/MAIN] begin 3v3_runner (2 sandbox(es))
+[0000.0s/INFO/MAIN]   team 1 (team_1): /opt/booster/booster_agent_data/data/agents/extract/com.example.lqinternalmatch
+[0000.0s/INFO/MAIN]   team 2 (team_2): /opt/booster/booster_agent_data/data/agents/extract/com.booster.default3v3ai
+[0000.1s/INFO/MAIN] created sandbox team_1 team=1 agent=com.example.lqinternalmatch SOCCER_TEAM_ID=1 SOCCER_ROBOT_NAMES=robot1,robot2,robot3
+[0000.1s/INFO/MAIN] linked /var/log/booster_agent/3v3_football_log -> /run/3v3_runner/team_1/data/var/log/booster_agent/com.example.lqinternalmatch
+[0000.1s/INFO/MAIN] started execute: team_1
+[0000.2s/INFO/MAIN] created sandbox team_2 team=2 agent=com.booster.default3v3ai SOCCER_TEAM_ID=2 SOCCER_ROBOT_NAMES=robot4,robot5,robot6
+[0000.2s/INFO/MAIN] started execute: team_2
+[34m[team_1][0m [0000.0s/INFO/SUPERVISOR] argv=['/tmp/booster_agent/3v3_runner/supervisor.py', 'com.example.lqinternalmatch']
+[34m[team_1][0m [0000.0s/INFO/SUPERVISOR] supervisor start agent_id=com.example.lqinternalmatch team_id=1 robot_names=robot1,robot2,robot3
+[34m[team_1][0m [0000.0s/INFO/SUPERVISOR] agent ipc codec=protobuf
+[34m[team_1][0m [0000.0s/INFO/SUPERVISOR] SOCCER_TEAM_ID=1
+[34m[team_1][0m [0000.0s/INFO/SUPERVISOR] SOCCER_ROBOT_NAMES=robot1,robot2,robot3
+[31m[team_2][0m [0000.0s/INFO/SUPERVISOR] argv=['/tmp/booster_agent/3v3_runner/supervisor.py', 'com.booster.default3v3ai']
+[31m[team_2][0m [0000.0s/INFO/SUPERVISOR] supervisor start agent_id=com.booster.default3v3ai team_id=2 robot_names=robot4,robot5,robot6
+[31m[team_2][0m [0000.0s/INFO/SUPERVISOR] agent ipc codec=protobuf
+[31m[team_2][0m [0000.0s/INFO/SUPERVISOR] SOCCER_TEAM_ID=2
+[31m[team_2][0m [0000.0s/INFO/SUPERVISOR] SOCCER_ROBOT_NAMES=robot4,robot5,robot6
+[34m[team_1][0m [0000.3s/INFO/SUPERVISOR] agent_state uds server connected
+[34m[team_1][0m [0000.3s/INFO/SUPERVISOR] recv agent_state_change: =>Inactive
+[34m[team_1][0m [0000.3s/INFO/SUPERVISOR] recv agent_event: protobuf_agent_event
+[31m[team_2][0m [0000.7s/INFO/SUPERVISOR] agent_state uds server connected
+[31m[team_2][0m [0000.7s/INFO/SUPERVISOR] recv agent_state_change: =>Inactive
+[31m[team_2][0m [0000.7s/INFO/SUPERVISOR] recv agent_event: protobuf_agent_event
+[31m[team_2][0m [0001.1s/INFO/SUPERVISOR] recv agent_state_change: Inactive=>Active
+[34m[team_1][0m [0002.3s/INFO/SUPERVISOR] recv agent_state_change: Inactive=>Active

@@ -41,3 +41,6 @@ ctx.renderPacket({context:{teammates:{}},players:[{id:3,role:'freeman',action:'f
 assert.match(cards.children[0].children.filter(x=>typeof x==='string').join(' '),/协防：cover.*race_lost.*抢先 否/);
 ctx.renderPacket({context:{teammates:{}},players:[{id:3,role:'freeman',action:'freeman:wait'}]});
 assert.doesNotMatch(cards.children[0].children.filter(x=>typeof x==='string').join(' '),/协防/);
+assert.match(renderGuard('guard:escape',null),/优先撤离定位球保护区/);
+assert.match(renderGuard('guard:escape_blocked',null),/没有找到安全出口/);
+assert.match(renderGuard('guard:escape_outside',null),/场外临时撤离/);

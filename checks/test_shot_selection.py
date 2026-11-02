@@ -9,8 +9,8 @@ from src.intents import KickIntent, KickTarget, MoveIntent
 from src.player import Player
 from src.utils.shot_selection import select_shot
 from src.utils.attack_targets import evaluate_attack_targets, TeammateMotion
-from src.utils.geom import behind_ball
-from src.param import CHASE_BEHIND_M
+from src.utils.attacker_receiving import ReceiveMemory
+from src.role_allocator import get_phase
 
 
 def candidates(risks, statuses=None):
@@ -73,6 +73,8 @@ class ShotSelectionTests(unittest.TestCase):
             self.assertAlmostEqual(option['penalty'], expected)
 
     def attack(self, p, data, target=0):
+        # 本组聚焦出球选点；接球门控由 test_attacker_receiving 独立验证。
+        p._receive_memory = ReceiveMemory(get_phase(p.context), p.context.now, stage='auto_kick')
         with patch('src.player.evaluate_attack_targets', return_value=data), patch(
                 'src.player.evaluate_scoring', return_value={'evaluated_at':0}):
             return p.attack(target)
@@ -80,13 +82,17 @@ class ShotSelectionTests(unittest.TestCase):
     def test_selected_point_reaches_kick_and_chase(self):
         data = candidates([.05,.9,.9,.3,.9,.9,.9])
         for pose in ((2.7,0), (0,0)):
-            p = player(pose); intent = self.attack(p, data)
+            p = player(pose)
+            p.block_point = dict(status='reachable', target=(3.2, 0), ball_position=(3.45, 0))
+            intent = self.attack(p, data)
             if isinstance(intent, KickIntent):
                 self.assertEqual(intent.target, KickTarget.position(data['candidates'][0]['target']))
                 self.assertEqual(intent.style, 'shot')
             else:
                 self.assertIsInstance(intent, MoveIntent)
-                self.assertEqual(intent.target, behind_ball(3,0,data['candidates'][0]['target'],CHASE_BEHIND_M))
+                self.assertEqual(intent.target, p.block_point['target'])
+                self.assertTrue(intent.avoid_ball)
+                self.assertEqual(p.attack_receive['stage'], 'intercept')
             self.assertEqual(p.attack_choice['actual_target'], data['candidates'][0]['target'])
 
     def test_no_route_kicks_center(self):

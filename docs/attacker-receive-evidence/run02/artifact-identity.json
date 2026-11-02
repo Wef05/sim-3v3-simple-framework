@@ -1,0 +1,339 @@
+{
+  "at": "2026-11-02T07:37:17.599773+00:00",
+  "base": "aaee8191710b2d10f96410abbd8c84f95144efff",
+  "branch": "codex/attacker-receive-first",
+  "worktree": "/private/tmp/attacker-receive-first",
+  "package_sha256": "98ec6433a030ed126a56642575392dbf5ec77efd4982b23153d2d9107a189c4d",
+  "deployed_root": "/opt/booster/booster_agent_data/data/agents/extract/com.example.lqinternalmatch/agent/com_example_lqinternalmatch/lib/python3.10/site-packages/com_example_lqinternalmatch/",
+  "files": [
+    {
+      "path": "src/__init__.py",
+      "source": "2f837a2561fbf836b5e4190774180f053c8c4fe982b57566149491222edd3533",
+      "package": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "deployed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal": false
+    },
+    {
+      "path": "src/actions/__init__.py",
+      "source": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "package": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "deployed": "6960c2994e457019a66b0194c46f9b0ba1b5d86f1dfafd4fe238fe4552bcdfe1",
+      "equal": true
+    },
+    {
+      "path": "src/actions/controller.py",
+      "source": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "package": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "deployed": "307bfb8a9c778e581ab52acf570c3aa24f300673e7e67327ba3031e75d212c04",
+      "equal": true
+    },
+    {
+      "path": "src/actions/executor.py",
+      "source": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "package": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "deployed": "b478247f5a8ae5adc257076dfd8ddc4ff2981660335649a17cc82d7ee08b71e9",
+      "equal": true
+    },
+    {
+      "path": "src/actions/kick_planner.py",
+      "source": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "package": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "deployed": "70b2a64131ebb84ad4623843da74cb767df89f8e4566ebbd2ead36bcdd211eaa",
+      "equal": true
+    },
+    {
+      "path": "src/actions/motion_controller.py",
+      "source": "bf592f0972f1e059c86ecc1aaaca5cb46f62802eb66f26f471c155e36283567b",
+      "package": "bf592f0972f1e059c86ecc1aaaca5cb46f62802eb66f26f471c155e36283567b",
+      "deployed": "bf592f0972f1e059c86ecc1aaaca5cb46f62802eb66f26f471c155e36283567b",
+      "equal": true
+    },
+    {
+      "path": "src/framework/__init__.py",
+      "source": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "package": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "deployed": "676b679ef460f4b3b1e7f2b37bfa2f0d7120528416a098b3dc7a39dbfb997733",
+      "equal": true
+    },
+    {
+      "path": "src/framework/agent.py",
+      "source": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "package": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "deployed": "543651291ed73474c37d7a4081391431ced39f60d85f76b7f84d0ca2863bbf28",
+      "equal": true
+    },
+    {
+      "path": "src/framework/config.py",
+      "source": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "package": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "deployed": "d8629c4419fe46f25bdd9b6bb1ba7efbfbe1664e69cc13327cee7e5d85d52c04",
+      "equal": true
+    },
+    {
+      "path": "src/framework/debugdraw.py",
+      "source": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "package": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "deployed": "5ca7fcfa37759cd9f2e21442cd1761c26665d0ee57e734003ca451f741c75ae2",
+      "equal": true
+    },
+    {
+      "path": "src/framework/decision_frame.py",
+      "source": "5130d90129f0ec3f1defd1244809fd6a28965bc6b771bc5e1f1572e89ab6e1c2",
+      "package": "5130d90129f0ec3f1defd1244809fd6a28965bc6b771bc5e1f1572e89ab6e1c2",
+      "deployed": "5130d90129f0ec3f1defd1244809fd6a28965bc6b771bc5e1f1572e89ab6e1c2",
+      "equal": true
+    },
+    {
+      "path": "src/framework/game_codec.py",
+      "source": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "package": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "deployed": "4ed4de2ec844c5cf9cdc2e88e194a8a22fd4bbbd26cd0eb47bddd047d8fc68f0",
+      "equal": true
+    },
+    {
+      "path": "src/framework/log_publisher.py",
+      "source": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "package": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "deployed": "505b532d2e23a15eab24811d5fef8bc4161bc828f530c7ea888a571ef1b1cb7c",
+      "equal": true
+    },
+    {
+      "path": "src/framework/robot_backend.py",
+      "source": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "package": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "deployed": "a7664964fda5e5b749c8e2feee7aa5d9af9b69e49e166aabad79b662ec275c20",
+      "equal": true
+    },
+    {
+      "path": "src/framework/ros_source.py",
+      "source": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "package": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "deployed": "78699ddaab215de61c34d5cb380438a0e2bd9f4dc81cef90a4db9517bd98c840",
+      "equal": true
+    },
+    {
+      "path": "src/framework/runtime.py",
+      "source": "64908d5a9c753bc405e76413090d2aa7583fd97930756f38b64bb40a88e01e37",
+      "package": "64908d5a9c753bc405e76413090d2aa7583fd97930756f38b64bb40a88e01e37",
+      "deployed": "64908d5a9c753bc405e76413090d2aa7583fd97930756f38b64bb40a88e01e37",
+      "equal": true
+    },
+    {
+      "path": "src/framework/types.py",
+      "source": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "package": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "deployed": "122084cf2755bea3d4b1e0ada86d17ecb0812750ece76e945e45b12648ee051c",
+      "equal": true
+    },
+    {
+      "path": "src/intents.py",
+      "source": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "package": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "deployed": "af2fbd124668ceb700ae5e977bb41a924a20a9265f8754ac8b9f22da491bf857",
+      "equal": true
+    },
+    {
+      "path": "src/main.py",
+      "source": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "package": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "deployed": "5e517a14f9f38ab79950b21f6705e7a9437ea03db4202a38276a7efef831459b",
+      "equal": true
+    },
+    {
+      "path": "src/param.py",
+      "source": "718c02d0366ab4962d334b543ccbfc78a2600594e2513ef811240ddb27bece60",
+      "package": "718c02d0366ab4962d334b543ccbfc78a2600594e2513ef811240ddb27bece60",
+      "deployed": "718c02d0366ab4962d334b543ccbfc78a2600594e2513ef811240ddb27bece60",
+      "equal": true
+    },
+    {
+      "path": "src/player.py",
+      "source": "faf1c79491a142269eff73c90aee6e5ec44d6dcee03f869ce5c0ab66bb0e6003",
+      "package": "faf1c79491a142269eff73c90aee6e5ec44d6dcee03f869ce5c0ab66bb0e6003",
+      "deployed": "faf1c79491a142269eff73c90aee6e5ec44d6dcee03f869ce5c0ab66bb0e6003",
+      "equal": true
+    },
+    {
+      "path": "src/role_allocator.py",
+      "source": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "package": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "deployed": "f8ee4c5cdc0829c7c1be25148ebdbcd8a1f7748776b756d8a6ff4c8bc9d42b8a",
+      "equal": true
+    },
+    {
+      "path": "src/telemetry.py",
+      "source": "6d69c0aeafbe707784e24aa308ca16d99dad42bf1707f8a4956a2e1def222c0f",
+      "package": "6d69c0aeafbe707784e24aa308ca16d99dad42bf1707f8a4956a2e1def222c0f",
+      "deployed": "6d69c0aeafbe707784e24aa308ca16d99dad42bf1707f8a4956a2e1def222c0f",
+      "equal": true
+    },
+    {
+      "path": "src/telemetry_config.py",
+      "source": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "package": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "deployed": "6dc2fe7433dff0918a1d305a652dc37f644a7f5072555ff601c5c6a3a7183497",
+      "equal": true
+    },
+    {
+      "path": "src/telemetry_status.py",
+      "source": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "package": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "deployed": "82e5c6d5586a3a1bc514de10b3bd033c6008c97e8772a957767659319f33c25c",
+      "equal": true
+    },
+    {
+      "path": "src/utils/__init__.py",
+      "source": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "package": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "deployed": "43dfc1917ab14f2a5d3e37719ea203799f9dcba5a8b7c3954d9cc8583b249df7",
+      "equal": true
+    },
+    {
+      "path": "src/utils/attack_targets.py",
+      "source": "efbe563f431202a9372ef1d4cff935a259ddf106a310d7bb6c629e35e9f2f611",
+      "package": "efbe563f431202a9372ef1d4cff935a259ddf106a310d7bb6c629e35e9f2f611",
+      "deployed": "efbe563f431202a9372ef1d4cff935a259ddf106a310d7bb6c629e35e9f2f611",
+      "equal": true
+    },
+    {
+      "path": "src/utils/attacker_receiving.py",
+      "source": "b2be9fde19d30169fe28e5a1d2a791a67d937cb785150268b48cf5a16dc93511",
+      "package": "b2be9fde19d30169fe28e5a1d2a791a67d937cb785150268b48cf5a16dc93511",
+      "deployed": "b2be9fde19d30169fe28e5a1d2a791a67d937cb785150268b48cf5a16dc93511",
+      "equal": true
+    },
+    {
+      "path": "src/utils/ball_motion.py",
+      "source": "2edebdaf3925b00d807049c622e3e1f0bf16da8b6313f67d5aa0c7ea248994c0",
+      "package": "2edebdaf3925b00d807049c622e3e1f0bf16da8b6313f67d5aa0c7ea248994c0",
+      "deployed": "2edebdaf3925b00d807049c622e3e1f0bf16da8b6313f67d5aa0c7ea248994c0",
+      "equal": true
+    },
+    {
+      "path": "src/utils/block_point.py",
+      "source": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "package": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "deployed": "40e4e71f5468da1646b67765c1b0ea9696f33f94fb0866a228dfb64b24b00f3f",
+      "equal": true
+    },
+    {
+      "path": "src/utils/blocked_attack.py",
+      "source": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "package": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "deployed": "e642272c95d1268350ba424a6edb7d0996ebcc8aa584e52b64fd3569f9c80279",
+      "equal": true
+    },
+    {
+      "path": "src/utils/free_position.py",
+      "source": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "package": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "deployed": "9ed2577816e36f9948a96e00110d6556af5bae18dd7a9df7ad6e47a6d50c5f7b",
+      "equal": true
+    },
+    {
+      "path": "src/utils/geom.py",
+      "source": "d0ac2958f58114301711be1bfcd024f5a5fefb41075953cd665c0310658e69b4",
+      "package": "d0ac2958f58114301711be1bfcd024f5a5fefb41075953cd665c0310658e69b4",
+      "deployed": "d0ac2958f58114301711be1bfcd024f5a5fefb41075953cd665c0310658e69b4",
+      "equal": true
+    },
+    {
+      "path": "src/utils/goalkeeper.py",
+      "source": "d43eb1d730193199ce8744daf930380f578e5a3d315e7cbcd697e691ca68e1f5",
+      "package": "d43eb1d730193199ce8744daf930380f578e5a3d315e7cbcd697e691ca68e1f5",
+      "deployed": "d43eb1d730193199ce8744daf930380f578e5a3d315e7cbcd697e691ca68e1f5",
+      "equal": true
+    },
+    {
+      "path": "src/utils/interception.py",
+      "source": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "package": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "deployed": "e302d47778c86d3e85c0c64090f753f8a9865f81af2b48f9f166b1a8f8563269",
+      "equal": true
+    },
+    {
+      "path": "src/utils/interception_risk.py",
+      "source": "d5a907852be89b1d61d808d0d57c14511a27940f5a4ecace99efcbfa6d7378a3",
+      "package": "d5a907852be89b1d61d808d0d57c14511a27940f5a4ecace99efcbfa6d7378a3",
+      "deployed": "d5a907852be89b1d61d808d0d57c14511a27940f5a4ecace99efcbfa6d7378a3",
+      "equal": true
+    },
+    {
+      "path": "src/utils/kick_error.py",
+      "source": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "package": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "deployed": "e912ad590d7bea7b646892909f056a1195a77f212b47358fbc1b4b72504904e2",
+      "equal": true
+    },
+    {
+      "path": "src/utils/kick_lane.py",
+      "source": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "package": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "deployed": "9f373806012d5bd1fbfc105d9d21b73ba867a857ec4bba558262a12a8688a6bc",
+      "equal": true
+    },
+    {
+      "path": "src/utils/navigation.py",
+      "source": "2011c541d24342c32a5a20a3e85f55c33657620e1d4e4187931064af1aa083b3",
+      "package": "2011c541d24342c32a5a20a3e85f55c33657620e1d4e4187931064af1aa083b3",
+      "deployed": "2011c541d24342c32a5a20a3e85f55c33657620e1d4e4187931064af1aa083b3",
+      "equal": true
+    },
+    {
+      "path": "src/utils/obstacles.py",
+      "source": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "package": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "deployed": "d9fbf996636c8a1b58cfeddc735c7d9260c108d642cdb42537beb8ffcc8541d2",
+      "equal": true
+    },
+    {
+      "path": "src/utils/path_planner.py",
+      "source": "09138e5383c8696bf09a664acae77d4fda90ef17cbb18a41c4ac629da86e5a24",
+      "package": "09138e5383c8696bf09a664acae77d4fda90ef17cbb18a41c4ac629da86e5a24",
+      "deployed": "09138e5383c8696bf09a664acae77d4fda90ef17cbb18a41c4ac629da86e5a24",
+      "equal": true
+    },
+    {
+      "path": "src/utils/restart_defense.py",
+      "source": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "package": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "deployed": "bbbb5f41f03d426b5462f93929855096ccc8c7ff237de2b21d905647545f50a5",
+      "equal": true
+    },
+    {
+      "path": "src/utils/scoring_probability.py",
+      "source": "1262a7edf7e89ef8c3126a8535797c019fb9fa41439aaeadeec66c81d1782077",
+      "package": "1262a7edf7e89ef8c3126a8535797c019fb9fa41439aaeadeec66c81d1782077",
+      "deployed": "1262a7edf7e89ef8c3126a8535797c019fb9fa41439aaeadeec66c81d1782077",
+      "equal": true
+    },
+    {
+      "path": "src/utils/shot_selection.py",
+      "source": "fbee510f9e506e6e7ac6fa937c0dc595944b387a53d1acb61335261d1f463c34",
+      "package": "fbee510f9e506e6e7ac6fa937c0dc595944b387a53d1acb61335261d1f463c34",
+      "deployed": "fbee510f9e506e6e7ac6fa937c0dc595944b387a53d1acb61335261d1f463c34",
+      "equal": true
+    },
+    {
+      "path": "src/utils/tactical_geometry.py",
+      "source": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "package": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "deployed": "77f7166e13e6c8af311f2cb2760e21204d511fe411f459c57210a2d9f253d4eb",
+      "equal": true
+    },
+    {
+      "path": "src/utils/threat.py",
+      "source": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "package": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "deployed": "6f5c4c8fd902bd9a733ae5ad4b66bbbd401105065d365e7f68b17babc5189d5e",
+      "equal": true
+    },
+    {
+      "path": "src/visualization.py",
+      "source": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "package": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "deployed": "beb1d403f2b05b9c4bb711ff77308cd3e2faa624d7c02772d3eca85eeecc0c54",
+      "equal": true
+    }
+  ]
+}

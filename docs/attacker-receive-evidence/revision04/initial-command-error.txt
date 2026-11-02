@@ -1,0 +1,15 @@
+.......................................E.............................
+======================================================================
+ERROR: test_ball_motion (unittest.loader._FailedTest.test_ball_motion)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_ball_motion
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+ModuleNotFoundError: No module named 'checks.test_ball_motion'
+
+
+----------------------------------------------------------------------
+Ran 69 tests in 0.787s
+
+FAILED (errors=1)

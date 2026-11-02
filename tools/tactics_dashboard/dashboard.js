@@ -24,6 +24,9 @@ function guardDecisionLines(p){
     'guard:pass':['请求传球','优先选择可执行的队友目标；需调整时才检查防守风险'],
     'guard:clear_kick':['请求向前场解围','已满足标准出球的脚位、朝向和时间条件'],
     'guard:kick_hold':['保持踢球请求','沿用已选出球目标，继续检查安全条件及超时'],
+    'guard:escape':['优先撤离定位球保护区','先离开保护区，再恢复门将站位'],
+    'guard:escape_outside':['向场外临时撤离保护区','没有可直达的场内出口，仍检查实体碰撞'],
+    'guard:escape_blocked':['撤离受阻','没有找到安全出口，等待障碍变化'],
     'guard:set:restricted':['限制触球期间站位','对方开球或定位球期间不主动处理球'],
     'guard:home:no_ball':['返回门前待命点','球观测缺失或已过期'],
     'guard:stop':['停止','缺少上下文或自身位置'],
@@ -814,8 +817,34 @@ function validScoringProbability(a){
 
 function renderAttackChoice(d){
   const a=d.players.find(p=>p.role==='attack')?.attack_choice,box=$('attack-choice');if(!box)return;box.replaceChildren();
+  const receiving=d.players.find(p=>p.role==='attack')?.attack_receive;
+  if(receiving){
+    const stages={intercept:'前往拦球点',wait_ball:'等待来球',low_speed_chase:'低速球接近',rebound_chase:'补射接近',auto_kick:'自动踢球',unavailable:'接球数据不足'};
+    line(box,`接球阶段：${stages[receiving.stage]||receiving.stage} · ${receiving.reason}`);
+    if(receiving.speed_kind==='estimated_current'){
+      const fmt=v=>Number.isFinite(v)?v.toFixed(3):'未知';
+      line(box,`当前估计球速 ${fmt(receiving.speed_mps)} m/s · 区间平均 ${fmt(receiving.observed_interval_speed_mps)} m/s · 低速直通条件 < 0.500 m/s`);
+    }
+    if(receiving.settling){
+      const s=receiving.settling,fmt=v=>Number.isFinite(v)?v.toFixed(3):'未知';
+      line(box,`停稳窗口：${s.sample_count} 个观测 / ${fmt(s.span_s)} s · 趋势 ${fmt(s.trend_mps)} m/s · 跨度 ${fmt(s.spread_m)} m · ${s.settled?'已停稳':'尚未停稳'}`);
+    }
+    if(receiving.wait_point)line(box,`等待点 ${pointText(receiving.wait_point)} · 安全间距 ${Number(receiving.standoff_m).toFixed(2)} m`);
+    line(box,`拦球点 ${pointText(receiving.intercept_point)} · 出球点 ${pointText(receiving.outgoing_target)} · 夹角 ${Number.isFinite(receiving.angle_deg)?receiving.angle_deg.toFixed(1)+'°':'未定义'}`);
+    if(receiving.stable_s!==undefined)line(box,`近身低速持续 ${Number.isFinite(receiving.stable_s)?receiving.stable_s.toFixed(2):'0.00'} s；不代表已确认触球。`);
+  }
   if(!a){line(box,'本帧未记录选择依据。');return}
   if(!a.enabled){line(box,'使用指定目标或特殊阶段策略，本帧未自动比较选点。');return}
+  if(a.model==='pass_risk_margin'){
+    const pct=p=>p==null?'未知':(100*p).toFixed(1)+'%';
+    line(box,`直射原始被截率 ${pct(a.direct_risk)} · 最佳传射综合被截率 ${pct(a.best_pass_risk)}`);
+    line(box,`降低 ${a.risk_improvement==null?'未知':(100*a.risk_improvement).toFixed(1)} 个百分点；至少 ${(100*a.required_margin).toFixed(0)} 个百分点才传球。射门中央偏好不计入该差值。`);
+    line(box,a.selected?.kind==='pass'?`传给队友 ${a.selected.player_id} 号，预计接球点 ${pointText(a.selected.target)}`:`保留直接射门 ${pointText(a.actual_target)}`);
+    line(box,`实际目标 ${pointText(a.actual_target)} · 执行 ${a.execution||'待定'} · 数据年龄 ${Math.max(0,d.context.now-a.evaluated_at).toFixed(2)} s`);
+    for(const o of a.pass_options||[])line(box,`队友 ${o.player_id}：传球成功 ${pct(o.pass_probability)} × 后续射门成功 ${pct(o.shot_probability)} = ${pct(o.probability)}${o.excluded_reason?' · 排除：'+o.excluded_reason:''}`);
+    line(box,'接球后立即射门为模型假设，不代表实际接球或进球已确认。');
+    return;
+  }
   if(['shot_edge_penalty','shot_outward_penalty'].includes(a.model)){
     const pct=p=>p==null?'未知':(100*p).toFixed(1)+'%';
     line(box,a.model==='shot_outward_penalty'?'被截率惩罚：中央 +0，每向外一点 +5 个百分点；射门评分 = max(0, 1 − 被截率 − 惩罚)。同分优先中央。模型分数不是实测进球率。':'射门评分 = 1 − 被截概率 − 两端点惩罚（10 个百分点）；同分优先中央。模型分数不是实测进球率。');

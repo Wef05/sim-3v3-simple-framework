@@ -1,0 +1,12 @@
+checks/test_dashboard_freeman.cjs: exit=0
+Freeman overlay: buffered triangle clipping, absent attacker and legacy replay passed.
+
+checks/test_dashboard_guard.cjs: exit=0
+Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.
+
+checks/test_dashboard_navigation.cjs: exit=0
+Navigation cards: current/legacy fields, time estimate, route retention, invalid and missing values passed.
+
+checks/test_dashboard_shot_selection.cjs: exit=0
+Shot score, center fallback, blocked execution and replay schema passed.
+Receiving stage, angle, stability and missing-angle display passed.

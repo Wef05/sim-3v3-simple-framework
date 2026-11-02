@@ -1,0 +1,2 @@
+Pass decision card renders risk difference, threshold, receiver and two-leg probabilities.
+Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.

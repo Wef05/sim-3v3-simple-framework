@@ -1,0 +1,5 @@
+Baseline aaee819, independent worktree before implementation.
+Command: python3 -m unittest discover -s checks -p 'test_*.py'
+Observed: Ran 141 tests in 1.665s; FAILED (errors=1).
+Only error: test_goalkeeper_replay import failed because checks.goalkeeper_replay_cases is absent.
+140 tests passed. This is a summary of the recorded tool output, not a copied raw log.
