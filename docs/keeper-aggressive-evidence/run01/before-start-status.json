@@ -1,0 +1,1004 @@
+{
+  "gameControl": {
+    "status": "finished",
+    "ready": true,
+    "checks": {
+      "team1": true,
+      "team2": true
+    },
+    "lastError": null,
+    "startedAtWallTime": 1793593919.3533545,
+    "resultDir": "logs/game-control",
+    "runtimeDir": "logs/game-control/runtime"
+  },
+  "match": {
+    "matchId": "local-match",
+    "status": "finished",
+    "isFinal": true,
+    "startedAtWallTime": 1793593926.366107,
+    "endedAtWallTime": 1793594825.5255308,
+    "durationSeconds": 899.159423828125,
+    "latestEventId": "local-match:180",
+    "eventsTotal": 180,
+    "game": {
+      "phase": "firstHalf",
+      "state": "finished",
+      "setPlay": "noSetPlay",
+      "kickingSide": null,
+      "droppedBall": false,
+      "stopped": false,
+      "secondaryTime": 0,
+      "regularDurationSeconds": 600.0,
+      "timeRemaining": -0.0019999987337087077,
+      "primaryTime": -0.0019999987337087077,
+      "drawPolicy": "allow_draw",
+      "extraTimeMaxSeconds": 12000.0,
+      "timingStage": "regulation"
+    },
+    "timing": {
+      "timeRemaining": -0.0019999987337087077,
+      "primaryTime": -0.0019999987337087077,
+      "stage": "regulation",
+      "extraTimeElapsedSeconds": 0.0019999987337087077,
+      "regularDurationSeconds": 600.0,
+      "drawPolicy": "allow_draw",
+      "extraTimeMaxSeconds": 12000.0
+    },
+    "score": {
+      "home": 4,
+      "away": 5
+    },
+    "winner": "away",
+    "endReason": "time_expired",
+    "finishedEventId": "local-match:180",
+    "teams": {
+      "home": {
+        "side": "home",
+        "teamNumber": 1,
+        "teamName": "Challenger",
+        "externalTeamId": null,
+        "score": 4,
+        "stats": {
+          "goals": {
+            "total": 4,
+            "events": [
+              {
+                "eventId": "local-match:14",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 561.2439999999759,
+                  "primaryTime": 561.2439999999759,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "home",
+                  "teamNumber": 1,
+                  "teamName": "Challenger",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              },
+              {
+                "eventId": "local-match:107",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 247.56199999890168,
+                  "primaryTime": 247.56199999890168,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "home",
+                  "teamNumber": 1,
+                  "teamName": "Challenger",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              },
+              {
+                "eventId": "local-match:131",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 136.74799999837256,
+                  "primaryTime": 136.74799999837256,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "home",
+                  "teamNumber": 1,
+                  "teamName": "Challenger",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              },
+              {
+                "eventId": "local-match:161",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 43.552000000236376,
+                  "primaryTime": 43.552000000236376,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "home",
+                  "teamNumber": 1,
+                  "teamName": "Challenger",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              }
+            ]
+          },
+          "outOfBounds": {
+            "awarded": {
+              "total": 0,
+              "events": [],
+              "throwIn": 0,
+              "goalKick": 0,
+              "cornerKick": 0
+            },
+            "caused": {
+              "total": 3,
+              "events": [
+                {
+                  "eventId": "local-match:40",
+                  "type": "throw_in_setup",
+                  "timeRemaining": 0.0,
+                  "timing": {
+                    "timeRemaining": 477.99400000000196,
+                    "primaryTime": 477.99400000000196,
+                    "stage": "regulation",
+                    "extraTimeElapsedSeconds": 0.0
+                  },
+                  "actor": {
+                    "side": "away",
+                    "teamNumber": 2,
+                    "teamName": "Booster AI",
+                    "externalTeamId": null
+                  },
+                  "evidence": {
+                    "ruleId": "ball_out",
+                    "ruleName": "Ball out of bounds",
+                    "summary": "Ball out of bounds, restart with throwIn.",
+                    "measurements": [],
+                    "positions": {
+                      "target": [
+                        -0.626592060319645,
+                        4.45,
+                        0.11
+                      ],
+                      "from": [
+                        -0.626592060319645,
+                        4.657389813941945,
+                        0.10988301983970637
+                      ]
+                    }
+                  },
+                  "reason": "ball_out"
+                },
+                {
+                  "eventId": "local-match:49",
+                  "type": "throw_in_setup",
+                  "timeRemaining": 0.0,
+                  "timing": {
+                    "timeRemaining": 477.9860000000019,
+                    "primaryTime": 477.9860000000019,
+                    "stage": "regulation",
+                    "extraTimeElapsedSeconds": 0.0
+                  },
+                  "actor": {
+                    "side": "away",
+                    "teamNumber": 2,
+                    "teamName": "Booster AI",
+                    "externalTeamId": null
+                  },
+                  "evidence": {
+                    "ruleId": "defender_set_play_interference",
+                    "ruleName": "Defender set play interference",
+                    "summary": "Defender home:3 touched the ball before the kicking side, interfering with the throwIn.",
+                    "measurements": [],
+                    "positions": {
+                      "target": [
+                        -0.5593376579593786,
+                        4.2949892287725415,
+                        0.11
+                      ],
+                      "from": [
+                        -0.626592060319645,
+                        4.45,
+                        0.11
+                      ]
+                    }
+                  },
+                  "reason": "defender_set_play_interference"
+                },
+                {
+                  "eventId": "local-match:83",
+                  "type": "throw_in_setup",
+                  "timeRemaining": 0.0,
+                  "timing": {
+                    "timeRemaining": 370.19399999948723,
+                    "primaryTime": 370.19399999948723,
+                    "stage": "regulation",
+                    "extraTimeElapsedSeconds": 0.0
+                  },
+                  "actor": {
+                    "side": "away",
+                    "teamNumber": 2,
+                    "teamName": "Booster AI",
+                    "externalTeamId": null
+                  },
+                  "evidence": {
+                    "ruleId": "ball_out",
+                    "ruleName": "Ball out of bounds",
+                    "summary": "Ball out of bounds, restart with throwIn.",
+                    "measurements": [],
+                    "positions": {
+                      "target": [
+                        -0.2576836850108778,
+                        4.45,
+                        0.11
+                      ],
+                      "from": [
+                        -0.2576836850108778,
+                        4.639587680752578,
+                        0.10995065668475704
+                      ]
+                    }
+                  },
+                  "reason": "ball_out"
+                }
+              ],
+              "throwIn": 3,
+              "goalKick": 0,
+              "cornerKick": 0
+            }
+          },
+          "fouls": {
+            "total": 2,
+            "events": [
+              {
+                "eventId": "local-match:46",
+                "type": "penalty",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 477.9860000000019,
+                  "primaryTime": 477.9860000000019,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "home",
+                  "robotName": "robot3",
+                  "playerNumber": 3
+                },
+                "evidence": {
+                  "ruleId": "defender_set_play_interference",
+                  "subRuleId": "defender_touched_before_kick",
+                  "ruleName": "Defender set play interference",
+                  "summary": "Defender home:3 touched the ball before the kicking side, interfering with the throwIn.",
+                  "measurements": [],
+                  "positions": {
+                    "robot": [
+                      -0.626592060319645,
+                      4.45,
+                      0.11
+                    ]
+                  }
+                },
+                "reason": "defender_set_play_interference"
+              },
+              {
+                "eventId": "local-match:65",
+                "type": "penalty",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 431.6739999997808,
+                  "primaryTime": 431.6739999997808,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "home",
+                  "robotName": "robot1",
+                  "playerNumber": 1
+                },
+                "evidence": {
+                  "ruleId": "illegalPosition",
+                  "subRuleId": "field_boundary",
+                  "ruleName": "Illegal position",
+                  "summary": "Robot position is outside the field boundary tolerance.",
+                  "measurements": [
+                    {
+                      "name": "absX",
+                      "value": 7.369887915924522,
+                      "unit": "m",
+                      "threshold": 7.05,
+                      "operator": "<="
+                    },
+                    {
+                      "name": "absY",
+                      "value": 0.903622276250807,
+                      "unit": "m",
+                      "threshold": 5.5,
+                      "operator": "<="
+                    }
+                  ],
+                  "positions": {
+                    "robot": [
+                      -7.369887915924522,
+                      -0.903622276250807,
+                      0.5456671403890457
+                    ]
+                  }
+                },
+                "reason": "illegalPosition"
+              }
+            ],
+            "byReason": {
+              "defender_set_play_interference": 1,
+              "illegalPosition": 1
+            },
+            "byRobot": {
+              "robot3": 1,
+              "robot1": 1
+            }
+          },
+          "removals": {
+            "total": 0,
+            "events": [],
+            "byReason": {},
+            "byRobot": {}
+          },
+          "discipline": {
+            "warnings": {
+              "total": 0,
+              "events": []
+            },
+            "cautions": {
+              "total": 0,
+              "events": []
+            },
+            "sentOff": {
+              "total": 0,
+              "events": []
+            }
+          },
+          "invalidGoals": {
+            "total": 0,
+            "events": [],
+            "byReason": {}
+          },
+          "ballResets": {
+            "total": 0,
+            "events": [],
+            "byReason": {}
+          }
+        }
+      },
+      "away": {
+        "side": "away",
+        "teamNumber": 2,
+        "teamName": "Booster AI",
+        "externalTeamId": null,
+        "score": 5,
+        "stats": {
+          "goals": {
+            "total": 5,
+            "events": [
+              {
+                "eventId": "local-match:31",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 514.742000000073,
+                  "primaryTime": 514.742000000073,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "away",
+                  "teamNumber": 2,
+                  "teamName": "Booster AI",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              },
+              {
+                "eventId": "local-match:61",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 455.37599999989396,
+                  "primaryTime": 455.37599999989396,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "away",
+                  "teamNumber": 2,
+                  "teamName": "Booster AI",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              },
+              {
+                "eventId": "local-match:73",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 404.5519999996513,
+                  "primaryTime": 404.5519999996513,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "away",
+                  "teamNumber": 2,
+                  "teamName": "Booster AI",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              },
+              {
+                "eventId": "local-match:120",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 199.55999999867248,
+                  "primaryTime": 199.55999999867248,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "away",
+                  "teamNumber": 2,
+                  "teamName": "Booster AI",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              },
+              {
+                "eventId": "local-match:151",
+                "type": "goal",
+                "timeRemaining": 0.0,
+                "timing": {
+                  "timeRemaining": 93.27599999906056,
+                  "primaryTime": 93.27599999906056,
+                  "stage": "regulation",
+                  "extraTimeElapsedSeconds": 0.0
+                },
+                "actor": {
+                  "side": "away",
+                  "teamNumber": 2,
+                  "teamName": "Booster AI",
+                  "externalTeamId": null
+                },
+                "reason": "ball_crossed_goal_line"
+              }
+            ]
+          },
+          "outOfBounds": {
+            "awarded": {
+              "total": 3,
+              "events": [
+                {
+                  "eventId": "local-match:40",
+                  "type": "throw_in_setup",
+                  "timeRemaining": 0.0,
+                  "timing": {
+                    "timeRemaining": 477.99400000000196,
+                    "primaryTime": 477.99400000000196,
+                    "stage": "regulation",
+                    "extraTimeElapsedSeconds": 0.0
+                  },
+                  "actor": {
+                    "side": "away",
+                    "teamNumber": 2,
+                    "teamName": "Booster AI",
+                    "externalTeamId": null
+                  },
+                  "evidence": {
+                    "ruleId": "ball_out",
+                    "ruleName": "Ball out of bounds",
+                    "summary": "Ball out of bounds, restart with throwIn.",
+                    "measurements": [],
+                    "positions": {
+                      "target": [
+                        -0.626592060319645,
+                        4.45,
+                        0.11
+                      ],
+                      "from": [
+                        -0.626592060319645,
+                        4.657389813941945,
+                        0.10988301983970637
+                      ]
+                    }
+                  },
+                  "reason": "ball_out"
+                },
+                {
+                  "eventId": "local-match:49",
+                  "type": "throw_in_setup",
+                  "timeRemaining": 0.0,
+                  "timing": {
+                    "timeRemaining": 477.9860000000019,
+                    "primaryTime": 477.9860000000019,
+                    "stage": "regulation",
+                    "extraTimeElapsedSeconds": 0.0
+                  },
+                  "actor": {
+                    "side": "away",
+                    "teamNumber": 2,
+                    "teamName": "Booster AI",
+                    "externalTeamId": null
+                  },
+                  "evidence": {
+                    "ruleId": "defender_set_play_interference",
+                    "ruleName": "Defender set play interference",
+                    "summary": "Defender home:3 touched the ball before the kicking side, interfering with the throwIn.",
+                    "measurements": [],
+                    "positions": {
+                      "target": [
+                        -0.5593376579593786,
+                        4.2949892287725415,
+                        0.11
+                      ],
+                      "from": [
+                        -0.626592060319645,
+                        4.45,
+                        0.11
+                      ]
+                    }
+                  },
+                  "reason": "defender_set_play_interference"
+                },
+                {
+                  "eventId": "local-match:83",
+                  "type": "throw_in_setup",
+                  "timeRemaining": 0.0,
+                  "timing": {
+                    "timeRemaining": 370.19399999948723,
+                    "primaryTime": 370.19399999948723,
+                    "stage": "regulation",
+                    "extraTimeElapsedSeconds": 0.0
+                  },
+                  "actor": {
+                    "side": "away",
+                    "teamNumber": 2,
+                    "teamName": "Booster AI",
+                    "externalTeamId": null
+                  },
+                  "evidence": {
+                    "ruleId": "ball_out",
+                    "ruleName": "Ball out of bounds",
+                    "summary": "Ball out of bounds, restart with throwIn.",
+                    "measurements": [],
+                    "positions": {
+                      "target": [
+                        -0.2576836850108778,
+                        4.45,
+                        0.11
+                      ],
+                      "from": [
+                        -0.2576836850108778,
+                        4.639587680752578,
+                        0.10995065668475704
+                      ]
+                    }
+                  },
+                  "reason": "ball_out"
+                }
+              ],
+              "throwIn": 3,
+              "goalKick": 0,
+              "cornerKick": 0
+            },
+            "caused": {
+              "total": 0,
+              "events": [],
+              "throwIn": 0,
+              "goalKick": 0,
+              "cornerKick": 0
+            }
+          },
+          "fouls": {
+            "total": 0,
+            "events": [],
+            "byReason": {},
+            "byRobot": {}
+          },
+          "removals": {
+            "total": 0,
+            "events": [],
+            "byReason": {},
+            "byRobot": {}
+          },
+          "discipline": {
+            "warnings": {
+              "total": 0,
+              "events": []
+            },
+            "cautions": {
+              "total": 0,
+              "events": []
+            },
+            "sentOff": {
+              "total": 0,
+              "events": []
+            }
+          },
+          "invalidGoals": {
+            "total": 0,
+            "events": [],
+            "byReason": {}
+          },
+          "ballResets": {
+            "total": 0,
+            "events": [],
+            "byReason": {}
+          }
+        }
+      }
+    },
+    "warnings": [
+      {
+        "eventId": "local-match:48",
+        "wallTime": 1793594131.8099546,
+        "type": "set_play_retake",
+        "outcome": {
+          "reason": "defender_set_play_interference",
+          "setPlay": "throwIn",
+          "offendingActor": {
+            "side": "home",
+            "robotName": "robot3",
+            "playerNumber": 3
+          }
+        }
+      }
+    ]
+  },
+  "game": {
+    "playersPerTeam": 3,
+    "sides": "homeDefendsLeftGoal",
+    "stopped": false,
+    "phase": "firstHalf",
+    "state": "finished",
+    "setPlay": "noSetPlay",
+    "kickingSide": null,
+    "droppedBall": false,
+    "regularDurationSeconds": 600.0,
+    "timeRemaining": -0.0019999987337087077,
+    "primaryTime": -0.0019999987337087077,
+    "drawPolicy": "allow_draw",
+    "extraTimeMaxSeconds": 12000.0,
+    "finishReason": "time_expired",
+    "secondaryTime": 0,
+    "ballPlacement": null,
+    "teams": {
+      "home": {
+        "number": 1,
+        "name": "Challenger",
+        "externalTeamId": null,
+        "fieldPlayerColor": "red",
+        "goalkeeperColor": "blue",
+        "goalkeeper": 1,
+        "score": 4,
+        "penaltyCounter": 0,
+        "timeoutBudget": 1,
+        "messageBudget": 12000,
+        "illegalCommunication": false,
+        "penaltyShot": 0,
+        "singleShots": 0,
+        "players": [
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          }
+        ]
+      },
+      "away": {
+        "number": 2,
+        "name": "Booster AI",
+        "externalTeamId": null,
+        "fieldPlayerColor": "blue",
+        "goalkeeperColor": "yellow",
+        "goalkeeper": 1,
+        "score": 5,
+        "penaltyCounter": 0,
+        "timeoutBudget": 1,
+        "messageBudget": 12000,
+        "illegalCommunication": false,
+        "penaltyShot": 0,
+        "singleShots": 0,
+        "players": [
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "noPenalty",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          },
+          {
+            "penalty": "substitute",
+            "secsTillUnpenalized": 0,
+            "penaltyIncrement": 0,
+            "warnings": 0,
+            "cautions": 0
+          }
+        ]
+      }
+    },
+    "timingStage": "regulation"
+  }
+}

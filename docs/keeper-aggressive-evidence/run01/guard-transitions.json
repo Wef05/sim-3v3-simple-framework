@@ -1,0 +1,2235 @@
+[
+  {
+    "id": 137511,
+    "time": 1403.89199998,
+    "remaining": 600,
+    "action": "ready",
+    "target": [
+      -6.0,
+      0.0
+    ],
+    "ball": {
+      "x": -5.585341169148171e-19,
+      "y": 4.447355419579116e-19,
+      "last_seen_at": 1403.89199998,
+      "confidence": 1.0,
+      "received_at": 8095.746644936
+    },
+    "pose": {
+      "x": -4.995162524687072,
+      "y": 4.980962819716104,
+      "theta": -1.419559130663145
+    },
+    "decision": null,
+    "navigation": {
+      "state": "moving",
+      "priority": 10,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.0,
+        0.0
+      ],
+      "effective_target": [
+        -6.0,
+        0.0
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 6.775077067302543,
+      "candidate_time_s": 6.775077067302543,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 1.8785388923875925,
+      "waypoint": [
+        -5.1731390935728925,
+        4.098735898268095
+      ],
+      "path": [
+        [
+          -4.995162524687072,
+          4.980962819716104
+        ],
+        [
+          -6.0,
+          0.0
+        ]
+      ],
+      "command": [
+        1.8785388923875925,
+        0.0,
+        -0.7006020691242174
+      ]
+    }
+  },
+  {
+    "id": 138006,
+    "time": 1419.20799998,
+    "remaining": 600,
+    "action": "stopped",
+    "target": null,
+    "ball": {
+      "x": -1.3035194010761513e-16,
+      "y": 1.4261795541077956e-16,
+      "last_seen_at": 1419.20599998,
+      "confidence": 1.0,
+      "received_at": 8117.463986737
+    },
+    "pose": {
+      "x": -5.94287895581014,
+      "y": -0.06371356916184896,
+      "theta": 0.03843190202575512
+    },
+    "decision": null,
+    "navigation": null
+  },
+  {
+    "id": 138180,
+    "time": 1424.07999998,
+    "remaining": 600,
+    "action": "guard:set",
+    "target": [
+      -6.5,
+      0.0
+    ],
+    "ball": {
+      "x": -7.753077938245447e-17,
+      "y": 1.5796989673352638e-16,
+      "last_seen_at": 1424.07799998,
+      "confidence": 1.0,
+      "received_at": 8124.565956907
+    },
+    "pose": {
+      "x": -5.9451698941572495,
+      "y": -0.0642774203070833,
+      "theta": 0.0757425925943639
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 7.038211077252374e-18,
+      "outlet_wait_reason": "range"
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        0.0
+      ],
+      "effective_target": [
+        -6.5,
+        0.0
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 1.3910572029884345,
+      "candidate_time_s": 1.3910572029884345,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.837811479092597,
+      "waypoint": [
+        -6.5,
+        0.0
+      ],
+      "path": [
+        [
+          -5.9451698941572495,
+          -0.0642774203070833
+        ],
+        [
+          -6.5,
+          0.0
+        ]
+      ],
+      "command": [
+        -0.8225632023761117,
+        0.1591158464643954,
+        -0.12986261860067191
+      ]
+    }
+  },
+  {
+    "id": 138315,
+    "time": 1430.06399998,
+    "remaining": 595,
+    "action": "stopped",
+    "target": null,
+    "ball": {
+      "x": -0.4657299596388638,
+      "y": 4.629167786832435,
+      "last_seen_at": 1430.05799998,
+      "confidence": 1.0,
+      "received_at": 8133.187300452
+    },
+    "pose": {
+      "x": -6.459454873088396,
+      "y": 0.016330167494403615,
+      "theta": 0.5662281061201233
+    },
+    "decision": null,
+    "navigation": null
+  },
+  {
+    "id": 138419,
+    "time": 1432.999999979,
+    "remaining": 594,
+    "action": "guard:set:restricted",
+    "target": [
+      -6.5,
+      0.0
+    ],
+    "ball": {
+      "x": -0.4657299596388638,
+      "y": 4.45,
+      "last_seen_at": 1432.997999979,
+      "confidence": 1.0,
+      "received_at": 8137.159246454
+    },
+    "pose": {
+      "x": -6.42027631292866,
+      "y": 0.0016616335111356237,
+      "theta": 0.5861986962179346
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.0,
+      "outlet_wait_reason": "restricted"
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        0.0
+      ],
+      "effective_target": [
+        -6.5,
+        0.0
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 0.19325541163945342,
+      "candidate_time_s": 0.19325541163945342,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.11961150211786511,
+      "waypoint": [
+        -6.5,
+        0.0
+      ],
+      "path": [
+        [
+          -6.42027631292866,
+          0.0016616335111356237
+        ],
+        [
+          -6.5,
+          0.0
+        ]
+      ],
+      "command": [
+        -0.10099949396538391,
+        0.06407818394452537,
+        0.11082229247627118
+      ]
+    }
+  },
+  {
+    "id": 138653,
+    "time": 1440.119999979,
+    "remaining": 587,
+    "action": "guard:set",
+    "target": [
+      -6.5,
+      0.0
+    ],
+    "ball": {
+      "x": -0.5115628872737281,
+      "y": 4.484022474914231,
+      "last_seen_at": 1440.113999979,
+      "confidence": 1.0,
+      "received_at": 8146.730425792
+    },
+    "pose": {
+      "x": -6.459098969424893,
+      "y": 0.05406522852412823,
+      "theta": 0.6362268749071394
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.14692873536964202,
+      "outlet_wait_reason": "range"
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        0.0
+      ],
+      "effective_target": [
+        -6.5,
+        0.0
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 0.16805309345307018,
+      "candidate_time_s": 0.16805309345307018,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.10169007957668268,
+      "waypoint": [
+        -6.5,
+        0.0
+      ],
+      "path": [
+        [
+          -6.459098969424893,
+          0.05406522852412823
+        ],
+        [
+          -6.5,
+          0.0
+        ]
+      ],
+      "command": [
+        -0.0975331898002316,
+        -0.028777581060680794,
+        0.007926096738084754
+      ]
+    }
+  },
+  {
+    "id": 138871,
+    "time": 1453.623999979,
+    "remaining": 574,
+    "action": "guard:anticipate:ray",
+    "target": [
+      -6.5,
+      -1.05
+    ],
+    "ball": {
+      "x": 4.188295863101073,
+      "y": -1.6655168057471612,
+      "last_seen_at": 1453.617999979,
+      "confidence": 1.0,
+      "received_at": 8166.348862176
+    },
+    "pose": {
+      "x": -6.46855693752197,
+      "y": -0.07724044275707602,
+      "theta": -0.055015351287736505
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.08542706051828039,
+      "outlet_wait_reason": "range",
+      "shooter_id": 3,
+      "ray_goal_y": -1.5127684768585508
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        -1.05
+      ],
+      "effective_target": [
+        -6.5,
+        -1.05
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 2.162460193933095,
+      "candidate_time_s": 2.162460193933095,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 1.459901400905984,
+      "waypoint": [
+        -6.497632965751683,
+        -0.9767706449083906
+      ],
+      "path": [
+        [
+          -6.46855693752197,
+          -0.07724044275707602
+        ],
+        [
+          -6.5,
+          -1.05
+        ]
+      ],
+      "command": [
+        0.033141339218891355,
+        -1.4595251803247635,
+        -0.1858673265783102
+      ]
+    }
+  },
+  {
+    "id": 138883,
+    "time": 1454.095999979,
+    "remaining": 573,
+    "action": "guard:set",
+    "target": [
+      -6.5,
+      0.0
+    ],
+    "ball": {
+      "x": 4.2019951809865175,
+      "y": -1.6767768709519288,
+      "last_seen_at": 1454.091999979,
+      "confidence": 1.0,
+      "received_at": 8167.018677259
+    },
+    "pose": {
+      "x": -6.471286129521855,
+      "y": -0.1191121391543974,
+      "theta": -0.12847567396404475
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.011922600499848316,
+      "outlet_wait_reason": "range"
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        0.0
+      ],
+      "effective_target": [
+        -6.5,
+        0.0
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 0.2768458675954244,
+      "candidate_time_s": 0.2768458675954244,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.18378635182321762,
+      "waypoint": [
+        -6.5,
+        0.0
+      ],
+      "path": [
+        [
+          -6.471286129521855,
+          -0.1191121391543974
+        ],
+        [
+          -6.5,
+          0.0
+        ]
+      ],
+      "command": [
+        -0.06560725380661694,
+        0.1716773466839515,
+        -0.03288364752207085
+      ]
+    }
+  },
+  {
+    "id": 139045,
+    "time": 1461.255999979,
+    "remaining": 566,
+    "action": "guard:anticipate:ray",
+    "target": [
+      -6.535776865813275,
+      1.05
+    ],
+    "ball": {
+      "x": 1.4481139740813933,
+      "y": 1.0625162651608313,
+      "last_seen_at": 1461.249999979,
+      "confidence": 1.0,
+      "received_at": 8177.381949764
+    },
+    "pose": {
+      "x": -6.535776865813275,
+      "y": -0.030362245307482015,
+      "theta": 0.08370637710541673
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.00041209088845080543,
+      "outlet_wait_reason": "range",
+      "shooter_id": 1,
+      "ray_goal_y": 1.6413716119077906
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.535776865813275,
+        1.05
+      ],
+      "effective_target": [
+        -6.535776865813275,
+        1.05
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 2.395428535431024,
+      "candidate_time_s": 2.395428535431024,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 1.6205433679612233,
+      "waypoint": [
+        -6.535776865813275,
+        0.869637754692518
+      ],
+      "path": [
+        [
+          -6.535776865813275,
+          -0.030362245307482015
+        ],
+        [
+          -6.535776865813275,
+          1.05
+        ]
+      ],
+      "command": [
+        0.13549145886852668,
+        1.614869304933617,
+        0.10466718229708727
+      ]
+    }
+  },
+  {
+    "id": 139058,
+    "time": 1461.757999979,
+    "remaining": 566,
+    "action": "guard:set",
+    "target": [
+      -6.511056013728194,
+      0.031613273966371036
+    ],
+    "ball": {
+      "x": 1.4739628920263985,
+      "y": 1.0601975696258477,
+      "last_seen_at": 1461.757999979,
+      "confidence": 1.0,
+      "received_at": 8178.159274848
+    },
+    "pose": {
+      "x": -6.5109061870597635,
+      "y": 0.04765662428984773,
+      "theta": 0.09488917361431072
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.9283792850149637,
+      "outlet_wait_reason": "range"
+    },
+    "navigation": {
+      "state": "arrived",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.511056013728194,
+        0.031613273966371036
+      ],
+      "effective_target": [
+        -6.511056013728194,
+        0.031613273966371036
+      ]
+    }
+  },
+  {
+    "id": 139172,
+    "time": 1466.613999979,
+    "remaining": 561,
+    "action": "guard:anticipate:ray",
+    "target": [
+      -6.509410790633584,
+      1.05
+    ],
+    "ball": {
+      "x": 0.6673983262056524,
+      "y": 4.531968359667135,
+      "last_seen_at": 1466.611999979,
+      "confidence": 1.0,
+      "received_at": 8186.317376977
+    },
+    "pose": {
+      "x": -6.509410790633584,
+      "y": 0.0771424000631943,
+      "theta": 0.4691768229508285
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.0016761120948961615,
+      "outlet_wait_reason": "range",
+      "shooter_id": 1,
+      "ray_goal_y": 1.552640268813695
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.509410790633584,
+        1.05
+      ],
+      "effective_target": [
+        -6.509410790633584,
+        1.05
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 2.01551469242979,
+      "candidate_time_s": 2.01551469242979,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 1.4592863999052086,
+      "waypoint": [
+        -6.509410790633584,
+        0.9771424000631943
+      ],
+      "path": [
+        [
+          -6.509410790633584,
+          0.0771424000631943
+        ],
+        [
+          -6.509410790633584,
+          1.05
+        ]
+      ],
+      "command": [
+        0.6598195757992059,
+        1.3015970668146346,
+        0.17268507928169696
+      ]
+    }
+  },
+  {
+    "id": 139181,
+    "time": 1467.077999979,
+    "remaining": 560,
+    "action": "guard:set",
+    "target": [
+      -6.5,
+      0.0
+    ],
+    "ball": {
+      "x": 0.6672139335814269,
+      "y": 4.532189399788817,
+      "last_seen_at": 1467.075999979,
+      "confidence": 1.0,
+      "received_at": 8187.214630894
+    },
+    "pose": {
+      "x": -6.501685152241805,
+      "y": 0.12941934636138785,
+      "theta": 0.5155019268755819
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.0002649473103888404,
+      "outlet_wait_reason": "range"
+    },
+    "navigation": {
+      "state": "avoiding",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        0.0
+      ],
+      "effective_target": [
+        -6.5,
+        0.0
+      ],
+      "route_reason": "retained",
+      "estimated_time_s": 0.29743080357323226,
+      "candidate_time_s": 0.29635061858098916,
+      "previous_time_s": 0.29743080357323226,
+      "switch_margin_s": 0.35,
+      "direction_held": true,
+      "blocker_priority": null,
+      "speed": 0.1941454754534486,
+      "waypoint": [
+        -6.5,
+        0.0
+      ],
+      "path": [
+        [
+          -6.501685152241805,
+          0.12941934636138785
+        ],
+        [
+          -6.499816648147279,
+          0.08385726983066424
+        ],
+        [
+          -6.501868527685328,
+          0.07862750512676095
+        ],
+        [
+          -6.5,
+          0.0
+        ]
+      ],
+      "command": [
+        -0.09570820766333184,
+        -0.1689153771120858,
+        0.07051224912168387
+      ]
+    }
+  },
+  {
+    "id": 139222,
+    "time": 1468.865999979,
+    "remaining": 559,
+    "action": "guard:anticipate:ray",
+    "target": [
+      -6.5,
+      0.0
+    ],
+    "ball": {
+      "x": 0.6313809661121581,
+      "y": 4.555959686227495,
+      "last_seen_at": 1468.865999979,
+      "confidence": 1.0,
+      "received_at": 8190.00104577
+    },
+    "pose": {
+      "x": -6.505774324741329,
+      "y": 0.05092128187205452,
+      "theta": 0.5882693493680868
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.14397130442673947,
+      "outlet_wait_reason": "range",
+      "shooter_id": 1,
+      "ray_goal_y": -0.24595834617739953
+    },
+    "navigation": {
+      "state": "arrived",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        0.0
+      ],
+      "effective_target": [
+        -6.5,
+        0.0
+      ]
+    }
+  },
+  {
+    "id": 139224,
+    "time": 1468.949999979,
+    "remaining": 559,
+    "action": "guard:set",
+    "target": [
+      -6.5,
+      0.0
+    ],
+    "ball": {
+      "x": 0.6231368321995746,
+      "y": 4.561230952740292,
+      "last_seen_at": 1468.947999979,
+      "confidence": 1.0,
+      "received_at": 8190.12765577
+    },
+    "pose": {
+      "x": -6.506184334026,
+      "y": 0.05099249565774768,
+      "theta": 0.5919918884828205
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.10945694612201935,
+      "outlet_wait_reason": "range"
+    },
+    "navigation": {
+      "state": "arrived",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        0.0
+      ],
+      "effective_target": [
+        -6.5,
+        0.0
+      ]
+    }
+  },
+  {
+    "id": 139316,
+    "time": 1474.475999978,
+    "remaining": 553,
+    "action": "guard:anticipate:ray",
+    "target": [
+      -6.50925832375121,
+      -1.05
+    ],
+    "ball": {
+      "x": -1.9650312297335706,
+      "y": -0.22485109469204048,
+      "last_seen_at": 1474.473999978,
+      "confidence": 1.0,
+      "received_at": 8199.306257149
+    },
+    "pose": {
+      "x": -6.50925832375121,
+      "y": 0.07237781037926062,
+      "theta": -0.05166152640583886
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.01455212296567632,
+      "outlet_wait_reason": "range",
+      "shooter_id": 1,
+      "ray_goal_y": -1.5682599299702928
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.50925832375121,
+        -1.05
+      ],
+      "effective_target": [
+        -6.50925832375121,
+        -1.05
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 2.492043743544521,
+      "candidate_time_s": 2.492043743544521,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 1.6835667155688911,
+      "waypoint": [
+        -6.50925832375121,
+        -0.8276221896207394
+      ],
+      "path": [
+        [
+          -6.50925832375121,
+          0.07237781037926062
+        ],
+        [
+          -6.50925832375121,
+          -1.05
+        ]
+      ],
+      "command": [
+        0.08693694309368942,
+        -1.6813205683916879,
+        -0.02730691549742981
+      ]
+    }
+  },
+  {
+    "id": 139344,
+    "time": 1476.071999978,
+    "remaining": 552,
+    "action": "guard:set",
+    "target": [
+      -6.5,
+      -0.035216855789554025
+    ],
+    "ball": {
+      "x": -1.9665576827026843,
+      "y": -0.2263915762636305,
+      "last_seen_at": 1476.065999978,
+      "confidence": 1.0,
+      "received_at": 8201.739922484
+    },
+    "pose": {
+      "x": -6.530270475006855,
+      "y": -0.07779019326802981,
+      "theta": -0.048926004391845544
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.1721465708948929e-05,
+      "outlet_wait_reason": "range"
+    },
+    "navigation": {
+      "state": "arrived",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.5,
+        -0.035216855789554025
+      ],
+      "effective_target": [
+        -6.5,
+        -0.035216855789554025
+      ]
+    }
+  },
+  {
+    "id": 139366,
+    "time": 1476.891999978,
+    "remaining": 550,
+    "action": "guard:block:best_effort",
+    "target": [
+      -6.592093163861864,
+      -0.22354268801280391
+    ],
+    "ball": {
+      "x": -2.15552501226495,
+      "y": -0.23478182041537893,
+      "last_seen_at": 1476.889999978,
+      "confidence": 1.0,
+      "received_at": 8203.304365401
+    },
+    "pose": {
+      "x": -6.557768814890216,
+      "y": 0.049432411742956775,
+      "theta": -0.08123627990597476
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 3.027876251953112,
+      "shot_source": "measured_prediction",
+      "goal_time_s": 1.977793707512319,
+      "goal_crossing": [
+        -7.000000001518189,
+        -0.4380482776005377
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.592093163861864,
+        -0.22354268801280391
+      ],
+      "effective_target": [
+        -6.592093163861864,
+        -0.22354268801280391
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.4126869558669606,
+      "waypoint": [
+        -6.592093163861864,
+        -0.22354268801280391
+      ],
+      "path": null,
+      "command": [
+        -0.018090079865935055,
+        -0.41229027705390137,
+        0.033529072407494094
+      ]
+    }
+  },
+  {
+    "id": 139367,
+    "time": 1476.923999978,
+    "remaining": 550,
+    "action": "guard:block:reachable",
+    "target": [
+      -6.529724060687638,
+      -0.2332423375441533
+    ],
+    "ball": {
+      "x": -2.2299345936831103,
+      "y": -0.2381582430631317,
+      "last_seen_at": 1476.923999978,
+      "confidence": 1.0,
+      "received_at": 8203.359988651
+    },
+    "pose": {
+      "x": -6.5544144616397135,
+      "y": 0.04669620062228334,
+      "theta": -0.08478897378128085
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 2.1907690179323844,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 2.179587906868814,
+      "goal_crossing": [
+        -7.0,
+        -0.4546055951674356
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.529724060687638,
+        -0.2332423375441533
+      ],
+      "effective_target": [
+        -6.529724060687638,
+        -0.2332423375441533
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.4215379014541344,
+      "waypoint": [
+        -6.529724060687638,
+        -0.2332423375441533
+      ],
+      "path": null,
+      "command": [
+        0.07246346093949801,
+        -0.41526286758031394,
+        0.038027547081323165
+      ]
+    }
+  },
+  {
+    "id": 139368,
+    "time": 1477.087999978,
+    "remaining": 550,
+    "action": "guard:block:best_effort",
+    "target": [
+      -6.553691905344221,
+      -0.2578149124659255
+    ],
+    "ball": {
+      "x": -2.6251366893349366,
+      "y": -0.25816504247552857,
+      "last_seen_at": 1477.081999978,
+      "confidence": 1.0,
+      "received_at": 8203.649344401
+    },
+    "pose": {
+      "x": -6.540309220083475,
+      "y": 0.005992579608284202,
+      "theta": -0.06775862012140872
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 2.504482189574775,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 1.74380911919923,
+      "goal_crossing": [
+        -7.0,
+        -0.4796391026491411
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.553691905344221,
+        -0.2578149124659255
+      ],
+      "effective_target": [
+        -6.553691905344221,
+        -0.2578149124659255
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.396220078445506,
+      "waypoint": [
+        -6.553691905344221,
+        -0.2578149124659255
+      ],
+      "path": null,
+      "command": [
+        0.006764371568766728,
+        -0.3961623326878044,
+        0.000780967140309452
+      ]
+    }
+  },
+  {
+    "id": 139370,
+    "time": 1477.193999978,
+    "remaining": 550,
+    "action": "guard:block:reachable",
+    "target": [
+      -6.52539823091085,
+      -0.27313381314918417
+    ],
+    "ball": {
+      "x": -2.84326662258858,
+      "y": -0.2701869268181412,
+      "last_seen_at": 1477.193999978,
+      "confidence": 1.0,
+      "received_at": 8203.854888026
+    },
+    "pose": {
+      "x": -6.5410711253888625,
+      "y": -0.008505140454742604,
+      "theta": -0.06739160966802564
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.7864517678338936,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 2.3303518501844134,
+      "goal_crossing": [
+        -7.0,
+        -0.49963417092235307
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.52539823091085,
+        -0.27313381314918417
+      ],
+      "effective_target": [
+        -6.52539823091085,
+        -0.27313381314918417
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.39763858159768245,
+      "waypoint": [
+        -6.52539823091085,
+        -0.27313381314918417
+      ],
+      "path": null,
+      "command": [
+        0.0501863609155442,
+        -0.39445883277355004,
+        -0.006514821260996506
+      ]
+    }
+  },
+  {
+    "id": 139372,
+    "time": 1477.301999978,
+    "remaining": 550,
+    "action": "guard:block:best_effort",
+    "target": [
+      -6.581618405279567,
+      -0.2805396553717875
+    ],
+    "ball": {
+      "x": -3.0527409865016057,
+      "y": -0.28170056932826937,
+      "last_seen_at": 1477.287999978,
+      "confidence": 1.0,
+      "received_at": 8204.047316193
+    },
+    "pose": {
+      "x": -6.5328008537640745,
+      "y": -0.012929063558135813,
+      "theta": -0.08166601569373755
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.9276316069849817,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 2.036913140997202,
+      "goal_crossing": [
+        -7.0,
+        -0.49827926171095693
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.581618405279567,
+        -0.2805396553717875
+      ],
+      "effective_target": [
+        -6.581618405279567,
+        -0.2805396553717875
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.4080402062546612,
+      "waypoint": [
+        -6.581618405279567,
+        -0.2805396553717875
+      ],
+      "path": null,
+      "command": [
+        -0.04023666813317195,
+        -0.4060514997606676,
+        0.009174324632980652
+      ]
+    }
+  },
+  {
+    "id": 139373,
+    "time": 1477.359999978,
+    "remaining": 550,
+    "action": "guard:block:reachable",
+    "target": [
+      -6.505265433107031,
+      -0.2705374700087986
+    ],
+    "ball": {
+      "x": -3.1728630203105608,
+      "y": -0.2882795958320254,
+      "last_seen_at": 1477.357999978,
+      "confidence": 1.0,
+      "received_at": 8204.144038652
+    },
+    "pose": {
+      "x": -6.524969521467403,
+      "y": -0.010270807923576607,
+      "theta": -0.08962638781618139
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.7186009138999643,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 2.228252577339775,
+      "goal_crossing": [
+        -7.0,
+        -0.4978900629918358
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.505265433107031,
+        -0.2705374700087986
+      ],
+      "effective_target": [
+        -6.505265433107031,
+        -0.2705374700087986
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.3915172021826973,
+      "waypoint": [
+        -6.505265433107031,
+        -0.2705374700087986
+      ],
+      "path": null,
+      "command": [
+        0.06438081608997552,
+        -0.3861875582208156,
+        0.013760422816170431
+      ]
+    }
+  },
+  {
+    "id": 139376,
+    "time": 1477.649999978,
+    "remaining": 550,
+    "action": "guard:block:best_effort",
+    "target": [
+      -6.523196138980274,
+      -0.2728907242213127
+    ],
+    "ball": {
+      "x": -3.7420525659607344,
+      "y": -0.3194673066733852,
+      "last_seen_at": 1477.647999978,
+      "confidence": 1.0,
+      "received_at": 8204.614867985
+    },
+    "pose": {
+      "x": -6.509401054456115,
+      "y": -0.04145480288187325,
+      "theta": -0.09335850721563008
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.867467265282707,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 1.7452564068116372,
+      "goal_crossing": [
+        -7.0,
+        -0.49801480610058735
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.523196138980274,
+        -0.2728907242213127
+      ],
+      "effective_target": [
+        -6.523196138980274,
+        -0.2728907242213127
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.34777004269681394,
+      "waypoint": [
+        -6.523196138980274,
+        -0.2728907242213127
+      ],
+      "path": null,
+      "command": [
+        0.011760193389469415,
+        -0.3475711444420927,
+        -0.01353448476056976
+      ]
+    }
+  },
+  {
+    "id": 139382,
+    "time": 1477.941999978,
+    "remaining": 550,
+    "action": "guard:block:reachable",
+    "target": [
+      -6.50811593051567,
+      -0.2718594524895612
+    ],
+    "ball": {
+      "x": -4.236928613341399,
+      "y": -0.3467092310983172,
+      "last_seen_at": 1477.939999978,
+      "confidence": 1.0,
+      "received_at": 8205.087695319
+    },
+    "pose": {
+      "x": -6.510420004954156,
+      "y": -0.14317260755711497,
+      "theta": -0.09157271981957935
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.427438807492011,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 1.9367858515679683,
+      "goal_crossing": [
+        -7.0,
+        -0.49916529710317004
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.50811593051567,
+        -0.2718594524895612
+      ],
+      "effective_target": [
+        -6.50811593051567,
+        -0.2718594524895612
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.1930612049060932,
+      "waypoint": [
+        -6.50811593051567,
+        -0.2718594524895612
+      ],
+      "path": null,
+      "command": [
+        0.021093243711889385,
+        -0.19190545565330688,
+        0.0045694848969149715
+      ]
+    }
+  },
+  {
+    "id": 139383,
+    "time": 1477.993999978,
+    "remaining": 550,
+    "action": "guard:block:best_effort",
+    "target": [
+      -6.495944283574305,
+      -0.27158018987280386
+    ],
+    "ball": {
+      "x": -4.325120781275457,
+      "y": -0.3515824531123358,
+      "last_seen_at": 1477.993999978,
+      "confidence": 1.0,
+      "received_at": 8205.162054735
+    },
+    "pose": {
+      "x": -6.509703039958165,
+      "y": -0.1517530102202088,
+      "theta": -0.09539321330888435
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.6356797181957625,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 1.6378265915716255,
+      "goal_crossing": [
+        -7.0,
+        -0.4993878716533108
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.495944283574305,
+        -0.27158018987280386
+      ],
+      "effective_target": [
+        -6.495944283574305,
+        -0.27158018987280386
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.18092174223026047,
+      "waypoint": [
+        -6.495944283574305,
+        -0.27158018987280386
+      ],
+      "path": null,
+      "command": [
+        0.03766436057752577,
+        -0.1769578276141492,
+        0.008348907207323647
+      ]
+    }
+  },
+  {
+    "id": 139385,
+    "time": 1478.201999978,
+    "remaining": 549,
+    "action": "guard:set",
+    "target": [
+      -6.2,
+      -0.18204838543249383
+    ],
+    "ball": {
+      "x": -4.649348581006627,
+      "y": -0.3695519264697029,
+      "last_seen_at": 1478.199999978,
+      "confidence": 1.0,
+      "received_at": 8205.487582736
+    },
+    "pose": {
+      "x": -6.4973836694253,
+      "y": -0.14714507267651805,
+      "theta": -0.10986601564818795
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.4520110158167239,
+      "outlet_wait_reason": "range"
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": null,
+      "target": [
+        -6.2,
+        -0.18204838543249383
+      ],
+      "effective_target": [
+        -6.2,
+        -0.18204838543249383
+      ],
+      "route_reason": "new",
+      "estimated_time_s": 0.3992504653247276,
+      "candidate_time_s": 0.3992504653247276,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.44913739343873893,
+      "waypoint": [
+        -6.2,
+        -0.18204838543249383
+      ],
+      "path": [
+        [
+          -6.4973836694253,
+          -0.14714507267651805
+        ],
+        [
+          -6.2,
+          -0.18204838543249383
+        ]
+      ],
+      "command": [
+        0.4491264917922284,
+        -0.0031293058894802314,
+        -0.019811407726251087
+      ]
+    }
+  },
+  {
+    "id": 139389,
+    "time": 1478.407999978,
+    "remaining": 549,
+    "action": "guard:block:best_effort",
+    "target": [
+      -6.489548404082702,
+      -0.27218472320134435
+    ],
+    "ball": {
+      "x": -4.946202512367341,
+      "y": -0.38610787719287815,
+      "last_seen_at": 1478.397999978,
+      "confidence": 1.0,
+      "received_at": 8205.766762069
+    },
+    "pose": {
+      "x": -6.491769157791617,
+      "y": -0.1723478698959052,
+      "theta": -0.13388149434661062
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.6433731981534336,
+      "shot_source": "measured_prediction",
+      "goal_time_s": 1.881010073237121,
+      "goal_crossing": [
+        -7.000000000075715,
+        -0.500919126782682
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.489548404082702,
+        -0.27218472320134435
+      ],
+      "effective_target": [
+        -6.489548404082702,
+        -0.27218472320134435
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.14979232392274555,
+      "waypoint": [
+        -6.489548404082702,
+        -0.27218472320134435
+      ],
+      "path": null,
+      "command": [
+        0.02329094016368104,
+        -0.14797051196933989,
+        -0.007103813712769302
+      ]
+    }
+  },
+  {
+    "id": 139390,
+    "time": 1478.461999978,
+    "remaining": 549,
+    "action": "guard:block:reachable",
+    "target": [
+      -6.48212269622479,
+      -0.27182910341191946
+    ],
+    "ball": {
+      "x": -5.020022267941915,
+      "y": -0.3902422871218742,
+      "last_seen_at": 1478.459999978,
+      "confidence": 1.0,
+      "received_at": 8205.847985486
+    },
+    "pose": {
+      "x": -6.487885128899054,
+      "y": -0.186189965787136,
+      "theta": -0.1305226284893565
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.1925071371903468,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 1.6609815576267248,
+      "goal_crossing": [
+        -7.0,
+        -0.5011345480200069
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.48212269622479,
+        -0.27182910341191946
+      ],
+      "effective_target": [
+        -6.48212269622479,
+        -0.27182910341191946
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.12874918224107118,
+      "waypoint": [
+        -6.48212269622479,
+        -0.27182910341191946
+      ],
+      "path": null,
+      "command": [
+        0.02528932787156264,
+        -0.12624104650845208,
+        -0.01521071375846711
+      ]
+    }
+  },
+  {
+    "id": 139392,
+    "time": 1478.687999978,
+    "remaining": 549,
+    "action": "guard:block:hold",
+    "target": null,
+    "ball": {
+      "x": -5.308519001766913,
+      "y": -0.4064824638108017,
+      "last_seen_at": 1478.679999978,
+      "confidence": 1.0,
+      "received_at": 8206.190658028
+    },
+    "pose": {
+      "x": -6.489482651856535,
+      "y": -0.25518367732985175,
+      "theta": -0.12504877433453698
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.383258982317167,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 1.2178328226207857,
+      "goal_crossing": [
+        -7.0,
+        -0.5017736256533321
+      ]
+    },
+    "navigation": null
+  },
+  {
+    "id": 139397,
+    "time": 1478.935999978,
+    "remaining": 549,
+    "action": "guard:block:reachable",
+    "target": [
+      -6.465747635262821,
+      -0.272179340025271
+    ],
+    "ball": {
+      "x": -5.601074404362762,
+      "y": -0.4231155159467173,
+      "last_seen_at": 1478.935999978,
+      "confidence": 1.0,
+      "received_at": 8206.615835653
+    },
+    "pose": {
+      "x": -6.466584244998198,
+      "y": -0.2517618826857997,
+      "theta": -0.14791682824775637
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 1.162194474885817,
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 1.2056531440214133,
+      "goal_crossing": [
+        -7.0,
+        -0.502979208611776
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.465747635262821,
+        -0.272179340025271
+      ],
+      "effective_target": [
+        -6.465747635262821,
+        -0.272179340025271
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.030651885425394793,
+      "waypoint": [
+        -6.465747635262821,
+        -0.272179340025271
+      ],
+      "path": null,
+      "command": [
+        0.005754838186011923,
+        -0.030106808492172475,
+        -0.09507133200860031
+      ]
+    }
+  },
+  {
+    "id": 139400,
+    "time": 1479.251999978,
+    "remaining": 548,
+    "action": "guard:direct_clear",
+    "target": [
+      -2.9626237160511235,
+      -0.9804266386033179
+    ],
+    "ball": {
+      "x": -5.9137573004525015,
+      "y": -0.44115809045844945,
+      "last_seen_at": 1479.251999978,
+      "confidence": 1.0,
+      "received_at": 8207.06792857
+    },
+    "pose": {
+      "x": -6.488414865629318,
+      "y": -0.2767546923881617,
+      "theta": -0.18073859109159696
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.9999363291811008,
+      "near_goal": false,
+      "own_goal_facing": false,
+      "outlet_mode": "facing",
+      "outlet_style": "clear",
+      "receiver_id": null
+    },
+    "navigation": null
+  },
+  {
+    "id": 139401,
+    "time": 1479.301999978,
+    "remaining": 548,
+    "action": "guard:kick_hold",
+    "target": [
+      -2.9626237160511235,
+      -0.9804266386033179
+    ],
+    "ball": {
+      "x": -5.958016992314446,
+      "y": -0.4437435945684982,
+      "last_seen_at": 1479.299999978,
+      "confidence": 1.0,
+      "received_at": 8207.142307028
+    },
+    "pose": {
+      "x": -6.489725256398997,
+      "y": -0.2755400682651502,
+      "theta": -0.19645500744941394
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.9236488713290799,
+      "near_goal": false,
+      "own_goal_facing": false,
+      "outlet_mode": "committed",
+      "outlet_style": "clear",
+      "receiver_id": null
+    },
+    "navigation": null
+  },
+  {
+    "id": 139403,
+    "time": 1479.379999978,
+    "remaining": 548,
+    "action": "guard:direct_clear",
+    "target": [
+      -3.0794950669194883,
+      -1.0455007934883778
+    ],
+    "ball": {
+      "x": -6.01925755773498,
+      "y": -0.44733986397667935,
+      "last_seen_at": 1479.379999978,
+      "confidence": 1.0,
+      "received_at": 8207.268320445
+    },
+    "pose": {
+      "x": -6.48623968781376,
+      "y": -0.2691941814869089,
+      "theta": -0.20073229621149344
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.8912616802491038,
+      "near_goal": true,
+      "own_goal_facing": false,
+      "outlet_mode": "near_facing",
+      "outlet_style": "clear",
+      "receiver_id": null
+    },
+    "navigation": null
+  },
+  {
+    "id": 139411,
+    "time": 1479.813999978,
+    "remaining": 548,
+    "action": "guard:block:best_effort",
+    "target": [
+      -6.430397397735602,
+      -0.2729536865498853
+    ],
+    "ball": {
+      "x": -6.328302377858122,
+      "y": -0.46609495999302253,
+      "last_seen_at": 1479.807999978,
+      "confidence": 1.0,
+      "received_at": 8207.940848445
+    },
+    "pose": {
+      "x": -6.4283942802833804,
+      "y": -0.19315268960273063,
+      "theta": -0.4590046610738953
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.6062968113817787,
+      "near_goal": true,
+      "own_goal_facing": false,
+      "outlet_wait_reason": "no_executable_kick",
+      "shot_source": "short_hold_envelope",
+      "goal_time_s": 1.104954573369184,
+      "goal_crossing": [
+        -7.0,
+        -0.5087103028416408
+      ]
+    },
+    "navigation": {
+      "state": "moving",
+      "priority": 100,
+      "opponent_mode": "contest",
+      "avoid_ball": false,
+      "blocker": null,
+      "target": [
+        -6.430397397735602,
+        -0.2729536865498853
+      ],
+      "effective_target": [
+        -6.430397397735602,
+        -0.2729536865498853
+      ],
+      "direction_held": false,
+      "blocker_priority": null,
+      "speed": 0.1197392002850201,
+      "waypoint": [
+        -6.430397397735602,
+        -0.2729536865498853
+      ],
+      "path": null,
+      "command": [
+        0.05034079314169507,
+        -0.10864290418964886,
+        -1.5206093238663456
+      ]
+    }
+  },
+  {
+    "id": 139413,
+    "time": 1479.913999978,
+    "remaining": 548,
+    "action": "guard:set",
+    "target": [
+      -6.633143520287244,
+      -0.585882352859493
+    ],
+    "ball": {
+      "x": -6.363686693676955,
+      "y": -0.48882499040767363,
+      "last_seen_at": 1479.909999978,
+      "confidence": 1.0,
+      "received_at": 8208.10975957
+    },
+    "pose": {
+      "x": -6.414074879353793,
+      "y": -0.23607990361232867,
+      "theta": -0.5387524485418532
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.43275573555419317,
+      "near_goal": true,
+      "own_goal_facing": false,
+      "outlet_wait_reason": "no_executable_kick"
+    },
+    "navigation": {
+      "state": "blocked",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": "ball",
+      "target": [
+        -6.633143520287244,
+        -0.585882352859493
+      ],
+      "effective_target": [
+        -6.633143520287244,
+        -0.585882352859493
+      ],
+      "route_reason": "no_route",
+      "estimated_time_s": null,
+      "candidate_time_s": null,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "blocker_priority": null,
+      "stop_conflict": "ball"
+    }
+  },
+  {
+    "id": 139431,
+    "time": 1481.053999978,
+    "remaining": 546,
+    "action": "guard:anticipate:ray",
+    "target": [
+      -6.5,
+      -0.6723414105671197
+    ],
+    "ball": {
+      "x": -6.475860647999017,
+      "y": -0.6712359177638884,
+      "last_seen_at": 1481.045999978,
+      "confidence": 1.0,
+      "received_at": 8209.910465821
+    },
+    "pose": {
+      "x": -6.435869383083129,
+      "y": -0.3036021295334509,
+      "theta": -0.8323875840646606
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.03763358500327635,
+      "near_goal": true,
+      "own_goal_facing": false,
+      "outlet_wait_reason": "no_executable_kick",
+      "shooter_id": 1,
+      "ray_goal_y": -0.695239556366277
+    },
+    "navigation": {
+      "state": "blocked",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": "ball",
+      "target": [
+        -6.5,
+        -0.6723414105671197
+      ],
+      "effective_target": [
+        -6.5,
+        -0.6723414105671197
+      ],
+      "route_reason": "no_route",
+      "estimated_time_s": null,
+      "candidate_time_s": null,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "blocker_priority": null,
+      "stop_conflict": "ball"
+    }
+  },
+  {
+    "id": 139448,
+    "time": 1482.169999978,
+    "remaining": 545,
+    "action": "guard:direct_clear",
+    "target": [
+      -4.721133284344007,
+      -3.107274690166224
+    ],
+    "ball": {
+      "x": -6.479323007367325,
+      "y": -0.6764787510024306,
+      "last_seen_at": 1482.169999978,
+      "confidence": 1.0,
+      "received_at": 8211.976666864
+    },
+    "pose": {
+      "x": -6.44557473413918,
+      "y": -0.32038229749503816,
+      "theta": -0.9446046773843606
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 0.00022442042284877888,
+      "near_goal": true,
+      "own_goal_facing": false,
+      "outlet_mode": "near_facing",
+      "outlet_style": "clear",
+      "receiver_id": null
+    },
+    "navigation": null
+  },
+  {
+    "id": 139458,
+    "time": 1482.997999978,
+    "remaining": 545,
+    "action": "guard:anticipate:ray",
+    "target": [
+      -6.54224051897755,
+      -0.6361520858517893
+    ],
+    "ball": {
+      "x": -6.479346177210619,
+      "y": -0.6765138391153432,
+      "last_seen_at": 1482.993999978,
+      "confidence": 1.0,
+      "received_at": 8213.284440114
+    },
+    "pose": {
+      "x": -6.54224051897755,
+      "y": -0.06473963331125528,
+      "theta": -1.2359729897377898
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 7.077243872890497e-06,
+      "near_goal": true,
+      "own_goal_facing": false,
+      "outlet_wait_reason": "no_executable_kick",
+      "shooter_id": 1,
+      "ray_goal_y": -0.342389964999211
+    },
+    "navigation": {
+      "state": "avoiding",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": "team:1",
+      "target": [
+        -6.54224051897755,
+        -0.6361520858517893
+      ],
+      "effective_target": [
+        -6.54224051897755,
+        -0.6361520858517893
+      ],
+      "route_reason": "no_route",
+      "estimated_time_s": null,
+      "candidate_time_s": null,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "direction_held": false,
+      "blocker_priority": 0,
+      "speed": 0.5571271412270207,
+      "waypoint": [
+        -6.54224051897755,
+        -0.6361520858517893
+      ],
+      "path": null,
+      "command": [
+        0.555642361750873,
+        -0.04064747617878143,
+        -0.4647535763004371
+      ]
+    }
+  },
+  {
+    "id": 139471,
+    "time": 1484.121999978,
+    "remaining": 543,
+    "action": "guard:direct_clear",
+    "target": [
+      -6.077087303520771,
+      -3.6494236048455173
+    ],
+    "ball": {
+      "x": -6.479346747549259,
+      "y": -0.6765147028288594,
+      "last_seen_at": 1484.121999978,
+      "confidence": 1.0,
+      "received_at": 8215.242977198
+    },
+    "pose": {
+      "x": -6.612666978516674,
+      "y": -0.11262295833471676,
+      "theta": -1.4363047651973044
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 3.5292273278823315e-08,
+      "near_goal": true,
+      "own_goal_facing": false,
+      "outlet_mode": "near_facing",
+      "outlet_style": "clear",
+      "receiver_id": null
+    },
+    "navigation": null
+  },
+  {
+    "id": 139477,
+    "time": 1484.691999978,
+    "remaining": 543,
+    "action": "guard:set",
+    "target": [
+      -6.2,
+      -0.476181756319999
+    ],
+    "ball": {
+      "x": -5.580591502071992,
+      "y": -0.6339952035650884,
+      "last_seen_at": 1484.691999978,
+      "confidence": 1.0,
+      "received_at": 8216.157506574
+    },
+    "pose": {
+      "x": -6.426789475570329,
+      "y": -0.2795769266211544,
+      "theta": -1.6421901269060615
+    },
+    "decision": {
+      "ball_fresh": true,
+      "velocity_known": true,
+      "ball_speed_mps": 3.228651583892114,
+      "near_goal": false,
+      "own_goal_facing": false,
+      "outlet_wait_reason": "no_executable_kick"
+    },
+    "navigation": {
+      "state": "blocked",
+      "priority": 60,
+      "opponent_mode": "avoid",
+      "avoid_ball": true,
+      "blocker": "team:1",
+      "target": [
+        -6.2,
+        -0.476181756319999
+      ],
+      "effective_target": [
+        -6.2,
+        -0.476181756319999
+      ],
+      "route_reason": "no_route",
+      "estimated_time_s": null,
+      "candidate_time_s": null,
+      "previous_time_s": null,
+      "switch_margin_s": 0.35,
+      "blocker_priority": 0,
+      "stop_conflict": "team:1"
+    }
+  },
+  {
+    "id": 139654,
+    "time": 1493.495999978,
+    "remaining": 534,
+    "action": "stopped",
+    "target": null,
+    "ball": {
+      "x": 4.6966397531886095,
+      "y": 0.7952874188108264,
+      "last_seen_at": 1493.493999978,
+      "confidence": 1.0,
+      "received_at": 8231.15006008
+    },
+    "pose": {
+      "x": -6.517771474189532,
+      "y": -0.10668119744359889,
+      "theta": 0.0014378304929155755
+    },
+    "decision": null,
+    "navigation": null
+  }
+]
