@@ -1,0 +1,11 @@
+{
+  "frames": 2766,
+  "json_bytes": 71012021,
+  "gzip_bytes": 4511318,
+  "json_sha256": "bf2ea48d144b447cfe3001a7fe2bb75e99175526cd5c8c5dbc5aa2dac7cf011b",
+  "gzip_sha256": "00865a172ead148fe1ff18d6c663f4652195a046ac21748f73888fcc009a8f69",
+  "first_id": 239447,
+  "last_id": 242212,
+  "sim_start": 32.679999999,
+  "sim_end": 119.619999999
+}

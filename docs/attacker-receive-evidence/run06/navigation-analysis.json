@@ -1,0 +1,289 @@
+{
+  "blocked_frames": 1191,
+  "first_blocked": {
+    "frame": 241008,
+    "sim": 82.919999999,
+    "player": 3,
+    "blocker": "opponent:1",
+    "reason": "no_route",
+    "target": [
+      2.8616387571568334,
+      -4.712849809128264
+    ]
+  },
+  "last_blocked": {
+    "frame": 242199,
+    "sim": 119.245999999,
+    "player": 3,
+    "blocker": "opponent:1",
+    "reason": "no_route",
+    "target": [
+      2.8616430756582805,
+      -4.71300097542519
+    ]
+  },
+  "blockers": {
+    "opponent:1": 1191
+  },
+  "unavailable": [
+    {
+      "frame": 240806,
+      "sim": 76.62,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240807,
+      "sim": 76.654,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240809,
+      "sim": 76.706,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240811,
+      "sim": 76.788,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240822,
+      "sim": 77.486,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240826,
+      "sim": 77.714,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240827,
+      "sim": 77.734,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240828,
+      "sim": 77.754,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240829,
+      "sim": 77.776,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240831,
+      "sim": 77.971999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240833,
+      "sim": 78.181999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240835,
+      "sim": 78.365999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240836,
+      "sim": 78.387999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240837,
+      "sim": 78.405999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240838,
+      "sim": 78.431999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240839,
+      "sim": 78.585999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240840,
+      "sim": 78.615999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240841,
+      "sim": 78.633999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240842,
+      "sim": 78.657999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240843,
+      "sim": 78.819999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240844,
+      "sim": 78.867999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240845,
+      "sim": 78.905999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240846,
+      "sim": 78.927999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240847,
+      "sim": 78.943999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240848,
+      "sim": 79.083999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240849,
+      "sim": 79.217999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240850,
+      "sim": 79.243999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240851,
+      "sim": 79.261999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240852,
+      "sim": 79.285999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240853,
+      "sim": 79.427999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240854,
+      "sim": 79.465999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240855,
+      "sim": 79.489999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240856,
+      "sim": 79.515999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240857,
+      "sim": 79.541999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240858,
+      "sim": 79.583999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240859,
+      "sim": 79.625999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240860,
+      "sim": 79.671999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240861,
+      "sim": 79.723999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240862,
+      "sim": 79.749999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "no_feasible_point"
+    },
+    {
+      "frame": 240863,
+      "sim": 79.797999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "ball_outside_field"
+    },
+    {
+      "frame": 240864,
+      "sim": 79.813999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "ball_outside_field"
+    },
+    {
+      "frame": 240865,
+      "sim": 79.859999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "ball_outside_field"
+    },
+    {
+      "frame": 240866,
+      "sim": 79.881999999,
+      "reason": "no_feasible_block_point",
+      "calculator_reason": "ball_outside_field"
+    }
+  ],
+  "final_state": "FINISHED"
+}

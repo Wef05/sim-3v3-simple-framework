@@ -1,0 +1,1057 @@
+{
+  "counts": {
+    "receive_frames": 1489,
+    "block_comparisons": 1489,
+    "target_comparisons": 23,
+    "speed_comparisons": 1489,
+    "intercept_frames": 23,
+    "wait_frames": 0,
+    "low_speed_frames": 1328
+  },
+  "issues": [],
+  "low_speed_entries": [
+    {
+      "frame": 240223,
+      "sim": 53.214,
+      "player": 1,
+      "stage": "auto_kick",
+      "reason": "low_speed_direct",
+      "speed": 0.0,
+      "average": 4.035431626887444e-18,
+      "distance": 1.5150608227930273
+    },
+    {
+      "frame": 240313,
+      "sim": 56.906,
+      "player": 1,
+      "stage": "auto_kick",
+      "reason": "low_speed_direct",
+      "speed": 0.057710976062218325,
+      "average": 0.10526642839339867,
+      "distance": 0.2493725385511312
+    }
+  ],
+  "threshold_disagreements": [
+    {
+      "frame": 240756,
+      "sim": 73.55,
+      "player": 3,
+      "stage": "auto_kick",
+      "reason": "kick_hysteresis",
+      "speed": 0.5068161932183953,
+      "average": 0.4747262563052586
+    }
+  ],
+  "intercept_examples": [
+    {
+      "frame": 240702,
+      "sim": 69.858,
+      "player": 1,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          -0.2146292250573639,
+          2.189395457752223
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          0.025713634313551004,
+          2.12058186934548
+        ],
+        "ball_time_s": 1.1168447885215673,
+        "move_distance_m": 0.21372013823458472,
+        "turn_time_s": 0,
+        "move_time_s": 0.10686006911729236,
+        "arrival_time_s": 0.10686006911729236,
+        "slack_s": 1.009984719404275
+      },
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -0.2146292250573639,
+          2.189395457752223
+        ],
+        "effective_target": [
+          -0.2146292250573639,
+          2.189395457752223
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 0.46794003502811615,
+        "candidate_time_s": 0.46794003502811615,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.32058020735187703,
+        "waypoint": [
+          -0.2146292250573639,
+          2.189395457752223
+        ],
+        "path": [
+          [
+            -0.4200936615711531,
+            2.2482228562590505
+          ],
+          [
+            -0.2146292250573639,
+            2.189395457752223
+          ]
+        ],
+        "command": [
+          0.06851585889836395,
+          -0.31317286987411913,
+          0.0020244722051461217
+        ]
+      },
+      "speed": 2.9021502381534376
+    },
+    {
+      "frame": 240703,
+      "sim": 70.032,
+      "player": 1,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          -0.2474363794487478,
+          2.1977782542825355
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          -0.00820632971517049,
+          2.125190491508979
+        ],
+        "ball_time_s": 0.8918271303035834,
+        "move_distance_m": 0.17730116409481336,
+        "turn_time_s": 0,
+        "move_time_s": 0.08865058204740668,
+        "arrival_time_s": 0.08865058204740668,
+        "slack_s": 0.8031765482561767
+      },
+      "navigation": {
+        "state": "avoiding",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "ball",
+        "target": [
+          -0.2474363794487478,
+          2.1977782542825355
+        ],
+        "effective_target": [
+          -0.2474363794487478,
+          2.1977782542825355
+        ],
+        "route_reason": "retained",
+        "estimated_time_s": 0.3929561415691434,
+        "candidate_time_s": 0.3889953286143839,
+        "previous_time_s": 0.3929561415691434,
+        "switch_margin_s": 0.35,
+        "direction_held": true,
+        "blocker_priority": null,
+        "speed": 0.039892761921333016,
+        "waypoint": [
+          -0.2474363794487478,
+          2.1977782542825355
+        ],
+        "path": [
+          [
+            -0.41709944466564125,
+            2.2492578336376945
+          ],
+          [
+            -0.4176001788333908,
+            2.2475089365891887
+          ],
+          [
+            -0.2474363794487478,
+            2.1977782542825355
+          ]
+        ],
+        "command": [
+          0.02641188578445651,
+          -0.02989723637764838,
+          -0.09969747874889999
+        ]
+      },
+      "speed": 2.307560116417488
+    },
+    {
+      "frame": 240704,
+      "sim": 70.084,
+      "player": 1,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          -0.27608020167864433,
+          2.2047105208145226
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          -0.03815545464886705,
+          2.1279523632622697
+        ],
+        "ball_time_s": 0.6762824343119821,
+        "move_distance_m": 0.14780751560149877,
+        "turn_time_s": 0,
+        "move_time_s": 0.07390375780074938,
+        "arrival_time_s": 0.07390375780074938,
+        "slack_s": 0.6023786765112327
+      },
+      "navigation": {
+        "state": "avoiding",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "ball",
+        "target": [
+          -0.27608020167864433,
+          2.2047105208145226
+        ],
+        "effective_target": [
+          -0.27608020167864433,
+          2.2047105208145226
+        ],
+        "route_reason": "retained",
+        "estimated_time_s": 0.33106991951043213,
+        "candidate_time_s": 0.3249274306791875,
+        "previous_time_s": 0.33106991951043213,
+        "switch_margin_s": 0.35,
+        "direction_held": true,
+        "blocker_priority": null,
+        "speed": 0.2217112734022481,
+        "waypoint": [
+          -0.27608020167864433,
+          2.2047105208145226
+        ],
+        "path": [
+          [
+            -0.41674846471299015,
+            2.25009225109431
+          ],
+          [
+            -0.41709944466564125,
+            2.2492578336376945
+          ],
+          [
+            -0.4176001788333908,
+            2.2475089365891887
+          ],
+          [
+            -0.27608020167864433,
+            2.2047105208145226
+          ]
+        ],
+        "command": [
+          -0.21797283809869247,
+          -0.04054294765859539,
+          -0.13451619370533363
+        ]
+      },
+      "speed": 2.4865919083525485
+    },
+    {
+      "frame": 240705,
+      "sim": 70.142,
+      "player": 1,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          -0.2996713915495284,
+          2.2113973996718497
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          -0.06297492996289744,
+          2.130931350481098
+        ],
+        "ball_time_s": 1.1487590288034304,
+        "move_distance_m": 0.1231961655416278,
+        "turn_time_s": 0,
+        "move_time_s": 0.0615980827708139,
+        "arrival_time_s": 0.0615980827708139,
+        "slack_s": 1.0871609460326166
+      },
+      "navigation": {
+        "state": "avoiding",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "ball",
+        "target": [
+          -0.2996713915495284,
+          2.2113973996718497
+        ],
+        "effective_target": [
+          -0.2996713915495284,
+          2.2113973996718497
+        ],
+        "route_reason": "retained",
+        "estimated_time_s": 0.2799815512123551,
+        "candidate_time_s": 0.2712444179210348,
+        "previous_time_s": 0.2799815512123551,
+        "switch_margin_s": 0.35,
+        "direction_held": true,
+        "blocker_priority": null,
+        "speed": 0.1847942483124418,
+        "waypoint": [
+          -0.2996713915495284,
+          2.2113973996718497
+        ],
+        "path": [
+          [
+            -0.41631177740850495,
+            2.2510498345381884
+          ],
+          [
+            -0.41674846471299015,
+            2.25009225109431
+          ],
+          [
+            -0.41709944466564125,
+            2.2492578336376945
+          ],
+          [
+            -0.4176001788333908,
+            2.2475089365891887
+          ],
+          [
+            -0.2996713915495284,
+            2.2113973996718497
+          ]
+        ],
+        "command": [
+          -0.0639561923628311,
+          -0.17337393018504524,
+          -0.17080239732008584
+        ]
+      },
+      "speed": 2.098162342096101
+    },
+    {
+      "frame": 240706,
+      "sim": 70.19,
+      "player": 1,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          -0.3045847853894839,
+          2.213192661578909
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          -0.06818011238191996,
+          2.1318733491114097
+        ],
+        "ball_time_s": 0.9231851312290252,
+        "move_distance_m": 0.11724815712177031,
+        "turn_time_s": 0,
+        "move_time_s": 0.058624078560885154,
+        "arrival_time_s": 0.058624078560885154,
+        "slack_s": 0.8645610526681401
+      },
+      "navigation": {
+        "state": "avoiding",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "ball",
+        "target": [
+          -0.3045847853894839,
+          2.213192661578909
+        ],
+        "effective_target": [
+          -0.3045847853894839,
+          2.213192661578909
+        ],
+        "route_reason": "retained",
+        "estimated_time_s": 0.27030941748228987,
+        "candidate_time_s": 0.25802682893664913,
+        "previous_time_s": 0.27030941748228987,
+        "switch_margin_s": 0.35,
+        "direction_held": true,
+        "blocker_priority": null,
+        "speed": 0.17587223568265548,
+        "waypoint": [
+          -0.3045847853894839,
+          2.213192661578909
+        ],
+        "path": [
+          [
+            -0.4154568343699303,
+            2.2513308196798034
+          ],
+          [
+            -0.41631177740850495,
+            2.2510498345381884
+          ],
+          [
+            -0.41674846471299015,
+            2.25009225109431
+          ],
+          [
+            -0.41709944466564125,
+            2.2492578336376945
+          ],
+          [
+            -0.4176001788333908,
+            2.2475089365891887
+          ],
+          [
+            -0.3045847853894839,
+            2.213192661578909
+          ]
+        ],
+        "command": [
+          -0.1732021705072398,
+          -0.030529517120264915,
+          -0.19260418846422467
+        ]
+      },
+      "speed": 2.080448120802482
+    },
+    {
+      "frame": 240808,
+      "sim": 76.678,
+      "player": 1,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          5.66729447885284,
+          0.126021352650318
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          5.906628478373287,
+          0.053777067938326595
+        ],
+        "ball_time_s": 3.7197586059570313,
+        "move_distance_m": 7.2395171095180135,
+        "turn_time_s": 0.0,
+        "move_time_s": 3.6197585547590068,
+        "arrival_time_s": 3.6197585547590068,
+        "slack_s": 0.10000005119802458
+      },
+      "navigation": {
+        "state": "moving",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          5.66729447885284,
+          0.126021352650318
+        ],
+        "effective_target": [
+          5.66729447885284,
+          0.126021352650318
+        ],
+        "route_reason": "no_route",
+        "estimated_time_s": null,
+        "candidate_time_s": null,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 1.7979000200138369,
+        "waypoint": [
+          5.66729447885284,
+          0.126021352650318
+        ],
+        "path": null,
+        "command": [
+          1.7979000200138369,
+          0.0,
+          -0.9068593912097325
+        ]
+      },
+      "speed": 3.056440876186637
+    },
+    {
+      "frame": 240810,
+      "sim": 76.738,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          -0.19659721751888726,
+          -0.5166162116739792
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          0.05312683757637515,
+          -0.5048732858554984
+        ],
+        "ball_time_s": 1.0368949890136718,
+        "move_distance_m": 1.8737897577871334,
+        "turn_time_s": 0.0,
+        "move_time_s": 0.9368948788935667,
+        "arrival_time_s": 0.9368948788935667,
+        "slack_s": 0.10000011012010512
+      },
+      "navigation": {
+        "state": "turning",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          -0.19659721751888726,
+          -0.5166162116739792
+        ],
+        "effective_target": [
+          -0.19659721751888726,
+          -0.5166162116739792
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 3.5464867437908865,
+        "candidate_time_s": 3.5464867437908865,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -1.3328730608957342,
+          -0.1714285714285717
+        ],
+        "path": [
+          [
+            -2.0683187243611774,
+            -0.6046313081744726
+          ],
+          [
+            -1.908163265306122,
+            -0.5142857142857142
+          ],
+          [
+            -1.5612244897959187,
+            -0.1714285714285717
+          ],
+          [
+            -0.8673469387755102,
+            -0.1714285714285717
+          ],
+          [
+            -0.19659721751888726,
+            -0.5166162116739792
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          1.9183893201316393
+        ]
+      },
+      "speed": 2.159621372712059
+    },
+    {
+      "frame": 240812,
+      "sim": 76.822,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          1.5845668757168705,
+          -0.22913454206330813
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          1.8329547943522764,
+          -0.20078949177280747
+        ],
+        "ball_time_s": 1.9016735076904299,
+        "move_distance_m": 3.595995649417154,
+        "turn_time_s": 0.003675494827210468,
+        "move_time_s": 1.797997824708577,
+        "arrival_time_s": 1.8016733195357875,
+        "slack_s": 0.1000001881546424
+      },
+      "navigation": {
+        "state": "turning",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": null,
+        "target": [
+          1.5845668757168705,
+          -0.22913454206330813
+        ],
+        "effective_target": [
+          1.5845668757168705,
+          -0.22913454206330813
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 6.960319507493881,
+        "candidate_time_s": 6.960319507493881,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "direction_held": false,
+        "blocker_priority": null,
+        "speed": 0.0,
+        "waypoint": [
+          -1.3703402454033895,
+          0.01720997597110438
+        ],
+        "path": [
+          [
+            -1.9882406234059353,
+            -0.6368492521719117
+          ],
+          [
+            -1.5612244897959187,
+            -0.1714285714285717
+          ],
+          [
+            -1.2142857142857144,
+            0.1714285714285717
+          ],
+          [
+            0.8673469387755102,
+            -0.5142857142857142
+          ],
+          [
+            1.5845668757168705,
+            -0.22913454206330813
+          ]
+        ],
+        "command": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      "speed": 2.8178228977222974
+    },
+    {
+      "frame": 240813,
+      "sim": 76.982,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          2.0099198523348107,
+          -0.18096464466928186
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          2.25811555841544,
+          -0.1509831256427594
+        ],
+        "ball_time_s": 2.0911796569824226,
+        "move_distance_m": 3.9399350822132995,
+        "turn_time_s": 0.02121211333456463,
+        "move_time_s": 1.9699675411066497,
+        "arrival_time_s": 1.9911796544412144,
+        "slack_s": 0.10000000254120822
+      },
+      "navigation": {
+        "state": "blocked",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "opponent:1",
+        "target": [
+          2.0099198523348107,
+          -0.18096464466928186
+        ],
+        "effective_target": [
+          2.0099198523348107,
+          -0.18096464466928186
+        ],
+        "route_reason": "faster",
+        "estimated_time_s": 7.217699137074242,
+        "candidate_time_s": 7.217699137074242,
+        "previous_time_s": 10.131988810110695,
+        "switch_margin_s": 0.35,
+        "blocker_priority": null,
+        "stop_conflict": "opponent:1"
+      },
+      "speed": 2.258459439849235
+    },
+    {
+      "frame": 240814,
+      "sim": 77.032,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          3.209401974484134,
+          -0.02249423030868114
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          3.4575003126202155,
+          0.008282621611461205
+        ],
+        "ball_time_s": 2.6821895599365235,
+        "move_distance_m": 5.112972055634196,
+        "turn_time_s": 0.02570331208083465,
+        "move_time_s": 2.556486027817098,
+        "arrival_time_s": 2.5821893398979325,
+        "slack_s": 0.10000022003859099
+      },
+      "navigation": {
+        "state": "blocked",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "opponent:1",
+        "target": [
+          3.209401974484134,
+          -0.02249423030868114
+        ],
+        "effective_target": [
+          3.209401974484134,
+          -0.02249423030868114
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 9.340469780772752,
+        "candidate_time_s": 9.340469780772752,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "blocker_priority": null,
+        "stop_conflict": "opponent:1"
+      },
+      "speed": 2.363691939150335
+    },
+    {
+      "frame": 240815,
+      "sim": 77.08,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          2.8420312311889724,
+          -0.07136435477869463
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          3.090150938644838,
+          -0.04076025747105172
+        ],
+        "ball_time_s": 2.4843074798583986,
+        "move_distance_m": 4.725197455851183,
+        "turn_time_s": 0.02170865198351507,
+        "move_time_s": 2.3625987279255916,
+        "arrival_time_s": 2.3843073799091066,
+        "slack_s": 0.10000009994929204
+      },
+      "navigation": {
+        "state": "blocked",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "opponent:1",
+        "target": [
+          2.8420312311889724,
+          -0.07136435477869463
+        ],
+        "effective_target": [
+          2.8420312311889724,
+          -0.07136435477869463
+        ],
+        "route_reason": "faster",
+        "estimated_time_s": 8.994590734774217,
+        "candidate_time_s": 8.994590734774217,
+        "previous_time_s": 11.63365069998924,
+        "switch_margin_s": 0.35,
+        "blocker_priority": null,
+        "stop_conflict": "opponent:1"
+      },
+      "speed": 2.1328130427563825
+    },
+    {
+      "frame": 240816,
+      "sim": 77.124,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          2.6260915102931497,
+          -0.09915683347641091
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          2.8742416692153743,
+          -0.06880063761996952
+        ],
+        "ball_time_s": 2.3499908447265625,
+        "move_distance_m": 4.497739458913368,
+        "turn_time_s": 0.0011210283245868258,
+        "move_time_s": 2.248869729456684,
+        "arrival_time_s": 2.249990757781271,
+        "slack_s": 0.1000000869452915
+      },
+      "navigation": {
+        "state": "blocked",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "opponent:1",
+        "target": [
+          2.6260915102931497,
+          -0.09915683347641091
+        ],
+        "effective_target": [
+          2.6260915102931497,
+          -0.09915683347641091
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 8.126690703161461,
+        "candidate_time_s": 8.126690703161461,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "blocker_priority": null,
+        "stop_conflict": "opponent:1"
+      },
+      "speed": 2.042856181018084
+    },
+    {
+      "frame": 240817,
+      "sim": 77.178,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          5.3566890605854525,
+          0.2708406331619395
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          5.604680015854028,
+          0.30247109482437845
+        ],
+        "ball_time_s": 3.7252292633056645,
+        "move_distance_m": 7.245504207670156,
+        "turn_time_s": 0.0024769385760408658,
+        "move_time_s": 3.622752103835078,
+        "arrival_time_s": 3.625229042411119,
+        "slack_s": 0.10000022089454541
+      },
+      "navigation": {
+        "state": "blocked",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "opponent:1",
+        "target": [
+          5.3566890605854525,
+          0.2708406331619395
+        ],
+        "effective_target": [
+          5.3566890605854525,
+          0.2708406331619395
+        ],
+        "route_reason": "no_route",
+        "estimated_time_s": null,
+        "candidate_time_s": null,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "blocker_priority": null,
+        "stop_conflict": "opponent:1"
+      },
+      "speed": 2.632644536889025
+    },
+    {
+      "frame": 240818,
+      "sim": 77.206,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          -0.021616713749624816,
+          -0.4533062880669427
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          0.22696831172137294,
+          -0.4267453183635727
+        ],
+        "ball_time_s": 1.0093166351318361,
+        "move_distance_m": 1.8186332081114087,
+        "turn_time_s": 0.0,
+        "move_time_s": 0.9093166040557044,
+        "arrival_time_s": 0.9093166040557044,
+        "slack_s": 0.10000003107613176
+      },
+      "navigation": {
+        "state": "blocked",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "opponent:1",
+        "target": [
+          -0.021616713749624816,
+          -0.4533062880669427
+        ],
+        "effective_target": [
+          -0.021616713749624816,
+          -0.4533062880669427
+        ],
+        "route_reason": "no_route",
+        "estimated_time_s": null,
+        "candidate_time_s": null,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "blocker_priority": null,
+        "stop_conflict": "opponent:1"
+      },
+      "speed": 0.8822105438330248
+    },
+    {
+      "frame": 240819,
+      "sim": 77.35,
+      "player": 3,
+      "stage": "intercept",
+      "reason": "go_to_block_point",
+      "block": {
+        "status": "reachable",
+        "target": [
+          4.713510214331924,
+          0.19140641299153272
+        ],
+        "horizon_s": 8.0,
+        "step_s": 0.025,
+        "position_tolerance_m": 0.1,
+        "time_margin_s": 0.1,
+        "effective_radius_m": 0.24999999999999997,
+        "model": "nearest_block_sampled_v1",
+        "ball_position": [
+          4.961384599088429,
+          0.2239377729628601
+        ],
+        "ball_time_s": 3.3987071990966804,
+        "move_distance_m": 6.59741395469186,
+        "turn_time_s": 0.0,
+        "move_time_s": 3.29870697734593,
+        "arrival_time_s": 3.29870697734593,
+        "slack_s": 0.1000002217507503
+      },
+      "navigation": {
+        "state": "blocked",
+        "priority": 80,
+        "opponent_mode": "contest",
+        "avoid_ball": true,
+        "blocker": "opponent:1",
+        "target": [
+          4.713510214331924,
+          0.19140641299153272
+        ],
+        "effective_target": [
+          4.713510214331924,
+          0.19140641299153272
+        ],
+        "route_reason": "new",
+        "estimated_time_s": 10.647672647160872,
+        "candidate_time_s": 10.647672647160872,
+        "previous_time_s": null,
+        "switch_margin_s": 0.35,
+        "blocker_priority": null,
+        "stop_conflict": "opponent:1"
+      },
+      "speed": 2.3844080270296066
+    }
+  ]
+}
