@@ -1,0 +1,36 @@
+test_block_requires_path_timing_and_precedes_enemy (checks.test_freeman_cover.CoverTests.test_block_requires_path_timing_and_precedes_enemy) ... ok
+test_fallback_position_direction_and_unknown (checks.test_freeman_cover.CoverTests.test_fallback_position_direction_and_unknown) ... ok
+test_guard_lane_yield (checks.test_freeman_cover.CoverTests.test_guard_lane_yield) ... ok
+test_hold_pause_rewind (checks.test_freeman_cover.CoverTests.test_hold_pause_rewind) ... ok
+test_race_excludes_unavailable_but_preserves_missing_pose_and_velocity (checks.test_freeman_cover.CoverTests.test_race_excludes_unavailable_but_preserves_missing_pose_and_velocity) ... ok
+test_race_states (checks.test_freeman_cover.CoverTests.test_race_states) ... ok
+test_real_player_phase_and_role_reset (checks.test_freeman_cover.CoverTests.test_real_player_phase_and_role_reset) ... ok
+test_circle_intersections_preserve_original_constraints (checks.test_free_position.FreePositionTests.test_circle_intersections_preserve_original_constraints) ... ok
+test_degenerate_triangle_and_reversed_orientation (checks.test_free_position.FreePositionTests.test_degenerate_triangle_and_reversed_orientation) ... ok
+test_inside_and_boundary_move_to_nearest_safe_side (checks.test_free_position.FreePositionTests.test_inside_and_boundary_move_to_nearest_safe_side) ... ok
+test_no_feasible_point_and_missing_ball (checks.test_free_position.FreePositionTests.test_no_feasible_point_and_missing_ball) ... ok
+test_outside_stays_and_absent_attacker_keeps_old_behavior (checks.test_free_position.FreePositionTests.test_outside_stays_and_absent_attacker_keeps_old_behavior) ... ok
+test_role_change_and_absence_clear_previous_triangle (checks.test_free_position.FreePositionTests.test_role_change_and_absence_clear_previous_triangle) ... ok
+test_solver_no_worse_than_independent_dense_candidates (checks.test_free_position.FreePositionTests.test_solver_no_worse_than_independent_dense_candidates) ... ok
+test_ball_radius_projection (checks.test_freeman.FreemanTests.test_ball_radius_projection) ... ok
+test_empty_region_and_concentric_circles (checks.test_freeman.FreemanTests.test_empty_region_and_concentric_circles) ... ok
+test_enemy_circle_nearest_point (checks.test_freeman.FreemanTests.test_enemy_circle_nearest_point) ... ok
+test_goal_line_and_field_edges (checks.test_freeman.FreemanTests.test_goal_line_and_field_edges) ... ok
+test_goal_on_axis_selects_player_side (checks.test_freeman.FreemanTests.test_goal_on_axis_selects_player_side) ... ok
+test_intersection_of_enemy_boundaries (checks.test_freeman.FreemanTests.test_intersection_of_enemy_boundaries) ... ok
+test_matches_independent_grid_upper_bound (checks.test_freeman.FreemanTests.test_matches_independent_grid_upper_bound) ... ok
+test_move_and_stop_on_unavailable_target_or_observations (checks.test_freeman.FreemanTests.test_move_and_stop_on_unavailable_target_or_observations) ... ok
+test_nearest_half_circle_projection_on_both_sides (checks.test_freeman.FreemanTests.test_nearest_half_circle_projection_on_both_sides) ... ok
+test_wait_faces_actual_goal_center_without_kicking (checks.test_freeman.FreemanTests.test_wait_faces_actual_goal_center_without_kicking) ... ok
+test_recorded_close_kicks_accept_contest_and_preserve_timeout (checks.test_guard_priority.ClearanceReplayTests.test_recorded_close_kicks_accept_contest_and_preserve_timeout) ... ok
+test_conflicting_kick_cancelled_before_guard_moves (checks.test_guard_priority.KeeperPriorityTests.test_conflicting_kick_cancelled_before_guard_moves) ... ok
+test_lower_reservation_removes_only_extra_margin (checks.test_guard_priority.KeeperPriorityTests.test_lower_reservation_removes_only_extra_margin) ... ok
+test_non_emergency_does_not_cancel_kick (checks.test_guard_priority.KeeperPriorityTests.test_non_emergency_does_not_cancel_kick) ... ok
+test_already_covering_shot_still_holds (checks.test_guard_continuity.GuardContinuityTests.test_already_covering_shot_still_holds) ... ok
+test_blocked_path_still_holds (checks.test_guard_continuity.GuardContinuityTests.test_blocked_path_still_holds) ... ok
+test_unreachable_shot_keeps_moving_as_ball_approaches (checks.test_guard_continuity.GuardContinuityTests.test_unreachable_shot_keeps_moving_as_ball_approaches) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.230s
+
+OK

@@ -1,1 +1,11 @@
+test_dashboard_guard:
 Guard cards: reasons, quantitative evidence, clearance requests, old frames and stale-state isolation passed.
+
+test_dashboard_freeman:
+Freeman overlay: buffered triangle clipping, absent attacker and legacy replay passed.
+
+test_dashboard_navigation:
+Navigation cards: current/legacy fields, time estimate, route retention, invalid and missing values passed.
+
+test_dashboard_shot_selection:
+Shot score, center fallback, blocked execution and replay schema passed.
